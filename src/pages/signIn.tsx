@@ -1,34 +1,36 @@
 import { AuthContext } from "@/Context/AuthProvider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 import Link from "next/link";
-import React, { useContext } from "react";
+import { useRouter } from "next/router";
+import React, { useContext, useState } from "react";
 
 const SignIn = () => {
-const {accountLogIn, user, providerGoogleLogIn}:any = useContext(AuthContext)
-const provider = new GoogleAuthProvider();
-console.log(user)
-  const handleLogin = (event:any) => {
+  const [signInError, setSignInError]= useState("")
+  const { accountLogIn, providerGoogleLogIn }: any = useContext(AuthContext);
+  const provider = new GoogleAuthProvider();
+  const router = useRouter();
+
+  const handleLogin = (event: any) => {
     accountLogIn(event.target.email.value, event.target.password.value)
-      .then((result:any) => {
+      .then((result: any) => {
         const user = result.user;
         // setLogInUserEmail(data.email);
         // toast.success('Login success')
+        router.push("/");
       })
-      .catch((error:any) => console.log(error.message));
+      .catch((error: any) => setSignInError(error.message && error.code));
   };
-  const handleGoogleLogin=()=>{
+  const handleGoogleLogin = () => {
     providerGoogleLogIn(provider)
-    .then((result:any) => {
+      .then((result: any) => {
         const user = result.user;
         // setLogInUserEmail(user.email);
-
-       
-
+        router.push("/");
       })
-      .catch((error:any) => console.log(error));
-  }
+      .catch((error: any) => setSignInError(error.message));
+  };
   return (
-    <div className="hero text-black lg:mt-28">
+    <div className="hero text-black lg:mt-28 w-10/12 mx-auto">
       <div className="hero-content flex">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
@@ -49,6 +51,7 @@ console.log(user)
                 placeholder="email"
                 className="input input-bordered"
                 name="email"
+                required
               />
             </div>
             <div className="form-control">
@@ -60,7 +63,9 @@ console.log(user)
                 placeholder="password"
                 className="input input-bordered"
                 name="password"
+                required
               />
+              <p className="text-red-400 py-2">{signInError}</p>
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
@@ -71,10 +76,12 @@ console.log(user)
               <button className="btn btn-primary">Login</button>
             </div>
             <p>
-              Create a new account? <Link href="/SignUp">SignUp</Link>
+              Create a new account? <Link href="/signUp">SignUp</Link>
             </p>
           </form>
-          <button className="btn btn-secondary" onClick={handleGoogleLogin}>Google</button>
+          <button className="btn btn-secondary" onClick={handleGoogleLogin}>
+            Google
+          </button>
         </div>
       </div>
     </div>

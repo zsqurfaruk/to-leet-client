@@ -1,12 +1,28 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
-import About from "@/components/About/About";
-import Header from "@/components/Shared/Header/Header";
+import { GetStaticProps } from "next";
 import Products from "@/components/Products/Products";
+import { useState } from "react";
+import { Input, Radio } from "@material-tailwind/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+function Home({ products }: any) {
+  const [deletePost, setDeletePost] = useState(products);
+  const handleDelete = async (id: any) => {
+    const proceed = window.confirm("Are you sure?");
+    if (proceed) {
+      const res = await fetch(`http://localhost:5000/api/v1/product/${id}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      console.log(data);
+      if (data.message === "success") {
+        setDeletePost(deletePost.filter((sp: any) => sp._id !== id));
+      }
+    }
+  };
+
   return (
     <>
       <Head>
@@ -15,11 +31,49 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main>
-        <Products></Products>
-        <About></About>
+      <div className=" ">
+      <div className="lg:w-8/12 mx-auto py-10 shadow-md mt-5">
+      <div className="flex gap-20 lg:gap-32 lg:pl-52">
+      <Radio id="html" name="type" label="House/Flat" className="text-white"/>
+       <br />
+       <Radio id="react" name="type" label="Mess"  className="text-white"/>
+      </div>
+       <div className="my-10 lg:w-8/12 lg:mx-auto mx-5">
+        <Input
+          size="md"
+          label="Search"
+          className="input input-bordered w-full bg-white"
+        />
+        {/* <input
+          // {...register("address")}
+          type="text"
+          placeholder="Search"
+          className="input input-bordered w-full bg-white"
+        /> */}
+      </div>
+     </div>
+      </div>
+     
+      <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
+        {deletePost.length &&
+          deletePost.map((product: any) => (
+            <Products
+              key={product._id}
+              product={product}
+              handleDelete={handleDelete}
+            ></Products>
+          ))}
       </main>
     </>
   );
 }
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await fetch("http://localhost:5000/api/v1/product");
+  const data = await res.json();
+  return {
+    props: {
+      products: data,
+    },
+  };
+};
+export default Home;
