@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Navbar,
   MobileNav,
@@ -11,18 +11,35 @@ import Link from "next/link";
 
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
-  const { getToken, logOut, setLanguage, language }: any = useContext(AuthContext);
+  const { setLanguage, language }: any = useContext(AuthContext);
 
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setAuthenticated(true);
+    }
+  }, []);
+  // useEffect(() => {
+  //  const token = localStorage.getItem("token");
+  //   setAuthenticated(!!token);
+  // }, []);
+ 
   React.useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
-
+  const logOut = () => {
+    setAuthenticated(false);
+    return localStorage.removeItem("token");
+  };
+  console.log(authenticated);
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      {!getToken ? (
+      {!authenticated ? (
         <div className="navbar-end">
           {/* <Link href="/SignUp">  */}
           <Link href="/signUp">
@@ -59,7 +76,7 @@ export default function NavBar() {
           </Link>
         </div>
       )}
-      {!getToken && (
+      {!authenticated && (
         <Typography
           as="li"
           variant="small"
@@ -69,7 +86,12 @@ export default function NavBar() {
           onClick={() => setOpenNav(false)}
         >
           <Link href="/signIn">
-            <li  onClick={() => setOpenNav(false)} className="flex items-center  text-primary">SignIn</li>
+            <li
+              onClick={() => setOpenNav(false)}
+              className="flex items-center  text-primary"
+            >
+              SignIn
+            </li>
           </Link>
         </Typography>
       )}
@@ -85,7 +107,7 @@ export default function NavBar() {
   };
   return (
     <>
-      <Navbar className="sticky inset-0 z-10 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4 border-none text-primary">
+      <Navbar className="sticky inset-0 z-10 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-75 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4 border-none text-primary shadow-sm">
         <div className="flex items-center justify-between text-blue-gray-900">
           <Link href={"/"}>
             <Typography className="mr-4 cursor-pointer py-1.5 font-medium text-primary">
@@ -94,24 +116,18 @@ export default function NavBar() {
           </Link>
           <div onClick={handleLanguage} className="hidden lg:flex">
             {language ? (
-              <span
-                className="text-primary border border-primary px-3 py-1 rounded-full
-          "
-              >
+              <span className="text-primary border border-primary px-3 py-1 rounded-full cursor-pointer">
                 বাংলা
               </span>
             ) : (
-              <span
-                className="text-primary border border-primary px-3 py-1 rounded-full
-          "
-              >
+              <span className="text-primary border border-primary px-3 py-1 rounded-full cursor-pointer">
                 English
               </span>
             )}
           </div>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
-            {getToken ? (
+            {authenticated ? (
               <Button
                 onClick={handleLogOut}
                 variant="gradient"
@@ -172,7 +188,7 @@ export default function NavBar() {
         </div>
         <MobileNav open={openNav}>
           {navList}
-          {getToken ? (
+          {authenticated ? (
             <Button
               className="text-primary "
               onClick={handleLogOut}
@@ -188,7 +204,7 @@ export default function NavBar() {
                 size="sm"
                 className="w-full rounded-full mb-3 text-primary"
               >
-                <span  onClick={() => setOpenNav(false)}>SignUp</span>
+                <span onClick={() => setOpenNav(false)}>SignUp</span>
               </Button>
             </Link>
           )}
@@ -197,14 +213,16 @@ export default function NavBar() {
             className="flex justify-center rounded-full lg:hidden bg-primary text-secondary mb-5"
           >
             {language ? (
-              <span  onClick={() => setOpenNav(false)}
+              <span
+                onClick={() => setOpenNav(false)}
                 className="font-semibold border border-primary py-1 rounded-full
           "
               >
                 বাংলা
               </span>
             ) : (
-              <span  onClick={() => setOpenNav(false)}
+              <span
+                onClick={() => setOpenNav(false)}
                 className="font-semibold border border-primary  py-1 rounded-full
           "
               >

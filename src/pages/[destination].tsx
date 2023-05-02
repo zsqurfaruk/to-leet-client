@@ -1,9 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { NameContext } from "@/Context/NamInfo";
 import Products from "@/components/Products/Products";
 import { GetServerSideProps } from "next";
 import React, { useState } from "react";
-import privateRoute from "./privateRoute";
 
 const ShowAllPost = ({ products }: any) => {
   const [deleteAndFilterPost, setDeleteAndFilterPost] = useState(products);

@@ -1,7 +1,7 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
-import privateRoute from "@/pages/privateRoute";
 import { useContext, useState } from "react";
 import { AuthContext } from "@/Context/AuthProvider/AuthProvider";
 import axios from "axios";
@@ -9,6 +9,8 @@ import OtpInput from "react-otp-input";
 import Loading from "../Loading/Loading";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import Link from "next/link";
+import privateRoute from "@/routes/privateRoute";
 
 type FormValues = {
   bedNumber: number;
@@ -41,8 +43,10 @@ const AddProduct = ({ districtLocation, rentType }: any) => {
   const [imageUrl4, setImageUrl4] = useState("");
   const [imageUrl5, setImageUrl5] = useState("");
   const [value, setValue] = useState();
-  const { user }: any = useContext(AuthContext);
+  const { userInfo }: any = useContext(AuthContext);
  
+  const name = userInfo.firstName + " " + userInfo.lastName;
+  console.log(name)
   const router = useRouter();
   const {
     formState: { errors },
@@ -397,17 +401,21 @@ const AddProduct = ({ districtLocation, rentType }: any) => {
               {...register("name", { required: true })}
               type="text"
               className="input input-bordered w-full bg-primary"
+              defaultValue={name}
             />
           </div>
           <div className="mt-10">
-            <h5>Email</h5>
+            <div className="flex gap-6">
+            <h5>Email</h5> <small className="text-blue-400">You can't change your email. To change please <Link className="underline font-semibold" href='/signUp'>sign up</Link> again or contact the admin.</small>
+            </div>
             <input
               {...register("email", { required: true })}
               type="email"
               className="input input-bordered w-full bg-primary"
-              defaultValue={user?.email}
+              defaultValue={userInfo?.email}
               readOnly
             />
+          
           </div>
           <div className="mt-10 border border-secondary p-5">
             <h5>Add A Phone Number</h5>

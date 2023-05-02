@@ -8,6 +8,7 @@ import {
 } from "firebase/auth";
 import { auth } from "@/Firebase/firebase.config";
 import Loading from "@/components/Loading/Loading";
+import { useRouter } from "next/router";
 
 export const AuthContext = createContext({});
 
@@ -16,7 +17,15 @@ const AuthProvider = ({ children }: any) => {
   const [loading, setLoading] = useState(true);
   const [language, setLanguage] = useState(true);
   const [getToken, setGetToken] = useState("");
+  const [userInfo, setUserInfo] = useState("");
+  const router = useRouter();
+//   const [authenticated, setAuthenticated] = useState(false);
 
+//   const handleNavChange = () => {
+//    const token = localStorage.getItem("token");
+//    return setAuthenticated(!token);
+//   };
+// console.log(authenticated)
   // const createUserByEmail = (email: string, password: string & Number) => {
   //   setLoading(true);
   //   return createUserWithEmailAndPassword(auth, email, password);
@@ -34,16 +43,6 @@ const AuthProvider = ({ children }: any) => {
   //     setLoading(true);
   //     return updateProfile(auth.currentUser, profile)
   //   };
-  const logOut = () => {
-    // localStorage.removeItem("accessToken");
-    // setLoading(true);
-    setGetToken('')
-    return localStorage.removeItem("token")
-  };
-  // const removeUser =()=>{
-  //  return  deleteUser(auth.currentUser)
-
-  // }
 
   const handleLogIn = async (email: any, password: any) => {
     const info = {
@@ -59,12 +58,28 @@ const AuthProvider = ({ children }: any) => {
       body: JSON.stringify(info),
     });
     const result = await res.json();
-    if(result?.data?.token){
-      localStorage.setItem("token", result?.data?.token)
-      setGetToken(result?.data?.token)
+    if (result?.data?.token) {
+      localStorage.setItem("token", result?.data?.token);
+      setGetToken(result?.data?.token);
+      setUserInfo(result?.data?.user);
+      router.push("/");
     }
-    console.log(result);
   };
+
+  // const handleReload = () => {
+  //   const token = localStorage.getItem("token");
+  //   if (getToken && token) {
+  //     fetch("http://localhost:5000/api/v1/users/me")
+  //       .then((res) => res.json())
+  //       .then((data) => console.log(data));
+  //   }
+
+  //   console.log(token);
+  // };
+  // if (localStorage.getItem("token")) {
+  //   console.log(getToken);
+  // }
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser: any) => {
       setUser(currentUser);
@@ -76,23 +91,24 @@ const AuthProvider = ({ children }: any) => {
   }, []);
 
   const authInfo = {
-    user,
-    loading,
-    setLoading,
+    // user,
+    // loading,
+    // setLoading,
     // createUserByEmail,
     // accountLogIn,
-    logOut,
+    // logOut,
     providerGoogleLogIn,
     setLanguage,
     language,
     handleLogIn,
-    getToken
+    getToken,
+    userInfo,
+   
     // updateUser,
     // removeUser
   };
   return (
     <AuthContext.Provider value={authInfo}>
-      {" "}
       {loading ? <Loading></Loading> : children}
     </AuthContext.Provider>
   );

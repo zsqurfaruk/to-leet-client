@@ -3,7 +3,7 @@ import { AuthContext } from "@/Context/AuthProvider/AuthProvider";
 import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
 
-const privateRoute = (WrappedComponent: any) => {
+const persistence = (WrappedComponent: any) => {
   const AuthWrapper = (props: any) => {
     const { getToken, loading }: any = useContext(AuthContext);
     const router = useRouter();
@@ -11,6 +11,10 @@ const privateRoute = (WrappedComponent: any) => {
     useEffect(() => {
       if (!getToken) {
         router.push("/signIn");
+      } else {
+        fetch("http://localhost:5000/api/v1/users/me")
+          .then((res) => res.json())
+          .then((data) => console.log(data));
       }
     }, [getToken, router]);
 
@@ -23,4 +27,4 @@ const privateRoute = (WrappedComponent: any) => {
   return AuthWrapper;
 };
 
-export default privateRoute;
+export default persistence;

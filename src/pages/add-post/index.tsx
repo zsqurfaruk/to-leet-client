@@ -1,8 +1,8 @@
 import { Checkbox } from "@material-tailwind/react";
 import React, { useState } from "react";
-import privateRoute from "../privateRoute";
 import AddProduct from "../../components/AddProduct/AddProduct";
 import RentType from "@/components/AddProduct/RentType";
+import privateRoute from "@/routes/privateRoute";
 
 const AddPost = () => {
   const [divisionLocation, setDivisionLocation] = useState<string[]>([]);

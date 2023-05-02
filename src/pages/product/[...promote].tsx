@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React from "react";
-import privateRoute from "../privateRoute";
+
 
 const Promote = () => {
     const router = useRouter()

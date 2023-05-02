@@ -12,4 +12,7 @@ function AllAds() {
     </div>
   );
 }
-export default AllAds;
+export default  AllAds;
+
+
+

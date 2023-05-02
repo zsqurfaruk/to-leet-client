@@ -3,23 +3,17 @@ import { AuthContext } from "@/Context/AuthProvider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 import Link from "next/link";
 import React, { useContext, useState } from "react";
-import {
-  Card,
-  Typography,
-  Input,
-  Checkbox,
-} from "@material-tailwind/react";
-import {  useForm } from "react-hook-form";
+import { Card, Typography, Input, Checkbox } from "@material-tailwind/react";
+import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 import { useRouter } from "next/router";
 
-
 type FormValues = {
-   firstName: string,
-   lastName:string,
-   email: string | number,
-   password: string| number,
-   confirmPassword: string| number,
+  firstName: string;
+  lastName: string;
+  email: string | number;
+  password: string | number;
+  confirmPassword: string | number;
 };
 function SignUp() {
   const {
@@ -46,14 +40,14 @@ function SignUp() {
   //     });
   // };
 
-  const handleSignUp: SubmitHandler<FormValues> = async(data: any) => {
-    const info ={
-      firstName : data.firstName,
-      lastName : data.lastName,
-      email : data.email,
-      password : data.password,
-      confirmPassword :data.confirmPassword
-    }
+  const handleSignUp: SubmitHandler<FormValues> = async (data: any) => {
+    const info = {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      password: data.password,
+      confirmPassword: data.confirmPassword,
+    };
     const res = await fetch("http://localhost:5000/api/v1/users/signup", {
       method: "POST",
       headers: {
@@ -63,16 +57,8 @@ function SignUp() {
       body: JSON.stringify(info),
     });
     const result = await res.json();
-    // if (!result?.data?.token) {
-    //   alert("dsjkhdskjhs");
-    // } else {
-    //   localStorage.setItem("token", result?.data?.token);
-
-    //   // router.push(`/`);
-    // }
     console.log(result);
     router.push(`/signIn`);
-    
   };
   // const handleGoogleSignUp = () => {
   //   providerGoogleLogIn(provider)

@@ -2,7 +2,6 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
-import privateRoute from "../privateRoute";
 import { GetServerSideProps } from "next";
 
 const ProductDetails = ({ product }: any) => {
