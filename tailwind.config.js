@@ -22,9 +22,9 @@ module.exports =withMT(
   
             secondary: "#3E54AC",
   
-            accent: "#62B6B7",
+            accent: "#00ffc8",
   
-            neutral: "#3D4451",
+            neutral: "#73A38B",
   
             "base-100": "#FFFFFF",
   

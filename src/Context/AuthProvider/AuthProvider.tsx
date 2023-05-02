@@ -14,16 +14,18 @@ export const AuthContext = createContext({});
 const AuthProvider = ({ children }: any) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [language, setLanguage] = useState(true);
+  const [getToken, setGetToken] = useState("");
 
-  const createUserByEmail = (email: string, password: string & Number) => {
-    setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
+  // const createUserByEmail = (email: string, password: string & Number) => {
+  //   setLoading(true);
+  //   return createUserWithEmailAndPassword(auth, email, password);
+  // };
 
-  const accountLogIn = (email: string, password: string & Number) => {
-    setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
-  };
+  // const accountLogIn = (email: string, password: string & Number) => {
+  //   setLoading(true);
+  //   return signInWithEmailAndPassword(auth, email, password);
+  // };
   const providerGoogleLogIn = (provider: any) => {
     setLoading(true);
     return signInWithPopup(auth, provider);
@@ -34,13 +36,35 @@ const AuthProvider = ({ children }: any) => {
   //   };
   const logOut = () => {
     // localStorage.removeItem("accessToken");
-    setLoading(true);
-    return signOut(auth);
+    // setLoading(true);
+    setGetToken('')
+    return localStorage.removeItem("token")
   };
   // const removeUser =()=>{
   //  return  deleteUser(auth.currentUser)
 
   // }
+
+  const handleLogIn = async (email: any, password: any) => {
+    const info = {
+      email,
+      password,
+    };
+    const res = await fetch("http://localhost:5000/api/v1/users/signIn", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        // authorization: `bearer ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify(info),
+    });
+    const result = await res.json();
+    if(result?.data?.token){
+      localStorage.setItem("token", result?.data?.token)
+      setGetToken(result?.data?.token)
+    }
+    console.log(result);
+  };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser: any) => {
       setUser(currentUser);
@@ -55,15 +79,22 @@ const AuthProvider = ({ children }: any) => {
     user,
     loading,
     setLoading,
-    createUserByEmail,
-    accountLogIn,
+    // createUserByEmail,
+    // accountLogIn,
     logOut,
     providerGoogleLogIn,
+    setLanguage,
+    language,
+    handleLogIn,
+    getToken
     // updateUser,
     // removeUser
   };
   return (
-    <AuthContext.Provider value={authInfo}>  {loading ?  <Loading></Loading> : children}</AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>
+      {" "}
+      {loading ? <Loading></Loading> : children}
+    </AuthContext.Provider>
   );
 };
 

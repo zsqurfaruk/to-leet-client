@@ -5,8 +5,13 @@ import privateRoute from "@/pages/privateRoute";
 import { useContext, useState } from "react";
 import { AuthContext } from "@/Context/AuthProvider/AuthProvider";
 import axios from "axios";
+import OtpInput from "react-otp-input";
+import Loading from "../Loading/Loading";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 
 type FormValues = {
+  bedNumber: number;
   bedrooms: number;
   bathrooms: number;
   houseSize: number;
@@ -29,13 +34,15 @@ type FormValues = {
 };
 
 const AddProduct = ({ districtLocation, rentType }: any) => {
-  // const [images, setImages] = useState([]);
+  const [houseSize, setHouseSize] = useState();
   const [imageUrl1, setImageUrl1] = useState("");
   const [imageUrl2, setImageUrl2] = useState("");
   const [imageUrl3, setImageUrl3] = useState("");
   const [imageUrl4, setImageUrl4] = useState("");
   const [imageUrl5, setImageUrl5] = useState("");
+  const [value, setValue] = useState();
   const { user }: any = useContext(AuthContext);
+ 
   const router = useRouter();
   const {
     formState: { errors },
@@ -43,26 +50,10 @@ const AddProduct = ({ districtLocation, rentType }: any) => {
     handleSubmit,
   } = useForm<FormValues>();
   const handlePost: SubmitHandler<FormValues> = async (data) => {
-    // const image = data?.image;
-    // // console.log(image)
-    // const formData = new FormData();
-    // // formData.append("image", image);
-    // for (let images in image) {
-    //    console.log(  images[image]);
-    // }
-
-    // const url =
-    //   "https://api.imgbb.com/1/upload?key=c49cb06155adb366044d147043658858";
-    // fetch(url, {
-    //   method: "POST",
-    //   // body: formData,
-    // })
-    // .then((res) => res.json())
-    // .then(async(imgData) => {
-    //   console.log(imgData);
     const values = {
       bedrooms: data?.bedrooms,
       bathrooms: data?.bathrooms,
+      bedNumber: data?.bedNumber,
       houseSize: data?.houseSize,
       unit: data?.unit,
       address: data?.address,
@@ -90,9 +81,7 @@ const AddProduct = ({ districtLocation, rentType }: any) => {
       body: JSON.stringify(values),
     });
     const result = await res.json();
-    console.log(result);
-    router.push("/");
-    // });
+    router.push(`/${rentType}`);
   };
 
   const imageUploadHandler = (event: any, setImg: any) => {
@@ -108,11 +97,14 @@ const AddProduct = ({ districtLocation, rentType }: any) => {
       .post("https://api.imgbb.com/1/upload", imageData)
       .then(function (response) {
         setImg(response.data.data.display_url);
-        console.log(response.data.data.display_url);
+        // console.log(response.data.data.display_url);
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .catch(function (error) {});
+  };
+
+  const handleHouseSize = (e: any) => {
+    setHouseSize(e.target.value);
+     
   };
 
   return (
@@ -120,9 +112,9 @@ const AddProduct = ({ districtLocation, rentType }: any) => {
       <div>
         <div className="flex justify-between py-5">
           <h1>Fill In The Details</h1>
-          <h1>
+          <h2> 
             <span className="font-bold">District</span> : {districtLocation}
-          </h1>
+          </h2>
           <h1>Houses For Rent</h1>
         </div>
         <hr className="text-black" />
@@ -130,63 +122,98 @@ const AddProduct = ({ districtLocation, rentType }: any) => {
       </div>
       <div>
         <div>
-          <div className="form-control lg:w-6/12 mx-auto">
-            <label className="label">
-              <span className="label-text">Bedrooms</span>
-            </label>
-            <select
-              {...register("bedrooms", { required: true })}
-              className="select select-bordered bg-primary"
-            >
-              <option disabled selected>
-                Bedrooms
-              </option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-              {/* <option>10+</option> */}
-            </select>
-            {errors.bedrooms && (
-              <span className="text-red-500 pt-4">This field is required</span>
-            )}
-          </div>
-          <div className="form-control lg:w-6/12 mx-auto mt-16">
-            <label className="label">
-              <span className="label-text">Bathrooms</span>
-            </label>
-            <select
-              {...register("bathrooms", { required: true })}
-              className="select select-bordered bg-primary"
-            >
-              <option disabled selected>
-                Bathrooms
-              </option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              {/* <option>5+</option> */}
-            </select>
-            {errors.bathrooms && (
-              <span className="text-red-500 pt-4">This field is required</span>
-            )}
-          </div>
+          {rentType === "House"  || rentType === "Apartment" ? (
+            <div className="form-control lg:w-6/12 mx-auto">
+              <label className="label">
+                <span className="label-text">Bedrooms</span>
+              </label>
+              <select
+                {...register("bedrooms", { required: true })}
+                className="select select-bordered bg-primary"
+              >
+                <option disabled selected>
+                  Bedrooms
+                </option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                {/* <option>10+</option> */}
+              </select>
+              {errors.bedrooms && (
+                <span className="text-red-500 pt-4">
+                  This field is required
+                </span>
+              )}
+            </div>
+          ) : (
+            <div className="form-control lg:w-6/12 mx-auto">
+              <label className="label">
+                <span className="label-text">Bed Number/Numbers</span>
+              </label>
+              <select
+                {...register("bedNumber", { required: true })}
+                className="select select-bordered bg-primary"
+              >
+                <option disabled selected>
+                  Bed Number/Numbers
+                </option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                {/* <option>10+</option> */}
+              </select>
+              {errors.bedNumber && (
+                <span className="text-red-500 pt-4">
+                  This field is required
+                </span>
+              )}
+            </div>
+          )}
+          {rentType === "House" || rentType === "Apartment" &&(
+            <div className="form-control lg:w-6/12 mx-auto mt-16">
+              <label className="label">
+                <span className="label-text">Bathrooms</span>
+              </label>
+              <select
+                {...register("bathrooms", { required: true })}
+                className="select select-bordered bg-primary"
+              >
+                <option disabled selected>
+                  Bathrooms
+                </option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                {/* <option>5+</option> */}
+              </select>
+              {errors.bathrooms && (
+                <span className="text-red-500 pt-4">
+                  This field is required
+                </span>
+              )}
+            </div>
+          )}
           <div className="flex gap-5 lg:w-6/12 mx-auto mt-16">
             <div className="w-full">
               <label className="label">
-                <span className="label-text">House size</span>
+                <span className="label-text">House size (Optional)</span>
               </label>
               <input
-                {...register("houseSize", { required: true })}
+                {...register("houseSize")}
                 type="text"
+                onChange={handleHouseSize}
                 placeholder="Type here"
+                name="houseSize"
                 className="input input-bordered w-full bg-primary"
               />
               {errors.houseSize && (
@@ -195,29 +222,31 @@ const AddProduct = ({ districtLocation, rentType }: any) => {
                 </span>
               )}
             </div>
-            <div>
-              <label className="label">
-                <span className="label-text">Unit</span>
-              </label>
-              <select
-                {...register("unit", { required: true })}
-                className="select select-bordered bg-primary"
-              >
-                <option disabled selected>
-                  Unit
-                </option>
-                <option>katha </option>
-                <option>bigha</option>
-                <option>acres</option>
-                <option>shotok</option>
-                <option>decimal</option>
-              </select>
-              {errors.unit && (
-                <span className="text-red-500 pt-4">
-                  This field is required
-                </span>
-              )}
-            </div>
+            {houseSize && (
+              <div>
+                <label className="label">
+                  <span className="label-text">Unit</span>
+                </label>
+                <select
+                  {...register("unit", { required: true })}
+                  className="select select-bordered bg-primary"
+                >
+                  <option disabled selected>
+                    Unit
+                  </option>
+                  <option>katha </option>
+                  <option>bigha</option>
+                  <option>acres</option>
+                  <option>shotok</option>
+                  <option>decimal</option>
+                </select>
+                {errors.unit && (
+                  <span className="text-red-500 pt-4">
+                    This field is required
+                  </span>
+                )}
+              </div>
+            )}
           </div>
           <div className="lg:w-6/12 mx-auto mt-16">
             <label className="label">
@@ -288,22 +317,30 @@ const AddProduct = ({ districtLocation, rentType }: any) => {
               <span className="text-xl font-bold">Add up to 5 photos</span>
             </label>
             <div className="md:col-span-5">
-              <label>Image 1</label>
+              {
+                !imageUrl1? <div>
+                  <label>Image 1</label>
               <input
                 onChange={(e) => imageUploadHandler(e, setImageUrl1)}
                 type="file"
-                multiple={true}
+                // multiple={true}
                 accept="image/*"
                 placeholder="Upload Images"
                 className="file-input file-input-primary w-full"
+                required
               />
+                </div> :  <img className="h-12 w-12" src={imageUrl1} alt="" />
+              }
+              {!imageUrl1 && (
+                <p className="text-red-500"> Please add at least one image.</p>
+              )}
             </div>
             <div className="md:col-span-5">
               <label>Image 2</label>
               <input
                 onChange={(e) => imageUploadHandler(e, setImageUrl2)}
                 type="file"
-                multiple={true}
+                // multiple={true}
                 accept="image/*"
                 placeholder="Upload Images"
                 className="file-input file-input-primary w-full"
@@ -314,7 +351,7 @@ const AddProduct = ({ districtLocation, rentType }: any) => {
               <input
                 onChange={(e) => imageUploadHandler(e, setImageUrl3)}
                 type="file"
-                multiple={true}
+                // multiple={true}
                 accept="image/*"
                 placeholder="Upload Images"
                 className="file-input file-input-primary w-full"
@@ -325,7 +362,7 @@ const AddProduct = ({ districtLocation, rentType }: any) => {
               <input
                 onChange={(e) => imageUploadHandler(e, setImageUrl4)}
                 type="file"
-                multiple={true}
+                // multiple={true}
                 accept="image/*"
                 placeholder="Upload Images"
                 className="file-input file-input-primary w-full"
@@ -336,7 +373,7 @@ const AddProduct = ({ districtLocation, rentType }: any) => {
               <input
                 onChange={(e) => imageUploadHandler(e, setImageUrl5)}
                 type="file"
-                multiple={true}
+                // multiple={true}
                 accept="image/*"
                 placeholder="Upload Images"
                 className="file-input file-input-primary w-full"
@@ -374,7 +411,20 @@ const AddProduct = ({ districtLocation, rentType }: any) => {
           </div>
           <div className="mt-10 border border-secondary p-5">
             <h5>Add A Phone Number</h5>
-            <input
+            <PhoneInput
+              placeholder="Enter phone number"
+              value={value}
+              name="phone"
+              onChange={(e:any)=>setValue(e)}
+            />
+            {/* <OtpInput
+              value={otp}
+              onChange={setOtp}
+              numInputs={6}
+              renderSeparator={<span>-</span>}
+              renderInput={(props) => <input {...props}  className="border border-black mx-1 text-2xl w-10 rounded-md"/>}
+            /> */}
+            {/* <input
               {...register("phone", { required: true })}
               type="text"
               placeholder="Add A Phone Number"
@@ -384,9 +434,9 @@ const AddProduct = ({ districtLocation, rentType }: any) => {
               <span className="text-red-500 pt-3 mr-6">
                 This field is required
               </span>
-            )}
-            <button disabled className="btn btn-secondary btn-sm mt-5">
-              Add
+            )} */}
+            <button className="btn btn-secondary btn-sm mt-5">
+              <span> Verify otp</span>
             </button>
           </div>
         </div>

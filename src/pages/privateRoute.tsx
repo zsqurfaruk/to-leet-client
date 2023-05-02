@@ -5,14 +5,14 @@ import { useContext, useEffect } from "react";
 
 const privateRoute = (WrappedComponent: any) => {
   const AuthWrapper = (props: any) => {
-    const { user, loading }: any = useContext(AuthContext);
+    const { getToken, loading }: any = useContext(AuthContext);
     const router = useRouter();
 
     useEffect(() => {
-      if (!user) {
+      if (!getToken) {
         router.push("/signIn");
       }
-    }, [router, user]);
+    }, [getToken, router]);
 
     if (loading) {
       return <Loading></Loading>;
