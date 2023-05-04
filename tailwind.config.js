@@ -18,7 +18,7 @@ module.exports =withMT(
       themes: [
         {
           mytheme: {
-            primary: "#ECF2FF",
+            primary: "#eff3fc",
   
             secondary: "#3E54AC",
   

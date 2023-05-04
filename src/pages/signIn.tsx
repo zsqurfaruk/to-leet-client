@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Card, Typography, Input, Checkbox } from "@material-tailwind/react";
+import { createHash } from "crypto";
+import { FaEyeSlash, FaEye } from 'react-icons/fa';
 type FormValues = {
   email: string | number;
   password: string | number;
@@ -12,9 +14,14 @@ type FormValues = {
 };
 const SignIn = () => {
   const [signInError, setSignInError] = useState("");
-  const { accountLogIn, providerGoogleLogIn, handleLogIn }: any =
-    useContext(AuthContext);
-  const provider = new GoogleAuthProvider();
+  const [passHidden, setPassHidden] = useState(true);
+  const {
+    accountLogIn,
+    providerGoogleLogIn,
+    setUserInfo,
+    signUpUserInfo,
+  }: any = useContext(AuthContext);
+  // const provider = new GoogleAuthProvider();
   const router = useRouter();
   const {
     register,
@@ -32,19 +39,44 @@ const SignIn = () => {
   //     })
   //     .catch((error: any) => setSignInError(error.message && error.code));
   // };
-  const handleSignIn = (data: any) => {
-    handleLogIn(data.email, data.password);
+  const handleSignIn = async (data: any) => {
+    const info = {
+      email: data.email,
+      password: data.password,
+    };
+    const res = await fetch("http://localhost:5000/api/v1/users/signIn", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify(info),
+    });
+    const result = await res.json();
+    console.log(result);
+ 
+    setSignInError(result.error);
+    const token = result?.data?.token;
+    if (token) {
+      localStorage.setItem("token", token);
+      setUserInfo(result?.data?.user);
+      router.push("/");
+    }
   };
 
-  const handleGoogleLogin = () => {
-    providerGoogleLogIn(provider)
-      .then((result: any) => {
-        const user = result.user;
-        // setLogInUserEmail(user.email);
-        router.push("/");
-      })
-      .catch((error: any) => setSignInError(error.message));
-  };
+  // const handleGoogleLogin = () => {
+  //   providerGoogleLogIn(provider)
+  //     .then((result: any) => {
+  //       const user = result.user;
+  //       // setLogInUserEmail(user.email);
+  //       router.push("/");
+  //     })
+  //     .catch((error: any) => setSignInError(error.message));
+  // };
+   const handle =()=>{
+    setPassHidden(!passHidden)
+ console.log('chok kana')
+   }
   return (
     <section className="lg:w-10/12 lg:mx-auto grid lg:grid-cols-2 gap-20 my-10">
       <div className="hidden md:flex">
@@ -70,20 +102,15 @@ const SignIn = () => {
         <div className="mt-8 mb-2 w-full px-4">
           <form
             onSubmit={handleSubmit(handleSignIn)}
-            className="mb-4 flex flex-col gap-6"
+            className="mb-4 flex flex-col gap-6 relative"
           >
-            {/* <div className="lg:flex-row lg:gap-2 flex flex-col gap-6">
-            <Input label="First Name" {...register("firstName")} />
-            <Input label="Last Name" {...register("lastName")} />
-          </div> */}
             <Input label="Email" {...register("email")} />
-            <Input type="password" label="Password" {...register("password")} />
-            {/* <Input
-            type="password"
-            label="Confirm Password"
-            {...register("confirmPassword")}
-            name="confirmPassword"
-          /> */}
+            <Input type={passHidden? "password" : "text"} label="Password" {...register("password")} /> <div className="cursor-pointer absolute right-4 top-[71px]" onClick={handle}>{passHidden ?  <FaEyeSlash className="text-2xl"></FaEyeSlash> : <FaEye className="text-2xl"></FaEye> }</div>
+
+            <p>abc1Aomar&</p>
+           <div className="flex gap-2"> <p className="text-red-400">{signInError}</p> {
+              signInError === "No user found." && <p className="text-blue-400">Please <Link href={"/signUp"}><span className="underline">create an account</span></Link> before sign in.</p>
+            }</div>
             <Checkbox
               label={
                 <Typography
@@ -107,12 +134,12 @@ const SignIn = () => {
 
           <Typography color="gray" className="mt-4 text-center font-normal">
             Already have an account?{" "}
-            <a
-              href="#"
+            <Link
+              href="/signUp"
               className="font-medium text-blue-500 transition-colors hover:text-blue-700"
             >
-              Sign In
-            </a>
+              Sign Up
+            </Link>
           </Typography>
         </div>
       </Card>

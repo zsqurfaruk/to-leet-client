@@ -471,7 +471,7 @@ const AddProduct = ({ districtLocation, rentType }: any) => {
   );
 };
 
-export default privateRoute(AddProduct);
+export default AddProduct;
 
 // console.log(districtLocation);
 // const { user }: any = useContext(AuthContext);

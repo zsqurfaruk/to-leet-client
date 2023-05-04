@@ -4,12 +4,15 @@ import NavBar from "@/components/Shared/NavBar/NavBar";
 import ApiContext from "@/Context/ApiContext/ApiContext";
 import AuthProvider from "@/Context/AuthProvider/AuthProvider";
 import NamInfo from "@/Context/NamInfo";
+import StateInfo from "@/Context/StateContext/StateContext";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import { appWithTranslation } from 'next-i18next'
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
-    <ApiContext>
+   <StateInfo>
+     <ApiContext>
       <NamInfo>
         <AuthProvider>
          <NavBar></NavBar>
@@ -20,5 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
         </AuthProvider>
       </NamInfo>
     </ApiContext>
+   </StateInfo>
   );
 }
+export default appWithTranslation(App)

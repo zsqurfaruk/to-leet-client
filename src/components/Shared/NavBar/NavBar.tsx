@@ -8,38 +8,61 @@ import {
 } from "@material-tailwind/react";
 import { AuthContext } from "@/Context/AuthProvider/AuthProvider";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { StateContext } from "@/Context/StateContext/StateContext";
 
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
-  const { setLanguage, language }: any = useContext(AuthContext);
-
+  const { setLanguage, language, userInfo }: any = useContext(AuthContext);
+  const { tokenValidation }: any = useContext(StateContext);
   const [authenticated, setAuthenticated] = useState(false);
+  const { locales, push, pathname } = useRouter();
+  const [translate, setTranslate] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (token) {
       setAuthenticated(true);
+    } else if (!token) {
+      setAuthenticated(false);
     }
-  }, []);
-  // useEffect(() => {
-  //  const token = localStorage.getItem("token");
-  //   setAuthenticated(!!token);
-  // }, []);
- 
+  }, [pathname]);
+
   React.useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
+
+  useEffect(() => {
+    if (tokenValidation === "Invalid token") {
+      // setAuthenticated(false);
+      return localStorage.removeItem("token");
+    }
+  }, [tokenValidation]);
+
   const logOut = () => {
     setAuthenticated(false);
-    return localStorage.removeItem("token");
+    localStorage.removeItem("token");
+    return push("/signIn");
   };
-  console.log(authenticated);
+
+  const handleLogOut = () => {
+    logOut();
+  };
+
+  // const handleLanguage = () => {
+  //   setLanguage(!language);
+  // };
+
+  const handleTran = (l: any)=>() => {
+    push("/", undefined, { locale: l });
+  };
+
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      {!authenticated ? (
+      {!authenticated && !userInfo?.email ? (
         <div className="navbar-end">
           {/* <Link href="/SignUp">  */}
           <Link href="/signUp">
@@ -98,13 +121,6 @@ export default function NavBar() {
     </ul>
   );
 
-  const handleLogOut = () => {
-    logOut();
-  };
-
-  const handleLanguage = () => {
-    setLanguage(!language);
-  };
   return (
     <>
       <Navbar className="sticky inset-0 z-10 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-75 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4 border-none text-primary shadow-sm">
@@ -114,16 +130,19 @@ export default function NavBar() {
               Blog
             </Typography>
           </Link>
-          <div onClick={handleLanguage} className="hidden lg:flex">
-            {language ? (
-              <span className="text-primary border border-primary px-3 py-1 rounded-full cursor-pointer">
-                বাংলা
-              </span>
-            ) : (
-              <span className="text-primary border border-primary px-3 py-1 rounded-full cursor-pointer">
-                English
-              </span>
-            )}
+          <div className="hidden md:flex">
+            {locales?.map((l) => (
+              <div
+                className="text-primary cursor-pointer"
+                key={l}
+                onClick={handleTran(l)}
+              >
+                {/* <p>{l === "bn" && " বাংলা"}</p> 
+                <p>{l === "en" && "English"}</p> */}
+                {!translate && <p>{l === "bn" ? <>বাংলা</> : <>English</>}</p>}
+                {/* {l} */}
+              </div>
+            ))}
           </div>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
@@ -208,11 +227,8 @@ export default function NavBar() {
               </Button>
             </Link>
           )}
-          <div
-            onClick={handleLanguage}
-            className="flex justify-center rounded-full lg:hidden bg-primary text-secondary mb-5"
-          >
-            {language ? (
+          <div className="flex justify-center rounded-full md:hidden bg-primary text-secondary mb-5">
+            {/* {language ? (
               <span
                 onClick={() => setOpenNav(false)}
                 className="font-semibold border border-primary py-1 rounded-full
@@ -228,13 +244,31 @@ export default function NavBar() {
               >
                 English
               </span>
-            )}
+            )} */}
+            {locales?.map((l) => (
+              <div
+                className="text-secondary py-1 cursor-pointer"
+                key={l}
+                onClick={() => handleTran(setTranslate(l))}
+              >
+                {translate === "en" && <span> {l === "bn" && "বাংলা"}</span>}
+                {translate === "bn" && <span>{l === "en" && "English"}</span>}
+                {!translate && <span>{l === "bn" && " বাংলা "}</span>}
+              </div>
+            ))}
           </div>
         </MobileNav>
       </Navbar>
     </>
   );
 }
+
+// export async function getServerSideProps(context:any) {
+//   const { req } = context;
+//   const token = req.cookies.token || localStorage.getItem('token');
+//   const isLoggedIn = !!token;
+//   return { props: { isLoggedIn } };
+// }
 
 // import { AuthContext } from "@/Context/AuthProvider/AuthProvider";
 // import Image from "next/image";

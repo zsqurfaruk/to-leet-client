@@ -24,8 +24,8 @@ function SignUp() {
   const router = useRouter();
   // const provider = new GoogleAuthProvider();
   // const [signUpError, setSignUpError] = useState("");
-  // const { createUserByEmail, providerGoogleLogIn }: any =
-  //   useContext(AuthContext);
+  const { createUserByEmail, providerGoogleLogIn, setSignUpUserInfo }: any =
+    useContext(AuthContext);
 
   // const handleSignUp = (event: any) => {
   //   event.preventDefault();
@@ -57,6 +57,7 @@ function SignUp() {
       body: JSON.stringify(info),
     });
     const result = await res.json();
+    setSignUpUserInfo(result)
     console.log(result);
     router.push(`/signIn`);
   };
@@ -132,12 +133,12 @@ function SignUp() {
 
           <Typography color="gray" className="mt-4 text-center font-normal">
             Already have an account?{" "}
-            <a
-              href="#"
+            <Link
+              href="/signIn"
               className="font-medium text-blue-500 transition-colors hover:text-blue-700"
             >
               Sign In
-            </a>
+            </Link>
           </Typography>
         </div>
       </Card>

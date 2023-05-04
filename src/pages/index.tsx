@@ -1,26 +1,18 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useContext } from "react";
+import React,{useContext} from "react";
 import Head from "next/head";
 import { Inter } from "next/font/google";
-import { GetStaticProps } from "next";
-import Products from "@/components/Products/Products";
-import { Input, Radio } from "@material-tailwind/react";
-import lottiImage from "../image/lf30_p5tali1o (1).json";
-import Lottie from "lottie-react";
-import style from "../styles/banner.module.css";
-import { BsArrowDownCircleFill } from "react-icons/bs";
 import DestinationType from "@/components/Home/DestinationType/DestinationType";
-import { AuthContext } from "@/Context/AuthProvider/AuthProvider";
 import PostCounter from "@/components/Home/PostCounter/PostCounter";
 import UserReviews from "@/components/Home/UserReviews/UserReviews";
 import Banner from "@/components/Home/Banner/Banner";
 import ContactUs from "@/components/Home/ContactUs/ContactUs";
+import { StateContext } from "@/Context/StateContext/StateContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
 function Home() {
-  const { language }: any = useContext(AuthContext);
-
+const {filterTypeCity, filterTypeDivision}:any = useContext(StateContext)
   return (
     <>
       <Head>
@@ -31,12 +23,12 @@ function Home() {
       </Head>
 
       <main
-        className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-70 -mx-6 text-white">
+        className={filterTypeCity || filterTypeDivision ? "bg-primary" : "bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-70 -mx-6 text-white"}>
         <Banner></Banner>
         <DestinationType></DestinationType>
         <PostCounter></PostCounter>
-        <UserReviews></UserReviews>
-        <ContactUs></ContactUs>
+        {/* <UserReviews></UserReviews> */}
+      
       </main>
     </>
   );
