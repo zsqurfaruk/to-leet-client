@@ -30,7 +30,7 @@ module.exports =withMT(
   
             info: "#3ABFF8",
   
-            success: "#36D399",
+            success: "#16d8a7ec",
   
             warning: "#FBBD23",
   

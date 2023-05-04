@@ -1,18 +1,20 @@
 import { Checkbox } from "@material-tailwind/react";
 import React from "react";
+import style from "../../../../../styles/banner.module.css"
 
-const PopularCityOfDhaka = () => {
+const PopularCityOfChittagong = () => {
   return (
     <section>
       <div className="lg:mr-10 lg:-ml-8 ml-12">
-        <ul className="grid grid-cols-2 md:grid-cols-3 text-black bg">
+        <ul className="grid grid-cols-2 md:grid-cols-3 text-black">
           <li>
+            {" "}
             <Checkbox
-            color="teal"
+           color="teal"
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Dhaka"
             />{" "}
-            Mirpur
+            Agrabad
           </li>
           <li>
             <Checkbox
@@ -20,23 +22,23 @@ const PopularCityOfDhaka = () => {
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Chittagong"
             />{" "}
-            Uttara
+         Chawkbazar
           </li>
           <li>
             <Checkbox
-            color="teal"
+             color="teal"
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Rajshahi"
             />{" "}
-            Mohammadpur
+        Kotwali
           </li>
           <li>
             <Checkbox
-           color="teal"
+             color="teal"
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Sylhet"
             />{" "}
-            Savar
+        Halishahar
           </li>
           <li>
             <Checkbox
@@ -44,11 +46,11 @@ const PopularCityOfDhaka = () => {
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Barisal"
             />{" "}
-            Jatrabari
+         Nasirabad
           </li>
           <li>
             <Checkbox
-            color="teal"
+           color="teal"
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Khulna"
             />{" "}
@@ -60,4 +62,7 @@ const PopularCityOfDhaka = () => {
   );
 };
 
-export default PopularCityOfDhaka;
+export default PopularCityOfChittagong;
+ 
+
+ 

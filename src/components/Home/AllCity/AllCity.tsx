@@ -15,6 +15,7 @@ const AllCity = () => {
           <li>
             {" "}
             <Checkbox
+            color="teal"
               onClick={(e: any) => setCityName(e.target.name)}
               name="Dhaka"
             />{" "}
@@ -22,6 +23,7 @@ const AllCity = () => {
           </li>
           <li>
             <Checkbox
+            color="teal"
               onClick={(e: any) => setCityName(e.target.name)}
               name="Chittagong"
             />{" "}
@@ -29,6 +31,7 @@ const AllCity = () => {
           </li>
           <li>
             <Checkbox
+            color="teal"
               onClick={(e: any) => setCityName(e.target.name)}
               name="Rajshahi"
             />{" "}
@@ -36,6 +39,7 @@ const AllCity = () => {
           </li>
           <li>
             <Checkbox
+            color="teal"
               onClick={(e: any) => setCityName(e.target.name)}
               name="Sylhet"
             />{" "}
@@ -43,6 +47,7 @@ const AllCity = () => {
           </li>
           <li>
             <Checkbox
+            color="teal"
               onClick={(e: any) => setCityName(e.target.name)}
               name="Barisal"
             />{" "}
@@ -50,6 +55,7 @@ const AllCity = () => {
           </li>
           <li>
             <Checkbox
+            color="teal"
               onClick={(e: any) => setCityName(e.target.name)}
               name="Khulna"
             />{" "}
@@ -57,6 +63,7 @@ const AllCity = () => {
           </li>
           <li>
             <Checkbox
+            color="teal"
               onClick={(e: any) => setCityName(e.target.name)}
               name="Rangpur"
             />{" "}
@@ -64,6 +71,7 @@ const AllCity = () => {
           </li>
           <li>
             <Checkbox
+            color="teal"
               onClick={(e: any) => setCityName(e.target.name)}
               name="Mymensingh"
             />{" "}

@@ -2,6 +2,13 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import { Checkbox } from "@material-tailwind/react";
 import React, { useContext, useState } from "react";
 import PopularCityOfDhaka from "../Cities/PopularCityOfDhaka/PopularCityOfDhaka";
+import PopularCityOfChittagong from "../Cities/PopularOfChittagong/PopularOfChittagong";
+import PopularCityOfRajshahi from "../Cities/PopularOfRajshahi/PopularOfRajshahi";
+import PopularCityOfSylhet from "../Cities/PopularCityOfSylhet/PopularCityOfSylhet";
+import PopularCityOfRangpur from "../Cities/PopularCityOfRangpur/PopularCityOfRangpur";
+import PopularCityOfBarisal from "../Cities/PopularCityOfBarisal/PopularCityOfBarisal";
+import PopularCityOfKhulna from "../Cities/PopularCityOfKhulna/PopularCityOfKhulna";
+import PopularCityOfMymensingh from "../Cities/PopularCityOfMymensingh/PopularCityOfMymensingh";
  
 
 const PopularCities = () => {
@@ -17,6 +24,27 @@ const PopularCities = () => {
       </h1>
      {
         cityName === "Dhaka" && <PopularCityOfDhaka></PopularCityOfDhaka>
+     }
+     {
+        cityName === "Chittagong" && <PopularCityOfChittagong></PopularCityOfChittagong>
+     }
+     {
+        cityName === "Rajshahi" && <PopularCityOfRajshahi></PopularCityOfRajshahi>
+     }
+     {
+        cityName === "Sylhet" && <PopularCityOfSylhet></PopularCityOfSylhet>
+     }
+     {
+        cityName === "Rangpur" && <PopularCityOfRangpur></PopularCityOfRangpur>
+     }
+     {
+        cityName === "Barisal" && <PopularCityOfBarisal></PopularCityOfBarisal>
+     }
+     {
+        cityName === "Khulna" && <PopularCityOfKhulna></PopularCityOfKhulna>
+     }
+     {
+        cityName === "Mymensingh" && <PopularCityOfMymensingh></PopularCityOfMymensingh>
      }
     </section>
   );

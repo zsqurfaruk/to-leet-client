@@ -116,6 +116,7 @@ const Banner = () => {
                       }
                     >
                       <Checkbox
+                      color="teal"
                         onClick={handleFilterTypeCity}
                         className="flex justify-end border border-secondary"
                         label="City"
@@ -127,6 +128,7 @@ const Banner = () => {
                           : "pl-2 pr-4 shadow-lg bg-accent rounded"
                       }>
                       <Checkbox
+                      color="teal"
                         onClick={handleFilterTypeDivision}
                         className="flex justify-end border border-secondary"
                         label="Division"

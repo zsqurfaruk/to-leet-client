@@ -149,9 +149,9 @@ export default function NavBar() {
             {authenticated ? (
               <Button
                 onClick={handleLogOut}
-                variant="gradient"
+                // variant="gradient"
                 size="sm"
-                className="hidden lg:inline-block  text-primary"
+                className="hidden lg:inline-block text-primary bg-cyan-500"
               >
                 <span>LogOut</span>
               </Button>

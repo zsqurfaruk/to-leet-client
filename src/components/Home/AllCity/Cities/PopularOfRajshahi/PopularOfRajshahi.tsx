@@ -1,18 +1,19 @@
 import { Checkbox } from "@material-tailwind/react";
 import React from "react";
 
-const PopularCityOfDhaka = () => {
+const PopularCityOfRajshahi = () => {
   return (
     <section>
       <div className="lg:mr-10 lg:-ml-8 ml-12">
-        <ul className="grid grid-cols-2 md:grid-cols-3 text-black bg">
+        <ul className="grid grid-cols-2 md:grid-cols-3 text-black">
           <li>
+            {" "}
             <Checkbox
             color="teal"
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Dhaka"
             />{" "}
-            Mirpur
+            New Market
           </li>
           <li>
             <Checkbox
@@ -20,7 +21,7 @@ const PopularCityOfDhaka = () => {
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Chittagong"
             />{" "}
-            Uttara
+            Shaheb Bazar
           </li>
           <li>
             <Checkbox
@@ -28,15 +29,15 @@ const PopularCityOfDhaka = () => {
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Rajshahi"
             />{" "}
-            Mohammadpur
+            Uposahar
           </li>
           <li>
             <Checkbox
-           color="teal"
+            color="teal"
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Sylhet"
             />{" "}
-            Savar
+            Kazla
           </li>
           <li>
             <Checkbox
@@ -44,7 +45,7 @@ const PopularCityOfDhaka = () => {
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Barisal"
             />{" "}
-            Jatrabari
+            Motihar
           </li>
           <li>
             <Checkbox
@@ -60,4 +61,4 @@ const PopularCityOfDhaka = () => {
   );
 };
 
-export default PopularCityOfDhaka;
+export default PopularCityOfRajshahi;
