@@ -16,7 +16,7 @@ const AllCity = () => {
         onClick={handlePrevious}
         className="text-black text-xl mb-5 cursor-pointer hover:underline lg:-ml-4"
       >
-        {lang ? "Previou" : "পূর্ববর্তী?"}
+        {lang ? "Previous?" : "পূর্ববর্তী?"}
        
       </h1>
      {

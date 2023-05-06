@@ -10,11 +10,11 @@ import { Checkbox, Radio } from "@material-tailwind/react";
 import AllCity from "../AllCity/AllCity";
 import AllDivision from "../AllDivision/AllDivision";
 import { StateContext } from "@/Context/StateContext/StateContext";
-import PopularCities from "../AllCity/PopularCities/PopularCities";
 import { useIntl } from "react-intl";
 import AllCityBangla from "../AllCity/AllCityBangla";
 import BannerBan from "./BannerBan";
 import BannerEng from "./BannerEng";
+import PopularCities from "../AllCity/PopularCities/PopularCities";
 
 const Banner = () => {
   const {
@@ -24,6 +24,7 @@ const Banner = () => {
     setFilterTypeDivision,
     cityName,
     setCityName,
+    language
   }: any = useContext(StateContext);
 
   // const [defaultCheck,setDefaultCheck] = useState(false)

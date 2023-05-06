@@ -8,7 +8,7 @@ const StateInfo = ({ children }: any) => {
   const [filterTypeDivision, setFilterTypeDivision] = useState(false)
   const [cityName, setCityName] = useState("")
   const [previous, setPrevious] = useState("");
-  const [language, setLanguage] = useState(true);
+  const [language, setLanguage] = useState("");
   const info = {
     tokenValidation,
     setTokenValidation,
