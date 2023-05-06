@@ -8,6 +8,7 @@ const StateInfo = ({ children }: any) => {
   const [filterTypeDivision, setFilterTypeDivision] = useState(false)
   const [cityName, setCityName] = useState("")
   const [previous, setPrevious] = useState("");
+  const [language, setLanguage] = useState(true);
   const info = {
     tokenValidation,
     setTokenValidation,
@@ -18,9 +19,12 @@ const StateInfo = ({ children }: any) => {
     setCityName,
     cityName,
     setPrevious,
-    previous
+    previous,
+    setLanguage,
+    language,
+   
   };
-
+  //  console.log(banglaStyle)
   return <StateContext.Provider value={info}>{children}</StateContext.Provider>;
 };
 

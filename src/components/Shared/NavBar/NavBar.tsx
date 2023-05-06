@@ -13,11 +13,12 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
-  const { setLanguage, language, userInfo }: any = useContext(AuthContext);
-  const { tokenValidation }: any = useContext(StateContext);
+  const { setLanguage, language, userInfo, setCityName, setFilterTypeCity }: any = useContext(StateContext);
+  // const { setBanglaStyle, banglaStyle }: any = useContext(StateContext);
   const [authenticated, setAuthenticated] = useState(false);
   const { locales, push, pathname } = useRouter();
   const [translate, setTranslate] = useState("");
+  const [englishStyle, setEnglishStyle] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -35,12 +36,11 @@ export default function NavBar() {
     );
   }, []);
 
-  useEffect(() => {
-    if (tokenValidation === "Invalid token") {
-      // setAuthenticated(false);
-      return localStorage.removeItem("token");
-    }
-  }, [tokenValidation]);
+  // useEffect(() => {
+  //   if (tokenValidation === "Invalid token") {
+  //     return localStorage.removeItem("token");
+  //   }
+  // }, [tokenValidation]);
 
   const logOut = () => {
     setAuthenticated(false);
@@ -52,13 +52,26 @@ export default function NavBar() {
     logOut();
   };
 
-  // const handleLanguage = () => {
-  //   setLanguage(!language);
+  const handleLanguage = () => {
+    setLanguage(!language);
+    if (language) {
+      localStorage.setItem("lan", language);
+    } else {
+      localStorage.removeItem("lan");
+    }
+  };
+  const lan = localStorage.getItem("lan");
+  // const handleTran = ( l:any) => (event: any) => {
+  //   event?.preventDefault()
+  //   push("/", undefined, { locale: l });
   // };
 
-  const handleTran = (l: any)=>() => {
-    push("/", undefined, { locale: l });
-  };
+  // const handleBangleStyle = (e: any) => {
+  //   setBanglaStyle(true);
+  //   // if(banglaStyle){
+  //   //   setBanglaStyle(true)
+  //   // }
+  // };
 
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -121,28 +134,36 @@ export default function NavBar() {
     </ul>
   );
 
+  const handleHome =()=>{
+    setCityName("")
+    setFilterTypeCity(false)
+    
+  }
   return (
     <>
       <Navbar className="sticky inset-0 z-10 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-75 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4 border-none text-primary shadow-sm">
         <div className="flex items-center justify-between text-blue-gray-900">
-          <Link href={"/"}>
+          <Link onClick={handleHome} href={"/"}>
             <Typography className="mr-4 cursor-pointer py-1.5 font-medium text-primary">
               Blog
             </Typography>
           </Link>
           <div className="hidden md:flex">
-            {locales?.map((l) => (
-              <div
-                className="text-primary cursor-pointer"
-                key={l}
-                onClick={handleTran(l)}
+            {lan ? (
+              <span
+                onClick={handleLanguage}
+                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded-lg cursor-pointer"
               >
-                {/* <p>{l === "bn" && " বাংলা"}</p> 
-                <p>{l === "en" && "English"}</p> */}
-                {!translate && <p>{l === "bn" ? <>বাংলা</> : <>English</>}</p>}
-                {/* {l} */}
-              </div>
-            ))}
+                বাংলা
+              </span>
+            ) : (
+              <span
+                onClick={handleLanguage}
+                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded-lg cursor-pointer">
+                English
+              </span>
+            )}
+            
           </div>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
@@ -151,7 +172,7 @@ export default function NavBar() {
                 onClick={handleLogOut}
                 // variant="gradient"
                 size="sm"
-                className="hidden lg:inline-block text-primary bg-cyan-500"
+                className="hidden lg:inline-block text-secondary bg-gradient-to-r from-accent to-cyan-500"
               >
                 <span>LogOut</span>
               </Button>
@@ -160,7 +181,7 @@ export default function NavBar() {
                 <Button
                   variant="gradient"
                   size="sm"
-                  className="hidden lg:inline-block text-primary"
+                  className="hidden lg:inline-block text-secondary bg-gradient-to-r from-accent to-cyan-500"
                 >
                   <span>SignUp</span>
                 </Button>
@@ -209,7 +230,7 @@ export default function NavBar() {
           {navList}
           {authenticated ? (
             <Button
-              className="text-primary "
+              className="text-secondary bg-gradient-to-r from-accent to-cyan-500"
               onClick={handleLogOut}
               variant="gradient"
               size="sm"
@@ -221,41 +242,26 @@ export default function NavBar() {
               <Button
                 variant="gradient"
                 size="sm"
-                className="w-full rounded-full mb-3 text-primary"
+                className="w-full rounded-full mb-3 text-secondary bg-gradient-to-r from-accent to-cyan-500"
               >
                 <span onClick={() => setOpenNav(false)}>SignUp</span>
               </Button>
             </Link>
           )}
           <div className="flex justify-center rounded-full md:hidden bg-primary text-secondary mb-5">
-            {/* {language ? (
+            {lan ? (
               <span
-                onClick={() => setOpenNav(false)}
-                className="font-semibold border border-primary py-1 rounded-full
-          "
-              >
+              onClick={handleLanguage}
+              className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded-lg cursor-pointer">
                 বাংলা
               </span>
             ) : (
               <span
-                onClick={() => setOpenNav(false)}
-                className="font-semibold border border-primary  py-1 rounded-full
-          "
-              >
+              onClick={handleLanguage}
+              className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded-lg cursor-pointer">
                 English
               </span>
-            )} */}
-            {locales?.map((l) => (
-              <div
-                className="text-secondary py-1 cursor-pointer"
-                key={l}
-                onClick={() => handleTran(setTranslate(l))}
-              >
-                {translate === "en" && <span> {l === "bn" && "বাংলা"}</span>}
-                {translate === "bn" && <span>{l === "en" && "English"}</span>}
-                {!translate && <span>{l === "bn" && " বাংলা "}</span>}
-              </div>
-            ))}
+            )}
           </div>
         </MobileNav>
       </Navbar>
@@ -362,3 +368,30 @@ export default function NavBar() {
 // };
 
 // export default Header;
+
+// bangla
+
+// const [open, setOpen] = useState(false);
+// const [lang, setLang] = useState(false);
+
+// const googleTranslateElementInit = () => {
+//   new window.google.translate.TranslateElement(
+//     {
+//       pageLanguage: "en",
+//       autoDisplay: false,
+//     },
+//     "google_translate_element"
+//   );
+// };
+
+// useEffect(()=>{
+//   if(!lang){
+//     var addScript = document.createElement("script")
+//     addScript.setAttribute("src",
+//     "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+//     )
+//     document.body.appendChild(addScript);
+//     window.googleTranslateElementInit = googleTranslateElementInit;
+//     setLang(!lang)
+//   }
+// },[lang])

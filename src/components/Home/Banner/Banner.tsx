@@ -11,163 +11,97 @@ import AllCity from "../AllCity/AllCity";
 import AllDivision from "../AllDivision/AllDivision";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import PopularCities from "../AllCity/PopularCities/PopularCities";
+import { useIntl } from "react-intl";
+import AllCityBangla from "../AllCity/AllCityBangla";
+import BannerBan from "./BannerBan";
+import BannerEng from "./BannerEng";
 
 const Banner = () => {
-  const { language }: any = useContext(AuthContext);
-  const router = useRouter()
   const {
     filterTypeCity,
     setFilterTypeCity,
     filterTypeDivision,
     setFilterTypeDivision,
     cityName,
-    setCityName
+    setCityName,
   }: any = useContext(StateContext);
 
+  // const [defaultCheck,setDefaultCheck] = useState(false)
   const handleFilterTypeCity = () => {
-    setCityName("")
+    setCityName("");
     setFilterTypeCity(!filterTypeCity);
-    // router.push("/bd")
+    // if(filterTypeCity){
+    //   setDefaultCheck(true)
+    // }
   };
   const handleFilterTypeDivision = () => {
     setFilterTypeDivision(!filterTypeDivision);
   };
+  const lan = localStorage.getItem("lan");
+
   return (
     <div>
       <div className="lg:w-10/12 mx-auto grid grid-cols-1 lg:grid-cols-2">
         <div className="lg:h-screen flex items-center mt-8 lg:-mt-20 text-white">
           <div>
-            {
-              cityName && <PopularCities></PopularCities>
-            }
-            {language ? (
-              <>
-                {filterTypeCity && !cityName && (
-                  <AllCity></AllCity>
-                )}
-                {
-                  !filterTypeCity && !cityName &&  <>
-                  <p
-                    className={
-                      filterTypeDivision
-                        ? "md:text-xl lg:scale-110 w-10/12 lg:w-full mx-auto text-black"
-                        : "md:text-2xl lg:scale-110 w-10/12 lg:w-full mx-auto"
-                    }
-                  >
-                    {/* <p id={style.bannerTextColor} className="text-6xl font-semibold"></p>  */}
-                    <span
-                      id={
-                        filterTypeCity || filterTypeDivision
-                          ? style.bannerTextColorChange
-                          : style.bannerTextColor
-                      }
-                      className="text-2xl md:text-5xl font-semibold"
-                    >
-                      Find
-                    </span>{" "}
-                    your perfect destination with
-                    <span
-                      id={
-                        filterTypeCity || filterTypeDivision
-                          ? style.bannerTextColorChange
-                          : style.bannerTextColor
-                      }
-                      className="text-2xl md:text-5xl font-semibold"
-                    >
-                      To-Leet's
-                    </span>
-                    <br />
-                    extensive listings of apartments, houses, and mess for
-                    rent. <br />
-                  </p>
-                  <div className="relative">
-                    <p
-                      id={
-                        filterTypeCity || filterTypeDivision
-                          ? style.bannerTextColorChange
-                          : style.bannerTextColor
-                      }
-                      className="lg:-ml-8 mt-2 w-10/12 lg:w-full mx-auto text-xs md:text-xl"
-                    >
-                      Start your search today and let us be a part of your
-                      journey to finding the destination of your dreams.
-                    </p>{" "}
-                    <BsArrowDownCircleFill className={filterTypeCity || filterTypeDivision ? "absolute top-5 md:top-9 left-52 md:left-80 lg:left-64 w-4 h-4 md:w-5 md:h-5 text-black" : "absolute top-5 md:top-9 left-52 md:left-80 lg:left-64 w-4 h-4 md:w-5 md:h-5"} />
-                  </div>
-                </> 
-                }
+            {cityName && <PopularCities></PopularCities>}
+            {filterTypeCity && !cityName && <AllCity></AllCity>}
+            {lan && !filterTypeCity && !cityName && <BannerEng></BannerEng>}
+            {!lan && !filterTypeCity && <BannerBan></BannerBan>}
 
-                <div>
-                  <h1
-                    className={
-                      filterTypeCity || filterTypeDivision
-                        ? "text-black mt-5 lg:mt-10 text-2xl lg:-ml-8 md:ml-20 ml-9"
-                        : "mt-5 lg:mt-10 text-2xl lg:-ml-8 md:ml-20 ml-9"
-                    }
-                  >
-                    Search by:
-                  </h1>
-                  <div className="flex justify-around mt-5 ">
-                    <div
-                      className={
-                        filterTypeCity || filterTypeDivision
-                          ? "pl-2 pr-4"
-                          : "pl-2 pr-4 shadow-lg bg-accent rounded"
-                      }
-                    >
-                      <Checkbox
-                      color="teal"
-                        onClick={handleFilterTypeCity}
-                        className="flex justify-end border border-secondary"
-                        label="City"
-                      />
-                    </div>
-                    <div className={
-                        filterTypeCity || filterTypeDivision
-                          ? "pl-2 pr-4"
-                          : "pl-2 pr-4 shadow-lg bg-accent rounded"
-                      }>
-                      <Checkbox
-                      color="teal"
-                        onClick={handleFilterTypeDivision}
-                        className="flex justify-end border border-secondary"
-                        label="Division"
-                      />
-                    </div>
-                  </div>
+            <div>
+              {lan ? (
+                <h1
+                  className={
+                    filterTypeCity || filterTypeDivision
+                      ? "text-black mt-5 lg:mt-10 text-2xl lg:-ml-8 md:ml-20 ml-9"
+                      : "mt-5 lg:mt-10 text-2xl lg:-ml-8 md:ml-20 ml-9"
+                  }
+                >
+                  Search by:
+                </h1>
+              ) : (
+                <h1
+                  className={
+                    filterTypeCity || filterTypeDivision
+                      ? "text-black mt-5 lg:mt-10 text-xl lg:-ml-8 md:ml-20 ml-9"
+                      : "mt-5 lg:mt-10 text-2xl lg:-ml-8 md:ml-20 ml-9"
+                  }
+                >
+                  অনুসন্ধান করুন :
+                </h1>
+              )}
+              <div className="flex justify-around mt-5 ">
+                <div
+                  className={
+                    filterTypeCity || filterTypeDivision
+                      ? "pl-2 pr-4"
+                      : "pl-2 pr-4 shadow-lg bg-accent rounded"
+                  }
+                >
+                  <Checkbox 
+                    color={filterTypeCity && "teal"}
+                    onClick={handleFilterTypeCity}
+                    className="flex justify-end border border-secondary defaultCheck"
+                    label={lan ? "City" : "শহর"}
+                  />
                 </div>
-              </>
-            ) : (
-              <>
-                {" "}
-                <p className="md:text-2xl lg:scale-110 w-10/12 lg:w-full mx-auto">
-                  {/* <p id={style.bannerTextColor} className="text-6xl font-semibold"></p>  */}
-                  <span
-                    id={style.bannerTextColor}
-                    className="text-2xl md:text-5xl font-semibold"
-                  >
-                    {" "}
-                    To-Leet{" "}
-                  </span>
-                  এর সাথে আপনার পছন্দের গন্তব্য খুঁজুন।
-                </p>
-                <div className="relative">
-                  <p
-                    id={style.bannerTextColor}
-                    className="lg:-ml-8 mt-2 w-10/12 lg:w-full mx-auto text-xs md:text-xl"
-                  >
-                    আজই আপনার অনুসন্ধান শুরু করুন এবং আপনার স্বপ্নের গন্তব্য
-                    খুঁজে পেতে আপনার যাত্রার একটি অংশ হতে দিন।
-                  </p>{" "}
-                  {language ? (
-                    <BsArrowDownCircleFill className="absolute top-5 md:top-9 left-52 md:left-80 lg:left-64 w-4 h-4 md:w-5 md:h-5" />
-                  ) : (
-                    <BsArrowDownCircleFill className="absolute top-4 md:top-8 left-[270px] md:left-80 lg:left-[355px] w-4 h-4 md:w-5 md:h-5" />
-                  )}
+                <div
+                  className={
+                    filterTypeCity || filterTypeDivision
+                      ? "pl-2 pr-4"
+                      : "pl-2 pr-4 shadow-lg bg-accent rounded"
+                  }
+                >
+                  <Checkbox
+                    color="teal"
+                    onClick={handleFilterTypeDivision}
+                    className="flex justify-end border border-secondary"
+                    label={lan ? "Division" : "বিভাগ"}
+                  />
                 </div>
-              </>
-            )}
-            {language}
+              </div>
+            </div>
           </div>
         </div>
         {filterTypeDivision ? (
