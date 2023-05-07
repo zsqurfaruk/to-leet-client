@@ -14,7 +14,8 @@ import { useIntl } from "react-intl";
 import AllCityBangla from "../AllCity/AllCityBangla";
 import BannerBan from "./BannerBan";
 import BannerEng from "./BannerEng";
-import PopularCities from "../AllCity/PopularCities/PopularCities";
+import PopularCities from "../AllCity/AllAreas/AllAreas";
+
 
 const Banner = () => {
   const {
@@ -24,12 +25,14 @@ const Banner = () => {
     setFilterTypeDivision,
     cityName,
     setCityName,
-    language
+    cityNameBan,
+    setCityNameBan,
   }: any = useContext(StateContext);
 
   // const [defaultCheck,setDefaultCheck] = useState(false)
   const handleFilterTypeCity = () => {
     setCityName("");
+    setCityNameBan("")
     setFilterTypeCity(!filterTypeCity);
     // if(filterTypeCity){
     //   setDefaultCheck(true)
@@ -41,12 +44,13 @@ const Banner = () => {
   const lan = localStorage.getItem("lan");
 
   return (
-    <div>
-      <div className="lg:w-10/12 mx-auto grid grid-cols-1 lg:grid-cols-2">
+    
+      <div className="lg:w-10/12 mx-auto grid grid-cols-1 lg:grid-cols-2 lg:-mt-12">
         <div className="lg:h-screen flex items-center mt-8 lg:-mt-20 text-white">
           <div>
-            {cityName && <PopularCities></PopularCities>}
-            {filterTypeCity && !cityName && <AllCity></AllCity>}
+            {cityName && !cityNameBan && <PopularCities></PopularCities>}
+            {!cityName && cityNameBan && <PopularCities></PopularCities>}
+            {filterTypeCity && !cityName && !cityNameBan && <AllCity></AllCity>}
             {lan && !filterTypeCity && !cityName && <BannerEng></BannerEng>}
             {!lan && !filterTypeCity && <BannerBan></BannerBan>}
 
@@ -81,7 +85,7 @@ const Banner = () => {
                   }
                 >
                   <Checkbox 
-                    color={filterTypeCity && "teal"}
+                    color="teal"
                     onClick={handleFilterTypeCity}
                     className="flex justify-end border border-secondary defaultCheck"
                     label={lan ? "City" : "শহর"}
@@ -109,13 +113,13 @@ const Banner = () => {
           <AllDivision></AllDivision>
         ) : (
           <Lottie
-            className="w-screen lg:w-[750px] scale-125 md:scale-100 ml-3 md:ml-0 lg:-ml-6 mt-10"
+            className="w-screen lg:w-[740px] scale-125 md:scale-100 ml-3 md:ml-0 lg:-ml-6 mt-10"
             animationData={lottiImage}
             loop={true}
           ></Lottie>
         )}
       </div>
-    </div>
+    
   );
 };
 

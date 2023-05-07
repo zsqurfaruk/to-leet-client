@@ -14,15 +14,15 @@ const AllCity = () => {
     <section>
       <h1
         onClick={handlePrevious}
-        className="text-black text-xl mb-5 cursor-pointer hover:underline lg:-ml-4"
+        className="text-secondary text-sm mb-5 cursor-pointer hover:underline lg:-ml-4"
       >
         {lang ? "Previous?" : "পূর্ববর্তী?"}
        
       </h1>
      {
-      lang ? <h1 className="text-3xl mb-5 border-l-4 border-b-4 border-accent lg:-ml-4 pl-2 text-black">
+      lang ? <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-accent lg:-ml-4 pl-2 text-black">
        Select your city.
-       </h1> :  <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-accent lg:-ml-4 pl-2 text-black">
+       </h1> :  <h1 className="text-xl mb-5 border-l-4 border-b-4 border-accent lg:-ml-4 pl-2 text-black">
        আপনার শহর নির্বাচন করুন।
       </h1>
      }

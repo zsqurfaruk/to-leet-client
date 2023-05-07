@@ -3,7 +3,7 @@ import { StateContext } from '@/Context/StateContext/StateContext';
 import { Checkbox } from '@material-tailwind/react';
 
 const AllCityBan = () => {
-    const { setCityName }: any = useContext(StateContext);
+    const { setCityNameBan }: any = useContext(StateContext);
     return (
         <div className="lg:mr-10 lg:-ml-8 ml-12">
         <ul className="grid grid-cols-2 md:grid-cols-4 text-black">
@@ -11,7 +11,7 @@ const AllCityBan = () => {
             {" "}
             <Checkbox
               color="teal"
-              onClick={(e: any) => setCityName(e.target.name)}
+              onClick={(e: any) => setCityNameBan(e.target.name)}
               name="ঢাকা"
             />{" "}
            ঢাকা
@@ -19,7 +19,7 @@ const AllCityBan = () => {
           <li>
             <Checkbox
               color="teal"
-              onClick={(e: any) => setCityName(e.target.name)}
+              onClick={(e: any) => setCityNameBan(e.target.name)}
               name="চট্টগ্রাম"
             />{" "}
            চট্টগ্রাম
@@ -27,7 +27,7 @@ const AllCityBan = () => {
           <li>
             <Checkbox
               color="teal"
-              onClick={(e: any) => setCityName(e.target.name)}
+              onClick={(e: any) => setCityNameBan(e.target.name)}
               name="রাজশাহী"
             />{" "}
          রাজশাহী
@@ -35,7 +35,7 @@ const AllCityBan = () => {
           <li>
             <Checkbox
               color="teal"
-              onClick={(e: any) => setCityName(e.target.name)}
+              onClick={(e: any) => setCityNameBan(e.target.name)}
               name="সিলেট"
             />{" "}
            সিলেট
@@ -43,7 +43,7 @@ const AllCityBan = () => {
           <li>
             <Checkbox
               color="teal"
-              onClick={(e: any) => setCityName(e.target.name)}
+              onClick={(e: any) => setCityNameBan(e.target.name)}
               name="বরিশাল"
             />{" "}
          বরিশাল
@@ -51,7 +51,7 @@ const AllCityBan = () => {
           <li>
             <Checkbox
               color="teal"
-              onClick={(e: any) => setCityName(e.target.name)}
+              onClick={(e: any) => setCityNameBan(e.target.name)}
               name="খুলনা"
             />{" "}
            খুলনা
@@ -59,7 +59,7 @@ const AllCityBan = () => {
           <li>
             <Checkbox
               color="teal"
-              onClick={(e: any) => setCityName(e.target.name)}
+              onClick={(e: any) => setCityNameBan(e.target.name)}
               name="রংপুর"
             />{" "}
             রংপুর
@@ -67,7 +67,7 @@ const AllCityBan = () => {
           <li>
             <Checkbox
               color="teal"
-              onClick={(e: any) => setCityName(e.target.name)}
+              onClick={(e: any) => setCityNameBan(e.target.name)}
               name="ময়মনসিংহ"
             />{" "}
             ময়মনসিংহ

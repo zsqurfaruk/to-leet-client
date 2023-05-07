@@ -2,13 +2,15 @@ import { Checkbox } from "@material-tailwind/react";
 import React from "react";
 
 const PopularCityOfDhaka = () => {
+
+  const lang = localStorage.getItem("lan")
   return (
     <section>
       <div className="lg:mr-10 lg:-ml-8 ml-12">
         <ul className="grid grid-cols-2 md:grid-cols-3 text-black bg">
           <li>
             <Checkbox
-            color="teal"
+              color="teal"
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Dhaka"
             />{" "}
@@ -16,7 +18,7 @@ const PopularCityOfDhaka = () => {
           </li>
           <li>
             <Checkbox
-            color="teal"
+              color="teal"
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Chittagong"
             />{" "}
@@ -24,7 +26,7 @@ const PopularCityOfDhaka = () => {
           </li>
           <li>
             <Checkbox
-            color="teal"
+              color="teal"
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Rajshahi"
             />{" "}
@@ -32,7 +34,7 @@ const PopularCityOfDhaka = () => {
           </li>
           <li>
             <Checkbox
-           color="teal"
+              color="teal"
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Sylhet"
             />{" "}
@@ -40,7 +42,7 @@ const PopularCityOfDhaka = () => {
           </li>
           <li>
             <Checkbox
-            color="teal"
+              color="teal"
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Barisal"
             />{" "}
@@ -48,7 +50,7 @@ const PopularCityOfDhaka = () => {
           </li>
           <li>
             <Checkbox
-            color="teal"
+              color="teal"
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Khulna"
             />{" "}

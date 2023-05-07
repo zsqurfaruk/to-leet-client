@@ -6,19 +6,16 @@ import {
   Button,
   IconButton,
 } from "@material-tailwind/react";
-import { AuthContext } from "@/Context/AuthProvider/AuthProvider";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { StateContext } from "@/Context/StateContext/StateContext";
 
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
-  const { setLanguage, language, userInfo }: any = useContext(StateContext);
-  // const { setBanglaStyle, banglaStyle }: any = useContext(StateContext);
+  const { setLanguage, language, userInfo, setCityName, setCityNameBan, setFilterTypeCity, setFilterTypeDivision }: any =
+    useContext(StateContext);
   const [authenticated, setAuthenticated] = useState(false);
-  const { locales, push, pathname } = useRouter();
-  const [translate, setTranslate] = useState("");
-  const [englishStyle, setEnglishStyle] = useState("");
+  const { push, pathname } = useRouter();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -35,12 +32,6 @@ export default function NavBar() {
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
-
-  // useEffect(() => {
-  //   if (tokenValidation === "Invalid token") {
-  //     return localStorage.removeItem("token");
-  //   }
-  // }, [tokenValidation]);
 
   const logOut = () => {
     setAuthenticated(false);
@@ -61,17 +52,13 @@ export default function NavBar() {
     }
   };
   const lang = localStorage.getItem("lan");
-  // const handleTran = ( l:any) => (event: any) => {
-  //   event?.preventDefault()
-  //   push("/", undefined, { locale: l });
-  // };
 
-  // const handleBangleStyle = (e: any) => {
-  //   setBanglaStyle(true);
-  //   // if(banglaStyle){
-  //   //   setBanglaStyle(true)
-  //   // }
-  // };
+  const handleHome = () => {
+    setCityName("");
+    setCityNameBan("");
+    setFilterTypeCity(false)
+    setFilterTypeDivision(false)
+  };
 
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -137,14 +124,14 @@ export default function NavBar() {
   return (
     <>
       <Navbar className="sticky inset-0 z-10 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-75 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4 border-none text-primary shadow-sm">
-        <div className="flex items-center justify-between text-blue-gray-900">
-          <Link href={"/"}>
-            <Typography className="mr-4 cursor-pointer py-1.5 font-medium text-primary">
-              Blog
+        <div className="flex items-center justify-between text-blue-gray-900 w-11/12 mx-auto">
+          <Link onClick={handleHome} href={"/"}>
+            <Typography className="mr-4 cursor-pointer text-primary text-4xl font-bold">
+            To-Leet
             </Typography>
           </Link>
           <div className="hidden md:flex">
-            { lang ? (
+            {lang ? (
               <span
                 onClick={handleLanguage}
                 className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded-lg cursor-pointer"
@@ -154,11 +141,11 @@ export default function NavBar() {
             ) : (
               <span
                 onClick={handleLanguage}
-                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded-lg cursor-pointer">
-               English
+                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded-lg cursor-pointer"
+              >
+                English
               </span>
             )}
-            
           </div>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
@@ -246,14 +233,16 @@ export default function NavBar() {
           <div className="flex justify-center rounded-full md:hidden bg-primary text-secondary mb-5">
             {lang ? (
               <span
-              onClick={handleLanguage}
-              className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded-lg cursor-pointer">
+                onClick={handleLanguage}
+                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded-lg cursor-pointer"
+              >
                 বাংলা
               </span>
             ) : (
               <span
-              onClick={handleLanguage}
-              className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded-lg cursor-pointer">
+                onClick={handleLanguage}
+                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded-lg cursor-pointer"
+              >
                 English
               </span>
             )}

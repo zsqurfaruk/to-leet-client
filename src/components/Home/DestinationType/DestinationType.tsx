@@ -22,11 +22,11 @@ import { FcHome, FcShop} from "react-icons/fc";
 
 const DestinationType = () => {
   const { setRentName }: any = useContext(NameContext);
-  const { language }: any = useContext(AuthContext);
-
+  // const { language }: any = useContext(AuthContext);
+ const lang = localStorage.getItem("lan")
   return (
-    <section className="mb-20">
-      {language ? (
+    <section className="mb-20 lg:-mt-20">
+      {lang ? (
         <h1
           id={style.bannerTextColor}
           className="text-center text-3xl font-semibold lg:-mt-4"
@@ -42,7 +42,7 @@ const DestinationType = () => {
         </h1>
       )}
 
-      <div className="w-10/12 mx-auto grid grid-cols-2 md:grid-cols-4 lg:gap-4 md:gap-2 gap-5 mt-20 md:mt-8">
+      <div className="w-10/12 mx-auto grid grid-cols-2 md:grid-cols-4 lg:gap-5 md:gap-2 gap-5 mt-20 md:mt-8">
         <Link
           href={{
             pathname: `/Male-Bachelor`,

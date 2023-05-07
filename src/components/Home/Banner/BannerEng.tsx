@@ -44,7 +44,8 @@ const BannerEng = () => {
           To-Leet's
         </span>
         <br />
-        extensive listings of apartments, houses, and mess for rent. <br />
+        extensive listings for rent. 
+         {/* of apartments, houses, and mess */}
       </p>
       <div className="relative">
         <p

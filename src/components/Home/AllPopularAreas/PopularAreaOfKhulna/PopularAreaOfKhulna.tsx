@@ -1,54 +1,54 @@
 import { Checkbox } from "@material-tailwind/react";
 import React from "react";
 
-const PopularCityOfMymensingh = () => {
+const PopularCityOfKhulna = () => {
   return (
     <section>
       <div className="lg:mr-10 lg:-ml-8 ml-12">
-        <ul className="grid grid-cols-2 md:grid-cols-3 text-black bg">
+        <ul className="grid grid-cols-2 md:grid-cols-3 text-black">
           <li>
             <Checkbox
-              color="teal"
+            color="teal"
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Dhaka"
             />{" "}
-            Ganginar par
+        Khulna Sadar
           </li>
           <li>
             <Checkbox
-              color="teal"
+            color="teal"
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Chittagong"
             />{" "}
-            Chorpara
+           Daulatpur
           </li>
           <li>
             <Checkbox
-              color="teal"
+            color="teal"
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Rajshahi"
             />{" "}
-            Valuka
+         Khalishpur
           </li>
           <li>
             <Checkbox
-              color="teal"
+           color="teal"
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Sylhet"
             />{" "}
-            Town Hall
+          Sonadanga
           </li>
           <li>
             <Checkbox
-              color="teal"
+            color="teal"
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Barisal"
             />{" "}
-            Muktagacha
+          Boyra Bazar
           </li>
           <li>
             <Checkbox
-              color="teal"
+            color="teal"
               // onClick={(e: any) => setCityName(e.target.name)}
               name="Khulna"
             />{" "}
@@ -60,4 +60,8 @@ const PopularCityOfMymensingh = () => {
   );
 };
 
-export default PopularCityOfMymensingh;
+export default PopularCityOfKhulna;
+
+
+
+ 

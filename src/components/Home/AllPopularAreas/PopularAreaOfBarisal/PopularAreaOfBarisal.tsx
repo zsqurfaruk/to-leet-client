@@ -5,7 +5,7 @@ const PopularCityOfBarisal = () => {
   return (
     <section>
       <div className="lg:mr-10 lg:-ml-8 ml-12">
-        <ul className="grid grid-cols-2 md:grid-cols-3 text-black bg">
+        <ul className="grid grid-cols-2 md:grid-cols-3 text-black">
           <li>
             <Checkbox
             color="teal"
