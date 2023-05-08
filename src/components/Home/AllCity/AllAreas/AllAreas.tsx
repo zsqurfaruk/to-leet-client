@@ -17,7 +17,7 @@ import PopularAreaOfMymBan from "../../AllPopularAreas/PopularAreaOfMymensingh/P
 import PopularAreaOfBariBan from "../../AllPopularAreas/PopularAreaOfBarisal/PopularAreaOfBariBan";
 import PopularAreaOfKhulnaBan from "../../AllPopularAreas/PopularAreaOfKhulna/PopularAreaOfKhulnaBan";
 
-const PopularCities = () => {
+const AllAreas = () => {
   const { cityName, setCityName, cityNameBan, setCityNameBan }: any =
     useContext(StateContext);
   const handlePrevious = () => {
@@ -101,4 +101,4 @@ const PopularCities = () => {
   );
 };
 
-export default PopularCities;
+export default AllAreas;

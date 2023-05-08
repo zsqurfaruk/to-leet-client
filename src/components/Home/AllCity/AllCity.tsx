@@ -5,7 +5,7 @@ import AllCityEng from "./AllCityEng";
 import AllCityBan from "./AllCityBangla";
 
 const AllCity = () => {
-  const { setCityName, setFilterTypeCity }: any = useContext(StateContext);
+  const { setFilterTypeCity }: any = useContext(StateContext);
   const handlePrevious = () => {
     setFilterTypeCity(false);
   };
@@ -23,7 +23,7 @@ const AllCity = () => {
       lang ? <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-accent lg:-ml-4 pl-2 text-black">
        Select your city.
        </h1> :  <h1 className="text-xl mb-5 border-l-4 border-b-4 border-accent lg:-ml-4 pl-2 text-black">
-       আপনার শহর নির্বাচন করুন।
+      শহর নির্বাচন করুন।
       </h1>
      }
     {

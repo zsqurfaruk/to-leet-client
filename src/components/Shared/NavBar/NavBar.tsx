@@ -230,7 +230,7 @@ export default function NavBar() {
               </Button>
             </Link>
           )}
-          <div className="flex justify-center rounded-full md:hidden bg-primary text-secondary mb-5">
+          <div className="flex justify-center rounded-full md:hidden pt-10 mb-5">
             {lang ? (
               <span
                 onClick={handleLanguage}

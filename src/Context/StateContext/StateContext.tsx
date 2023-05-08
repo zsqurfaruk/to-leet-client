@@ -8,8 +8,12 @@ const StateInfo = ({ children }: any) => {
   const [filterTypeDivision, setFilterTypeDivision] = useState(false)
   const [cityName, setCityName] = useState("")
   const [cityNameBan, setCityNameBan] = useState("")
+  const [divisionNameEng, setDivisionNameEng] = useState("");
+  const [divisionNameBan, setDivisionNameBan] = useState("");
   const [previous, setPrevious] = useState("");
   const [language, setLanguage] = useState(false);
+  // divisin ar kaj 
+  const [districtLocation, setDistrictLocation] = useState("");
   const info = {
     tokenValidation,
     setTokenValidation,
@@ -24,7 +28,13 @@ const StateInfo = ({ children }: any) => {
     setLanguage,
     language,
     setCityNameBan,
-    cityNameBan
+    cityNameBan,
+    divisionNameEng,
+    setDivisionNameEng,
+    setDivisionNameBan,
+    divisionNameBan,
+    setDistrictLocation,
+    districtLocation
   };
   //  console.log(banglaStyle)
   return <StateContext.Provider value={info}>{children}</StateContext.Provider>;

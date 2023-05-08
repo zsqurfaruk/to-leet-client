@@ -13,7 +13,7 @@ const BannerBan = () => {
  
   const lang = localStorage.getItem("lan");
   return (
-    <div className=" ">
+    <div>
       <p
         className={
           filterTypeDivision
