@@ -25,7 +25,7 @@ const DestinationType = () => {
   // const { language }: any = useContext(AuthContext);
  const lang = localStorage.getItem("lan")
   return (
-    <section className="mb-20 lg:-mt-20">
+    <section className="mb-20 lg:-mt-10">
       {lang ? (
         <h1
           id={style.bannerTextColor}

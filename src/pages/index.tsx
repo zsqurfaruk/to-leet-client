@@ -7,13 +7,17 @@ import UserReviews from "@/components/Home/UserReviews/UserReviews";
 import Banner from "@/components/Home/Banner/Banner";
 import ContactUs from "@/components/Home/ContactUs/ContactUs";
 import { StateContext } from "@/Context/StateContext/StateContext";
+import style from "../styles/banner.module.css"
+import ModalBanMob from "@/components/Home/Banner/Modal/ModalBanMob";
+import Test from "@/components/Home/Banner/Test";
  
 
 // const inter = Inter({ subsets: ["latin"] });
 
 function Home() {
-const {filterTypeCity, filterTypeDivision}:any = useContext(StateContext)
+const {filterTypeCity, filterTypeDivision,isOpen}:any = useContext(StateContext)
  const lan = localStorage.getItem("lan")
+ 
 
   return (
     <>
@@ -24,12 +28,13 @@ const {filterTypeCity, filterTypeDivision}:any = useContext(StateContext)
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main
+      id={isOpen ? style.modalStyle : ""}
         className={filterTypeCity || filterTypeDivision ? "bg-primary" : "bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-70 -mx-6 text-white"}>
         <Banner></Banner>
         <DestinationType></DestinationType>
         <PostCounter></PostCounter>
         {/* <UserReviews></UserReviews> */}
-      
+    <Test></Test>
       </main>
     </>
   );

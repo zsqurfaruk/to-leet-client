@@ -1,58 +1,75 @@
-import { Checkbox } from "@material-tailwind/react";
 import React from "react";
 
 const PopularCityOfMymensingh = () => {
   return (
     <section>
-      <div className="lg:mr-10 lg:-ml-8 ml-12">
-        <ul className="grid grid-cols-2 md:grid-cols-3 text-black">
+      <div className="lg:mr-10 lg:-ml-4 ml-12">
+        <ul className="grid grid-cols-3 md:grid-cols-4 gap-3 text-black">
           <li>
-            <Checkbox
-              color="teal"
-              // onClick={(e: any) => setCityName(e.target.name)}
-              name="Dhaka"
-            />{" "}
-            Ganginar par
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                name="Dhaka"
+              />
+              <span className="-mt-[2px]"> Ganginar par</span>
+            </label>
           </li>
           <li>
-            <Checkbox
-              color="teal"
-              // onClick={(e: any) => setCityName(e.target.name)}
-              name="Chittagong"
-            />{" "}
-            Chorpara
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                name="Dhaka"
+              />
+              <span className="-mt-[2px]"> Chorpara</span>
+            </label>
           </li>
           <li>
-            <Checkbox
-              color="teal"
-              // onClick={(e: any) => setCityName(e.target.name)}
-              name="Rajshahi"
-            />{" "}
-            Valuka
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                name="Dhaka"
+              />
+              <span className="-mt-[2px]"> Valuka</span>
+            </label>
           </li>
           <li>
-            <Checkbox
-              color="teal"
-              // onClick={(e: any) => setCityName(e.target.name)}
-              name="Sylhet"
-            />{" "}
-            Town Hall
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                name="Dhaka"
+              />
+              <span className="-mt-[2px]"> Town Hall</span>
+            </label>
           </li>
           <li>
-            <Checkbox
-              color="teal"
-              // onClick={(e: any) => setCityName(e.target.name)}
-              name="Barisal"
-            />{" "}
-            Muktagacha
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                name="Dhaka"
+              />
+              <span className="-mt-[2px]"> Muktagacha</span>
+            </label>
           </li>
           <li>
-            <Checkbox
-              color="teal"
-              // onClick={(e: any) => setCityName(e.target.name)}
-              name="Khulna"
-            />{" "}
-            Select others
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                name="Dhaka"
+              />
+              <span className="-mt-[2px]"> Select others</span>
+            </label>
           </li>
         </ul>
       </div>

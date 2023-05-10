@@ -3,74 +3,99 @@ import { Checkbox } from "@material-tailwind/react";
 import React, { useContext } from "react";
 
 const AllDivisionBan = () => {
-  const {divisionNameBan, setDivisionNameBan}:any = useContext(StateContext)
-  console.log(divisionNameBan)
+  const { divisionNameBan, setDivisionNameBan }: any = useContext(StateContext);
+  console.log(divisionNameBan);
   return (
-    <div className="lg:mr-10 lg:-ml-8 ml-12">
-      <ul className="grid grid-cols-2 md:grid-cols-3">
+    <div className="lg:mr-10 lg:-ml-4 ">
+      <ul className="grid grid-cols-3 gap-3">
         <li>
-          <Checkbox
-            color="teal"
-            onClick={(e: any) => setDivisionNameBan(e.target.name)}
-            name="ঢাকা"
-          />{" "}
-          ঢাকা বিভাগ
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              onClick={(e: any) => setDivisionNameBan(e.target.name)}
+              name="ঢাকা"
+            />
+            <span className="-mt-[2px]"> ঢাকা বিভাগ</span>
+          </label>
         </li>
         <li>
-          <Checkbox
-            color="teal"
-            onClick={(e: any) => setDivisionNameBan(e.target.name)}
-            name="চট্টগ্রাম"
-          />{" "}
-          চট্টগ্রাম বিভাগ
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              onClick={(e: any) => setDivisionNameBan(e.target.name)}
+              name="চট্টগ্রাম"
+            />
+            <span className="-mt-[2px]"> চট্টগ্রাম বিভাগ</span>
+          </label>
         </li>
         <li>
-          <Checkbox
-            color="teal"
-            onClick={(e: any) => setDivisionNameBan(e.target.name)}
-            name="রাজশাহী"
-          />{" "}
-          রাজশাহী বিভাগ
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              onClick={(e: any) => setDivisionNameBan(e.target.name)}
+              name="রাজশাহী"
+            />
+            <span className="-mt-[2px]">রাজশাহী বিভাগ</span>
+          </label>
+         
         </li>
         <li>
-          <Checkbox
-            color="teal"
-            onClick={(e: any) => setDivisionNameBan(e.target.name)}
-            name="সিলেট"
-          />{" "}
-          সিলেট বিভাগ
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              onClick={(e: any) => setDivisionNameBan(e.target.name)}
+              name="সিলেট"
+            />
+            <span className="-mt-[2px]"> সিলেট বিভাগ</span>
+          </label>
         </li>
         <li>
-          <Checkbox
-            color="teal"
-            onClick={(e: any) => setDivisionNameBan(e.target.name)}
-            name="বরিশাল"
-          />{" "}
-          বরিশাল বিভাগ
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              onClick={(e: any) => setDivisionNameBan(e.target.name)}
+              name="বরিশাল"
+            />
+            <span className="-mt-[2px]">বরিশাল বিভাগ</span>
+          </label>
         </li>
         <li>
-          <Checkbox
-            color="teal"
-            onClick={(e: any) => setDivisionNameBan(e.target.name)}
-            name="খুলনা"
-          />{" "}
-          খুলনা বিভাগ
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              onClick={(e: any) => setDivisionNameBan(e.target.name)}
+              name="খুলনা"
+            />
+            <span className="-mt-[2px]">খুলনা বিভাগ</span>
+          </label>
         </li>
         <li>
-          <Checkbox
-            color="teal"
-            onClick={(e: any) => setDivisionNameBan(e.target.name)}
-            name="রংপুর"
-          />{" "}
-          রংপুর বিভাগ
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              onClick={(e: any) => setDivisionNameBan(e.target.name)}
+              name="রংপুর"
+            />
+            <span className="-mt-[2px]"> রংপুর বিভাগ</span>
+          </label>
         </li>
         <li>
-          <Checkbox
-            color="teal"
-            onClick={(e: any) => setDivisionNameBan(e.target.name)}
-            name="ময়মনসিংহ"
-          />{" "}
-          ময়মনসিংহ বিভাগ
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              onClick={(e: any) => setDivisionNameBan(e.target.name)}
+              name="ময়মনসিংহ"
+            />
+            <span className="-mt-[2px]"> ময়মনসিংহ বিভাগ</span>
+          </label>
         </li>
       </ul>
     </div>

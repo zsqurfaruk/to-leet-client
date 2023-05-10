@@ -1,40 +1,29 @@
-import { Checkbox } from "@material-tailwind/react";
 import React from "react";
 
-const DistrictsOfDhaka = () => {
+const DistrictsOfDhakaBan = () => {
   return (
     <div>
-      <ul className="grid grid-cols-3 md:grid-cols-4 gap-3 mb-10">
+      <ul className="grid grid-cols-3 md:grid-cols-4 gap-3 text-black">
         <li>
           <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Dhaka"
+              name="ঢাকা"
             />
-            <span className="-mt-[2px]">Dhaka</span>
+            <span>ঢাকা</span>
           </label>
         </li>
-        <li>
-          {" "}
-          <label className="flex gap-[6px]">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Faridpur"
-            />
-            <span className="-mt-[2px]">Faridpur</span>
-          </label>
-        </li>
+      
         <li>
           {" "}
           <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Gazipur"
+              name="গাজীপুর"
             />
-            <span className="-mt-[2px]">Gazipur</span>
+            <span>গাজীপুর</span>
           </label>
         </li>
         <li>
@@ -43,9 +32,20 @@ const DistrictsOfDhaka = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Gopalganj"
+              name="ফরিদপুর"
             />
-            <span className="-mt-[2px]">Gopalganj</span>
+            <span >ফরিদপুর</span>
+          </label>
+        </li>
+        <li>
+          {" "}
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              name="গোপালগঞ্জ"
+            />
+            <span >গোপালগঞ্জ</span>
           </label>
         </li>
         
@@ -54,9 +54,9 @@ const DistrictsOfDhaka = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Kishoreganj"
+              name="কিশোরগঞ্জ"
             />
-            <span className="-mt-[2px]">Kishoreganj</span>
+            <span >কিশোরগঞ্জ</span>
           </label>
         </li>
         <li>
@@ -64,9 +64,9 @@ const DistrictsOfDhaka = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Madaripur"
+              name="মাদারীপুর"
             />
-            <span className="-mt-[2px]">Madaripur</span>
+            <span >মাদারীপুর</span>
           </label>
         </li>
         <li>
@@ -75,9 +75,9 @@ const DistrictsOfDhaka = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Manikganj"
+              name="মানিকগঞ্জ"
             />
-            <span className="-mt-[2px]">Manikganj</span>
+            <span >মানিকগঞ্জ</span>
           </label>
         </li>
 
@@ -87,9 +87,9 @@ const DistrictsOfDhaka = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Munshiganj"
+              name="মুন্সিগঞ্জ"
             />
-            <span className="-mt-[2px]">Munshiganj</span>
+            <span >মুন্সিগঞ্জ</span>
           </label>
         </li>
         <li>
@@ -98,9 +98,9 @@ const DistrictsOfDhaka = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Narayanganj"
+              name="নারায়ণগঞ্জ"
             />
-            <span className="-mt-[2px]">Narayanganj</span>
+            <span >নারায়ণগঞ্জ</span>
           </label>
         </li>
         <li>
@@ -109,32 +109,9 @@ const DistrictsOfDhaka = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Narsingdi"
+              name="নরসিংদী"
             />
-            <span className="-mt-[2px]">Narsingdi</span>
-          </label>
-        </li>
-        
-        <li>
-          {" "}
-          <label className="flex gap-2">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Rajbari"
-            />
-            <span className="-mt-[2px]">Rajbari</span>
-          </label>
-        </li>
-        <li>
-          {" "}
-          <label className="flex gap-2">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Shariatpur"
-            />
-            <span className="-mt-[2px]">Shariatpur</span>
+            <span >নরসিংদী</span>
           </label>
         </li>
         
@@ -144,14 +121,36 @@ const DistrictsOfDhaka = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Tangail"
+              name="রাজবাড়ী"
             />
-            <span className="-mt-[2px]">Tangail</span>
+            <span >রাজবাড়ী</span>
+          </label>
+        </li>
+        <li>
+          {" "}
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              name="শরীয়তপুর"
+            />
+            <span >শরীয়তপুর</span>
+          </label>
+        </li>
+        <li>
+          {" "}
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              name="টাঙ্গাইল"
+            />
+            <span >টাঙ্গাইল</span>
           </label>
         </li>
       </ul>
     </div>
   );
 };
-
-export default DistrictsOfDhaka;
+ 
+export default DistrictsOfDhakaBan;

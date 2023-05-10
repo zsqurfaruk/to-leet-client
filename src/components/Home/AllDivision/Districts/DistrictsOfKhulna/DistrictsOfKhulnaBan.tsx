@@ -1,22 +1,17 @@
-import { StateContext } from "@/Context/StateContext/StateContext";
-import { Checkbox } from "@material-tailwind/react";
-import React, { useContext } from "react";
+import React from 'react'
 
-const AllDivisionEng = () => {
-  const { divisionNameEng, setDivisionNameEng }: any = useContext(StateContext);
-  console.log(divisionNameEng);
+function DistrictsOfKhulnaBan() {
   return (
-    <div className="lg:-ml-4  ">
-      <ul className="grid grid-cols-3 md:grid-cols-3 gap-3">
+    <div>
+       <ul className="grid grid-cols-3 md:grid-cols-4 gap-3">
         <li>
           <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={(e: any) => setDivisionNameEng(e.target.name)}
-              name="Dhaka"
+              name="খুলনা"
             />
-            <span className="-mt-[2px]"> Dhaka Division</span>
+            <span className="-mt-[2px]">খুলনা</span>
           </label>
         </li>
         <li>
@@ -24,10 +19,9 @@ const AllDivisionEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={(e: any) => setDivisionNameEng(e.target.name)}
-              name="Chittagong"
+              name="বাগেরহাট"
             />
-            <span className="-mt-[2px]"> Chittagong Division</span>
+            <span className="-mt-[2px]">বাগেরহাট</span>
           </label>
         </li>
         <li>
@@ -35,10 +29,9 @@ const AllDivisionEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={(e: any) => setDivisionNameEng(e.target.name)}
-              name="Rajshahi"
+              name="চুয়াডাঙ্গা"
             />
-            <span className="-mt-[2px]"> Rajshahi Division</span>
+            <span className="-mt-[2px]">চুয়াডাঙ্গা</span>
           </label>
         </li>
         <li>
@@ -46,10 +39,9 @@ const AllDivisionEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={(e: any) => setDivisionNameEng(e.target.name)}
-              name="Sylhet"
+              name="যশোর"
             />
-            <span className="-mt-[2px]"> Sylhet Division</span>
+            <span className="-mt-[2px]">যশোর</span>
           </label>
         </li>
         <li>
@@ -57,10 +49,20 @@ const AllDivisionEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={(e: any) => setDivisionNameEng(e.target.name)}
-              name="Barisal"
+              name="ঝিনাইদহ"
             />
-            <span className="-mt-[2px]">Barisal Division</span>
+            <span className="-mt-[2px]">ঝিনাইদহ</span>
+          </label>
+        </li>
+
+        <li>
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              name="কুষ্টিয়া"
+            />
+            <span className="-mt-[2px]">কুষ্টিয়া</span>
           </label>
         </li>
         <li>
@@ -68,10 +70,29 @@ const AllDivisionEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={(e: any) => setDivisionNameEng(e.target.name)}
-              name="Khulna"
+              name="মাগুরা"
             />
-            <span className="-mt-[2px]"> Khulna Division</span>
+            <span className="-mt-[2px]">মাগুরা</span>
+          </label>{" "}
+        </li>
+        <li>
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              name="মেহেরপুর"
+            />
+            <span className="-mt-[2px]">মেহেরপুর</span>
+          </label>{" "}
+        </li>
+        <li>
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              name="নড়াইল"
+            />
+            <span className="-mt-[2px]">নড়াইল</span>
           </label>
         </li>
         <li>
@@ -79,26 +100,13 @@ const AllDivisionEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={(e: any) => setDivisionNameEng(e.target.name)}
-              name="Rangpur"
+              name="সাতক্ষীরা"
             />
-            <span className="-mt-[2px]"> Rangpur Division</span>
-          </label>
-        </li>
-        <li>
-          <label className="flex gap-2">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={(e: any) => setDivisionNameEng(e.target.name)}
-              name="Mymensingh"
-            />
-            <span className="-mt-[2px]"> Mymensingh Division</span>
+            <span className="-mt-[2px]">সাতক্ষীরা</span>
           </label>
         </li>
       </ul>
-    </div>
-  );
-};
-
-export default AllDivisionEng;
+      </div>
+  )
+}
+export default DistrictsOfKhulnaBan

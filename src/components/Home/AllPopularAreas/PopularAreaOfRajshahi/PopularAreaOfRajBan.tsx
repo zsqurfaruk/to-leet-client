@@ -1,64 +1,80 @@
-import { Checkbox } from '@material-tailwind/react';
-import React from 'react';
+import React from "react";
 
 const PopularAreaOfRajBan = () => {
-    return (
-        <section>
-      <div className="lg:mr-10 lg:-ml-8 ml-12">
-        <ul className="grid grid-cols-2 md:grid-cols-3 text-black">
+  return (
+    <section>
+      <div className="lg:mr-10 lg:-ml-4 ml-12">
+        <ul className="grid grid-cols-3 md:grid-cols-4 gap-3 text-black">
           <li>
-            {" "}
-            <Checkbox
-            color="teal"
-              // onClick={(e: any) => setCityName(e.target.name)}
-              name="Dhaka"
-            />{" "}
-           নিউ মার্কেট
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                name="Dhaka"
+              />
+              <span className="-mt-[2px]"> নিউ মার্কেট</span>
+            </label>
           </li>
           <li>
-            <Checkbox
-            color="teal"
-              // onClick={(e: any) => setCityName(e.target.name)}
-              name="Chittagong"
-            />{" "}
-           সাহেববাজার
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                name="Dhaka"
+              />
+              <span className="-mt-[2px]"> সাহেব বাজার</span>
+            </label>
           </li>
           <li>
-            <Checkbox
-            color="teal"
-              // onClick={(e: any) => setCityName(e.target.name)}
-              name="Rajshahi"
-            />{" "}
-          উপশহর
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                name="Dhaka"
+              />
+              <span className="-mt-[2px]"> উপশহর</span>
+            </label>
           </li>
           <li>
-            <Checkbox
-            color="teal"
-              // onClick={(e: any) => setCityName(e.target.name)}
-              name="Sylhet"
-            />{" "}
-           কাজলা
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                name="Dhaka"
+              />
+              <span className="-mt-[2px]"> কাজলা</span>
+            </label>
           </li>
           <li>
-            <Checkbox
-            color="teal"
-              // onClick={(e: any) => setCityName(e.target.name)}
-              name="Barisal"
-            />{" "}
-           মতিহার
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                name="Dhaka"
+              />
+              <span className="-mt-[2px]"> মতিহার</span>
+            </label>
           </li>
           <li>
-            <Checkbox
-            color="teal"
-              // onClick={(e: any) => setCityName(e.target.name)}
-              name="Khulna"
-            />{" "}
-           অন্যান্য এলাকা 
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                name="Dhaka"
+              />
+              <span className="-mt-[2px]"> অন্যান্য এলাকা </span>
+            </label>
           </li>
         </ul>
       </div>
     </section>
-    );
+  );
 };
 
 export default PopularAreaOfRajBan;

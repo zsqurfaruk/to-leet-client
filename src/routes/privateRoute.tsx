@@ -10,6 +10,7 @@ function privateRoute(Component:any) {
 
     useEffect(() => {
       if (!token || tokenValidation === "Invalid token") {
+        alert("Session expired. Please signIn")
         localStorage.removeItem('token')
         router.push("/signIn");
       } else {

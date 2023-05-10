@@ -1,58 +1,75 @@
-import { Checkbox } from "@material-tailwind/react";
 import React from "react";
 
 const PopularCityOfBarisal = () => {
   return (
     <section>
-      <div className="lg:mr-10 lg:-ml-8 ml-12">
-        <ul className="grid grid-cols-2 md:grid-cols-3 text-black">
+      <div className="lg:mr-10 lg:-ml-4 ml-12">
+        <ul className="grid grid-cols-3 md:grid-cols-4 gap-3 text-black">
           <li>
-            <Checkbox
-            color="teal"
-              // onClick={(e: any) => setCityName(e.target.name)}
-              name="Dhaka"
-            />{" "}
-           Sadar Road
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                name="Dhaka"
+              />
+              <span className="-mt-[2px]"> Sadar Road</span>
+            </label>
           </li>
           <li>
-            <Checkbox
-            color="teal"
-              // onClick={(e: any) => setCityName(e.target.name)}
-              name="Chittagong"
-            />{" "}
-           Nattullabad
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                name="Dhaka"
+              />
+              <span className="-mt-[2px]"> Nattullabad</span>
+            </label>
           </li>
           <li>
-            <Checkbox
-            color="teal"
-              // onClick={(e: any) => setCityName(e.target.name)}
-              name="Rajshahi"
-            />{" "}
-         Rupatali
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                name="Dhaka"
+              />
+              <span className="-mt-[2px]"> Rupatali</span>
+            </label>
           </li>
           <li>
-            <Checkbox
-           color="teal"
-              // onClick={(e: any) => setCityName(e.target.name)}
-              name="Sylhet"
-            />{" "}
-          Gournadi
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                name="Dhaka"
+              />
+              <span className="-mt-[2px]"> Gournadi</span>
+            </label>
           </li>
           <li>
-            <Checkbox
-            color="teal"
-              // onClick={(e: any) => setCityName(e.target.name)}
-              name="Barisal"
-            />{" "}
-          Nobogram Road
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                name="Dhaka"
+              />
+              <span className="-mt-[2px]"> Nobogram Road</span>
+            </label>
           </li>
           <li>
-            <Checkbox
-            color="teal"
-              // onClick={(e: any) => setCityName(e.target.name)}
-              name="Khulna"
-            />{" "}
-            Select others
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                name="Dhaka"
+              />
+              <span className="-mt-[2px]"> Select others</span>
+            </label>
           </li>
         </ul>
       </div>
@@ -61,10 +78,3 @@ const PopularCityOfBarisal = () => {
 };
 
 export default PopularCityOfBarisal;
- 
-
-
-
-
-
- 

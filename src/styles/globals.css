@@ -5,3 +5,7 @@
 :root{
     background-color: #eff3fc;
 }
+
+#modalStyle{
+    filter: blur(5px);
+    -webkit-filter: blur(1px);}
