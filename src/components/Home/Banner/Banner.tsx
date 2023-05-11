@@ -38,6 +38,7 @@ const Banner = () => {
     setDivisionNameBan,
     setDivisionNameEng,
     handleOpenModalBan,
+    handleOpenModalEng,
   }: any = useContext(StateContext);
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
@@ -58,26 +59,28 @@ const Banner = () => {
   const lan = localStorage.getItem("lan");
 
   return (
-    <section className="pt-5 w-10/12 mx-auto">
+    <section className="pt-6">
       {lan ? (
-        <div className="flex justify-center gap-5 text-xl">
-          <h1 className="cursor-pointer">Are you searching near your university?</h1>
+        <div className="flex justify-center gap-2 md:text-xl">
+          <h1 className="cursor-pointer">
+            Are you searching near your university?
+          </h1>
           <h2
             className="flex gap-2 border shadow-lg shadow-accent border-accent rounded-lg px-2 cursor-pointer"
-            onClick={setDivisionNameEng}
+            onClick={handleOpenModalEng}
           >
             Yes
           </h2>
           <ModalEng></ModalEng>
         </div>
       ) : (
-        <div className="md:flex justify-center gap-2">
-          <h1 className="text-center">
+        <div className="flex justify-center gap-2 text-sm md:text-base">
+          <h1 >
             আপনি কি বিশ্ববিদ্যালয়ের কাছাকাছি বাসস্থান খুঁজছেন?
           </h1>
 
           <h2
-            className="border shadow-lg shadow-accent border-accent rounded-lg px-2 cursor-pointer text-center"
+            className="border shadow-lg shadow-accent border-accent rounded-lg px-3 cursor-pointer text-center"
             onClick={handleOpenModalBan}
           >
             হ্যাঁ
@@ -86,88 +89,90 @@ const Banner = () => {
           <ModalBan></ModalBan>
         </div>
       )}
-      <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="lg:h-screen flex items-center mt-8 lg:-mt-16 text-white">
-          <div>
-            <div className="lg:-mt-32">
-              {cityName && !cityNameBan && <AllAreas></AllAreas>}
-              {!cityName && cityNameBan && <AllAreas></AllAreas>}
-              {filterTypeCity && !cityName && !cityNameBan && (
-                <AllCity></AllCity>
-              )}
-            </div>
-            {lan && !filterTypeCity && !cityName && <BannerEng></BannerEng>}
-            {!lan && !filterTypeCity && <BannerBan></BannerBan>}
-
+      <div className="pt-5 w-10/12 mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
+          <div className="lg:h-screen flex items-center mt-8 lg:-mt-16 text-white">
             <div>
-              {lan ? (
-                <h1
-                  className={
-                    filterTypeCity || filterTypeDivision
-                      ? "text-black mt-5 lg:mt-10 text-2xl"
-                      : "mt-5 lg:mt-10 text-2xl "
-                  }
-                >
-                  Search by:
-                </h1>
-              ) : (
-                <h1
-                  className={
-                    filterTypeCity || filterTypeDivision
-                      ? "text-black mt-5 lg:mt-10 text-xl  "
-                      : "mt-5 lg:mt-10 text-2xl  "
-                  }
-                >
-                  অনুসন্ধান করুন :
-                </h1>
-              )}
-              <div className="flex justify-around mt-5 ">
-                <div
-                  className={
-                    filterTypeCity || filterTypeDivision
-                      ? "pl-2 pr-4"
-                      : "pl-2 pr-4 shadow-lg bg-accent rounded"
-                  }
-                >
-                  <Checkbox
-                    color="teal"
-                    onClick={handleFilterTypeCity}
-                    className="flex justify-end border border-secondary defaultCheck"
-                    label={lan ? "City" : "শহর"}
-                  />
-                </div>
-                <div
-                  className={
-                    filterTypeCity || filterTypeDivision
-                      ? "pl-2 pr-4"
-                      : "pl-2 pr-4 shadow-lg bg-accent rounded"
-                  }
-                >
-                  <Checkbox
-                    color="teal"
-                    onClick={handleFilterTypeDivision}
-                    className="flex justify-end border border-secondary"
-                    label={lan ? "Division" : "বিভাগ"}
-                  />
+              <div className="lg:-mt-32">
+                {cityName && !cityNameBan && <AllAreas></AllAreas>}
+                {!cityName && cityNameBan && <AllAreas></AllAreas>}
+                {filterTypeCity && !cityName && !cityNameBan && (
+                  <AllCity></AllCity>
+                )}
+              </div>
+              {lan && !filterTypeCity && !cityName && <BannerEng></BannerEng>}
+              {!lan && !filterTypeCity && <BannerBan></BannerBan>}
+
+              <div>
+                {lan ? (
+                  <h1
+                    className={
+                      filterTypeCity || filterTypeDivision
+                        ? "text-black mt-5 lg:mt-10 text-2xl"
+                        : "mt-5 lg:mt-10 text-2xl "
+                    }
+                  >
+                    Search by:
+                  </h1>
+                ) : (
+                  <h1
+                    className={
+                      filterTypeCity || filterTypeDivision
+                        ? "text-black mt-5 lg:mt-10 text-xl  "
+                        : "mt-5 lg:mt-10 text-2xl  "
+                    }
+                  >
+                    অনুসন্ধান করুন :
+                  </h1>
+                )}
+                <div className="flex justify-around mt-5 ">
+                  <div
+                    className={
+                      filterTypeCity || filterTypeDivision
+                        ? "pl-2 pr-4"
+                        : "pl-2 pr-4 shadow-lg bg-accent rounded"
+                    }
+                  >
+                    <Checkbox
+                      color="teal"
+                      onClick={handleFilterTypeCity}
+                      className="flex justify-end border border-secondary defaultCheck"
+                      label={lan ? "City" : "শহর"}
+                    />
+                  </div>
+                  <div
+                    className={
+                      filterTypeCity || filterTypeDivision
+                        ? "pl-2 pr-4"
+                        : "pl-2 pr-4 shadow-lg bg-accent rounded"
+                    }
+                  >
+                    <Checkbox
+                      color="teal"
+                      onClick={handleFilterTypeDivision}
+                      className="flex justify-end border border-secondary"
+                      label={lan ? "Division" : "বিভাগ"}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          {(divisionNameEng || divisionNameBan) && filterTypeDivision && (
+            <AllDistricts></AllDistricts>
+          )}
+          {/* {divisionNameBan && <AllDivisionBan></AllDivisionBan>} */}
+          {filterTypeDivision && !divisionNameBan && !divisionNameEng && (
+            <AllDivision></AllDivision>
+          )}
+          {!filterTypeDivision && (
+            <Lottie
+              className="lg:scale-110 hidden lg:flex"
+              animationData={lottiImage}
+              loop={true}
+            ></Lottie>
+          )}
         </div>
-        {(divisionNameEng || divisionNameBan) && filterTypeDivision && (
-          <AllDistricts></AllDistricts>
-        )}
-        {/* {divisionNameBan && <AllDivisionBan></AllDivisionBan>} */}
-        {filterTypeDivision && !divisionNameBan && !divisionNameEng && (
-          <AllDivision></AllDivision>
-        )}
-        {!filterTypeDivision && (
-          <Lottie
-            className="lg:scale-110 hidden lg:flex"
-            animationData={lottiImage}
-            loop={true}
-          ></Lottie>
-        )}
       </div>
     </section>
   );

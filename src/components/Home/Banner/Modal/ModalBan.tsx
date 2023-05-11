@@ -27,19 +27,20 @@ export default function ModalBan() {
           unmount: { scale: 1, y: -100 },
         }}
       >
-        <DialogHeader className="text-xl hidden lg:flex">
-          বিশ্ববিদ্যালয় এবং মেডিকেল কলেজ নির্বাচন করুন
+        <DialogHeader className="text-xl hidden lg:flex mt-5">
+        আপনার প্রয়োজন অনুযায়ী বিশ্ববিদ্যালয় এবং মেডিকেল কলেজ নির্বাচন করুন:
         </DialogHeader>
-        <DialogBody className="-mt-52 md:-mt-72 lg:mt-60 text-xs">
+        <DialogBody className="-mt-52 md:-mt-72 lg:mt-0  text-xs">
+          <h2 className="text-primary text-lg md:text-xl mb-5 w-80 md:w-[600px] -ml-24 md:-ml-40 lg:ml-0 flex lg:hidden">আপনার প্রয়োজন অনুযায়ী বিশ্ববিদ্যালয় এবং মেডিকেল কলেজ নির্বাচন করুন: </h2>
           <Select
             placeholder="অনুসন্ধান করতে ক্লিক করুন এবং আপনার প্রয়োজন অনুযায়ী নির্বাচন করুন"
             isSearchable
             options={colourOptions}
             onChange={setOpenModalBan}
-            className="text-sm bg-primary w-80 md:w-[40rem]  mr-10 md:mr-12 lg:mr-0 lg:w-full -ml-24 md:-ml-40 lg:ml-0 mx-auto text-black font-medium"
+            className="text-sm bg-primary w-80 md:w-[40rem] lg:w-full mr-10 md:mr-12 lg:mr-0  -ml-24 md:-ml-40 lg:ml-0 mx-auto text-black font-medium"
           />
         </DialogBody>
-        {/* <div className="flex lg:hidden justify-around py-3 w-80 -ml-20 md:-ml-1">
+        <div className="flex lg:hidden justify-around py-3 w-80 -ml-20 md:-ml-1">
           <button
             className="text-red-500 bg-red-100 font-semibold rounded px-3"
             onClick={handleOpenModalBan}
@@ -52,7 +53,7 @@ export default function ModalBan() {
           >
             Confirm
           </button>
-        </div> */}
+        </div>
         <DialogFooter className="hidden lg:flex">
           <Button
             variant="text"
