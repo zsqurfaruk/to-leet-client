@@ -16,18 +16,17 @@ const StateInfo = ({ children }: any) => {
   const [openModalEng, setOpenModalEng] = useState(false);
   const [openModalBan, setOpenModalBan] = useState(false);
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  // const handleOpenModalBan = () => {
-  //   setIsOpen(true)
-  // };
+ 
+  const handleOpenModalEng = () => setOpenModalEng(!openModalEng);
   const handleOpenModalBan = () => setOpenModalBan(!openModalBan);
-  const [open, setOpen] = useState<boolean>(false);
+  // const [open, setOpen] = useState<boolean>(false);
 
-  const handleClickOpen = () => {
-    setIsOpen(true);
-    console.log("jkjkj")
-  };
-  const [size, setSize] = useState(null);
-  const handleOpen = (value:any) => setSize(value);
+  // const handleClickOpen = () => {
+  //   setIsOpen(true);
+  //   console.log("jkjkj")
+  // };
+  // const [size, setSize] = useState(null);
+  // const handleOpen = (value:any) => setSize(value);
   const info = {
     tokenValidation,
     setTokenValidation,
@@ -51,14 +50,11 @@ const StateInfo = ({ children }: any) => {
     districtLocation,
     setOpenModalEng,
     openModalEng,
-    // handleOpenModalEng,
+    handleOpenModalEng,
     openModalBan,
     setOpenModalBan,
     handleOpenModalBan,
-    setSize,
-    size,
-    handleOpen,
-    handleClickOpen
+  
 
   };
   return <StateContext.Provider value={info}>{children}</StateContext.Provider>;

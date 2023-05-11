@@ -17,8 +17,8 @@ const BannerBan = () => {
       <p
         className={
           filterTypeDivision
-            ? "md:text-xl lg:scale-110 w-10/12 lg:w-full mx-auto text-black"
-            : "md:text-xl lg:scale-110 w-10/12 lg:w-full mx-auto"
+            ? "md:text-xl  text-black"
+            : "md:text-xl mx-auto"
         }
       >
         <span
@@ -41,28 +41,20 @@ const BannerBan = () => {
               ? style.bannerTextColorChange
               : style.bannerTextColor
           }
-          className="lg:-ml-5 mt-2 w-10/12 lg:w-full mx-auto text-xs md:text-[16.2px] text-justify md:leading-6 lg:leading-[13px]"
+          className="  mt-2 text-xs md:text-[16.2px] text-justify md:leading-6 lg:leading-[13px]"
         >
           আজই আপনার অনুসন্ধান শুরু করুন এবং আপনার স্বপ্নের বাসস্থান খুঁজে পেতে <br className="hidden lg:flex"/><br className="hidden lg:flex"/>
           আপনার যাত্রার একটি অংশ হতে দিন।
         </p>{" "}
-        {lang ? (
+       
           <BsArrowDownCircleFill
             className={
               filterTypeCity || filterTypeDivision
-                ? "absolute top-5 md:top-9 left-52 md:left-80 lg:left-64 w-4 h-4 md:w-5 md:h-5 text-black"
-                : "absolute top-5 md:top-9 left-52 md:left-80 lg:left-64 w-4 h-4 md:w-5 md:h-5"
+                ? "absolute top-5 md:top-7 left-[299px] md:left-40 lg:left-[263px] w-4 h-4 md:w-5 md:h-5 text-black"
+                : "absolute top-5 md:top-7 left-[299px] md:left-40 lg:left-[263px] w-4 h-4 md:w-5 md:h-5"
             }
           />
-        ) : (
-          <BsArrowDownCircleFill
-            className={
-              filterTypeCity || filterTypeDivision
-                ? "absolute top-[53px] md:top-7 left-28 md:left-64 lg:left-60 w-4 h-4 md:w-5 md:h-5 text-black"
-                : "absolute top-[53px] md:top-7 left-28 md:left-56 lg:left-60 w-4 h-4 md:w-5 md:h-5"
-            }
-          />
-        )}
+        
       </div>
     </div>
   );

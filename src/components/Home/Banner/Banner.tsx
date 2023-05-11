@@ -37,19 +37,14 @@ const Banner = () => {
     divisionNameBan,
     setDivisionNameBan,
     setDivisionNameEng,
-    handleOpenModalEng,
-    setOpenModalEng,
     handleOpenModalBan,
-    handleClickOpen,
-    handleOpen,
-    size
   }: any = useContext(StateContext);
-const [width, setWidth]= useState(window.innerWidth)
-  useEffect(()=>{
+  const [width, setWidth] = useState(window.innerWidth);
+  useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  },[])
+  }, []);
   const handleFilterTypeCity = () => {
     setCityName("");
     setCityNameBan("");
@@ -63,71 +58,44 @@ const [width, setWidth]= useState(window.innerWidth)
   const lan = localStorage.getItem("lan");
 
   return (
-    <section className="pt-5">
+    <section className="pt-5 w-10/12 mx-auto">
       {lan ? (
         <div className="flex justify-center gap-5 text-xl">
-          <h1>Are you searching near your university?</h1>
-
-          <button
-          
-            className="flex gap-2 border shadow-lg shadow-accent border-accent rounded-lg px-2"
-            onClick={handleOpenModalBan}
+          <h1 className="cursor-pointer">Are you searching near your university?</h1>
+          <h2
+            className="flex gap-2 border shadow-lg shadow-accent border-accent rounded-lg px-2 cursor-pointer"
+            onClick={setDivisionNameEng}
           >
             Yes
-          </button>
-
-          {/* <input type="checkbox" id="EngModal" className="modal-toggle" />
-          <div className="modal">
-            <div className="modal-box relative h-full">
-              <label
-                htmlFor="EngModal"
-                className="btn btn-sm btn-circle absolute right-2 top-2"
-              >
-                ✕
-              </label>
-              <ModalBanMob></ModalBanMob>
-            </div>
-          </div> */}
-
-          {/* <li>
-              <label className="flex gap-2">
-                <input
-                  type="radio"
-                  className="radio radio-accent h-5 w-5"
-                  name="radio-5"
-                  // onClick={(e: any) => setDivisionNameBan(e.target.name)}
-                  // name="ঢাকা"
-                />
-                <span className="-mt-[5px]"> No</span>
-              </label>
-            </li> */}
+          </h2>
+          <ModalEng></ModalEng>
         </div>
       ) : (
-        <div className="flex justify-center gap-5">
+        <div className="md:flex justify-center gap-2">
           <h1 className="text-center">
             আপনি কি বিশ্ববিদ্যালয়ের কাছাকাছি বাসস্থান খুঁজছেন?
           </h1>
 
-          <h5
-            className="flex gap-2 border w-10 ml-10 shadow-lg shadow-accent border-accent rounded-lg px-2 cursor-pointer"
-            
-            onClick={ handleOpenModalBan }
+          <h2
+            className="border shadow-lg shadow-accent border-accent rounded-lg px-2 cursor-pointer text-center"
+            onClick={handleOpenModalBan}
           >
             হ্যাঁ
-          </h5>
+          </h2>
 
-          {
-            width > 540 ? <ModalBan></ModalBan> :  <ModalBanMob></ModalBanMob>
-          }
-           
+          <ModalBan></ModalBan>
         </div>
       )}
-      <div className="lg:w-10/12 mx-auto grid grid-cols-1 lg:grid-cols-2">
-        <div className="lg:h-screen flex items-center mt-8 lg:-mt-20 text-white">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
+        <div className="lg:h-screen flex items-center mt-8 lg:-mt-16 text-white">
           <div>
-            {cityName && !cityNameBan && <AllAreas></AllAreas>}
-            {!cityName && cityNameBan && <AllAreas></AllAreas>}
-            {filterTypeCity && !cityName && !cityNameBan && <AllCity></AllCity>}
+            <div className="lg:-mt-32">
+              {cityName && !cityNameBan && <AllAreas></AllAreas>}
+              {!cityName && cityNameBan && <AllAreas></AllAreas>}
+              {filterTypeCity && !cityName && !cityNameBan && (
+                <AllCity></AllCity>
+              )}
+            </div>
             {lan && !filterTypeCity && !cityName && <BannerEng></BannerEng>}
             {!lan && !filterTypeCity && <BannerBan></BannerBan>}
 
@@ -136,8 +104,8 @@ const [width, setWidth]= useState(window.innerWidth)
                 <h1
                   className={
                     filterTypeCity || filterTypeDivision
-                      ? "text-black mt-5 lg:mt-10 text-2xl lg:-ml-8 md:ml-20 ml-9"
-                      : "mt-5 lg:mt-10 text-2xl lg:-ml-8 md:ml-20 ml-9"
+                      ? "text-black mt-5 lg:mt-10 text-2xl"
+                      : "mt-5 lg:mt-10 text-2xl "
                   }
                 >
                   Search by:
@@ -146,8 +114,8 @@ const [width, setWidth]= useState(window.innerWidth)
                 <h1
                   className={
                     filterTypeCity || filterTypeDivision
-                      ? "text-black mt-5 lg:mt-10 text-xl lg:-ml-8 md:ml-20 ml-9"
-                      : "mt-5 lg:mt-10 text-2xl lg:-ml-8 md:ml-20 ml-9"
+                      ? "text-black mt-5 lg:mt-10 text-xl  "
+                      : "mt-5 lg:mt-10 text-2xl  "
                   }
                 >
                   অনুসন্ধান করুন :
@@ -195,7 +163,7 @@ const [width, setWidth]= useState(window.innerWidth)
         )}
         {!filterTypeDivision && (
           <Lottie
-            className="w-screen lg:w-[740px] scale-125 md:scale-100 ml-3 md:ml-0 lg:-ml-6 mt-10"
+            className="lg:scale-110 hidden lg:flex"
             animationData={lottiImage}
             loop={true}
           ></Lottie>
@@ -206,7 +174,3 @@ const [width, setWidth]= useState(window.innerWidth)
 };
 
 export default Banner;
-function setWindowWidth(innerWidth: number) {
-  throw new Error("Function not implemented.");
-}
-

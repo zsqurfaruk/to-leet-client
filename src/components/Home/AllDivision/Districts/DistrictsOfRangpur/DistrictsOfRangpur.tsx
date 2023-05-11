@@ -5,7 +5,7 @@ const DistrictsOfRangpur = () => {
     const {setDistrictLocation}:any= useContext(StateContext)
     return (
         <div>
-        <ul className="grid grid-cols-3 md:grid-cols-4 gap-3">
+        <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">
           <li>
           <label className="flex gap-2">
             <input

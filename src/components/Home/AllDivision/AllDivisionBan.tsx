@@ -6,8 +6,8 @@ const AllDivisionBan = () => {
   const { divisionNameBan, setDivisionNameBan }: any = useContext(StateContext);
   console.log(divisionNameBan);
   return (
-    <div className="lg:mr-10 lg:-ml-4 ">
-      <ul className="grid grid-cols-3 gap-3">
+    <div>
+      <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 text-black text-sm md:text-base">
         <li>
           <label className="flex gap-2">
             <input

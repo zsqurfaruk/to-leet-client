@@ -31,13 +31,13 @@ const AllAreas = () => {
     <section>
       <h1
         onClick={handlePrevious}
-        className="text-secondary text-sm mb-5 cursor-pointer hover:underline lg:-ml-4"
+        className="text-secondary text-sm mb-5 cursor-pointer hover:underline"
       >
         {lang ? "Change city?" : "শহর পরিবর্তন?"}
       </h1>
 
       {lang ? (
-        <h1 className="text-2xl mb-5 pb-1 border-l-4 border-b-4 border-accent lg:-ml-4 pl-2 text-black">
+        <h1 className="text-2xl mb-5 pb-1 pl-2 border-l-4 border-b-4 border-accent text-black">
           Popular area of {cityName}{" "}
           {(lang && cityNameBan === "ঢাকা" && "Dhaka") ||
             (cityNameBan === "চট্টগ্রাম" && "Chittagong") ||
@@ -49,7 +49,7 @@ const AllAreas = () => {
             (cityNameBan === "ময়মনসিংহ" && "Mymensingh")}
         </h1>
       ) : (
-        <h1 className="text-xl mb-5 pb-1 border-l-4 border-b-4 border-accent lg:-ml-4 pl-2 text-black">
+        <h1 className="text-xl mb-5 pl-2 pb-1 border-l-4 border-b-4 border-accent text-black">
           {cityNameBan}
           {(!lang && cityName === "Dhaka" && "ঢাকা") ||
             (cityName === "Chittagong" && "চট্টগ্রাম") ||

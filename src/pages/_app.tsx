@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <NamInfo>
           <AuthProvider>
             <NavBar></NavBar>
-            <div className="lg:mx-6">
+            <div>
               <Component {...pageProps} />
             </div>
             <Footer></Footer>

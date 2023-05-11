@@ -5,9 +5,9 @@ const DistrictsOfMymensingh = () => {
   const { setDistrictLocation }: any = useContext(StateContext);
   return (
     <div>
-      <ul className="grid grid-cols-3 md:grid-cols-4 gap-3">
+      <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">
         <li>
-        <label className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
@@ -15,10 +15,9 @@ const DistrictsOfMymensingh = () => {
             />
             <span className="-mt-[2px]">Jamalpur</span>
           </label>
-         
         </li>
         <li>
-        <label className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
@@ -26,11 +25,9 @@ const DistrictsOfMymensingh = () => {
             />
             <span className="-mt-[2px]">Netrokona</span>
           </label>
-         
-          
         </li>
         <li>
-        <label className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
@@ -38,10 +35,9 @@ const DistrictsOfMymensingh = () => {
             />
             <span className="-mt-[2px]">Sherpur</span>
           </label>
-        
         </li>
         <li>
-        <label className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
@@ -49,7 +45,6 @@ const DistrictsOfMymensingh = () => {
             />
             <span className="-mt-[2px]">Mymensingh</span>
           </label>
-          
         </li>
       </ul>
     </div>

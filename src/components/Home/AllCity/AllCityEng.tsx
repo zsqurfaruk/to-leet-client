@@ -5,8 +5,8 @@ import { Checkbox } from "@material-tailwind/react";
 const AllCityEng = () => {
   const { setCityName }: any = useContext(StateContext);
   return (
-    <div className="lg:mr-10 lg:-ml-4 ml-7 mr-7">
-      <ul className="grid grid-cols-3 gap-4 md:gap-3 text-black">
+    <div>
+      <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-black text-sm md:text-base">
         <li>
           <label className="flex gap-2">
             <input

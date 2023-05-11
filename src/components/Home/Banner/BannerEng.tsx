@@ -17,8 +17,8 @@ const BannerEng = () => {
       <p
         className={
           filterTypeDivision
-            ? "md:text-xl lg:scale-110 w-10/12 lg:w-full mx-auto text-black"
-            : "md:text-2xl lg:scale-110 w-10/12 lg:w-full mx-auto"
+            ? "md:text-xl  text-black"
+            : "md:text-2xl "
         }
       >
         {/* <p id={style.bannerTextColor} className="text-6xl font-semibold"></p>  */}
@@ -54,7 +54,7 @@ const BannerEng = () => {
               ? style.bannerTextColorChange
               : style.bannerTextColor
           }
-          className="lg:-ml-8 mt-2 w-10/12 lg:w-full mx-auto text-xs md:text-xl"
+          className=" mt-2  text-xs md:text-xl"
         >
           Start your search today and let us be a part of your journey to
           finding the destination of your dreams.
@@ -62,8 +62,8 @@ const BannerEng = () => {
         <BsArrowDownCircleFill
           className={
             filterTypeCity || filterTypeDivision
-              ? "absolute top-5 md:top-9 left-52 md:left-80 lg:left-64 w-4 h-4 md:w-5 md:h-5 text-black"
-              : "absolute top-5 md:top-9 left-52 md:left-80 lg:left-64 w-4 h-4 md:w-5 md:h-5"
+              ? "absolute top-5 md:top-9 left-52 md:left-64 lg:left-72 w-4 h-4 md:w-5 md:h-5 text-black"
+              : "absolute top-5 md:top-9 left-52 md:left-64 lg:left-72 w-4 h-4 md:w-5 md:h-5"
           }
         />
       </div>

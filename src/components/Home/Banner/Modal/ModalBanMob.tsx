@@ -10,7 +10,7 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 
 import React from "react";
 import Select from "react-select";
-import { colourOptions } from "../data";
+import { colourOptions } from "../DataBan";
 
 export default function ModalBanMob() {
   const { handleOpenModalBan, setOpenModalBan, openModalBan }: any =

@@ -3,8 +3,8 @@ import React from "react";
 const PopularCityOfKhulna = () => {
   return (
     <section>
-      <div className="lg:mr-10 lg:-ml-4 ml-12">
-        <ul className="grid grid-cols-3 md:grid-cols-4 gap-3 text-black">
+      <div>
+        <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">
           <li>
             <label className="flex gap-2">
               <input

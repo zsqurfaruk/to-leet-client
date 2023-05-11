@@ -29,12 +29,12 @@ const {filterTypeCity, filterTypeDivision,isOpen}:any = useContext(StateContext)
       </Head>
       <main
       id={isOpen ? style.modalStyle : ""}
-        className={filterTypeCity || filterTypeDivision ? "bg-primary" : "bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-70 -mx-6 text-white"}>
+        className={filterTypeCity || filterTypeDivision ? "bg-primary" : "bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-70  text-white"}>
         <Banner></Banner>
         <DestinationType></DestinationType>
         <PostCounter></PostCounter>
         {/* <UserReviews></UserReviews> */}
-    <Test></Test>
+    {/* <Test></Test> */}
       </main>
     </>
   );
