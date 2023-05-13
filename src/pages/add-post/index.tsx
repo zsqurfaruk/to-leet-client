@@ -1,14 +1,34 @@
 import { Checkbox } from "@material-tailwind/react";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import AddProduct from "../../components/AddProduct/AddProduct";
 import RentType from "@/components/AddProduct/RentType";
 import privateRoute from "@/routes/privateRoute";
+import AllCity from "@/components/Home/AllCity/AllCity";
+import AllDivision from "@/components/Home/AllDivision/AllDivision";
+import AllAreas from "@/components/Home/AllCity/AllAreas/AllAreas";
+import { StateContext } from "@/Context/StateContext/StateContext";
+import AllDistricts from "@/components/Home/AllDivision/Districts/AllDistricts/AllDistricts";
+import AllCityEng from "@/components/Home/AllCity/AllCityEng";
+import AllCityBan from "@/components/Home/AllCity/AllCityBangla";
+import AllAresEng from "@/components/Home/AllCity/AllAreas/AllAresEng";
+import AllAreasBan from "@/components/Home/AllCity/AllAreas/AllAreasBan";
+import PostPopularAresBan from "@/components/OtherPages/PostPopularArea/PostPopularAreaBan/PostPopularAreaBan";
+import PostPopularAreaEng from "@/components/OtherPages/PostPopularArea/PostPopularAreaEng/PostPopularAreaEng";
+import PostAllCityEng from "@/components/OtherPages/PostAllCities/PostAllCitiesEng/PostAllCitiesEng";
+import PostAllCityBan from "@/components/OtherPages/PostAllCities/PostAllCitiesBan/PostAllCitiesBan";
+import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
+import PostPopularAresEng from "@/components/OtherPages/PostPopularArea/PostPopularAreaEng/PostPopularAreaEng";
 
 const AddPost = () => {
   const [divisionLocation, setDivisionLocation] = useState<string[]>([]);
   const [districtLocation, setDistrictLocation] = useState("");
   const [rentType, setRentType] = useState("");
- 
+  const {
+    postCityNameEng,
+    setPostCityNameEng,
+    postCityNameBan,
+    setPostCityNameBan,
+  }: any = useContext(PostStateContext);
   const handleDivisionLocation = (e: any) => {
     const newLocations = [...divisionLocation];
     if (e.target.checked) {
@@ -18,11 +38,58 @@ const AddPost = () => {
       setDivisionLocation(newLocations.filter((lc) => lc !== e.target.name));
     }
   };
+  const lang = localStorage.getItem("lan");
   return (
-   <section>
-    {
-      !districtLocation &&  <div className="lg:w-6/12 lg:mx-auto bg-white p-5 lg:p-14 lg:my-16">
-      <h1 className="text-2xl font-bold pb-10">Select Your Location</h1>
+    <section className="lg:w-6/12 lg:mx-auto bg-white p-5 lg:p-14 lg:my-16">
+      {/* <div className={cityName || cityNameBan ? "hidden": "flex"}>
+     <AllCity></AllCity>
+     </div> */}
+      <div className={(postCityNameEng || postCityNameBan) && "hidden"}>
+        {lang ? (
+          <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
+            Select your city.
+          </h1>
+        ) : (
+          <h1 className="text-xl mb-5 border-l-4 border-b-4 border-accent text-black pl-2">
+            শহর নির্বাচন করুন।
+          </h1>
+        )}
+      </div>
+      <div className={lang && postCityNameBan && "hidden"}>
+        {!postCityNameEng && lang && <PostAllCityEng></PostAllCityEng>}
+      </div>
+      <div className={!lang && postCityNameEng && "hidden"}>
+        {!lang && !postCityNameBan && <PostAllCityBan></PostAllCityBan>}
+      </div>
+
+      {!postCityNameEng && postCityNameBan && !lang && (
+        <PostPopularAresBan></PostPopularAresBan>
+      )}
+      {postCityNameEng && !postCityNameBan && lang && (
+        <PostPopularAreaEng></PostPopularAreaEng>
+      )}
+      {lang && postCityNameBan && <PostPopularAreaEng></PostPopularAreaEng>}
+      {!lang && postCityNameEng && <PostPopularAresBan></PostPopularAresBan>}
+      {/* {(!cityName || cityNameBan) && lang && <AllCity></AllCity>}
+      {!cityNameBan && !lang && <AllCity></AllCity>}
+      {(cityName && !cityNameBan) && lang && <AllAreas></AllAreas>}
+      {(!cityName && cityNameBan) && !lang && <AllAreas></AllAreas>} */}
+      {/* {!cityName && cityNameBan  && !lang && <AllAreas></AllAreas>} */}
+
+      {/* <div className="lg:-ml-3 pb-16">
+        {(!divisionNameEng || divisionNameBan) && lang && (
+          <AllDivision></AllDivision>
+        )}
+        {(divisionNameEng || !divisionNameBan) && !lang && (
+          <AllDivision></AllDivision>
+        )}
+        <div className="lg:-mt-20">
+          {(divisionNameEng || divisionNameBan) && (
+            <AllDistricts></AllDistricts>
+          )}
+        </div> */}
+      {/* </div> */}
+      {/* <h1 className="text-2xl font-bold pb-10">Select Your Location</h1>
       <div>
         <Checkbox
           onClick={(e: any) => handleDivisionLocation(e)}
@@ -493,8 +560,8 @@ const AddPost = () => {
 
     {
       rentType && <AddProduct rentType={rentType} districtLocation={districtLocation}></AddProduct>
-    }
-   </section>
+    } */}
+    </section>
   );
 };
 

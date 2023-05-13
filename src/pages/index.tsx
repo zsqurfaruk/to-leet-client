@@ -8,8 +8,8 @@ import Banner from "@/components/Home/Banner/Banner";
 import ContactUs from "@/components/Home/ContactUs/ContactUs";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import style from "../styles/banner.module.css"
-import ModalBanMob from "@/components/Home/Banner/Modal/ModalBanMob";
 import Test from "@/components/Home/Banner/Test";
+import About from "@/components/About/About";
  
 
 // const inter = Inter({ subsets: ["latin"] });
@@ -33,8 +33,7 @@ const {filterTypeCity, filterTypeDivision,isOpen}:any = useContext(StateContext)
         <Banner></Banner>
         <DestinationType></DestinationType>
         <PostCounter></PostCounter>
-        {/* <UserReviews></UserReviews> */}
-    {/* <Test></Test> */}
+         <About></About>
       </main>
     </>
   );

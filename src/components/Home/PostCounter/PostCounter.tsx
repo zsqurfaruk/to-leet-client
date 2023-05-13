@@ -3,13 +3,19 @@ import React, { useContext } from "react";
 import CountUp from "react-countup";
 
 function PostCounter() {
-  const { counterPosts }: any = useContext(APIContext);
+  const { counterPosts, userCounter }: any = useContext(APIContext);
   return (
-    <div className="bg-accent bg-opacity-10 text-accent"> 
-      <h1 className=" text-3xl font-semibold py-10 flex justify-center">Posts</h1>
-      <div className="  bg-opacity-70 text-3xl font-semibold pb-10 flex justify-center">
-        <CountUp end={counterPosts.length} duration={10} />
+    <div>
+      <hr className="w-10/12 mx-auto"/>
+      <div className="flex justify-evenly w-10/12 mx-auto pb-10 mt-10">
+        <div className="bg-opacity-70 text-3xl font-semibold bg-gradient-to-r from-success via-accent to-success p-10 rounded">
+          Total Posts: <CountUp end={counterPosts?.length} duration={10} />
+        </div>
+        <div className="bg-opacity-70 text-3xl font-semibold bg-gradient-to-r from-success via-accent to-success p-10 rounded">
+          Total Users: <CountUp end={userCounter?.length} duration={10} />
+        </div>
       </div>
+      <hr className="w-10/12 mx-auto"/>
     </div>
   );
 }

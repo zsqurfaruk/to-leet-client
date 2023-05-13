@@ -62,6 +62,7 @@ export default function NavBar() {
 
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+      <li>
       {!authenticated && !userInfo?.email ? (
         <div className="navbar-end">
           {/* <Link href="/SignUp">  */}
@@ -73,9 +74,14 @@ export default function NavBar() {
               className="p-1 font-normal"
               onClick={() => setOpenNav(false)}
             >
-              <a href="#" className="flex items-center  text-primary">
-                PostNow
-              </a>
+               {
+                lang ? 
+              <Button className="w-[212px] text-gray-700 -my-2 py-1 text-[16px] bg-gradient-to-r from-success via-accent to-success">
+                Post your ads 
+              </Button> : <Button className="w-[212px] text-gray-700 -my-2 py-1 text-[16px] bg-gradient-to-r from-success via-accent to-success">
+                আপনার বিজ্ঞাপন দিন
+              </Button>
+              }
             </Typography>
             {/* </Link> */}
           </Link>
@@ -91,14 +97,21 @@ export default function NavBar() {
               className="p-1 font-normal"
               onClick={() => setOpenNav(false)}
             >
-              <a href="#" className="flex items-center  text-primary">
-                PostNow
-              </a>
+               {
+                lang ? 
+              <Button className="w-[212px] text-gray-700 -my-2 py-1 text-[16px] bg-gradient-to-r from-success via-accent to-success">
+                Post your ads 
+              </Button> : <Button className="w-[212px] text-gray-700 -my-2 py-1 text-[16px] bg-gradient-to-r from-success via-accent to-success">
+                আপনার বিজ্ঞাপন দিন
+              </Button>
+              }
             </Typography>
             {/* </Link> */}
           </Link>
         </div>
       )}
+      </li>
+      <li>
       {!authenticated && (
         <Typography
           as="li"
@@ -111,13 +124,17 @@ export default function NavBar() {
           <Link href="/signIn">
             <li
               onClick={() => setOpenNav(false)}
-              className="flex items-center  text-primary"
+              className=" text-primary"
             >
-              SignIn
+             {
+                lang ? 
+                <span>SignIn</span> : <span>সাইন ইন</span>
+              }
             </li>
           </Link>
         </Typography>
       )}
+      </li>
     </ul>
   );
 
@@ -125,11 +142,23 @@ export default function NavBar() {
     <>
       <Navbar className="sticky inset-0 z-10 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-75 h-max min-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4 border-none text-primary shadow-sm -mx-6">
         <div className="flex items-center justify-between text-blue-gray-900 w-11/12 mx-auto">
+          <div className="flex gap-10 lg:gap-12">
           <Link onClick={handleHome} href={"/"}>
-            <Typography className="mr-4 cursor-pointer text-primary text-4xl font-bold">
+            <Typography className="mr-4 cursor-pointer text-primary text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">
             To-Leet
             </Typography>
           </Link>
+          <div className="mt-3 hidden lg:flex">
+            {
+              lang ? <Link href="/all-ads"  className="font-semibold border border-success text-primary  rounded-lg cursor-pointer px-2 py-1">All Ads</Link> : <Link href="/all-ads"  className="font-semibold border border-success  text-primary  rounded-lg cursor-pointer px-2 py-1">সকল বিজ্ঞাপন</Link>
+            }
+          </div>
+          <div className="mt-2 mb-1 lg:hidden flex">
+            {
+              lang ? <Link href="/all-ads"  className="text-primary  rounded-lg cursor-pointer border border-success px-2 py-1 text-sm">All Ads</Link> : <Link href="/all-ads"  className="text-primary  rounded-lg cursor-pointer border border-success px-1 pt-[6px] text-xs">সকল বিজ্ঞাপন</Link>
+            }
+          </div>
+          </div>
           <div className="hidden md:flex">
             {lang ? (
               <span
@@ -154,24 +183,29 @@ export default function NavBar() {
                 onClick={handleLogOut}
                 // variant="gradient"
                 size="sm"
-                className="hidden lg:inline-block text-secondary bg-gradient-to-r from-accent to-cyan-500"
+                className="hidden lg:inline-block text-gray-700 -my-2 bg-gradient-to-r from-success via-accent to-success"
               >
-                <span>LogOut</span>
+               {
+                lang ? <span>LogOut</span> :  <span>লগআউট</span>
+               }
               </Button>
             ) : (
               <Link href={"/signUp"}>
                 <Button
                   variant="gradient"
                   size="sm"
-                  className="hidden lg:inline-block text-secondary bg-gradient-to-r from-accent to-cyan-500"
+                  className="hidden lg:inline-block text-gray-700 -my-2 bg-gradient-to-r from-success via-accent to-success"
                 >
-                  <span>SignUp</span>
+                 {
+                lang ? 
+                <span>SignUp</span> : <span>সাইন আপ</span>
+              }
                 </Button>
               </Link>
             )}
             <IconButton
               variant="text"
-              className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden  text-primary"
+              className="mt-3 font-semibold ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden  text-primary"
               ripple={false}
               onClick={() => setOpenNav(!openNav)}
             >
@@ -179,7 +213,7 @@ export default function NavBar() {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
-                  className="h-6 w-6"
+                  className="h-7 w-7"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth={2}
@@ -193,7 +227,7 @@ export default function NavBar() {
               ) : (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
+                  className="h-7 w-7"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth={2}
@@ -209,24 +243,28 @@ export default function NavBar() {
           </div>
         </div>
         <MobileNav open={openNav}>
-          {navList}
+       <div className="mt-10"> {navList}</div>
           {authenticated ? (
             <Button
-              className="text-secondary bg-gradient-to-r from-accent to-cyan-500"
+              className="text-gray-700 -my-2 bg-gradient-to-r from-success via-accent to-success"
               onClick={handleLogOut}
               variant="gradient"
               size="sm"
-            >
-              <span onClick={() => setOpenNav(false)}> LogOut </span>
+            > {
+              lang ? <span onClick={() => setOpenNav(false)}>LogOut</span> :  <span onClick={() => setOpenNav(false)}>লগআউট</span>
+             }
             </Button>
           ) : (
             <Link href={"/signUp"}>
               <Button
                 variant="gradient"
                 size="sm"
-                className="w-full rounded-full mb-3 text-secondary bg-gradient-to-r from-accent to-cyan-500"
-              >
-                <span onClick={() => setOpenNav(false)}>SignUp</span>
+                className="w-full rounded-full mb-3 text-gray-700 -my-2 bg-gradient-to-r from-success via-accent to-success"
+              > 
+              {
+                lang ? 
+                <span onClick={() => setOpenNav(false)}>SignUp</span> : <span>সাইন আপ</span>
+              }
               </Button>
             </Link>
           )}
@@ -234,14 +272,14 @@ export default function NavBar() {
             {lang ? (
               <span
                 onClick={handleLanguage}
-                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded-lg cursor-pointer"
+                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded-lg cursor-pointer shadow-lg shadow-accent"
               >
                 বাংলা
               </span>
             ) : (
               <span
                 onClick={handleLanguage}
-                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded-lg cursor-pointer"
+                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded-lg cursor-pointer shadow-lg shadow-accent"
               >
                 English
               </span>

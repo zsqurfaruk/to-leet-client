@@ -41,7 +41,7 @@ const BannerBan = () => {
               ? style.bannerTextColorChange
               : style.bannerTextColor
           }
-          className="  mt-2 text-xs md:text-[16.2px] text-justify md:leading-6 lg:leading-[13px]"
+          className="mt-2 text-xs md:text-[16.2px] text-justify md:leading-6 lg:leading-[13px]"
         >
           আজই আপনার অনুসন্ধান শুরু করুন এবং আপনার স্বপ্নের বাসস্থান খুঁজে পেতে <br className="hidden lg:flex"/><br className="hidden lg:flex"/>
           আপনার যাত্রার একটি অংশ হতে দিন।
@@ -50,8 +50,8 @@ const BannerBan = () => {
           <BsArrowDownCircleFill
             className={
               filterTypeCity || filterTypeDivision
-                ? "absolute top-5 md:top-7 left-[299px] md:left-40 lg:left-[263px] w-4 h-4 md:w-5 md:h-5 text-black"
-                : "absolute top-5 md:top-7 left-[299px] md:left-40 lg:left-[263px] w-4 h-4 md:w-5 md:h-5"
+                ? "absolute top-5 md:top-7 lg:top-6 left-[299px] md:left-40 lg:left-[267px] w-4 h-4 md:w-5 md:h-5 text-black"
+                : "absolute top-5 md:top-7 lg:top-6 left-[299px] md:left-40 lg:left-[267px] w-4 h-4 md:w-5 md:h-5"
             }
           />
         

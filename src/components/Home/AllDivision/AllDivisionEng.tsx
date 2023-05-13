@@ -6,7 +6,7 @@ const AllDivisionEng = () => {
   const { divisionNameEng, setDivisionNameEng }: any = useContext(StateContext);
   console.log(divisionNameEng);
   return (
-    <div>
+    <div className="lg:-ml-4">
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-black text-sm md:text-base">
         <li>
           <label className="flex gap-2">

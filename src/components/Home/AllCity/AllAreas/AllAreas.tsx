@@ -16,6 +16,8 @@ import PopularAreaOfRangpurBan from "../../AllPopularAreas/PopularAreaOfRangpur/
 import PopularAreaOfMymBan from "../../AllPopularAreas/PopularAreaOfMymensingh/PopularAreaOfMymBan";
 import PopularAreaOfBariBan from "../../AllPopularAreas/PopularAreaOfBarisal/PopularAreaOfBariBan";
 import PopularAreaOfKhulnaBan from "../../AllPopularAreas/PopularAreaOfKhulna/PopularAreaOfKhulnaBan";
+import AllAresEng from "./AllAresEng";
+import AllAreasBan from "./AllAreasBan";
 
 const AllAreas = () => {
   const { cityName, setCityName, cityNameBan, setCityNameBan }: any =
@@ -36,67 +38,8 @@ const AllAreas = () => {
         {lang ? "Change city?" : "শহর পরিবর্তন?"}
       </h1>
 
-      {lang ? (
-        <h1 className="text-2xl mb-5 pb-1 pl-2 border-l-4 border-b-4 border-accent text-black">
-          Popular area of {cityName}{" "}
-          {(lang && cityNameBan === "ঢাকা" && "Dhaka") ||
-            (cityNameBan === "চট্টগ্রাম" && "Chittagong") ||
-            (cityNameBan === "রাজশাহী" && "Rajshahi") ||
-            (cityNameBan === "সিলেট" && "Sylhet") ||
-            (cityNameBan === "বরিশাল" && "Barisal") ||
-            (cityNameBan === "খুলনা" && "Khulna") ||
-            (cityNameBan === "রংপুর" && "Rangpur") ||
-            (cityNameBan === "ময়মনসিংহ" && "Mymensingh")}
-        </h1>
-      ) : (
-        <h1 className="text-xl mb-5 pl-2 pb-1 border-l-4 border-b-4 border-accent text-black">
-          {cityNameBan}
-          {(!lang && cityName === "Dhaka" && "ঢাকা") ||
-            (cityName === "Chittagong" && "চট্টগ্রাম") ||
-            (cityName === "Rajshahi" && "রাজশাহী") ||
-            (cityName === "Sylhet" && "সিলেট") ||
-            (cityName === "Barisal" && "বরিশাল") ||
-            (cityName === "Khulna" && "খুলনা") ||
-            (cityName === "Rangpur" && "রংপুর") ||
-            (cityName === "Mymensingh" && "ময়মনসিংহ")}{" "}
-          এর জনপ্রিয় এলাকাসমূহ
-        </h1>
-      )}
-      {lang && (cityName === "Dhaka" || cityNameBan === "ঢাকা")  && <PopularCityOfDhaka></PopularCityOfDhaka>}
-      {
-         !lang &&(cityName === "Dhaka" || cityNameBan === "ঢাকা")  && <PopularAreaOfDhakaBan></PopularAreaOfDhakaBan>
-      }
-      {lang && (cityName === "Chittagong" || cityNameBan==="চট্টগ্রাম")&& (
-        <PopularCityOfChittagong></PopularCityOfChittagong>
-      )}
-      {
-         !lang && (cityName === "Chittagong" || cityNameBan==="চট্টগ্রাম") && <PopularAreaOfChittagongBan></PopularAreaOfChittagongBan>
-      }
-      {lang && (cityName === "Rajshahi" || cityNameBan==="রাজশাহী") && (
-        <PopularCityOfRajshahi></PopularCityOfRajshahi>
-      )}
-      {!lang && (cityName === "Rajshahi" || cityNameBan==="রাজশাহী") && (
-        <PopularAreaOfRajBan></PopularAreaOfRajBan>
-      )}
-
-      {lang && (cityName === "Sylhet" || cityNameBan==="সিলেট") && <PopularCityOfSylhet></PopularCityOfSylhet>}
-      {!lang && (cityName === "Sylhet" || cityNameBan==="সিলেট") && <PopularAreaOfSylhetBan></PopularAreaOfSylhetBan>}
-
-      {lang && (cityName === "Rangpur" || cityNameBan==="রংপুর") && <PopularCityOfRangpur></PopularCityOfRangpur>}
-      {!lang && (cityName === "Rangpur" || cityNameBan==="রংপুর") && <PopularAreaOfRangpurBan></PopularAreaOfRangpurBan>}
-
-      {lang && (cityName === "Barisal" || cityNameBan==="বরিশাল") && <PopularCityOfBarisal></PopularCityOfBarisal>}
-      {!lang && (cityName === "Barisal" || cityNameBan==="বরিশাল") && <PopularAreaOfBariBan></PopularAreaOfBariBan>}
-
-      {lang && (cityName === "Khulna" || cityNameBan==="খুলনা") && <PopularCityOfKhulna></PopularCityOfKhulna>}
-      {!lang && (cityName === "Khulna" || cityNameBan==="খুলনা") && <PopularAreaOfKhulnaBan></PopularAreaOfKhulnaBan>}
-
-      {lang && (cityName === "Mymensingh" || cityNameBan==="ময়মনসিংহ")  && (
-        <PopularCityOfMymensingh></PopularCityOfMymensingh>
-      )}
-      {!lang && (cityName === "Mymensingh" || cityNameBan==="ময়মনসিংহ")  && (
-        <PopularAreaOfMymBan></PopularAreaOfMymBan>
-      )}
+       
+      {lang ? <AllAresEng></AllAresEng> : <AllAreasBan></AllAreasBan>}
     </section>
   );
 };

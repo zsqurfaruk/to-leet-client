@@ -25,7 +25,6 @@ function privateRoute(Component:any) {
           .then((data) => setTokenValidation(data?.error));
       }
     }, [router, setTokenValidation, token, tokenValidation]);
-console.log(tokenValidation)
     return token ? <Component {...props} token={token} /> : null;
   };
 }

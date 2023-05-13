@@ -6,6 +6,7 @@ export const APIContext = createContext({});
 
 const ApiContext = ({ children }: any) => {
   const [counterPosts, setCounterPosts]= useState([])
+  const [userCounter, setUserCounter]= useState([])
 //   axios.get('http://localhost:5000/api/v1/product')
 // .then(function (response: any) {
 //   // handle success
@@ -20,8 +21,14 @@ useEffect(()=>{
   .then(res=>res.json())
   .then(data=>setCounterPosts(data))
 },[])
+useEffect(()=>{
+  fetch('http://localhost:5000/api/v1/users/signup')
+  .then(res=>res.json())
+  .then(data=>setUserCounter(data?.data))
+},[])
   const info = {
     counterPosts,
+    userCounter
   };
   return <APIContext.Provider value={info}>{children}</APIContext.Provider>;
 };

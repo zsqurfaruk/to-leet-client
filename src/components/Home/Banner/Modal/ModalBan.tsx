@@ -9,7 +9,7 @@ import {
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React from "react";
 import Select from "react-select";
-import { colourOptions } from "../DataBan";
+import { colourOptions } from "./DataBan";
 
 export default function ModalBan() {
   const { handleOpenModalBan, setOpenModalBan, openModalBan }: any =
@@ -45,13 +45,13 @@ export default function ModalBan() {
             className="text-red-500 bg-red-100 font-semibold rounded px-3"
             onClick={handleOpenModalBan}
           >
-            Cancel
+            বাতিল
           </button>
           <button
             className="text-secondary bg-accent px-2 rounded font-semibold"
             onClick={handleOpenModalBan}
           >
-            Confirm
+            নিশ্চিত করুন
           </button>
         </div>
         <DialogFooter className="hidden lg:flex">
@@ -61,7 +61,7 @@ export default function ModalBan() {
             onClick={handleOpenModalBan}
             className="mr-1"
           >
-            <span>Cancel</span>
+            <span>বাতিল</span>
           </Button>
           <Button
             className={
@@ -72,7 +72,7 @@ export default function ModalBan() {
             onClick={handleOpenModalBan}
             disabled={!openModalBan?.label ? true : false}
           >
-            <span>Confirm</span>
+            <span>নিশ্চিত করুন</span>
           </Button>
         </DialogFooter>
       </Dialog>

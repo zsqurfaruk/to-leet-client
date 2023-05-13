@@ -9,7 +9,7 @@ import {
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React from "react";
 import Select from "react-select";
-import { colourOptions } from "../DataBan";
+import { colourOptions } from "./DataEng";
 
 export default function ModalEng() {
   const { handleOpenModalEng, setOpenModalEng, openModalEng }: any =
@@ -28,11 +28,11 @@ export default function ModalEng() {
         }}
       >
         <DialogHeader className="text-xl hidden lg:flex">
-          বিশ্ববিদ্যালয় এবং মেডিকেল কলেজ নির্বাচন করুন
+          Select your University or Medical College
         </DialogHeader>
         <DialogBody className="-mt-52 md:-mt-72 lg:mt-0 text-xs">
           <Select
-            placeholder="অনুসন্ধান করতে ক্লিক করুন এবং আপনার প্রয়োজন অনুযায়ী নির্বাচন করুন"
+            placeholder="Search according to your needs:"
             isSearchable
             options={colourOptions}
             onChange={setOpenModalEng}

@@ -15,13 +15,13 @@ const AllDivision = () => {
     <div className="flex items-center lg:mt-16 lg:ml-8 mx-auto lg:w-full">
      
       <div>
-      <h1
+      {/* <h1
         onClick={handlePrevious}
         className="text-secondary text-sm mb-5 lg:-ml-4 cursor-pointer hover:underline"
       >
         {lang ? "Previous?" : "পূর্ববর্তী?"}
        
-      </h1>
+      </h1> */}
         {lang ? (
           <h1
             className={

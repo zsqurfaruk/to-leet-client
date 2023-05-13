@@ -1,6 +1,9 @@
-import React from "react";
+import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
+import React,{useContext} from "react";
 
 const PopularCityOfBarisal = () => {
+  const { handlePostOpenModal, postAreaName, setPostAreaName }: any =
+  useContext(PostStateContext);
   return (
     <section>
       <div>
@@ -10,7 +13,7 @@ const PopularCityOfBarisal = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                onClick={(e: any) => setPostAreaName(e.target.name)}
                 name="Dhaka"
               />
               <span className="-mt-[2px]"> Sadar Road</span>
@@ -21,7 +24,7 @@ const PopularCityOfBarisal = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                onClick={(e: any) => setPostAreaName(e.target.name)}
                 name="Dhaka"
               />
               <span className="-mt-[2px]"> Nattullabad</span>
@@ -32,7 +35,7 @@ const PopularCityOfBarisal = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                onClick={(e: any) => setPostAreaName(e.target.name)}
                 name="Dhaka"
               />
               <span className="-mt-[2px]"> Rupatali</span>
@@ -43,7 +46,7 @@ const PopularCityOfBarisal = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                onClick={(e: any) => setPostAreaName(e.target.name)}
                 name="Dhaka"
               />
               <span className="-mt-[2px]"> Gournadi</span>
@@ -54,7 +57,7 @@ const PopularCityOfBarisal = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                onClick={(e: any) => setPostAreaName(e.target.name)}
                 name="Dhaka"
               />
               <span className="-mt-[2px]"> Nobogram Road</span>
@@ -65,7 +68,7 @@ const PopularCityOfBarisal = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
+                onClick={(e: any) => setPostAreaName(e.target.name)}
                 name="Dhaka"
               />
               <span className="-mt-[2px]"> Select others</span>
