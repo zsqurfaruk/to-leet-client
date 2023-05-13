@@ -21,7 +21,7 @@ import AllDistricts from "../AllDivision/Districts/AllDistricts/AllDistricts";
 import ModalEng from "./Modal/ModalEng";
 import ModalBan from "./Modal/ModalBan";
 import Test from "./Test";
-import FilterModal from "./Modal/FilterModal";
+import PostAreaModalEng from "./Modal/PostAreaModalEng";
 
 const Banner = () => {
   const {
@@ -89,7 +89,7 @@ const Banner = () => {
           <ModalBan></ModalBan>
         </div>
       )}
-      <FilterModal></FilterModal>
+      <PostAreaModalEng></PostAreaModalEng>
       <div className="pt-5 w-10/12 mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="lg:h-screen flex items-center mt-8 lg:-mt-16 text-white">

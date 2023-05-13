@@ -6,12 +6,13 @@ import { useContext, useState } from "react";
 import { AuthContext } from "@/Context/AuthProvider/AuthProvider";
 import axios from "axios";
 import OtpInput from "react-otp-input";
-import Loading from "../Loading/Loading";
+import Loading from "../../components/Loading/Loading";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import Link from "next/link";
 import privateRoute from "@/routes/privateRoute";
-
+import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
+import {MdOutlineLocationOn} from "react-icons/md"
 type FormValues = {
   bedNumber: number;
   bedrooms: number;
@@ -35,7 +36,7 @@ type FormValues = {
   rentType: string;
 };
 
-const AddProduct = ({ districtLocation, rentType }: any) => {
+const PostDetails = ({ districtLocation, rentType }: any) => {
   const [houseSize, setHouseSize] = useState();
   const [imageUrl1, setImageUrl1] = useState("");
   const [imageUrl2, setImageUrl2] = useState("");
@@ -44,9 +45,9 @@ const AddProduct = ({ districtLocation, rentType }: any) => {
   const [imageUrl5, setImageUrl5] = useState("");
   const [value, setValue] = useState();
   const { userInfo }: any = useContext(AuthContext);
- 
+  const {getPopularAreaName, setGetPopularAreaName, postCityNameEng, modalValue, setPostOpenModal, setPostCityNameEng}:any = useContext(PostStateContext)
   const name = userInfo.firstName + " " + userInfo.lastName;
-  console.log(name)
+  // console.log(name)
   const router = useRouter();
   const {
     formState: { errors },
@@ -110,14 +111,22 @@ const AddProduct = ({ districtLocation, rentType }: any) => {
     setHouseSize(e.target.value);
      
   };
-
+const handlePrevious =()=>{
+  setGetPopularAreaName("")
+  setPostCityNameEng("")
+  setPostOpenModal(false)
+  router.push("/add-post")
+}
   return (
     <div className="bg-white p-5 lg:w-10/12 mx-auto">
       <div>
         <div className="flex justify-between py-5">
           <h1>Fill In The Details</h1>
-          <h2> 
-            <span className="font-bold">District</span> : {districtLocation}
+          <h1 className="cursor-pointer flex" onClick={handlePrevious}><MdOutlineLocationOn className="text-accent h-6 w-6"></MdOutlineLocationOn> Change?</h1>
+          <h2 className="flex gap-8"> 
+            <span className="font-semibold">City : {postCityNameEng} </span> 
+            <span> Area: {getPopularAreaName}</span>
+            <span> Type: {modalValue}</span>
           </h2>
           <h1>Houses For Rent</h1>
         </div>
@@ -471,7 +480,7 @@ const AddProduct = ({ districtLocation, rentType }: any) => {
   );
 };
 
-export default AddProduct;
+export default PostDetails;
 
 // console.log(districtLocation);
 // const { user }: any = useContext(AuthContext);

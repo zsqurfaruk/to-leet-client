@@ -9,11 +9,13 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { StateContext } from "@/Context/StateContext/StateContext";
+import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
   const { setLanguage, language, userInfo, setCityName, setCityNameBan, setFilterTypeCity, setFilterTypeDivision }: any =
     useContext(StateContext);
+    const {setPostCityNameBan, setPostCityNameEng, setPostDivisionNameBan, setPostDivisionNameEng, setPostOpenModal}:any = useContext(PostStateContext)
   const [authenticated, setAuthenticated] = useState(false);
   const { push, pathname } = useRouter();
 
@@ -58,6 +60,8 @@ export default function NavBar() {
     setCityNameBan("");
     setFilterTypeCity(false)
     setFilterTypeDivision(false)
+    setPostCityNameBan(""), setPostCityNameEng(""), setPostDivisionNameBan(""), setPostDivisionNameEng("")
+    setPostOpenModal(false)
   };
 
   const navList = (

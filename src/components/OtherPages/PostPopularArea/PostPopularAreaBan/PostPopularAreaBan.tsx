@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { StateContext } from "@/Context/StateContext/StateContext";
 import DhaPopularAreaBan from "../PostAllPopularAres/DhaPopularArea/DhaPopularAreaBan";
 import ChittPopularAreaBan from "../PostAllPopularAres/ChittPopularArea/ChittPopularAreaBan";
 import RajPopularAreaBan from "../PostAllPopularAres/RajPopularArea/RajPopularAreaBan";

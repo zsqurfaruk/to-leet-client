@@ -6,7 +6,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { auth } from "@/Firebase/firebase.config";
+import { auth } from "@/firebase.config";
 import Loading from "@/components/Loading/Loading";
 
 export const AuthContext = createContext({});

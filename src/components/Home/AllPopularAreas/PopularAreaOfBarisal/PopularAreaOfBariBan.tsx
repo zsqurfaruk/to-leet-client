@@ -2,18 +2,30 @@ import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import React, { useState, useEffect, useContext } from "react";
 
 const PopularAreaOfBariBan = () => {
-  const { handlePostOpenModal, postAreaName, setPostAreaName, setSize , size}: any =
-    useContext(PostStateContext);
+  const {
+    handlePostOpenModal,
+    postAreaName,
+    setPostAreaName,
+    postOpenModal,
+    setPostOpenModal,
+  }: any = useContext(PostStateContext);
 
-  useEffect(() => {
-    if (postAreaName) {
-      handlePostOpenModal("xxl");
-      // setSize(null);
-    }
-  }, [handlePostOpenModal, postAreaName]);
- console.log(size)
+  // useEffect(() => {
+  //   if (postAreaName) {
+  //    handlePostOpenModal();
+  //   }
+
+  // }, [handlePostOpenModal, postAreaName, postOpenModal, setPostOpenModal]);
+
+  if (postAreaName) {
+    setPostOpenModal(true);
+  }
+
+  
+  console.log(postOpenModal);
   return (
     <section>
+      <button onClick={handlePostOpenModal}>sdfsfsf</button>
       <div>
         <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">
           <li>

@@ -28,7 +28,7 @@ const AllDistricts = () => {
   const lang = localStorage.getItem("lan");
 
   return (
-    <section  className="flex items-center lg:mt-40 lg:ml-8 mx-auto lg:w-full">
+    <section  className="lg:mt-60 lg:ml-8">
       <div>
       <h1
         onClick={handlePrevious}
