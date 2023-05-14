@@ -3,12 +3,9 @@ import React,{useContext} from "react";
 import Head from "next/head";
 import DestinationType from "@/components/Home/DestinationType/DestinationType";
 import PostCounter from "@/components/Home/PostCounter/PostCounter";
-import UserReviews from "@/components/Home/UserReviews/UserReviews";
 import Banner from "@/components/Home/Banner/Banner";
-import ContactUs from "@/components/Home/ContactUs/ContactUs";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import style from "../styles/banner.module.css"
-import Test from "@/components/Home/Banner/Test";
 import About from "@/components/About/About";
  
 

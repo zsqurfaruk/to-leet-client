@@ -1,15 +1,19 @@
 import React, { useContext } from "react";
 import privateRoute from "@/routes/privateRoute";
-import PostPopularAresBan from "@/components/OtherPages/PostPopularArea/PostPopularAreaBan/PostPopularAreaBan";
-import PostPopularAreaEng from "@/components/OtherPages/PostPopularArea/PostPopularAreaEng/PostPopularAreaEng";
 import PostAllCityEng from "@/components/OtherPages/PostAllCities/PostAllCitiesEng/PostAllCitiesEng";
-import PostAllCityBan from "@/components/OtherPages/PostAllCities/PostAllCitiesBan/PostAllCitiesBan";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import PostAllDivisionEng from "@/components/OtherPages/PostAllDivision/PostAllDivisionEng/PostAllDivisionEng";
 import PostAllDivisionBan from "@/components/OtherPages/PostAllDivision/PostAllDivisionBan/PostAllDivisionBan";
 import PostDistrictsBan from "@/components/OtherPages/PostAllDivision/PostDistricts/PostDistrictsBan/PostDistrictsBan";
 import PostDistrictsEng from "@/components/OtherPages/PostAllDivision/PostDistricts/PostDistrictsEng/PostDistrictsEng";
 import PostAreaModalEng from "@/components/Home/Banner/Modal/PostAreaModalEng";
+import DhaPopularArea from "@/components/OtherPages/PostPopularArea/PostAllPopularAres/DhaPopularArea/DhaPopularArea";
+import RajPopularAreaEng from "@/components/OtherPages/PostPopularArea/PostAllPopularAres/RajPopularArea/RajPopularAreaEng";
+import ChittPopularAreaEng from "@/components/OtherPages/PostPopularArea/PostAllPopularAres/ChittPopularArea/ChittPopularAreaEng";
+import BariPopularAreaEng from "@/components/OtherPages/PostPopularArea/PostAllPopularAres/BariPopularArea/BariPopularAreaEng";
+import KhulnaPopularAreaEng from "@/components/OtherPages/PostPopularArea/PostAllPopularAres/KhulnaPopularArea/KhulnaPopularAreaEng";
+import RangPopularAreaEng from "@/components/OtherPages/PostPopularArea/PostAllPopularAres/RangPopularArea/RangPopularAreaEng";
+import MymPopularAreaEng from "@/components/OtherPages/PostPopularArea/PostAllPopularAres/MymPopularArea/MymPopularAreaEng";
 
 const AddPost = () => {
   // const [divisionLocation, setDivisionLocation] = useState<string[]>([]);
@@ -17,7 +21,7 @@ const AddPost = () => {
   // const [rentType, setRentType] = useState("");
   const {
     postCityNameEng,
-    postCityNameBan,
+    setPostCityNameEng,
     postDivisionNameBan,
     postDivisionNameEng,
   }: any = useContext(PostStateContext);
@@ -31,86 +35,115 @@ const AddPost = () => {
   //     setDivisionLocation(newLocations.filter((lc) => lc !== e.target.name));
   //   }
   // };
+  const handlePrevious = () => {
+    setPostCityNameEng({});
+  };
   const lang = localStorage.getItem("lan");
   return (
-  <section>
-    <PostAreaModalEng></PostAreaModalEng>
+    <section>
+      <PostAreaModalEng></PostAreaModalEng>
       <div className="lg:w-6/12 md:w-10/12 md:mx-auto bg-white p-5 lg:p-14 lg:my-16">
-      
-      <div className={(postCityNameEng || postCityNameBan) && "hidden"}>
-        {lang ? (
-          <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
-            Select your city.
+        {postCityNameEng?.eng && (
+         <div>
+           <h1
+            onClick={handlePrevious}
+            className="text-secondary text-sm mb-5 cursor-pointer hover:underline"
+          >
+            {lang ? "Change city?" : "শহর পরিবর্তন?"}
           </h1>
-        ) : (
-          <h1 className="text-xl mb-5 border-l-4 border-b-4 border-accent text-black pl-2">
-            শহর নির্বাচন করুন।
+          <h1  className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
+            {
+              lang ? <span>Popular areas of {postCityNameEng.eng}:</span>: <span className="text-xl">{postCityNameEng?.ban} এর জনপ্রিয় এলাকাসমূহঃ</span>
+            }
           </h1>
+         </div>
         )}
-      </div>
-      <div>
-        <div className={lang && postCityNameBan && "hidden"}>
-          {!postCityNameEng && lang && <PostAllCityEng></PostAllCityEng>}
-        </div>
-        <div className={!lang && postCityNameEng && "hidden"}>
-          {!lang && !postCityNameBan && <PostAllCityBan></PostAllCityBan>}
-        </div>
-
-        {!postCityNameEng && postCityNameBan && !lang && (
-          <PostPopularAresBan></PostPopularAresBan>
-        )}
-        {postCityNameEng && !postCityNameBan && lang && (
-          <PostPopularAreaEng></PostPopularAreaEng>
-        )}
-        {lang && postCityNameBan && <PostPopularAreaEng></PostPopularAreaEng>}
-        {!lang && postCityNameEng && <PostPopularAresBan></PostPopularAresBan>}
-      </div>
-      <div className="mt-10">
-        <div
-          className={(postDivisionNameBan || postDivisionNameEng) && "hidden"}
-        >
+        <div className={postCityNameEng?.eng && "hidden"}>
           {lang ? (
             <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
-              Select your Division.
+              Select your city.
             </h1>
           ) : (
             <h1 className="text-xl mb-5 border-l-4 border-b-4 border-accent text-black pl-2">
-              বিভাগ নির্বাচন করুন।
+              শহর নির্বাচন করুন।
             </h1>
           )}
         </div>
-        <div className="lg:m-4">
-          <div className={lang && postDivisionNameBan && "hidden"}>
-            {lang && !postDivisionNameEng && (
-              <PostAllDivisionEng></PostAllDivisionEng>
+        <div>
+          <div>
+            {!postCityNameEng?.eng && <PostAllCityEng></PostAllCityEng>}
+          </div>
+          
+          {postCityNameEng?.eng === "Dhaka" && (
+            <DhaPopularArea></DhaPopularArea>
+          )}
+          {postCityNameEng?.eng === "Rajshahi" && (
+            <RajPopularAreaEng></RajPopularAreaEng>
+          )}
+          {postCityNameEng?.eng === "Chittagong" && (
+            <ChittPopularAreaEng></ChittPopularAreaEng>
+          )}
+          {postCityNameEng?.eng === "Barisal" && (
+            <BariPopularAreaEng></BariPopularAreaEng>
+          )}
+          {postCityNameEng?.eng === "Khulna" && (
+            <KhulnaPopularAreaEng></KhulnaPopularAreaEng>
+          )}
+          {postCityNameEng?.eng === "Rangpur" && (
+            <RangPopularAreaEng></RangPopularAreaEng>
+          )}
+          {postCityNameEng?.eng === "Mymensingh" && (
+            <MymPopularAreaEng></MymPopularAreaEng>
+          )}
+        </div>
+        <div className="mt-10">
+          <div
+            className={(postDivisionNameBan || postDivisionNameEng) && "hidden"}
+          >
+            {lang ? (
+              <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
+                Select your Division.
+              </h1>
+            ) : (
+              <h1 className="text-xl mb-5 border-l-4 border-b-4 border-accent text-black pl-2">
+                বিভাগ নির্বাচন করুন।
+              </h1>
             )}
           </div>
-          <div className={!lang && postDivisionNameEng && "hidden"}>
-            {!lang && !postDivisionNameBan && (
-              <PostAllDivisionBan></PostAllDivisionBan>
-            )}
-          </div>
-          {/* {
+          <div className="lg:m-4">
+            <div className={lang && postDivisionNameBan && "hidden"}>
+              {lang && !postDivisionNameEng && (
+                <PostAllDivisionEng></PostAllDivisionEng>
+              )}
+            </div>
+            <div className={!lang && postDivisionNameEng && "hidden"}>
+              {!lang && !postDivisionNameBan && (
+                <PostAllDivisionBan></PostAllDivisionBan>
+              )}
+            </div>
+            {/* {
             lang && postDivisionNameBan && <PostAllDivisionEng></PostAllDivisionEng>
           }
            {!lang && postDivisionNameEng && <PostAllDivisionBan></PostAllDivisionBan>} */}
+          </div>
+          {!lang && postDivisionNameBan && (
+            <PostDistrictsBan></PostDistrictsBan>
+          )}
+          {lang && postDivisionNameEng && <PostDistrictsEng></PostDistrictsEng>}
+          {!lang && postDivisionNameEng && !postDivisionNameBan && (
+            <PostDistrictsBan></PostDistrictsBan>
+          )}
+          {lang && !postDivisionNameEng && postDivisionNameBan && (
+            <PostDistrictsEng></PostDistrictsEng>
+          )}
         </div>
-        {!lang && postDivisionNameBan && <PostDistrictsBan></PostDistrictsBan>}
-        {lang && postDivisionNameEng && <PostDistrictsEng></PostDistrictsEng>}
-        {!lang && postDivisionNameEng && !postDivisionNameBan && (
-          <PostDistrictsBan></PostDistrictsBan>
-        )}
-        {lang && !postDivisionNameEng && postDivisionNameBan && (
-          <PostDistrictsEng></PostDistrictsEng>
-        )}
-      </div>
-      {/* {(!cityName || cityNameBan) && lang && <AllCity></AllCity>}
+        {/* {(!cityName || cityNameBan) && lang && <AllCity></AllCity>}
       {!cityNameBan && !lang && <AllCity></AllCity>}
       {(cityName && !cityNameBan) && lang && <AllAreas></AllAreas>}
       {(!cityName && cityNameBan) && !lang && <AllAreas></AllAreas>} */}
-      {/* {!cityName && cityNameBan  && !lang && <AllAreas></AllAreas>} */}
+        {/* {!cityName && cityNameBan  && !lang && <AllAreas></AllAreas>} */}
 
-      {/* <div className="lg:-ml-3 pb-16">
+        {/* <div className="lg:-ml-3 pb-16">
         {(!divisionNameEng || divisionNameBan) && lang && (
           <AllDivision></AllDivision>
         )}
@@ -122,8 +155,8 @@ const AddPost = () => {
             <AllDistricts></AllDistricts>
           )}
         </div> */}
-      {/* </div> */}
-      {/* <h1 className="text-2xl font-bold pb-10">Select Your Location</h1>
+        {/* </div> */}
+        {/* <h1 className="text-2xl font-bold pb-10">Select Your Location</h1>
       <div>
         <Checkbox
           onClick={(e: any) => handleDivisionLocation(e)}
@@ -595,8 +628,8 @@ const AddPost = () => {
     {
       rentType && <AddProduct rentType={rentType} districtLocation={districtLocation}></AddProduct>
     } */}
-    </div>
-  </section>
+      </div>
+    </section>
   );
 };
 

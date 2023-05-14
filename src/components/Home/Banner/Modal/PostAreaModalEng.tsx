@@ -18,16 +18,14 @@ export default function PostAreaModalEng() {
     handlePostOpenModal,
     postOpenModal,
     setPostOpenModal,
-    setGetPopularAreaName,
-    postCityNameEng,
-    getPopularAreaName
+    setGetPostPopularAreaName,
   }: any = useContext(PostStateContext);
-  console.log(postOpenModal);
 
   const handleCancel = () => {
     setPostOpenModal(false);
-    setGetPopularAreaName("");
+    setGetPostPopularAreaName({});
   };
+  const lang = localStorage.getItem("lan");
   return (
     <div>
       <Dialog
@@ -40,13 +38,10 @@ export default function PostAreaModalEng() {
           unmount: { scale: 1, y: -100 },
         }}
       >
-        {/* <DialogHeader className="text-xl hidden lg:flex mt-5 justify-evenly">
-          <span>City: {postCityNameEng}</span> <span>Area: {getPopularAreaName}</span>
-        </DialogHeader> */}
         <DialogBody className="-mt-52 md:-mt-72 lg:mt-0  text-xs">
-           <PostDestinationType></PostDestinationType>
+          <PostDestinationType></PostDestinationType>
         </DialogBody>
-      
+
         <DialogFooter className="hidden lg:flex">
           <Button
             variant="text"
@@ -54,7 +49,7 @@ export default function PostAreaModalEng() {
             onClick={handleCancel}
             className="mr-1"
           >
-            <span>বাতিল</span>
+            {lang ? <span>Cancel</span> : <span>বাতিল</span>}
           </Button>
           {/* <Button
             className={

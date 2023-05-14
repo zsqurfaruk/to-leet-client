@@ -1,42 +1,36 @@
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import React, { useContext } from "react";
 import Select from "react-select";
-import { options } from "./DataBariEng";
-import { useRouter } from "next/router";
-import PostDetails from "@/pages/add-post/post-details";
-import Link from "next/link";
+import { options } from "./DataBariBan";
+import { option } from "./DataBariEng";
+
 const BariPopularAreaEng = () => {
   const {
-    getPopularAreaName,
-    setGetPopularAreaName,
-    handlePostOpenModal,
+    getPostPopularAreaName,
+    setGetPostPopularAreaName,
     setPostOpenModal,
-    postOpenModal,
   }: any = useContext(PostStateContext);
-  const router = useRouter();
-  if (getPopularAreaName?.label) {
-    setGetPopularAreaName(getPopularAreaName?.label);
-    // router.push("/AddProduct");
-    // handlePostOpenModal();
+
+  if (getPostPopularAreaName?.label) {
+    
+    setGetPostPopularAreaName(getPostPopularAreaName);
     setPostOpenModal(true);
   }
-  // if(getPopularAreaName){
 
-  //   setPostOpenModal(true)
-  // }
+  console.log(getPostPopularAreaName.label);
+
   if (
-    getPopularAreaName === "Sadar-Road" ||
-    getPopularAreaName === "Nattullabad" ||
-    getPopularAreaName === "Rupatali" ||
-    getPopularAreaName === "Gournadi" ||
-    getPopularAreaName === "Nobogram-Road" ||
-    getPopularAreaName === "Kashipur-Bazar" ||
-    getPopularAreaName === "Amtala"
+    getPostPopularAreaName?.eng === "Sadar Road" ||
+    getPostPopularAreaName?.eng === "Nattullabad" ||
+    getPostPopularAreaName?.eng === "Rupatali" ||
+    getPostPopularAreaName?.eng === "Gournadi" ||
+    getPostPopularAreaName?.eng === "Nobogram Road" ||
+    getPostPopularAreaName?.eng === "Kashipur Bazar" ||
+    getPostPopularAreaName?.eng === "Amtala"
   ) {
     setPostOpenModal(true);
-    // router.push("/AddProduct");
   }
-  console.log(getPopularAreaName);
+  const lang = localStorage.getItem("lan");
   return (
     <section>
       <div>
@@ -47,10 +41,19 @@ const BariPopularAreaEng = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                onClick={(e: any) => setGetPopularAreaName(e.target.name)}
-                name="Sadar-Road"
+                onClick={() =>
+                  setGetPostPopularAreaName({
+                    eng: "Sadar Road",
+                    ban: "সদর রোড",
+                  })
+                }
+                // name={lang ? '' : ""}
               />
-              <span className="-mt-[2px]"> Sadar Road</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Sadar Road</span>
+              ) : (
+                <span className="-mt-[2px]"> সদর রোড</span>
+              )}
             </label>
           </li>
           {/* </Link>
@@ -60,10 +63,18 @@ const BariPopularAreaEng = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                onClick={(e: any) => setGetPopularAreaName(e.target.name)}
-                name="Nattullabad"
+                onClick={(e: any) =>
+                  setGetPostPopularAreaName({
+                    eng: "Nattullabad",
+                    ban: "নথুল্লাবাদ",
+                  })
+                }
               />
-              <span className="-mt-[2px]"> Nattullabad</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Nattullabad</span>
+              ) : (
+                <span className="-mt-[2px]"> নথুল্লাবাদ</span>
+              )}
             </label>
           </li>
           {/* </Link>
@@ -73,10 +84,15 @@ const BariPopularAreaEng = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                onClick={(e: any) => setGetPopularAreaName(e.target.name)}
-                name="Rupatali"
+                onClick={(e: any) =>
+                  setGetPostPopularAreaName({ eng: "Rupatali", ban: "রুপাতলি" })
+                }
               />
-              <span className="-mt-[2px]"> Rupatali</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Rupatali</span>
+              ) : (
+                <span className="-mt-[2px]"> রুপাতলি</span>
+              )}
             </label>
           </li>
           {/* </Link>
@@ -86,10 +102,16 @@ const BariPopularAreaEng = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                onClick={(e: any) => setGetPopularAreaName(e.target.name)}
+                onClick={() =>
+                  setGetPostPopularAreaName({ eng: "Gournadi", ban: "গৌরনদী" })
+                }
                 name="Gournadi"
               />
-              <span className="-mt-[2px]"> Gournadi</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Gournadi</span>
+              ) : (
+                <span className="-mt-[2px]"> গৌরনদী</span>
+              )}
             </label>
           </li>
           {/* </Link>
@@ -99,10 +121,18 @@ const BariPopularAreaEng = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                onClick={(e: any) => setGetPopularAreaName(e.target.name)}
-                name="Nobogram-Road"
+                onClick={(e: any) =>
+                  setGetPostPopularAreaName({
+                    eng: "Nobogram Road",
+                    ban: "নবগ্রাম রোড",
+                  })
+                }
               />
-              <span className="-mt-[2px]"> Nobogram Road</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Nobogram Road</span>
+              ) : (
+                <span className="-mt-[2px]"> নবগ্রাম রোড</span>
+              )}
             </label>
           </li>
           {/* </Link>
@@ -112,10 +142,19 @@ const BariPopularAreaEng = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                onClick={(e: any) => setGetPopularAreaName(e.target.name)}
+                onClick={() =>
+                  setGetPostPopularAreaName({
+                    eng: "Kashipur Bazar",
+                    ban: "কাসিপুর বাজার",
+                  })
+                }
                 name="Kashipur-Bazar"
               />
-              <span className="-mt-[2px]"> Kashipur Bazar</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Kashipur Bazar</span>
+              ) : (
+                <span className="-mt-[2px]"> কাসিপুর বাজার</span>
+              )}
             </label>
           </li>
           {/* </Link>
@@ -125,40 +164,75 @@ const BariPopularAreaEng = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                onClick={(e: any) => setGetPopularAreaName(e.target.name)}
+                onClick={() =>
+                  setGetPostPopularAreaName({ eng: "Amtala", ban: "আমতলা" })
+                }
                 name="Amtala"
               />
-              <span className="-mt-[2px]"> Amtala</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Amtala</span>
+              ) : (
+                <span className="-mt-[2px]"> আমতলা</span>
+              )}
             </label>
           </li>
           {/* </Link> */}
 
           <li
             className={
-              getPopularAreaName === "Select-others" ? "hidden" : "flex"
+              getPostPopularAreaName?.eng === "Select others"
+                ? "hidden"
+                : "flex"
             }
           >
             <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                onClick={(e: any) => setGetPopularAreaName(e.target.name)}
+                onClick={(e: any) =>
+                  setGetPostPopularAreaName({
+                    eng: "Select others",
+                    ban: "অন্যান্য এলাকা",
+                  })
+                }
                 name="Select-others"
               />
-              <span className="-mt-[2px]"> Select others</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Select others</span>
+              ) : (
+                <span className="-mt-[2px]"> অন্যান্য এলাকা</span>
+              )}
             </label>
           </li>
 
-          {getPopularAreaName === "Select-others" && (
-            <li>
-              <Select
-                placeholder="Search"
-                isSearchable
-                options={options}
-                onChange={setGetPopularAreaName}
-                className="bg-primary border-none text-sm h-4 text-black font-medium"
-              />
-            </li>
+          {lang ? (
+            <div>
+              {getPostPopularAreaName?.eng === "Select others" && (
+                <li>
+                  <Select
+                    placeholder="Search"
+                    isSearchable
+                    options={option}
+                    onChange={setGetPostPopularAreaName}
+                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                  />
+                </li>
+              )}
+            </div>
+          ) : (
+            <div>
+              {getPostPopularAreaName?.eng === "Select others" && (
+                <li>
+                  <Select
+                    placeholder="অনুসন্ধান"
+                    isSearchable
+                    options={options}
+                    onChange={setGetPostPopularAreaName}
+                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                  />
+                </li>
+              )}
+            </div>
           )}
         </ul>
       </div>

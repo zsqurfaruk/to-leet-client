@@ -3,23 +3,22 @@ import React, { createContext, useState } from "react";
 export const PostStateContext = createContext({});
 
 const PostInfo = ({ children }: any) => {
-  const [postCityNameBan, setPostCityNameBan] = useState("");
-  const [postCityNameEng, setPostCityNameEng] = useState("");
+  const [postCityNameEng, setPostCityNameEng] = useState({});
   const [postAreaName, setPostAreaName] = useState("");
   const [postDivisionNameBan, setPostDivisionNameBan] = useState("");
   const [postDivisionNameEng, setPostDivisionNameEng] = useState("");
-  const [getPopularAreaName, setGetPopularAreaName] = useState("");
+  const [getPostPopularAreaName, setGetPostPopularAreaName] = useState({});
   const [size, setSize] = useState(null);
-  const [postOpenModal, setPostOpenModal] = useState(false)
-  const [modalValue, setModalValue] = useState("")
-
+  const [postOpenModal, setPostOpenModal] = useState(false);
+  const [modalValue, setModalValue] = useState({});
+  const [popularAreaNameForPost, setPopularAreaNameForPost] = useState("");
   // const handlePostOpenModal = (value: any) => setSize(value);
-    const handlePostOpenModal = () => setPostOpenModal(!postOpenModal);
- console.log(postOpenModal)
- 
+  const handlePostOpenModal = () => setPostOpenModal(!postOpenModal);
+  console.log(postCityNameEng,);
+  console.log(getPostPopularAreaName,);
+
   const info = {
-    postCityNameBan,
-    setPostCityNameBan,
+    
     postCityNameEng,
     setPostCityNameEng,
     setPostAreaName,
@@ -31,9 +30,13 @@ const PostInfo = ({ children }: any) => {
     setPostDivisionNameBan,
     postDivisionNameEng,
     setPostDivisionNameEng,
-    getPopularAreaName, setGetPopularAreaName,
-    postOpenModal, setPostOpenModal,
-    modalValue, setModalValue
+    getPostPopularAreaName, setGetPostPopularAreaName,
+    postOpenModal,
+    setPostOpenModal,
+    modalValue,
+    setModalValue,
+    popularAreaNameForPost,
+    setPopularAreaNameForPost,
   };
 
   return (

@@ -1,6 +1,12 @@
-import React from "react";
+import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
+import React, { useContext } from "react";
 
 const MymPopularAreaEng = () => {
+  const { getPostPopularAreaName,setGetPostPopularAreaName,setPostOpenModal }: any = useContext(PostStateContext);
+  if (getPostPopularAreaName?.eng) {
+    setPostOpenModal(true);
+  }
+  const lang = localStorage.getItem("lan");
   return (
     <section>
       <div>
@@ -10,10 +16,18 @@ const MymPopularAreaEng = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
-                name="Dhaka"
+                onClick={() =>
+                  setGetPostPopularAreaName({
+                    eng: "Ganginar par",
+                    ban: "গাঙ্গিনার পাড়",
+                  })
+                }
               />
-              <span className="-mt-[2px]"> Ganginar par</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Ganginar par</span>
+              ) : (
+                <span className="-mt-[2px]"> গাঙ্গিনার পাড়</span>
+              )}
             </label>
           </li>
           <li>
@@ -21,10 +35,18 @@ const MymPopularAreaEng = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
-                name="Dhaka"
+                onClick={() =>
+                  setGetPostPopularAreaName({
+                    eng: "Chorpara",
+                    ban: "চরপাড়া",
+                  })
+                }
               />
-              <span className="-mt-[2px]"> Chorpara</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Chorpara</span>
+              ) : (
+                <span className="-mt-[2px]"> চরপাড়া</span>
+              )}
             </label>
           </li>
           <li>
@@ -32,10 +54,18 @@ const MymPopularAreaEng = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
-                name="Dhaka"
+                onClick={() =>
+                  setGetPostPopularAreaName({
+                    eng: "Valuka",
+                    ban: "ভালুকা",
+                  })
+                }
               />
-              <span className="-mt-[2px]"> Valuka</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Valuka</span>
+              ) : (
+                <span className="-mt-[2px]"> ভালুকা</span>
+              )}
             </label>
           </li>
           <li>
@@ -43,10 +73,18 @@ const MymPopularAreaEng = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
-                name="Dhaka"
+                onClick={() =>
+                  setGetPostPopularAreaName({
+                    eng: "Town Hall",
+                    ban: "টাউন হল",
+                  })
+                }
               />
-              <span className="-mt-[2px]"> Town Hall</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Town Hall</span>
+              ) : (
+                <span className="-mt-[2px]"> টাউন হল</span>
+              )}
             </label>
           </li>
           <li>
@@ -54,10 +92,18 @@ const MymPopularAreaEng = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
-                name="Dhaka"
+                onClick={() =>
+                  setGetPostPopularAreaName({
+                    eng: "Muktagacha",
+                    ban: "মুক্তাগাছা",
+                  })
+                }
               />
-              <span className="-mt-[2px]"> Muktagacha</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Muktagacha</span>
+              ) : (
+                <span className="-mt-[2px]"> মুক্তাগাছা</span>
+              )}
             </label>
           </li>
           <li>
@@ -65,10 +111,17 @@ const MymPopularAreaEng = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
-                name="Dhaka"
+                onClick={() =>
+                  setGetPostPopularAreaName({
+                    eng: "Select others",
+                    ban: "অন্যান্য এলাকা",
+                  })
+                }
               />
-              <span className="-mt-[2px]"> Select others</span>
+              { lang ?
+                <span className="-mt-[2px]"> Select others</span>:
+              <span className="-mt-[2px]"> অন্যান্য এলাকা</span>
+              }
             </label>
           </li>
         </ul>

@@ -1,41 +1,61 @@
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import { Card, Typography } from "@material-tailwind/react";
 import Link from "next/link";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
 const PostDestinationType = () => {
   const {
-    getPopularAreaName,
+    getPostPopularAreaName,
     postCityNameEng,
     setPostOpenModal,
     setGetPopularAreaName,
-    modalValue, setModalValue
+    setModalValue,
+    postCityNameBan,
+    modalValue,
   }: any = useContext(PostStateContext);
   const handleCancel = () => {
     setPostOpenModal(false);
     setGetPopularAreaName("");
   };
-
+  const lang = localStorage.getItem("lan");
   return (
     <div className="bg-primary  w-80 md:w-[40rem] lg:w-full -ml-24 md:-ml-44 lg:ml-0 rounded-md mt-40 lg:mt-0">
       <h1 className="flex justify-evenly text-lg pt-5">
-        {" "}
-        <span>City: {postCityNameEng}</span>
-        <span>Area: {getPopularAreaName}</span>
+        {lang ? (
+          <span>City: {postCityNameEng?.eng}</span>
+        ) : (
+          <span>শহর: {postCityNameEng?.ban}</span>
+        )}
+        {lang ? (
+          <span>Area: {getPostPopularAreaName?.eng ? <span>{getPostPopularAreaName?.eng}</span>: <span>{getPostPopularAreaName?.label}</span>} </span>
+        ) : (
+          <h2> এলাকা: {getPostPopularAreaName?.ban ? <span>{getPostPopularAreaName?.ban}</span> : <span>{getPostPopularAreaName?.label}</span>} </h2>
+        )}
       </h1>
       <div className=" p-5 grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 lg:gap-5 md:gap-2 gap-1  md:mt-8">
         <Link
           href={{
             pathname: "/add-post/post-details",
           }}
-            onClick={() => setModalValue("Bachelor-Male")}
+          onClick={() =>
+            setModalValue({
+              nameEng: "Bachelor-Male",
+              nameBan: "ব্যাচেলর (ছেলে)",
+            })
+          }
         >
-          <Card
-         
-          >
+          <Card>
             <div>
               <div>
-                <Typography className="text-center">Bachelor (Male)</Typography>
+                {lang ? (
+                  <Typography className="text-center">
+                    Bachelor (Male)
+                  </Typography>
+                ) : (
+                  <Typography className="text-center">
+                    ব্যাচেলর (ছেলে)
+                  </Typography>
+                )}
               </div>
             </div>
           </Card>
@@ -45,16 +65,25 @@ const PostDestinationType = () => {
           href={{
             pathname: "/add-post/post-details",
           }}
-            onClick={() => setModalValue("Bachelor-Female")}
+          onClick={() =>
+            setModalValue({
+              nameEng: "Bachelor-Female",
+              nameBan: "ব্যাচেলর-মেয়ে",
+            })
+          }
         >
-          <Card
-         
-          >
+          <Card>
             <div>
               <div>
-                <Typography className="text-center">
-                  Bachelor (Female)
-                </Typography>
+                {lang ? (
+                  <Typography className="text-center">
+                    Bachelor (Female)
+                  </Typography>
+                ) : (
+                  <Typography className="text-center">
+                    ব্যাচেলর (মেয়ে)
+                  </Typography>
+                )}
               </div>
             </div>
           </Card>
@@ -64,14 +93,18 @@ const PostDestinationType = () => {
           href={{
             pathname: "/add-post/post-details",
           }}
-            onClick={() => setModalValue("Sublet-Male")}
+          onClick={() =>
+            setModalValue({ nameEng: "Sublet-Male", nameBan: "সাবলেট-(ছেলে)" })
+          }
         >
-          <Card
-         
-          >
+          <Card>
             <div>
               <div>
-                <Typography className="text-center">Sublet (Male)</Typography>
+                {lang ? (
+                  <Typography className="text-center">Sublet (Male)</Typography>
+                ) : (
+                  <Typography className="text-center">সাবলেট (ছেলে)</Typography>
+                )}
               </div>
             </div>
           </Card>
@@ -80,14 +113,23 @@ const PostDestinationType = () => {
           href={{
             pathname: "/add-post/post-details",
           }}
-            onClick={() => setModalValue("Sublet-Female")}
+          onClick={() =>
+            setModalValue({
+              nameEng: "Sublet-Female",
+              nameBan: "সাবলেট-(মেয়ে)",
+            })
+          }
         >
-          <Card
-         
-          >
+          <Card>
             <div>
               <div>
-                <Typography className="text-center">Sublet (Female)</Typography>
+                {lang ? (
+                  <Typography className="text-center">
+                    Sublet (Female)
+                  </Typography>
+                ) : (
+                  <Typography className="text-center">সাবলেট (মেয়ে)</Typography>
+                )}
               </div>
             </div>
           </Card>
@@ -96,14 +138,18 @@ const PostDestinationType = () => {
           href={{
             pathname: "/add-post/post-details",
           }}
-            onClick={() => setModalValue("Family")}
+          onClick={() =>
+            setModalValue({ nameEng: "Family", nameBan: "পরিবার" })
+          }
         >
-          <Card
-         
-          >
+          <Card>
             <div>
               <div>
-                <Typography className="text-center">Family</Typography>
+                {lang ? (
+                  <Typography className="text-center">Family</Typography>
+                ) : (
+                  <Typography className="text-center">পরিবার</Typography>
+                )}
               </div>
             </div>
           </Card>
@@ -112,14 +158,18 @@ const PostDestinationType = () => {
           href={{
             pathname: "/add-post/post-details",
           }}
-            onClick={() => setModalValue("Mess-Male")}
+          onClick={() =>
+            setModalValue({ nameEng: "Mess-Male", nameBan: "মেস-(ছেলে)" })
+          }
         >
-          <Card
-         
-          >
+          <Card>
             <div className="text-center">
               <div>
-                <Typography className="text-center">Mess (Male)</Typography>
+                {lang ? (
+                  <Typography className="text-center">Mess (Male)</Typography>
+                ) : (
+                  <Typography className="text-center">মেস (ছেলে)</Typography>
+                )}
               </div>
             </div>
           </Card>
@@ -128,14 +178,18 @@ const PostDestinationType = () => {
           href={{
             pathname: "/add-post/post-details",
           }}
-            onClick={() => setModalValue("Mess-Female")}
+          onClick={() =>
+            setModalValue({ nameEng: "Mess-Female", nameBan: "মেস-(মেয়ে)" })
+          }
         >
-          <Card
-         
-          >
+          <Card>
             <div>
               <div>
-                <Typography className="text-center">Mess (Female)</Typography>
+                {lang ? (
+                  <Typography className="text-center">Mess (Female)</Typography>
+                ) : (
+                  <Typography className="text-center">মেস (মেয়ে)</Typography>
+                )}
               </div>
             </div>
           </Card>
@@ -144,14 +198,21 @@ const PostDestinationType = () => {
           href={{
             pathname: "/add-post/post-details",
           }}
-            onClick={() => setModalValue("Hostel")}
+          onClick={() =>
+            setModalValue({ nameEng: "Hostel", nameBan: "আবাসিক হোস্টেল" })
+          }
         >
-          <Card
-         
-          >
+          <Card>
             <div>
               <div>
-                <Typography className="text-center"> Hostel</Typography>
+                {lang ? (
+                  <Typography className="text-center"> Hostel</Typography>
+                ) : (
+                  <Typography className="text-center">
+                    {" "}
+                    আবাসিক হোস্টেল
+                  </Typography>
+                )}
               </div>
             </div>
           </Card>
@@ -160,14 +221,16 @@ const PostDestinationType = () => {
           href={{
             pathname: "/add-post/post-details",
           }}
-            onClick={() => setModalValue("Office")}
+          onClick={() => setModalValue({ nameEng: "Office", nameBan: "অফিস" })}
         >
-          <Card
-         
-          >
+          <Card>
             <div>
               <div>
-                <Typography className="text-center">Office</Typography>
+                {lang ? (
+                  <Typography className="text-center">Office</Typography>
+                ) : (
+                  <Typography className="text-center">অফিস</Typography>
+                )}
               </div>
             </div>
           </Card>
@@ -176,14 +239,16 @@ const PostDestinationType = () => {
           href={{
             pathname: "/add-post/post-details",
           }}
-            onClick={() => setModalValue("Shop")}
+          onClick={() => setModalValue({ nameEng: "Shop", nameBan: "দোকান" })}
         >
-          <Card
-         
-          >
+          <Card>
             <div>
               <div>
-                <Typography className="text-center">Shop</Typography>
+                {lang ? (
+                  <Typography className="text-center">Shop</Typography>
+                ) : (
+                  <Typography className="text-center">দোকান</Typography>
+                )}
               </div>
             </div>
           </Card>
@@ -192,14 +257,18 @@ const PostDestinationType = () => {
           href={{
             pathname: "/add-post/post-details",
           }}
-            onClick={() => setModalValue("Vehicles")}
+          onClick={() =>
+            setModalValue({ nameEng: "Vehicles", nameBan: "যানবাহন" })
+          }
         >
-          <Card
-         
-          >
+          <Card>
             <div>
               <div>
-                <Typography className="text-center">Vehicles</Typography>
+                {lang ? (
+                  <Typography className="text-center">Vehicles</Typography>
+                ) : (
+                  <Typography className="text-center">যানবাহন</Typography>
+                )}
               </div>
             </div>
           </Card>
@@ -208,14 +277,18 @@ const PostDestinationType = () => {
           href={{
             pathname: "/add-post/post-details",
           }}
-            onClick={() => setModalValue("Garage")}
+          onClick={() =>
+            setModalValue({ nameEng: "Garage", nameBan: "গ্যারেজ" })
+          }
         >
-          <Card
-         
-          >
+          <Card>
             <div>
               <div>
-                <Typography className="text-center">Garage</Typography>
+                {lang ? (
+                  <Typography className="text-center">Garage</Typography>
+                ) : (
+                  <Typography className="text-center">গ্যারেজ</Typography>
+                )}
               </div>
             </div>
           </Card>
@@ -226,7 +299,7 @@ const PostDestinationType = () => {
           className="text-red-500 bg-red-100 font-semibold rounded px-5 py-3"
           onClick={handleCancel}
         >
-        cancel
+          cancel
         </button>
       </div>
     </div>
