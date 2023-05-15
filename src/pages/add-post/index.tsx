@@ -14,6 +14,7 @@ import BariPopularAreaEng from "@/components/OtherPages/PostPopularArea/PostAllP
 import KhulnaPopularAreaEng from "@/components/OtherPages/PostPopularArea/PostAllPopularAres/KhulnaPopularArea/KhulnaPopularAreaEng";
 import RangPopularAreaEng from "@/components/OtherPages/PostPopularArea/PostAllPopularAres/RangPopularArea/RangPopularAreaEng";
 import MymPopularAreaEng from "@/components/OtherPages/PostPopularArea/PostAllPopularAres/MymPopularArea/MymPopularAreaEng";
+import SylPopularAreaEng from "@/components/OtherPages/PostPopularArea/PostAllPopularAres/SylPopularArea/SylPopularAreaEng";
 
 const AddPost = () => {
   // const [divisionLocation, setDivisionLocation] = useState<string[]>([]);
@@ -42,7 +43,8 @@ const AddPost = () => {
   return (
     <section>
       <PostAreaModalEng></PostAreaModalEng>
-      <div className="lg:w-6/12 md:w-10/12 md:mx-auto bg-white p-5 lg:p-14 lg:my-16">
+      <div className="lg:w-10/12 md:w-10/12 md:mx-auto  bg-white p-5 lg:p-14 lg:my-16">
+        <div className="lg:w-10/12 mx-auto">
         {postCityNameEng?.eng && (
          <div>
            <h1
@@ -80,6 +82,9 @@ const AddPost = () => {
           {postCityNameEng?.eng === "Rajshahi" && (
             <RajPopularAreaEng></RajPopularAreaEng>
           )}
+          {postCityNameEng?.eng === "Sylhet" && (
+            <SylPopularAreaEng></SylPopularAreaEng>
+          )}
           {postCityNameEng?.eng === "Chittagong" && (
             <ChittPopularAreaEng></ChittPopularAreaEng>
           )}
@@ -96,7 +101,8 @@ const AddPost = () => {
             <MymPopularAreaEng></MymPopularAreaEng>
           )}
         </div>
-        <div className="mt-10">
+        </div>
+        <div className="mt-20 lg:w-10/12 mx-auto" >
           <div
             className={(postDivisionNameBan || postDivisionNameEng) && "hidden"}
           >

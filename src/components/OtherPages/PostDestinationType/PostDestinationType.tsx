@@ -27,9 +27,9 @@ const PostDestinationType = () => {
           <span>শহর: {postCityNameEng?.ban}</span>
         )}
         {lang ? (
-          <span>Area: {getPostPopularAreaName?.eng ? <span>{getPostPopularAreaName?.eng}</span>: <span>{getPostPopularAreaName?.label}</span>} </span>
+          <span>Area: {getPostPopularAreaName?.eng} </span>
         ) : (
-          <h2> এলাকা: {getPostPopularAreaName?.ban ? <span>{getPostPopularAreaName?.ban}</span> : <span>{getPostPopularAreaName?.label}</span>} </h2>
+          <span> এলাকা: {getPostPopularAreaName?.ban} </span>
         )}
       </h1>
       <div className=" p-5 grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 lg:gap-5 md:gap-2 gap-1  md:mt-8">

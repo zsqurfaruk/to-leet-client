@@ -13,9 +13,22 @@ import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
-  const { setLanguage, language, userInfo, setCityName, setCityNameBan, setFilterTypeCity, setFilterTypeDivision }: any =
-    useContext(StateContext);
-    const {setPostCityNameBan, setPostCityNameEng, setPostDivisionNameBan, setPostDivisionNameEng, setPostOpenModal}:any = useContext(PostStateContext)
+  const {
+    setLanguage,
+    language,
+    userInfo,
+    setCityName,
+    setCityNameBan,
+    setFilterTypeCity,
+    setFilterTypeDivision,
+  }: any = useContext(StateContext);
+  const {
+    setPostCityNameEng,
+    setPostDivisionNameBan,
+    setPostDivisionNameEng,
+    setPostOpenModal,
+    setGetPostPopularAreaName,
+  }: any = useContext(PostStateContext);
   const [authenticated, setAuthenticated] = useState(false);
   const { push, pathname } = useRouter();
 
@@ -58,86 +71,85 @@ export default function NavBar() {
   const handleHome = () => {
     setCityName("");
     setCityNameBan("");
-    setFilterTypeCity(false)
-    setFilterTypeDivision(false)
-    setPostCityNameBan(""), setPostCityNameEng(""), setPostDivisionNameBan(""), setPostDivisionNameEng("")
-    setPostOpenModal(false)
+    setFilterTypeCity(false);
+    setFilterTypeDivision(false);
+    setPostCityNameEng({}),
+    setGetPostPopularAreaName({})
+      setPostDivisionNameBan(""),
+      setPostDivisionNameEng("");
+    setPostOpenModal(false);
   };
 
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <li>
-      {!authenticated && !userInfo?.email ? (
-        <div className="navbar-end">
-          {/* <Link href="/SignUp">  */}
-          <Link href="/signUp">
-            <Typography
-              as="li"
-              variant="small"
-              color="blue-gray"
-              className="p-1 font-normal"
-              onClick={() => setOpenNav(false)}
-            >
-               {
-                lang ? 
-              <Button className="w-[212px] text-gray-700 -my-2 py-1 text-[16px] bg-gradient-to-r from-success via-accent to-success">
-                Post your ads 
-              </Button> : <Button className="w-[212px] text-gray-700 -my-2 py-1 text-[16px] bg-gradient-to-r from-success via-accent to-success">
-                আপনার বিজ্ঞাপন দিন
-              </Button>
-              }
-            </Typography>
-            {/* </Link> */}
-          </Link>
-        </div>
-      ) : (
-        <div className="navbar-end">
-          {/* <Link href="/SignUp">  */}
-          <Link href="/add-post">
-            <Typography
-              as="li"
-              variant="small"
-              color="blue-gray"
-              className="p-1 font-normal"
-              onClick={() => setOpenNav(false)}
-            >
-               {
-                lang ? 
-              <Button className="w-[212px] text-gray-700 -my-2 py-1 text-[16px] bg-gradient-to-r from-success via-accent to-success">
-                Post your ads 
-              </Button> : <Button className="w-[212px] text-gray-700 -my-2 py-1 text-[16px] bg-gradient-to-r from-success via-accent to-success">
-                আপনার বিজ্ঞাপন দিন
-              </Button>
-              }
-            </Typography>
-            {/* </Link> */}
-          </Link>
-        </div>
-      )}
+        {!authenticated && !userInfo?.email ? (
+          <div className="navbar-end">
+            {/* <Link href="/SignUp">  */}
+            <Link href="/signUp">
+              <Typography
+                as="li"
+                variant="small"
+                color="blue-gray"
+                className="p-1 font-normal"
+                onClick={() => setOpenNav(false)}
+              >
+                {lang ? (
+                  <Button className="w-[212px] text-gray-700 -my-2 py-1 text-[16px] bg-gradient-to-r from-success via-accent to-success">
+                    Post your ads
+                  </Button>
+                ) : (
+                  <Button className="w-[212px] text-gray-700 -my-2 py-1 text-[16px] bg-gradient-to-r from-success via-accent to-success">
+                    আপনার বিজ্ঞাপন দিন
+                  </Button>
+                )}
+              </Typography>
+              {/* </Link> */}
+            </Link>
+          </div>
+        ) : (
+          <div className="navbar-end">
+            {/* <Link href="/SignUp">  */}
+            <Link href="/add-post">
+              <Typography
+                as="li"
+                variant="small"
+                color="blue-gray"
+                className="p-1 font-normal"
+                onClick={() => setOpenNav(false)}
+              >
+                {lang ? (
+                  <Button className="w-[212px] text-gray-700 -my-2 py-1 text-[16px] bg-gradient-to-r from-success via-accent to-success">
+                    Post your ads
+                  </Button>
+                ) : (
+                  <Button className="w-[212px] text-gray-700 -my-2 py-1 text-[16px] bg-gradient-to-r from-success via-accent to-success">
+                    আপনার বিজ্ঞাপন দিন
+                  </Button>
+                )}
+              </Typography>
+              {/* </Link> */}
+            </Link>
+          </div>
+        )}
       </li>
       <li>
-      {!authenticated && (
-        <Typography
-          as="li"
-          variant="small"
-          color="blue-gray"
-          className="p-1 font-normal"
-          ripple={false}
-          onClick={() => setOpenNav(false)}
-        >
-          <Link href="/signIn">
-            <li
-              onClick={() => setOpenNav(false)}
-              className=" text-primary"
-            >
-             {
-                lang ? 
-                <span>SignIn</span> : <span>সাইন ইন</span>
-              }
-            </li>
-          </Link>
-        </Typography>
-      )}
+        {!authenticated && (
+          <Typography
+            as="li"
+            variant="small"
+            color="blue-gray"
+            className="p-1 font-normal"
+            ripple={false}
+            onClick={() => setOpenNav(false)}
+          >
+            <Link href="/signIn">
+              <li onClick={() => setOpenNav(false)} className=" text-primary">
+                {lang ? <span>SignIn</span> : <span>সাইন ইন</span>}
+              </li>
+            </Link>
+          </Typography>
+        )}
       </li>
     </ul>
   );
@@ -147,21 +159,45 @@ export default function NavBar() {
       <Navbar className="sticky inset-0 z-10 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-75 h-max min-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4 border-none text-primary shadow-sm -mx-6">
         <div className="flex items-center justify-between text-blue-gray-900 w-11/12 mx-auto">
           <div className="flex gap-10 lg:gap-12">
-          <Link onClick={handleHome} href={"/"}>
-            <Typography className="mr-4 cursor-pointer text-primary text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">
-            To-Leet
-            </Typography>
-          </Link>
-          <div className="mt-3 hidden lg:flex">
-            {
-              lang ? <Link href="/all-ads"  className="font-semibold border border-success text-primary  rounded-lg cursor-pointer px-2 py-1">All Ads</Link> : <Link href="/all-ads"  className="font-semibold border border-success  text-primary  rounded-lg cursor-pointer px-2 py-1">সকল বিজ্ঞাপন</Link>
-            }
-          </div>
-          <div className="mt-2 mb-1 lg:hidden flex">
-            {
-              lang ? <Link href="/all-ads"  className="text-primary  rounded-lg cursor-pointer border border-success px-2 py-1 text-sm">All Ads</Link> : <Link href="/all-ads"  className="text-primary  rounded-lg cursor-pointer border border-success px-1 pt-[6px] text-xs">সকল বিজ্ঞাপন</Link>
-            }
-          </div>
+            <Link onClick={handleHome} href={"/"}>
+              <Typography className="mr-4 cursor-pointer text-primary text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">
+                To-Leet
+              </Typography>
+            </Link>
+            <div className="mt-3 hidden lg:flex">
+              {lang ? (
+                <Link
+                  href="/all-ads"
+                  className="font-semibold border border-success text-primary  rounded-lg cursor-pointer px-2 py-1"
+                >
+                  All Ads
+                </Link>
+              ) : (
+                <Link
+                  href="/all-ads"
+                  className="font-semibold border border-success  text-primary  rounded-lg cursor-pointer px-2 py-1"
+                >
+                  সকল বিজ্ঞাপন
+                </Link>
+              )}
+            </div>
+            <div className="mt-2 mb-1 lg:hidden flex">
+              {lang ? (
+                <Link
+                  href="/all-ads"
+                  className="text-primary  rounded-lg cursor-pointer border border-success px-2 py-1 text-sm"
+                >
+                  All Ads
+                </Link>
+              ) : (
+                <Link
+                  href="/all-ads"
+                  className="text-primary  rounded-lg cursor-pointer border border-success px-1 pt-[6px] text-xs"
+                >
+                  সকল বিজ্ঞাপন
+                </Link>
+              )}
+            </div>
           </div>
           <div className="hidden md:flex">
             {lang ? (
@@ -189,9 +225,7 @@ export default function NavBar() {
                 size="sm"
                 className="hidden lg:inline-block text-gray-700 -my-2 bg-gradient-to-r from-success via-accent to-success"
               >
-               {
-                lang ? <span>LogOut</span> :  <span>লগআউট</span>
-               }
+                {lang ? <span>LogOut</span> : <span>লগআউট</span>}
               </Button>
             ) : (
               <Link href={"/signUp"}>
@@ -200,10 +234,7 @@ export default function NavBar() {
                   size="sm"
                   className="hidden lg:inline-block text-gray-700 -my-2 bg-gradient-to-r from-success via-accent to-success"
                 >
-                 {
-                lang ? 
-                <span>SignUp</span> : <span>সাইন আপ</span>
-              }
+                  {lang ? <span>SignUp</span> : <span>সাইন আপ</span>}
                 </Button>
               </Link>
             )}
@@ -247,16 +278,20 @@ export default function NavBar() {
           </div>
         </div>
         <MobileNav open={openNav}>
-       <div className="mt-10"> {navList}</div>
+          <div className="mt-10"> {navList}</div>
           {authenticated ? (
             <Button
               className="text-gray-700 -my-2 bg-gradient-to-r from-success via-accent to-success"
               onClick={handleLogOut}
               variant="gradient"
               size="sm"
-            > {
-              lang ? <span onClick={() => setOpenNav(false)}>LogOut</span> :  <span onClick={() => setOpenNav(false)}>লগআউট</span>
-             }
+            >
+              {" "}
+              {lang ? (
+                <span onClick={() => setOpenNav(false)}>LogOut</span>
+              ) : (
+                <span onClick={() => setOpenNav(false)}>লগআউট</span>
+              )}
             </Button>
           ) : (
             <Link href={"/signUp"}>
@@ -264,11 +299,12 @@ export default function NavBar() {
                 variant="gradient"
                 size="sm"
                 className="w-full rounded-full mb-3 text-gray-700 -my-2 bg-gradient-to-r from-success via-accent to-success"
-              > 
-              {
-                lang ? 
-                <span onClick={() => setOpenNav(false)}>SignUp</span> : <span>সাইন আপ</span>
-              }
+              >
+                {lang ? (
+                  <span onClick={() => setOpenNav(false)}>SignUp</span>
+                ) : (
+                  <span>সাইন আপ</span>
+                )}
               </Button>
             </Link>
           )}

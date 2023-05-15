@@ -146,22 +146,13 @@ const PostDetails = ({ districtLocation, rentType }: any) => {
             )} */}
               {lang ? (
                 <span>
-                  Area: 
-                  {getPostPopularAreaName?.eng ? (
-                    <span>{getPostPopularAreaName?.eng}</span>
-                  ) : (
-                    <span>{getPostPopularAreaName?.value}</span>
-                  )} 
+                  Area:
+                  {getPostPopularAreaName?.eng}
                 </span>
               ) : (
                 <h2>
-                   
-                  এলাকা: 
-                  {getPostPopularAreaName?.ban ? (
-                    <span>{getPostPopularAreaName?.ban}</span>
-                  ) : (
-                    <span>{getPostPopularAreaName?.label}</span>
-                  )} 
+                  এলাকা:
+                  {getPostPopularAreaName?.ban}
                 </h2>
               )}
             </h2>

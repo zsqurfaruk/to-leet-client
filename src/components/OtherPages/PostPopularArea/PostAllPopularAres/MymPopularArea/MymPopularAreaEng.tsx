@@ -1,9 +1,40 @@
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import React, { useContext } from "react";
+import Select from "react-select";
+import { options } from "./DataMymBan";
+import { option } from "./DataMymEng";
 
 const MymPopularAreaEng = () => {
-  const { getPostPopularAreaName,setGetPostPopularAreaName,setPostOpenModal }: any = useContext(PostStateContext);
-  if (getPostPopularAreaName?.eng) {
+  const {
+    getPostPopularAreaName,
+    setGetPostPopularAreaName,
+    setPostOpenModal,
+  }: any = useContext(PostStateContext);
+  if (getPostPopularAreaName?.name === "eng") {
+    const newName = {
+      eng: getPostPopularAreaName?.label,
+      ban: getPostPopularAreaName?.value,
+    };
+    setGetPostPopularAreaName(newName);
+    setPostOpenModal(true);
+  } else if (getPostPopularAreaName?.name === "ban") {
+    const newName = {
+      eng: getPostPopularAreaName?.value,
+      ban: getPostPopularAreaName?.label,
+    };
+    setGetPostPopularAreaName(newName);
+    setPostOpenModal(true);
+  }
+
+  if (
+    getPostPopularAreaName?.eng === "Ganginar par" ||
+    getPostPopularAreaName?.eng === "Chorpara" ||
+    getPostPopularAreaName?.eng === "Valuka" ||
+    getPostPopularAreaName?.eng === "Town Hall" ||
+    getPostPopularAreaName?.eng === "Muktagacha" ||
+    getPostPopularAreaName?.eng === "Cantonment" ||
+    getPostPopularAreaName?.eng === "Naumahal"
+  ) {
     setPostOpenModal(true);
   }
   const lang = localStorage.getItem("lan");
@@ -113,17 +144,93 @@ const MymPopularAreaEng = () => {
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
+                    eng: "Cantonment",
+                    ban: "ক্যান্টনমেন্ট",
+                  })
+                }
+              />
+              {lang ? (
+                <span className="-mt-[2px]"> Cantonment</span>
+              ) : (
+                <span className="-mt-[2px]"> ক্যান্টনমেন্ট</span>
+              )}
+            </label>
+          </li>
+          <li>
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                onClick={() =>
+                  setGetPostPopularAreaName({
+                    eng: "Naumahal",
+                    ban: "নওমহল",
+                  })
+                }
+              />
+              {lang ? (
+                <span className="-mt-[2px]"> Naumahal</span>
+              ) : (
+                <span className="-mt-[2px]"> নওমহল</span>
+              )}
+            </label>
+          </li>
+          <li
+            className={
+              getPostPopularAreaName?.eng === "Select others"
+                ? "hidden"
+                : "flex"
+            }
+          >
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                onClick={(e: any) =>
+                  setGetPostPopularAreaName({
                     eng: "Select others",
                     ban: "অন্যান্য এলাকা",
                   })
                 }
+                name="Select-others"
               />
-              { lang ?
-                <span className="-mt-[2px]"> Select others</span>:
-              <span className="-mt-[2px]"> অন্যান্য এলাকা</span>
-              }
+              {lang ? (
+                <span className="-mt-[2px]"> Select others</span>
+              ) : (
+                <span className="-mt-[2px]"> অন্যান্য এলাকা</span>
+              )}
             </label>
           </li>
+
+          {lang ? (
+            <div>
+              {getPostPopularAreaName?.eng === "Select others" && (
+                <li>
+                  <Select
+                    placeholder="Search"
+                    isSearchable
+                    options={option}
+                    onChange={setGetPostPopularAreaName}
+                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                  />
+                </li>
+              )}
+            </div>
+          ) : (
+            <div>
+              {getPostPopularAreaName?.eng === "Select others" && (
+                <li>
+                  <Select
+                    placeholder="অনুসন্ধান"
+                    isSearchable
+                    options={options}
+                    onChange={setGetPostPopularAreaName}
+                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                  />
+                </li>
+              )}
+            </div>
+          )}
         </ul>
       </div>
     </section>

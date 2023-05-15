@@ -8,7 +8,7 @@ const PostAllCityEng = () => {
   const lang = localStorage.getItem("lan");
   return (
     <div>
-      <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-black text-sm md:text-base">
+      <ul className="grid grid-cols-2 md:grid-cols-4  gap-5 gap-y-3 text-black text-sm md:text-base">
         <li>
           <label className="flex gap-2">
             <input

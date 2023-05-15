@@ -11,13 +11,22 @@ const BariPopularAreaEng = () => {
     setPostOpenModal,
   }: any = useContext(PostStateContext);
 
-  if (getPostPopularAreaName?.label) {
-    
-    setGetPostPopularAreaName(getPostPopularAreaName);
+  if (getPostPopularAreaName?.name === "eng") {
+    const newName = {
+      eng: getPostPopularAreaName?.label,
+      ban: getPostPopularAreaName?.value,
+    };
+    setGetPostPopularAreaName(newName);
+    setPostOpenModal(true);
+  } else if (getPostPopularAreaName?.name === "ban") {
+    const newName = {
+      eng: getPostPopularAreaName?.value,
+      ban: getPostPopularAreaName?.label,
+    };
+    setGetPostPopularAreaName(newName);
     setPostOpenModal(true);
   }
 
-  console.log(getPostPopularAreaName.label);
 
   if (
     getPostPopularAreaName?.eng === "Sadar Road" ||

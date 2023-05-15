@@ -14,8 +14,8 @@ const PostInfo = ({ children }: any) => {
   const [popularAreaNameForPost, setPopularAreaNameForPost] = useState("");
   // const handlePostOpenModal = (value: any) => setSize(value);
   const handlePostOpenModal = () => setPostOpenModal(!postOpenModal);
-  console.log(postCityNameEng,);
-  console.log(getPostPopularAreaName,);
+ 
+  
 
   const info = {
     

@@ -1,12 +1,42 @@
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import React, { useContext } from "react";
+import Select from "react-select";
+import { options } from "./DataChittBan";
+import { option } from "./DataChittEng";
 
 const ChittPopularAreaEng = () => {
-  const { getPostPopularAreaName, setGetPostPopularAreaName, setPostOpenModal }: any =
-    useContext(PostStateContext);
-    if (getPostPopularAreaName?.eng) {
-      setPostOpenModal(true);
-    }
+  const {
+    getPostPopularAreaName,
+    setGetPostPopularAreaName,
+    setPostOpenModal,
+  }: any = useContext(PostStateContext);
+  if (getPostPopularAreaName?.name === "eng") {
+    const newName = {
+      eng: getPostPopularAreaName?.label,
+      ban: getPostPopularAreaName?.value,
+    };
+    setGetPostPopularAreaName(newName);
+    setPostOpenModal(true);
+  } else if (getPostPopularAreaName?.name === "ban") {
+    const newName = {
+      eng: getPostPopularAreaName?.value,
+      ban: getPostPopularAreaName?.label,
+    };
+    setGetPostPopularAreaName(newName);
+    setPostOpenModal(true);
+  }
+
+  if (
+    getPostPopularAreaName?.eng === "Agrabad" ||
+    getPostPopularAreaName?.eng === "Chawkbazar" ||
+    getPostPopularAreaName?.eng === "Kotwali" ||
+    getPostPopularAreaName?.eng === "Halishahar" ||
+    getPostPopularAreaName?.eng === "Nasirabad" ||
+    getPostPopularAreaName?.eng === "Oxygen" ||
+    getPostPopularAreaName?.eng === "Alankar"
+  ) {
+    setPostOpenModal(true);
+  }
   const lang = localStorage.getItem("lan");
   return (
     <section>
@@ -34,7 +64,10 @@ const ChittPopularAreaEng = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setGetPostPopularAreaName({ eng: "Chawkbazar", ban: "চকবাজার" })
+                  setGetPostPopularAreaName({
+                    eng: "Chawkbazar",
+                    ban: "চকবাজার",
+                  })
                 }
               />
               {lang ? (
@@ -66,7 +99,10 @@ const ChittPopularAreaEng = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setGetPostPopularAreaName({ eng: "Halishahar", ban: "হালিশহর" })
+                  setGetPostPopularAreaName({
+                    eng: "Halishahar",
+                    ban: "হালিশহর",
+                  })
                 }
               />
               {lang ? (
@@ -82,7 +118,10 @@ const ChittPopularAreaEng = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setGetPostPopularAreaName({ eng: "Nasirabad", ban: "নাসিরাবাদ" })
+                  setGetPostPopularAreaName({
+                    eng: "Nasirabad",
+                    ban: "নাসিরাবাদ",
+                  })
                 }
               />
               {lang ? (
@@ -98,11 +137,51 @@ const ChittPopularAreaEng = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
+                  setGetPostPopularAreaName({ eng: "Oxygen", ban: "অক্সিজেন" })
+                }
+              />
+              {lang ? (
+                <span className="-mt-[2px]"> Oxygen</span>
+              ) : (
+                <span className="-mt-[2px]"> অক্সিজেন</span>
+              )}
+            </label>
+          </li>
+          <li>
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                onClick={() =>
+                  setGetPostPopularAreaName({ eng: "Alankar", ban: "অলঙ্কার" })
+                }
+              />
+              {lang ? (
+                <span className="-mt-[2px]"> Alankar</span>
+              ) : (
+                <span className="-mt-[2px]"> অলঙ্কার</span>
+              )}
+            </label>
+          </li>
+
+          <li
+            className={
+              getPostPopularAreaName?.eng === "Select others"
+                ? "hidden"
+                : "flex"
+            }
+          >
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                onClick={(e: any) =>
                   setGetPostPopularAreaName({
                     eng: "Select others",
                     ban: "অন্যান্য এলাকা",
                   })
                 }
+                name="Select-others"
               />
               {lang ? (
                 <span className="-mt-[2px]"> Select others</span>
@@ -111,6 +190,36 @@ const ChittPopularAreaEng = () => {
               )}
             </label>
           </li>
+
+          {lang ? (
+            <div>
+              {getPostPopularAreaName?.eng === "Select others" && (
+                <li>
+                  <Select
+                    placeholder="Search"
+                    isSearchable
+                    options={option}
+                    onChange={setGetPostPopularAreaName}
+                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                  />
+                </li>
+              )}
+            </div>
+          ) : (
+            <div>
+              {getPostPopularAreaName?.eng === "Select others" && (
+                <li>
+                  <Select
+                    placeholder="অনুসন্ধান"
+                    isSearchable
+                    options={options}
+                    onChange={setGetPostPopularAreaName}
+                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                  />
+                </li>
+              )}
+            </div>
+          )}
         </ul>
       </div>
     </section>
