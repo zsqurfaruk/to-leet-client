@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -41,17 +42,17 @@ type FormValues = {
   cityName: object;
   type: object;
   university: object;
-  division:object;
-  districts: object
+  division: object;
+  districts: object;
 };
-const PostDetails = ({ districtLocation}: any) => {
+const PostDetails = ({ districtLocation }: any) => {
   const [houseSize, setHouseSize] = useState();
   const [imageUrl1, setImageUrl1] = useState("");
   const [imageUrl2, setImageUrl2] = useState("");
   const [imageUrl3, setImageUrl3] = useState("");
   const [imageUrl4, setImageUrl4] = useState("");
   const [imageUrl5, setImageUrl5] = useState("");
-
+  const [loading, setLoading] = useState(true);
   const { userInfo }: any = useContext(AuthContext);
   const {
     modalValue,
@@ -68,7 +69,7 @@ const PostDetails = ({ districtLocation}: any) => {
     postDistrictsName,
     setPostDistrictsName,
     postDivisionNameEng,
-    setPostDivisionNameEng
+    setPostDivisionNameEng,
   }: any = useContext(PostStateContext);
 
   const name = userInfo.firstName + " " + userInfo.lastName;
@@ -99,13 +100,12 @@ const PostDetails = ({ districtLocation}: any) => {
       email: data?.email,
       phone: data?.phone,
       terms: data?.terms,
-      district: districtLocation,
       areaName: getPostPopularAreaName,
       cityName: postCityNameEng,
       districts: postDistrictsName,
       division: postDivisionNameEng,
       type: modalValue,
-      university: getUniversityModalValue
+      university: getUniversityModalValue,
     };
     const res = await fetch("http://localhost:5000/api/v1/product", {
       method: "POST",
@@ -120,23 +120,24 @@ const PostDetails = ({ districtLocation}: any) => {
     setPostOpenModal(false);
     setGetPostPopularAreaName({});
     setPostCityNameEng({});
-    setPostDistrictsName({})
-    setPostDivisionNameEng({})
+    setPostDistrictsName({});
+    setPostDivisionNameEng({});
   };
- 
-  const imageUploadHandler = (event: any, setImg: any) => {
-    
 
+  const imageUploadHandler = (event: any, setImg: any) => {
     const imageData = new FormData();
     imageData.set("key", "c49cb06155adb366044d147043658858");
     imageData.append("image", event.target.files[0]);
     imageData.append("image", event.target.files[1]);
     imageData.append("image", event.target.files[2]);
+    imageData.append("image", event.target.files[3]);
+    imageData.append("image", event.target.files[4]);
 
     axios
       .post("https://api.imgbb.com/1/upload", imageData)
       .then(function (response) {
         setImg(response?.data?.data?.display_url);
+        setLoading(false)
         // console.log(response.data.data.display_url);
       })
       .catch(function (error) {});
@@ -550,7 +551,9 @@ const PostDetails = ({ districtLocation}: any) => {
               <div className="grid grid-cols-3 md:grid-cols-5 gap-5 md:gap-7">
                 {imageUrl1 ? (
                   <div className="relative">
-                    <img className="h-16 w-24 mt-7" src={imageUrl1} alt="" />
+                   {
+                    loading ?  <p>loading...</p> :  <img className="h-16 w-24 mt-7" src={imageUrl1} alt="" />
+                   }
                     <button
                       onClick={handleCancel}
                       className="bg-primary absolute top-7 right-1"
@@ -569,7 +572,6 @@ const PostDetails = ({ districtLocation}: any) => {
                       accept="image/*"
                       placeholder="Upload Images"
                       className="file-input file-input-primary w-full hidden"
-                      
                     />
                     <div className="mt-1">
                       <label htmlFor="file1">

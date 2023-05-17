@@ -3,7 +3,6 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 import style from "../../../styles/banner.module.css";
 import { BsArrowDownCircleFill } from "react-icons/bs";
- 
 
 const BannerEng = () => {
   const {
@@ -13,12 +12,10 @@ const BannerEng = () => {
   }: any = useContext(StateContext);
 
   return (
-    <div>
+    <div className="scale-90">
       <p
         className={
-          filterTypeDivision
-            ? "md:text-xl  text-black"
-            : "md:text-2xl "
+          filterTypeDivision ? "md:text-xl  text-black" : "md:text-2xl "
         }
       >
         {/* <p id={style.bannerTextColor} className="text-6xl font-semibold"></p>  */}
@@ -32,8 +29,7 @@ const BannerEng = () => {
         >
           Find
         </span>{" "}
-        your perfect destination with
-        <span
+        your perfect destination with <span
           id={
             filterTypeCity || filterTypeDivision
               ? style.bannerTextColorChange
@@ -44,8 +40,8 @@ const BannerEng = () => {
           To-Leet's
         </span>
         <br />
-        extensive listings for rent. 
-         {/* of apartments, houses, and mess */}
+        extensive listings for rent.
+        
       </p>
       <div className="relative">
         <p

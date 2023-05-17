@@ -10,7 +10,7 @@ const AllDivision = () => {
 
   const lang = localStorage.getItem("lan");
   return (
-    <div className="flex items-center lg:mt-16 lg:ml-8 mx-auto lg:w-full">
+    <div className="flex items-center mt-5 lg:mt-16 lg:ml-8 mx-7 md:mx-14 lg:mx-0">
      
       <div>
       {/* <h1

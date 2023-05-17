@@ -20,7 +20,7 @@ const AllDistricts = () => {
   const lang = localStorage.getItem("lan");
 
   return (
-    <section className="lg:mt-72 lg:ml-4">
+    <section className="lg:mt-72 lg:ml-4 mx-7 md:mx-14 lg:mx-0">
       
       <div>
         <h1

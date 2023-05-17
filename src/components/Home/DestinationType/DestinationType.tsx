@@ -11,7 +11,7 @@ const DestinationType = () => {
   const { filterTypeCity, filterTypeDivision }: any = useContext(StateContext);
   const lang = localStorage.getItem("lan");
   return (
-    <section className="mb-20 lg:-mt-10">
+    <section className="mb-20 mt-10 lg:-mt-10">
       {lang ? (
         <h1
           id={
@@ -30,7 +30,7 @@ const DestinationType = () => {
               ? "text-secondary"
               : style.bannerTextColor
           }
-          className="text-center text-2xl font-semibold lg:-mt-4"
+          className="text-center text-xl font-semibold lg:-mt-4"
         >
           আপনার প্রয়োজন অনুযায়ী খুজুন
         </h1>

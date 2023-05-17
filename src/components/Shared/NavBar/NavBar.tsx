@@ -163,9 +163,9 @@ export default function NavBar() {
 
   return (
     <>
-      <Navbar className="sticky inset-0 z-10 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-75 h-max min-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4 border-none text-primary shadow-sm -mx-6">
-        <div className="flex items-center justify-between text-blue-gray-900 w-11/12 mx-auto">
-          <div className="flex gap-10 lg:gap-12">
+      <Navbar className="sticky inset-0 z-10 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-75 h-max min-w-full rounded-none py-2 px-1 md:px-0 lg:px-8 lg:py-4 border-none text-primary shadow-sm">
+        <div className="flex items-center justify-between text-blue-gray-900 w-10/12  lg:w-11/12 lg:px-8 mx-auto">
+          <div className="flex gap-9 lg:gap-12">
             <Link onClick={handleHome} href={"/"}>
               <Typography className="mr-4 cursor-pointer text-primary text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">
                 To-Leet

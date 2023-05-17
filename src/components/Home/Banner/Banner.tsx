@@ -17,7 +17,7 @@ import AllAreas from "../AllCity/AllAreas/AllAreas";
 import AllDivisionEng from "../AllDivision/AllDivisionEng";
 import AllDistricts from "../AllDivision/Districts/AllDistricts/AllDistricts";
 import ModalEng from "./Modal/ModalEng";
- 
+
 import Test from "./Test";
 import PostAreaModalEng from "./Modal/PostAreaModalEng";
 
@@ -47,7 +47,6 @@ const Banner = () => {
     setFilterTypeCity(!filterTypeCity);
   };
   const handleFilterTypeDivision = () => {
-    
     setDivisionNameEng({});
     setFilterTypeDivision(!filterTypeDivision);
   };
@@ -56,12 +55,12 @@ const Banner = () => {
   return (
     <section className="pt-6">
       {lan ? (
-        <div className="flex justify-center gap-2 md:text-xl">
+        <div className="md:flex justify-center gap-2 text-lg md:text-xl mx-8 md:mx-0">
           <h1 className="cursor-pointer">
             Are you searching near your university?
           </h1>
           <h2
-            className="flex gap-2 border shadow-lg shadow-accent border-accent rounded-lg px-2 cursor-pointer"
+            className=" text-center gap-2 border shadow-lg shadow-accent border-accent rounded-lg px-2 cursor-pointer mt-2 md:mt-0"
             onClick={handleOpenModalEng}
           >
             Yes
@@ -69,13 +68,11 @@ const Banner = () => {
           <ModalEng></ModalEng>
         </div>
       ) : (
-        <div className="flex justify-center gap-2 text-sm md:text-base">
-          <h1 >
-            আপনি কি বিশ্ববিদ্যালয়ের কাছাকাছি বাসস্থান খুঁজছেন?
-          </h1>
+        <div className="md:flex md:justify-center gap-2 text-sm md:text-base mx-8 md:mx-0">
+          <h1>আপনি কি বিশ্ববিদ্যালয়ের কাছাকাছি বাসস্থান খুঁজছেন?</h1>
 
           <h2
-            className="border shadow-lg shadow-accent border-accent rounded-lg px-3 cursor-pointer text-center"
+            className="border shadow-lg shadow-accent border-accent rounded-lg px-3 cursor-pointer text-center mt-2 md:mt-0"
             onClick={handleOpenModalEng}
           >
             হ্যাঁ
@@ -85,21 +82,22 @@ const Banner = () => {
         </div>
       )}
       <PostAreaModalEng></PostAreaModalEng>
-      <div className="pt-5 w-10/12 mx-auto">
+      <div className="pt-5 lg:w-10/12 mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="lg:h-screen flex items-center mt-8 lg:-mt-16 text-white">
             <div>
-              <div className="lg:-mt-32">
+              <div className="-mt-5 lg:-mt-32 mb-5 lg:mb-0">
                 {cityName?.eng && <AllAreas></AllAreas>}
                 {/* {!cityName && cityNameBan && <AllAreas></AllAreas>} */}
-                {filterTypeCity && !cityName?.eng && (
-                  <AllCity></AllCity>
-                )}
+                {filterTypeCity && !cityName?.eng && <AllCity></AllCity>}
               </div>
-              {lan && !filterTypeCity && !cityName?.eng && <BannerEng></BannerEng>}
+              {lan && !filterTypeCity && !cityName?.eng && (
+                <BannerEng></BannerEng>
+              )}
               {!lan && !filterTypeCity && <BannerBan></BannerBan>}
 
-              <div>
+              <div className="hidden lg:block">
+                <div>
                 {lan ? (
                   <h1
                     className={
@@ -151,16 +149,76 @@ const Banner = () => {
                     />
                   </div>
                 </div>
+                </div>
               </div>
             </div>
           </div>
+          
           {divisionNameEng?.eng && filterTypeDivision && (
             <AllDistricts></AllDistricts>
           )}
+        
           {/* {divisionNameBan && <AllDivisionBan></AllDivisionBan>} */}
+          
           {filterTypeDivision && !divisionNameEng?.eng && (
             <AllDivision></AllDivision>
           )}
+         
+            <div className={"lg:hidden block"}>
+                <div>
+                {lan ? (
+                  <h1
+                    className={
+                      filterTypeCity || filterTypeDivision
+                        ? "text-black mt-5 lg:mt-10 text-2xl ml-7"
+                        : "mt-5 lg:mt-10 text-2xl ml-7"
+                    }
+                  >
+                    Search by:
+                  </h1>
+                ) : (
+                  <h1
+                    className={
+                      filterTypeCity || filterTypeDivision
+                        ? "text-black mt-5 lg:mt-10 text-xl  ml-7"
+                        : "mt-5 lg:mt-10 text-2xl ml-7 "
+                    }
+                  >
+                    অনুসন্ধান করুন :
+                  </h1>
+                )}
+                <div className="flex justify-around mt-5 ">
+                  <div
+                    className={
+                      filterTypeCity || filterTypeDivision
+                        ? "pl-2 pr-4"
+                        : "pl-2 pr-4 shadow-lg bg-accent rounded"
+                    }
+                  >
+                    <Checkbox
+                      color="teal"
+                      onClick={handleFilterTypeCity}
+                      className="flex justify-end border border-secondary defaultCheck"
+                      label={lan ? "City" : "শহর"}
+                    />
+                  </div>
+                  <div
+                    className={
+                      filterTypeCity || filterTypeDivision
+                        ? "pl-2 pr-4"
+                        : "pl-2 pr-4 shadow-lg bg-accent rounded"
+                    }
+                  >
+                    <Checkbox
+                      color="teal"
+                      onClick={handleFilterTypeDivision}
+                      className="flex justify-end border border-secondary"
+                      label={lan ? "Division" : "বিভাগ"}
+                    />
+                  </div>
+                </div>
+                </div>
+              </div>
           {!filterTypeDivision && (
             <Lottie
               className="lg:scale-110 hidden lg:flex"

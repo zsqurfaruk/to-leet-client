@@ -13,7 +13,7 @@ const BannerBan = () => {
  
   const lang = localStorage.getItem("lan");
   return (
-    <div>
+    <div className="scale-90">
       <p
         className={
           filterTypeDivision

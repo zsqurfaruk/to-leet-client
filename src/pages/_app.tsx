@@ -2,6 +2,7 @@ import Footer from "@/components/Shared/Footer/Footer";
 import NavBar from "@/components/Shared/NavBar/NavBar";
 import ApiContext from "@/Context/ApiContext/ApiContext";
 import AuthProvider from "@/Context/AuthProvider/AuthProvider";
+import FilterInfo from "@/Context/FilterContext/FilterContext";
 import NamInfo from "@/Context/NamInfo";
 import PostInfo from "@/Context/PostStateContext/PostStateContext";
 import StateInfo from "@/Context/StateContext/StateContext";
@@ -10,20 +11,22 @@ import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <PostInfo>
-      <StateInfo>
-        <ApiContext>
-          <NamInfo>
-            <AuthProvider>
-              <NavBar></NavBar>
-              <div>
-                <Component {...pageProps} />
-              </div>
-              <Footer></Footer>
-            </AuthProvider>
-          </NamInfo>
-        </ApiContext>
-      </StateInfo>
-    </PostInfo>
+    <FilterInfo>
+      <PostInfo>
+        <StateInfo>
+          <ApiContext>
+            <NamInfo>
+              <AuthProvider>
+                <NavBar></NavBar>
+                <div>
+                  <Component {...pageProps} />
+                </div>
+                <Footer></Footer>
+              </AuthProvider>
+            </NamInfo>
+          </ApiContext>
+        </StateInfo>
+      </PostInfo>
+    </FilterInfo>
   );
 }

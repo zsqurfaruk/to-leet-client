@@ -25,7 +25,7 @@ const AllDivisionName = () => {
           </label>
         </li>
         <li>
-          <label className="flex  ">
+          <label className="flex gap-2 lg:gap-0 ">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
