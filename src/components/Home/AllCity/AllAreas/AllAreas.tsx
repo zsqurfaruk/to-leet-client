@@ -1,30 +1,19 @@
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
-import PopularCityOfDhaka from "../../AllPopularAreas/PopularAreaOfDhaka/PopularAreaOfDhaka";
-import PopularCityOfChittagong from "../../AllPopularAreas/PopularAreaOfChittagong/PopularAreaOfChittagong";
-import PopularCityOfRajshahi from "../../AllPopularAreas/PopularAreaOfRajshahi/PopularAreaOfRajshahi";
-import PopularCityOfSylhet from "../../AllPopularAreas/PopularAreaOfSylhet/PopularAreaOfSylhet";
-import PopularCityOfRangpur from "../../AllPopularAreas/PopularAreaOfRangpur/PopularAreaOfRangpur";
-import PopularCityOfBarisal from "../../AllPopularAreas/PopularAreaOfBarisal/PopularAreaOfBarisal";
-import PopularCityOfKhulna from "../../AllPopularAreas/PopularAreaOfKhulna/PopularAreaOfKhulna";
-import PopularCityOfMymensingh from "../../AllPopularAreas/PopularAreaOfMymensingh/PopularAreaOfMymensingh";
-import PopularAreaOfDhakaBan from "../../AllPopularAreas/PopularAreaOfDhaka/PopularAreaOfDhakaBan";
-import PopularAreaOfChittagongBan from "../../AllPopularAreas/PopularAreaOfChittagong/PopularAreaOfChittagongBan";
-import PopularAreaOfRajBan from "../../AllPopularAreas/PopularAreaOfRajshahi/PopularAreaOfRajBan";
-import PopularAreaOfSylhetBan from "../../AllPopularAreas/PopularAreaOfSylhet/PopularAreaOfSylhetBan";
-import PopularAreaOfRangpurBan from "../../AllPopularAreas/PopularAreaOfRangpur/PopularAreaOfRangpurBan";
-import PopularAreaOfMymBan from "../../AllPopularAreas/PopularAreaOfMymensingh/PopularAreaOfMymBan";
-import PopularAreaOfBariBan from "../../AllPopularAreas/PopularAreaOfBarisal/PopularAreaOfBariBan";
-import PopularAreaOfKhulnaBan from "../../AllPopularAreas/PopularAreaOfKhulna/PopularAreaOfKhulnaBan";
-import AllAresEng from "./AllAresEng";
-import AllAreasBan from "./AllAreasBan";
+import PopularAreaOfBarishal from "../../AllPopularAreas/PopularAreaOfBarisal/PopularAreaOfBarisal";
+import PopularAreaOfChit from "../../AllPopularAreas/PopularAreaOfChittagong/PopularAreaOfChittagong";
+import PopularAreaOfDhaka from "../../AllPopularAreas/PopularAreaOfDhaka/PopularAreaOfDhaka";
+import PopularAreaOfKhulna from "../../AllPopularAreas/PopularAreaOfKhulna/PopularAreaOfKhulna";
+import PopularAreaOfMym from "../../AllPopularAreas/PopularAreaOfMymensingh/PopularAreaOfMymensingh";
+import PopularAreaOfRajshahi from "../../AllPopularAreas/PopularAreaOfRajshahi/PopularAreaOfRajshahi";
+import PopularAreaOfRangpur from "../../AllPopularAreas/PopularAreaOfRangpur/PopularAreaOfRangpur";
+import FilterModal from "../../Banner/Modal/FilterModal";
 
 const AllAreas = () => {
-  const { cityName, setCityName, cityNameBan, setCityNameBan }: any =
-    useContext(StateContext);
+  const { cityName, setCityName, setHomePopularAreaName }: any = useContext(StateContext);
   const handlePrevious = () => {
-    setCityName("");
-    setCityNameBan("");
+    setCityName({});
+    setHomePopularAreaName({})
   };
 
   const lang = localStorage.getItem("lan");
@@ -37,9 +26,34 @@ const AllAreas = () => {
       >
         {lang ? "Change city?" : "শহর পরিবর্তন?"}
       </h1>
-
-       
-      {lang ? <AllAresEng></AllAresEng> : <AllAreasBan></AllAreasBan>}
+      <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
+        {lang ? (
+          <span>Popular areas of {cityName?.eng}:</span>
+        ) : (
+          <span className="text-xl">{cityName?.ban} এর জনপ্রিয় এলাকাসমূহঃ</span>
+        )}
+      </h1>
+      <FilterModal></FilterModal>
+      {cityName?.eng === "Dhaka" && <PopularAreaOfDhaka></PopularAreaOfDhaka>}
+      {cityName?.eng === "Rajshahi" && (
+        <PopularAreaOfRajshahi></PopularAreaOfRajshahi>
+      )}
+      {cityName?.eng === "Chittagong" && (
+        <PopularAreaOfChit></PopularAreaOfChit>
+      )}
+      {cityName?.eng === "Barisal" && (
+        <PopularAreaOfBarishal></PopularAreaOfBarishal>
+      )}
+      {cityName?.eng === "Khulna" && (
+        <PopularAreaOfKhulna></PopularAreaOfKhulna>
+      )}
+      {cityName?.eng === "Rangpur" && (
+        <PopularAreaOfRangpur></PopularAreaOfRangpur>
+      )}
+      {cityName?.eng === "Sylhet" && (
+        <PopularAreaOfRangpur></PopularAreaOfRangpur>
+      )}
+      {cityName?.eng === "Mymensingh" && <PopularAreaOfMym></PopularAreaOfMym>}
     </section>
   );
 };

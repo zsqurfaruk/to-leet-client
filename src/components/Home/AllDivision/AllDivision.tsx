@@ -1,8 +1,6 @@
 import { StateContext } from "@/Context/StateContext/StateContext";
-import { Checkbox } from "@material-tailwind/react";
-import React, { useContext, useState } from "react";
-import AllDivisionEng from "./AllDivisionEng";
-import AllDivisionBan from "./AllDivisionBan";
+import React, { useContext  } from "react";
+import AllDivisionName from "./AllDivisionEng";
 
 const AllDivision = () => {
   const { filterTypeCity, setFilterTypeDivision }: any = useContext(StateContext);
@@ -45,11 +43,7 @@ const AllDivision = () => {
           </h1>
         )}
         <div>
-          {lang ? (
-            <AllDivisionEng></AllDivisionEng>
-          ) : (
-            <AllDivisionBan></AllDivisionBan>
-          )}
+          <AllDivisionName></AllDivisionName>
         </div>
       </div>
     </div>

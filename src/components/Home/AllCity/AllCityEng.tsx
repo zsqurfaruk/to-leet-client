@@ -1,21 +1,25 @@
 import React, { useContext } from "react";
 import { StateContext } from "@/Context/StateContext/StateContext";
-import { Checkbox } from "@material-tailwind/react";
 
 const AllCityEng = () => {
   const { setCityName }: any = useContext(StateContext);
+  const lang = localStorage.getItem("lan")
   return (
     <div>
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-black text-sm md:text-base">
-        <li>
+      <li>
           <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={(e: any) => setCityName(e.target.name)}
-              name="Dhaka"
+              onClick={() => setCityName({ eng: "Dhaka", ban: "ঢাকা" })}
+              // name="Dhaka"
             />
-            <span className="-mt-[2px]"> Dhaka City</span>
+            {lang ? (
+              <span className="-mt-[2px]"> Dhaka City</span>
+            ) : (
+              <span className="-mt-[2px]"> ঢাকা শহর</span>
+            )}
           </label>
         </li>
         <li>
@@ -23,10 +27,16 @@ const AllCityEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={(e: any) => setCityName(e.target.name)}
-              name="Chittagong"
+              onClick={() =>
+                setCityName({ eng: "Chittagong", ban: "চট্টগ্রাম" })
+              }
+              // name="Chittagong"
             />
-            <span className="-mt-[2px]"> Chittagong City</span>
+            {lang ? (
+              <span className="-mt-[2px]"> Chittagong City</span>
+            ) : (
+              <span className="-mt-[2px]"> চট্টগ্রাম শহর</span>
+            )}
           </label>
         </li>
         <li>
@@ -34,10 +44,16 @@ const AllCityEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={(e: any) => setCityName(e.target.name)}
-              name="Rajshahi"
+              onClick={() =>
+                setCityName({ eng: "Rajshahi", ban: "রাজশাহী" })
+              }
+              // name="Rajshahi"
             />
-            <span className="-mt-[2px]"> Rajshahi City</span>
+            {lang ? (
+              <span className="-mt-[2px]"> Rajshahi City</span>
+            ) : (
+              <span className="-mt-[2px]"> রাজশাহী শহর</span>
+            )}
           </label>
         </li>
         <li>
@@ -45,10 +61,16 @@ const AllCityEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={(e: any) => setCityName(e.target.name)}
-              name="Sylhet"
+              onClick={(e: any) =>
+                setCityName({ eng: "Sylhet", ban: "সিলেট" })
+              }
+              // name="Sylhet"
             />
-            <span className="-mt-[2px]"> Sylhet City</span>
+            {lang ? (
+              <span className="-mt-[2px]"> Sylhet City</span>
+            ) : (
+              <span className="-mt-[2px]"> সিলেট শহর</span>
+            )}
           </label>
         </li>
         <li>
@@ -56,10 +78,16 @@ const AllCityEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={(e: any) => setCityName(e.target.name)}
-              name="Barisal"
+              onClick={() =>
+                setCityName({ eng: "Barisal", ban: "বরিশাল" })
+              }
+              // name="Barisal"
             />
-            <span className="-mt-[2px]"> Barisal City</span>
+            {lang ? (
+              <span className="-mt-[2px]"> Barisal City</span>
+            ) : (
+              <span className="-mt-[2px]"> বরিশাল শহর</span>
+            )}
           </label>
         </li>
         <li>
@@ -67,10 +95,16 @@ const AllCityEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={(e: any) => setCityName(e.target.name)}
-              name="Khulna"
+              onClick={() =>
+                setCityName({ eng: "Khulna", ban: "খুলনা" })
+              }
+            
             />
-            <span className="-mt-[2px]"> Khulna City</span>
+            {lang ? (
+              <span className="-mt-[2px]"> Khulna City</span>
+            ) : (
+              <span className="-mt-[2px]"> খুলনা শহর</span>
+            )}
           </label>
         </li>
         <li>
@@ -78,10 +112,16 @@ const AllCityEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={(e: any) => setCityName(e.target.name)}
-              name="Rangpur"
+              onClick={() =>
+                setCityName({ eng: "Rangpur", ban: "রংপুর" })
+              }
+             
             />
-            <span className="-mt-[2px]"> Rangpur City</span>
+            {lang ? (
+              <span className="-mt-[2px]"> Rangpur City</span>
+            ) : (
+              <span className="-mt-[2px]"> রংপুর শহর</span>
+            )}
           </label>
         </li>
         <li>
@@ -89,10 +129,16 @@ const AllCityEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={(e: any) => setCityName(e.target.name)}
-              name="Mymensingh"
+              onClick={() =>
+                setCityName({ eng: "Mymensingh", ban: "ময়মনসিংহ" })
+              }
+             
             />
-            <span className="-mt-[2px]"> Mymensingh City</span>
+            {lang ? (
+              <span className="-mt-[2px]"> Mymensingh City</span>
+            ) : (
+              <span className="-mt-[2px]"> ময়মনসিংহ শহর</span>
+            )}
           </label>
         </li>
       </ul>

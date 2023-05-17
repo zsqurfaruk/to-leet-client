@@ -1,10 +1,8 @@
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
-import { StateContext } from "@/Context/StateContext/StateContext";
-import { Checkbox } from "@material-tailwind/react";
 import React, { useContext } from "react";
 
 const PostAllDivisionEng = () => {
-  const { postDivisionNameEng, setPostDivisionNameEng }: any =
+  const { setPostDivisionNameEng }: any =
     useContext(PostStateContext);
   const lang = localStorage.getItem("lan");
   return (

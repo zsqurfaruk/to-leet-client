@@ -13,7 +13,6 @@ import AdditionalInfoPostPage from "@/components/AdditionalInfoPostPage/Addition
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import ModalEng from "@/components/Home/Banner/Modal/ModalEng";
 import { StateContext } from "@/Context/StateContext/StateContext";
-import ModalBan from "@/components/Home/Banner/Modal/ModalBan";
 import PostModal from "@/components/OtherPages/PostModal/PostModal";
 import { BsImage } from "react-icons/bs";
 import { RxCrossCircled } from "react-icons/rx";
@@ -126,7 +125,7 @@ const PostDetails = ({ districtLocation}: any) => {
   };
  
   const imageUploadHandler = (event: any, setImg: any) => {
-    // console.log(event.target.files[0]);
+    
 
     const imageData = new FormData();
     imageData.set("key", "c49cb06155adb366044d147043658858");

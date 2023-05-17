@@ -26,10 +26,10 @@ const DhaPopularArea = () => {
   if (
     getPostPopularAreaName?.eng === "Mirpur" ||
     getPostPopularAreaName?.eng === "Uttara" ||
-    getPostPopularAreaName?.eng === "Mohammadpur" ||
+    getPostPopularAreaName?.eng === "New Market" ||
     getPostPopularAreaName?.eng === "Savar" ||
-    getPostPopularAreaName?.eng === "Jatrabari" ||
-    getPostPopularAreaName?.eng === "Oxygen" ||
+    getPostPopularAreaName?.eng === "Mohakhali" ||
+    getPostPopularAreaName?.eng === "Farmgate" ||
     getPostPopularAreaName?.eng === "Alankar"
   ) {
     setPostOpenModal(true);

@@ -1,12 +1,14 @@
 import axios from "axios";
 import { GetStaticProps } from "next";
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState,useContext } from "react";
+import { StateContext } from "../StateContext/StateContext";
 
 export const APIContext = createContext({});
 
 const ApiContext = ({ children }: any) => {
   const [counterPosts, setCounterPosts]= useState([])
   const [userCounter, setUserCounter]= useState([])
+  const {filterModal}:any = useContext(StateContext)
 //   axios.get('http://localhost:5000/api/v1/product')
 // .then(function (response: any) {
 //   // handle success
@@ -26,9 +28,13 @@ useEffect(()=>{
   .then(res=>res.json())
   .then(data=>setUserCounter(data?.data))
 },[])
+const handleFilter =()=>{
+  counterPosts.filter((lc)=> lc === filterModal )
+}
   const info = {
     counterPosts,
-    userCounter
+    userCounter,
+    handleFilter
   };
   return <APIContext.Provider value={info}>{children}</APIContext.Provider>;
 };

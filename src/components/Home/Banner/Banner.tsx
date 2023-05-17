@@ -11,15 +11,13 @@ import AllCity from "../AllCity/AllCity";
 import AllDivision from "../AllDivision/AllDivision";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import { useIntl } from "react-intl";
-import AllCityBangla from "../AllCity/AllCityBangla";
 import BannerBan from "./BannerBan";
 import BannerEng from "./BannerEng";
 import AllAreas from "../AllCity/AllAreas/AllAreas";
 import AllDivisionEng from "../AllDivision/AllDivisionEng";
-import AllDivisionBan from "../AllDivision/AllDivisionBan";
 import AllDistricts from "../AllDivision/Districts/AllDistricts/AllDistricts";
 import ModalEng from "./Modal/ModalEng";
-import ModalBan from "./Modal/ModalBan";
+ 
 import Test from "./Test";
 import PostAreaModalEng from "./Modal/PostAreaModalEng";
 
@@ -31,8 +29,6 @@ const Banner = () => {
     setFilterTypeDivision,
     cityName,
     setCityName,
-    cityNameBan,
-    setCityNameBan,
     divisionNameEng,
     divisionNameBan,
     setDivisionNameBan,
@@ -47,13 +43,12 @@ const Banner = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   const handleFilterTypeCity = () => {
-    setCityName("");
-    setCityNameBan("");
+    setCityName({});
     setFilterTypeCity(!filterTypeCity);
   };
   const handleFilterTypeDivision = () => {
-    setDivisionNameBan("");
-    setDivisionNameEng("");
+    
+    setDivisionNameEng({});
     setFilterTypeDivision(!filterTypeDivision);
   };
   const lan = localStorage.getItem("lan");
@@ -81,12 +76,12 @@ const Banner = () => {
 
           <h2
             className="border shadow-lg shadow-accent border-accent rounded-lg px-3 cursor-pointer text-center"
-            onClick={handleOpenModalBan}
+            onClick={handleOpenModalEng}
           >
             হ্যাঁ
           </h2>
 
-          <ModalBan></ModalBan>
+          <ModalEng></ModalEng>
         </div>
       )}
       <PostAreaModalEng></PostAreaModalEng>
@@ -95,13 +90,13 @@ const Banner = () => {
           <div className="lg:h-screen flex items-center mt-8 lg:-mt-16 text-white">
             <div>
               <div className="lg:-mt-32">
-                {cityName && !cityNameBan && <AllAreas></AllAreas>}
-                {!cityName && cityNameBan && <AllAreas></AllAreas>}
-                {filterTypeCity && !cityName && !cityNameBan && (
+                {cityName?.eng && <AllAreas></AllAreas>}
+                {/* {!cityName && cityNameBan && <AllAreas></AllAreas>} */}
+                {filterTypeCity && !cityName?.eng && (
                   <AllCity></AllCity>
                 )}
               </div>
-              {lan && !filterTypeCity && !cityName && <BannerEng></BannerEng>}
+              {lan && !filterTypeCity && !cityName?.eng && <BannerEng></BannerEng>}
               {!lan && !filterTypeCity && <BannerBan></BannerBan>}
 
               <div>
@@ -159,11 +154,11 @@ const Banner = () => {
               </div>
             </div>
           </div>
-          {(divisionNameEng || divisionNameBan) && filterTypeDivision && (
+          {divisionNameEng?.eng && filterTypeDivision && (
             <AllDistricts></AllDistricts>
           )}
           {/* {divisionNameBan && <AllDivisionBan></AllDivisionBan>} */}
-          {filterTypeDivision && !divisionNameBan && !divisionNameEng && (
+          {filterTypeDivision && !divisionNameEng?.eng && (
             <AllDivision></AllDivision>
           )}
           {!filterTypeDivision && (

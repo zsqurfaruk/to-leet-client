@@ -1,7 +1,13 @@
+import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
+import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 
 const DistrictsOfBarisal = () => {
-  // const {setDistrictLocation}:any= useContext(StateContext)
+  const { setDistrictsName, districtsName, setFilterModal}: any = useContext(StateContext);
+  if (districtsName?.eng) {
+    setFilterModal(true);
+  }
+  const lang = localStorage.getItem("lan");
   return (
     <div>
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">
@@ -10,9 +16,15 @@ const DistrictsOfBarisal = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Barguna"
+              onClick={() =>
+                setDistrictsName({ eng: "Barguna", ban: "বরগুনা" })
+              }
             />
-            <span className="-mt-[2px]">Barguna</span>
+            {lang ? (
+              <span className="-mt-[2px]">Barguna</span>
+            ) : (
+              <span className="-mt-[2px]">বরগুনা</span>
+            )}
           </label>
         </li>
         <li>
@@ -20,9 +32,15 @@ const DistrictsOfBarisal = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Barisal"
+              onClick={() =>
+                setDistrictsName({ eng: "Barisal", ban: "বরিশাল" })
+              }
             />
-            <span className="-mt-[2px]">Barisal</span>
+            {lang ? (
+              <span className="-mt-[2px]">Barisal</span>
+            ) : (
+              <span className="-mt-[2px]">বরিশাল</span>
+            )}
           </label>
         </li>
         <li>
@@ -30,9 +48,15 @@ const DistrictsOfBarisal = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Bhola"
+              onClick={() =>
+                setDistrictsName({ eng: "Bhola", ban: "ভোলা" })
+              }
             />
-            <span className="-mt-[2px]">Bhola</span>
+            {lang ? (
+              <span className="-mt-[2px]">Bhola</span>
+            ) : (
+              <span className="-mt-[2px]">ভোলা</span>
+            )}
           </label>
         </li>
 
@@ -41,9 +65,15 @@ const DistrictsOfBarisal = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Jhalokati"
+              onClick={() =>
+                setDistrictsName({ eng: "Jhalokati", ban: "ঝালকাঠি" })
+              }
             />
-            <span className="-mt-[2px]">Jhalokati</span>
+            {lang ? (
+              <span className="-mt-[2px]">Jhalokati</span>
+            ) : (
+              <span className="-mt-[2px]">ঝালকাঠি</span>
+            )}
           </label>
         </li>
         <li>
@@ -51,9 +81,15 @@ const DistrictsOfBarisal = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Patuakhali"
+              onClick={() =>
+                setDistrictsName({ eng: "Patuakhali", ban: "পটুয়াখালী" })
+              }
             />
-            <span className="-mt-[2px]">Patuakhali</span>
+            {lang ? (
+              <span className="-mt-[2px]">Patuakhali</span>
+            ) : (
+              <span className="-mt-[2px]">পটুয়াখালী</span>
+            )}
           </label>
         </li>
         <li>
@@ -61,11 +97,16 @@ const DistrictsOfBarisal = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Pirojpur"
-              // onClick={(e: any) => setDistrictLocation(e.target.name)}
+              onClick={() =>
+                setDistrictsName({ eng: "Pirojpur", ban: "পিরোজপুর" })
+              }
             />
-            <span className="-mt-[2px]">Pirojpur</span>
-          </label>{" "}
+            {lang ? (
+              <span className="-mt-[2px]">Pirojpur</span>
+            ) : (
+              <span className="-mt-[2px]">পিরোজপুর</span>
+            )}
+          </label>
         </li>
       </ul>
     </div>

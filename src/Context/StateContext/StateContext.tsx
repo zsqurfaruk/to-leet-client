@@ -4,30 +4,23 @@ export const StateContext = createContext({});
 
 const StateInfo = ({ children }: any) => {
   const [tokenValidation, setTokenValidation] = useState("");
-  const [filterTypeCity, setFilterTypeCity] = useState(false)
-  const [filterTypeDivision, setFilterTypeDivision] = useState(false)
-  const [cityName, setCityName] = useState("")
-  const [cityNameBan, setCityNameBan] = useState("")
-  const [divisionNameEng, setDivisionNameEng] = useState("");
-  const [divisionNameBan, setDivisionNameBan] = useState("");
+  const [filterTypeCity, setFilterTypeCity] = useState(false);
+  const [filterTypeDivision, setFilterTypeDivision] = useState(false);
+  const [cityName, setCityName] = useState({});
+  const [homePopularAreaName, setHomePopularAreaName] = useState({});
+  const [divisionNameEng, setDivisionNameEng] = useState({});
+  const [districtsName, setDistrictsName] = useState({});
   const [previous, setPrevious] = useState("");
   const [language, setLanguage] = useState("");
   const [districtLocation, setDistrictLocation] = useState("");
-  const [openModalBan, setOpenModalBan] = useState(false);
   const [openModalEng, setOpenModalEng] = useState(false);
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [typeCount, setTypeCount] = useState([])
- 
-  const handleOpenModalEng = () => setOpenModalEng(!openModalEng);
-  const handleOpenModalBan = () => setOpenModalBan(!openModalBan);
-  // const [open, setOpen] = useState<boolean>(false);
+  const [openModalValue, setOpenModalValue] = useState({});
+  const [filterModal, setFilterModal] = useState(false);
+  const [filterModalValue, setFilterModalValue] = useState({});
+  const [typeCount, setTypeCount] = useState([]);
 
-  // const handleClickOpen = () => {
-  //   setIsOpen(true);
-  //   console.log("jkjkj")
-  // };
-  // const [size, setSize] = useState(null);
-  // const handleOpen = (value:any) => setSize(value);
+  const handleOpenModalEng = () => setOpenModalEng(!openModalEng);
+  const handleFilterModal = () => setFilterModal(!filterModal);
   const info = {
     tokenValidation,
     setTokenValidation,
@@ -41,22 +34,23 @@ const StateInfo = ({ children }: any) => {
     previous,
     setLanguage,
     language,
-    setCityNameBan,
-    cityNameBan,
+    homePopularAreaName,
+    setHomePopularAreaName,
     divisionNameEng,
     setDivisionNameEng,
-    setDivisionNameBan,
-    divisionNameBan,
     setDistrictLocation,
     districtLocation,
     setOpenModalEng,
     openModalEng,
     handleOpenModalEng,
-    openModalBan,
-    setOpenModalBan,
-    handleOpenModalBan,
-    typeCount, setTypeCount
-
+    openModalValue, setOpenModalValue,
+    typeCount,
+    setTypeCount,
+    districtsName,
+    setDistrictsName,
+    handleFilterModal,
+    filterModal, setFilterModal,
+    filterModalValue, setFilterModalValue
   };
   return <StateContext.Provider value={info}>{children}</StateContext.Provider>;
 };

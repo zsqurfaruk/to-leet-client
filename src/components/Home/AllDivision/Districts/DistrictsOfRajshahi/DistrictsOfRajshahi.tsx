@@ -2,101 +2,139 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 
 const DistrictsOfRajshahi = () => {
-  const { setDistrictLocation }: any = useContext(StateContext);
+  const { setDistrictsName, districtsName, setFilterModal }: any =
+    useContext(StateContext);
+  if (districtsName?.eng) {
+    setFilterModal(true);
+  }
+  const lang = localStorage.getItem("lan");
   return (
     <div>
       {" "}
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">
         {" "}
         <li>
-        <label className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Rajshahi"
+              onClick={() =>
+                setDistrictsName({ eng: "Rajshahi", ban: "রাজশাহী" })
+              }
             />
-            <span className="-mt-[2px]">Rajshahi</span>
+            {lang ? (
+              <span className="-mt-[2px]">Rajshahi</span>
+            ) : (
+              <span className="-mt-[2px]">রাজশাহী</span>
+            )}
           </label>
-       
         </li>
         <li>
-        <label className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Sirajganj"
+              onClick={() =>
+                setDistrictsName({ eng: "Sirajganj", ban: "সিরাজগঞ্জ" })
+              }
             />
-            <span className="-mt-[2px]">Sirajganj</span>
+            {lang ? (
+              <span className="-mt-[2px]">Sirajganj</span>
+            ) : (
+              <span className="-mt-[2px]">সিরাজগঞ্জ</span>
+            )}
           </label>
-        
         </li>
         <li>
-        <label className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Pabna"
+              onClick={() => setDistrictsName({ eng: "Pabna", ban: "পাবনা" })}
             />
-            <span className="-mt-[2px]">Pabna</span>
+            {lang ? (
+              <span className="-mt-[2px]">Pabna</span>
+            ) : (
+              <span className="-mt-[2px]">পাবনা</span>
+            )}
           </label>
-       
         </li>
         <li>
-        <label className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Bogra"
+              onClick={() => setDistrictsName({ eng: "Bogra", ban: "বগুড়া" })}
             />
-            <span className="-mt-[2px]">Bogra</span>
+            {lang ? (
+              <span className="-mt-[2px]">Bogra</span>
+            ) : (
+              <span className="-mt-[2px]">বগুড়া</span>
+            )}
           </label>
-         
-          
-        </li>
-       
-        <li>
-        <label className="flex gap-2">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Joypurhat"
-            />
-            <span className="-mt-[2px]">Joypurhat</span>
-          </label>
-         
         </li>
         <li>
-        <label className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Naogaon"
+              onClick={() =>
+                setDistrictsName({ eng: "Joypurhat", ban: "জয়পুরহাট" })
+              }
             />
-            <span className="-mt-[2px]">Naogaon</span>
+            {lang ? (
+              <span className="-mt-[2px]">Joypurhat</span>
+            ) : (
+              <span className="-mt-[2px]">জয়পুরহাট</span>
+            )}
           </label>
-        
         </li>
         <li>
-        <label className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Natore"
+              onClick={() => setDistrictsName({ eng: "Naogaon", ban: "নওগাঁ" })}
             />
-            <span className="-mt-[2px]">Natore</span>
+            {lang ? (
+              <span className="-mt-[2px]">Naogaon</span>
+            ) : (
+              <span className="-mt-[2px]">নওগাঁ</span>
+            )}
           </label>
-         
         </li>
         <li>
-        <label className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Chapainawabganj"
+              onClick={() => setDistrictsName({ eng: "Natore", ban: "নাটোর" })}
             />
-            <span className="-mt-[2px]">Chapainawabganj</span>
+            {lang ? (
+              <span className="-mt-[2px]">Natore</span>
+            ) : (
+              <span className="-mt-[2px]">নাটোর</span>
+            )}
           </label>
-         
+        </li>
+        <li>
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              onClick={() =>
+                setDistrictsName({
+                  eng: "Chapainawabganj",
+                  ban: "চাঁপাইনবাবগঞ্জ",
+                })
+              }
+            />
+            {lang ? (
+              <span className="-mt-[2px]">Chapainawabganj</span>
+            ) : (
+              <span className="-mt-[2px]">চাঁপাইনবাবগঞ্জ</span>
+            )}
+          </label>
         </li>
       </ul>
     </div>

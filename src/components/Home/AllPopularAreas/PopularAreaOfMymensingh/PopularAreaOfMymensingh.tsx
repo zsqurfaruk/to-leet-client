@@ -1,6 +1,40 @@
-import React from "react";
+import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
+import React, { useContext } from "react";
+import Select from "react-select";
+import { options } from "./MymDataBan";
+import { option } from "./MymDataEng";
+import { StateContext } from "@/Context/StateContext/StateContext";
 
-const PopularCityOfMymensingh = () => {
+const PopularAreaOfMym = () => {
+  const { setHomePopularAreaName,  homePopularAreaName, setFilterModal }: any =useContext(StateContext); 
+  if (homePopularAreaName?.name === "eng") {
+    const newName = {
+      eng: homePopularAreaName?.label,
+      ban: homePopularAreaName?.value,
+    };
+    setHomePopularAreaName(newName);
+    setFilterModal(true);
+  } else if (homePopularAreaName?.name === "ban") {
+    const newName = {
+      eng: homePopularAreaName?.value,
+      ban: homePopularAreaName?.label,
+    };
+    setHomePopularAreaName(newName);
+    setFilterModal(true);
+  }
+
+  if (
+    homePopularAreaName?.eng === "Ganginar par" ||
+    homePopularAreaName?.eng === "Chorpara" ||
+    homePopularAreaName?.eng === "Valuka" ||
+    homePopularAreaName?.eng === "Town Hall" ||
+    homePopularAreaName?.eng === "Muktagacha" ||
+    homePopularAreaName?.eng === "Cantonment" ||
+    homePopularAreaName?.eng === "Naumahal"
+  ) {
+    setFilterModal(true);
+  }
+  const lang = localStorage.getItem("lan");
   return (
     <section>
       <div>
@@ -10,10 +44,18 @@ const PopularCityOfMymensingh = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
-                name="Dhaka"
+                onClick={() =>
+                  setHomePopularAreaName({
+                    eng: "Ganginar par",
+                    ban: "গাঙ্গিনার পাড়",
+                  })
+                }
               />
-              <span className="-mt-[2px]"> Ganginar par</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Ganginar par</span>
+              ) : (
+                <span className="-mt-[2px]"> গাঙ্গিনার পাড়</span>
+              )}
             </label>
           </li>
           <li>
@@ -21,10 +63,18 @@ const PopularCityOfMymensingh = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
-                name="Dhaka"
+                onClick={() =>
+                  setHomePopularAreaName({
+                    eng: "Chorpara",
+                    ban: "চরপাড়া",
+                  })
+                }
               />
-              <span className="-mt-[2px]"> Chorpara</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Chorpara</span>
+              ) : (
+                <span className="-mt-[2px]"> চরপাড়া</span>
+              )}
             </label>
           </li>
           <li>
@@ -32,10 +82,18 @@ const PopularCityOfMymensingh = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
-                name="Dhaka"
+                onClick={() =>
+                  setHomePopularAreaName({
+                    eng: "Valuka",
+                    ban: "ভালুকা",
+                  })
+                }
               />
-              <span className="-mt-[2px]"> Valuka</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Valuka</span>
+              ) : (
+                <span className="-mt-[2px]"> ভালুকা</span>
+              )}
             </label>
           </li>
           <li>
@@ -43,10 +101,18 @@ const PopularCityOfMymensingh = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
-                name="Dhaka"
+                onClick={() =>
+                  setHomePopularAreaName({
+                    eng: "Town Hall",
+                    ban: "টাউন হল",
+                  })
+                }
               />
-              <span className="-mt-[2px]"> Town Hall</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Town Hall</span>
+              ) : (
+                <span className="-mt-[2px]"> টাউন হল</span>
+              )}
             </label>
           </li>
           <li>
@@ -54,10 +120,18 @@ const PopularCityOfMymensingh = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
-                name="Dhaka"
+                onClick={() =>
+                  setHomePopularAreaName({
+                    eng: "Muktagacha",
+                    ban: "মুক্তাগাছা",
+                  })
+                }
               />
-              <span className="-mt-[2px]"> Muktagacha</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Muktagacha</span>
+              ) : (
+                <span className="-mt-[2px]"> মুক্তাগাছা</span>
+              )}
             </label>
           </li>
           <li>
@@ -65,16 +139,99 @@ const PopularCityOfMymensingh = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                // onClick={(e: any) => setDivisionNameEng(e.target.name)}
-                name="Dhaka"
+                onClick={() =>
+                  setHomePopularAreaName({
+                    eng: "Cantonment",
+                    ban: "ক্যান্টনমেন্ট",
+                  })
+                }
               />
-              <span className="-mt-[2px]"> Select others</span>
+              {lang ? (
+                <span className="-mt-[2px]"> Cantonment</span>
+              ) : (
+                <span className="-mt-[2px]"> ক্যান্টনমেন্ট</span>
+              )}
             </label>
           </li>
+          <li>
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                onClick={() =>
+                  setHomePopularAreaName({
+                    eng: "Naumahal",
+                    ban: "নওমহল",
+                  })
+                }
+              />
+              {lang ? (
+                <span className="-mt-[2px]"> Naumahal</span>
+              ) : (
+                <span className="-mt-[2px]"> নওমহল</span>
+              )}
+            </label>
+          </li>
+          <li
+            className={
+              homePopularAreaName?.eng === "Select others"
+                ? "hidden"
+                : "flex"
+            }
+          >
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                onClick={(e: any) =>
+                  setHomePopularAreaName({
+                    eng: "Select others",
+                    ban: "অন্যান্য এলাকা",
+                  })
+                }
+                name="Select-others"
+              />
+              {lang ? (
+                <span className="-mt-[2px]"> Select others</span>
+              ) : (
+                <span className="-mt-[2px]"> অন্যান্য এলাকা</span>
+              )}
+            </label>
+          </li>
+
+          {lang ? (
+            <div>
+              {homePopularAreaName?.eng === "Select others" && (
+                <li>
+                  <Select
+                    placeholder="Search"
+                    isSearchable
+                    options={option}
+                    onChange={setHomePopularAreaName}
+                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                  />
+                </li>
+              )}
+            </div>
+          ) : (
+            <div>
+              {homePopularAreaName?.eng === "Select others" && (
+                <li>
+                  <Select
+                    placeholder="অনুসন্ধান"
+                    isSearchable
+                    options={options}
+                    onChange={setHomePopularAreaName}
+                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                  />
+                </li>
+              )}
+            </div>
+          )}
         </ul>
       </div>
     </section>
   );
 };
 
-export default PopularCityOfMymensingh;
+export default PopularAreaOfMym;

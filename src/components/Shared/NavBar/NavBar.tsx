@@ -18,10 +18,12 @@ export default function NavBar() {
     language,
     userInfo,
     setCityName,
-    setCityNameBan,
+    setDivisionNameEng,
+    setDistrictsName,
+    setHomePopularAreaName,
     setFilterTypeCity,
     setFilterTypeDivision,
-     
+    setOpenModalValue
   }: any = useContext(StateContext);
   const {
     setPostCityNameEng,
@@ -71,9 +73,12 @@ export default function NavBar() {
   const lang = localStorage.getItem("lan");
 
   const handleHome = () => {
-    setCityName("");
-    setCityNameBan("");
-    setFilterTypeCity(false);
+    setCityName({});
+    setDivisionNameEng({}),
+      setDistrictsName({}),
+      setHomePopularAreaName({}),
+      setOpenModalValue({})
+      setFilterTypeCity(false);
     setFilterTypeDivision(false);
     setPostCityNameEng({}),
       setGetPostPopularAreaName({}),
