@@ -4,39 +4,42 @@ export const PostStateContext = createContext({});
 
 const PostInfo = ({ children }: any) => {
   const [postCityNameEng, setPostCityNameEng] = useState({});
-  const [postAreaName, setPostAreaName] = useState("");
-  const [postDivisionNameBan, setPostDivisionNameBan] = useState("");
-  const [postDivisionNameEng, setPostDivisionNameEng] = useState("");
+  const [postAreaName, setPostAreaName] = useState({});
+  const [postDistrictsName, setPostDistrictsName] = useState({});
+  const [postDivisionNameEng, setPostDivisionNameEng] = useState({});
   const [getPostPopularAreaName, setGetPostPopularAreaName] = useState({});
-  const [size, setSize] = useState(null);
+  const [postUniversityModalValue, setPostUniversityModalValue] = useState({});
   const [postOpenModal, setPostOpenModal] = useState(false);
+  const [postUniversityModal, setPostUniversityModal] = useState(false);
+  const [getUniversityModalValue, setGetUniversityModalValue] = useState({})
   const [modalValue, setModalValue] = useState({});
-  const [popularAreaNameForPost, setPopularAreaNameForPost] = useState("");
+  // const [popularAreaNameForPost, setPopularAreaNameForPost] = useState("");
   // const handlePostOpenModal = (value: any) => setSize(value);
   const handlePostOpenModal = () => setPostOpenModal(!postOpenModal);
- 
-  
+  const handlePostUniversityModal = () =>
+    setPostUniversityModal(!postUniversityModal);
 
   const info = {
-    
     postCityNameEng,
     setPostCityNameEng,
     setPostAreaName,
     postAreaName,
     handlePostOpenModal,
-    size,
-    setSize,
-    postDivisionNameBan,
-    setPostDivisionNameBan,
     postDivisionNameEng,
     setPostDivisionNameEng,
-    getPostPopularAreaName, setGetPostPopularAreaName,
+    getPostPopularAreaName,
+    setGetPostPopularAreaName,
     postOpenModal,
     setPostOpenModal,
     modalValue,
     setModalValue,
-    popularAreaNameForPost,
-    setPopularAreaNameForPost,
+    postDistrictsName,
+    setPostDistrictsName,
+    postUniversityModal,
+    setPostUniversityModal,
+    handlePostUniversityModal,
+    postUniversityModalValue, setPostUniversityModalValue,
+    getUniversityModalValue, setGetUniversityModalValue
   };
 
   return (

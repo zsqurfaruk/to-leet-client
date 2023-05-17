@@ -32,7 +32,7 @@ const DestinationType = () => {
           }
           className="text-center text-2xl font-semibold lg:-mt-4"
         >
-          আপনার প্রয়োজন অনুযায়ী খুজুন{" "}
+          আপনার প্রয়োজন অনুযায়ী খুজুন
         </h1>
       )}
 

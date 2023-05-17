@@ -5,14 +5,18 @@ import { SubmitHandler } from "react-hook-form/dist/types";
 import { useContext, useState } from "react";
 import { AuthContext } from "@/Context/AuthProvider/AuthProvider";
 import axios from "axios";
-import OtpInput from "react-otp-input";
-
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import Link from "next/link";
 import privateRoute from "@/routes/privateRoute";
+import AdditionalInfoPostPage from "@/components/AdditionalInfoPostPage/AdditionalInfoPostPage";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
-import { MdOutlineLocationOn } from "react-icons/md";
+import ModalEng from "@/components/Home/Banner/Modal/ModalEng";
+import { StateContext } from "@/Context/StateContext/StateContext";
+import ModalBan from "@/components/Home/Banner/Modal/ModalBan";
+import PostModal from "@/components/OtherPages/PostModal/PostModal";
+import { BsImage } from "react-icons/bs";
+import { RxCrossCircled } from "react-icons/rx";
 
 type FormValues = {
   bedNumber: number;
@@ -34,25 +38,40 @@ type FormValues = {
   email: any;
   phone: number;
   terms: boolean;
-  rentType: string;
+  areaName: object;
+  cityName: object;
+  type: object;
+  university: object;
+  division:object;
+  districts: object
 };
-const PostDetails = ({ districtLocation, rentType }: any) => {
+const PostDetails = ({ districtLocation}: any) => {
   const [houseSize, setHouseSize] = useState();
   const [imageUrl1, setImageUrl1] = useState("");
   const [imageUrl2, setImageUrl2] = useState("");
   const [imageUrl3, setImageUrl3] = useState("");
   const [imageUrl4, setImageUrl4] = useState("");
   const [imageUrl5, setImageUrl5] = useState("");
-  const [value, setValue] = useState();
+
   const { userInfo }: any = useContext(AuthContext);
   const {
-    postCityNameEng,
     modalValue,
-    setPostOpenModal,
-    setPostCityNameEng,
+    postCityNameEng,
     getPostPopularAreaName,
+    setPostOpenModal,
     setGetPostPopularAreaName,
+    setPostCityNameEng,
+    setPostUniversityModal,
+    postUniversityModalValue,
+    setPostUniversityModalValue,
+    getUniversityModalValue,
+    setGetUniversityModalValue,
+    postDistrictsName,
+    setPostDistrictsName,
+    postDivisionNameEng,
+    setPostDivisionNameEng
   }: any = useContext(PostStateContext);
+
   const name = userInfo.firstName + " " + userInfo.lastName;
   const router = useRouter();
   const {
@@ -82,7 +101,12 @@ const PostDetails = ({ districtLocation, rentType }: any) => {
       phone: data?.phone,
       terms: data?.terms,
       district: districtLocation,
-      rentType: rentType,
+      areaName: getPostPopularAreaName,
+      cityName: postCityNameEng,
+      districts: postDistrictsName,
+      division: postDivisionNameEng,
+      type: modalValue,
+      university: getUniversityModalValue
     };
     const res = await fetch("http://localhost:5000/api/v1/product", {
       method: "POST",
@@ -92,9 +116,15 @@ const PostDetails = ({ districtLocation, rentType }: any) => {
       body: JSON.stringify(values),
     });
     const result = await res.json();
-    router.push(`/${rentType}`);
+    console.log(result);
+    router.push(`/${modalValue.eng}`);
+    setPostOpenModal(false);
+    setGetPostPopularAreaName({});
+    setPostCityNameEng({});
+    setPostDistrictsName({})
+    setPostDivisionNameEng({})
   };
-
+ 
   const imageUploadHandler = (event: any, setImg: any) => {
     // console.log(event.target.files[0]);
 
@@ -107,7 +137,7 @@ const PostDetails = ({ districtLocation, rentType }: any) => {
     axios
       .post("https://api.imgbb.com/1/upload", imageData)
       .then(function (response) {
-        setImg(response.data.data.display_url);
+        setImg(response?.data?.data?.display_url);
         // console.log(response.data.data.display_url);
       })
       .catch(function (error) {});
@@ -116,68 +146,115 @@ const PostDetails = ({ districtLocation, rentType }: any) => {
   const handleHouseSize = (e: any) => {
     setHouseSize(e.target.value);
   };
-  const handlePrevious = () => {
-    setGetPostPopularAreaName({});
-    setPostCityNameEng({});
-    setPostOpenModal(false);
-    router.push("/add-post");
+  if (postUniversityModalValue?.eng) {
+    setPostUniversityModal(true);
+  }
+  if (getUniversityModalValue?.name === "eng") {
+    const newName = {
+      eng: getUniversityModalValue?.label,
+      ban: getUniversityModalValue?.value,
+    };
+    setGetUniversityModalValue(newName);
+  } else if (getUniversityModalValue?.name === "ban") {
+    const newName = {
+      eng: getUniversityModalValue?.value,
+      ban: getUniversityModalValue?.label,
+    };
+    setGetUniversityModalValue(newName);
+  }
+
+  const handleCancel = () => {
+    setImageUrl1("");
+    setImageUrl2("");
+    setImageUrl3("");
+    setImageUrl4("");
+    setImageUrl5("");
   };
   const lang = localStorage.getItem("lan");
   return (
     <div>
       <div className="bg-white p-5 lg:w-10/12 mx-auto">
-        <div>
-          <div className="flex justify-between py-5">
-            {lang ? <h1>Fill In The Details</h1> : <h1>বিস্তারিত তথ্য দিন</h1>}
-            <h1 className="cursor-pointer flex" onClick={handlePrevious}>
-              <MdOutlineLocationOn className="text-accent h-6 w-6"></MdOutlineLocationOn>
-              {lang ? "Change?" : "পরিবর্তন?"}
-            </h1>
-            <h2 className="flex gap-8">
-              {lang ? (
-                <span className="font-semibold">
-                  City: {postCityNameEng?.eng}
-                </span>
-              ) : (
-                <span>শহরঃ {postCityNameEng?.ban}</span>
-              )}
-
-              {/* <span className="font-semibold"> শহর: {postCityNameBan} </span>
-            )} */}
-              {lang ? (
-                <span>
-                  Area:
-                  {getPostPopularAreaName?.eng}
-                </span>
-              ) : (
-                <h2>
-                  এলাকা:
-                  {getPostPopularAreaName?.ban}
-                </h2>
-              )}
-            </h2>
+        <AdditionalInfoPostPage></AdditionalInfoPostPage>
+        {getUniversityModalValue?.eng && (
+          <div>
             {lang ? (
-              <h1>{modalValue?.nameEng} For Rent</h1>
+              <p className="text-center text-lg">
+                {" "}
+                You have selected {getUniversityModalValue?.eng}
+              </p>
             ) : (
-              <h1>ধরনঃ {modalValue?.nameBan}</h1>
+              <p className="text-center">
+                আপনি নির্বাচন করেছেন {getUniversityModalValue?.ban}
+              </p>
             )}
           </div>
-          <hr className="text-black" />
-          <h1 className="flex justify-end">See our posting rules</h1>
-        </div>
+        )}
         <div>
+          <div className="my-8 ">
+            {lang ? (
+              <div>
+                {modalValue?.eng && (
+                  <div className="flex justify-center gap-2 md:text-xl lg:-ml-28">
+                    <h1 className="cursor-pointer">
+                      Is the{" "}
+                      <span className="text-success">{modalValue?.eng}</span>{" "}
+                      near university or medical college?
+                    </h1>
+                    <h2
+                      className="flex gap-2 border shadow-md shadow-accent border-accent rounded-lg px-2 cursor-pointer"
+                      onClick={() =>
+                        setPostUniversityModalValue({
+                          eng: "yes",
+                          ban: "হ্যাঁ",
+                        })
+                      }
+                    >
+                      Yes
+                    </h2>
+                  </div>
+                )}
+
+                <PostModal></PostModal>
+              </div>
+            ) : (
+              <div>
+                {modalValue.ban && (
+                  <div className="flex justify-center gap-2 text-sm md:text-base lg:-ml-32">
+                    <h1>
+                      <span className="text-success">{modalValue?.ban}</span> কি
+                      বিশ্ববিদ্যালয় বা মেডিকেল কলেজের পাশে?
+                    </h1>
+                    <h2
+                      className="border shadow-md shadow-accent border-accent rounded-lg px-3 cursor-pointer text-center"
+                      onClick={() =>
+                        setPostUniversityModalValue({
+                          eng: "yes",
+                          ban: "হ্যাঁ",
+                        })
+                      }
+                    >
+                      হ্যাঁ
+                    </h2>
+                  </div>
+                )}
+
+                <PostModal></PostModal>
+              </div>
+            )}
+          </div>
+
           <div>
-            {rentType === "House" || rentType === "Apartment" ? (
-              <div className="form-control lg:w-6/12 mx-auto">
+            {lang ? (
+              <div className="form-control lg:w-6/12 mx-auto mb-8">
                 <label className="label">
-                  <span className="label-text">Bedrooms</span>
+                  <span className="label-text">Bedroom number/numbers</span>
                 </label>
                 <select
                   {...register("bedrooms", { required: true })}
                   className="select select-bordered bg-primary"
                 >
                   <option disabled selected>
-                    Bedrooms
+                    Bedroom number/numbers
                   </option>
                   <option>1</option>
                   <option>2</option>
@@ -185,6 +262,7 @@ const PostDetails = ({ districtLocation, rentType }: any) => {
                   <option>4</option>
                   <option>5</option>
                   <option>6</option>
+                  <option>৭</option>
                   <option>8</option>
                   <option>9</option>
                   <option>10</option>
@@ -197,74 +275,135 @@ const PostDetails = ({ districtLocation, rentType }: any) => {
                 )}
               </div>
             ) : (
-              <div className="form-control lg:w-6/12 mx-auto">
+              <div className="form-control lg:w-6/12 mx-auto mb-8">
                 <label className="label">
-                  <span className="label-text">Bed Number/Numbers</span>
+                  <span className="label-text">বেডরুম সংখা</span>
                 </label>
                 <select
-                  {...register("bedNumber", { required: true })}
+                  {...register("bedrooms", { required: true })}
                   className="select select-bordered bg-primary"
                 >
                   <option disabled selected>
-                    Bed Number/Numbers
+                    বেডরুম সংখা
                   </option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                  <option>১</option>
+                  <option>২</option>
+                  <option>৩</option>
+                  <option>৪</option>
+                  <option>৫</option>
+                  <option>৬</option>
+                  <option>৭</option>
+                  <option>৮</option>
+                  <option>৯</option>
+                  <option>১০</option>
                   {/* <option>10+</option> */}
                 </select>
-                {errors.bedNumber && (
+                {errors.bedrooms && (
                   <span className="text-red-500 pt-4">
-                    This field is required
+                    আপনাকে অবশ্যই এটা পূরণ করতে হবে।
                   </span>
                 )}
               </div>
             )}
-            {rentType === "House" ||
-              (rentType === "Apartment" && (
-                <div className="form-control lg:w-6/12 mx-auto mt-16">
+            {modalValue?.eng === "Mess-Male" ||
+              (modalValue?.eng === "Mess-Female" && (
+                <div className="form-control lg:w-6/12 mx-auto">
                   <label className="label">
-                    <span className="label-text">Bathrooms</span>
+                    <span className="label-text">Bed Number/Numbers</span>
                   </label>
                   <select
-                    {...register("bathrooms", { required: true })}
+                    {...register("bedNumber", { required: true })}
                     className="select select-bordered bg-primary"
                   >
                     <option disabled selected>
-                      Bathrooms
+                      Bed Number/Numbers
                     </option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
                     <option>4</option>
                     <option>5</option>
-                    {/* <option>5+</option> */}
+                    {/* <option>10+</option> */}
                   </select>
-                  {errors.bathrooms && (
+                  {errors.bedNumber && (
                     <span className="text-red-500 pt-4">
                       This field is required
                     </span>
                   )}
                 </div>
               ))}
-            <div className="flex gap-5 lg:w-6/12 mx-auto mt-16">
+            {lang ? (
+              <div className="form-control lg:w-6/12 mx-auto mt-8">
+                <label className="label">
+                  <span className="label-text">Bathroom number/numbers</span>
+                </label>
+                <select
+                  {...register("bathrooms", { required: true })}
+                  className="select select-bordered bg-primary"
+                >
+                  <option disabled selected>
+                    Bathrooms number/numbers
+                  </option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  {/* <option>5+</option> */}
+                </select>
+                {errors.bathrooms && (
+                  <span className="text-red-500 pt-4">
+                    This field is required
+                  </span>
+                )}
+              </div>
+            ) : (
+              <div className="form-control lg:w-6/12 mx-auto mt-8">
+                <label className="label">
+                  <span className="label-text">বাথরুম সংখা</span>
+                </label>
+                <select
+                  {...register("bathrooms", { required: true })}
+                  className="select select-bordered bg-primary"
+                >
+                  <option disabled selected>
+                    বাথরুম সংখা
+                  </option>
+                  <option>১</option>
+                  <option>২</option>
+                  <option>৩</option>
+                  <option>৪</option>
+                  <option>৫</option>
+                  {/* <option>5+</option> */}
+                </select>
+                {errors.bathrooms && (
+                  <span className="text-red-500 pt-4">
+                    আপনাকে অবশ্যই এটা পূরণ করতে হবে।
+                  </span>
+                )}
+              </div>
+            )}
+            <div className="flex gap-5 lg:w-6/12 mx-auto mt-8">
               <div className="w-full">
                 <label className="label">
-                  <span className="label-text">House size (Optional)</span>
+                  {lang ? (
+                    <span className="label-text">House size (Optional)</span>
+                  ) : (
+                    <span className="label-text">রুমের সাইজ (ঐচ্ছিক)</span>
+                  )}
                 </label>
                 <input
                   {...register("houseSize")}
                   type="text"
                   onChange={handleHouseSize}
-                  placeholder="Type here"
-                  name="houseSize"
+                  placeholder={lang ? "Type here" : "এখানে লিখুন"}
                   className="input input-bordered w-full bg-primary"
                 />
                 {errors.houseSize && (
                   <span className="text-red-500 pt-4">
-                    This field is required
+                    {lang
+                      ? " This field is required"
+                      : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
                   </span>
                 )}
               </div>
@@ -288,72 +427,102 @@ const PostDetails = ({ districtLocation, rentType }: any) => {
                   </select>
                   {errors.unit && (
                     <span className="text-red-500 pt-4">
-                      This field is required
+                      {lang
+                        ? " This field is required"
+                        : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
                     </span>
                   )}
                 </div>
               )}
             </div>
-            <div className="lg:w-6/12 mx-auto mt-16">
+            <div className="lg:w-6/12 mx-auto mt-8">
               <label className="label">
-                <span className="label-text">Address</span>
+                {lang ? (
+                  <span className="label-text">Address</span>
+                ) : (
+                  <span className="label-text">ঠিকানা</span>
+                )}
               </label>
               <input
                 {...register("address", { required: true })}
                 type="text"
-                placeholder="Enter your street, house number, and/or post code"
+                placeholder={
+                  lang
+                    ? "Enter your street, house number, and/or post code"
+                    : "এখানে আপনার পূর্ণ ঠিকানা লিখুন।"
+                }
                 className="input input-bordered w-full bg-primary"
               />
               {errors.address && (
                 <span className="text-red-500 pt-4">
-                  This field is required
+                  {lang
+                    ? " This field is required"
+                    : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
                 </span>
               )}
             </div>
-            <div className="lg:w-6/12 mx-auto mt-16">
+            <div className="lg:w-6/12 mx-auto mt-8">
               <label className="label">
-                <span className="label-text">Title</span>
+                {lang ? (
+                  <span className="label-text">Title</span>
+                ) : (
+                  <span className="label-text"> টাইটেল লিখুন </span>
+                )}
               </label>
               <input
                 {...register("title", { required: true })}
                 type="text"
-                placeholder="Short Title"
+                placeholder={lang ? "Short Title" : "টাইটেল লিখুন"}
                 className="input input-bordered w-full bg-primary"
               />
               {errors.title && (
                 <span className="text-red-500 pt-4">
-                  This field is required
+                  {lang
+                    ? " This field is required"
+                    : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
                 </span>
               )}
             </div>
-            <div className="lg:w-6/12 mx-auto mt-16">
+            <div className="lg:w-6/12 mx-auto mt-8">
               <label className="label">
-                <span className="label-text">Description</span>
+                {lang ? (
+                  <span className="label-text">Description</span>
+                ) : (
+                  <span className="label-text">বিস্তারিত লিখুন</span>
+                )}
               </label>
               <textarea
                 {...register("description", { required: true })}
                 className="textarea textarea-bordered w-full h-32 bg-primary"
-                placeholder="More Details"
+                placeholder={lang ? "More Details" : "বিস্তারিত লিখুন"}
               ></textarea>
               {errors.description && (
                 <span className="text-red-500 pt-4">
-                  This field is required
+                  {lang
+                    ? " This field is required"
+                    : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
                 </span>
               )}
             </div>
-            <div className="lg:w-6/12 mx-auto mt-16">
+            <div className="lg:w-6/12 mx-auto mt-8">
               <label className="label">
-                <span className="label-text">Rent Amount (Tk)</span>
+                {lang ? (
+                  <span className="label-text">Rent Amount (Tk)</span>
+                ) : (
+                  <span className="label-text"> টাকার পরিমান লিখুন</span>
+                )}
               </label>
               <input
                 {...register("amount", { required: true })}
                 type="text"
-                placeholder="Rent Amount"
+                placeholder={lang ? "Rent Amount" : "টাকার পরিমান লিখুন"}
                 className="input input-bordered w-full bg-primary"
               />
               {errors.description && (
                 <span className="text-red-500 pt-4">
-                  This field is required
+                  {lang
+                    ? " This field is required"
+                    : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
                 </span>
               )}
             </div>
@@ -363,86 +532,222 @@ const PostDetails = ({ districtLocation, rentType }: any) => {
                 type="checkbox"
                 className="text-black h-4 w-4"
               />
-              <h1 className="-mt-1">Negotiable</h1>
+              {lang ? <h1 className="-mt-1">Negotiable</h1> : "আলোচনা সাপেক্ষে"}
             </div>
             <hr className="my-10" />
+
             <div className="lg:w-6/12 mx-auto mb-20">
               <label className="label">
-                <span className="text-xl font-bold">Add up to 5 photos</span>
+                {lang ? (
+                  <span className="text-xl font-bold">Add up to 5 photos</span>
+                ) : (
+                  <span className="text-lg font-bold">
+                    {" "}
+                    সর্বোচ্চ পাঁচটি ছবি যুক্ত করুন{" "}
+                  </span>
+                )}
               </label>
-              <div className="md:col-span-5">
-                {!imageUrl1 ? (
-                  <div>
-                    <label>Image 1</label>
+
+              <div className="grid grid-cols-3 md:grid-cols-5 gap-5 md:gap-7">
+                {imageUrl1 ? (
+                  <div className="relative">
+                    <img className="h-16 w-24 mt-7" src={imageUrl1} alt="" />
+                    <button
+                      onClick={handleCancel}
+                      className="bg-primary absolute top-7 right-1"
+                    >
+                      {" "}
+                      <RxCrossCircled />{" "}
+                    </button>
+                  </div>
+                ) : (
+                  <button>
+                    {lang ? <label>Image 1</label> : <label>ছবি-১</label>}
                     <input
                       onChange={(e) => imageUploadHandler(e, setImageUrl1)}
                       type="file"
-                      // multiple={true}
+                      id="file1"
                       accept="image/*"
                       placeholder="Upload Images"
-                      className="file-input file-input-primary w-full"
-                      required
+                      className="file-input file-input-primary w-full hidden"
+                      
                     />
+                    <div className="mt-1">
+                      <label htmlFor="file1">
+                        {lang ? (
+                          <div className="rounded border border-secondary p-2">
+                            <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+                            <small>Upload Photo</small>
+                          </div>
+                        ) : (
+                          <div className="rounded border border-secondary p-2">
+                            <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+                            <small> ছবি যুক্ত করুন</small>
+                          </div>
+                        )}
+                      </label>
+                    </div>
+                  </button>
+                )}
+
+                {imageUrl2 ? (
+                  <div className="relative">
+                    <img className="h-16 w-24 mt-7" src={imageUrl2} alt="" />
+                    <button
+                      onClick={handleCancel}
+                      className="bg-primary absolute top-7 right-1"
+                    >
+                      {" "}
+                      <RxCrossCircled />{" "}
+                    </button>
                   </div>
                 ) : (
-                  <img className="h-12 w-12" src={imageUrl1} alt="" />
+                  <button>
+                    {lang ? <label>Image 2</label> : <label>ছবি-২</label>}
+                    <input
+                      onChange={(e) => imageUploadHandler(e, setImageUrl2)}
+                      type="file"
+                      id="file2"
+                      accept="image/*"
+                      placeholder="Upload Images"
+                      className="file-input file-input-primary w-full hidden"
+                    />
+                    <div className="mt-1">
+                      <label htmlFor="file2">
+                        {lang ? (
+                          <div className="rounded border border-secondary p-2">
+                            <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+                            <small>Upload Photo</small>
+                          </div>
+                        ) : (
+                          <div className="rounded border border-secondary p-2">
+                            <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+                            <small> ছবি যুক্ত করুন</small>
+                          </div>
+                        )}
+                      </label>
+                    </div>
+                  </button>
                 )}
-                {!imageUrl1 && (
-                  <p className="text-red-500">
-                    {" "}
-                    Please add at least one image.
-                  </p>
+
+                {imageUrl3 ? (
+                  <div className="relative">
+                    <img className="h-16 w-24 mt-7" src={imageUrl3} alt="" />
+                    <button
+                      onClick={handleCancel}
+                      className="bg-primary absolute top-7 right-1"
+                    >
+                      {" "}
+                      <RxCrossCircled />{" "}
+                    </button>
+                  </div>
+                ) : (
+                  <button>
+                    {lang ? <label>Image 3</label> : <label>ছবি-৩</label>}
+                    <input
+                      onChange={(e) => imageUploadHandler(e, setImageUrl3)}
+                      type="file"
+                      id="file3"
+                      accept="image/*"
+                      placeholder="Upload Images"
+                      className="file-input file-input-primary w-full hidden"
+                    />
+                    <div className="mt-1">
+                      <label htmlFor="file3">
+                        {lang ? (
+                          <div className="rounded border border-secondary p-2">
+                            <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+                            <small>Upload Photo</small>
+                          </div>
+                        ) : (
+                          <div className="rounded border border-secondary p-2">
+                            <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+                            <small> ছবি যুক্ত করুন</small>
+                          </div>
+                        )}
+                      </label>
+                    </div>
+                  </button>
+                )}
+                {imageUrl4 ? (
+                  <div className="relative">
+                    <img className="h-16 w-24 mt-7" src={imageUrl4} alt="" />
+                    <button
+                      onClick={handleCancel}
+                      className="bg-primary absolute top-7 right-1"
+                    >
+                      {" "}
+                      <RxCrossCircled />{" "}
+                    </button>
+                  </div>
+                ) : (
+                  <button>
+                    {lang ? <label>Image 4</label> : <label>ছবি-৪</label>}
+                    <input
+                      onChange={(e) => imageUploadHandler(e, setImageUrl4)}
+                      type="file"
+                      id="file4"
+                      accept="image/*"
+                      placeholder="Upload Images"
+                      className="file-input file-input-primary w-full hidden"
+                    />
+                    <div className="mt-1">
+                      <label htmlFor="file4">
+                        {lang ? (
+                          <div className="rounded border border-secondary p-2">
+                            <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+                            <small>Upload Photo</small>
+                          </div>
+                        ) : (
+                          <div className="rounded border border-secondary p-2">
+                            <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+                            <small> ছবি যুক্ত করুন</small>
+                          </div>
+                        )}
+                      </label>
+                    </div>
+                  </button>
+                )}
+                {imageUrl5 ? (
+                  <div className="relative">
+                    <img className="h-16 w-24 mt-7" src={imageUrl4} alt="" />
+                    <button
+                      onClick={handleCancel}
+                      className="bg-primary absolute top-7 right-1"
+                    >
+                      {" "}
+                      <RxCrossCircled />{" "}
+                    </button>
+                  </div>
+                ) : (
+                  <button>
+                    {lang ? <label>Image 5</label> : <label>ছবি-৫</label>}
+                    <input
+                      onChange={(e) => imageUploadHandler(e, setImageUrl5)}
+                      type="file"
+                      id="file"
+                      accept="image/*"
+                      placeholder="Upload Images"
+                      className="file-input file-input-primary w-full hidden"
+                    />
+                    <div className="mt-1">
+                      <label htmlFor="file">
+                        {lang ? (
+                          <div className="rounded border border-secondary p-2">
+                            <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+                            <small>Upload Photo</small>
+                          </div>
+                        ) : (
+                          <div className="rounded border border-secondary p-2">
+                            <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+                            <small> ছবি যুক্ত করুন</small>
+                          </div>
+                        )}
+                      </label>
+                    </div>
+                  </button>
                 )}
               </div>
-              <div className="md:col-span-5">
-                <label>Image 2</label>
-                <input
-                  onChange={(e) => imageUploadHandler(e, setImageUrl2)}
-                  type="file"
-                  // multiple={true}
-                  accept="image/*"
-                  placeholder="Upload Images"
-                  className="file-input file-input-primary w-full"
-                />
-              </div>
-              <div className="md:col-span-5">
-                <label>Image 3</label>
-                <input
-                  onChange={(e) => imageUploadHandler(e, setImageUrl3)}
-                  type="file"
-                  // multiple={true}
-                  accept="image/*"
-                  placeholder="Upload Images"
-                  className="file-input file-input-primary w-full"
-                />
-              </div>
-              <div className="md:col-span-5">
-                <label>Image 4</label>
-                <input
-                  onChange={(e) => imageUploadHandler(e, setImageUrl4)}
-                  type="file"
-                  // multiple={true}
-                  accept="image/*"
-                  placeholder="Upload Images"
-                  className="file-input file-input-primary w-full"
-                />
-              </div>
-              <div className="md:col-span-5">
-                <label>Image 5</label>
-                <input
-                  onChange={(e) => imageUploadHandler(e, setImageUrl5)}
-                  type="file"
-                  // multiple={true}
-                  accept="image/*"
-                  placeholder="Upload Images"
-                  className="file-input file-input-primary w-full"
-                />
-              </div>
-              {/* <div className="flex gap-2">
-              <div>
-                <input   {...register("image",{ required: true })} type="file" multiple/> <br />
-                {errors.image && <span className="text-red-500 pt-4">This field is required</span>}
-              </div> */}
             </div>
           </div>
           <hr className="my-10" />
@@ -453,7 +758,7 @@ const PostDetails = ({ districtLocation, rentType }: any) => {
             <div className="mt-10">
               <h5>Name</h5>
               <input
-                {...register("name", { required: true })}
+                {...register("name")}
                 type="text"
                 className="input input-bordered w-full bg-primary"
                 defaultValue={name}
@@ -471,7 +776,7 @@ const PostDetails = ({ districtLocation, rentType }: any) => {
                 </small>
               </div>
               <input
-                {...register("email", { required: true })}
+                {...register("email")}
                 type="email"
                 className="input input-bordered w-full bg-primary"
                 defaultValue={userInfo?.email}
@@ -480,12 +785,12 @@ const PostDetails = ({ districtLocation, rentType }: any) => {
             </div>
             <div className="mt-10 border border-secondary p-5">
               <h5>Add A Phone Number</h5>
-              <PhoneInput
+              {/* <PhoneInput
                 placeholder="Enter phone number"
                 value={value}
                 name="phone"
                 onChange={(e: any) => setValue(e)}
-              />
+              /> */}
               {/* <OtpInput
               value={otp}
               onChange={setOtp}
@@ -493,20 +798,20 @@ const PostDetails = ({ districtLocation, rentType }: any) => {
               renderSeparator={<span>-</span>}
               renderInput={(props) => <input {...props}  className="border border-black mx-1 text-2xl w-10 rounded-md"/>}
             /> */}
-              {/* <input
-              {...register("phone", { required: true })}
-              type="text"
-              placeholder="Add A Phone Number"
-              className="input input-bordered w-full mt-5 bg-primary"
-            />
-            {errors.phone && (
-              <span className="text-red-500 pt-3 mr-6">
-                This field is required
-              </span>
-            )} */}
-              <button className="btn btn-secondary btn-sm mt-5">
+              <input
+                {...register("phone", { required: true })}
+                type="text"
+                placeholder="Add A Phone Number"
+                className="input input-bordered w-full mt-5 bg-primary"
+              />
+              {errors.phone && (
+                <span className="text-red-500 pt-3 mr-6">
+                  This field is required
+                </span>
+              )}
+              {/* <button className="btn btn-secondary btn-sm mt-5">
                 <span> Verify otp</span>
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
@@ -534,3 +839,172 @@ const PostDetails = ({ districtLocation, rentType }: any) => {
 };
 
 export default privateRoute(PostDetails);
+
+/* <div className="lg:w-6/12 mx-auto mb-20">
+<label className="label">
+  {lang ? (
+    <span className="text-xl font-bold">Add up to 5 photos</span>
+  ) : (
+    <span className="text-lg font-bold">
+      {" "}
+      সর্বোচ্চ পাঁচটি ছবি যুক্ত করুন{" "}
+    </span>
+  )}
+</label>
+
+<div className="grid grid-cols-3 md:grid-cols-5 gap-5 md:gap-7">
+{
+  imageUrl1 ?<div className="relative">
+     <img className="h-16 w-24 mt-7" src={imageUrl1} alt="" />
+     <button onClick={handleCancel} className="bg-primary absolute top-7 right-1"> <RxCrossCircled/> </button>
+  </div> :   <button>
+  {/* {!imageUrl1 ? ( */
+
+// <div>
+//   {lang ? <label>Image 1</label> : <label>ছবি-১</label>}
+//   <input
+//     onChange={(e) => imageUploadHandler(e, setImageUrl1)}
+//     type="file"
+//     id="file"
+//     accept="image/*"
+//     placeholder="Upload Images"
+//     className="file-input file-input-primary w-full hidden"
+//     required
+//   />
+//   <div className="mt-1">
+//     <label htmlFor="file">
+//       {lang ? (
+//         <div className="rounded border border-secondary p-2">
+//           <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+//           <small>Upload Photo</small>
+//         </div>
+//       ) : (
+//         <div className="rounded border border-secondary p-2">
+//         <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+//         <small> ছবি যুক্ত করুন</small>
+//       </div>
+
+//       )}
+
+//     </label>
+//   </div>
+// </div>
+
+// </button>
+// }
+//  {
+//   imageUrl2 ? <div className="relative">
+//   <img className="h-16 w-24 mt-7" src={imageUrl2} alt="" />
+//   <button onClick={handleCancel} className="bg-primary absolute top-7 right-1"> <RxCrossCircled/> </button>
+// </div> :  <button  >
+//   {lang ? <label>Image 2</label> : <label>ছবি-২</label>}
+//   <input
+//     onChange={(e) => imageUploadHandler(e, setImageUrl2)}
+//     type="file"
+//     id="file"
+//     accept="image/*"
+//     placeholder="Upload Images"
+//     className="file-input file-input-primary w-full hidden"
+//     disabled
+//   />
+//   <div className="mt-1">
+//     <label htmlFor="file">
+//       {lang ? (
+//         <div className="rounded border border-secondary p-2">
+//           <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+//           <small>Upload Photo</small>
+//         </div>
+//       ) : (
+//         <div className="rounded border border-secondary p-2">
+//         <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+//         <small> ছবি যুক্ত করুন</small>
+//       </div>
+//       )}
+
+//     </label>
+//   </div>
+// </button>
+//  }
+//   <button>
+//     {lang ? <label>Image 3</label> : <label>ছবি-৩</label>}
+//     <input
+//       onChange={(e) => imageUploadHandler(e, setImageUrl3)}
+//       type="file"
+//       id="file"
+//       accept="image/*"
+//       placeholder="Upload Images"
+//       className="file-input file-input-primary w-full hidden"
+//     />
+//     <div className="mt-1">
+//       <label htmlFor="file">
+//         {lang ? (
+//           <div className="rounded border border-secondary p-2">
+//             <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+//             <small>Upload Photo</small>
+//           </div>
+//         ) : (
+//           <div className="rounded border border-secondary p-2">
+//           <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+//           <small> ছবি যুক্ত করুন</small>
+//         </div>
+//         )}
+
+//       </label>
+//     </div>
+//   </button>
+//   <button>
+//     {lang ? <label>Image 4</label> : <label>ছবি-৪</label>}
+//     <input
+//       onChange={(e) => imageUploadHandler(e, setImageUrl4)}
+//       type="file"
+//       id="file"
+//       accept="image/*"
+//       placeholder="Upload Images"
+//       className="file-input file-input-primary w-full hidden"
+//     />
+//     <div className="mt-1">
+//       <label htmlFor="file">
+//         {lang ? (
+//           <div className="rounded border border-secondary p-2">
+//             <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+//             <small>Upload Photo</small>
+//           </div>
+//         ) : (
+//           <div className="rounded border border-secondary p-2">
+//             <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+//             <small> ছবি যুক্ত করুন</small>
+//           </div>
+//         )}
+
+//       </label>
+//     </div>
+//   </button>
+//   <button>
+//     {lang ? <label>Image 5</label> : <label>ছবি-৫</label>}
+//     <input
+//       onChange={(e) => imageUploadHandler(e, setImageUrl5)}
+//       type="file"
+//       id="file"
+//       accept="image/*"
+//       placeholder="Upload Images"
+//       className="file-input file-input-primary w-full hidden"
+//     />
+//     <div className="mt-1">
+//       <label htmlFor="file">
+//         {lang ? (
+//           <div className="rounded border border-secondary p-2">
+//             <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+//             <small>Upload Photo</small>
+//           </div>
+//         ) : (
+//           <div className="rounded border border-secondary p-2">
+//           <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+//           <small> ছবি যুক্ত করুন</small>
+//         </div>
+//         )}
+
+//       </label>
+//     </div>
+//   </button>
+// </div>
+// </div> */}

@@ -17,15 +17,15 @@ import car from "../../../image/car.png";
 import garage from "../../../image/garage.png";
 const DesEng = () => {
   const { setRentName }: any = useContext(NameContext);
-  const { filterTypeCity, filterTypeDivision }: any = useContext(StateContext);
+  const { filterTypeCity, filterTypeDivision,typeCount }: any = useContext(StateContext);
 
   return (
     <div className="w-10/12 mx-auto  grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 lg:gap-5 md:gap-2 gap-5 mt-20 md:mt-8">
       <Link
         href={{
-          pathname: `/Bachelor-Male`,
+          pathname: `/Bachelor-(Male)`,
         }}
-        onClick={() => setRentName("MaleBachelor")}
+        onClick={() => setRentName("Bachelor-(Male)")}
       >
         <Card
           className={
@@ -48,7 +48,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Bachelor (Male)
               </Typography>
-              <Typography> 0 Ads</Typography>
+              <Typography> {typeCount?.length} Ads</Typography>
             </div>
           </div>
         </Card>
@@ -56,9 +56,9 @@ const DesEng = () => {
 
       <Link
         href={{
-          pathname: `/Bachelor-Female`,
+          pathname: `/Bachelor-(Female)`,
         }}
-        onClick={() => setRentName("FemaleBachelor")}
+        onClick={() => setRentName("Bachelor-(Female)")}
       >
         <Card
           className={
@@ -89,9 +89,9 @@ const DesEng = () => {
 
       <Link
         href={{
-          pathname: `/Sublet-Male`,
+          pathname: `/Sublet-(Male)`,
         }}
-        onClick={() => setRentName("SubletMale")}
+        onClick={() => setRentName("Sublet-(Male)")}
       >
         <Card
           className={
@@ -121,9 +121,9 @@ const DesEng = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Sublet-Female`,
+          pathname: `/Sublet-(Female)`,
         }}
-        onClick={() => setRentName("SubletFemale")}
+        onClick={() => setRentName("Sublet-(Female)")}
       >
         <Card
           className={
@@ -185,9 +185,9 @@ const DesEng = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Mess-Male`,
+          pathname: `/Mess-(Male)`,
         }}
-        onClick={() => setRentName("MessMale")}
+        onClick={() => setRentName("Mess-(Male)")}
       >
         <Card
           className={
@@ -215,9 +215,9 @@ const DesEng = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Mess-Female`,
+          pathname: `/Mess-(Female)`,
         }}
-        onClick={() => setRentName("MessFemale")}
+        onClick={() => setRentName("Mess-(Female)")}
       >
         <Card
           className={

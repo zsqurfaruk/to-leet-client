@@ -21,6 +21,7 @@ export default function NavBar() {
     setCityNameBan,
     setFilterTypeCity,
     setFilterTypeDivision,
+     
   }: any = useContext(StateContext);
   const {
     setPostCityNameEng,
@@ -28,6 +29,7 @@ export default function NavBar() {
     setPostDivisionNameEng,
     setPostOpenModal,
     setGetPostPopularAreaName,
+    setPostDistrictsName,
   }: any = useContext(PostStateContext);
   const [authenticated, setAuthenticated] = useState(false);
   const { push, pathname } = useRouter();
@@ -74,10 +76,10 @@ export default function NavBar() {
     setFilterTypeCity(false);
     setFilterTypeDivision(false);
     setPostCityNameEng({}),
-    setGetPostPopularAreaName({})
-      setPostDivisionNameBan(""),
-      setPostDivisionNameEng("");
-    setPostOpenModal(false);
+      setGetPostPopularAreaName({}),
+      setPostDivisionNameEng({}),
+      setPostOpenModal(false);
+    setPostDistrictsName({});
   };
 
   const navList = (
@@ -86,7 +88,7 @@ export default function NavBar() {
         {!authenticated && !userInfo?.email ? (
           <div className="navbar-end">
             {/* <Link href="/SignUp">  */}
-            <Link href="/signUp">
+            <Link href="/signIn">
               <Typography
                 as="li"
                 variant="small"

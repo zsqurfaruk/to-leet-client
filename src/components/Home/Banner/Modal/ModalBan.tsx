@@ -9,7 +9,7 @@ import {
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React from "react";
 import Select from "react-select";
-import { colourOptions } from "./DataBan";
+import { colourOption } from "./DataBan";
 
 export default function ModalBan() {
   const { handleOpenModalBan, setOpenModalBan, openModalBan }: any =
@@ -35,7 +35,7 @@ export default function ModalBan() {
           <Select
             placeholder="অনুসন্ধান করতে ক্লিক করুন এবং আপনার প্রয়োজন অনুযায়ী নির্বাচন করুন"
             isSearchable
-            options={colourOptions}
+            options={colourOption}
             onChange={setOpenModalBan}
             className="text-sm bg-primary w-80 md:w-[40rem] lg:w-full mr-10 md:mr-12 lg:mr-0  -ml-24 md:-ml-40 lg:ml-0 mx-auto text-black font-medium"
           />

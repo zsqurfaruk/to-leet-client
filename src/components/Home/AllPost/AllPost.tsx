@@ -24,7 +24,7 @@ function AllPost({post}:any) {
           <div className="card-body">
             <h2> {post?.title}</h2>
             <h2> {post?.district}</h2>
-            <h2> {post?.rentType}</h2>
+            {/* <h2> {post?.rentType}</h2> */}
             <h2> {post?.email}</h2>
             <h2> {post.description.slice(0, 75)}...<span className="text-blue-500">see more</span></h2>
             <div className="card-actions justify-end">

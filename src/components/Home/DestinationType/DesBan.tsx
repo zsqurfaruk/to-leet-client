@@ -23,7 +23,7 @@ const DesBan = () => {
     <div className="w-10/12 mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 lg:gap-5 md:gap-2 gap-5 mt-20 md:mt-8">
       <Link
         href={{
-          pathname: `/Male-Bachelor`,
+          pathname: `/Bachelor-(Male)`,
         }}
         onClick={() => setRentName("MaleBachelor")}
       >
@@ -56,7 +56,7 @@ const DesBan = () => {
 
       <Link
         href={{
-          pathname: `/Female-Bachelor`,
+          pathname: `/Bachelor-(Female)`,
         }}
         onClick={() => setRentName("FemaleBachelor")}
       >
@@ -89,7 +89,7 @@ const DesBan = () => {
 
       <Link
         href={{
-          pathname: `/Sublet-Male`,
+          pathname: `/Sublet-(Male)`,
         }}
         onClick={() => setRentName("SubletMale")}
       >
@@ -121,7 +121,7 @@ const DesBan = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Sublet-Female`,
+          pathname: `/Sublet-(Female)`,
         }}
         onClick={() => setRentName("SubletFemale")}
       >
@@ -185,7 +185,7 @@ const DesBan = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Mess-Male`,
+          pathname: `/Mess-(Male)`,
         }}
         onClick={() => setRentName("MessMale")}
       >
@@ -215,7 +215,7 @@ const DesBan = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Mess-Female`,
+          pathname: `/Mess-(Female)`,
         }}
         onClick={() => setRentName("MessFemale")}
       >

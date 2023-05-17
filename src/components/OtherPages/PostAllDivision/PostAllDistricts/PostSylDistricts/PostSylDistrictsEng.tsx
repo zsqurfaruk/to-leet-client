@@ -1,55 +1,78 @@
-import { StateContext } from "@/Context/StateContext/StateContext";
+import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import React, { useContext } from "react";
 
 const PostSylDistrictsEng = () => {
-  const { setDistrictLocation }: any = useContext(StateContext);
+  const { postDistrictsName, setPostDistrictsName,setPostOpenModal }: any = useContext(PostStateContext);
+  if (postDistrictsName?.eng) {
+    setPostOpenModal(true);
+  }
+  const lang = localStorage.getItem("lan");
   return (
     <div>
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">
         <li>
-        <label className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Sylhet"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Sylhet", ban: "সিলেট" })
+              }
             />
-            <span className="-mt-[2px]">Sylhet</span>
+            {lang ? (
+              <span className="-mt-[2px]">Sylhet</span>
+            ) : (
+              <span className="-mt-[2px]">সিলেট</span>
+            )}
           </label>
-        
         </li>
         <li>
-        <label className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Moulvibazar"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Moulvibazar", ban: "মৌলভীবাজার" })
+              }
             />
-            <span className="-mt-[2px]">Moulvibazar</span>
+            {lang ? (
+              <span className="-mt-[2px]">Moulvibazar</span>
+            ) : (
+              <span className="-mt-[2px]">মৌলভীবাজার</span>
+            )}
           </label>
-          
-        
         </li>
         <li>
-        <label className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Habiganj"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Habiganj", ban: "হবিগঞ্জ" })
+              }
             />
-            <span className="-mt-[2px]">Habiganj</span>
+            {lang ? (
+              <span className="-mt-[2px]">Habiganj</span>
+            ) : (
+              <span className="-mt-[2px]">হবিগঞ্জ</span>
+            )}
           </label>
-         
         </li>
         <li>
-        <label className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Sunamganj"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Sunamganj", ban: "সুনামগঞ্জ" })
+              }
             />
-            <span className="-mt-[2px]">Sunamganj</span>
+            {lang ? (
+              <span className="-mt-[2px]">Sunamganj</span>
+            ) : (
+              <span className="-mt-[2px]">সুনামগঞ্জ</span>
+            )}
           </label>
-        
         </li>
       </ul>
     </div>

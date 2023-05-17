@@ -11,11 +11,12 @@ const StateInfo = ({ children }: any) => {
   const [divisionNameEng, setDivisionNameEng] = useState("");
   const [divisionNameBan, setDivisionNameBan] = useState("");
   const [previous, setPrevious] = useState("");
-  const [language, setLanguage] = useState(false);
+  const [language, setLanguage] = useState("");
   const [districtLocation, setDistrictLocation] = useState("");
-  const [openModalEng, setOpenModalEng] = useState(false);
   const [openModalBan, setOpenModalBan] = useState(false);
+  const [openModalEng, setOpenModalEng] = useState(false);
   const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [typeCount, setTypeCount] = useState([])
  
   const handleOpenModalEng = () => setOpenModalEng(!openModalEng);
   const handleOpenModalBan = () => setOpenModalBan(!openModalBan);
@@ -54,7 +55,7 @@ const StateInfo = ({ children }: any) => {
     openModalBan,
     setOpenModalBan,
     handleOpenModalBan,
-  
+    typeCount, setTypeCount
 
   };
   return <StateContext.Provider value={info}>{children}</StateContext.Provider>;

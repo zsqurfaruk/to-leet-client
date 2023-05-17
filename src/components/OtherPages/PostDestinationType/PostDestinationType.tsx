@@ -10,8 +10,8 @@ const PostDestinationType = () => {
     setPostOpenModal,
     setGetPopularAreaName,
     setModalValue,
-    postCityNameBan,
-    modalValue,
+    postDistrictsName,
+    postDivisionNameEng
   }: any = useContext(PostStateContext);
   const handleCancel = () => {
     setPostOpenModal(false);
@@ -20,18 +20,35 @@ const PostDestinationType = () => {
   const lang = localStorage.getItem("lan");
   return (
     <div className="bg-primary  w-80 md:w-[40rem] lg:w-full -ml-24 md:-ml-44 lg:ml-0 rounded-md mt-40 lg:mt-0">
-      <h1 className="flex justify-evenly text-lg pt-5">
-        {lang ? (
-          <span>City: {postCityNameEng?.eng}</span>
-        ) : (
-          <span>শহর: {postCityNameEng?.ban}</span>
-        )}
-        {lang ? (
-          <span>Area: {getPostPopularAreaName?.eng} </span>
-        ) : (
-          <span> এলাকা: {getPostPopularAreaName?.ban} </span>
-        )}
-      </h1>
+      <div>
+        {
+          postDistrictsName?.eng ?
+          <h1 className="flex justify-evenly text-lg pt-5">
+          {lang ? (
+            <span>Division: {postDivisionNameEng?.eng}</span>
+          ) : (
+            <span> বিভাগ: {postDivisionNameEng?.ban}</span>
+          )}
+          {lang ? (
+            <span>District: {postDistrictsName?.eng} </span>
+          ) : (
+            <span>জেলা : {postDistrictsName?.ban} </span>
+          )}
+        </h1> :
+          <h1 className="flex justify-evenly text-lg pt-5">
+          {lang ? (
+            <span>City: {postCityNameEng?.eng}</span>
+          ) : (
+            <span>শহর: {postCityNameEng?.ban}</span>
+          )}
+          {lang ? (
+            <span>Area: {getPostPopularAreaName?.eng} </span>
+          ) : (
+            <span> এলাকা: {getPostPopularAreaName?.ban} </span>
+          )}
+        </h1> 
+        }
+      </div>
       <div className=" p-5 grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 lg:gap-5 md:gap-2 gap-1  md:mt-8">
         <Link
           href={{
@@ -39,8 +56,8 @@ const PostDestinationType = () => {
           }}
           onClick={() =>
             setModalValue({
-              nameEng: "Bachelor-Male",
-              nameBan: "ব্যাচেলর (ছেলে)",
+              eng: "Bachelor-(Male)",
+              ban: "ব্যাচেলর-(ছেলে)",
             })
           }
         >
@@ -67,8 +84,8 @@ const PostDestinationType = () => {
           }}
           onClick={() =>
             setModalValue({
-              nameEng: "Bachelor-Female",
-              nameBan: "ব্যাচেলর-মেয়ে",
+              eng: "Bachelor-(Female)",
+              ban: "ব্যাচেলর-(মেয়ে)",
             })
           }
         >
@@ -94,7 +111,7 @@ const PostDestinationType = () => {
             pathname: "/add-post/post-details",
           }}
           onClick={() =>
-            setModalValue({ nameEng: "Sublet-Male", nameBan: "সাবলেট-(ছেলে)" })
+            setModalValue({ eng: "Sublet-(Male)", ban: "সাবলেট-(ছেলে)" })
           }
         >
           <Card>
@@ -115,8 +132,8 @@ const PostDestinationType = () => {
           }}
           onClick={() =>
             setModalValue({
-              nameEng: "Sublet-Female",
-              nameBan: "সাবলেট-(মেয়ে)",
+              eng: "Sublet-(Female)",
+              ban: "সাবলেট-(মেয়ে)",
             })
           }
         >
@@ -139,7 +156,7 @@ const PostDestinationType = () => {
             pathname: "/add-post/post-details",
           }}
           onClick={() =>
-            setModalValue({ nameEng: "Family", nameBan: "পরিবার" })
+            setModalValue({ eng: "Family", ban: "পরিবার" })
           }
         >
           <Card>
@@ -159,7 +176,7 @@ const PostDestinationType = () => {
             pathname: "/add-post/post-details",
           }}
           onClick={() =>
-            setModalValue({ nameEng: "Mess-Male", nameBan: "মেস-(ছেলে)" })
+            setModalValue({ eng: "Mess-(Male)", ban: "মেস-(ছেলে)" })
           }
         >
           <Card>
@@ -179,7 +196,7 @@ const PostDestinationType = () => {
             pathname: "/add-post/post-details",
           }}
           onClick={() =>
-            setModalValue({ nameEng: "Mess-Female", nameBan: "মেস-(মেয়ে)" })
+            setModalValue({ eng: "Mess-(Female)", ban: "মেস-(মেয়ে)" })
           }
         >
           <Card>
@@ -199,7 +216,7 @@ const PostDestinationType = () => {
             pathname: "/add-post/post-details",
           }}
           onClick={() =>
-            setModalValue({ nameEng: "Hostel", nameBan: "আবাসিক হোস্টেল" })
+            setModalValue({ eng: "Hostel", ban: "আবাসিক-হোস্টেল" })
           }
         >
           <Card>
@@ -221,7 +238,7 @@ const PostDestinationType = () => {
           href={{
             pathname: "/add-post/post-details",
           }}
-          onClick={() => setModalValue({ nameEng: "Office", nameBan: "অফিস" })}
+          onClick={() => setModalValue({ eng: "Office", ban: "অফিস" })}
         >
           <Card>
             <div>
@@ -239,7 +256,7 @@ const PostDestinationType = () => {
           href={{
             pathname: "/add-post/post-details",
           }}
-          onClick={() => setModalValue({ nameEng: "Shop", nameBan: "দোকান" })}
+          onClick={() => setModalValue({ eng: "Shop", ban: "দোকান" })}
         >
           <Card>
             <div>
@@ -258,7 +275,7 @@ const PostDestinationType = () => {
             pathname: "/add-post/post-details",
           }}
           onClick={() =>
-            setModalValue({ nameEng: "Vehicles", nameBan: "যানবাহন" })
+            setModalValue({ eng: "Vehicles", ban: "যানবাহন" })
           }
         >
           <Card>
@@ -278,7 +295,7 @@ const PostDestinationType = () => {
             pathname: "/add-post/post-details",
           }}
           onClick={() =>
-            setModalValue({ nameEng: "Garage", nameBan: "গ্যারেজ" })
+            setModalValue({ eng: "Garage", ban: "গ্যারেজ" })
           }
         >
           <Card>

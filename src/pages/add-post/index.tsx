@@ -3,9 +3,6 @@ import privateRoute from "@/routes/privateRoute";
 import PostAllCityEng from "@/components/OtherPages/PostAllCities/PostAllCitiesEng/PostAllCitiesEng";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import PostAllDivisionEng from "@/components/OtherPages/PostAllDivision/PostAllDivisionEng/PostAllDivisionEng";
-import PostAllDivisionBan from "@/components/OtherPages/PostAllDivision/PostAllDivisionBan/PostAllDivisionBan";
-import PostDistrictsBan from "@/components/OtherPages/PostAllDivision/PostDistricts/PostDistrictsBan/PostDistrictsBan";
-import PostDistrictsEng from "@/components/OtherPages/PostAllDivision/PostDistricts/PostDistrictsEng/PostDistrictsEng";
 import PostAreaModalEng from "@/components/Home/Banner/Modal/PostAreaModalEng";
 import DhaPopularArea from "@/components/OtherPages/PostPopularArea/PostAllPopularAres/DhaPopularArea/DhaPopularArea";
 import RajPopularAreaEng from "@/components/OtherPages/PostPopularArea/PostAllPopularAres/RajPopularArea/RajPopularAreaEng";
@@ -15,6 +12,14 @@ import KhulnaPopularAreaEng from "@/components/OtherPages/PostPopularArea/PostAl
 import RangPopularAreaEng from "@/components/OtherPages/PostPopularArea/PostAllPopularAres/RangPopularArea/RangPopularAreaEng";
 import MymPopularAreaEng from "@/components/OtherPages/PostPopularArea/PostAllPopularAres/MymPopularArea/MymPopularAreaEng";
 import SylPopularAreaEng from "@/components/OtherPages/PostPopularArea/PostAllPopularAres/SylPopularArea/SylPopularAreaEng";
+import PostDhaDistrictsEng from "@/components/OtherPages/PostAllDivision/PostAllDistricts/PostDhaDistricts/PostDhaDistrictsEng";
+import PostRajDistrictsEng from "@/components/OtherPages/PostAllDivision/PostAllDistricts/PostRajDistricts/PostRajDistrictsEng";
+import PostSylDistrictsEng from "@/components/OtherPages/PostAllDivision/PostAllDistricts/PostSylDistricts/PostSylDistrictsEng";
+import PostChittDistrictsEng from "@/components/OtherPages/PostAllDivision/PostAllDistricts/PostChittDistricts/PostChittDistrictsEng";
+import PostBariDistrictsEng from "@/components/OtherPages/PostAllDivision/PostAllDistricts/PostBariDistricts/PostBariDistrictsEng";
+import PostKhulnaDistrictsEng from "@/components/OtherPages/PostAllDivision/PostAllDistricts/PostKhulnaDistricts/PostKhulnaDistrictsEng";
+import PostRangDistrictsEng from "@/components/OtherPages/PostAllDivision/PostAllDistricts/PostRangDistricts/PostRangDistrictsEng";
+import PostMymDistrictsEng from "@/components/OtherPages/PostAllDivision/PostAllDistricts/PostMymDistricts/PostMymDistrictsEng";
 
 const AddPost = () => {
   // const [divisionLocation, setDivisionLocation] = useState<string[]>([]);
@@ -23,7 +28,7 @@ const AddPost = () => {
   const {
     postCityNameEng,
     setPostCityNameEng,
-    postDivisionNameBan,
+    setPostDivisionNameEng,
     postDivisionNameEng,
   }: any = useContext(PostStateContext);
 
@@ -38,6 +43,7 @@ const AddPost = () => {
   // };
   const handlePrevious = () => {
     setPostCityNameEng({});
+    setPostDivisionNameEng({})
   };
   const lang = localStorage.getItem("lan");
   return (
@@ -103,8 +109,23 @@ const AddPost = () => {
         </div>
         </div>
         <div className="mt-20 lg:w-10/12 mx-auto" >
+        {postDivisionNameEng?.eng && (
+         <div>
+           <h1
+            onClick={handlePrevious}
+            className="text-secondary text-sm mb-5 cursor-pointer hover:underline"
+          >
+            {lang ? "Change division?" : "বিভাগ পরিবর্তন?"}
+          </h1>
+          <h1  className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
+            {
+              lang ? <span>Districts of {postDivisionNameEng.eng}:</span>: <span className="text-xl">{postDivisionNameEng?.ban} এর জেলাসমুহঃ</span>
+            }
+          </h1>
+         </div>
+        )}
           <div
-            className={(postDivisionNameBan || postDivisionNameEng) && "hidden"}
+            className={postDivisionNameEng?.eng && "hidden"}
           >
             {lang ? (
               <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
@@ -117,22 +138,50 @@ const AddPost = () => {
             )}
           </div>
           <div className="lg:m-4">
-            <div className={lang && postDivisionNameBan && "hidden"}>
-              {lang && !postDivisionNameEng && (
+            <div 
+            // className={lang && postDivisionNameBan && "hidden"}
+            >
+              {!postDivisionNameEng?.eng && (
                 <PostAllDivisionEng></PostAllDivisionEng>
               )}
             </div>
-            <div className={!lang && postDivisionNameEng && "hidden"}>
+            <div className="lg:-ml-4">
+            {postDivisionNameEng?.eng === "Dhaka" && (
+             <PostDhaDistrictsEng></PostDhaDistrictsEng>
+          )}
+          {postDivisionNameEng?.eng === "Rajshahi" && (
+             <PostRajDistrictsEng></PostRajDistrictsEng>
+          )}
+          {postDivisionNameEng?.eng === "Sylhet" && (
+             <PostSylDistrictsEng></PostSylDistrictsEng>
+          )}
+          {postDivisionNameEng?.eng === "Chittagong" && (
+             <PostChittDistrictsEng></PostChittDistrictsEng>
+          )}
+          {postDivisionNameEng?.eng === "Barisal" && (
+            <PostBariDistrictsEng></PostBariDistrictsEng>
+          )}
+          {postDivisionNameEng?.eng === "Khulna" && (
+             <PostKhulnaDistrictsEng></PostKhulnaDistrictsEng>
+          )}
+          {postDivisionNameEng?.eng === "Rangpur" && (
+             <PostRangDistrictsEng></PostRangDistrictsEng>
+          )}
+          {postDivisionNameEng?.eng === "Mymensingh" && (
+             <PostMymDistrictsEng></PostMymDistrictsEng>
+          )}
+            </div>
+            {/* <div className={!lang && postDivisionNameEng && "hidden"}>
               {!lang && !postDivisionNameBan && (
                 <PostAllDivisionBan></PostAllDivisionBan>
               )}
-            </div>
+            </div> */}
             {/* {
             lang && postDivisionNameBan && <PostAllDivisionEng></PostAllDivisionEng>
           }
            {!lang && postDivisionNameEng && <PostAllDivisionBan></PostAllDivisionBan>} */}
           </div>
-          {!lang && postDivisionNameBan && (
+          {/* {!lang && postDivisionNameBan && (
             <PostDistrictsBan></PostDistrictsBan>
           )}
           {lang && postDivisionNameEng && <PostDistrictsEng></PostDistrictsEng>}
@@ -141,7 +190,7 @@ const AddPost = () => {
           )}
           {lang && !postDivisionNameEng && postDivisionNameBan && (
             <PostDistrictsEng></PostDistrictsEng>
-          )}
+          )} */}
         </div>
         {/* {(!cityName || cityNameBan) && lang && <AllCity></AllCity>}
       {!cityNameBan && !lang && <AllCity></AllCity>}

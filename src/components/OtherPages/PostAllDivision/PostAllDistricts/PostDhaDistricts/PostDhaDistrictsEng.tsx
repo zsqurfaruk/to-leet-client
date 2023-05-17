@@ -1,7 +1,13 @@
-import { Checkbox } from "@material-tailwind/react";
-import React from "react";
+import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
+import React, { useContext } from "react";
 
 const PostDhaDistrictsEng = () => {
+  const { postDistrictsName, setPostDistrictsName,setPostOpenModal }: any = useContext(PostStateContext);
+  if (postDistrictsName?.eng) {
+    setPostOpenModal(true);
+  }
+  
+  const lang = localStorage.getItem("lan");
   return (
     <div>
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">
@@ -10,9 +16,15 @@ const PostDhaDistrictsEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Dhaka"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Dhaka", ban: "ঢাকা" })
+              }
             />
-            <span className="-mt-[2px]">Dhaka</span>
+            {lang ? (
+              <span className="-mt-[2px]">Dhaka</span>
+            ) : (
+              <span>ঢাকা</span>
+            )}
           </label>
         </li>
         <li>
@@ -21,9 +33,15 @@ const PostDhaDistrictsEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Faridpur"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Faridpur", ban: "ফরিদপুর" })
+              }
             />
-            <span className="-mt-[2px]">Faridpur</span>
+            {lang ? (
+              <span className="-mt-[2px]">Faridpur</span>
+            ) : (
+              <span>ফরিদপুর</span>
+            )}
           </label>
         </li>
         <li>
@@ -32,9 +50,15 @@ const PostDhaDistrictsEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Gazipur"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Gazipur", ban: "গাজীপুর" })
+              }
             />
-            <span className="-mt-[2px]">Gazipur</span>
+            {lang ? (
+              <span className="-mt-[2px]">Gazipur</span>
+            ) : (
+              <span>গাজীপুর</span>
+            )}
           </label>
         </li>
         <li>
@@ -43,20 +67,32 @@ const PostDhaDistrictsEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Gopalganj"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Gopalganj", ban: "গোপালগঞ্জ" })
+              }
             />
-            <span className="-mt-[2px]">Gopalganj</span>
+            {lang ? (
+              <span className="-mt-[2px]">Gopalganj</span>
+            ) : (
+              <span>গোপালগঞ্জ</span>
+            )}
           </label>
         </li>
-        
+
         <li>
           <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Kishoreganj"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Kishoreganj", ban: "কিশোরগঞ্জ" })
+              }
             />
-            <span className="-mt-[2px]">Kishoreganj</span>
+            {lang ? (
+              <span className="-mt-[2px]">Kishoreganj</span>
+            ) : (
+              <span>কিশোরগঞ্জ</span>
+            )}
           </label>
         </li>
         <li>
@@ -64,9 +100,15 @@ const PostDhaDistrictsEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Madaripur"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Madaripur", ban: "মাদারীপুর" })
+              }
             />
-            <span className="-mt-[2px]">Madaripur</span>
+            {lang ? (
+              <span className="-mt-[2px]">Madaripur</span>
+            ) : (
+              <span>মাদারীপুর</span>
+            )}
           </label>
         </li>
         <li>
@@ -75,9 +117,15 @@ const PostDhaDistrictsEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Manikganj"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Manikganj", ban: "মানিকগঞ্জ" })
+              }
             />
-            <span className="-mt-[2px]">Manikganj</span>
+            {lang ? (
+              <span className="-mt-[2px]">Manikganj</span>
+            ) : (
+              <span>মানিকগঞ্জ</span>
+            )}
           </label>
         </li>
 
@@ -87,9 +135,15 @@ const PostDhaDistrictsEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Munshiganj"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Munshiganj", ban: "মুন্সিগঞ্জ" })
+              }
             />
-            <span className="-mt-[2px]">Munshiganj</span>
+            {lang ? (
+              <span className="-mt-[2px]">Munshiganj</span>
+            ) : (
+              <span>মুন্সিগঞ্জ</span>
+            )}
           </label>
         </li>
         <li>
@@ -98,9 +152,15 @@ const PostDhaDistrictsEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Narayanganj"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Narayanganj", ban: "নারায়ণগঞ্জ" })
+              }
             />
-            <span className="-mt-[2px]">Narayanganj</span>
+            {lang ? (
+              <span className="-mt-[2px]">Narayanganj</span>
+            ) : (
+              <span>নারায়ণগঞ্জ</span>
+            )}
           </label>
         </li>
         <li>
@@ -109,21 +169,33 @@ const PostDhaDistrictsEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Narsingdi"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Narsingdi", ban: "নরসিংদী" })
+              }
             />
-            <span className="-mt-[2px]">Narsingdi</span>
+            {lang ? (
+              <span className="-mt-[2px]">Narsingdi</span>
+            ) : (
+              <span>নরসিংদী</span>
+            )}
           </label>
         </li>
-        
+
         <li>
           {" "}
           <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Rajbari"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Rajbari", ban: "রাজবাড়ী" })
+              }
             />
-            <span className="-mt-[2px]">Rajbari</span>
+            {lang ? (
+              <span className="-mt-[2px]">Rajbari</span>
+            ) : (
+              <span>রাজবাড়ী</span>
+            )}
           </label>
         </li>
         <li>
@@ -132,21 +204,33 @@ const PostDhaDistrictsEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Shariatpur"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Shariatpur", ban: "শরীয়তপুর" })
+              }
             />
-            <span className="-mt-[2px]">Shariatpur</span>
+            {lang ? (
+              <span className="-mt-[2px]">Shariatpur</span>
+            ) : (
+              <span>শরীয়তপুর</span>
+            )}
           </label>
         </li>
-        
+
         <li>
           {" "}
           <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              name="Tangail"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Tangail", ban: "টাঙ্গাইল" })
+              }
             />
-            <span className="-mt-[2px]">Tangail</span>
+            {lang ? (
+              <span className="-mt-[2px]">Tangail</span>
+            ) : (
+              <span>টাঙ্গাইল</span>
+            )}
           </label>
         </li>
       </ul>
