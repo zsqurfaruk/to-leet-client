@@ -18,11 +18,18 @@ const ApiContext = ({ children }: any) => {
 //   // handle error
 //   console.log(error);
 // })
+// useEffect(()=>{
+//   fetch('http://localhost:5000/api/v1/product')
+//   .then(res=>res.json())
+//   .then(data=>setCounterPosts(data))
+// },[])
 useEffect(()=>{
   fetch('http://localhost:5000/api/v1/product')
   .then(res=>res.json())
   .then(data=>setCounterPosts(data))
 },[])
+ 
+
 useEffect(()=>{
   fetch('http://localhost:5000/api/v1/users/signup')
   .then(res=>res.json())

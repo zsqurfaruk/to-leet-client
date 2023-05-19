@@ -2,8 +2,17 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 
 const DistrictsOfSylhet = () => {
-  const { setDistrictsName, districtsName, setFilterModal }: any =
-    useContext(StateContext);
+  const {
+    setDistrictsName,
+    districtsName,
+    setFilterValue,
+    filterValue,
+    setFilterModal,
+  }: any = useContext(StateContext);
+  const handleFilter = (v: any) => {
+    setDistrictsName(v);
+    setFilterValue({ ...filterValue, districtsName: v });
+  };
   if (districtsName?.eng) {
     setFilterModal(true);
   }
@@ -16,7 +25,7 @@ const DistrictsOfSylhet = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() => setDistrictsName({ eng: "Sylhet", ban: "সিলেট" })}
+              onClick={() => handleFilter({ eng: "Sylhet", ban: "সিলেট" })}
             />
             {lang ? (
               <span className="-mt-[2px]">Sylhet</span>
@@ -31,7 +40,7 @@ const DistrictsOfSylhet = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Moulvibazar", ban: "মৌলভীবাজার" })
+                handleFilter({ eng: "Moulvibazar", ban: "মৌলভীবাজার" })
               }
             />
             {lang ? (
@@ -46,9 +55,7 @@ const DistrictsOfSylhet = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() =>
-                setDistrictsName({ eng: "Habiganj", ban: "হবিগঞ্জ" })
-              }
+              onClick={() => handleFilter({ eng: "Habiganj", ban: "হবিগঞ্জ" })}
             />
             {lang ? (
               <span className="-mt-[2px]">Habiganj</span>
@@ -63,7 +70,7 @@ const DistrictsOfSylhet = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Sunamganj", ban: "সুনামগঞ্জ" })
+                handleFilter({ eng: "Sunamganj", ban: "সুনামগঞ্জ" })
               }
             />
             {lang ? (

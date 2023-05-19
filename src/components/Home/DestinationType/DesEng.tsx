@@ -17,8 +17,8 @@ import car from "../../../image/car.png";
 import garage from "../../../image/garage.png";
 const DesEng = () => {
   const { setRentName }: any = useContext(NameContext);
-  const { filterTypeCity, filterTypeDivision,typeCount }: any = useContext(StateContext);
-
+  const { filterTypeCity, filterTypeDivision,typeCount,counterPosts }: any = useContext(StateContext);
+ console.log(counterPosts)
   return (
     <div className="w-10/12 mx-auto  grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 lg:gap-5 md:gap-2 gap-5 mt-10 md:mt-8">
       <Link
@@ -48,7 +48,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Bachelor (Male)
               </Typography>
-              <Typography> {typeCount?.length} Ads</Typography>
+              <Typography> {counterPosts?.type?.eng} Ads</Typography>
             </div>
           </div>
         </Card>

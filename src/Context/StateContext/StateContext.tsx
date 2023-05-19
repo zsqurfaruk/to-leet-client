@@ -18,7 +18,13 @@ const StateInfo = ({ children }: any) => {
   const [filterModal, setFilterModal] = useState(false);
   const [filterModalValue, setFilterModalValue] = useState({});
   const [typeCount, setTypeCount] = useState([]);
-
+  const [filterValue, setFilterValue] = useState({
+    cityName: cityName,
+    homePopularAreaName: homePopularAreaName,
+    filterModalValue: filterModalValue,
+    divisionNameEng: divisionNameEng,
+    districtsName: districtsName,
+  });
   const handleOpenModalEng = () => setOpenModalEng(!openModalEng);
   const handleFilterModal = () => setFilterModal(!filterModal);
   const info = {
@@ -43,14 +49,19 @@ const StateInfo = ({ children }: any) => {
     setOpenModalEng,
     openModalEng,
     handleOpenModalEng,
-    openModalValue, setOpenModalValue,
+    openModalValue,
+    setOpenModalValue,
     typeCount,
     setTypeCount,
     districtsName,
     setDistrictsName,
     handleFilterModal,
-    filterModal, setFilterModal,
-    filterModalValue, setFilterModalValue
+    filterModal,
+    setFilterModal,
+    filterModalValue,
+    setFilterModalValue,
+    filterValue,
+    setFilterValue,
   };
   return <StateContext.Provider value={info}>{children}</StateContext.Provider>;
 };

@@ -3,8 +3,18 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 
 const DistrictsOfMym = () => {
-  const { setDistrictsName, districtsName, setFilterModal }: any =
-    useContext(StateContext);
+  const {
+    setDistrictsName,
+    districtsName,
+    setFilterValue,
+    filterValue,
+    setFilterModal,
+  }: any = useContext(StateContext);
+
+  const handleFilter = (v: any) => {
+    setDistrictsName(v);
+    setFilterValue({ ...filterValue, districtsName: v });
+  };
   if (districtsName?.eng) {
     setFilterModal(true);
   }
@@ -18,7 +28,7 @@ const DistrictsOfMym = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Mymensingh", ban: "ময়মনসিংহ" })
+                handleFilter({ eng: "Mymensingh", ban: "ময়মনসিংহ" })
               }
             />
             {lang ? (
@@ -33,9 +43,7 @@ const DistrictsOfMym = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() =>
-                setDistrictsName({ eng: "Jamalpur", ban: "খুলনা" })
-              }
+              onClick={() => handleFilter({ eng: "Jamalpur", ban: "খুলনা" })}
             />
             {lang ? (
               <span className="-mt-[2px]">Jamalpur</span>
@@ -50,7 +58,7 @@ const DistrictsOfMym = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Netrokona", ban: "নেত্রকোণা" })
+                handleFilter({ eng: "Netrokona", ban: "নেত্রকোণা" })
               }
             />
             {lang ? (
@@ -65,9 +73,7 @@ const DistrictsOfMym = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() =>
-                setDistrictsName({ eng: "Sherpur", ban: "শেরপুর" })
-              }
+              onClick={() => handleFilter({ eng: "Sherpur", ban: "শেরপুর" })}
             />
             {lang ? (
               <span className="-mt-[2px]">Sherpur</span>

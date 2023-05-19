@@ -5,22 +5,51 @@ import { options } from "./KhulDataBan";
 import { option } from "./KhulDataEng";
 
 const PopularAreaOfKhulna = () => {
-  const { setHomePopularAreaName,  homePopularAreaName, setFilterModal }: any =useContext(StateContext);  
-  if (homePopularAreaName?.name === "eng") {
-    const newName = {
-      eng: homePopularAreaName?.label,
-      ban: homePopularAreaName?.value,
-    };
-    setHomePopularAreaName(newName);
-    setFilterModal(true);
-  } else if (homePopularAreaName?.name === "ban") {
-    const newName = {
-      eng: homePopularAreaName?.value,
-      ban: homePopularAreaName?.label,
-    };
-    setHomePopularAreaName(newName);
-    setFilterModal(true);
+  const { setHomePopularAreaName,setFilterValue, filterValue, homePopularAreaName, setFilterModal }: any =useContext(StateContext);  
+
+  const handleFilter=(v:any)=>{
+    console.log("v-value",v)
+    if(v?.name){
+
+      if (v?.name === "eng") {
+        const newName = {
+          eng: v?.label,
+          ban: v?.value,
+        };
+        setHomePopularAreaName(newName);
+        setFilterValue({...filterValue, homePopularAreaName:newName})
+        setFilterModal(true);
+      } else if (v?.name === "ban") {
+        const newName = {
+          eng: v?.value,
+          ban: v?.label,
+        };
+        setHomePopularAreaName(newName);
+        setFilterValue({...filterValue, homePopularAreaName:newName})
+        setFilterModal(true);
+      }
+    }
+    else{
+      setHomePopularAreaName(v)
+      setFilterValue({...filterValue, homePopularAreaName:v})
+    }
+   
   }
+  // if (homePopularAreaName?.name === "eng") {
+  //   const newName = {
+  //     eng: homePopularAreaName?.label,
+  //     ban: homePopularAreaName?.value,
+  //   };
+  //   setHomePopularAreaName(newName);
+  //   setFilterModal(true);
+  // } else if (homePopularAreaName?.name === "ban") {
+  //   const newName = {
+  //     eng: homePopularAreaName?.value,
+  //     ban: homePopularAreaName?.label,
+  //   };
+  //   setHomePopularAreaName(newName);
+  //   setFilterModal(true);
+  // }
 
 
   if (
@@ -45,7 +74,7 @@ const PopularAreaOfKhulna = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Khulna Sadar",
                     ban: "খুলনা সদর",
                   })
@@ -64,7 +93,7 @@ const PopularAreaOfKhulna = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Daulatpur",
                     ban: "দৌলতপুর",
                   })
@@ -83,7 +112,7 @@ const PopularAreaOfKhulna = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Khalishpur",
                     ban: "খালিশপুর",
                   })
@@ -102,7 +131,7 @@ const PopularAreaOfKhulna = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Sonadanga",
                     ban: "সোনাডাংগা",
                   })
@@ -121,7 +150,7 @@ const PopularAreaOfKhulna = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Boyra Bazar",
                     ban: "বয়রা বাজার",
                   })
@@ -140,7 +169,7 @@ const PopularAreaOfKhulna = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Zero Point",
                     ban: "জিরো পয়েন্ট",
                   })
@@ -160,7 +189,7 @@ const PopularAreaOfKhulna = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Dumuria",
                     ban: "ডুমুরিয়া",
                   })
@@ -185,7 +214,7 @@ const PopularAreaOfKhulna = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={(e: any) =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Select others",
                     ban: "অন্যান্য এলাকা",
                   })
@@ -208,7 +237,7 @@ const PopularAreaOfKhulna = () => {
                     placeholder="Search"
                     isSearchable
                     options={option}
-                    onChange={setHomePopularAreaName}
+                    onChange={handleFilter}
                     className="bg-primary border-none text-sm h-4 text-black font-medium"
                   />
                 </li>
@@ -222,7 +251,7 @@ const PopularAreaOfKhulna = () => {
                     placeholder="অনুসন্ধান"
                     isSearchable
                     options={options}
-                    onChange={setHomePopularAreaName}
+                    onChange={handleFilter}
                     className="bg-primary border-none text-sm h-4 text-black font-medium"
                   />
                 </li>

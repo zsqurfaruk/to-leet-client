@@ -82,7 +82,7 @@ const Banner = () => {
         </div>
       )}
       <PostAreaModalEng></PostAreaModalEng>
-      <div className="pt-5 lg:w-10/12 mx-auto">
+      <div className="pt-5 md:w-10/12 mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="lg:h-screen flex items-center mt-8 lg:-mt-16 text-white">
             <div>
@@ -170,8 +170,8 @@ const Banner = () => {
                   <h1
                     className={
                       filterTypeCity || filterTypeDivision
-                        ? "text-black mt-5 lg:mt-10 text-2xl ml-7"
-                        : "mt-5 lg:mt-10 text-2xl ml-7"
+                        ? "text-black mt-5 lg:mt-10 text-2xl ml-7 md:ml-1 lg:ml-7"
+                        : "mt-5 lg:mt-10 text-2xl ml-7 md:ml-1 lg:ml-7"
                     }
                   >
                     Search by:
@@ -180,8 +180,8 @@ const Banner = () => {
                   <h1
                     className={
                       filterTypeCity || filterTypeDivision
-                        ? "text-black mt-5 lg:mt-10 text-xl  ml-7"
-                        : "mt-5 lg:mt-10 text-2xl ml-7 "
+                        ? "text-black mt-5 lg:mt-10 text-xl  ml-7 md:ml-1 lg:ml-7"
+                        : "mt-5 lg:mt-10 text-2xl ml-7 md:ml-1 lg:ml-7"
                     }
                   >
                     অনুসন্ধান করুন :

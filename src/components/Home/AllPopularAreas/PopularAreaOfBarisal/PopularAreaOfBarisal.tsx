@@ -5,34 +5,67 @@ import { options } from "./BariDataBan";
 import { option } from "./BariDataEng";
 
 const PopularAreaOfBarishal = () => {
-  const { setHomePopularAreaName,  homePopularAreaName, setFilterModal }: any =useContext(StateContext);
+  const {
+    setHomePopularAreaName,
+    homePopularAreaName,
+    setFilterModal,
+    filterValue,
+    setFilterValue,
+  }: any = useContext(StateContext);
+  const handleFilter = (v: any) => {
+    if (v?.name) {
+      if (v?.name === "eng") {
+        const newName = {
+          eng: v?.label,
+          ban: v?.value,
+        };
+        setHomePopularAreaName(newName);
+        setFilterValue({ ...filterValue, homePopularAreaName: newName });
+        setFilterModal(true);
+      } else if (v?.name === "ban") {
+        const newName = {
+          eng: v?.value,
+          ban: v?.label,
+        };
+        setHomePopularAreaName(newName);
+        setFilterValue({ ...filterValue, homePopularAreaName: newName });
+        setFilterModal(true);
+      }
+    } else {
+      setHomePopularAreaName(v);
+      setFilterValue({ ...filterValue, homePopularAreaName: v });
+    }
+  };
 
-  if (homePopularAreaName?.name === "eng") {
-    const newName = {
-      eng: homePopularAreaName?.label,
-      ban: homePopularAreaName?.value,
-    };
-    setHomePopularAreaName(newName);
-    setFilterModal(true);
-  } else if (homePopularAreaName?.name === "ban") {
-    const newName = {
-      eng: homePopularAreaName?.value,
-      ban: homePopularAreaName?.label,
-    };
-    setHomePopularAreaName(newName);
-    setFilterModal(true);
-  }
- 
+  // if (homePopularAreaName?.name === "eng") {
+  //   const newName = {
+  //     eng: homePopularAreaName?.label,
+  //     ban: homePopularAreaName?.value,
+  //   };
+  //   setHomePopularAreaName(newName);
+  //   setFilterModal(true);
+  // } else if (homePopularAreaName?.name === "ban") {
+  //   const newName = {
+  //     eng: homePopularAreaName?.value,
+  //     ban: homePopularAreaName?.label,
+  //   };
+  //   setHomePopularAreaName(newName);
+  //   setFilterModal(true);
+  // }
+
   if (
-     homePopularAreaName?.eng === "Sadar Road" ||
-     homePopularAreaName?.eng === "Nattullabad" ||
-     homePopularAreaName?.eng === "Rupatali" ||
-     homePopularAreaName?.eng === "Gournadi" ||
-     homePopularAreaName?.eng === "Nobogram Road" ||
-     homePopularAreaName?.eng === "Kashipur Bazar" ||
-     homePopularAreaName?.eng === "Amtala"
+    homePopularAreaName?.eng === "Sadar Road" ||
+    homePopularAreaName?.eng === "Nattullabad" ||
+    homePopularAreaName?.eng === "Rupatali" ||
+    homePopularAreaName?.eng === "Gournadi" ||
+    homePopularAreaName?.eng === "Nobogram Road" ||
+    homePopularAreaName?.eng === "Kashipur Bazar" ||
+    homePopularAreaName?.eng === "Amtala"
   ) {
     setFilterModal(true);
+  }
+  else{
+    setFilterModal(false);
   }
   const lang = localStorage.getItem("lan");
   return (
@@ -46,7 +79,7 @@ const PopularAreaOfBarishal = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Sadar Road",
                     ban: "সদর রোড",
                   })
@@ -68,7 +101,7 @@ const PopularAreaOfBarishal = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={(e: any) =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Nattullabad",
                     ban: "নথুল্লাবাদ",
                   })
@@ -89,7 +122,7 @@ const PopularAreaOfBarishal = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={(e: any) =>
-                  setHomePopularAreaName({ eng: "Rupatali", ban: "রুপাতলি" })
+                  handleFilter({ eng: "Rupatali", ban: "রুপাতলি" })
                 }
               />
               {lang ? (
@@ -106,9 +139,7 @@ const PopularAreaOfBarishal = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                onClick={() =>
-                  setHomePopularAreaName({ eng: "Gournadi", ban: "গৌরনদী" })
-                }
+                onClick={() => handleFilter({ eng: "Gournadi", ban: "গৌরনদী" })}
                 name="Gournadi"
               />
               {lang ? (
@@ -126,7 +157,7 @@ const PopularAreaOfBarishal = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={(e: any) =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Nobogram Road",
                     ban: "নবগ্রাম রোড",
                   })
@@ -147,7 +178,7 @@ const PopularAreaOfBarishal = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Kashipur Bazar",
                     ban: "কাসিপুর বাজার",
                   })
@@ -168,9 +199,7 @@ const PopularAreaOfBarishal = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                onClick={() =>
-                  setHomePopularAreaName({ eng: "Amtala", ban: "আমতলা" })
-                }
+                onClick={() => handleFilter({ eng: "Amtala", ban: "আমতলা" })}
                 name="Amtala"
               />
               {lang ? (
@@ -184,17 +213,15 @@ const PopularAreaOfBarishal = () => {
 
           <li
             className={
-              homePopularAreaName?.eng === "Select others"
-                ? "hidden"
-                : "flex"
+              homePopularAreaName?.eng === "Select others" ? "hidden" : "flex"
             }
           >
             <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-                onClick={(e: any) =>
-                  setHomePopularAreaName({
+                onClick={() =>
+                  handleFilter({
                     eng: "Select others",
                     ban: "অন্যান্য এলাকা",
                   })
@@ -217,7 +244,7 @@ const PopularAreaOfBarishal = () => {
                     placeholder="Search"
                     isSearchable
                     options={option}
-                    onChange={setHomePopularAreaName}
+                    onChange={handleFilter}
                     className="bg-primary border-none text-sm h-4 text-black font-medium"
                   />
                 </li>
@@ -231,7 +258,7 @@ const PopularAreaOfBarishal = () => {
                     placeholder="অনুসন্ধান"
                     isSearchable
                     options={options}
-                    onChange={setHomePopularAreaName}
+                    onChange={handleFilter}
                     className="bg-primary border-none h-4 text-black font-medium text-xs"
                   />
                 </li>

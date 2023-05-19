@@ -2,8 +2,18 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 
 const DistrictsOfRajshahi = () => {
-  const { setDistrictsName, districtsName, setFilterModal }: any =
-    useContext(StateContext);
+  const {
+    setDistrictsName,
+    districtsName,
+    setFilterValue,
+    filterValue,
+    setFilterModal,
+  }: any = useContext(StateContext);
+
+  const handleFilter = (v: any) => {
+    setDistrictsName(v);
+    setFilterValue({ ...filterValue, districtsName: v });
+  };
   if (districtsName?.eng) {
     setFilterModal(true);
   }
@@ -18,9 +28,7 @@ const DistrictsOfRajshahi = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() =>
-                setDistrictsName({ eng: "Rajshahi", ban: "রাজশাহী" })
-              }
+              onClick={() => handleFilter({ eng: "Rajshahi", ban: "রাজশাহী" })}
             />
             {lang ? (
               <span className="-mt-[2px]">Rajshahi</span>
@@ -35,7 +43,7 @@ const DistrictsOfRajshahi = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Sirajganj", ban: "সিরাজগঞ্জ" })
+                handleFilter({ eng: "Sirajganj", ban: "সিরাজগঞ্জ" })
               }
             />
             {lang ? (
@@ -50,7 +58,7 @@ const DistrictsOfRajshahi = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() => setDistrictsName({ eng: "Pabna", ban: "পাবনা" })}
+              onClick={() => handleFilter({ eng: "Pabna", ban: "পাবনা" })}
             />
             {lang ? (
               <span className="-mt-[2px]">Pabna</span>
@@ -64,7 +72,7 @@ const DistrictsOfRajshahi = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() => setDistrictsName({ eng: "Bogra", ban: "বগুড়া" })}
+              onClick={() => handleFilter({ eng: "Bogra", ban: "বগুড়া" })}
             />
             {lang ? (
               <span className="-mt-[2px]">Bogra</span>
@@ -79,7 +87,7 @@ const DistrictsOfRajshahi = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Joypurhat", ban: "জয়পুরহাট" })
+                handleFilter({ eng: "Joypurhat", ban: "জয়পুরহাট" })
               }
             />
             {lang ? (
@@ -94,7 +102,7 @@ const DistrictsOfRajshahi = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() => setDistrictsName({ eng: "Naogaon", ban: "নওগাঁ" })}
+              onClick={() => handleFilter({ eng: "Naogaon", ban: "নওগাঁ" })}
             />
             {lang ? (
               <span className="-mt-[2px]">Naogaon</span>
@@ -108,7 +116,7 @@ const DistrictsOfRajshahi = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() => setDistrictsName({ eng: "Natore", ban: "নাটোর" })}
+              onClick={() => handleFilter({ eng: "Natore", ban: "নাটোর" })}
             />
             {lang ? (
               <span className="-mt-[2px]">Natore</span>
@@ -123,7 +131,7 @@ const DistrictsOfRajshahi = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({
+                handleFilter({
                   eng: "Chapainawabganj",
                   ban: "চাঁপাইনবাবগঞ্জ",
                 })

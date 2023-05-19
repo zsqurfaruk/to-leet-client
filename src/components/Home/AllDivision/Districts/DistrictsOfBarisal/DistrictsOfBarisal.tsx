@@ -3,7 +3,12 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 
 const DistrictsOfBarisal = () => {
-  const { setDistrictsName, districtsName, setFilterModal}: any = useContext(StateContext);
+  const { setDistrictsName,setFilterValue,filterValue, districtsName, setFilterModal}: any = useContext(StateContext);
+  
+  const handleFilter = (v: any) => {
+    setDistrictsName(v);
+    setFilterValue({ ...filterValue, districtsName: v });
+  };
   if (districtsName?.eng) {
     setFilterModal(true);
   }
@@ -17,7 +22,7 @@ const DistrictsOfBarisal = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Barguna", ban: "বরগুনা" })
+                handleFilter({ eng: "Barguna", ban: "বরগুনা" })
               }
             />
             {lang ? (
@@ -33,7 +38,7 @@ const DistrictsOfBarisal = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Barisal", ban: "বরিশাল" })
+                handleFilter({ eng: "Barisal", ban: "বরিশাল" })
               }
             />
             {lang ? (
@@ -49,7 +54,7 @@ const DistrictsOfBarisal = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Bhola", ban: "ভোলা" })
+                handleFilter({ eng: "Bhola", ban: "ভোলা" })
               }
             />
             {lang ? (
@@ -66,7 +71,7 @@ const DistrictsOfBarisal = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Jhalokati", ban: "ঝালকাঠি" })
+                handleFilter({ eng: "Jhalokati", ban: "ঝালকাঠি" })
               }
             />
             {lang ? (
@@ -82,7 +87,7 @@ const DistrictsOfBarisal = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Patuakhali", ban: "পটুয়াখালী" })
+                handleFilter({ eng: "Patuakhali", ban: "পটুয়াখালী" })
               }
             />
             {lang ? (
@@ -98,7 +103,7 @@ const DistrictsOfBarisal = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Pirojpur", ban: "পিরোজপুর" })
+                handleFilter({ eng: "Pirojpur", ban: "পিরোজপুর" })
               }
             />
             {lang ? (

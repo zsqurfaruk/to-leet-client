@@ -2,18 +2,24 @@ import React, { useContext } from "react";
 import { StateContext } from "@/Context/StateContext/StateContext";
 
 const AllCityEng = () => {
-  const { setCityName }: any = useContext(StateContext);
-  const lang = localStorage.getItem("lan")
+  const { setCityName, filterValue, setFilterValue }: any =
+    useContext(StateContext);
+
+  const handleFilter = (v: any) => {
+    setCityName(v);
+    setFilterValue({ ...filterValue, cityName: v });
+  };
+
+  const lang = localStorage.getItem("lan");
   return (
     <div>
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-black text-sm md:text-base">
-      <li>
+        <li>
           <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() => setCityName({ eng: "Dhaka", ban: "ঢাকা" })}
-              // name="Dhaka"
+              onClick={() => handleFilter({ eng: "Dhaka", ban: "ঢাকা" })}
             />
             {lang ? (
               <span className="-mt-[2px]"> Dhaka City</span>
@@ -28,7 +34,7 @@ const AllCityEng = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setCityName({ eng: "Chittagong", ban: "চট্টগ্রাম" })
+                handleFilter({ eng: "Chittagong", ban: "চট্টগ্রাম" })
               }
               // name="Chittagong"
             />
@@ -44,9 +50,7 @@ const AllCityEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() =>
-                setCityName({ eng: "Rajshahi", ban: "রাজশাহী" })
-              }
+              onClick={() => handleFilter({ eng: "Rajshahi", ban: "রাজশাহী" })}
               // name="Rajshahi"
             />
             {lang ? (
@@ -62,7 +66,7 @@ const AllCityEng = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={(e: any) =>
-                setCityName({ eng: "Sylhet", ban: "সিলেট" })
+                handleFilter({ eng: "Sylhet", ban: "সিলেট" })
               }
               // name="Sylhet"
             />
@@ -78,9 +82,7 @@ const AllCityEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() =>
-                setCityName({ eng: "Barisal", ban: "বরিশাল" })
-              }
+              onClick={() => handleFilter({ eng: "Barisal", ban: "বরিশাল" })}
               // name="Barisal"
             />
             {lang ? (
@@ -95,10 +97,7 @@ const AllCityEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() =>
-                setCityName({ eng: "Khulna", ban: "খুলনা" })
-              }
-            
+              onClick={() => handleFilter({ eng: "Khulna", ban: "খুলনা" })}
             />
             {lang ? (
               <span className="-mt-[2px]"> Khulna City</span>
@@ -112,10 +111,7 @@ const AllCityEng = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() =>
-                setCityName({ eng: "Rangpur", ban: "রংপুর" })
-              }
-             
+              onClick={() => handleFilter({ eng: "Rangpur", ban: "রংপুর" })}
             />
             {lang ? (
               <span className="-mt-[2px]"> Rangpur City</span>
@@ -130,9 +126,8 @@ const AllCityEng = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setCityName({ eng: "Mymensingh", ban: "ময়মনসিংহ" })
+                handleFilter({ eng: "Mymensingh", ban: "ময়মনসিংহ" })
               }
-             
             />
             {lang ? (
               <span className="-mt-[2px]"> Mymensingh City</span>

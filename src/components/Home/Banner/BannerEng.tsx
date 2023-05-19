@@ -7,12 +7,11 @@ import { BsArrowDownCircleFill } from "react-icons/bs";
 const BannerEng = () => {
   const {
     filterTypeCity,
-
     filterTypeDivision,
   }: any = useContext(StateContext);
 
   return (
-    <div className="scale-90">
+    <div className="scale-90 md:scale-100">
       <p
         className={
           filterTypeDivision ? "md:text-xl  text-black" : "md:text-2xl "
@@ -29,7 +28,8 @@ const BannerEng = () => {
         >
           Find
         </span>{" "}
-        your perfect destination with <span
+        your perfect destination with{" "}
+        <span
           id={
             filterTypeCity || filterTypeDivision
               ? style.bannerTextColorChange
@@ -41,7 +41,6 @@ const BannerEng = () => {
         </span>
         <br />
         extensive listings for rent.
-        
       </p>
       <div className="relative">
         <p

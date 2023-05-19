@@ -4,8 +4,17 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 
 const DistrictsOfChittagong = () => {
-  const { setDistrictsName, districtsName, setFilterModal }: any =
-    useContext(StateContext);
+  const {
+    setDistrictsName,
+    districtsName,
+    setFilterValue,
+    filterValue,
+    setFilterModal,
+  }: any = useContext(StateContext);
+  const handleFilter = (v: any) => {
+    setDistrictsName(v);
+    setFilterValue({ ...filterValue, districtsName: v });
+  };
   if (districtsName?.eng) {
     setFilterModal(true);
   }
@@ -19,7 +28,7 @@ const DistrictsOfChittagong = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Chittagong", ban: "চট্টগ্রাম" })
+                handleFilter({ eng: "Chittagong", ban: "চট্টগ্রাম" })
               }
             />
             {lang ? (
@@ -36,7 +45,7 @@ const DistrictsOfChittagong = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({
+                handleFilter({
                   eng: "Brahmanbaria",
                   ban: "ব্রাহ্মণবাড়িয়া",
                 })
@@ -55,9 +64,7 @@ const DistrictsOfChittagong = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() =>
-                setDistrictsName({ eng: "Comilla", ban: "কুমিল্লা" })
-              }
+              onClick={() => handleFilter({ eng: "Comilla", ban: "কুমিল্লা" })}
             />
             {lang ? (
               <span className="-mt-[2px]">Comilla</span>
@@ -72,9 +79,7 @@ const DistrictsOfChittagong = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() =>
-                setDistrictsName({ eng: "Chandpur", ban: "চাঁদপুর" })
-              }
+              onClick={() => handleFilter({ eng: "Chandpur", ban: "চাঁদপুর" })}
             />
             {lang ? (
               <span className="-mt-[2px]">Chandpur</span>
@@ -90,7 +95,7 @@ const DistrictsOfChittagong = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Cox's Bazar", ban: "কক্সবাজার" })
+                handleFilter({ eng: "Cox's Bazar", ban: "কক্সবাজার" })
               }
             />
             {lang ? (
@@ -106,7 +111,7 @@ const DistrictsOfChittagong = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() => setDistrictsName({ eng: "Feni", ban: "ফেনী" })}
+              onClick={() => handleFilter({ eng: "Feni", ban: "ফেনী" })}
             />
             {lang ? (
               <span className="-mt-[2px]">Feni</span>
@@ -122,7 +127,7 @@ const DistrictsOfChittagong = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Khagrachhari", ban: "খাগড়াছড়ি" })
+                handleFilter({ eng: "Khagrachhari", ban: "খাগড়াছড়ি" })
               }
             />
             {lang ? (
@@ -139,7 +144,7 @@ const DistrictsOfChittagong = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Lakshmipur", ban: "লক্ষ্মীপুর" })
+                handleFilter({ eng: "Lakshmipur", ban: "লক্ষ্মীপুর" })
               }
             />
             {lang ? (
@@ -156,7 +161,7 @@ const DistrictsOfChittagong = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Noakhali", ban: "নোয়াখালী" })
+                handleFilter({ eng: "Noakhali", ban: "নোয়াখালী" })
               }
             />
             {lang ? (
@@ -172,7 +177,7 @@ const DistrictsOfChittagong = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Rangamati", ban: "রাঙ্গামাটি" })
+                handleFilter({ eng: "Rangamati", ban: "রাঙ্গামাটি" })
               }
             />
             {lang ? (
@@ -188,7 +193,7 @@ const DistrictsOfChittagong = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDistrictsName({ eng: "Bandarban", ban: "বান্দরবান" })
+                handleFilter({ eng: "Bandarban", ban: "বান্দরবান" })
               }
             />
             {lang ? (

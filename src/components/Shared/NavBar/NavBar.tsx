@@ -16,14 +16,16 @@ export default function NavBar() {
   const {
     setLanguage,
     language,
-    userInfo,
     setCityName,
     setDivisionNameEng,
     setDistrictsName,
     setHomePopularAreaName,
     setFilterTypeCity,
     setFilterTypeDivision,
-    setOpenModalValue
+    setOpenModalValue,
+    setFilterValue,
+    setFilterModalValue,
+    setFilterModal
   }: any = useContext(StateContext);
   const {
     setPostCityNameEng,
@@ -32,6 +34,7 @@ export default function NavBar() {
     setPostOpenModal,
     setGetPostPopularAreaName,
     setPostDistrictsName,
+    setGetUniversityModalValue
   }: any = useContext(PostStateContext);
   const [authenticated, setAuthenticated] = useState(false);
   const { push, pathname } = useRouter();
@@ -77,20 +80,25 @@ export default function NavBar() {
     setDivisionNameEng({}),
       setDistrictsName({}),
       setHomePopularAreaName({}),
-      setOpenModalValue({})
-      setFilterTypeCity(false);
+      setOpenModalValue({});
+      setFilterModalValue({})
+      setFilterModal(false)
+    setFilterValue({});
+    setFilterTypeCity(false);
     setFilterTypeDivision(false);
     setPostCityNameEng({}),
       setGetPostPopularAreaName({}),
       setPostDivisionNameEng({}),
       setPostOpenModal(false);
     setPostDistrictsName({});
+    setGetUniversityModalValue({})
   };
 
+  const email = localStorage.getItem("email");
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <li>
-        {!authenticated && !userInfo?.email ? (
+        {!authenticated && !email ? (
           <div className="navbar-end">
             {/* <Link href="/SignUp">  */}
             <Link href="/signIn">
@@ -141,7 +149,7 @@ export default function NavBar() {
         )}
       </li>
       <li>
-        {!authenticated && (
+        {!authenticated && email ? 
           <Typography
             as="li"
             variant="small"
@@ -155,8 +163,21 @@ export default function NavBar() {
                 {lang ? <span>SignIn</span> : <span>সাইন ইন</span>}
               </li>
             </Link>
+          </Typography> : <Typography
+            as="li"
+            variant="small"
+            color="blue-gray"
+            className="p-1 font-normal"
+            ripple={false}
+            onClick={() => setOpenNav(false)}
+          >
+            <Link href="/dashboard">
+              <li onClick={() => setOpenNav(false)} className=" text-primary">
+                {lang ? <span className="border border-accent px-2 py-1 rounded-lg"> Account</span> : <span className="border border-accent px-2 py-1 rounded-lg">অ্যাকাউন্ট</span>}
+              </li>
+            </Link>
           </Typography>
-        )}
+        }
       </li>
     </ul>
   );
@@ -174,14 +195,14 @@ export default function NavBar() {
             <div className="mt-3 hidden lg:flex">
               {lang ? (
                 <Link
-                  href="/all-ads"
+                  href="/ads"
                   className="font-semibold border border-success text-primary  rounded-lg cursor-pointer px-2 py-1"
                 >
                   All Ads
                 </Link>
               ) : (
                 <Link
-                  href="/all-ads"
+                  href="/ads"
                   className="font-semibold border border-success  text-primary  rounded-lg cursor-pointer px-2 py-1"
                 >
                   সকল বিজ্ঞাপন
@@ -191,14 +212,14 @@ export default function NavBar() {
             <div className="mt-2 mb-1 lg:hidden flex">
               {lang ? (
                 <Link
-                  href="/all-ads"
+                  href="/ads"
                   className="text-primary  rounded-lg cursor-pointer border border-success px-2 py-1 text-sm"
                 >
                   All Ads
                 </Link>
               ) : (
                 <Link
-                  href="/all-ads"
+                  href="/ads"
                   className="text-primary  rounded-lg cursor-pointer border border-success px-1 pt-[6px] text-xs"
                 >
                   সকল বিজ্ঞাপন
@@ -338,129 +359,3 @@ export default function NavBar() {
   );
 }
 
-// export async function getServerSideProps(context:any) {
-//   const { req } = context;
-//   const token = req.cookies.token || localStorage.getItem('token');
-//   const isLoggedIn = !!token;
-//   return { props: { isLoggedIn } };
-// }
-
-// import { AuthContext } from "@/Context/AuthProvider/AuthProvider";
-// import Image from "next/image";
-// import Link from "next/link";
-// import React, { useContext } from "react";
-// import image from "../../../image/logo.png";
-
-// const Header = () => {
-//   const { user, logOut }: any = useContext(AuthContext);
-
-//   const handleLogOut = () => {
-//     logOut();
-//   };
-
-//   return (
-//     <nav className="flex">
-//       <div className="bg-secondary   w-full">
-//         <div className="navbar text-white">
-//           <div className="navbar-start">
-//             {/* <img src={image} alt="" /> */}
-//             <Link href="/">
-//               <Image
-//                 src={image}
-//                 alt="Picture of the author"
-//                 width={100}
-//                 height={100}
-//                 className="hidden md:flex"
-//               ></Image>
-//             </Link>
-//             {/* <Image></Image> */}
-//             <div className="dropdown">
-//               <label
-//                 htmlFor="nav-drawer"
-//                 tabIndex={0}
-//                 className="btn btn-ghost btn-circle lg:hidden"
-//               >
-//                 <svg
-//                   xmlns="http://www.w3.org/2000/svg"
-//                   className="h-5 w-5"
-//                   fill="none"
-//                   viewBox="0 0 24 24"
-//                   stroke="currentColor"
-//                 >
-//                   <path
-//                     strokeLinecap="round"
-//                     strokeLinejoin="round"
-//                     strokeWidth="2"
-//                     d="M4 6h16M4 12h16M4 18h7"
-//                   />
-//                 </svg>
-//               </label>
-//             </div>
-//           </div>
-//           <div className="navbar-center">
-//             <p className=" normal-case text-white font-bold text-4xl hidden md:flex">
-//               Havenly
-//             </p>
-//           </div>
-//           {!user ?
-//             <div className="navbar-end">
-//               {/* <Link href="/SignUp">  */}
-//               <Link href="/signUp">
-//                 <label className="mr-3 bg-primary rounded-2xl text-secondary p-2 px-8 font-medium cursor-pointer hidden md:flex">
-//                   POST NOW
-//                 </label>
-//                 {/* </Link> */}
-//               </Link>
-//             </div> : <div className="navbar-end">
-//               {/* <Link href="/SignUp">  */}
-//               <Link href="/addProduct">
-//                 <label className="mr-3 bg-primary rounded-2xl text-secondary p-2 px-8 font-medium cursor-pointer hidden md:flex">
-//                   POST NOW
-//                 </label>
-//                 {/* </Link> */}
-//               </Link>
-//             </div>
-//           }
-//         </div>
-//       </div>
-//       {user ? (
-//         <button className="bg-accent px-10 py-5 text-white font-medium text-xl" onClick={handleLogOut}>LogOut</button>
-//       ) : (
-//         <Link href="/signIn">
-//           <p className="bg-accent px-10 py-5 text-white font-medium cursor-pointer text-xl">
-//             SIGNIN
-//           </p>
-//         </Link>
-//       )}
-//     </nav>
-//   );
-// };
-
-// export default Header;
-
-// bangla
-
-// const [open, setOpen] = useState(false);
-// const [lang, setLang] = useState(false);
-
-// const googleTranslateElementInit = () => {
-//   new window.google.translate.TranslateElement(
-//     {
-//       pageLanguage: "en",
-//       autoDisplay: false,
-//     },
-//     "google_translate_element"
-//   );
-// };
-
-// useEffect(()=>{
-//   if(!lang){
-//     var addScript = document.createElement("script")
-//     addScript.setAttribute("src",
-//     "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-//     )
-//     document.body.appendChild(addScript);
-//     window.googleTranslateElementInit = googleTranslateElementInit;
-//     setLang(!lang)
-//   }
-// },[lang])

@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import AllCityEng from "./AllCityEng";
 
 const AllCity = () => {
-  const { setFilterTypeCity }: any = useContext(StateContext);
+  const { setFilterTypeCity,filterValue, setFilterValue }: any = useContext(StateContext);
   const handlePrevious = () => {
     setFilterTypeCity(false);
   };

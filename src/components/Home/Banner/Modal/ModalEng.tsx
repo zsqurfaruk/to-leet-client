@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import {
   Button,
   Dialog,
@@ -12,6 +12,7 @@ import Select from "react-select";
 import { colourOptions } from "./DataEng";
 import { colourOption } from "./DataBan";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function ModalEng() {
   const {
@@ -38,6 +39,47 @@ export default function ModalEng() {
     };
     setOpenModalValue(newName);
   }
+
+
+
+
+
+  
+  // if (openModalValue?.name === "eng") {
+  //   const newName = {
+  //     eng: openModalValue?.label,
+  //     ban: openModalValue?.value,
+  //   };
+  //   setOpenModalValue(newName);
+  // } else if (openModalValue?.name === "ban") {
+  //   const newName = {
+  //     eng: openModalValue?.value,
+  //     ban: openModalValue?.label,
+  //   };
+  //   setOpenModalValue(newName);
+  // }
+
+  // const [filterPost, setFilterPost] = useState([]);
+  // const router = useRouter();
+  // const handleFilterUniversity = () => {
+  //   fetch(`http://localhost:5000/api/v1/product/filter`, {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(openModalValue),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {setFilterPost(data)
+  //       router.push(
+  //         `/ads/${openModalValue.eng}`
+  //       );
+  //     });
+  // };
+  // console.log(openModalValue.eng)
+  // useEffect(() => {
+
+  // }, [filterValue]);
    
   const lang = localStorage.getItem("lan");
   return (
@@ -116,12 +158,12 @@ export default function ModalEng() {
           >
             <span>Cancel</span>
           </Button>
-          <Link
+          {/* <Link
             href={{
               pathname: "/all-ads",
               query: {  institute: encodeURIComponent(JSON.stringify(openModalValue.eng)) },
             }}
-          >
+          > */}
             <Button
               className={
                 openModalValue?.eng
@@ -133,7 +175,7 @@ export default function ModalEng() {
             >
               <span>Confirm</span>
             </Button>
-          </Link>
+          {/* </Link> */}
         </DialogFooter>
       </Dialog>
     </div>

@@ -2,8 +2,14 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 
 const AllDivisionName = () => {
-  const { setDivisionNameEng }: any =
+  const { setDivisionNameEng, setFilterValue, filterValue }: any =
     useContext(StateContext);
+
+  const handleFilter = (v: any) => {
+    setDivisionNameEng(v);
+    setFilterValue({ ...filterValue, divisionNameEng: v });
+  };
+
   const lang = localStorage.getItem("lan");
   return (
     <div className="lg:-ml-4">
@@ -13,9 +19,7 @@ const AllDivisionName = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() =>
-                setDivisionNameEng({ eng: "Dhaka", ban: "ঢাকা" })
-              }
+              onClick={() => handleFilter({ eng: "Dhaka", ban: "ঢাকা" })}
             />
             {lang ? (
               <span className="-mt-[2px]"> Dhaka Division</span>
@@ -25,12 +29,12 @@ const AllDivisionName = () => {
           </label>
         </li>
         <li>
-          <label className="flex gap-2 lg:gap-0 ">
+          <label className="flex gap-2 lg:gap-0 lg:text-sm">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDivisionNameEng({ eng: "Chittagong", ban: "চট্টগ্রাম" })
+                handleFilter({ eng: "Chittagong", ban: "চট্টগ্রাম" })
               }
             />
             {lang ? (
@@ -45,9 +49,7 @@ const AllDivisionName = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() =>
-                setDivisionNameEng({ eng: "Rajshahi", ban: "রাজশাহী" })
-              }
+              onClick={() => handleFilter({ eng: "Rajshahi", ban: "রাজশাহী" })}
             />
             {lang ? (
               <span className="-mt-[2px]"> Rajshahi Division</span>
@@ -61,9 +63,7 @@ const AllDivisionName = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() =>
-                setDivisionNameEng({ eng: "Sylhet", ban: "সিলেট" })
-              }
+              onClick={() => handleFilter({ eng: "Sylhet", ban: "সিলেট" })}
             />
             {lang ? (
               <span className="-mt-[2px]"> Sylhet Division</span>
@@ -77,9 +77,7 @@ const AllDivisionName = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() =>
-                setDivisionNameEng({ eng: "Barisal", ban: "বরিশাল" })
-              }
+              onClick={() => handleFilter({ eng: "Barisal", ban: "বরিশাল" })}
             />
             {lang ? (
               <span className="-mt-[2px]">Barisal Division</span>
@@ -93,9 +91,7 @@ const AllDivisionName = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() =>
-                setDivisionNameEng({ eng: "Khulna", ban: "খুলনা" })
-              }
+              onClick={() => handleFilter({ eng: "Khulna", ban: "খুলনা" })}
             />
             {lang ? (
               <span className="-mt-[2px]"> Khulna Division</span>
@@ -109,9 +105,7 @@ const AllDivisionName = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
-              onClick={() =>
-                setDivisionNameEng({ eng: "Rangpur", ban: "রংপুর" })
-              }
+              onClick={() => handleFilter({ eng: "Rangpur", ban: "রংপুর" })}
             />
             {lang ? (
               <span className="-mt-[2px]"> Rangpur Division</span>
@@ -126,7 +120,7 @@ const AllDivisionName = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() =>
-                setDivisionNameEng({ eng: "Mymensingh", ban: "ময়মনসিংহ" })
+                handleFilter({ eng: "Mymensingh", ban: "ময়মনসিংহ" })
               }
             />
             {lang ? (

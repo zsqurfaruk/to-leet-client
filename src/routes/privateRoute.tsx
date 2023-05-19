@@ -1,17 +1,18 @@
-import { StateContext } from '@/Context/StateContext/StateContext';
-import { useRouter } from 'next/router';
-import { useEffect, useState, useContext } from 'react';
+import { StateContext } from "@/Context/StateContext/StateContext";
+import { useRouter } from "next/router";
+import { useEffect, useState, useContext } from "react";
 
-function privateRoute(Component:any) {
-  return function AuthenticatedComponent(props:any) {
-    const {tokenValidation, setTokenValidation}:any = useContext(StateContext)
+function privateRoute(Component: any) {
+  return function AuthenticatedComponent(props: any) {
+    const { tokenValidation, setTokenValidation }: any =
+      useContext(StateContext);
     const router = useRouter();
-    const token = localStorage?.getItem('token');
+    const token = localStorage?.getItem("token");
 
     useEffect(() => {
       if (!token || tokenValidation === "Invalid token") {
-        alert("Session expired. Please signIn")
-        localStorage.removeItem('token')
+        // alert("Session expired. Please signIn");
+        localStorage.removeItem("token");
         router.push("/signIn");
       } else {
         fetch("http://localhost:5000/api/v1/users/me", {
@@ -30,8 +31,6 @@ function privateRoute(Component:any) {
 }
 
 export default privateRoute;
-
-
 
 // import Loading from "@/components/Loading/Loading";
 // import { AuthContext } from "@/Context/AuthProvider/AuthProvider";

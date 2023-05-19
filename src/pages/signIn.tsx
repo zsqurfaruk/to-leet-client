@@ -6,7 +6,7 @@ import React, { useContext, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Card, Typography, Input, Checkbox } from "@material-tailwind/react";
 import { createHash } from "crypto";
-import { FaEyeSlash, FaEye } from 'react-icons/fa';
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 type FormValues = {
   email: string | number;
   password: string | number;
@@ -48,18 +48,21 @@ const SignIn = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        authorization: `bearer ${localStorage.getItem('token')}`
+        authorization: `bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(info),
     });
     const result = await res.json();
     console.log(result);
- 
+
     setSignInError(result.error);
     const token = result?.data?.token;
     if (token) {
       localStorage.setItem("token", token);
-      setUserInfo(result?.data?.user);
+      localStorage.setItem("email", result?.data?.user.email)
+      localStorage.setItem("firstName", result?.data?.user.firstName)
+      localStorage.setItem("lastName", result?.data?.user.lastName)
+      // setUserInfo(result?.data?.user);
       router.push("/");
     }
   };
@@ -73,10 +76,10 @@ const SignIn = () => {
   //     })
   //     .catch((error: any) => setSignInError(error.message));
   // };
-   const handle =()=>{
-    setPassHidden(!passHidden)
- console.log('chok kana')
-   }
+  const handle = () => {
+    setPassHidden(!passHidden);
+    console.log("chok kana");
+  };
   return (
     <section className="lg:w-10/12 lg:mx-auto grid lg:grid-cols-2 gap-20 my-10">
       <div className="hidden md:flex">
@@ -105,12 +108,35 @@ const SignIn = () => {
             className="mb-4 flex flex-col gap-6 relative"
           >
             <Input label="Email" {...register("email")} />
-            <Input type={passHidden? "password" : "text"} label="Password" {...register("password")} /> <div className="cursor-pointer absolute right-4 top-[71px]" onClick={handle}>{passHidden ?  <FaEyeSlash className="text-2xl"></FaEyeSlash> : <FaEye className="text-2xl"></FaEye> }</div>
-
+            <Input
+              type={passHidden ? "password" : "text"}
+              label="Password"
+              {...register("password")}
+            />{" "}
+            <div
+              className="cursor-pointer absolute right-4 top-[71px]"
+              onClick={handle}
+            >
+              {passHidden ? (
+                <FaEyeSlash className="text-2xl"></FaEyeSlash>
+              ) : (
+                <FaEye className="text-2xl"></FaEye>
+              )}
+            </div>
             <p>abc1Aomar&</p>
-           <div className="flex gap-2"> <p className="text-red-400">{signInError}</p> {
-              signInError === "No user found." && <p className="text-blue-400">Please <Link href={"/signUp"}><span className="underline">create an account</span></Link> before sign in.</p>
-            }</div>
+            <div className="flex gap-2">
+              {" "}
+              <p className="text-red-400">{signInError}</p>{" "}
+              {signInError === "No user found." && (
+                <p className="text-blue-400">
+                  Please{" "}
+                  <Link href={"/signUp"}>
+                    <span className="underline">create an account</span>
+                  </Link>{" "}
+                  before sign in.
+                </p>
+              )}
+            </div>
             <Checkbox
               label={
                 <Typography

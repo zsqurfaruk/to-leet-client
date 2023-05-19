@@ -6,22 +6,51 @@ import { options } from "./SylDataBan";
 import { option } from "./SylDataEng";
 
 const PopularAreaOfSylhet = () => {
-  const { setHomePopularAreaName,  homePopularAreaName, setFilterModal }: any =useContext(StateContext); 
-  if (homePopularAreaName?.name === "eng") {
-    const newName = {
-      eng: homePopularAreaName?.label,
-      ban: homePopularAreaName?.value,
-    };
-    setHomePopularAreaName(newName);
-    setFilterModal(true);
-  } else if (homePopularAreaName?.name === "ban") {
-    const newName = {
-      eng: homePopularAreaName?.value,
-      ban: homePopularAreaName?.label,
-    };
-    setHomePopularAreaName(newName);
-    setFilterModal(true);
+  const { setHomePopularAreaName,setFilterValue,filterValue,  homePopularAreaName, setFilterModal }: any =useContext(StateContext); 
+
+  const handleFilter=(v:any)=>{
+    console.log("v-value",v)
+    if(v?.name){
+
+      if (v?.name === "eng") {
+        const newName = {
+          eng: v?.label,
+          ban: v?.value,
+        };
+        setHomePopularAreaName(newName);
+        setFilterValue({...filterValue, homePopularAreaName:newName})
+        setFilterModal(true);
+      } else if (v?.name === "ban") {
+        const newName = {
+          eng: v?.value,
+          ban: v?.label,
+        };
+        setHomePopularAreaName(newName);
+        setFilterValue({...filterValue, homePopularAreaName:newName})
+        setFilterModal(true);
+      }
+    }
+    else{
+      setHomePopularAreaName(v)
+      setFilterValue({...filterValue, homePopularAreaName:v})
+    }
+   
   }
+  // if (homePopularAreaName?.name === "eng") {
+  //   const newName = {
+  //     eng: homePopularAreaName?.label,
+  //     ban: homePopularAreaName?.value,
+  //   };
+  //   setHomePopularAreaName(newName);
+  //   setFilterModal(true);
+  // } else if (homePopularAreaName?.name === "ban") {
+  //   const newName = {
+  //     eng: homePopularAreaName?.value,
+  //     ban: homePopularAreaName?.label,
+  //   };
+  //   setHomePopularAreaName(newName);
+  //   setFilterModal(true);
+  // }
 
   if (
     homePopularAreaName?.eng === "Zinda Bazar" ||
@@ -45,7 +74,7 @@ const PopularAreaOfSylhet = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Zinda Bazar",
                     ban: "জিন্দা বাজার",
                   })
@@ -64,7 +93,7 @@ const PopularAreaOfSylhet = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Bandar Bazar",
                     ban: "বন্দর বাজার",
                   })
@@ -83,7 +112,7 @@ const PopularAreaOfSylhet = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Amber Khana",
                     ban: "আম্বরখানা",
                   })
@@ -102,7 +131,7 @@ const PopularAreaOfSylhet = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "South Surma",
                     ban: "সাউথ সুরমা",
                   })
@@ -121,7 +150,7 @@ const PopularAreaOfSylhet = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Uposhohor",
                     ban: "উপশহর",
                   })
@@ -140,7 +169,7 @@ const PopularAreaOfSylhet = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Bimanbondor",
                     ban: "বিমানবন্দর",
                   })
@@ -159,7 +188,7 @@ const PopularAreaOfSylhet = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={() =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Osmani Nagar",
                     ban: "ওসমানী নগর",
                   })
@@ -184,7 +213,7 @@ const PopularAreaOfSylhet = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
                 onClick={(e: any) =>
-                  setHomePopularAreaName({
+                  handleFilter({
                     eng: "Select others",
                     ban: "অন্যান্য এলাকা",
                   })
@@ -207,7 +236,7 @@ const PopularAreaOfSylhet = () => {
                     placeholder="Search"
                     isSearchable
                     options={option}
-                    onChange={setHomePopularAreaName}
+                    onChange={handleFilter}
                     className="bg-primary border-none text-sm h-4 text-black font-medium"
                   />
                 </li>
@@ -221,7 +250,7 @@ const PopularAreaOfSylhet = () => {
                     placeholder="অনুসন্ধান"
                     isSearchable
                     options={options}
-                    onChange={setHomePopularAreaName}
+                    onChange={handleFilter}
                     className="bg-primary border-none text-sm h-4 text-black font-medium"
                   />
                 </li>
