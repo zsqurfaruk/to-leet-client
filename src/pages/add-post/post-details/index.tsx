@@ -18,6 +18,7 @@ import { BsImage } from "react-icons/bs";
 import { RxCrossCircled } from "react-icons/rx";
 import { Button } from "@material-tailwind/react";
 import Spinner from "@/components/Spinner/Spinner";
+import 'react-day-picker/dist/style.css';
 
 type FormValues = {
   bedNumber: number;
@@ -55,6 +56,7 @@ const PostDetails = () => {
   const [imageUrl5, setImageUrl5] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  
   // const { userInfo }: any = useContext(AuthContext);
   //  const { userCounter}:any = useContext(APIContext)
   //  console.log(userCounter)
@@ -126,7 +128,7 @@ const PostDetails = () => {
     setPostCityNameEng({});
     setPostDistrictsName({});
     setPostDivisionNameEng({});
-    // router.push(`/${modalValue.eng}`);
+    router.push(`/${modalValue.eng}`);
   };
 
   const imageUploadHandler = (event: any, setImg: any) => {

@@ -21,7 +21,10 @@ const Products = ({ product, handleDelete }: any) => {
           </figure>
           <div className="card-body h-64">
             <h2 className="text-xl font-bold"> {product?.title}</h2>
-            <h2 className="font-semibold"> {product?.type?.eng}</h2>
+            <div className="flex justify-between">
+           <h2 className="font-semibold"> {product?.type?.eng}</h2>
+            <h2>Date: {product?.updatedAt?.slice(0,10)}</h2>
+           </div>
             {product?.division?.eng && (
               <div className="flex justify-between">
                 <h2 className="">Division: {product?.division?.eng}</h2>
@@ -51,7 +54,7 @@ const Products = ({ product, handleDelete }: any) => {
           </div>
         </div>
       </Link>
-      {/* <button onClick={() => handleDelete(product._id)}>delete</button> */}
+      <button onClick={() => handleDelete(product._id)} className="btn">delete</button>
     </div>
   );
 };

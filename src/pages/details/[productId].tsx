@@ -38,7 +38,7 @@ const ProductDetails = ({ product }: any) => {
 
   return (
     <section className="w-full lg:w-10/12 mx-auto my-20">
-      <Card className="lg:flex-row w-full p-10">
+     <Card className="lg:flex-row w-full p-10">
         <CardHeader
           shadow={false}
           floated={false}
@@ -70,54 +70,123 @@ const ProductDetails = ({ product }: any) => {
             </div>
           </div>
         </CardHeader>
-        <CardBody className="-ml-5 lg:ml-0">
-          <Typography variant="h6" color="blue" className="uppercase mb-4">
-            {" "}
-            {product?.type?.eng}
-          </Typography>
-          {product?.university?.eng && (
-            <h2>
-              <span className="font-semibold">Beside:</span>{" "}
-              {product?.university?.eng}
-            </h2>
-          )}
-          <Typography color="gray" className="font-normal mb-8">
-            <h2 className="text-2xl font-bold"> </h2>
-            <h2 className="font-semibold"></h2>
-
-            <h2>Bedrooms: {product?.bedrooms}</h2>
-            <h2>Bathrooms: {product?.bathrooms}</h2>
-            {product?.houseSize && <h2>HouseSize: {product?.houseSize}</h2>}
-
-            <div className="md:flex md:gap-32">
-              <h2>Rent : {product?.amount} taka (Monthly)</h2>
-              {product?.negotiable === true && <h2> Negotiable</h2>}
+        <div className="-ml-6 lg:ml-0">
+        <div className="md:flex justify-between">
+         <div>
+         <CardBody className="lg:-mt-6">
+            <div className="md:flex md:gap-40">
+              <Typography variant="h6" className="uppercase text-secondary">
+                {product?.type?.eng}
+              </Typography>
+              <Typography variant="h6" className="text-secondary md:hidden">
+                Date: {product?.updatedAt?.slice(0, 10)}
+              </Typography>
             </div>
+            {product?.university?.eng && (
+              <h2>
+                <span className="font-semibold">Beside:</span>{" "}
+                {product?.university?.eng}
+              </h2>
+            )}
+            <Typography color="gray" className="font-normal ">
+              <div className="md:flex md:gap-56">
+                <h2>Bedrooms: {product?.bedrooms}</h2>
+                <h2 className="md:hidden">Bathrooms: {product?.bathrooms}</h2>
+              </div>
+              <div className="md:flex md:gap-[135px]">
+                {product?.houseSize && <h2>HouseSize: {product?.houseSize}</h2>}
+                {product?.unit && (
+                  <h2 className="md:hidden">Unit: {product?.unit}</h2>
+                )}
+              </div>
+              <div className="md:flex md:gap-[135px]">
+                <h2>Rent : {product?.amount} taka (Monthly)</h2>
+                {product?.negotiable === true && (
+                  <h2 className="md:hidden"> Negotiable</h2>
+                )}
+              </div>
 
-            {product?.cityName?.eng && (
-              <div className="md:flex md:gap-40">
-                <h2>Area: {product?.areaName?.eng}</h2>
-                <h2>City: {product?.cityName?.eng}</h2>
-              </div>
-            )}
-            {product?.division?.eng && (
-              <div className="md:flex md:gap-40">
-                <h2>District: {product?.districts?.eng}</h2>
-                <h2 className="">Division: {product?.division?.eng}</h2>
-              </div>
-            )}
-            <h2>Detail address: {product?.address}</h2>
-            {/* <h2> {post?.rentType}</h2> */}
-            <h2> {product?.email}</h2>
-            <Typography variant="h4" color="blue-gray" className="my-2">
-              {product?.title}
+              {product?.cityName?.eng && (
+                <div className="md:flex md:gap-[183px]">
+                  <h2>Area: {product?.areaName?.eng}</h2>
+                  <h2 className="md:hidden">City: {product?.cityName?.eng}</h2>
+                </div>
+              )}
+              {product?.division?.eng && (
+                <div className="md:flex md:gap-40">
+                  <h2>District: {product?.districts?.eng}</h2>
+                  <h2 className="md:hidden">
+                    Division: {product?.division?.eng}
+                  </h2>
+                </div>
+              )}
+              <h2>Detail address: {product?.address}</h2>
+              {/* <h2> {post?.rentType}</h2> */}
+              <h2> {product?.email}</h2>
             </Typography>
-            <h2> {product?.description}</h2>
-          </Typography>
-          <Typography className="border border-accent py-1 px-2 rounded-md">
-            Contact number: {product?.phone}
-          </Typography>
-        </CardBody>
+            
+          </CardBody>
+         </div>
+          <div className="hidden md:flex">
+            <CardBody className="lg:-mt-6">
+              <div className="md:flex md:gap-40">
+                {/* <Typography variant="h6" className="uppercase mb-2 text-secondary">
+            {post?.type?.eng}
+          </Typography> */}
+                <Typography variant="h6" className="text-secondary">
+                  Date: {product?.updatedAt?.slice(0, 10)}
+                </Typography>
+              </div>
+              {product?.university?.ban && (
+                <h2 className="invisible">
+                  <span className="font-semibold">Beside:</span>{" "}
+                  {product?.university?.eng}
+                </h2>
+              )}
+
+              <Typography color="gray" className="font-normal ">
+                <div className="md:flex md:gap-56">
+                  {/* <h2>Bedrooms: {post?.bedrooms}</h2> */}
+                  <h2>Bathrooms: {product?.bathrooms}</h2>
+                </div>
+                <div className="md:flex md:gap-[135px]">
+                  {/* {post?.houseSize && <h2>HouseSize: {post?.houseSize}</h2>} */}
+                  {product?.unit && <h2>Unit: {product?.unit}</h2>}
+                </div>
+                <div className="md:flex md:gap-[135px]">
+                  {/* <h2>Rent : {post?.amount} taka (Monthly)</h2> */}
+                  {product?.negotiable === true && <h2> Negotiable</h2>}
+                </div>
+
+                {product?.cityName?.eng && (
+                  <div className="md:flex md:gap-[183px]">
+                    {/* <h2>Area: {post?.areaName?.eng}</h2> */}
+                    <h2>City: {product?.cityName?.eng}</h2>
+                  </div>
+                )}
+                {product?.division?.eng && (
+                  <div className="md:flex md:gap-40">
+                    {/* <h2>District: {post?.districts?.eng}</h2> */}
+                    <h2 className="">Division: {product?.division?.eng}</h2>
+                  </div>
+                )}
+                {/* <h2>Detail address: {post?.address}</h2> */}
+                {/* <h2> {post?.rentType}</h2> */}
+                {/* <h2> {post?.email}</h2> */}
+              </Typography>
+            </CardBody>
+          </div>
+        </div>
+        <div className="ml-6 lg:ml-8">
+         <Typography variant="h4" color="blue-gray" className="my-2">
+          {product?.title}
+        </Typography>
+        <h2> {product?.description}</h2>
+        <Typography className="border border-accent py-1 px-2 rounded-md">
+          Contact number: {product?.phone}
+        </Typography>
+         </div>
+        </div>
       </Card>
     </section>
   );

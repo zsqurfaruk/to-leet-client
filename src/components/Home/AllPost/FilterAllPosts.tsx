@@ -52,6 +52,7 @@ function FilterAllPosts({ post }: any) {
               <h2>Bedrooms: {post?.bedrooms}</h2>
               <h2>Bathrooms: {post?.bathrooms}</h2>
             </div>
+             
             <h2>
               {" "}
               {post.description.slice(0, 50)}...

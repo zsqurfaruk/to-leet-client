@@ -7,6 +7,9 @@ import { Card, Typography, Input, Checkbox } from "@material-tailwind/react";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 import { useRouter } from "next/router";
+import lottiImage from "../image/66268-signinanimation (1).json";
+import Lottie from "lottie-react";
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 type FormValues = {
   firstName: string;
@@ -14,6 +17,7 @@ type FormValues = {
   email: string | number;
   password: string | number;
   confirmPassword: string | number;
+  agree:boolean
 };
 function SignUp() {
   const {
@@ -23,7 +27,7 @@ function SignUp() {
   } = useForm<FormValues>();
   const router = useRouter();
   // const provider = new GoogleAuthProvider();
-  // const [signUpError, setSignUpError] = useState("");
+  const [agree, setAgree] = useState(false);
   const { createUserByEmail, providerGoogleLogIn, setSignUpUserInfo }: any =
     useContext(AuthContext);
 
@@ -47,6 +51,7 @@ function SignUp() {
       email: data.email,
       password: data.password,
       confirmPassword: data.confirmPassword,
+      agree:agree
     };
     const res = await fetch("http://localhost:5000/api/v1/users/signup", {
       method: "POST",
@@ -57,7 +62,7 @@ function SignUp() {
       body: JSON.stringify(info),
     });
     const result = await res.json();
-    setSignUpUserInfo(result)
+    setSignUpUserInfo(result);
     console.log(result);
     router.push(`/signIn`);
   };
@@ -71,75 +76,144 @@ function SignUp() {
   //     })
   //     .catch((error: any) => setSignUpError(error.message));
   // };
+  const [passHidden, setPassHidden] = useState(true);
+  const [coPassHidden, setCoPassHidden] = useState(true);
+  const handlePass = () => {
+    setPassHidden(!passHidden);
+  };
+  const handleCoPass = () => {
+    setCoPassHidden(!coPassHidden);
+  };
+
+  const handleAgree=()=>{
+    setAgree(!agree)
+  }
+
+  const lang = localStorage.getItem("lan")
   return (
     <section className="lg:w-10/12 lg:mx-auto grid lg:grid-cols-2 gap-20 my-10">
-      <div className="hidden md:flex">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et numquam quis
-        velit tempora autem, a veritatis atque? Repellendus assumenda
-        distinctio, expedita rem et nemo illum ab odio totam perspiciatis
-        accusamus nulla, soluta commodi natus, numquam quos repellat. Error,
-        praesentium, doloribus ea amet, libero ex explicabo nesciunt eligendi
-        esse qui labore quia! Ratione cumque eligendi eveniet quasi maxime quae!
-        Quae, nihil excepturi possimus impedit dolores soluta ex commodi atque
-        expedita autem cumque deleniti? Ea consequuntur velit quos delectus
-        aperiam culpa minima, aliquam dolorem autem beatae laboriosam qui minus
-        nemo animi sunt maxime facere quia, incidunt deleniti hic quidem
-        voluptatibus ipsam corporis.
+      <div className="hidden lg:flex">
+        <Lottie
+          className="scale-110"
+          animationData={lottiImage}
+          loop={true}
+        ></Lottie>
       </div>
-      <Card className="w-full lg:w-10/12" color="transparent">
-        <Typography className="px-4 mt-2" variant="h4" color="blue-gray">
-          Sign Up
+      <Card className="w-10/12 mx-auto" color="transparent">
+       {
+        lang ?  <Typography className="px-4 mt-2" variant="h4" color="blue-gray">
+        Sign Up
+      </Typography>:  <Typography className="px-4 mt-2" variant="h4" color="blue-gray">
+        সাইন আপ
         </Typography>
-        <Typography color="gray" className="mt-1 font-normal px-4">
-          Enter your details to register.
+       }
+       {
+        lang ?  <Typography color="gray" className="mt-1 font-normal px-4">
+        Enter your details to register.
+      </Typography>:  <Typography color="gray" className="mt-1 font-normal px-4">
+      নিবন্ধন করতে আপনার বিবরণ লিখুন.
         </Typography>
+       }
         <div className="mt-8 mb-2 w-full px-4">
           <form
             onSubmit={handleSubmit(handleSignUp)}
-            className="mb-4 flex flex-col gap-6"
+            className="mb-4 flex flex-col gap-6 relative"
           >
             <div className="lg:flex-row lg:gap-2 flex flex-col gap-6">
-              <Input label="First Name" {...register("firstName")} />
-              <Input label="Last Name" {...register("lastName")} />
+              <Input label={lang ? "First Name":"নামের প্রথম অংশ"} {...register("firstName")} />
+              <Input label={lang ? "Last Name": "নামের শেষের অংশ"} {...register("lastName")} />
             </div>
-            <Input label="Email" {...register("email")} />
-            <Input type="password" label="Password" {...register("password")} />
+            <Input label={lang ? "Email":"ইমেইল"} {...register("email")} />
             <Input
-              type="password"
-              label="Confirm Password"
+              type={passHidden ? "password" : "text"}
+              label={lang ? "Password":"পাসওয়ার্ড"}
+              {...register("password")}
+            />
+            <div
+              className="cursor-pointer absolute right-4 top-[136px]"
+              onClick={handlePass}
+            >
+              {passHidden ? (
+                <FaEyeSlash className="text-2xl"></FaEyeSlash>
+              ) : (
+                <FaEye className="text-2xl"></FaEye>
+              )}
+            </div>
+            <Input
+              type={coPassHidden ? "password" : "text"}
+              label={lang ? "Confirm Password":"পাসওয়ার্ড নিশ্চিত হন"}
               {...register("confirmPassword")}
               name="confirmPassword"
             />
-            <Checkbox
-              label={
-                <Typography
-                  variant="small"
-                  color="gray"
-                  className="flex items-center font-normal"
-                >
-                  I agree the
-                  <a
-                    href="#"
-                    className="font-medium transition-colors hover:text-blue-500"
-                  >
-                    &nbsp;Terms and Conditions
-                  </a>
-                </Typography>
-              }
-              containerProps={{ className: "-ml-2.5" }}
+            <div
+              className="cursor-pointer absolute right-4 top-[200px]"
+              onClick={handleCoPass}
+            >
+              {coPassHidden ? (
+                <FaEyeSlash className="text-2xl"></FaEyeSlash>
+              ) : (
+                <FaEye className="text-2xl"></FaEye>
+              )}
+            </div>
+           {
+            lang ?  <div onClick={handleAgree} className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
             />
-            <button className="mt- w-full btn btn-accent">Register</button>
+            <Typography
+              variant="small"
+              color="gray"
+              className="flex items-center font-normal"
+            >
+              I agree the
+              <a
+                href="#"
+                className="font-medium transition-colors hover:text-blue-500"
+              >
+                &nbsp;Terms and Conditions
+              </a>
+            </Typography>
+          </div>:  <div onClick={handleAgree} className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              />
+              <Typography
+                variant="small"
+                color="gray"
+                className="flex items-center font-normal"
+              >
+               
+               আমি শর্তাবলী পড়েছি এবং সম্মতি দিচ্ছি। 
+              </Typography>
+            </div>
+           }
+
+           {
+            lang ?  <button disabled= { agree ? false : true} className={agree ? "mt- w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800" : "mt- w-full bg-gray-300 py-2 rounded-lg font-semibold text-gray-800"}>Sign Up</button> :  <button disabled= { agree ? false : true} className={agree ? "mt- w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800" : "mt- w-full bg-gray-300 py-2 rounded-lg font-semibold text-gray-800"}>সাইন আপ</button>
+           }
           </form>
 
-          <Typography color="gray" className="mt-4 text-center font-normal">
-            Already have an account?{" "}
+         {
+          lang ?  <Typography color="gray" className="mt-4 text-center font-normal">
+          Already have an account?{" "}
+          <Link
+            href="/signIn"
+            className="font-medium text-blue-500 transition-colors hover:text-blue-700"
+          >
+            Sign In
+          </Link>
+        </Typography>:  <Typography color="gray" className="mt-4 text-center font-normal">
+            আপনার কি অ্যাকাউন্ট আছে?{" "}
             <Link
               href="/signIn"
               className="font-medium text-blue-500 transition-colors hover:text-blue-700"
             >
-              Sign In
+              সাইন ইন
             </Link>
           </Typography>
+         }
         </div>
       </Card>
     </section>
@@ -147,90 +221,3 @@ function SignUp() {
 }
 
 export default SignUp;
-
-//  <div className="hero text-black lg:mt-20 lg:w-9/12 lg:mx-auto">
-//         <div className="hero-content flex">
-//           <div className="text-center lg:text-left hidden lg:flex">
-//             <div>
-//               <h1 className="text-5xl font-bold">Login now!</h1>
-//               <p className="py-6">
-//                 Provident cupiditate voluptatem et in. Quaerat fugiat ut
-//                 assumenda excepturi exercitationem quasi. In deleniti eaque aut
-//                 repudiandae et a id nisi.
-//               </p>
-//             </div>
-//           </div>
-//           <div className="card flex-shrink-0 w-full lg:w-1/2 shadow-2xl bg-base-100">
-//             <form onSubmit={handleSignUp} className="card-body">
-//               <div className="flex justify-between">
-//               <div className="form-control">
-//                 <label className="label">
-//                   <span className="label-text">First Name</span>
-//                 </label>
-//                 <input
-//                   type="text"
-//                   placeholder="Name"
-//                   className="input input-bordered"
-//                   name="name"
-//                   required
-//                 />
-//               </div>
-//               <div className="form-control">
-//                 <label className="label">
-//                   <span className="label-text">Last Name</span>
-//                 </label>
-//                 <input
-//                   type="text"
-//                   placeholder="Name"
-//                   className="input input-bordered"
-//                   name="name"
-//                   required
-//                 />
-//               </div>
-//               </div>
-//               <div className="form-control">
-//                 <label className="label">
-//                   <span className="label-text">Email</span>
-//                 </label>
-//                 <input
-//                   type="email"
-//                   placeholder="email"
-//                   className="input input-bordered"
-//                   name="email"
-//                   required
-//                 />
-//               </div>
-{
-  /* <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="password"
-                  placeholder="password"
-                  className="input input-bordered"
-                  name="password"
-                  required
-                />
-                <p className="text-red-400 py-2">{signUpError}</p>
-              </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Sign Up</button>
-              </div>
-              <label className="label">
-                <p>
-                  Already have an account? <Link href="/signIn">Sign In</Link>
-                 
-                </p>
-              </label>
-            </form>
-            <button
-              className="btn btn-secondary mb-10"
-              onClick={handleGoogleSignUp}
-            >
-              Google
-            </button>
-          </div>
-        </div>
-      </div> */
-}

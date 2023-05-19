@@ -7,18 +7,15 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { Card, Typography, Input, Checkbox } from "@material-tailwind/react";
 import { createHash } from "crypto";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import lottiImage from "../image/66268-signinanimation (1).json";
+import lottiImage from "../../image/66268-signinanimation (1).json";
 import Lottie from "lottie-react";
-import { StateContext } from "@/Context/StateContext/StateContext";
 type FormValues = {
   email: string | number;
   password: string | number;
   confirmPassword: string | number;
 };
-const SignIn = () => {
-  const { language }: any = useContext(StateContext);
+const LogIn = () => {
   const [signInError, setSignInError] = useState("");
-  const [signInErrorBan, setSignInErrorBan] = useState("");
   const [passHidden, setPassHidden] = useState(true);
   const {
     accountLogIn,
@@ -58,9 +55,9 @@ const SignIn = () => {
       body: JSON.stringify(info),
     });
     const result = await res.json();
+    console.log(result);
 
-    setSignInError(result?.error?.eng);
-    setSignInErrorBan(result?.error?.ban);
+    setSignInError(result.error);
     const token = result?.data?.token;
     if (token) {
       localStorage.setItem("token", token);
@@ -84,7 +81,7 @@ const SignIn = () => {
   const handle = () => {
     setPassHidden(!passHidden);
   };
-  const lang = localStorage.getItem("lan");
+  const lang = localStorage.getItem("lan")
   return (
     <section className="lg:w-10/12 lg:mx-auto grid lg:grid-cols-2 gap-20 my-10 lg:my-24">
       <div className="hidden lg:flex">
@@ -95,33 +92,21 @@ const SignIn = () => {
         ></Lottie>
       </div>
       <Card className="w-10/12 mx-auto" color="transparent">
-        {lang ? (
-          <Typography className="px-4 mt-2" variant="h4" color="blue-gray">
-            Sign In
-          </Typography>
-        ) : (
-          <Typography className="px-4 mt-2" variant="h4" color="blue-gray">
-            সাইন ইন
-          </Typography>
-        )}
-        {lang ? (
-          <Typography color="gray" className="mt-1 font-normal px-4">
-            Enter your registered email and password to signin.
-          </Typography>
-        ) : (
-          <Typography color="gray" className="mt-1 font-normal px-4 text-sm">
-            সাইন ইন করতে আপনার নিবন্ধিত ইমেল এবং পাসওয়ার্ড লিখুন।
-          </Typography>
-        )}
+        <Typography className="px-4 mt-2" variant="h4" color="blue-gray">
+          Sign In
+        </Typography>
+        <Typography color="gray" className="mt-1 font-normal px-4">
+          Enter your registered email and password to signin.
+        </Typography>
         <div className="mt-8 mb-2 w-full px-4">
           <form
             onSubmit={handleSubmit(handleSignIn)}
             className="mb-4 flex flex-col gap-6 relative"
           >
-            <Input label={lang ? "Email" : "ইমেইল"} {...register("email")} />
+            <Input label="Email" {...register("email")} />
             <Input
               type={passHidden ? "password" : "text"}
-              label={lang ? "Password" : "পাসওয়ার্ড"}
+              label="Password"
               {...register("password")}
             />{" "}
             <div
@@ -134,61 +119,60 @@ const SignIn = () => {
                 <FaEye className="text-2xl"></FaEye>
               )}
             </div>
-            <p>abc1Aomar&</p>
-            <Link href={"/reset"}>
-              {lang ? (
-                <h4 className="hover:underline">Forgot password?</h4>
-              ) : (
-                <h4 className="text-sm hover:underline">
-                  {" "}
-                  পাসওয়ার্ড ভুলে গেছেন?
-                </h4>
-              )}
-            </Link>
+            {/* <p>abc1Aomar&</p> */}
+           <Link href={"/reset"}>{
+            lang ?  <h4>Forgot password?</h4> :  <h4> পাসওয়ার্ড ভুলে গেছেন?</h4>
+           }</Link>
             <div className="flex gap-2">
               {" "}
-              {lang ? (
-                <p className="text-red-400">{signInError}</p>
-              ) : (
-                <p className="text-red-400">{signInErrorBan}</p>
+              <p className="text-red-400">{signInError}</p>
+              {signInError === "No user found." && (
+                <p className="text-blue-400">
+                  Please{" "}
+                  <Link href={"/signUp"}>
+                    <span className="underline">create an account</span>
+                  </Link>{" "}
+                  before sign in.
+                </p>
               )}
             </div>
-            {lang ? (
-              <button className="w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800">
-                Sign In
-              </button>
-            ) : (
-              <button className="w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800">
-                সাইন ইন
-              </button>
-            )}
+            {/* <Checkbox
+              label={
+                <Typography
+                  variant="small"
+                  color="gray"
+                  className="flex items-center font-normal"
+                >
+                  I agree the
+                  <a
+                    href="#"
+                    className="font-medium transition-colors hover:text-blue-500"
+                  >
+                    &nbsp;Terms and Conditions
+                  </a>
+                </Typography>
+              }
+              containerProps={{ className: "-ml-2.5" }}
+            /> */}
+            <button className="w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800">
+              Sign In
+            </button>
           </form>
 
-          {lang ? (
-            <Typography color="gray" className="mt-4 text-center font-normal">
-              Already have an account?{" "}
-              <Link
-                href="/signUp"
-                className="font-medium text-blue-500 transition-colors hover:text-blue-700"
-              >
-                Sign Up
-              </Link>
-            </Typography>
-          ) : (
-            <Typography color="gray" className="mt-4 text-center font-normal">
-              আপনার কি অ্যাকাউন্ট আছে?{" "}
-              <Link
-                href="/signUp"
-                className="font-medium text-blue-500 transition-colors hover:text-blue-700"
-              >
-                সাইন আপ
-              </Link>
-            </Typography>
-          )}
+          <Typography color="gray" className="mt-4 text-center font-normal">
+            Already have an account?{" "}
+            <Link
+              href="/signUp"
+              className="font-medium text-blue-500 transition-colors hover:text-blue-700"
+            >
+              Sign Up
+            </Link>
+          </Typography>
         </div>
       </Card>
     </section>
   );
 };
 
-export default SignIn;
+export default LogIn;
+

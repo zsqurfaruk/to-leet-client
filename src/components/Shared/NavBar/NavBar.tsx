@@ -29,7 +29,6 @@ export default function NavBar() {
   }: any = useContext(StateContext);
   const {
     setPostCityNameEng,
-    setPostDivisionNameBan,
     setPostDivisionNameEng,
     setPostOpenModal,
     setGetPostPopularAreaName,
