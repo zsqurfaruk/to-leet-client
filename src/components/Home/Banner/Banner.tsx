@@ -35,6 +35,7 @@ const Banner = () => {
     setDivisionNameEng,
     handleOpenModalBan,
     handleOpenModalEng,
+    openModalValue,
   }: any = useContext(StateContext);
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
@@ -65,7 +66,6 @@ const Banner = () => {
           >
             Yes
           </h2>
-          <ModalEng></ModalEng>
         </div>
       ) : (
         <div className="md:flex md:justify-center gap-2 text-sm md:text-base mx-8 md:mx-0">
@@ -77,10 +77,11 @@ const Banner = () => {
           >
             হ্যাঁ
           </h2>
-
-          <ModalEng></ModalEng>
         </div>
       )}
+
+      <ModalEng></ModalEng>
+
       <PostAreaModalEng></PostAreaModalEng>
       <div className="pt-5 md:w-10/12 mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -98,127 +99,127 @@ const Banner = () => {
 
               <div className="hidden lg:block">
                 <div>
-                {lan ? (
-                  <h1
-                    className={
-                      filterTypeCity || filterTypeDivision
-                        ? "text-black mt-5 lg:mt-10 text-2xl"
-                        : "mt-5 lg:mt-10 text-2xl "
-                    }
-                  >
-                    Search by:
-                  </h1>
-                ) : (
-                  <h1
-                    className={
-                      filterTypeCity || filterTypeDivision
-                        ? "text-black mt-5 lg:mt-10 text-xl  "
-                        : "mt-5 lg:mt-10 text-2xl  "
-                    }
-                  >
-                    অনুসন্ধান করুন :
-                  </h1>
-                )}
-                <div className="flex justify-around mt-5 ">
-                  <div
-                    className={
-                      filterTypeCity || filterTypeDivision
-                        ? "pl-2 pr-4"
-                        : "pl-2 pr-4 shadow-lg bg-accent rounded"
-                    }
-                  >
-                    <Checkbox
-                      color="teal"
-                      onClick={handleFilterTypeCity}
-                      className="flex justify-end border border-secondary defaultCheck"
-                      label={lan ? "City" : "শহর"}
-                    />
+                  {lan ? (
+                    <h1
+                      className={
+                        filterTypeCity || filterTypeDivision
+                          ? "text-black mt-5 lg:mt-10 text-2xl"
+                          : "mt-5 lg:mt-10 text-2xl "
+                      }
+                    >
+                      Search by:
+                    </h1>
+                  ) : (
+                    <h1
+                      className={
+                        filterTypeCity || filterTypeDivision
+                          ? "text-black mt-5 lg:mt-10 text-xl  "
+                          : "mt-5 lg:mt-10 text-2xl  "
+                      }
+                    >
+                      অনুসন্ধান করুন :
+                    </h1>
+                  )}
+                  <div className="flex justify-around mt-5 ">
+                    <div
+                      className={
+                        filterTypeCity || filterTypeDivision
+                          ? "pl-2 pr-4"
+                          : "pl-2 pr-4 shadow-lg bg-accent rounded"
+                      }
+                    >
+                      <Checkbox
+                        color="teal"
+                        onClick={handleFilterTypeCity}
+                        className="flex justify-end border border-secondary defaultCheck"
+                        label={lan ? "City" : "শহর"}
+                      />
+                    </div>
+                    <div
+                      className={
+                        filterTypeCity || filterTypeDivision
+                          ? "pl-2 pr-4"
+                          : "pl-2 pr-4 shadow-lg bg-accent rounded"
+                      }
+                    >
+                      <Checkbox
+                        color="teal"
+                        onClick={handleFilterTypeDivision}
+                        className="flex justify-end border border-secondary"
+                        label={lan ? "Division" : "বিভাগ"}
+                      />
+                    </div>
                   </div>
-                  <div
-                    className={
-                      filterTypeCity || filterTypeDivision
-                        ? "pl-2 pr-4"
-                        : "pl-2 pr-4 shadow-lg bg-accent rounded"
-                    }
-                  >
-                    <Checkbox
-                      color="teal"
-                      onClick={handleFilterTypeDivision}
-                      className="flex justify-end border border-secondary"
-                      label={lan ? "Division" : "বিভাগ"}
-                    />
-                  </div>
-                </div>
                 </div>
               </div>
             </div>
           </div>
-          
+
           {divisionNameEng?.eng && filterTypeDivision && (
             <AllDistricts></AllDistricts>
           )}
-        
+
           {/* {divisionNameBan && <AllDivisionBan></AllDivisionBan>} */}
-          
+
           {filterTypeDivision && !divisionNameEng?.eng && (
             <AllDivision></AllDivision>
           )}
-         
-            <div className={"lg:hidden block"}>
-                <div>
-                {lan ? (
-                  <h1
-                    className={
-                      filterTypeCity || filterTypeDivision
-                        ? "text-black mt-5 lg:mt-10 text-2xl ml-7 md:ml-1 lg:ml-7"
-                        : "mt-5 lg:mt-10 text-2xl ml-7 md:ml-1 lg:ml-7"
-                    }
-                  >
-                    Search by:
-                  </h1>
-                ) : (
-                  <h1
-                    className={
-                      filterTypeCity || filterTypeDivision
-                        ? "text-black mt-5 lg:mt-10 text-xl  ml-7 md:ml-1 lg:ml-7"
-                        : "mt-5 lg:mt-10 text-2xl ml-7 md:ml-1 lg:ml-7"
-                    }
-                  >
-                    অনুসন্ধান করুন :
-                  </h1>
-                )}
-                <div className="flex justify-around mt-5 ">
-                  <div
-                    className={
-                      filterTypeCity || filterTypeDivision
-                        ? "pl-2 pr-4"
-                        : "pl-2 pr-4 shadow-lg bg-accent rounded"
-                    }
-                  >
-                    <Checkbox
-                      color="teal"
-                      onClick={handleFilterTypeCity}
-                      className="flex justify-end border border-secondary defaultCheck"
-                      label={lan ? "City" : "শহর"}
-                    />
-                  </div>
-                  <div
-                    className={
-                      filterTypeCity || filterTypeDivision
-                        ? "pl-2 pr-4"
-                        : "pl-2 pr-4 shadow-lg bg-accent rounded"
-                    }
-                  >
-                    <Checkbox
-                      color="teal"
-                      onClick={handleFilterTypeDivision}
-                      className="flex justify-end border border-secondary"
-                      label={lan ? "Division" : "বিভাগ"}
-                    />
-                  </div>
+
+          <div className={"lg:hidden block"}>
+            <div>
+              {lan ? (
+                <h1
+                  className={
+                    filterTypeCity || filterTypeDivision
+                      ? "text-black mt-5 lg:mt-10 text-2xl ml-7 md:ml-1 lg:ml-7"
+                      : "mt-5 lg:mt-10 text-2xl ml-7 md:ml-1 lg:ml-7"
+                  }
+                >
+                  Search by:
+                </h1>
+              ) : (
+                <h1
+                  className={
+                    filterTypeCity || filterTypeDivision
+                      ? "text-black mt-5 lg:mt-10 text-xl  ml-7 md:ml-1 lg:ml-7"
+                      : "mt-5 lg:mt-10 text-2xl ml-7 md:ml-1 lg:ml-7"
+                  }
+                >
+                  অনুসন্ধান করুন :
+                </h1>
+              )}
+              <div className="flex justify-around mt-5 ">
+                <div
+                  className={
+                    filterTypeCity || filterTypeDivision
+                      ? "pl-2 pr-4"
+                      : "pl-2 pr-4 shadow-lg bg-accent rounded"
+                  }
+                >
+                  <Checkbox
+                    color="teal"
+                    onClick={handleFilterTypeCity}
+                    className="flex justify-end border border-secondary defaultCheck"
+                    label={lan ? "City" : "শহর"}
+                  />
                 </div>
+                <div
+                  className={
+                    filterTypeCity || filterTypeDivision
+                      ? "pl-2 pr-4"
+                      : "pl-2 pr-4 shadow-lg bg-accent rounded"
+                  }
+                >
+                  <Checkbox
+                    color="teal"
+                    onClick={handleFilterTypeDivision}
+                    className="flex justify-end border border-secondary"
+                    label={lan ? "Division" : "বিভাগ"}
+                  />
                 </div>
               </div>
+            </div>
+          </div>
           {!filterTypeDivision && (
             <Lottie
               className="lg:scale-110 hidden lg:flex"

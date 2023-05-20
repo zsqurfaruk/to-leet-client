@@ -55,7 +55,7 @@ function FilterAllPosts({ post }: any) {
              
             <h2>
               {" "}
-              {post.description.slice(0, 50)}...
+              {post.description?.slice(0, 50)}...
               <span className="text-blue-500">see more</span>
             </h2>
           </div>

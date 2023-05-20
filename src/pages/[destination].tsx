@@ -41,7 +41,7 @@ const ShowAllPost = ({ products }: any) => {
       {deleteAndFilterPost.length === 0 && (
         <div className="flex justify-center">
           <div>
-            <Lottie animationData={lotti} loop={true}></Lottie>
+            <Lottie  className="h-52 w-52" animationData={lotti} loop={true}></Lottie>
             {lang ? (
               <h1 className="text-4xl text-center mb-10">No data found.</h1>
             ) : (

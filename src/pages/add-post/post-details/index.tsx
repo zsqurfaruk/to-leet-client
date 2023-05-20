@@ -18,7 +18,6 @@ import { BsImage } from "react-icons/bs";
 import { RxCrossCircled } from "react-icons/rx";
 import { Button } from "@material-tailwind/react";
 import Spinner from "@/components/Spinner/Spinner";
-import 'react-day-picker/dist/style.css';
 
 type FormValues = {
   bedNumber: number;
@@ -56,7 +55,7 @@ const PostDetails = () => {
   const [imageUrl5, setImageUrl5] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  
+
   // const { userInfo }: any = useContext(AuthContext);
   //  const { userCounter}:any = useContext(APIContext)
   //  console.log(userCounter)
@@ -123,7 +122,7 @@ const PostDetails = () => {
     const result = await res.json();
     setError(result?.message);
     setPostOpenModal(false);
-    setGetUniversityModalValue({})
+    setGetUniversityModalValue({});
     setGetPostPopularAreaName({});
     setPostCityNameEng({});
     setPostDistrictsName({});
@@ -187,14 +186,23 @@ const PostDetails = () => {
       {error ? (
         <div className="h-96 flex items-center justify-center">
           {" "}
-         <div>
-         <h1>{error}</h1>{" "}
-          <Link className="text-secondary underline" href={"/"}>Home</Link>
-         </div>
+          <div>
+            <h1>{error}</h1>{" "}
+            <Link className="text-secondary underline" href={"/"}>
+              Home
+            </Link>
+          </div>
         </div>
       ) : (
         <div className="bg-white p-5 lg:w-10/12 mx-auto">
           <AdditionalInfoPostPage></AdditionalInfoPostPage>
+         {
+          !modalValue.eng && <div className="flex justify-center text-red-400">{lang ? (
+            <h5>You have to select rent type before post.</h5>
+          ) : (
+            <h5>পোস্ট করার আগে আপনাকে ভাড়ার ধরন নির্বাচন করতে হবে।</h5>
+          )}</div>
+         }  
           {getUniversityModalValue?.eng && (
             <div>
               {lang ? (
@@ -888,6 +896,7 @@ const PostDetails = () => {
             <Button
               onClick={handleSubmit(handlePost)}
               className="text-gray-800 font-semibold text-lg mt-5 bg-gradient-to-r from-success via-accent to-success"
+              disabled={modalValue?.eng ? false : true}
             >
               Post Now
             </Button>
