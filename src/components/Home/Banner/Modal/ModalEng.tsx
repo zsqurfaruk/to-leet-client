@@ -1,4 +1,4 @@
-import { useContext,useState } from "react";
+import { useContext, useState } from "react";
 import {
   Button,
   Dialog,
@@ -39,12 +39,8 @@ export default function ModalEng() {
     };
     setOpenModalValue(newName);
   }
+  // console.log(openModalValue)
 
-
-
-
-
-  
   // if (openModalValue?.name === "eng") {
   //   const newName = {
   //     eng: openModalValue?.label,
@@ -61,26 +57,26 @@ export default function ModalEng() {
 
   // const [filterPost, setFilterPost] = useState([]);
   // const router = useRouter();
-  // const handleFilterUniversity = () => {
-  //   fetch(`http://localhost:5000/api/v1/product/filter`, {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(openModalValue),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {setFilterPost(data)
-  //       router.push(
-  //         `/ads/${openModalValue.eng}`
-  //       );
-  //     });
-  // };
+  const handleFilterUniversity = () => {
+    fetch(`http://localhost:5000/api/v1/product`)
+      .then((res) => res.json())
+      .then((data) => data?.filter((post:any)=>{
+        // console.log(post)
+        if(post.university){
+         if(post?.university === openModalValue){
+          console.log(":fgfgf")
+         }
+         else{
+          console.log("1111111111111111")
+         }
+        }
+      }));
+  };
   // console.log(openModalValue.eng)
   // useEffect(() => {
 
   // }, [filterValue]);
-   
+
   const lang = localStorage.getItem("lan");
   return (
     <div>
@@ -138,7 +134,9 @@ export default function ModalEng() {
           <Link
             href={{
               pathname: "/all-ads",
-              query: { type: encodeURIComponent(JSON.stringify(openModalValue.eng)) },
+              query: {
+                type: encodeURIComponent(JSON.stringify(openModalValue.eng)),
+              },
             }}
           >
             <button
@@ -164,17 +162,17 @@ export default function ModalEng() {
               query: {  institute: encodeURIComponent(JSON.stringify(openModalValue.eng)) },
             }}
           > */}
-            <Button
-              className={
-                openModalValue?.eng
-                  ? "bg-gradient-to-r from-accent to-cyan-500  hidden lg:flex"
-                  : "bg-gray-600  hidden lg:flex"
-              }
-              onClick={handleOpenModalEng}
-              disabled={!openModalValue?.eng ? true : false}
-            >
-              <span>Confirm</span>
-            </Button>
+          <Button
+            className={
+              openModalValue?.eng
+                ? "bg-gradient-to-r from-accent to-cyan-500  hidden lg:flex"
+                : "bg-gray-600  hidden lg:flex"
+            }
+            // onClick={handleOpenModalEng}
+            disabled={!openModalValue?.eng ? true : false}
+          >
+            <span onClick={handleFilterUniversity}>Confirm</span>
+          </Button>
           {/* </Link> */}
         </DialogFooter>
       </Dialog>

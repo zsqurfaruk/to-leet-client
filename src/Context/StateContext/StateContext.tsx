@@ -26,7 +26,7 @@ const StateInfo = ({ children }: any) => {
     districtsName: districtsName,
     openModalValue:openModalValue
   });
-  console.log(filterValue)
+  // console.log(filterValue)
   const handleOpenModalEng = () => setOpenModalEng(!openModalEng);
   const handleFilterModal = () => setFilterModal(!filterModal);
   const info = {

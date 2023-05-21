@@ -6,26 +6,33 @@ import { cityOptionBan } from "@/components/Home/AllPost/FilterCityDataBan";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import AllPost from "@/components/Home/AllPost/AllPost";
 import { StateContext } from "@/Context/StateContext/StateContext";
+import { GetStaticProps } from "next";
 
-function AllAds() {
-  const { counterPosts, handleFilter }: any = useContext(APIContext);
-  const { filterValue }: any = useContext(StateContext);
-  const { filterCity, setFilterCity }: any = useContext(FilterContext);
+function AllAds({product}:any) {
+  // const { counterPosts, handleFilter }: any = useContext(APIContext);
+  // const { filterValue }: any = useContext(StateContext);
+  // const { filterCity, setFilterCity }: any = useContext(FilterContext);
 
-  if (filterCity?.name === "eng") {
-    const newName = {
-      eng: filterCity?.label,
-      ban: filterCity?.value,
-    };
-    setFilterCity(newName);
-  } else if (filterCity?.name === "ban") {
-    const newName = {
-      eng: filterCity?.value,
-      ban: filterCity?.label,
-    };
-    setFilterCity(newName);
-  }
- 
+  // if (filterCity?.name === "eng") {
+  //   const newName = {
+  //     eng: filterCity?.label,
+  //     ban: filterCity?.value,
+  //   };
+  //   setFilterCity(newName);
+  // } else if (filterCity?.name === "ban") {
+  //   const newName = {
+  //     eng: filterCity?.value,
+  //     ban: filterCity?.label,
+  //   };
+  //   setFilterCity(newName);
+  // }
+
+  // useEffect(()=>{
+  //   fetch('http://localhost:5000/api/v1/product')
+  //   .then(res=>res.json())
+  //   .then(data=>setCounterPosts(data))
+  // },[])
+
   const lang = localStorage.getItem("lan");
   return (
     <section className="w-10/12 mx-auto bg-white px-10">
@@ -52,11 +59,30 @@ function AllAds() {
         </div>
       </div> */}
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-        {counterPosts?.map((post: any) => (
+        {product?.map((post: any) => (
           <AllPost key={post._id} post={post}></AllPost>
         ))}
       </div>
     </section>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await fetch(`http://localhost:5000/api/v1/product `);
+  const data = await res.json();
+
+  if (!data) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {
+      product: data,
+    },
+  };
+};
 export default AllAds;

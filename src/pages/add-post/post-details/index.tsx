@@ -21,8 +21,11 @@ import Spinner from "@/components/Spinner/Spinner";
 
 type FormValues = {
   bedNumber: number;
+  // bedNumberBan: number;
   bedrooms: number;
+  // bedroomBan: number;
   bathrooms: number;
+  // bathroomBan: number;
   houseSize: number;
   unit: string;
   address: string;
@@ -87,8 +90,11 @@ const PostDetails = () => {
   const handlePost: SubmitHandler<FormValues> = async (data) => {
     const values = {
       bedrooms: data?.bedrooms,
+      // bedroomBan: data?.bedroomBan,
       bathrooms: data?.bathrooms,
+      // bathroomBan: data?.bathroomBan,
       bedNumber: data?.bedNumber,
+      // bedNumberBan: data?.bedNumberBan,
       houseSize: data?.houseSize,
       unit: data?.unit,
       address: data?.address,
@@ -120,14 +126,17 @@ const PostDetails = () => {
       body: JSON.stringify(values),
     });
     const result = await res.json();
+    console.log(result);
     setError(result?.message);
-    setPostOpenModal(false);
-    setGetUniversityModalValue({});
-    setGetPostPopularAreaName({});
-    setPostCityNameEng({});
-    setPostDistrictsName({});
-    setPostDivisionNameEng({});
-    router.push(`/${modalValue.eng}`);
+    if (result?.message === "success") {
+      setPostOpenModal(false);
+      setGetUniversityModalValue({});
+      setGetPostPopularAreaName({});
+      setPostCityNameEng({});
+      setPostDistrictsName({});
+      setPostDivisionNameEng({});
+      router.push(`/${modalValue.eng}`);
+    }
   };
 
   const imageUploadHandler = (event: any, setImg: any) => {
@@ -181,6 +190,8 @@ const PostDetails = () => {
   const firstName = localStorage.getItem("firstName");
   const lastName = localStorage.getItem("lastName");
   const name = firstName + " " + lastName;
+
+  // console.log(modalValue.eng)
   return (
     <div>
       {error ? (
@@ -196,13 +207,15 @@ const PostDetails = () => {
       ) : (
         <div className="bg-white p-5 lg:w-10/12 mx-auto">
           <AdditionalInfoPostPage></AdditionalInfoPostPage>
-         {
-          !modalValue.eng && <div className="flex justify-center text-red-400">{lang ? (
-            <h5>You have to select rent type before post.</h5>
-          ) : (
-            <h5>পোস্ট করার আগে আপনাকে ভাড়ার ধরন নির্বাচন করতে হবে।</h5>
-          )}</div>
-         }  
+          {!modalValue.eng && (
+            <div className="flex justify-center text-red-400">
+              {lang ? (
+                <h5>You have to select rent type before post.</h5>
+              ) : (
+                <h5>পোস্ট করার আগে আপনাকে ভাড়ার ধরন নির্বাচন করতে হবে।</h5>
+              )}
+            </div>
+          )}
           {getUniversityModalValue?.eng && (
             <div>
               {lang ? (
@@ -272,94 +285,136 @@ const PostDetails = () => {
             </div>
 
             <div>
-              {lang ? (
-                <div className="form-control lg:w-6/12 mx-auto mb-8">
-                  <label className="label">
-                    <span className="label-text">Bedroom number/numbers</span>
-                  </label>
-                  <select
-                    {...register("bedrooms")}
-                    className="select select-bordered bg-primary"
-                  >
-                    <option disabled selected>
-                      Bedroom number/numbers
-                    </option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>৭</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                    {/* <option>10+</option> */}
-                  </select>
-                  {errors.bedrooms && (
-                    <span className="text-red-500 pt-4">
-                      This field is required
-                    </span>
+              {modalValue.eng === "Mess-(Male)" ||
+              modalValue.eng === "Mess-(Female)" ? (
+                <>
+                  {lang ? (
+                    <div className="form-control lg:w-6/12 mx-auto mb-8">
+                      <label className="label">
+                        <span className="label-text">Bed Number/ Numbers</span>
+                      </label>
+                      <select
+                        {...register("bedrooms")}
+                        className="select select-bordered bg-primary"
+                      >
+                        <option disabled selected>
+                          Bed Number/ Numbers
+                        </option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>৭</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        {/* <option>10+</option> */}
+                      </select>
+                      {errors.bedNumber && (
+                        <span className="text-red-500 pt-4">
+                          This field is required
+                        </span>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="form-control lg:w-6/12 mx-auto mb-8">
+                      <label className="label">
+                        <span className="label-text">বেড সংখা</span>
+                      </label>
+                      <select
+                        {...register("bedNumberBan")}
+                        className="select select-bordered bg-primary"
+                      >
+                        <option disabled selected>
+                          বেড সংখা
+                        </option>
+                        <option>১</option>
+                        <option>২</option>
+                        <option>৩</option>
+                        <option>৪</option>
+                        <option>৫</option>
+                        <option>৬</option>
+                        <option>৭</option>
+                        <option>৮</option>
+                        <option>৯</option>
+                        <option>১০</option>
+                        {/* <option>10+</option> */}
+                      </select>
+                      {errors.bedNumberBan && (
+                        <span className="text-red-500 pt-4">
+                          আপনাকে অবশ্যই এটা পূরণ করতে হবে।
+                        </span>
+                      )}
+                    </div>
                   )}
-                </div>
+                </>
               ) : (
-                <div className="form-control lg:w-6/12 mx-auto mb-8">
-                  <label className="label">
-                    <span className="label-text">বেডরুম সংখা</span>
-                  </label>
-                  <select
-                    {...register("bedrooms")}
-                    className="select select-bordered bg-primary"
-                  >
-                    <option disabled selected>
-                      বেডরুম সংখা
-                    </option>
-                    <option>১</option>
-                    <option>২</option>
-                    <option>৩</option>
-                    <option>৪</option>
-                    <option>৫</option>
-                    <option>৬</option>
-                    <option>৭</option>
-                    <option>৮</option>
-                    <option>৯</option>
-                    <option>১০</option>
-                    {/* <option>10+</option> */}
-                  </select>
-                  {errors.bedrooms && (
-                    <span className="text-red-500 pt-4">
-                      আপনাকে অবশ্যই এটা পূরণ করতে হবে।
-                    </span>
+                <>
+                  {lang ? (
+                    <div className="form-control lg:w-6/12 mx-auto mb-8">
+                      <label className="label">
+                        <span className="label-text">Bedrooms</span>
+                      </label>
+                      <select
+                        {...register("bedrooms")}
+                        className="select select-bordered bg-primary"
+                      >
+                        <option disabled selected>
+                          Bedrooms
+                        </option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>৭</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        {/* <option>10+</option> */}
+                      </select>
+                      {errors.bedrooms && (
+                        <span className="text-red-500 pt-4">
+                          This field is required
+                        </span>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="form-control lg:w-6/12 mx-auto mb-8">
+                      <label className="label">
+                        <span className="label-text">বেডরুম সংখা</span>
+                      </label>
+                      <select
+                        {...register("bedroomBan")}
+                        className="select select-bordered bg-primary"
+                      >
+                        <option disabled selected>
+                          বেডরুম সংখা
+                        </option>
+                        <option>১</option>
+                        <option>২</option>
+                        <option>৩</option>
+                        <option>৪</option>
+                        <option>৫</option>
+                        <option>৬</option>
+                        <option>৭</option>
+                        <option>৮</option>
+                        <option>৯</option>
+                        <option>১০</option>
+                        {/* <option>10+</option> */}
+                      </select>
+                      {errors.bedroomBan && (
+                        <span className="text-red-500 pt-4">
+                          আপনাকে অবশ্যই এটা পূরণ করতে হবে।
+                        </span>
+                      )}
+                    </div>
                   )}
-                </div>
+                </>
               )}
-              {modalValue?.eng === "Mess-Male" ||
-                (modalValue?.eng === "Mess-Female" && (
-                  <div className="form-control lg:w-6/12 mx-auto">
-                    <label className="label">
-                      <span className="label-text">Bed Number/Numbers</span>
-                    </label>
-                    <select
-                      {...register("bedNumber")}
-                      className="select select-bordered bg-primary"
-                    >
-                      <option disabled selected>
-                        Bed Number/Numbers
-                      </option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      {/* <option>10+</option> */}
-                    </select>
-                    {errors.bedNumber && (
-                      <span className="text-red-500 pt-4">
-                        This field is required
-                      </span>
-                    )}
-                  </div>
-                ))}
               {lang ? (
                 <div className="form-control lg:w-6/12 mx-auto mt-8">
                   <label className="label">
@@ -391,7 +446,7 @@ const PostDetails = () => {
                     <span className="label-text">বাথরুম সংখা</span>
                   </label>
                   <select
-                    {...register("bathrooms")}
+                    {...register("bathroomBan")}
                     className="select select-bordered bg-primary"
                   >
                     <option disabled selected>
@@ -404,7 +459,7 @@ const PostDetails = () => {
                     <option>৫</option>
                     {/* <option>5+</option> */}
                   </select>
-                  {errors.bathrooms && (
+                  {errors.bathroomBan && (
                     <span className="text-red-500 pt-4">
                       আপনাকে অবশ্যই এটা পূরণ করতে হবে।
                     </span>
