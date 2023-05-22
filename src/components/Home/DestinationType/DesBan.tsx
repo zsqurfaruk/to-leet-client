@@ -48,7 +48,8 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 ব্যাচেলর (ছেলে)
               </Typography>
-              <Typography>০ টি বিজ্ঞাপন</Typography>
+              {/* <Typography>০ টি বিজ্ঞাপন</Typography> */}
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -81,7 +82,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 ব্যাচেলর (মেয়ে)
               </Typography>
-              <Typography>০ টি বিজ্ঞাপন</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -114,7 +115,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 সাবলেট (ছেলে)
               </Typography>
-              <Typography>০ টি বিজ্ঞাপন</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -146,7 +147,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 সাবলেট (মেয়ে)
               </Typography>
-              <Typography>০ টি বিজ্ঞাপন</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -178,7 +179,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 পরিবার
               </Typography>
-              <Typography>০ টি বিজ্ঞাপন</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -208,7 +209,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 মেস (ছেলে)
               </Typography>
-              <Typography>০ টি বিজ্ঞাপন</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -238,7 +239,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 মেস (মেয়ে)
               </Typography>
-              <Typography>০ টি বিজ্ঞাপন</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -271,7 +272,7 @@ const DesBan = () => {
                 {" "}
                 আবাসিক হোটেল
               </Typography>
-              <Typography>০ টি বিজ্ঞাপন</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -303,7 +304,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 অফিস
               </Typography>
-              <Typography>০ টি বিজ্ঞাপন</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -333,7 +334,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 দোকান
               </Typography>
-              <Typography>০ টি বিজ্ঞাপন</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -365,7 +366,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 যানবাহন
               </Typography>
-              <Typography>০ টি বিজ্ঞাপন</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -397,7 +398,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 গ্যারেজ
               </Typography>
-              <Typography>০ টি বিজ্ঞাপন</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>

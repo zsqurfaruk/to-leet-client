@@ -13,6 +13,9 @@ import { colourOptions } from "./DataEng";
 import { colourOption } from "./DataBan";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import FilterAllPosts from "../../AllPost/FilterAllPosts";
+import University from "@/pages/university";
+import { APIContext } from "@/Context/ApiContext/ApiContext";
 
 export default function ModalEng() {
   const {
@@ -22,6 +25,8 @@ export default function ModalEng() {
     openModalValue,
     setOpenModalValue,
   }: any = useContext(StateContext);
+
+  const { handleFilterUniversity}: any = useContext(APIContext);
   const handleCancel = () => {
     handleOpenModalEng();
     setOpenModalValue({});
@@ -39,47 +44,12 @@ export default function ModalEng() {
     };
     setOpenModalValue(newName);
   }
-  // console.log(openModalValue)
-
-  // if (openModalValue?.name === "eng") {
-  //   const newName = {
-  //     eng: openModalValue?.label,
-  //     ban: openModalValue?.value,
-  //   };
-  //   setOpenModalValue(newName);
-  // } else if (openModalValue?.name === "ban") {
-  //   const newName = {
-  //     eng: openModalValue?.value,
-  //     ban: openModalValue?.label,
-  //   };
-  //   setOpenModalValue(newName);
-  // }
-
-  // const [filterPost, setFilterPost] = useState([]);
-  // const router = useRouter();
-  const handleFilterUniversity = () => {
-    fetch(`http://localhost:5000/api/v1/product`)
-      .then((res) => res.json())
-      .then((data) => data?.filter((post:any)=>{
-        // console.log(post)
-        if(post.university){
-         if(post?.university === openModalValue){
-          console.log(":fgfgf")
-         }
-         else{
-          console.log("1111111111111111")
-         }
-        }
-      }));
-  };
-  // console.log(openModalValue.eng)
-  // useEffect(() => {
-
-  // }, [filterValue]);
+ 
 
   const lang = localStorage.getItem("lan");
   return (
     <div>
+    
       <Dialog
         open={openModalEng}
         handler={handleOpenModalEng}
@@ -156,24 +126,23 @@ export default function ModalEng() {
           >
             <span>Cancel</span>
           </Button>
-          {/* <Link
+          <Link
             href={{
-              pathname: "/all-ads",
-              query: {  institute: encodeURIComponent(JSON.stringify(openModalValue.eng)) },
+              pathname: "/university",
             }}
-          > */}
-          <Button
-            className={
-              openModalValue?.eng
-                ? "bg-gradient-to-r from-accent to-cyan-500  hidden lg:flex"
-                : "bg-gray-600  hidden lg:flex"
-            }
-            // onClick={handleOpenModalEng}
-            disabled={!openModalValue?.eng ? true : false}
           >
-            <span onClick={handleFilterUniversity}>Confirm</span>
-          </Button>
-          {/* </Link> */}
+            <Button
+              className={
+                openModalValue?.eng
+                  ? "bg-gradient-to-r from-accent to-cyan-500  hidden lg:flex"
+                  : "bg-gray-600  hidden lg:flex"
+              }
+              // onClick={handleOpenModalEng}
+              disabled={!openModalValue?.eng ? true : false}
+            >
+              <span onClick={handleFilterUniversity}>Confirm</span>
+            </Button>
+          </Link>
         </DialogFooter>
       </Dialog>
     </div>

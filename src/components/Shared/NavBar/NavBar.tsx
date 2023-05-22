@@ -12,6 +12,7 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import logo from "../../../image/logo.png"
 import Image from "next/image";
+import { APIContext } from "@/Context/ApiContext/ApiContext";
 
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -28,7 +29,8 @@ export default function NavBar() {
     setFilterValue,
     setFilterModalValue,
     setFilterModal,
-    handleOpenModalEng
+    handleOpenModalEng,
+    setOpenModalEng
   }: any = useContext(StateContext);
   const {
     setPostCityNameEng,
@@ -38,6 +40,7 @@ export default function NavBar() {
     setPostDistrictsName,
     setGetUniversityModalValue
   }: any = useContext(PostStateContext);
+  const {setFilterPost}:any = useContext(APIContext)
   const [authenticated, setAuthenticated] = useState(false);
   const { push, pathname } = useRouter();
 
@@ -83,8 +86,11 @@ export default function NavBar() {
       setDistrictsName({}),
       setHomePopularAreaName({}),
       setOpenModalValue({});
+      handleOpenModalEng()
+      setOpenModalEng(false)
       setFilterModalValue({})
       setFilterModal(false)
+      setFilterPost([])
       // handleOpenModalEng(false)
     setFilterValue({});
     setFilterTypeCity(false);

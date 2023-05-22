@@ -79,9 +79,7 @@ const Banner = () => {
           </h2>
         </div>
       )}
-
       <ModalEng></ModalEng>
-
       <PostAreaModalEng></PostAreaModalEng>
       <div className="pt-5 md:w-10/12 mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2">

@@ -105,7 +105,46 @@ const PostDestinationType = () => {
             </div>
           </Card>
         </Link>
-
+        <Link
+          href={{
+            pathname: "/add-post/post-details",
+          }}
+          onClick={() =>
+            setModalValue({ eng: "Mess-(Male)", ban: "মেস-(ছেলে)" })
+          }
+        >
+          <Card>
+            <div className="text-center">
+              <div>
+                {lang ? (
+                  <Typography className="text-center">Mess (Male)</Typography>
+                ) : (
+                  <Typography className="text-center">মেস (ছেলে)</Typography>
+                )}
+              </div>
+            </div>
+          </Card>
+        </Link>
+        <Link
+          href={{
+            pathname: "/add-post/post-details",
+          }}
+          onClick={() =>
+            setModalValue({ eng: "Mess-(Female)", ban: "মেস-(মেয়ে)" })
+          }
+        >
+          <Card>
+            <div>
+              <div>
+                {lang ? (
+                  <Typography className="text-center">Mess (Female)</Typography>
+                ) : (
+                  <Typography className="text-center">মেস (মেয়ে)</Typography>
+                )}
+              </div>
+            </div>
+          </Card>
+        </Link>
         <Link
           href={{
             pathname: "/add-post/post-details",
@@ -171,46 +210,7 @@ const PostDestinationType = () => {
             </div>
           </Card>
         </Link>
-        <Link
-          href={{
-            pathname: "/add-post/post-details",
-          }}
-          onClick={() =>
-            setModalValue({ eng: "Mess-(Male)", ban: "মেস-(ছেলে)" })
-          }
-        >
-          <Card>
-            <div className="text-center">
-              <div>
-                {lang ? (
-                  <Typography className="text-center">Mess (Male)</Typography>
-                ) : (
-                  <Typography className="text-center">মেস (ছেলে)</Typography>
-                )}
-              </div>
-            </div>
-          </Card>
-        </Link>
-        <Link
-          href={{
-            pathname: "/add-post/post-details",
-          }}
-          onClick={() =>
-            setModalValue({ eng: "Mess-(Female)", ban: "মেস-(মেয়ে)" })
-          }
-        >
-          <Card>
-            <div>
-              <div>
-                {lang ? (
-                  <Typography className="text-center">Mess (Female)</Typography>
-                ) : (
-                  <Typography className="text-center">মেস (মেয়ে)</Typography>
-                )}
-              </div>
-            </div>
-          </Card>
-        </Link>
+      
         <Link
           href={{
             pathname: "/add-post/post-details",

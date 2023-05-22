@@ -99,7 +99,31 @@ const FilterDestinationType = () => {
             <Typography className="text-center">ব্যাচেলর (মেয়ে)</Typography>
           )}
         </Card>
+        <Card
+          className="border border-accent cursor-pointer"
+          onClick={() =>
+            handleFilter({ eng: "Mess-(Male)", ban: "মেস-(ছেলে)" })
+          }
+        >
+          {lang ? (
+            <Typography className="text-center">Mess (Male)</Typography>
+          ) : (
+            <Typography className="text-center">মেস (ছেলে)</Typography>
+          )}
+        </Card>
 
+        <Card
+          className="border border-accent cursor-pointer"
+          onClick={() =>
+            handleFilter({ eng: "Mess-(Female)", ban: "মেস-(মেয়ে)" })
+          }
+        >
+          {lang ? (
+            <Typography className="text-center">Mess (Female)</Typography>
+          ) : (
+            <Typography className="text-center">মেস (মেয়ে)</Typography>
+          )}
+        </Card>
         <Card
           className="border border-accent cursor-pointer"
           onClick={() =>
@@ -140,31 +164,7 @@ const FilterDestinationType = () => {
           )}
         </Card>
 
-        <Card
-          className="border border-accent cursor-pointer"
-          onClick={() =>
-            handleFilter({ eng: "Mess-(Male)", ban: "মেস-(ছেলে)" })
-          }
-        >
-          {lang ? (
-            <Typography className="text-center">Mess (Male)</Typography>
-          ) : (
-            <Typography className="text-center">মেস (ছেলে)</Typography>
-          )}
-        </Card>
-
-        <Card
-          className="border border-accent cursor-pointer"
-          onClick={() =>
-            handleFilter({ eng: "Mess-(Female)", ban: "মেস-(মেয়ে)" })
-          }
-        >
-          {lang ? (
-            <Typography className="text-center">Mess (Female)</Typography>
-          ) : (
-            <Typography className="text-center">মেস (মেয়ে)</Typography>
-          )}
-        </Card>
+       
 
         <Card
           className="border border-accent cursor-pointer"

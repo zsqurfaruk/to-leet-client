@@ -11,6 +11,7 @@ import {
 } from "@material-tailwind/react";
 import DashboardPost from "@/components/Home/AllPost/DashboardPost";
 import privateRoute from "@/routes/privateRoute";
+import Head from "next/head";
 
 const Dashboard = () => {
   const firstName = localStorage.getItem("firstName");
@@ -25,6 +26,10 @@ const Dashboard = () => {
   }, [email]);
 
   return (
+    <>
+    <Head>
+        <title>To-Leet - Dashboard</title>
+      </Head>
     <div className="lg:flex gap-10 w-full md:w-10/12 mx-auto bg-white p-10  md:scale-100">
       <div className="basis-1/4  pb-5 mb-5">
         <h2>
@@ -38,7 +43,7 @@ const Dashboard = () => {
           <DashboardPost key={post._id} post={post}></DashboardPost>
         ))}
       </div>
-    </div>
+    </div></>
   );
 };
 export default privateRoute(Dashboard);

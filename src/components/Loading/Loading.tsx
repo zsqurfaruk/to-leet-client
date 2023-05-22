@@ -5,13 +5,16 @@ import image from "../../image/Blue_And_Yellow_Typography_Company_Logo-removebg-
 const Loading = () => {
     return (
         <div className='flex justify-center h-screen items-center bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-75'>
-           <Image
+          <div>
+          <Image
                 src={image}
                 alt="Picture of the author"
-                width={100}
-                height={100}
-                className=""
+                // width={100}
+                // height={100}
+                className="flex justify-center h-52 w-60 ml-20 lg:ml-28"
               ></Image>
+              <h1 className='text-3xl text-center font-semibold text-accent'>To-Leet - Ultimate Rental Solution</h1>
+              </div>
         </div>
     );
 };

@@ -6,6 +6,7 @@ import Lottie from "lottie-react";
 import lotti from "../../image/lf20_jkbuwuhk.json";
 import axios from "axios";
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 
 const FilterPosts = () => {
   const { filterValue, cityName, divisionNameEng }: any =
@@ -65,6 +66,10 @@ const FilterPosts = () => {
   //     .catch(error => console.log('error', error));
   const lang = localStorage.getItem("lan");
   return (
+    <>
+    <Head>
+    <title>To-Leet - Location - Type</title>
+  </Head>
     <section className="w-10/12 mx-auto bg-white my-10 pb-10 px-5 rounded ">
       <div className="flex justify-around pt-10 text-secondary">
         {lang ? (
@@ -114,7 +119,7 @@ const FilterPosts = () => {
           </div>
         )}
       </div>
-    </section>
+    </section></>
   );
 };
 

@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import lottiImage from "../image/66268-signinanimation (1).json";
 import Lottie from "lottie-react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
+import Head from "next/head";
 
 type FormValues = {
   firstName: string;
@@ -91,6 +92,10 @@ function SignUp() {
 
   const lang = localStorage.getItem("lan")
   return (
+   <>
+    <Head>
+    <title>To-Leet - Sign up</title>
+  </Head>
     <section className="lg:w-10/12 lg:mx-auto grid lg:grid-cols-2 gap-20 my-10">
       <div className="hidden lg:flex">
         <Lottie
@@ -120,14 +125,14 @@ function SignUp() {
             className="mb-4 flex flex-col gap-6 relative"
           >
             <div className="lg:flex-row lg:gap-2 flex flex-col gap-6">
-              <Input label={lang ? "First Name":"নামের প্রথম অংশ"} {...register("firstName")} />
-              <Input label={lang ? "Last Name": "নামের শেষের অংশ"} {...register("lastName")} />
+              <Input label={lang ? "First Name*":"নামের প্রথম অংশ*"} {...register("firstName",{ required: true })} />
+              <Input label={lang ? "Last Name*": "নামের শেষের অংশ*"} {...register("lastName",{ required: true })} />
             </div>
-            <Input label={lang ? "Email":"ইমেইল"} {...register("email")} />
+            <Input label={lang ? "Email*":"ইমেইল*"} {...register("email",{ required: true })} />
             <Input
               type={passHidden ? "password" : "text"}
-              label={lang ? "Password":"পাসওয়ার্ড"}
-              {...register("password")}
+              label={lang ? "Password*":"পাসওয়ার্ড*"}
+              {...register("password",{ required: true })}
             />
             <div
               className="cursor-pointer absolute right-4 top-[136px]"
@@ -141,8 +146,8 @@ function SignUp() {
             </div>
             <Input
               type={coPassHidden ? "password" : "text"}
-              label={lang ? "Confirm Password":"পাসওয়ার্ড নিশ্চিত হন"}
-              {...register("confirmPassword")}
+              label={lang ? "Confirm Password*":"পাসওয়ার্ড নিশ্চিত হন*"}
+              {...register("confirmPassword",{ required: true })}
               name="confirmPassword"
             />
             <div
@@ -189,7 +194,9 @@ function SignUp() {
               </Typography>
             </div>
            }
-
+         {errors.email && errors.password && (
+            <span className="text-red-500 ">{lang ? "All These field is required" :"আপনাকে অবশ্যই সকল তথ্য দিতে হবে।"}  </span>
+          )}
            {
             lang ?  <button disabled= { agree ? false : true} className={agree ? "mt- w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800" : "mt- w-full bg-gray-300 py-2 rounded-lg font-semibold text-gray-800"}>Sign Up</button> :  <button disabled= { agree ? false : true} className={agree ? "mt- w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800" : "mt- w-full bg-gray-300 py-2 rounded-lg font-semibold text-gray-800"}>সাইন আপ</button>
            }
@@ -216,7 +223,7 @@ function SignUp() {
          }
         </div>
       </Card>
-    </section>
+    </section></>
   );
 }
 

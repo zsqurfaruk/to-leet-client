@@ -5,6 +5,7 @@ import React, { useState, useContext } from "react";
 import Lottie from "lottie-react";
 import lotti from "../image/lf20_jkbuwuhk.json";
 import { StateContext } from "@/Context/StateContext/StateContext";
+import Head from "next/head";
 const ShowAllPost = ({ products }: any) => {
   const { setTypeCount }: any = useContext(StateContext);
   setTypeCount(products);
@@ -27,6 +28,10 @@ const ShowAllPost = ({ products }: any) => {
   };
  const lang = localStorage.getItem("lan")
   return (
+    <>
+    <Head>
+    <title>To-Leet - Filter by Rent Type</title>
+  </Head>
     <section className="my-20">
       <div className="bg-white px-10 w-10/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 rounded">
         {deleteAndFilterPost.length > 0 &&
@@ -50,7 +55,7 @@ const ShowAllPost = ({ products }: any) => {
           </div>
         </div>
       )}
-    </section>
+    </section></>
   );
 };
 export const getServerSideProps: GetServerSideProps = async ({

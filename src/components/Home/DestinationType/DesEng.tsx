@@ -48,7 +48,9 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Bachelor (Male)
               </Typography>
-              <Typography> {counterPosts?.type?.eng} Ads</Typography>
+              {/* <Typography> {counterPosts?.type?.eng} Ads</Typography> */}
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              
             </div>
           </div>
         </Card>
@@ -81,12 +83,74 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Bachelor (Female)
               </Typography>
-              <Typography> 0 Ads</Typography>
+              {/* <Typography> 0 Ads</Typography> */}
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
       </Link>
+      <Link
+        href={{
+          pathname: `/Mess-(Male)`,
+        }}
+        onClick={() => setRentName("Mess-(Male)")}
+      >
+        <Card
+          className={
+            filterTypeCity || filterTypeDivision
+              ? "bg-transparent text-black border border-secondary"
+              : "bg-transparent text-white border border-accent"
+          }
+        >
+          <div className="flex mx-5 gap-5 my-2">
+            <FcHome
+              className={
+                filterTypeCity || filterTypeDivision
+                  ? "h-14 w-14 border rounded-lg border-secondary"
+                  : "h-14 w-14 border rounded-lg"
+              }
+            ></FcHome>
+            <div>
+              <Typography variant="h5" className="mb-2">
+                Mess (Male)
+              </Typography>
+              {/* <Typography> 0 Ads</Typography> */}
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+            </div>
+          </div>
+        </Card>
+      </Link>
+      <Link
+        href={{
+          pathname: `/Mess-(Female)`,
+        }}
+        onClick={() => setRentName("Mess-(Female)")}
+      >
+        <Card
+          className={
+            filterTypeCity || filterTypeDivision
+              ? "bg-transparent text-black border border-secondary"
+              : "bg-transparent text-white border border-accent"
+          }
+        >
+          <div className="flex mx-5 gap-5 my-2">
+            <FcHome
+              className={
+                filterTypeCity || filterTypeDivision
+                  ? "h-14 w-14 border rounded-lg border-secondary"
+                  : "h-14 w-14 border rounded-lg"
+              }
+            ></FcHome>
 
+            <div>
+              <Typography variant="h5" className="mb-2">
+                Mess (Female)
+              </Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+            </div>
+          </div>
+        </Card>
+      </Link>
       <Link
         href={{
           pathname: `/Sublet-(Male)`,
@@ -114,7 +178,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Sublet (Male)
               </Typography>
-              <Typography> 0 Ads</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -146,7 +210,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Sublet (Female)
               </Typography>
-              <Typography> 0 Ads</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -178,72 +242,12 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Family
               </Typography>
-              <Typography> 0 Ads</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
       </Link>
-      <Link
-        href={{
-          pathname: `/Mess-(Male)`,
-        }}
-        onClick={() => setRentName("Mess-(Male)")}
-      >
-        <Card
-          className={
-            filterTypeCity || filterTypeDivision
-              ? "bg-transparent text-black border border-secondary"
-              : "bg-transparent text-white border border-accent"
-          }
-        >
-          <div className="flex mx-5 gap-5 my-2">
-            <FcHome
-              className={
-                filterTypeCity || filterTypeDivision
-                  ? "h-14 w-14 border rounded-lg border-secondary"
-                  : "h-14 w-14 border rounded-lg"
-              }
-            ></FcHome>
-            <div>
-              <Typography variant="h5" className="mb-2">
-                Mess (Male)
-              </Typography>
-              <Typography> 0 Ads</Typography>
-            </div>
-          </div>
-        </Card>
-      </Link>
-      <Link
-        href={{
-          pathname: `/Mess-(Female)`,
-        }}
-        onClick={() => setRentName("Mess-(Female)")}
-      >
-        <Card
-          className={
-            filterTypeCity || filterTypeDivision
-              ? "bg-transparent text-black border border-secondary"
-              : "bg-transparent text-white border border-accent"
-          }
-        >
-          <div className="flex mx-5 gap-5 my-2">
-            <FcHome
-              className={
-                filterTypeCity || filterTypeDivision
-                  ? "h-14 w-14 border rounded-lg border-secondary"
-                  : "h-14 w-14 border rounded-lg"
-              }
-            ></FcHome>
-
-            <div>
-              <Typography variant="h5" className="mb-2">
-                Mess (Female)
-              </Typography>
-              <Typography> 0 Ads</Typography>
-            </div>
-          </div>
-        </Card>
-      </Link>
+     
       <Link
         href={{
           pathname: `/Hostel`,
@@ -272,7 +276,7 @@ const DesEng = () => {
                 {" "}
                 Hostel
               </Typography>
-              <Typography> 0 Ads</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -304,7 +308,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Office
               </Typography>
-              <Typography> 0 Ads</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -334,7 +338,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Shop
               </Typography>
-              <Typography> 0 Ads</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -367,7 +371,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Vehicles
               </Typography>
-              <Typography> 0 Ads</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -399,7 +403,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Garage
               </Typography>
-              <Typography> 0 Ads</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>

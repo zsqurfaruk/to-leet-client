@@ -10,6 +10,7 @@ import { FaEyeSlash, FaEye } from "react-icons/fa";
 import lottiImage from "../image/66268-signinanimation (1).json";
 import Lottie from "lottie-react";
 import { StateContext } from "@/Context/StateContext/StateContext";
+import Head from "next/head";
 type FormValues = {
   email: string | number;
   password: string | number;
@@ -86,6 +87,10 @@ const SignIn = () => {
   };
   const lang = localStorage.getItem("lan");
   return (
+    <>
+    <Head>
+    <title>To-Leet - Sign in</title>
+  </Head>
     <section className="lg:w-10/12 lg:mx-auto grid lg:grid-cols-2 gap-20 my-10 lg:my-24">
       <div className="hidden lg:flex">
         <Lottie
@@ -118,11 +123,11 @@ const SignIn = () => {
             onSubmit={handleSubmit(handleSignIn)}
             className="mb-4 flex flex-col gap-6 relative"
           >
-            <Input label={lang ? "Email" : "ইমেইল"} {...register("email")} />
+            <Input label={lang ? "Email*" : "ইমেইল*"} {...register("email",{ required: true })} />
             <Input
               type={passHidden ? "password" : "text"}
-              label={lang ? "Password" : "পাসওয়ার্ড"}
-              {...register("password")}
+              label={lang ? "Password*" : "পাসওয়ার্ড*"}
+              {...register("password",{ required: true })}
             />{" "}
             <div
               className="cursor-pointer absolute right-4 top-[71px]"
@@ -135,6 +140,9 @@ const SignIn = () => {
               )}
             </div>
             <p>abc1Aomar&</p>
+            {errors.email && errors.password && (
+            <span className="text-red-500 ">{lang ? "All These field is required" :"আপনাকে অবশ্যই ইমেইল এবং পাসওয়ার্ড দিতে হবে।"}  </span>
+          )}
             <Link href={"/reset"}>
               {lang ? (
                 <h4 className="hover:underline">Forgot password?</h4>
@@ -187,7 +195,7 @@ const SignIn = () => {
           )}
         </div>
       </Card>
-    </section>
+    </section></>
   );
 };
 

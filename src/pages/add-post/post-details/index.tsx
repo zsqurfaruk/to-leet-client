@@ -18,6 +18,7 @@ import { BsImage } from "react-icons/bs";
 import { RxCrossCircled } from "react-icons/rx";
 import { Button } from "@material-tailwind/react";
 import Spinner from "@/components/Spinner/Spinner";
+import Head from "next/head";
 
 type FormValues = {
   bedNumber: number;
@@ -26,8 +27,8 @@ type FormValues = {
   // bedroomBan: number;
   bathrooms: number;
   // bathroomBan: number;
-  houseSize: number;
-  unit: string;
+  wifiBan: string;
+  wifiEng: string;
   address: string;
   title: string;
   description: string;
@@ -95,8 +96,8 @@ const PostDetails = () => {
       // bathroomBan: data?.bathroomBan,
       bedNumber: data?.bedNumber,
       // bedNumberBan: data?.bedNumberBan,
-      houseSize: data?.houseSize,
-      unit: data?.unit,
+      wifiBan: data?.wifiBan,
+      wifiEng: data?.wifiEng,
       address: data?.address,
       title: data?.title,
       description: data?.description,
@@ -178,11 +179,19 @@ const PostDetails = () => {
     setGetUniversityModalValue(newName);
   }
 
-  const handleCancel = () => {
+  const handleCancel11 = () => {
     setImageUrl1("");
+  };
+  const handleCancel12 = () => {
     setImageUrl2("");
+  };
+  const handleCancel13 = () => {
     setImageUrl3("");
+  };
+  const handleCancel14 = () => {
     setImageUrl4("");
+  };
+  const handleCancel15 = () => {
     setImageUrl5("");
   };
   const lang = localStorage.getItem("lan");
@@ -193,6 +202,10 @@ const PostDetails = () => {
 
   // console.log(modalValue.eng)
   return (
+    <>
+    <Head>
+        <title>To-Leet - Post Details</title>
+      </Head>
     <div>
       {error ? (
         <div className="h-96 flex items-center justify-center">
@@ -221,7 +234,7 @@ const PostDetails = () => {
               {lang ? (
                 <p className="text-center text-lg">
                   {" "}
-                  You have selected {getUniversityModalValue?.eng}
+                  You have selected <span className="lowercase">{getUniversityModalValue?.eng}</span>
                 </p>
               ) : (
                 <p className="text-center">
@@ -294,7 +307,7 @@ const PostDetails = () => {
                         <span className="label-text">Bed Number/ Numbers</span>
                       </label>
                       <select
-                        {...register("bedrooms")}
+                        {...register("bedNumber")}
                         className="select select-bordered bg-primary"
                       >
                         <option disabled selected>
@@ -324,7 +337,7 @@ const PostDetails = () => {
                         <span className="label-text">বেড সংখা</span>
                       </label>
                       <select
-                        {...register("bedNumberBan")}
+                        {...register("bedNumber")}
                         className="select select-bordered bg-primary"
                       >
                         <option disabled selected>
@@ -342,7 +355,7 @@ const PostDetails = () => {
                         <option>১০</option>
                         {/* <option>10+</option> */}
                       </select>
-                      {errors.bedNumberBan && (
+                      {errors.bedNumber && (
                         <span className="text-red-500 pt-4">
                           আপনাকে অবশ্যই এটা পূরণ করতে হবে।
                         </span>
@@ -388,11 +401,11 @@ const PostDetails = () => {
                         <span className="label-text">বেডরুম সংখা</span>
                       </label>
                       <select
-                        {...register("bedroomBan")}
+                        {...register("bedrooms")}
                         className="select select-bordered bg-primary"
                       >
                         <option disabled selected>
-                          বেডরুম সংখা
+                          বেডরুম সংখ্যা
                         </option>
                         <option>১</option>
                         <option>২</option>
@@ -406,7 +419,7 @@ const PostDetails = () => {
                         <option>১০</option>
                         {/* <option>10+</option> */}
                       </select>
-                      {errors.bedroomBan && (
+                      {errors.bedrooms && (
                         <span className="text-red-500 pt-4">
                           আপনাকে অবশ্যই এটা পূরণ করতে হবে।
                         </span>
@@ -443,14 +456,14 @@ const PostDetails = () => {
               ) : (
                 <div className="form-control lg:w-6/12 mx-auto mt-8">
                   <label className="label">
-                    <span className="label-text">বাথরুম সংখা</span>
+                    <span className="label-text">বাথরুম সংখ্যা</span>
                   </label>
                   <select
-                    {...register("bathroomBan")}
+                    {...register("bathrooms")}
                     className="select select-bordered bg-primary"
                   >
                     <option disabled selected>
-                      বাথরুম সংখা
+                      বাথরুম সংখ্যা
                     </option>
                     <option>১</option>
                     <option>২</option>
@@ -459,65 +472,60 @@ const PostDetails = () => {
                     <option>৫</option>
                     {/* <option>5+</option> */}
                   </select>
-                  {errors.bathroomBan && (
+                  {errors.bathrooms && (
                     <span className="text-red-500 pt-4">
                       আপনাকে অবশ্যই এটা পূরণ করতে হবে।
                     </span>
                   )}
                 </div>
               )}
-              <div className="flex gap-5 lg:w-6/12 mx-auto mt-8">
-                <div className="w-full">
+
+              {lang ? (
+                <div className="form-control lg:w-6/12 mx-auto mt-8">
                   <label className="label">
-                    {lang ? (
-                      <span className="label-text">House size (Optional)</span>
-                    ) : (
-                      <span className="label-text">রুমের সাইজ (ঐচ্ছিক)</span>
-                    )}
+                    <span className="label-text">Wifi facility</span>
                   </label>
-                  <input
-                    {...register("houseSize")}
-                    type="text"
-                    onChange={handleHouseSize}
-                    placeholder={lang ? "Type here" : "এখানে লিখুন"}
-                    className="input input-bordered w-full bg-primary"
-                  />
-                  {errors.houseSize && (
+                  <select
+                    {...register("wifiEng")}
+                    className="select w-full bg-primary"
+                  >
+                    <option disabled selected>
+                      Is there wifi facility?
+                    </option>
+                    <option>Yes</option>
+                    <option> No </option>
+                    <option> Up coming</option>
+                  </select>
+                  {errors.wifiEng && (
                     <span className="text-red-500 pt-4">
-                      {lang
-                        ? " This field is required"
-                        : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
+                      This field is required
                     </span>
                   )}
                 </div>
-                {houseSize && (
-                  <div>
-                    <label className="label">
-                      <span className="label-text">Unit</span>
-                    </label>
-                    <select
-                      {...register("unit")}
-                      className="select select-bordered bg-primary"
-                    >
-                      <option disabled selected>
-                        Unit
-                      </option>
-                      <option>katha </option>
-                      <option>bigha</option>
-                      <option>acres</option>
-                      <option>shotok</option>
-                      <option>decimal</option>
-                    </select>
-                    {errors.unit && (
-                      <span className="text-red-500 pt-4">
-                        {lang
-                          ? " This field is required"
-                          : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
-                      </span>
-                    )}
-                  </div>
-                )}
-              </div>
+              ) : (
+                <div className="form-control lg:w-6/12 mx-auto mt-8">
+                  <label className="label">
+                    <span className="label-text">ওয়াইফাই সুবিধা</span>
+                  </label>
+                  <select
+                    {...register("wifiBan")}
+                    className="select w-full bg-primary"
+                  >
+                    <option disabled selected>
+                      ওয়াইফাই সুবিধা আছে কি ?
+                    </option>
+                    <option>হ্যাঁ</option>
+                    <option> না </option>
+                    <option> সামনে নিয়ে আসব।</option>
+                  </select>
+                  {errors.wifiBan && (
+                    <span className="text-red-500 pt-4">
+                      আপনাকে অবশ্যই এটা পূরণ করতে হবে।
+                    </span>
+                  )}
+                </div>
+              )}
+
               <div className="lg:w-6/12 mx-auto mt-8">
                 <label className="label">
                   {lang ? (
@@ -639,7 +647,10 @@ const PostDetails = () => {
 
                 <div className="grid grid-cols-3 md:grid-cols-5 gap-5 md:gap-7">
                   {!imageUrl1 && loading ? (
-                    <Spinner></Spinner>
+                    <div className="mt-9 ml-5">
+                      {" "}
+                      <Spinner></Spinner>
+                    </div>
                   ) : (
                     <>
                       {imageUrl1 ? (
@@ -650,7 +661,7 @@ const PostDetails = () => {
                             alt=""
                           />
                           <button
-                            onClick={handleCancel}
+                            onClick={handleCancel11}
                             className="bg-primary absolute top-7 right-1"
                           >
                             {" "}
@@ -669,6 +680,7 @@ const PostDetails = () => {
                             accept="image/*"
                             placeholder="Upload Images"
                             className="file-input file-input-primary w-full hidden"
+                            required
                           />
                           <div className="mt-1">
                             <label htmlFor="file1">
@@ -690,9 +702,12 @@ const PostDetails = () => {
                     </>
                   )}
                   {imageUrl1 && !imageUrl2 && loading ? (
-                    "loading.."
+                    <div className="mt-9 ml-5">
+                      {" "}
+                      <Spinner></Spinner>
+                    </div>
                   ) : (
-                    <div>
+                    <>
                       {imageUrl2 ? (
                         <div className="relative">
                           <img
@@ -701,11 +716,10 @@ const PostDetails = () => {
                             alt=""
                           />
                           <button
-                            onClick={handleCancel}
+                            onClick={handleCancel12}
                             className="bg-primary absolute top-7 right-1"
                           >
-                            {" "}
-                            <RxCrossCircled />{" "}
+                            <RxCrossCircled />
                           </button>
                         </div>
                       ) : (
@@ -720,17 +734,42 @@ const PostDetails = () => {
                             accept="image/*"
                             placeholder="Upload Images"
                             className="file-input file-input-primary w-full hidden"
+                            disabled={imageUrl1 ? false : true}
                           />
                           <div className="mt-1">
                             <label htmlFor="file2">
                               {lang ? (
-                                <div className="rounded border border-secondary p-2">
-                                  <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+                                <div
+                                  className={
+                                    imageUrl1
+                                      ? "rounded border border-secondary p-2"
+                                      : "rounded border   border-gray-400 p-2"
+                                  }
+                                >
+                                  <BsImage
+                                    className={
+                                      imageUrl1
+                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
+                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                    }
+                                  />
                                   <small>Upload Photo</small>
                                 </div>
                               ) : (
-                                <div className="rounded border border-secondary p-2">
-                                  <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+                                <div
+                                  className={
+                                    imageUrl1
+                                      ? "rounded border border-secondary p-2"
+                                      : "rounded border   border-gray-400 p-2"
+                                  }
+                                >
+                                  <BsImage
+                                    className={
+                                      imageUrl1
+                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
+                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                    }
+                                  />
                                   <small> ছবি যুক্ত করুন</small>
                                 </div>
                               )}
@@ -738,11 +777,14 @@ const PostDetails = () => {
                           </div>
                         </button>
                       )}
-                    </div>
+                    </>
                   )}
 
                   {imageUrl1 && imageUrl2 && !imageUrl3 && loading ? (
-                    "loading"
+                    <div className="mt-9 ml-5">
+                      {" "}
+                      <Spinner></Spinner>
+                    </div>
                   ) : (
                     <>
                       {imageUrl3 ? (
@@ -753,7 +795,7 @@ const PostDetails = () => {
                             alt=""
                           />
                           <button
-                            onClick={handleCancel}
+                            onClick={handleCancel13}
                             className="bg-primary absolute top-7 right-1"
                           >
                             {" "}
@@ -772,17 +814,42 @@ const PostDetails = () => {
                             accept="image/*"
                             placeholder="Upload Images"
                             className="file-input file-input-primary w-full hidden"
+                            disabled={imageUrl1 && imageUrl2 ? false : true}
                           />
                           <div className="mt-1">
                             <label htmlFor="file3">
                               {lang ? (
-                                <div className="rounded border border-secondary p-2">
-                                  <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+                                <div
+                                  className={
+                                    imageUrl1 && imageUrl2
+                                      ? "rounded border border-secondary p-2"
+                                      : "rounded border border-gray-400 p-2"
+                                  }
+                                >
+                                  <BsImage
+                                    className={
+                                      imageUrl1 && imageUrl2
+                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
+                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                    }
+                                  />
                                   <small>Upload Photo</small>
                                 </div>
                               ) : (
-                                <div className="rounded border border-secondary p-2">
-                                  <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+                                <div
+                                  className={
+                                    imageUrl1 && imageUrl2
+                                      ? "rounded border border-secondary p-2"
+                                      : "rounded border border-gray-400 p-2"
+                                  }
+                                >
+                                  <BsImage
+                                    className={
+                                      imageUrl1 && imageUrl2
+                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
+                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                    }
+                                  />
                                   <small> ছবি যুক্ত করুন</small>
                                 </div>
                               )}
@@ -792,85 +859,179 @@ const PostDetails = () => {
                       )}
                     </>
                   )}
-                  {imageUrl4 ? (
-                    <div className="relative">
-                      <img className="h-16 w-24 mt-7" src={imageUrl4} alt="" />
-                      <button
-                        onClick={handleCancel}
-                        className="bg-primary absolute top-7 right-1"
-                      >
-                        {" "}
-                        <RxCrossCircled />{" "}
-                      </button>
+                  {imageUrl3 && !imageUrl4 && loading ? (
+                    <div className="mt-9 ml-5">
+                      {" "}
+                      <Spinner></Spinner>
                     </div>
                   ) : (
-                    <button>
-                      {lang ? <label>Image 4</label> : <label>ছবি-৪</label>}
-                      <input
-                        onChange={(e) => imageUploadHandler(e, setImageUrl4)}
-                        type="file"
-                        id="file4"
-                        accept="image/*"
-                        placeholder="Upload Images"
-                        className="file-input file-input-primary w-full hidden"
-                      />
-                      <div className="mt-1">
-                        <label htmlFor="file4">
-                          {lang ? (
-                            <div className="rounded border border-secondary p-2">
-                              <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
-                              <small>Upload Photo</small>
-                            </div>
-                          ) : (
-                            <div className="rounded border border-secondary p-2">
-                              <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
-                              <small> ছবি যুক্ত করুন</small>
-                            </div>
-                          )}
-                        </label>
-                      </div>
-                    </button>
+                    <>
+                      {imageUrl4 ? (
+                        <div className="relative">
+                          <img
+                            className="h-16 w-24 mt-7"
+                            src={imageUrl4}
+                            alt=""
+                          />
+                          <button
+                            onClick={handleCancel14}
+                            className="bg-primary absolute top-7 right-1"
+                          >
+                            {" "}
+                            <RxCrossCircled />{" "}
+                          </button>
+                        </div>
+                      ) : (
+                        <button>
+                          {lang ? <label>Image 4</label> : <label>ছবি-৪</label>}
+                          <input
+                            onChange={(e) =>
+                              imageUploadHandler(e, setImageUrl4)
+                            }
+                            type="file"
+                            id="file4"
+                            accept="image/*"
+                            placeholder="Upload Images"
+                            className="file-input file-input-primary w-full hidden"
+                            disabled={imageUrl3 ? false : true}
+                          />
+                          <div className="mt-1">
+                            <label htmlFor="file4">
+                              {lang ? (
+                                <div
+                                  className={
+                                    imageUrl3
+                                      ? "rounded border border-secondary p-2"
+                                      : "rounded border border-gray-400 p-2"
+                                  }
+                                >
+                                  <BsImage
+                                    className={
+                                      imageUrl3
+                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
+                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                    }
+                                  />
+                                  <small>Upload Photo</small>
+                                </div>
+                              ) : (
+                                <div
+                                  className={
+                                    imageUrl3
+                                      ? "rounded border border-secondary p-2"
+                                      : "rounded border border-gray-400 p-2"
+                                  }
+                                >
+                                  <BsImage
+                                    className={
+                                      imageUrl3
+                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
+                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                    }
+                                  />
+                                  <small> ছবি যুক্ত করুন</small>
+                                </div>
+                              )}
+                            </label>
+                          </div>
+                        </button>
+                      )}
+                    </>
                   )}
-                  {imageUrl5 ? (
-                    <div className="relative">
-                      <img className="h-16 w-24 mt-7" src={imageUrl4} alt="" />
-                      <button
-                        onClick={handleCancel}
-                        className="bg-primary absolute top-7 right-1"
-                      >
-                        {" "}
-                        <RxCrossCircled />{" "}
-                      </button>
+                  {imageUrl4 && !imageUrl5 && loading ? (
+                    <div className="mt-9 ml-5">
+                      {" "}
+                      <Spinner></Spinner>
                     </div>
                   ) : (
-                    <button>
-                      {lang ? <label>Image 5</label> : <label>ছবি-৫</label>}
-                      <input
-                        onChange={(e) => imageUploadHandler(e, setImageUrl5)}
-                        type="file"
-                        id="file"
-                        accept="image/*"
-                        placeholder="Upload Images"
-                        className="file-input file-input-primary w-full hidden"
-                      />
-                      <div className="mt-1">
-                        <label htmlFor="file">
-                          {lang ? (
-                            <div className="rounded border border-secondary p-2">
-                              <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
-                              <small>Upload Photo</small>
-                            </div>
-                          ) : (
-                            <div className="rounded border border-secondary p-2">
-                              <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
-                              <small> ছবি যুক্ত করুন</small>
-                            </div>
-                          )}
-                        </label>
-                      </div>
-                    </button>
+                    <>
+                      {imageUrl5 ? (
+                        <div className="relative">
+                          <img
+                            className="h-16 w-24 mt-7"
+                            src={imageUrl5}
+                            alt=""
+                          />
+                          <button
+                            onClick={handleCancel15}
+                            className="bg-primary absolute top-7 right-1"
+                          >
+                            {" "}
+                            <RxCrossCircled />{" "}
+                          </button>
+                        </div>
+                      ) : (
+                        <button>
+                          {lang ? <label>Image 5</label> : <label>ছবি-৫</label>}
+                          <input
+                            onChange={(e) =>
+                              imageUploadHandler(e, setImageUrl5)
+                            }
+                            type="file"
+                            id="file"
+                            accept="image/*"
+                            placeholder="Upload Images"
+                            className="file-input file-input-primary w-full hidden"
+                            disabled={imageUrl4 ? false : true}
+                          />
+                          <div className="mt-1">
+                            <label htmlFor="file">
+                              {lang ? (
+                                <div
+                                  className={
+                                    imageUrl4
+                                      ? "rounded border border-secondary p-2"
+                                      : "rounded border border-gray-400 p-2"
+                                  }
+                                >
+                                  <BsImage
+                                    className={
+                                      imageUrl4
+                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
+                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                    }
+                                  />
+                                  <small>Upload Photo</small>
+                                </div>
+                              ) : (
+                                <div
+                                  className={
+                                    imageUrl4
+                                      ? "rounded border border-secondary p-2"
+                                      : "rounded border border-gray-400 p-2"
+                                  }
+                                >
+                                  <BsImage
+                                    className={
+                                      imageUrl4
+                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
+                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                    }
+                                  />
+                                  <small> ছবি যুক্ত করুন</small>
+                                </div>
+                              )}
+                            </label>
+                          </div>
+                        </button>
+                      )}
+                    </>
                   )}
                 </div>
+                {!imageUrl1 && !loading && (
+                  <>
+                    {" "}
+                    {lang ? (
+                      <span className="text-sm pt-4 text-red-300">
+                        You must upload at least one image.
+                      </span>
+                    ) : (
+                      <span className="text-xs pt-4 text-red-300">
+                        আপনাকে অন্তত একটি ছবি আপলোড করতে হবে।
+                      </span>
+                    )}
+                  </>
+                )}
               </div>
             </div>
             <hr className="my-10" />
@@ -958,7 +1119,7 @@ const PostDetails = () => {
           </div>
         </div>
       )}
-    </div>
+    </div></>
   );
 };
 
