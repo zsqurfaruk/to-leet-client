@@ -14,7 +14,7 @@ const FilterPosts = () => {
   const [filterPost, setFilterPost] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/v1/product/filter", {
+      .get("https://zsqur.to-leet.com/api/v1/product/filter", {
         params: filterValue,
       })
       .then(function (response) {

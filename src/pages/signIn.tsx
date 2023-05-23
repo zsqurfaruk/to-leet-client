@@ -50,7 +50,7 @@ const SignIn = () => {
       email: data.email,
       password: data.password,
     };
-    const res = await fetch("http://localhost:5000/api/v1/users/signIn", {
+    const res = await fetch("https://zsqur.to-leet.com/api/v1/users/signIn", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -144,7 +144,7 @@ const SignIn = () => {
                   <FaEye className="text-2xl"></FaEye>
                 )}
               </div>
-              <p>abc1Aomar&</p>
+              {/* <p>abc1Aomar&</p> */}
               {errors.email && errors.password && (
                 <span className="text-red-500 ">
                   {lang

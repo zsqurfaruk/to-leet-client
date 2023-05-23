@@ -16,7 +16,7 @@ function privateRoute(Component: any) {
         const { asPath } = router;
         router.push(`/signIn?next=${asPath}`);
       } else {
-        fetch("http://localhost:5000/api/v1/users/me", {
+        fetch("https://zsqur.to-leet.com/api/v1/users/me", {
           method: "POST",
           headers: {
             "content-type": "application/json",

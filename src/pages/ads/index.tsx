@@ -30,7 +30,7 @@ function AllAds({ product }: any) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch(`http://localhost:5000/api/v1/product `);
+  const res = await fetch(`https://zsqur.to-leet.com/api/v1/product`);
   const data = await res.json();
 
   if (!data) {

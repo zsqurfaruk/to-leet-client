@@ -11,7 +11,7 @@ const University = () => {
   //     const [filterPost, setFilterPost] = useState([]);
   //   // const router = useRouter();
   //   const handleFilterUniversity = () => {
-  //     fetch(`http://localhost:5000/api/v1/product`)
+  //     fetch(`https://zsqur.to-leet.com/api/v1/product`)
   //       .then((res) => res.json())
   //       .then((data) => {
   //         console.log(data)
