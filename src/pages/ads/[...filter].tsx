@@ -20,50 +20,8 @@ const FilterPosts = () => {
       .then(function (response) {
         setFilterPost(response?.data?.posts);
       });
-    // // fetch(`http://localhost:5000/api/v1/product/filter`, {
-    // //   method: "POST",
-    // //   headers: {
-    // //     "content-type": "application/json",
-    // //   },
-    // //   body: JSON.stringify(filterValue),
-    // // })
-    //   .then((res) => res.json())
-    //   .then((data) => setFilterPost(data?.posts));
+    
   }, [filterValue]);
-  //   useEffect(() => {
-  //     fetch("http://localhost:5000/api/v1/product")
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         const result = data.filter((post:any)=> post.type === filterModalValue)
-  //         console.log(result)
-  //       });
-  //   }, [cityName, filterModalValue, filterValue]);
-
-  //   axios
-  //     .get("http://localhost:5000/api/v1/product/filter", {
-  //       params: {
-  //         cityName,
-  //         divisionNameEng,
-  //         filterModalValue,
-  //       },
-  //     })
-  //     .then(function (response) {
-  //       console.log(response.data);
-  //     });
-
-  //   console.log(filterPost);
-
-  // const requestOptions = {
-  //     method: 'GET',
-  //     // headers: myHeaders,
-  //     body: "formdata",
-  //     redirect: 'follow'
-  //   };
-
-  //   fetch("http://localhost:5000/api/v1/product/filter", requestOptions)
-  //     .then(response => response.text())
-  //     .then(result => console.log(result))
-  //     .catch(error => console.log('error', error));
   const lang = localStorage.getItem("lan");
   return (
     <>
@@ -74,7 +32,7 @@ const FilterPosts = () => {
       <div className="flex justify-around pt-10 text-secondary">
         {lang ? (
           <div>
-            {cityName.eng && (
+            {cityName?.eng && (
               <h2>
                 You have selected{" "}
                 <span className="lowercase">{cityName?.eng}</span> city.
@@ -83,16 +41,16 @@ const FilterPosts = () => {
             {divisionNameEng.eng && (
               <h2>
                 You have selected{" "}
-                <span className="lowercase">{divisionNameEng.eng}</span>{" "}
+                <span className="lowercase">{divisionNameEng?.eng}</span>{" "}
                 division.
               </h2>
             )}
           </div>
         ) : (
           <div>
-            {cityName.ban && <h2>আপনি {cityName?.ban} শহর নির্বাচন করেছেন।</h2>}
+            {cityName?.ban && <h2>আপনি {cityName?.ban} শহর নির্বাচন করেছেন।</h2>}
             {divisionNameEng.ban && (
-              <h2> আপনি {divisionNameEng.ban} বিভাগ নির্বাচন করেছেন।</h2>
+              <h2> আপনি {divisionNameEng?.ban} বিভাগ নির্বাচন করেছেন।</h2>
             )}
           </div>
         )}
@@ -122,28 +80,5 @@ const FilterPosts = () => {
     </section></>
   );
 };
-
-// export const getServerSideProps: GetServerSideProps = async ({
-//   params,
-// }: any) => {
-//   console.log(params)
-//   const res = await fetch(
-//     `http://localhost:5000/api/v1/product/${params.filter[0]}`
-//   );
-//   const data = await res.json();
-// console.log(data)
-//   if (!data) {
-//     return {
-//       redirect: {
-//         destination: "/",
-//         permanent: false,
-//       },
-//     };
-//   }
-//   return {
-//     props: {
-//       product: data,
-//     },
-//   };
-// };
+ 
 export default FilterPosts;

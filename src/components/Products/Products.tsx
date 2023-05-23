@@ -63,22 +63,24 @@ const Products = ({ product, handleDelete }: any) => {
               </div>
             )} */}
             <div className="flex justify-between">
+              {
+                product?.bedrooms?.eng && <div>{lang ? (
+                  <h2>Bedroom: {product?.bedrooms?.eng}</h2>
+                ) : (
+                  <h2> বেডরুম সংখ্যা: {product?.bedrooms?.ban}</h2>
+                )}</div>
+              }
               {lang ? (
-                <h2>Bedroom: {product?.bedrooms}</h2>
+                <h2>Bathroom: {product?.bathrooms?.eng}</h2>
               ) : (
-                <h2> বেডরুম সংখ্যা: {product?.bedrooms}</h2>
-              )}
-              {lang ? (
-                <h2>Bathroom: {product?.bathrooms}</h2>
-              ) : (
-                <h2> বাথরুম সংখ্যা: {product?.bathrooms}</h2>
+                <h2> বাথরুম সংখ্যা: {product?.bathrooms?.ban}</h2>
               )}
               {product?.bedNumber && (
                 <div>
                   {lang ? (
-                    <h2>Bed Number:{product?.bedNumber}</h2>
+                    <h2>Bed Number:{product?.bedNumber?.eng}</h2>
                   ) : (
-                    <h2> বেড সংখ্যা:{product?.bedNumber}</h2>
+                    <h2> বেড সংখ্যা:{product?.bedNumber?.ban}</h2>
                   )}
                 </div>
               )}
@@ -93,9 +95,9 @@ const Products = ({ product, handleDelete }: any) => {
           </div>
         </div>
       </Link>
-      <button onClick={() => handleDelete(product._id)} className="btn">
+      {/* <button onClick={() => handleDelete(product._id)} className="btn">
         delete
-      </button>
+      </button> */}
     </div>
   );
 };

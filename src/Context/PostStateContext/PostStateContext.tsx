@@ -13,6 +13,9 @@ const PostInfo = ({ children }: any) => {
   const [postUniversityModal, setPostUniversityModal] = useState(false);
   const [getUniversityModalValue, setGetUniversityModalValue] = useState({})
   const [modalValue, setModalValue] = useState({});
+  const [bedNumbers, setBedNumbers] = useState({});
+  const [bedRooms, setBedRooms] = useState({});
+  const [bathRooms, setBathRooms] = useState({});
   // const [popularAreaNameForPost, setPopularAreaNameForPost] = useState("");
   // const handlePostOpenModal = (value: any) => setSize(value);
   const handlePostOpenModal = () => setPostOpenModal(!postOpenModal);
@@ -39,7 +42,10 @@ const PostInfo = ({ children }: any) => {
     setPostUniversityModal,
     handlePostUniversityModal,
     postUniversityModalValue, setPostUniversityModalValue,
-    getUniversityModalValue, setGetUniversityModalValue
+    getUniversityModalValue, setGetUniversityModalValue,
+    bedNumbers, setBedNumbers,
+    bedRooms, setBedRooms,
+    bathRooms, setBathRooms
   };
 
   return (

@@ -88,15 +88,26 @@ const ShowUniversityPost = ({ university }: any) => {
             } */}
 
               <div className="flex justify-between">
+                {
+                  university?.bedrooms?.eng && <div>{lang ? (
+                    <h2>Bedrooms: {university?.bedrooms?.eng}</h2>
+                  ) : (
+                    <h2>বেডরুম সংখ্যা : {university?.bedrooms?.ban}</h2>
+                  )}</div>
+                }
+                {university?.bedNumber && (
+                <div>
+                  {lang ? (
+                    <h2>Bed Number:{university?.bedNumber?.eng}</h2>
+                  ) : (
+                    <h2> বেড সংখ্যা:{university?.bedNumber?.ban}</h2>
+                  )}
+                </div>
+              )}
                 {lang ? (
-                  <h2>Bedrooms: {university?.bedrooms}</h2>
+                  <h2>Bathrooms: {university?.bathrooms?.eng}</h2>
                 ) : (
-                  <h2>বেডরুম সংখ্যা : {university?.bedrooms}</h2>
-                )}
-                {lang ? (
-                  <h2>Bathrooms: {university?.bathrooms}</h2>
-                ) : (
-                  <h2> বাথরুম সংখ্যা: {university?.bathrooms}</h2>
+                  <h2> বাথরুম সংখ্যা: {university?.bathrooms?.ban}</h2>
                 )}
               </div>
 

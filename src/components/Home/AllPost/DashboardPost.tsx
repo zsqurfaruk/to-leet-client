@@ -42,10 +42,21 @@ const DashboardPost = ({ post }: any) => {
               <Typography color="gray" className="font-normal ">
                 <div className="md:flex md:gap-56">
                  {
-                  lang ?  <h2>Bedrooms: {post?.bedrooms}</h2>:  <h2>বেডরুমঃ {post?.bedrooms}</h2>
+                  post?.bedrooms?.eng && <div>{
+                    lang ?  <h2>Bedrooms: {post?.bedrooms?.eng}</h2>:  <h2>বেডরুমঃ {post?.bedrooms?.ban}</h2>
+                   }</div>
                  }
+                 {post?.bedNumber && (
+                <div>
+                  {lang ? (
+                    <h2>Bed Number:{post?.bedNumber?.eng}</h2>
+                  ) : (
+                    <h2> বেড সংখ্যা:{post?.bedNumber?.ban}</h2>
+                  )}
+                </div>
+              )}
                  {
-                  lang ?  <h2 className="md:hidden">Bathrooms: {post?.bathrooms}</h2>:  <h2 className="md:hidden"> বাথরুমঃ {post?.bathrooms}</h2>
+                  lang ?  <h2 className="md:hidden">Bathrooms: {post?.bathrooms?.eng}</h2>:  <h2 className="md:hidden"> বাথরুমঃ {post?.bathrooms?.ban}</h2>
                  }
                 </div>
                 
@@ -121,7 +132,7 @@ const DashboardPost = ({ post }: any) => {
                   <div className="md:flex md:gap-56">
                     {/* <h2>Bedrooms: {post?.bedrooms}</h2> */}
                   {
-                    lang ?  <h2>Bathrooms: {post?.bathrooms}</h2>:   <h2> বাথরুমঃ{post?.bathrooms}</h2>
+                    lang ?  <h2>Bathrooms: {post?.bathrooms?.eng}</h2>:   <h2> বাথরুমঃ{post?.bathrooms?.ban}</h2>
                   }
                   </div>
                   

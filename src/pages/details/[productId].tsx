@@ -119,18 +119,29 @@ const ProductDetails = ({ product }: any) => {
                   )}
                   <Typography color="gray" className="font-normal ">
                     <div className="md:flex md:gap-56">
-                      {lang ? (
-                        <h2>Bedrooms: {product?.bedrooms}</h2>
-                      ) : (
-                        <h2> বেডরুমঃ {product?.bedrooms}</h2>
-                      )}
+                      {
+                        product?.bedrooms?.eng && <div>{lang ? (
+                          <h2>Bedrooms: {product?.bedrooms?.eng}</h2>
+                        ) : (
+                          <h2> বেডরুমঃ {product?.bedrooms?.ban}</h2>
+                        )}</div>
+                      }
+                       
+                       {
+                        product?.bedNumber?.eng && <div>{lang ? (
+                          <h2>Bed numbers: {product?.bedNumber?.eng}</h2>
+                        ) : (
+                          <h2> বেড সংখ্যাঃ  {product?.bedNumber?.ban}</h2>
+                        )}</div>
+                       }
+                       
                       {lang ? (
                         <h2 className="md:hidden">
-                          Bathrooms: {product?.bathrooms}
+                          Bathrooms: {product?.bathrooms?.eng}
                         </h2>
                       ) : (
                         <h2 className="md:hidden">
-                          বাথরুমঃ {product?.bathrooms}
+                          বাথরুমঃ {product?.bathrooms?.ban}
                         </h2>
                       )}
                     </div>
@@ -240,9 +251,9 @@ const ProductDetails = ({ product }: any) => {
                     <div className="md:flex md:gap-56">
                       {/* <h2>Bedrooms: {post?.bedrooms}</h2> */}
                       {lang ? (
-                        <h2>Bathrooms: {product?.bathrooms}</h2>
+                        <h2>Bathrooms: {product?.bathrooms?.eng}</h2>
                       ) : (
-                        <h2> বাথরুমঃ {product?.bathrooms}</h2>
+                        <h2> বাথরুমঃ {product?.bathrooms?.ban}</h2>
                       )}
                     </div>
 

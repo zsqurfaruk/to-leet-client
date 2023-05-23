@@ -11,29 +11,6 @@ import privateRoute from "@/routes/privateRoute";
 import Head from "next/head";
 
 function AllAds({ product }: any) {
-  // const { counterPosts, handleFilter }: any = useContext(APIContext);
-  // const { filterValue }: any = useContext(StateContext);
-  // const { filterCity, setFilterCity }: any = useContext(FilterContext);
-  //  const [product, setProduct] = useState([])
-  // if (filterCity?.name === "eng") {
-  //   const newName = {
-  //     eng: filterCity?.label,
-  //     ban: filterCity?.value,
-  //   };
-  //   setFilterCity(newName);
-  // } else if (filterCity?.name === "ban") {
-  //   const newName = {
-  //     eng: filterCity?.value,
-  //     ban: filterCity?.label,
-  //   };
-  //   setFilterCity(newName);
-  // }
-
-  // useEffect(()=>{
-  //   fetch('http://localhost:5000/api/v1/product')
-  //   .then(res=>res.json())
-  //   .then(data=>setProduct(data))
-  // },[])
 
   const lang = localStorage.getItem("lan");
   return (
@@ -42,29 +19,7 @@ function AllAds({ product }: any) {
         <title>To-Leet - All Ads</title>
       </Head>
       <section className="w-10/12 mx-auto bg-white px-10">
-        {/* <div className="basis-1/4 lg:border-r-2 border-accent ">
-        <div className="pt-10 mr-5">
-          <h1>Filter:</h1>
-          {lang ? (
-            <Select
-              placeholder="Search"
-              isSearchable
-              options={cityOptionEng}
-              onChange={setFilterCity}
-              className="bg-primary border-none text-sm h-4 text-black font-medium"
-            />
-          ) : (
-            <Select
-              placeholder="অনুসন্ধান"
-              isSearchable
-              options={cityOptionBan}
-              onChange={setFilterCity}
-              className="bg-primary border-none text-sm h-4 text-black font-medium"
-            />
-          )}
-        </div>
-      </div> */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 pb-10">
           {product?.map((post: any) => (
             <AllPost key={post._id} post={post}></AllPost>
           ))}

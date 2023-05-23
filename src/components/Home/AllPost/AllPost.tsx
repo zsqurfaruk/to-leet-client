@@ -53,10 +53,21 @@ function AllPost({ post }: any) {
 
            <div className="flex justify-between">
           {
-            lang ?  <h2>Bedrooms: {post?.bedrooms}</h2> :  <h2>বেডরুম সংখ্যা : {post?.bedrooms}</h2>
+            post?.bedrooms?.eng && <div>{
+              lang ?  <h2>Bedrooms: {post?.bedrooms?.eng}</h2> :  <h2>বেডরুম সংখ্যা : {post?.bedrooms?.ban}</h2>
+            }</div>
           }
+          {post?.bedNumber && (
+                <div>
+                  {lang ? (
+                    <h2>Bed Number:{post?.bedNumber?.eng}</h2>
+                  ) : (
+                    <h2> বেড সংখ্যা:{post?.bedNumber?.ban}</h2>
+                  )}
+                </div>
+              )}
           {
-            lang ? <h2>Bathrooms: {post?.bathrooms}</h2> : <h2> বাথরুম সংখ্যা: {post?.bathrooms}</h2>
+            lang ? <h2>Bathrooms: {post?.bathrooms?.eng}</h2> : <h2> বাথরুম সংখ্যা: {post?.bathrooms?.ban}</h2>
           }
            </div>
           

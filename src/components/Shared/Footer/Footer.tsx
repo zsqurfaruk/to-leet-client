@@ -21,7 +21,7 @@ const Footer = () => {
       </svg>
       <div className="px-4 pt-12 mx-auto w-10/12">
         <div className="md:flex justify-between mb-3">
-          <div className=" ">
+          <div>
             <a className="flex">
               <Image className="h-7 w-12 mt-2" src={logo} alt=""></Image>
               {/* <img className="h-10 w-10 rounded-lg" src={logo} alt="" /> */}
@@ -31,6 +31,7 @@ const Footer = () => {
                 </span>
               </h1>
             </a>
+           <h1 className="text-xl lg:ml-2 text-accent">The Ultimate Rental Solution</h1>
             <div className="mt-4 lg:max-w-sm">
               <p className=" text-gray-400">
                 
