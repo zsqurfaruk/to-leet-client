@@ -9,7 +9,7 @@ const PopularAreaOfRangpur = () => {
   const { setHomePopularAreaName,setFilterValue,filterValue,  homePopularAreaName, setFilterModal }: any =useContext(StateContext); 
 
   const handleFilter=(v:any)=>{
-    console.log("v-value",v)
+     
     if(v?.name){
 
       if (v?.name === "eng") {

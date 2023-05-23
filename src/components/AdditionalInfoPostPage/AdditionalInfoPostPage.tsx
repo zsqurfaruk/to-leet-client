@@ -91,11 +91,11 @@ const AdditionalInfoPostPage = () => {
             )}
           </div>
           <hr className="text-black" />
-          {lang ? (
+          {/* {lang ? (
             <h1 className="flex justify-end">See our posting rules</h1>
           ) : (
             <h1 className="flex justify-end">পোস্ট করার নিয়মাবলী দেখুনঃ</h1>
-          )}
+          )} */}
         </div>
         </div>
     );

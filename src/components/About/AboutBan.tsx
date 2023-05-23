@@ -1,14 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState } from "react";
+import { StateContext } from "@/Context/StateContext/StateContext";
+import React, { useState,useContext } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { IoMdArrowDropup } from "react-icons/io";
 
 const AboutBan = () => {
   const [open, setOpen] = useState(true);
-
+ const {filterTypeCity, filterTypeDivision}:any = useContext(StateContext)
   return (
     <div className="w-10/12 mx-auto py-10 text-justify">
-      <h1 className="text-2xl font-semibold text-accent">
+      <h1 className={filterTypeCity || filterTypeDivision ? "text-2xl font-semibold text-black": "text-2xl font-semibold text-accent"}>
         "To-Leet": The Ultimate Rental Solution
       </h1>
       <br />
@@ -16,31 +17,31 @@ const AboutBan = () => {
       স্থান খুঁজে পাওয়া একটি কঠিন কাজ হতে পারে। আপনার জিনিসপত্রের জন্য অতিরিক্ত
       স্টোরেজ, আপনার শখ পূরণের জন্য একটি ওয়ার্কশপ বা আপনার পণ্য প্রদর্শনের জন্য
       একটি খুচরা জায়গার প্রয়োজন হোক না কেন, উপযুক্ত ভাড়ার জন্য অনুসন্ধান
-      সময়সাপেক্ষ এবং হতাশাজনক হতে পারে। তবে আর চিন্তা করবেন না! <span className="text-accent text-lg">To-Leet</span> - এ
+      সময়সাপেক্ষ এবং হতাশাজনক হতে পারে। তবে আর চিন্তা করবেন না! <span className={filterTypeCity || filterTypeDivision ? "text-black text-lg font-semibold" : "text-accent text-lg"}>To-Leet</span> - এ
       স্বাগতম, নতুন চালু হওয়া অনলাইন হোম, গ্যারেজ, এবং দোকান ভাড়া পরিষেবা
-      কোম্পানি যার লক্ষ্য আপনার ভাড়ার অভিজ্ঞতা সহজ করা। <span className="text-accent text-lg">To-Leet</span> - এ, আমরা বুঝি যে
+      কোম্পানি যার লক্ষ্য আপনার ভাড়ার অভিজ্ঞতা সহজ করা। <span className={filterTypeCity || filterTypeDivision ? "text-black text-lg font-semibold" : "text-accent text-lg"}>To-Leet</span> - এ, আমরা বুঝি যে
       প্রত্যেকের প্রয়োজনীয়তা অনন্য, এবং নিখুঁত স্থান খোঁজা একটি বিরামহীন
       প্রক্রিয়া হওয়া উচিত। আমরা একটি স্বজ্ঞাত এবং ব্যবহারকারী-বান্ধব অনলাইন
       প্ল্যাটফর্ম তৈরি করতে প্রযুক্তির শক্তিকে কাজে লাগিয়েছি যা ভাড়ার জন্য
       বিভিন্ন জায়গা অফার করে সম্পত্তি মালিকদের একটি বিস্তৃত নেটওয়ার্কের সাথে
       গ্রাহকদের সংযুক্ত করে।
       <br />
-      <div className={open ? " scroll-smooth" : " pb-5"}>
+      <div className={open ? " scroll-smooth" : "pb-5"}>
         <div>
           <button
             className={open ? "flex" : "hidden py-5"}
             onClick={() => setOpen(!open)}
           >
-            আরও দেখুন <AiFillCaretDown className="mt-1 text-xl text-accent" />
+            আরও দেখুন <AiFillCaretDown className={filterTypeCity || filterTypeDivision ? "mt-1 text-xl text-black font-semibold" : "mt-1 text-xl text-accent" }/>
           </button>
           <p className={open ? "hidden" : "block"}>
             <br />
-            <h1 className="text-xl   text-accent">
+            <h1 className={filterTypeCity || filterTypeDivision ? "text-xl text-black font-semibold" : "text-xl text-accent"}>
               {" "}
-              প্রথাগত ভাড়া পরিষেবাগুলি থেকে <span className="text-accent text-2xl"> 'To-Leet'</span> কেনো আলাদা তা এখানে রয়েছে:
+              প্রথাগত ভাড়া পরিষেবাগুলি থেকে <span className={filterTypeCity || filterTypeDivision ? "text-black text-2xl font-semibold": "text-accent text-2xl font-semibold"}> 'To-Leet'</span> কেনো আলাদা তা এখানে রয়েছে:
             </h1>
             <br />
-            <span className="text-lg text-accent">
+            <span className={filterTypeCity || filterTypeDivision ? "text-lg text-black font-semibold" : "text-lg text-accent"}>
              বিস্তৃত বিকল্প স্থান :
             </span>{" "}
             <br /> আপনি একটি আরামদায়ক অ্যাপার্টমেন্ট, একটি প্রশস্ত গ্যারেজ, বা
@@ -50,7 +51,7 @@ const AboutBan = () => {
             স্থান খুঁজে পাবেন।
             <br />
             <br />
-            <span className="text-lg text-accent">
+            <span className={filterTypeCity || filterTypeDivision ? "text-lg text-black font-semibold" : "text-lg text-accent"}>
               {" "}
               উন্নত অনুসন্ধান এবং ফিল্টারিং:
             </span>{" "}
@@ -61,22 +62,22 @@ const AboutBan = () => {
             করবে, আপনার মূল্যবান সময় এবং শ্রম সাশ্রয় করবে।
             <br />
             <br />
-            <span className="text-lg text-accent">
+            <span className={filterTypeCity || filterTypeDivision ? "text-lg text-black font-semibold" : "text-lg text-accent"}>
               {" "}
               সম্পত্তি সম্পর্কিত বিবরণ :
             </span>{" "}
             <br />
-            <span className="text-accent text-lg">To-Leet </span> - এ তালিকাভুক্ত প্রতিটি ভাড়ার স্থান একটি বিস্তৃত প্রোফাইলের
+            <span className={filterTypeCity || filterTypeDivision ? "text-lg text-black font-semibold" : "text-lg text-accent"}>To-Leet </span> - এ তালিকাভুক্ত প্রতিটি ভাড়ার স্থান একটি বিস্তৃত প্রোফাইলের
             সাথে আসে, যার মধ্যে রয়েছে উচ্চ-রেজোলিউশনের ফটো, বিস্তারিত বিবরণ,
             সুযোগ-সুবিধা, প্রাপ্যতা এবং মূল্যের তথ্য। তথ্যের এই সম্পদ আপনাকে
             আপনার প্রয়োজনের সাথে কোন স্থানটি সর্বোত্তম তা সম্পর্কে একটি
             সিদ্ধান্ত নিতে দেয়।
             <br />
             <br />
-            <span className="text-lg text-accent">
+            <span className={filterTypeCity || filterTypeDivision ? "text-lg text-black font-semibold" : "text-lg text-accent"}>
               স্বচ্ছ ভাড়া প্রক্রিয়া:
             </span>{" "}
-            <br /> <span className="text-accent text-lg">To-Leet</span> স্বচ্ছতায় বিশ্বাস করে, যে কারণে আমরা ভাড়াটে এবং
+            <br /> <span className={filterTypeCity || filterTypeDivision ? "text-lg text-black font-semibold" : "text-lg text-accent"}>To-Leet</span> স্বচ্ছতায় বিশ্বাস করে, যে কারণে আমরা ভাড়াটে এবং
             সম্পত্তির মালিকদের মধ্যে সরাসরি যোগাযোগের সুবিধা দিই। আমাদের
             সুরক্ষিত মেসেজিং সিস্টেমের মাধ্যমে, আপনি একটি মসৃণ এবং স্বচ্ছ ভাড়া
             প্রক্রিয়া নিশ্চিত করে কোনো মধ্যস্থতাকারী ছাড়াই প্রশ্ন জিজ্ঞাসা
@@ -84,22 +85,22 @@ const AboutBan = () => {
             পারেন।
             <br />
             <br />
-            <span className="text-lg text-accent">
+            <span className={filterTypeCity || filterTypeDivision ? "text-lg text-black font-semibold" : "text-lg text-accent"}>
               {" "}
               নিরাপদ এবং বিশ্বস্ত:
             </span>{" "}
             <br /> আমরা আপনার নিরাপত্তা এবং মানসিক শান্তিকে অগ্রাধিকার দিই।
-            <span className="text-accent text-lg"> To-Leet </span>  সম্পত্তির মালিকদের পুঙ্খানুপুঙ্খভাবে যাচাই করে এবং নিশ্চিত
+            <span className={filterTypeCity || filterTypeDivision ? "text-lg text-black font-semibold" : "text-lg text-accent"}> To-Leet </span>  সম্পত্তির মালিকদের পুঙ্খানুপুঙ্খভাবে যাচাই করে এবং নিশ্চিত
             করে যে সমস্ত তালিকা বৈধ এবং সঠিক।
             <br />
-            <span className="text-accent text-lg"> To-Leet </span>  মানুষ যেভাবে বাড়ি, গ্যারেজ এবং দোকান খোঁজা এবং ভাড়া নেয়
+            <span className={filterTypeCity || filterTypeDivision ? "text-lg text-black font-semibold" : "text-lg text-accent"}> To-Leet </span>  মানুষ যেভাবে বাড়ি, গ্যারেজ এবং দোকান খোঁজা এবং ভাড়া নেয়
             তাতে বিপ্লব ঘটাচ্ছে৷ আমাদের উদ্ভাবনী অনলাইন প্ল্যাটফর্ম, ব্যতিক্রমী
             গ্রাহক পরিষেবার প্রতি আমাদের প্রতিশ্রুতি সহ, আপনার ভাড়ার অভিজ্ঞতাকে
             নির্বিঘ্ন, দক্ষ এবং উপভোগ্য করে তোলার লক্ষ্য।
             <br />
             <br />
             সুতরাং, আপনি যদি একজন উদ্যোক্তা হন যিনি একটি জায়গা সন্ধান করছেন,
-            <span className="text-accent text-lg"> To-Leet </span> আপনাকে নিখুঁত সমাধান দিতে এখানে রয়েছে। আজই আমাদের ওয়েবসাইট
+            <span className={filterTypeCity || filterTypeDivision ? "text-lg text-black font-semibold" : "text-lg text-accent"}> To-Leet </span> আপনাকে নিখুঁত সমাধান দিতে এখানে রয়েছে। আজই আমাদের ওয়েবসাইট
             পরিদর্শন করুন এবং আপনার আদর্শ ভাড়ার জায়গা খুঁজে পেতে ঝামেলা-মুক্ত
             যাত্রা শুরু করুন!
           </p>
@@ -108,7 +109,7 @@ const AboutBan = () => {
           className={open ? "hidden" : "flex"}
           onClick={() => setOpen(!open)}
         >
-          কম দেখান <IoMdArrowDropup className="mb-1 text-3xl text-accent" />
+          কম দেখান <IoMdArrowDropup className={filterTypeCity || filterTypeDivision ? "mb-1 text-3xl text-black" : "mb-1 text-3xl text-accent"} />
         </button>
       </div>
     </div>

@@ -127,7 +127,7 @@ const PostDetails = () => {
       body: JSON.stringify(values),
     });
     const result = await res.json();
-    console.log(result);
+    
     setError(result?.message);
     if (result?.message === "success") {
       setPostOpenModal(false);
@@ -159,9 +159,7 @@ const PostDetails = () => {
       })
       .catch(function (error) {});
   };
-  const handleHouseSize = (e: any) => {
-    setHouseSize(e.target.value);
-  };
+  
   if (postUniversityModalValue?.eng) {
     setPostUniversityModal(true);
   }
@@ -221,7 +219,7 @@ const PostDetails = () => {
         <div className="bg-white p-5 lg:w-10/12 mx-auto">
           <AdditionalInfoPostPage></AdditionalInfoPostPage>
           {!modalValue.eng && (
-            <div className="flex justify-center text-red-400">
+            <div className="flex justify-center text-red-400 mt-2">
               {lang ? (
                 <h5>You have to select rent type before post.</h5>
               ) : (
@@ -1038,9 +1036,13 @@ const PostDetails = () => {
 
             {/* contact part  */}
             <div className="lg:w-1/2 mx-auto">
-              <h1 className="text-xl font-bold">Contact details</h1>
+             {
+              lang ?  <h1 className="text-xl font-bold">Contact details</h1>:  <h1 className="text-xl font-bold"> আপনার সম্মন্ধে বিস্তারিতঃ </h1>
+             }
               <div className="mt-10">
-                <h5>Name</h5>
+               {
+                lang ?  <h5>Name:</h5> : <h5>নামঃ</h5>
+               }
                 <input
                   {...register("name")}
                   type="text"
@@ -1050,24 +1052,35 @@ const PostDetails = () => {
               </div>
               <div className="mt-10">
                 <div className="flex gap-6">
-                  <h5>Email</h5>{" "}
-                  <small className="text-blue-400">
-                    You can't change your email. To change please{" "}
+                 {
+                  lang ? <h5>Email</h5>: <h5>ইমেইলঃ </h5>
+                 }
+                  {
+                    lang ? <small className="text-blue-400">
+                    You can't change your email. To change please
                     <Link className="underline font-semibold" href="/signUp">
                       sign up
                     </Link>{" "}
                     again or contact the admin.
+                  </small>:<small className="text-blue-400">
+                   আপনি ইমেইল পরিবর্তন করতে পারবেন না। পরিবর্তন করতে   <Link className="underline font-semibold" href="/signUp">
+                       সাইন আপ করুন 
+                    </Link>
                   </small>
+                  }
                 </div>
                 <input
                   {...register("email")}
                   type="email"
                   className="input input-bordered w-full bg-primary"
                   defaultValue={userEmail}
+                  readOnly
                 />
               </div>
               <div className="mt-10 border border-secondary p-5">
-                <h5>Add A Phone Number</h5>
+               {
+                lang ?  <h5>Add A Phone Number:</h5> : <h5>একটি ফোন নাম্বার দিনঃ</h5>
+               }
                 {/* <PhoneInput
                 placeholder="Enter phone number"
                 value={value}
@@ -1087,9 +1100,11 @@ const PostDetails = () => {
                   placeholder="Add A Phone Number"
                   className="input input-bordered w-full mt-5 bg-primary"
                 />
-                {errors.phone && (
-                  <span className="text-red-500 pt-3 mr-6">
-                    This field is required
+               {errors.phone && (
+                  <span className="text-red-400 pt-5">
+                    {lang
+                      ? " This field is required"
+                      : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
                   </span>
                 )}
                 {/* <button className="btn btn-secondary btn-sm mt-5">
@@ -1098,23 +1113,23 @@ const PostDetails = () => {
               </div>
             </div>
           </div>
-          <div className="flex gap-2 lg:w-1/2 mx-auto mt-10">
-            <input
+          {/* <div className="flex gap-2 lg:w-1/2 mx-auto mt-10"> */}
+            {/* <input
               {...register("terms")}
               type="checkbox"
               className="text-black h-4 w-4"
-            />
-            <h1 className="-mt-1">
+            /> */}
+            {/* <h1 className="-mt-1">
               I have read and accept the Terms and Conditions
-            </h1>
-          </div>
+            </h1> */}
+          {/* </div> */}
           <div className="lg:w-1/2 mx-auto flex justify-end">
             <Button
               onClick={handleSubmit(handlePost)}
-              className="text-gray-800 font-semibold text-lg mt-5 bg-gradient-to-r from-success via-accent to-success"
+              className="text-gray-800 w-1/2 mb-10 mt-12 font-semibold  bg-gradient-to-r from-success via-accent to-success"
               disabled={modalValue?.eng ? false : true}
             >
-              Post Now
+             {lang ? " Post Now":"পোস্ট করুন"}
             </Button>
           </div>
         </div>

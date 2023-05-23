@@ -42,7 +42,7 @@ const Reset = () => {
     setErrorMessage(result?.error?.eng);
     setErrorMessageBan(result?.error?.eng);
     if (result.status === "success") {
-      // router.push("/signIn");
+      router.push("/signIn");
     }
   };
 
@@ -59,7 +59,7 @@ const Reset = () => {
       <Head>
         <title>To-Leet - Reset Password</title>
       </Head>
-      <div className="w-4/12 mx-auto my-20 bg-white p-10 rounded-lg">
+      <div className="md:w-10/12 lg:w-4/12 mx-auto my-20 bg-white p-10 rounded-lg">
         <form
           onSubmit={handleSubmit(handleResetPass)}
           className="mb-4 flex flex-col gap-6 relative"

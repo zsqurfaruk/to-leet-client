@@ -53,7 +53,7 @@ const Footer = () => {
                 <li  className=" ">
                   <a
                     href="https://www.facebook.com/To-Leet-101248609651271"
-                    className="flex gap-5"
+                    className="flex gap-1"
                   > Facebook
                     <FaFacebookF className="mt-1"></FaFacebookF>
                   </a>

@@ -64,7 +64,6 @@ function SignUp() {
     });
     const result = await res.json();
     setSignUpUserInfo(result);
-    console.log(result);
     router.push(`/signIn`);
   };
   // const handleGoogleSignUp = () => {

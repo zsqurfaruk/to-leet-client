@@ -14,7 +14,7 @@ const persistence = (WrappedComponent: any) => {
       } else {
         fetch("http://localhost:5000/api/v1/users/me")
           .then((res) => res.json())
-          .then((data) => console.log(data));
+          .then((data) =>  (data));
       }
     }, [getToken, router]);
 

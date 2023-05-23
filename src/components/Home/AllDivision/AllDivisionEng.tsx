@@ -38,9 +38,9 @@ const AllDivisionName = () => {
               }
             />
             {lang ? (
-              <span className="-mt-[2px]">Chittagong Division</span>
+              <span className="-mt-[2px] ml-1">Chittagong Division</span>
             ) : (
-              <span className="-mt-[2px]"> চট্টগ্রাম বিভাগ</span>
+              <span className="-mt-[2px] text-base ml-2"> চট্টগ্রাম বিভাগ</span>
             )}
           </label>
         </li>

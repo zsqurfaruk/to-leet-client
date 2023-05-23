@@ -50,7 +50,7 @@ const ShowAllPost = ({ products }: any) => {
             {lang ? (
               <h1 className="text-4xl text-center mb-10">No data found.</h1>
             ) : (
-              <h1>এখনো কোন পোস্ট করা হয়নি।</h1>
+              <h1 className="text-2xl -ml-7">এখনো কোন পোস্ট করা হয়নি।</h1>
             )}
           </div>
         </div>

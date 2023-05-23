@@ -14,7 +14,7 @@ import { colourOption } from "./DataBan";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import FilterAllPosts from "../../AllPost/FilterAllPosts";
-import University from "@/pages/university";
+import University from "@/pages/beside-institute";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
 
 export default function ModalEng() {
@@ -103,7 +103,7 @@ export default function ModalEng() {
           </button>
           <Link
             href={{
-              pathname: "/all-ads",
+              pathname: "/beside-institute",
               query: {
                 type: encodeURIComponent(JSON.stringify(openModalValue.eng)),
               },
@@ -111,7 +111,7 @@ export default function ModalEng() {
           >
             <button
               className="text-secondary bg-accent px-2 rounded font-semibold"
-              onClick={handleOpenModalEng}
+              onClick={handleFilterUniversity}
             >
               Confirm
             </button>
@@ -128,7 +128,10 @@ export default function ModalEng() {
           </Button>
           <Link
             href={{
-              pathname: "/university",
+              pathname: "/beside-institute",
+              query: {
+                type: encodeURIComponent(JSON.stringify(openModalValue.eng)),
+              },
             }}
           >
             <Button
@@ -137,10 +140,10 @@ export default function ModalEng() {
                   ? "bg-gradient-to-r from-accent to-cyan-500  hidden lg:flex"
                   : "bg-gray-600  hidden lg:flex"
               }
-              // onClick={handleOpenModalEng}
+              onClick={handleFilterUniversity}
               disabled={!openModalValue?.eng ? true : false}
             >
-              <span onClick={handleFilterUniversity}>Confirm</span>
+              <span  >Confirm</span>
             </Button>
           </Link>
         </DialogFooter>

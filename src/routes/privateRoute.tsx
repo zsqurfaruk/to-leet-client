@@ -13,7 +13,8 @@ function privateRoute(Component: any) {
       if (!token || tokenValidation === "Invalid token") {
         // alert("Session expired. Please signIn");
         localStorage.removeItem("token");
-        router.push("/signIn");
+        const { asPath } = router;
+        router.push(`/signIn?next=${asPath}`);
       } else {
         fetch("http://localhost:5000/api/v1/users/me", {
           method: "POST",

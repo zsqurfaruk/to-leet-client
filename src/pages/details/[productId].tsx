@@ -16,7 +16,7 @@ import Head from "next/head";
 
 const ProductDetails = ({ product }: any) => {
   const { img1, img2, img3, img4, img5, amount } = product;
-  console.log(product);
+  
   const images = [
     { id: 0, value: img1 },
     { id: 1, value: img2 },

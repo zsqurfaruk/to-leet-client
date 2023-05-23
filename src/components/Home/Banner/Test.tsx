@@ -8,7 +8,7 @@ const Test = () => {
 
   const handleClose = () => {
     setIsOpen(false);
-    console.log("close");
+     
   };
   interface IData {
     value: number;
@@ -504,7 +504,7 @@ export default Test;
 
 // ---------------------------
 
-/ import { useRouter } from "next/router";
+// / import { useRouter } from "next/router";
 
 // import { Fragment, useState, useContext } from "react";
 // import {
