@@ -17,8 +17,6 @@ import AllAreas from "../AllCity/AllAreas/AllAreas";
 import AllDivisionEng from "../AllDivision/AllDivisionEng";
 import AllDistricts from "../AllDivision/Districts/AllDistricts/AllDistricts";
 import ModalEng from "./Modal/ModalEng";
-
-import Test from "./Test";
 import PostAreaModalEng from "./Modal/PostAreaModalEng";
 
 const Banner = () => {
