@@ -31,13 +31,14 @@ function SignUp() {
 
   const handleSignUp: SubmitHandler<FormValues> = async (data: any) => {
     const info = {
-      firstName: data.firstName,
-      lastName: data.lastName,
-      email: data.email,
-      password: data.password,
-      confirmPassword: data.confirmPassword,
+      firstName: data?.firstName,
+      lastName: data?.lastName,
+      email: data?.email,
+      password: data?.password,
+      confirmPassword: data?.confirmPassword,
       agree:agree
     };
+    console.log(info)
     const res = await fetch("http://localhost:5000/api/v1/users/signup", {
       method: "POST",
       headers: {

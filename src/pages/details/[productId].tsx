@@ -326,7 +326,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const res = await fetch(
-    `http://localhost:5000/api/v1/product/${params.productId}`
+    `http://localhost:5000/api/v1/product/${params?.productId}`
   );
   const data = await res.json();
 

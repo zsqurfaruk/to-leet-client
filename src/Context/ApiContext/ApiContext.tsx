@@ -33,13 +33,21 @@ const ApiContext = ({ children }: any) => {
       .then((res) => res.json())
       .then((data) => setUserCounter(data?.data));
   }, []);
-  const handleFilter = () => {
-    counterPosts.filter((lc) => lc === filterModal);
-  };
+  // const handleFilter = () => {
+  //   counterPosts.filter((lc) => lc === filterModal);
+  // };
+  // const [counter, setCounter] = useState([])
+  // useEffect(()=>{
+  //  fetch('http://localhost:5000/api/v1/product/category')
+  //  .then(res=>res.json())
+  //  .then(data=> setCounter(data?.countProduct))
+  // },[])
+
+
   const info = {
     counterPosts,
     userCounter,
-    handleFilter,
+   
     handleFilterUniversity,
     filterPost,
     setFilterPost,
