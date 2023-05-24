@@ -4,7 +4,6 @@ import lottiImage from "../../../image/lf30_p5tali1o (1).json";
 import Lottie from "lottie-react";
 import style from "../../../styles/banner.module.css";
 import { BsArrowDownCircleFill } from "react-icons/bs";
-import { AuthContext } from "@/Context/AuthProvider/AuthProvider";
 import { useRouter } from "next/router";
 import { Checkbox, Radio } from "@material-tailwind/react";
 import AllCity from "../AllCity/AllCity";
