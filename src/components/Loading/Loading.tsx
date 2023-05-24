@@ -11,7 +11,7 @@ const Loading = () => {
                 alt="Picture of the author"
                 // width={100}
                 // height={100}
-                className="flex justify-center h-52 w-60 ml-12 -mt-14 lg:mt-0 lg:ml-28"
+                className="flex justify-center h-52 w-60 ml-12 -mt-14 lg:-mt-32 lg:ml-28"
               ></Image>
               <h1 className='text-xl lg:text-3xl text-center font-semibold text-accent'>To-Leet - The Ultimate Rental Solution</h1>
               </div>
