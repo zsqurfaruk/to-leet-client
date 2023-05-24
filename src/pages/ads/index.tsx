@@ -18,8 +18,8 @@ function AllAds({ product }: any) {
       <Head>
         <title>To-Leet - All Ads</title>
       </Head>
-      <section className="w-10/12 mx-auto bg-white px-10">
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 pb-10">
+      <section className="lg:my-10 lg:w-10/12 mx-auto bg-white px-10">
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 pb-10">
           {product?.map((post: any) => (
             <AllPost key={post._id} post={post}></AllPost>
           ))}
@@ -29,8 +29,8 @@ function AllAds({ product }: any) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch(`https://zsqur.to-leet.com/api/v1/product`);
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await fetch(`http://localhost:5000/api/v1/product`);
   const data = await res.json();
 
   if (!data) {

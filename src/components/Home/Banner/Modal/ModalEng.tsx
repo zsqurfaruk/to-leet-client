@@ -70,7 +70,7 @@ export default function ModalEng() {
           </DialogHeader>
         )}
         {lang ? (
-          <DialogBody className="-mt-52 md:-mt-72 lg:mt-0 text-xs">
+          <DialogBody className="-mt-10 md:-mt-44 lg:mt-0 text-xs">
             <Select
               placeholder="Search according to your needs:"
               isSearchable
@@ -80,7 +80,7 @@ export default function ModalEng() {
             />
           </DialogBody>
         ) : (
-          <DialogBody className="-mt-52 md:-mt-72 lg:mt-0  text-xs">
+          <DialogBody className="-mt-10 md:-mt-44 lg:mt-0  text-xs">
             <h2 className="text-primary text-lg md:text-xl mb-5 w-80 md:w-[600px] -ml-24 md:-ml-40 lg:ml-0 flex lg:hidden">
               আপনার প্রয়োজন অনুযায়ী বিশ্ববিদ্যালয় এবং মেডিকেল কলেজ নির্বাচন
               করুন:{" "}

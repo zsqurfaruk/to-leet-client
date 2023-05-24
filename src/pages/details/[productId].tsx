@@ -42,7 +42,7 @@ const ProductDetails = ({ product }: any) => {
       <Head>
         <title>To-Leet - Details </title>
       </Head>
-      <section className="w-full lg:w-10/12 mx-auto my-20">
+      <section className="w-full lg:w-10/12 mx-auto lg:my-20">
         <Card className="lg:flex-row w-full p-10">
           <CardHeader
             shadow={false}
@@ -323,7 +323,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   params,
 }: any) => {
   const res = await fetch(
-    `https://zsqur.to-leet.com/api/v1/product/${params.productId}`
+    `http://localhost:5000/api/v1/product/${params.productId}`
   );
   const data = await res.json();
 

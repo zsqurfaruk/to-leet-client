@@ -5,7 +5,6 @@ import React, { useContext, useState, useEffect } from "react";
 import Lottie from "lottie-react";
 import lotti from "../../image/lf20_jkbuwuhk.json";
 import axios from "axios";
-import { GetServerSideProps } from "next";
 import Head from "next/head";
 
 const FilterPosts = () => {
@@ -14,7 +13,7 @@ const FilterPosts = () => {
   const [filterPost, setFilterPost] = useState([]);
   useEffect(() => {
     axios
-      .get("https://zsqur.to-leet.com/api/v1/product/filter", {
+      .get("http://localhost:5000/api/v1/product/filter", {
         params: filterValue,
       })
       .then(function (response) {
@@ -28,7 +27,7 @@ const FilterPosts = () => {
     <Head>
     <title>To-Leet - Location - Type</title>
   </Head>
-    <section className="w-10/12 mx-auto bg-white my-10 pb-10 px-5 rounded ">
+    <section className="lg:w-10/12 mx-auto bg-white lg:my-10 pb-10 px-5 rounded ">
       <div className="flex justify-around pt-10 text-secondary">
         {lang ? (
           <div>
@@ -55,7 +54,7 @@ const FilterPosts = () => {
           </div>
         )}
       </div>
-      <div className="grid gri md:grid-cols-2 lg:grid-cols-4 gap-5 ">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 ">
         {filterPost?.map((post: any) => (
           <FilterAllPosts key={post._id} post={post}></FilterAllPosts>
         ))}
@@ -65,14 +64,14 @@ const FilterPosts = () => {
         {filterPost?.length === 0 && (
           <div>
             <Lottie
-              className="h-52 w-52"
+              className="h-52 w-52 ml-10"
               animationData={lotti}
               loop={true}
             ></Lottie>
             {lang ? (
-              <h1 className="text-4xl text-center mb-10">No data found.</h1>
+              <h1 className="text-4xl text-center mb-10 ml-5">No data found.</h1>
             ) : (
-              <h1 className="text-2xl -ml-7">এখনো কোন পোস্ট করা হয়নি।</h1>
+              <h1 className="text-2xl -ml-5">এখনো কোন পোস্ট করা হয়নি।</h1>
             )}
           </div>
         )}

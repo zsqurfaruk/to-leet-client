@@ -54,7 +54,7 @@ function SignUp() {
       confirmPassword: data.confirmPassword,
       agree:agree
     };
-    const res = await fetch("https://zsqur.to-leet.com/api/v1/users/signup", {
+    const res = await fetch("http://localhost:5000/api/v1/users/signup", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -63,6 +63,7 @@ function SignUp() {
       body: JSON.stringify(info),
     });
     const result = await res.json();
+    console.log(result)
     setSignUpUserInfo(result);
     router.push(`/signIn`);
   };

@@ -23,7 +23,7 @@ const DesEng = () => {
     <div className="w-10/12 mx-auto  grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 lg:gap-5 md:gap-2 gap-5 mt-10 md:mt-8">
       <Link
         href={{
-          pathname: `/Bachelor-(Male)`,
+          pathname: "/Bachelor-(Male)",
         }}
         onClick={() => setRentName("Bachelor-(Male)")}
       >
@@ -58,7 +58,7 @@ const DesEng = () => {
 
       <Link
         href={{
-          pathname: `/Bachelor-(Female)`,
+          pathname: "/Bachelor-(Female)",
         }}
         onClick={() => setRentName("Bachelor-(Female)")}
       >
@@ -91,7 +91,7 @@ const DesEng = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Mess-(Male)`,
+          pathname: "/Mess-(Male)",
         }}
         onClick={() => setRentName("Mess-(Male)")}
       >
@@ -122,7 +122,7 @@ const DesEng = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Mess-(Female)`,
+          pathname: "/Mess-(Female)",
         }}
         onClick={() => setRentName("Mess-(Female)")}
       >
@@ -153,7 +153,7 @@ const DesEng = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Sublet-(Male)`,
+          pathname: "/Sublet-(Male)",
         }}
         onClick={() => setRentName("Sublet-(Male)")}
       >
@@ -185,7 +185,7 @@ const DesEng = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Sublet-(Female)`,
+          pathname: "/Sublet-(Female)",
         }}
         onClick={() => setRentName("Sublet-(Female)")}
       >
@@ -217,7 +217,7 @@ const DesEng = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Family`,
+          pathname: "/Family",
         }}
         onClick={() => setRentName("Family")}
       >
@@ -250,7 +250,7 @@ const DesEng = () => {
      
       <Link
         href={{
-          pathname: `/Hostel`,
+          pathname: "/Hostel",
         }}
         onClick={() => setRentName("Hostel")}
       >
@@ -283,7 +283,7 @@ const DesEng = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Office `,
+          pathname: "/Office",
         }}
         onClick={() => setRentName("Office")}
       >
@@ -315,7 +315,7 @@ const DesEng = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Shop`,
+          pathname: "/Shop",
         }}
         onClick={() => setRentName("Shop")}
       >
@@ -345,7 +345,7 @@ const DesEng = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Vehicles`,
+          pathname: "/Vehicles",
         }}
         onClick={() => setRentName("Vehicles")}
       >
@@ -378,7 +378,7 @@ const DesEng = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Garage`,
+          pathname: "/Garage",
         }}
         onClick={() => setRentName("Garage")}
       >

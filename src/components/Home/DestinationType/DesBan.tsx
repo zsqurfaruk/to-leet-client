@@ -23,9 +23,9 @@ const DesBan = () => {
     <div className="w-10/12 mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 lg:gap-5 md:gap-2 gap-5 mt-10 md:mt-8">
       <Link
         href={{
-          pathname: `/Bachelor-(Male)`,
+          pathname: "/Bachelor-(Male)",
         }}
-        onClick={() => setRentName("MaleBachelor")}
+        onClick={() => setRentName("Bachelor-Male")}
       >
         <Card
           className={
@@ -57,9 +57,9 @@ const DesBan = () => {
 
       <Link
         href={{
-          pathname: `/Bachelor-(Female)`,
+          pathname: "/Bachelor-(Female)",
         }}
-        onClick={() => setRentName("FemaleBachelor")}
+        onClick={() => setRentName("Bachelor-Female")}
       >
         <Card
           className={
@@ -87,10 +87,69 @@ const DesBan = () => {
           </div>
         </Card>
       </Link>
-
       <Link
         href={{
-          pathname: `/Sublet-(Male)`,
+          pathname: "/Mess-(Male)",
+        }}
+        onClick={() => setRentName("MessMale")}
+      >
+        <Card
+          className={
+            filterTypeCity || filterTypeDivision
+              ? "bg-transparent text-black border border-secondary"
+              : "bg-transparent text-white border border-accent"
+          }
+        >
+          <div className="flex mx-5 gap-5 my-2">
+            <FcHome
+              className={
+                filterTypeCity || filterTypeDivision
+                  ? "h-14 w-14 border rounded-lg border-secondary"
+                  : "h-14 w-14 border rounded-lg"
+              }
+            ></FcHome>
+            <div>
+              <Typography variant="h5" className="mb-2">
+                মেস (ছেলে)
+              </Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+            </div>
+          </div>
+        </Card>
+      </Link>
+      <Link
+        href={{
+          pathname: "/Mess-(Female)",
+        }}
+        onClick={() => setRentName("MessFemale")}
+      >
+        <Card
+          className={
+            filterTypeCity || filterTypeDivision
+              ? "bg-transparent text-black border border-secondary"
+              : "bg-transparent text-white border border-accent"
+          }
+        >
+          <div className="flex mx-5 gap-5 my-2">
+            <FcHome
+              className={
+                filterTypeCity || filterTypeDivision
+                  ? "h-14 w-14 border rounded-lg border-secondary"
+                  : "h-14 w-14 border rounded-lg"
+              }
+            ></FcHome>
+            <div>
+              <Typography variant="h5" className="mb-2">
+                মেস (মেয়ে)
+              </Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+            </div>
+          </div>
+        </Card>
+      </Link>
+      <Link
+        href={{
+          pathname: "/Sublet-(Male)",
         }}
         onClick={() => setRentName("SubletMale")}
       >
@@ -122,7 +181,7 @@ const DesBan = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Sublet-(Female)`,
+          pathname: "/Sublet-(Female)",
         }}
         onClick={() => setRentName("SubletFemale")}
       >
@@ -154,7 +213,7 @@ const DesBan = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Family`,
+          pathname: "/Family",
         }}
         onClick={() => setRentName("Family")}
       >
@@ -184,69 +243,10 @@ const DesBan = () => {
           </div>
         </Card>
       </Link>
+     
       <Link
         href={{
-          pathname: `/Mess-(Male)`,
-        }}
-        onClick={() => setRentName("MessMale")}
-      >
-        <Card
-          className={
-            filterTypeCity || filterTypeDivision
-              ? "bg-transparent text-black border border-secondary"
-              : "bg-transparent text-white border border-accent"
-          }
-        >
-          <div className="flex mx-5 gap-5 my-2">
-            <FcHome
-              className={
-                filterTypeCity || filterTypeDivision
-                  ? "h-14 w-14 border rounded-lg border-secondary"
-                  : "h-14 w-14 border rounded-lg"
-              }
-            ></FcHome>
-            <div>
-              <Typography variant="h5" className="mb-2">
-                মেস (ছেলে)
-              </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
-            </div>
-          </div>
-        </Card>
-      </Link>
-      <Link
-        href={{
-          pathname: `/Mess-(Female)`,
-        }}
-        onClick={() => setRentName("MessFemale")}
-      >
-        <Card
-          className={
-            filterTypeCity || filterTypeDivision
-              ? "bg-transparent text-black border border-secondary"
-              : "bg-transparent text-white border border-accent"
-          }
-        >
-          <div className="flex mx-5 gap-5 my-2">
-            <FcHome
-              className={
-                filterTypeCity || filterTypeDivision
-                  ? "h-14 w-14 border rounded-lg border-secondary"
-                  : "h-14 w-14 border rounded-lg"
-              }
-            ></FcHome>
-            <div>
-              <Typography variant="h5" className="mb-2">
-                মেস (মেয়ে)
-              </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
-            </div>
-          </div>
-        </Card>
-      </Link>
-      <Link
-        href={{
-          pathname: `/Hostel`,
+          pathname: "/Hostel",
         }}
         onClick={() => setRentName("Hostel")}
       >
@@ -279,7 +279,7 @@ const DesBan = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Office `,
+          pathname: "/Office",
         }}
         onClick={() => setRentName("Office")}
       >
@@ -311,7 +311,7 @@ const DesBan = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Shop`,
+          pathname: "/Shop",
         }}
         onClick={() => setRentName("Shop")}
       >
@@ -341,7 +341,7 @@ const DesBan = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Vehicles`,
+          pathname: "/Vehicles",
         }}
         onClick={() => setRentName("Vehicles")}
       >
@@ -373,7 +373,7 @@ const DesBan = () => {
       </Link>
       <Link
         href={{
-          pathname: `/Garage`,
+          pathname: "/Garage",
         }}
         onClick={() => setRentName("Garage")}
       >

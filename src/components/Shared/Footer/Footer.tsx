@@ -44,8 +44,8 @@ const Footer = () => {
               <ul className="mt-2 space-y-2 text-gray-400">
                 <li>
                   <span className="font-bold ">Phone:</span>{" "}
-                  <br className="flex md:hidden" />{" "}
-                  <span> +880 1580786205</span>
+                  {/* <br className="flex md:hidden" />{" "} */}
+                  <span> +8801816478478</span>
                 </li>
                 <li>
                   <span className="font-bold ">Email:</span>

@@ -22,7 +22,7 @@ const Dashboard = () => {
   const [personalPost, setPersonalPost] = useState([]);
 
   useEffect(() => {
-    fetch(`https://zsqur.to-leet.com/api/v1/product/user/email/${email}`)
+    fetch(`http://localhost:5000/api/v1/product/user/email/${email}`)
       .then((res) => res.json())
       .then((data) => setPersonalPost(data));
   }, [email]);
@@ -48,11 +48,11 @@ const Dashboard = () => {
       {
       personalPost.length===0 && <div className="flex justify-center ml-7 lg:ml-24">
       <div>
-        <Lottie  className="h-52 w-52" animationData={lotti} loop={true}></Lottie>
+        <Lottie  className="h-52 w-52 ml-10" animationData={lotti} loop={true}></Lottie>
         {lang ? (
           <h1 className="text-4xl text-center mb-10">No data found.</h1>
         ) : (
-          <h1 className="text-2xl -ml-7">এখনো কোন পোস্ট করা হয়নি।</h1>
+          <h1 className="text-2xl -ml-5">এখনো কোন পোস্ট করা হয়নি।</h1>
         )}
       </div>
     </div>

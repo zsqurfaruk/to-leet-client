@@ -44,7 +44,7 @@ const AuthProvider = ({ children }: any) => {
   // const handleReload = () => {
   //   const token = localStorage.getItem("token");
   //   if (getToken && token) {
-  //     fetch("https://zsqur.to-leet.com/api/v1/users/me")
+  //     fetch("http://localhost:5000/api/v1/users/me")
   //       .then((res) => res.json())
   //       .then((data) => console.log(data));
   //   }

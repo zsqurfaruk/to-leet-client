@@ -50,8 +50,8 @@ const BannerBan = () => {
           <BsArrowDownCircleFill
             className={
               filterTypeCity || filterTypeDivision
-                ? "absolute top-5 md:top-7 lg:top-6 left-[299px] md:left-40 lg:left-[267px] w-4 h-4 md:w-5 md:h-5 text-black"
-                : "absolute top-5 md:top-7 lg:top-6 left-[299px] md:left-40 lg:left-[267px] w-4 h-4 md:w-5 md:h-5"
+                ? "absolute top-5 md:top-7 lg:top-6 left-[232px] md:left-40 lg:left-[267px] w-4 h-4 md:w-5 md:h-5 text-black"
+                : "absolute top-5 md:top-7 lg:top-6 left-[232px] md:left-40 lg:left-[267px] w-4 h-4 md:w-5 md:h-5"
             }
           />
         

@@ -57,8 +57,8 @@ const BannerEng = () => {
         <BsArrowDownCircleFill
           className={
             filterTypeCity || filterTypeDivision
-              ? "absolute top-5 md:top-9 left-52 md:left-64 lg:left-72 w-4 h-4 md:w-5 md:h-5 text-black"
-              : "absolute top-5 md:top-9 left-52 md:left-64 lg:left-72 w-4 h-4 md:w-5 md:h-5"
+              ? "absolute top-5 md:top-9 left-40 md:left-64 lg:left-72 w-4 h-4 md:w-5 md:h-5 text-black"
+              : "absolute top-5 md:top-9 left-40 md:left-64 lg:left-72 w-4 h-4 md:w-5 md:h-5"
           }
         />
       </div>
