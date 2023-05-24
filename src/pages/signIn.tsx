@@ -1,4 +1,3 @@
-import { AuthContext } from "@/Context/AuthProvider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -21,12 +20,12 @@ const SignIn = () => {
   const [signInError, setSignInError] = useState("");
   const [signInErrorBan, setSignInErrorBan] = useState("");
   const [passHidden, setPassHidden] = useState(true);
-  const {
-    accountLogIn,
-    providerGoogleLogIn,
-    setUserInfo,
-    signUpUserInfo,
-  }: any = useContext(AuthContext);
+  // const {
+  //   accountLogIn,
+  //   providerGoogleLogIn,
+  //   setUserInfo,
+  //   signUpUserInfo,
+  // }: any = useContext(AuthContext);
   // const provider = new GoogleAuthProvider();
   const router = useRouter();
   const {

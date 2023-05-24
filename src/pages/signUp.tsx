@@ -1,9 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
-import { AuthContext } from "@/Context/AuthProvider/AuthProvider";
-import { GoogleAuthProvider } from "firebase/auth";
 import Link from "next/link";
-import React, { useContext, useState } from "react";
-import { Card, Typography, Input, Checkbox } from "@material-tailwind/react";
+import React, {  useState } from "react";
+import { Card, Typography, Input } from "@material-tailwind/react";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 import { useRouter } from "next/router";
@@ -27,23 +25,9 @@ function SignUp() {
     formState: { errors },
   } = useForm<FormValues>();
   const router = useRouter();
-  // const provider = new GoogleAuthProvider();
+ 
   const [agree, setAgree] = useState(false);
-  const { createUserByEmail, providerGoogleLogIn, setSignUpUserInfo }: any =
-    useContext(AuthContext);
-
-  // const handleSignUp = (event: any) => {
-  //   event.preventDefault();
-  //   // setSignUpError("");
-  //   createUserByEmail(event.target.email.value, event.target.password.value)
-  //     .then((result: any) => {
-  //       const user = result.user;
-  //     })
-  //     .catch((error: any) => {
-  //       // setSignUpError(error.message)
-  //       setSignUpError(error.message);
-  //     });
-  // };
+  
 
   const handleSignUp: SubmitHandler<FormValues> = async (data: any) => {
     const info = {
@@ -64,7 +48,7 @@ function SignUp() {
     });
     const result = await res.json();
     console.log(result)
-    setSignUpUserInfo(result);
+    // setSignUpUserInfo(result);
     router.push(`/signIn`);
   };
   // const handleGoogleSignUp = () => {
