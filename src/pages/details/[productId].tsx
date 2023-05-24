@@ -308,7 +308,6 @@ const ProductDetails = ({ product }: any) => {
   );
 };
 
-export default privateRoute(ProductDetails);
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch(`http://localhost:5000/api/v1/product`);
   const data = await res.json();
@@ -345,3 +344,4 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
     },
   };
 };
+export default privateRoute(ProductDetails);

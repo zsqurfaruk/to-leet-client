@@ -58,8 +58,6 @@ const ShowAllPost = ({ products }: any) => {
     </section></>
   );
 };
-export default ShowAllPost;
-
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [
@@ -140,3 +138,5 @@ export const getStaticProps: GetStaticProps = async ({
     },
   };
 };
+export default ShowAllPost;
+
