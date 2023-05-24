@@ -1,18 +1,11 @@
-import { APIContext } from "@/Context/ApiContext/ApiContext";
-import React, { useContext, useEffect, useState } from "react";
-import Select from "react-select";
-import { cityOptionEng } from "@/components/Home/AllPost/FilterCityEng";
-import { cityOptionBan } from "@/components/Home/AllPost/FilterCityDataBan";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import React  from "react"; 
 import AllPost from "@/components/Home/AllPost/AllPost";
-import { StateContext } from "@/Context/StateContext/StateContext";
-import { GetServerSideProps, GetStaticProps } from "next";
+import {  GetStaticProps } from "next";
 import privateRoute from "@/routes/privateRoute";
 import Head from "next/head";
 
 function AllAds({ product }: any) {
 
-  const lang = localStorage.getItem("lan");
   return (
     <>
       <Head>
@@ -28,6 +21,7 @@ function AllAds({ product }: any) {
     </>
   );
 }
+
 
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch(`http://localhost:5000/api/v1/product`);

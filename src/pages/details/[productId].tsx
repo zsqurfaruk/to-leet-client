@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import {
   Card,
   CardHeader,
@@ -16,7 +16,7 @@ import Head from "next/head";
 
 const ProductDetails = ({ product }: any) => {
   const { img1, img2, img3, img4, img5, amount } = product;
-  
+
   const images = [
     { id: 0, value: img1 },
     { id: 1, value: img2 },
@@ -119,22 +119,26 @@ const ProductDetails = ({ product }: any) => {
                   )}
                   <Typography color="gray" className="font-normal ">
                     <div className="md:flex md:gap-56">
-                      {
-                        product?.bedrooms?.eng && <div>{lang ? (
-                          <h2>Bedrooms: {product?.bedrooms?.eng}</h2>
-                        ) : (
-                          <h2> বেডরুমঃ {product?.bedrooms?.ban}</h2>
-                        )}</div>
-                      }
-                       
-                       {
-                        product?.bedNumber?.eng && <div>{lang ? (
-                          <h2>Bed numbers: {product?.bedNumber?.eng}</h2>
-                        ) : (
-                          <h2> বেড সংখ্যাঃ  {product?.bedNumber?.ban}</h2>
-                        )}</div>
-                       }
-                       
+                      {product?.bedrooms?.eng && (
+                        <div>
+                          {lang ? (
+                            <h2>Bedrooms: {product?.bedrooms?.eng}</h2>
+                          ) : (
+                            <h2> বেডরুমঃ {product?.bedrooms?.ban}</h2>
+                          )}
+                        </div>
+                      )}
+
+                      {product?.bedNumber?.eng && (
+                        <div>
+                          {lang ? (
+                            <h2>Bed numbers: {product?.bedNumber?.eng}</h2>
+                          ) : (
+                            <h2> বেড সংখ্যাঃ {product?.bedNumber?.ban}</h2>
+                          )}
+                        </div>
+                      )}
+
                       {lang ? (
                         <h2 className="md:hidden">
                           Bathrooms: {product?.bathrooms?.eng}
@@ -150,10 +154,7 @@ const ProductDetails = ({ product }: any) => {
                       {lang ? (
                         <h2>Rent : {product?.amount} taka (Monthly)</h2>
                       ) : (
-                        <h2>
-                          {" "}
-                          ভাড়াঃ {product?.amount} টাকা (মাসিক)
-                        </h2>
+                        <h2> ভাড়াঃ {product?.amount} টাকা (মাসিক)</h2>
                       )}
                       {product?.negotiable === true && (
                         <h2 className="md:hidden">
@@ -174,10 +175,7 @@ const ProductDetails = ({ product }: any) => {
                           {lang ? (
                             <span> City: {product?.cityName?.eng}</span>
                           ) : (
-                            <span>
-                              {" "}
-                              শহরঃ {product?.cityName?.ban}
-                            </span>
+                            <span> শহরঃ {product?.cityName?.ban}</span>
                           )}
                         </h2>
                       </div>
@@ -187,10 +185,7 @@ const ProductDetails = ({ product }: any) => {
                         {lang ? (
                           <h2>District: {product?.districts?.eng}</h2>
                         ) : (
-                          <h2>
-                            {" "}
-                            জেলাঃ {product?.districts?.ban}
-                          </h2>
+                          <h2> জেলাঃ {product?.districts?.ban}</h2>
                         )}
                         <h2 className="md:hidden">
                           {lang ? (
@@ -211,10 +206,7 @@ const ProductDetails = ({ product }: any) => {
                     {lang ? (
                       <h2>Detail address: {product?.address}</h2>
                     ) : (
-                      <h2>
-                        {" "}
-                        বিস্তারিত ঠিকানাঃ {product?.address}
-                      </h2>
+                      <h2> বিস্তারিত ঠিকানাঃ {product?.address}</h2>
                     )}
                   </Typography>
                 </CardBody>
@@ -280,10 +272,7 @@ const ProductDetails = ({ product }: any) => {
                         {lang ? (
                           <h2>City: {product?.cityName?.eng}</h2>
                         ) : (
-                          <h2>
-                            {" "}
-                            শহরঃ {product?.cityName?.ban}
-                          </h2>
+                          <h2> শহরঃ {product?.cityName?.ban}</h2>
                         )}
                       </div>
                     )}
@@ -319,9 +308,24 @@ const ProductDetails = ({ product }: any) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
-  params,
-}: any) => {
+export default privateRoute(ProductDetails);
+export const getStaticPaths: GetStaticPaths = async () => {
+  const res = await fetch(`http://localhost:5000/api/v1/product`);
+  const data = await res.json();
+
+  const paths = data?.map((post: any) => {
+    return {
+      params: {
+        productId: `${post?._id}`,
+      },
+    };
+  });
+  return {
+    paths,
+    fallback: false,  
+  };
+};
+export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const res = await fetch(
     `http://localhost:5000/api/v1/product/${params.productId}`
   );
@@ -341,5 +345,3 @@ export const getServerSideProps: GetServerSideProps = async ({
     },
   };
 };
-
-export default privateRoute(ProductDetails);
