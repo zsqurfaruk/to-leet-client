@@ -26,36 +26,41 @@ const ShowAllPost = ({ products }: any) => {
       }
     }
   };
- const lang = localStorage.getItem("lan")
+  const lang = localStorage.getItem("lan");
   return (
     <>
-    <Head>
-    <title>To-Leet - Filter by Rent Type</title>
-  </Head>
-    <section className="lg:my-20">
-      <div className="bg-white px-10 lg:w-10/12 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:gap-5 rounded">
-        {deleteAndFilterPost?.length > 0 &&
-          deleteAndFilterPost?.map((product: any) => (
-            <Products
-              key={product._id}
-              product={product}
-              handleDelete={handleDelete}
-            ></Products>
-          ))}
-      </div>
-      {deleteAndFilterPost?.length === 0 && (
-        <div className="flex justify-center">
-          <div>
-            <Lottie  className="h-52 w-52 ml-10" animationData={lotti} loop={true}></Lottie>
-            {lang ? (
-              <h1 className="text-4xl text-center mb-10">No data found.</h1>
-            ) : (
-              <h1 className="text-2xl -ml-5">এখনো কোন পোস্ট করা হয়নি।</h1>
-            )}
-          </div>
+      <Head>
+        <title>To-Leet - Filter by Rent Type</title>
+      </Head>
+      <section className="lg:my-20">
+        <div className="bg-white px-10 lg:w-10/12 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:gap-5 rounded">
+          {deleteAndFilterPost?.length > 0 &&
+            deleteAndFilterPost?.map((product: any) => (
+              <Products
+                key={product._id}
+                product={product}
+                handleDelete={handleDelete}
+              ></Products>
+            ))}
         </div>
-      )}
-    </section></>
+        {deleteAndFilterPost?.length === 0 && (
+          <div className="flex justify-center">
+            <div>
+              <Lottie
+                className="h-52 w-52 ml-10"
+                animationData={lotti}
+                loop={true}
+              ></Lottie>
+              {lang ? (
+                <h1 className="text-4xl text-center mb-10">No data found.</h1>
+              ) : (
+                <h1 className="text-2xl -ml-5">এখনো কোন পোস্ট করা হয়নি।</h1>
+              )}
+            </div>
+          </div>
+        )}
+      </section>
+    </>
   );
 };
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -63,71 +68,69 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: [
       {
         params: {
-          destination: 'Bachelor-(Male)',
+          destination: "Bachelor-(Male)",
         },
-      }, // See the "paths" section below
+      },
       {
         params: {
-          destination: 'Bachelor-(Female)',
+          destination: "Bachelor-(Female)",
         },
-      }, // See the "paths" section below
+      },
       {
         params: {
-          destination: 'Mess-(Male)',
+          destination: "Mess-(Male)",
         },
-      }, // See the "paths" section below
+      },
       {
         params: {
-          destination: 'Mess-(Female)',
+          destination: "Mess-(Female)",
         },
-      }, // See the "paths" section below
+      },
       {
         params: {
-          destination: 'Sublet-(Male)',
+          destination: "Sublet-(Male)",
         },
-      }, // See the "paths" section below
+      },
       {
         params: {
-          destination: 'Sublet-(Female)',
+          destination: "Sublet-(Female)",
         },
-      }, // See the "paths" section below
+      },
       {
         params: {
-          destination: 'Family',
+          destination: "Family",
         },
-      }, // See the "paths" section below
+      },
       {
         params: {
-          destination: 'Hostel',
+          destination: "Hostel",
         },
-      }, // See the "paths" section below
+      },
       {
         params: {
-          destination: 'Office',
+          destination: "Office",
         },
-      }, // See the "paths" section below
+      },
       {
         params: {
-          destination: 'Shop',
+          destination: "Shop",
         },
-      }, // See the "paths" section below
+      },
       {
         params: {
-          destination: 'Vehicles',
+          destination: "Vehicles",
         },
-      }, // See the "paths" section below
+      },
       {
         params: {
-          destination: 'Garage',
+          destination: "Garage",
         },
-      }, // See the "paths" section below
+      },
     ],
-    fallback: false, // false or "blocking"
+    fallback: false,
   };
 };
-export const getStaticProps: GetStaticProps = async ({
-  params,
-}: any) => {
+export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const res = await fetch(
     `http://localhost:5000/api/v1/product/rentType/${params.destination}`
   );
@@ -139,4 +142,3 @@ export const getStaticProps: GetStaticProps = async ({
   };
 };
 export default ShowAllPost;
-
