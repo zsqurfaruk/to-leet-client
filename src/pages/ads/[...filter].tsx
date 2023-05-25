@@ -6,19 +6,36 @@ import Lottie from "lottie-react";
 import lotti from "../../image/lf20_jkbuwuhk.json";
 import axios from "axios";
 import Head from "next/head";
+import Loading from "@/components/Loading/Loading";
 
 const FilterPosts = () => {
   const { filterValue, cityName, divisionNameEng }: any =
     useContext(StateContext);
   const [filterPost, setFilterPost] = useState([]);
+  const [loading , setLoading] = useState(false)
+  // useEffect(() => {
+  //   axios
+  //     .get("https://to-leet-server-farukphero.vercel.app/api/v1/product/filter", {
+  //       params: filterValue,
+  //     })
+  //     .then(function (response) {
+  //       setFilterPost(response?.data?.posts);
+  //     });
+    
+  // }, [filterValue]);
   useEffect(() => {
-    axios
-      .get("https://to-leet-server-farukphero.vercel.app/api/v1/product/filter", {
-        params: filterValue,
+    setLoading(true)
+      fetch("http://localhost:5000/api/v1/product/filter", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          // authorization: `bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(filterValue),
       })
-      .then(function (response) {
-        setFilterPost(response?.data?.posts);
-      });
+      .then((res) => res.json())
+      .then((data) => {setFilterPost(data?.posts)
+      setLoading(false)});
     
   }, [filterValue]);
   const lang = localStorage.getItem("lan");
@@ -27,7 +44,9 @@ const FilterPosts = () => {
     <Head>
     <title>To-Leet - Location - Type</title>
   </Head>
-    <section className="lg:w-10/12 mx-auto bg-white lg:my-10 pb-10 px-5 rounded ">
+    
+     {
+      loading ? <p className="text-center w-full py-40">Loading...</p> : <section className="lg:w-10/12 mx-auto bg-white lg:my-10 pb-10 px-5 rounded ">
       <div className="flex justify-around pt-10 text-secondary">
         {lang ? (
           <div>
@@ -54,11 +73,13 @@ const FilterPosts = () => {
           </div>
         )}
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 ">
+      {
+        loading ? "Loading..." : <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 ">
         {filterPost?.map((post: any) => (
           <FilterAllPosts key={post._id} post={post}></FilterAllPosts>
         ))}
       </div>
+      }
 
       <div className="flex justify-center">
         {filterPost?.length === 0 && (
@@ -76,7 +97,9 @@ const FilterPosts = () => {
           </div>
         )}
       </div>
-    </section></>
+    </section>
+     }
+    </>
   );
 };
  

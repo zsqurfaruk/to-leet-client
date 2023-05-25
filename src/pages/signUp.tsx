@@ -38,7 +38,6 @@ function SignUp() {
       confirmPassword: data?.confirmPassword,
       agree:agree
     };
-    console.log(info)
     const res = await fetch("https://to-leet-server-farukphero.vercel.app/api/v1/users/signup", {
       method: "POST",
       headers: {
@@ -48,7 +47,6 @@ function SignUp() {
       body: JSON.stringify(info),
     });
     const result = await res.json();
-    console.log(result)
     // setSignUpUserInfo(result);
     router.push(`/signIn`);
   };

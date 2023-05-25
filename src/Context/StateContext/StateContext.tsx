@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import Loading from "@/components/Loading/Loading";
+import React, { createContext, useEffect, useState } from "react";
 
 export const StateContext = createContext({});
 
@@ -29,6 +30,11 @@ const StateInfo = ({ children }: any) => {
   // console.log(openModalValue)
   const handleOpenModalEng = () => setOpenModalEng(!openModalEng);
   const handleFilterModal = () => setFilterModal(!filterModal);
+
+  const [loading, setLoading] = useState(true);
+  useEffect(()=>{
+    setLoading(false);
+  },[])
   const info = {
     tokenValidation,
     setTokenValidation,
@@ -65,7 +71,7 @@ const StateInfo = ({ children }: any) => {
     filterValue,
     setFilterValue,
   };
-  return <StateContext.Provider value={info}>{children}</StateContext.Provider>;
+  return <StateContext.Provider value={info}>{loading ? <Loading></Loading> : children}</StateContext.Provider>;
 };
 
 export default StateInfo;

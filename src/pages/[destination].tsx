@@ -1,12 +1,14 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import Products from "@/components/Products/Products";
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
-import React, { useState, useContext } from "react";
+import { GetServerSideProps} from "next";
+import React, { useState, useContext, useEffect } from "react";
 import Lottie from "lottie-react";
 import lotti from "../image/lf20_jkbuwuhk.json";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import Head from "next/head";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 const ShowAllPost = ({ products }: any) => {
+   const {loading}:any = useContext(FilterContext)
   const { setTypeCount }: any = useContext(StateContext);
   setTypeCount(products);
   const [deleteAndFilterPost, setDeleteAndFilterPost] = useState(products);
@@ -26,6 +28,8 @@ const ShowAllPost = ({ products }: any) => {
       }
     }
   };
+
+
   const lang = localStorage.getItem("lan");
   return (
     <>
@@ -33,7 +37,8 @@ const ShowAllPost = ({ products }: any) => {
         <title>To-Leet - Filter by Rent Type</title>
       </Head>
       <section className="lg:my-20">
-        <div className="bg-white px-10 lg:w-10/12 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:gap-5 rounded">
+        {
+          loading ? <p className="text-center w-full mt-10 py-16">Loading...</p> : <><div className="bg-white px-10 lg:w-10/12 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:gap-5 rounded">
           {deleteAndFilterPost?.length > 0 &&
             deleteAndFilterPost?.map((product: any) => (
               <Products
@@ -58,7 +63,8 @@ const ShowAllPost = ({ products }: any) => {
               )}
             </div>
           </div>
-        )}
+        )}</>
+        }
       </section>
     </>
   );

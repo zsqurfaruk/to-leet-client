@@ -38,7 +38,6 @@ const Reset = () => {
       body: JSON.stringify(info),
     });
     const result = await res.json();
-    console.log(result);
     setErrorMessage(result?.error?.eng);
     setErrorMessageBan(result?.error?.eng);
     if (result.status === "success") {

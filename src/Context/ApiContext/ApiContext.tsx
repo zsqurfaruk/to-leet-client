@@ -10,14 +10,17 @@ const ApiContext = ({ children }: any) => {
   const [userCounter, setUserCounter] = useState([]);
   const { filterModal, openModalValue }: any = useContext(StateContext);
   const [filterPost, setFilterPost] = useState([]);
+  const [loader, setLoading] = useState(false)
 
   const handleFilterUniversity = () => {
+    setLoading(true)
     fetch(`https://to-leet-server-farukphero.vercel.app/api/v1/product`)
       .then((res) => res.json())
       .then((data) => {
         const result = data?.filter(
-          (post: any) => openModalValue?.eng === post?.university?.eng
-        );
+          (post: any) => openModalValue?.eng === post?.university?.eng);
+     
+        setLoading(false)
         setFilterPost(result);
       });
   };
@@ -38,7 +41,7 @@ const ApiContext = ({ children }: any) => {
   // };
   const [counter, setCounter] = useState([])
   useEffect(()=>{
-   fetch('https://to-leet-server-farukphero.vercel.app/api/v1/product/category')
+   fetch('https://to-leet-server-farukphero.vercel.app/api/v1/product/category/type')
    .then(res=>res.json())
    .then(data=> setCounter(data?.countProduct))
   },[])
@@ -51,6 +54,7 @@ const ApiContext = ({ children }: any) => {
     handleFilterUniversity,
     filterPost,
     setFilterPost,
+    loader
   };
   return <APIContext.Provider value={info}>{children}</APIContext.Provider>;
 };

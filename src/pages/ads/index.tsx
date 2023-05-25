@@ -15,7 +15,7 @@ function AllAds( ) {
       .then((data) => {setProduct(data)
         setIsLoading(false)});
   }, []);
-  if (isLoading) return <Loading></Loading>;
+  if (isLoading) return <p className="text-center w-full h-full mt-10 py-40">Loading...</p>;
   if (!product) return <p>No data found.</p>;
   return (
     <>
