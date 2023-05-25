@@ -64,6 +64,7 @@ const ShowAllPost = ({ products }: any) => {
   );
 }; 
 
+export default ShowAllPost;
 export const getServerSideProps: GetServerSideProps = async ({ params }: any) => {
   const res = await fetch(
     `https://to-leet-server-farukphero.vercel.app/api/v1/product/rentType/${params.destination}`
@@ -75,4 +76,3 @@ export const getServerSideProps: GetServerSideProps = async ({ params }: any) =>
     },
   };
 };
-export default ShowAllPost;

@@ -129,6 +129,7 @@ function SignUp() {
                 <FaEye className="text-2xl"></FaEye>
               )}
             </div>
+         
             <Input
               type={coPassHidden ? "password" : "text"}
               label={lang ? "Confirm Password*":"পাসওয়ার্ড নিশ্চিত হন*"}
@@ -145,6 +146,9 @@ function SignUp() {
                 <FaEye className="text-2xl"></FaEye>
               )}
             </div>
+           {
+            lang ?  <small className="text-red-400">The password must contain an uppercase letter and one number and one special symbol.</small> : <small className="text-red-400">পাসওয়ার্ডে একটি বড় হাতের অক্ষর এবং একটি সংখ্যা এবং একটি বিশেষ চিহ্ন থাকতে হবে।</small>
+           }
            {
             lang ?  <div onClick={handleAgree} className="flex gap-2">
             <input

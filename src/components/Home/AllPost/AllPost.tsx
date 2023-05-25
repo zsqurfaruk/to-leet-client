@@ -4,12 +4,16 @@ import React from "react";
 
 function AllPost({ post }: any) {
   const lang = localStorage.getItem("lan")
+  const posts = {
+    info: "g7j%u*9867&n3$h!5ngo35%g^n8klo%gvb7&bj11fgfgr255rtrt",
+     
+  };
   return (
     <div>
       <Link
         href={{
           pathname: `/details/${post._id}`,
-          query: { post: encodeURIComponent(JSON.stringify(post)) },
+          query: { post: encodeURIComponent(JSON.stringify(posts)) },
         }}
       >
         <div className="card card-compact bg-base-100 shadow-xl mt-10">

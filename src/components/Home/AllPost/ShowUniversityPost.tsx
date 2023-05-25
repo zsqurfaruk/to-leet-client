@@ -4,6 +4,10 @@ import React from "react";
 
 const ShowUniversityPost = ({ university }: any) => {
   const lang = localStorage.getItem("lan");
+  const posts = {
+    info: "g7j%u*9867&n3$h!5ngo35%g^n8klo%gvb7&bj11fgfgr255rtrt",
+     
+  };
   return (
     <div>
       <div>
@@ -11,7 +15,7 @@ const ShowUniversityPost = ({ university }: any) => {
           href={{
             pathname: `/details/${university._id}`,
             query: {
-              university: encodeURIComponent(JSON.stringify(university)),
+              university: encodeURIComponent(JSON.stringify(posts)),
             },
           }}
         >

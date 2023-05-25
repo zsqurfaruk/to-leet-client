@@ -31,18 +31,15 @@ const ProductDetails = ({ product }: any) => {
     const slider = images[index];
     setSlideImage(slider);
   };
-  const post = {
-    info: "g7j%u*9867&n3$h!5ngo35%g^n8klo%gvb7&bj",
-    image: img1,
-    amount: amount,
-  };
+  
   const lang = localStorage.getItem("lan");
   return (
     <>
       <Head>
         <title>To-Leet - Details </title>
       </Head>
-      <section className="w-full lg:w-10/12 mx-auto lg:my-20">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, tempore quibusdam assumenda porro similique ab repellat eius blanditiis facilis officia doloremque tenetur animi! Nostrum perspiciatis illum in animi, ex quam.
+      {/* <section className="w-full lg:w-10/12 mx-auto lg:my-20">
         <Card className="lg:flex-row w-full p-10">
           <CardHeader
             shadow={false}
@@ -213,11 +210,11 @@ const ProductDetails = ({ product }: any) => {
               </div>
               <div className="hidden md:flex">
                 <CardBody className="lg:-mt-6">
-                  <div className="md:flex md:gap-40">
+                  <div className="md:flex md:gap-40"> */}
                     {/* <Typography variant="h6" className="uppercase mb-2 text-secondary">
             {post?.type?.eng}
           </Typography> */}
-                    <Typography variant="h6" className="text-secondary">
+                    {/* <Typography variant="h6" className="text-secondary">
                       Date: {product?.updatedAt?.slice(0, 10)}
                     </Typography>
                   </div>
@@ -242,16 +239,16 @@ const ProductDetails = ({ product }: any) => {
                   <Typography color="gray" className="font-normal ">
                     <div className="md:flex md:gap-56">
                       {/* <h2>Bedrooms: {post?.bedrooms}</h2> */}
-                      {lang ? (
+                      {/* {lang ? (
                         <h2>Bathrooms: {product?.bathrooms?.eng}</h2>
                       ) : (
                         <h2> বাথরুমঃ {product?.bathrooms?.ban}</h2>
                       )}
-                    </div>
+                    </div> */}
 
-                    <div className="md:flex md:gap-[135px]">
+                    {/* <div className="md:flex md:gap-[135px]"> */}
                       {/* <h2>Rent : {post?.amount} taka (Monthly)</h2> */}
-                      {lang ? (
+                      {/* {lang ? (
                         <h1>
                           {" "}
                           {product?.negotiable === true && <h2> Negotiable</h2>}
@@ -264,22 +261,22 @@ const ProductDetails = ({ product }: any) => {
                           )}
                         </h1>
                       )}
-                    </div>
+                    </div> */}
 
-                    {product?.cityName?.eng && (
-                      <div className="md:flex md:gap-[183px]">
+                    {/* {product?.cityName?.eng && (
+                      <div className="md:flex md:gap-[183px]"> */}
                         {/* <h2>Area: {post?.areaName?.eng}</h2> */}
-                        {lang ? (
+                        {/* {lang ? (
                           <h2>City: {product?.cityName?.eng}</h2>
                         ) : (
                           <h2> শহরঃ {product?.cityName?.ban}</h2>
                         )}
                       </div>
-                    )}
-                    {product?.division?.eng && (
-                      <div className="md:flex md:gap-40">
+                    )} */}
+                    {/* {product?.division?.eng && (
+                      <div className="md:flex md:gap-40"> */}
                         {/* <h2>District: {post?.districts?.eng}</h2> */}
-                        {lang ? (
+                        {/* {lang ? (
                           <h2 className="">
                             Division: {product?.division?.eng}
                           </h2>
@@ -291,8 +288,8 @@ const ProductDetails = ({ product }: any) => {
                   </Typography>
                 </CardBody>
               </div>
-            </div>
-            <div className="ml-6 lg:ml-8">
+            </div> */}
+            {/* <div className="ml-6 lg:ml-8">
               <Typography variant="h5" color="blue-gray" className="my-2">
                 {product?.title}
               </Typography>
@@ -303,45 +300,45 @@ const ProductDetails = ({ product }: any) => {
             </div>
           </div>
         </Card>
-      </section>
+      </section> */} 
     </>
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch(`https://to-leet-server-farukphero.vercel.app/api/v1/product`);
-  const data = await res.json();
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const res = await fetch(`https://to-leet-server-farukphero.vercel.app/api/v1/product`);
+//   const data = await res.json();
 
-  const paths = data?.map((post: any) => {
-    return {
-      params: {
-        productId: `${post?._id}`,
-      },
-    };
-  });
-  return {
-    paths,
-    fallback: false,  
-  };
-};
-export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  const res = await fetch(
-    `https://to-leet-server-farukphero.vercel.app/api/v1/product/${params?.productId}`
-  );
-  const data = await res.json();
+//   const paths = data?.map((post: any) => {
+//     return {
+//       params: {
+//         productId: `${post?._id}`,
+//       },
+//     };
+//   });
+//   return {
+//     paths,
+//     fallback: false,  
+//   };
+// };
+// export const getStaticProps: GetStaticProps = async ({ params }: any) => {
+//   const res = await fetch(
+//     `https://to-leet-server-farukphero.vercel.app/api/v1/product/${params?.productId}`
+//   );
+//   const data = await res.json();
 
-  if (!data) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
-  return {
-    props: {
-      product: data,
-    },
-  };
-};
+//   if (!data) {
+//     return {
+//       redirect: {
+//         destination: "/",
+//         permanent: false,
+//       },
+//     };
+//   }
+//   return {
+//     props: {
+//       product: data,
+//     },
+//   };
+// };
 export default privateRoute(ProductDetails);

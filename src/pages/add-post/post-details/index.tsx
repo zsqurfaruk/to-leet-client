@@ -1065,8 +1065,8 @@ const PostDetails = () => {
                     {...register("email")}
                     type="email"
                     className="input input-bordered w-full bg-primary"
-                    // defaultValue={userEmail}
-                    // readOnly
+                    defaultValue={userEmail}
+                    readOnly
                   />
                 </div>
                 <div className="mt-10 border border-secondary p-5">
