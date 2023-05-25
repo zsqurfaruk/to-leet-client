@@ -157,7 +157,7 @@ const PostDetails = () => {
       type: modalValue,
       university: getUniversityModalValue,
     };
-    const res = await fetch("http://localhost:5000/api/v1/product", {
+    const res = await fetch("https://to-leet-server-farukphero.vercel.app/api/v1/product", {
       method: "POST",
       headers: {
         "content-type": "application/json",

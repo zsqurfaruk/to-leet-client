@@ -13,7 +13,7 @@ const ShowAllPost = ({ products }: any) => {
   const handleDelete = async (id: any) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const res = await fetch(`http://localhost:5000/api/v1/product/${id}`, {
+      const res = await fetch(`https://to-leet-server-farukphero.vercel.app/api/v1/product/${id}`, {
         method: "DELETE",
       });
       const data = await res.json();
@@ -132,7 +132,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const res = await fetch(
-    `http://localhost:5000/api/v1/product/rentType/${params.destination}`
+    `https://to-leet-server-farukphero.vercel.app/api/v1/product/rentType/${params.destination}`
   );
   const data = await res.json();
   return {

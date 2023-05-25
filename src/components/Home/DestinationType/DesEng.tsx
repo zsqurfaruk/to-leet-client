@@ -16,11 +16,11 @@ import office from "../../../image/working-with-laptop.png";
 import car from "../../../image/car.png";
 import garage from "../../../image/garage.png";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
+ 
 const DesEng = () => {
   const { setRentName }: any = useContext(NameContext);
-  const { counter }: any = useContext(APIContext);   const { filterTypeCity, filterTypeDivision,typeCount,counterPosts }: any = useContext(StateContext);
-  
-   
+  const { counter }: any = useContext(APIContext);   
+  const { filterTypeCity, filterTypeDivision }: any = useContext(StateContext);
  
   return (
     <div className="w-10/12 mx-auto  grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 lg:gap-5 md:gap-2 gap-5 mt-10 md:mt-8">
@@ -51,8 +51,8 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Bachelor (Male)
               </Typography>
-              <Typography> {counterPosts?.type?.eng} Ads</Typography>
-              {/* <Typography className="text-sm">The Ultimate Rental Solution</Typography> */}
+              {/* <Typography> {counter.incud?.type?.eng} Ads</Typography> */}
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
               
             </div>
           </div>
@@ -86,8 +86,8 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Bachelor (Female)
               </Typography>
-              <Typography> 0 Ads</Typography>
-              {/* <Typography className="text-sm">The Ultimate Rental Solution</Typography> */}
+              {/* <Typography> 0 Ads</Typography> */}
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -117,8 +117,8 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Mess (Male)
               </Typography>
-              <Typography> 0 Ads</Typography>
-              {/* <Typography className="text-sm">The Ultimate Rental Solution</Typography> */}
+              {/* <Typography> 0 Ads</Typography> */}
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -149,7 +149,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Mess (Female)
               </Typography>
-              <Typography> 0 Ads</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -181,7 +181,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Sublet (Male)
               </Typography>
-              <Typography> 0 Ads</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -213,7 +213,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Sublet (Female)
               </Typography>
-              <Typography> 0 Ads</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -245,7 +245,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Family
               </Typography>
-              <Typography> 0 Ads</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -279,7 +279,7 @@ const DesEng = () => {
                 {" "}
                 Hostel
               </Typography>
-              <Typography> 0 Ads</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -311,7 +311,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Office
               </Typography>
-              <Typography> 0 Ads</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -341,7 +341,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Shop
               </Typography>
-              <Typography> 0 Ads</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -374,7 +374,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Vehicles
               </Typography>
-              <Typography> 0 Ads</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>
@@ -406,7 +406,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Garage
               </Typography>
-              <Typography> 0 Ads</Typography>
+              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
             </div>
           </div>
         </Card>

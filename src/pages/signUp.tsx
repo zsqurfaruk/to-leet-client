@@ -39,7 +39,7 @@ function SignUp() {
       agree:agree
     };
     console.log(info)
-    const res = await fetch("http://localhost:5000/api/v1/users/signup", {
+    const res = await fetch("https://to-leet-server-farukphero.vercel.app/api/v1/users/signup", {
       method: "POST",
       headers: {
         "content-type": "application/json",

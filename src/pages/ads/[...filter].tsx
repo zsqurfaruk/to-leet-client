@@ -13,7 +13,7 @@ const FilterPosts = () => {
   const [filterPost, setFilterPost] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/v1/product/filter", {
+      .get("https://to-leet-server-farukphero.vercel.app/api/v1/product/filter", {
         params: filterValue,
       })
       .then(function (response) {

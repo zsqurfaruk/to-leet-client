@@ -12,7 +12,7 @@ const ApiContext = ({ children }: any) => {
   const [filterPost, setFilterPost] = useState([]);
 
   const handleFilterUniversity = () => {
-    fetch(`http://localhost:5000/api/v1/product`)
+    fetch(`https://to-leet-server-farukphero.vercel.app/api/v1/product`)
       .then((res) => res.json())
       .then((data) => {
         const result = data?.filter(
@@ -23,31 +23,31 @@ const ApiContext = ({ children }: any) => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/product")
+    fetch("https://to-leet-server-farukphero.vercel.app/api/v1/product")
       .then((res) => res.json())
       .then((data) => setCounterPosts(data));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/users/signup")
+    fetch("https://to-leet-server-farukphero.vercel.app/api/v1/users/signup")
       .then((res) => res.json())
       .then((data) => setUserCounter(data?.data));
   }, []);
   // const handleFilter = () => {
   //   counterPosts.filter((lc) => lc === filterModal);
   // };
-  // const [counter, setCounter] = useState([])
-  // useEffect(()=>{
-  //  fetch('http://localhost:5000/api/v1/product/category')
-  //  .then(res=>res.json())
-  //  .then(data=> setCounter(data?.countProduct))
-  // },[])
+  const [counter, setCounter] = useState([])
+  useEffect(()=>{
+   fetch('https://to-leet-server-farukphero.vercel.app/api/v1/product/category')
+   .then(res=>res.json())
+   .then(data=> setCounter(data?.countProduct))
+  },[])
 
 
   const info = {
     counterPosts,
     userCounter,
-   
+    counter,
     handleFilterUniversity,
     filterPost,
     setFilterPost,

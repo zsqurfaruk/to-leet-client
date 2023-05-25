@@ -22,7 +22,7 @@ const Dashboard = () => {
   const [personalPost, setPersonalPost] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/product/user/email/${email}`)
+    fetch(`https://to-leet-server-farukphero.vercel.app/api/v1/product/user/email/${email}`)
       .then((res) => res.json())
       .then((data) => setPersonalPost(data));
   }, [email]);

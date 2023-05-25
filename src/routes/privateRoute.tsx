@@ -16,7 +16,7 @@ function privateRoute(Component: any) {
         const { asPath } = router;
         router.push(`/signIn?next=${asPath}`);
       } else {
-        fetch("http://localhost:5000/api/v1/users/me", {
+        fetch("https://to-leet-server-farukphero.vercel.app/api/v1/users/me", {
           method: "POST",
           headers: {
             "content-type": "application/json",

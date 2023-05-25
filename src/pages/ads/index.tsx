@@ -10,7 +10,7 @@ function AllAds( ) {
   const [product, setProduct]= useState([])
   useEffect(() => {
     setIsLoading(true)
-    fetch(`http://localhost:5000/api/v1/product`)
+    fetch(`https://to-leet-server-farukphero.vercel.app/api/v1/product`)
       .then((res) => res.json())
       .then((data) => {setProduct(data)
         setIsLoading(false)});
@@ -35,7 +35,7 @@ function AllAds( ) {
 
 
 // export const getStaticProps: GetStaticProps = async () => {
-//   const res = await fetch(`http://localhost:5000/api/v1/product`);
+//   const res = await fetch(`https://to-leet-server-farukphero.vercel.app/api/v1/product`);
 //   const data = await res.json();
 
 //   if (!data) {
