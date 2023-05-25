@@ -235,9 +235,9 @@ const PostDetails = () => {
   const lastName = localStorage.getItem("lastName");
   const name = firstName + " " + lastName;
 
-  console.log("bedN",bedNumbers);
-  console.log("bedroom",bedRooms);
-  console.log("bath", bathRooms);
+  // console.log("bedN",bedNumbers);
+  // console.log("bedroom",bedRooms);
+  // console.log("bath", bathRooms);
   return (
     <>
       <Head>
@@ -1065,8 +1065,8 @@ const PostDetails = () => {
                     {...register("email")}
                     type="email"
                     className="input input-bordered w-full bg-primary"
-                    defaultValue={userEmail}
-                    readOnly
+                    // defaultValue={userEmail}
+                    // readOnly
                   />
                 </div>
                 <div className="mt-10 border border-secondary p-5">
