@@ -2,7 +2,7 @@
 import React, { useContext, useState } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import {
   Card,
   CardHeader,
@@ -306,25 +306,25 @@ const ProductDetails = ({ product }: any) => {
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch(
-    `https://zsqur.to-leet.com/api/v1/product`
-  );
-  const data = await res.json();
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const res = await fetch(
+//     `https://zsqur.to-leet.com/api/v1/product`
+//   );
+//   const data = await res.json();
 
-  const paths = data?.map((post: any) => {
-    return {
-      params: {
-        productId: `${post?._id}`,
-      },
-    };
-  });
-  return {
-    paths,
-    fallback: false,
-  };
-};
-export const getStaticProps: GetStaticProps = async ({ params }: any) => {
+//   const paths = data?.map((post: any) => {
+//     return {
+//       params: {
+//         productId: `${post?._id}`,
+//       },
+//     };
+//   });
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// };
+export const getServerSideProps: GetServerSideProps = async ({ params }: any) => {
   const res = await fetch(
     `https://zsqur.to-leet.com/api/v1/product/${params?.productId}`
   );

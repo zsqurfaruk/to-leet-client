@@ -118,7 +118,7 @@ function SignUp() {
               {...register("password",{ required: true })}
             />
             <div
-              className="cursor-pointer absolute right-4 top-[136px]"
+              className="cursor-pointer absolute right-4 mt-[200px] lg:top-[136px]"
               onClick={handlePass}
             >
               {passHidden ? (
@@ -135,7 +135,7 @@ function SignUp() {
               name="confirmPassword"
             />
             <div
-              className="cursor-pointer absolute right-4 top-[200px]"
+              className="cursor-pointer absolute right-4 top-[264px] lg:top-[200px]"
               onClick={handleCoPass}
             >
               {coPassHidden ? (

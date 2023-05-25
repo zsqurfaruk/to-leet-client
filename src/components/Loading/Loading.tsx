@@ -36,7 +36,7 @@ function Loading() {
   let [color, setColor] = useState("#ffffff");
 
   return (
-    <div className="sweet-loading flex justify-center h-screen items-center bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-75 -mt-32">
+    <div className="sweet-loading flex justify-center h-screen items-center bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-75">
       {/* <BarLoader
         color="#36d7b7"
         speedMultiplier={0}
