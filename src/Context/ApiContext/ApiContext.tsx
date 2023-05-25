@@ -14,7 +14,7 @@ const ApiContext = ({ children }: any) => {
 
   const handleFilterUniversity = () => {
     setLoading(true)
-    fetch(`https://to-leet-server-farukphero.vercel.app/api/v1/product`)
+    fetch(`https://zsqur.to-leet.com/api/v1/product`)
       .then((res) => res.json())
       .then((data) => {
         const result = data?.filter(
@@ -26,13 +26,13 @@ const ApiContext = ({ children }: any) => {
   };
 
   useEffect(() => {
-    fetch("https://to-leet-server-farukphero.vercel.app/api/v1/product")
+    fetch("https://zsqur.to-leet.com/api/v1/product")
       .then((res) => res.json())
       .then((data) => setCounterPosts(data));
   }, []);
 
   useEffect(() => {
-    fetch("https://to-leet-server-farukphero.vercel.app/api/v1/users/signup")
+    fetch("https://zsqur.to-leet.com/api/v1/users/signup")
       .then((res) => res.json())
       .then((data) => setUserCounter(data?.data));
   }, []);
@@ -41,7 +41,7 @@ const ApiContext = ({ children }: any) => {
   // };
   const [counter, setCounter] = useState([])
   useEffect(()=>{
-   fetch('https://to-leet-server-farukphero.vercel.app/api/v1/product/category/type')
+   fetch('https://zsqur.to-leet.com/api/v1/product/category/type')
    .then(res=>res.json())
    .then(data=> setCounter(data?.countProduct))
   },[])

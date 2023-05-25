@@ -38,7 +38,7 @@ function SignUp() {
       confirmPassword: data?.confirmPassword,
       agree:agree
     };
-    const res = await fetch("https://to-leet-server-farukphero.vercel.app/api/v1/users/signup", {
+    const res = await fetch("https://zsqur.to-leet.com/api/v1/users/signup", {
       method: "POST",
       headers: {
         "content-type": "application/json",

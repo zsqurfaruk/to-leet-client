@@ -49,7 +49,7 @@ const SignIn = () => {
       email: data.email,
       password: data.password,
     };
-    const res = await fetch("https://to-leet-server-farukphero.vercel.app/api/v1/users/signIn", {
+    const res = await fetch("https://zsqur.to-leet.com/api/v1/users/signIn", {
       method: "POST",
       headers: {
         "content-type": "application/json",

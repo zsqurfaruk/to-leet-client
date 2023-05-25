@@ -26,7 +26,7 @@ const Dashboard = () => {
   useEffect(() => {
     setLoading(true)
     fetch(
-      `https://to-leet-server-farukphero.vercel.app/api/v1/product/user/email/${email}`
+      `https://zsqur.to-leet.com/api/v1/product/user/email/${email}`
     )
       .then((res) => res.json())
       .then((data) => {setPersonalPost(data)

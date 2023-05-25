@@ -29,7 +29,7 @@ const Reset = () => {
       password: data.password,
       confirmPassword: data.confirmPassword,
     };
-    const res = await fetch("https://to-leet-server-farukphero.vercel.app/api/v1/users/reset/email", {
+    const res = await fetch("https://zsqur.to-leet.com/api/v1/users/reset/email", {
       method: "POST",
       headers: {
         "content-type": "application/json",

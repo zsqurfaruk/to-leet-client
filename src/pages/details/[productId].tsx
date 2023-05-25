@@ -308,7 +308,7 @@ const ProductDetails = ({ product }: any) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch(
-    `https://to-leet-server-farukphero.vercel.app/api/v1/product`
+    `https://zsqur.to-leet.com/api/v1/product`
   );
   const data = await res.json();
 
@@ -326,7 +326,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const res = await fetch(
-    `https://to-leet-server-farukphero.vercel.app/api/v1/product/${params?.productId}`
+    `https://zsqur.to-leet.com/api/v1/product/${params?.productId}`
   );
   const data = await res.json();
 

@@ -15,7 +15,7 @@ const FilterPosts = () => {
   const [loading , setLoading] = useState(false)
   // useEffect(() => {
   //   axios
-  //     .get("https://to-leet-server-farukphero.vercel.app/api/v1/product/filter", {
+  //     .get("https://zsqur.to-leet.com/api/v1/product/filter", {
   //       params: filterValue,
   //     })
   //     .then(function (response) {
