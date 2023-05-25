@@ -62,75 +62,9 @@ const ShowAllPost = ({ products }: any) => {
       </section>
     </>
   );
-};
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [
-      {
-        params: {
-          destination: "Bachelor-(Male)",
-        },
-      },
-      {
-        params: {
-          destination: "Bachelor-(Female)",
-        },
-      },
-      {
-        params: {
-          destination: "Mess-(Male)",
-        },
-      },
-      {
-        params: {
-          destination: "Mess-(Female)",
-        },
-      },
-      {
-        params: {
-          destination: "Sublet-(Male)",
-        },
-      },
-      {
-        params: {
-          destination: "Sublet-(Female)",
-        },
-      },
-      {
-        params: {
-          destination: "Family",
-        },
-      },
-      {
-        params: {
-          destination: "Hostel",
-        },
-      },
-      {
-        params: {
-          destination: "Office",
-        },
-      },
-      {
-        params: {
-          destination: "Shop",
-        },
-      },
-      {
-        params: {
-          destination: "Vehicles",
-        },
-      },
-      {
-        params: {
-          destination: "Garage",
-        },
-      },
-    ],
-    fallback: false,
-  };
-};
-export const getStaticProps: GetStaticProps = async ({ params }: any) => {
+}; 
+
+export const getServerSideProps: GetServerSideProps = async ({ params }: any) => {
   const res = await fetch(
     `https://to-leet-server-farukphero.vercel.app/api/v1/product/rentType/${params.destination}`
   );
