@@ -19,6 +19,7 @@ import Head from "next/head";
 import Select from "react-select";
 import { optionBan } from "../../../components/PostData/DataBan";
 import { optionEng } from "../../../components/PostData/DataEng";
+import { APIContext } from "@/Context/ApiContext/ApiContext";
 
 type FormValues = {
   bedNumber: object;
@@ -79,6 +80,8 @@ const PostDetails = () => {
     bathRooms,
     setBathRooms,
   }: any = useContext(PostStateContext);
+
+ const {reload, setReload}:any = useContext(APIContext)
 
   const router = useRouter();
   const {
@@ -173,6 +176,7 @@ const PostDetails = () => {
     setPostDistrictsName({});
     setPostDivisionNameEng({});
     if (result?.message === "success") {
+      setReload(!reload)
       router.push(`/${modalValue.eng}`);
     }
   };
@@ -1065,8 +1069,8 @@ const PostDetails = () => {
                     {...register("email")}
                     type="email"
                     className="input input-bordered w-full bg-primary"
-                    // defaultValue={userEmail}
-                    // readOnly
+                    defaultValue={userEmail || ""}
+                    readOnly
                   />
                 </div>
                 <div className="mt-10 border border-secondary p-5">

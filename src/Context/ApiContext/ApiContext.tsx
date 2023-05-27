@@ -11,6 +11,8 @@ const ApiContext = ({ children }: any) => {
   const { filterModal, openModalValue }: any = useContext(StateContext);
   const [filterPost, setFilterPost] = useState([]);
   const [loader, setLoading] = useState(false)
+  const [reload, setReload] = useState(false)
+  const [allDataLoading, setAllDataLoading] = useState(false)
 
   const handleFilterUniversity = () => {
     setLoading(true)
@@ -26,10 +28,14 @@ const ApiContext = ({ children }: any) => {
   };
 
   useEffect(() => {
+    setAllDataLoading(true)
     fetch("https://zsqur.to-leet.com/api/v1/product")
       .then((res) => res.json())
-      .then((data) => setCounterPosts(data));
-  }, []);
+      .then((data) => {setCounterPosts(data)
+        setAllDataLoading(false)});
+  }, [reload]);
+
+
 
   useEffect(() => {
     fetch("https://zsqur.to-leet.com/api/v1/users/signup")
@@ -46,7 +52,7 @@ const ApiContext = ({ children }: any) => {
    .then(data=> setCounter(data?.countProduct))
   },[])
 
-
+// console.log(counter[0]?.type.eng)
   const info = {
     counterPosts,
     userCounter,
@@ -54,7 +60,9 @@ const ApiContext = ({ children }: any) => {
     handleFilterUniversity,
     filterPost,
     setFilterPost,
-    loader
+    loader,
+    reload, setReload,
+    allDataLoading
   };
   return <APIContext.Provider value={info}>{children}</APIContext.Provider>;
 };

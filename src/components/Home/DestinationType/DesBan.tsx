@@ -15,10 +15,15 @@ import hotel from "../../../image/mansion.png";
 import office from "../../../image/working-with-laptop.png";
 import car from "../../../image/car.png";
 import garage from "../../../image/garage.png";
+import { APIContext } from "@/Context/ApiContext/ApiContext";
 const DesBan = () => {
   const { setRentName }: any = useContext(NameContext);
   const { filterTypeCity, filterTypeDivision }: any = useContext(StateContext);
-
+  const { counter }: any = useContext(APIContext);   
+ 
+ const getCount = (value:any)=>{
+  return counter.find((item:any) => item.type.eng ===  value) || null;
+ }
   return (
     <div className="w-10/12 mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 lg:gap-5 md:gap-2 gap-5 mt-10 md:mt-8">
       <Link
@@ -49,7 +54,7 @@ const DesBan = () => {
                 ব্যাচেলর (ছেলে)
               </Typography>
               {/* <Typography>০ টি বিজ্ঞাপন</Typography> */}
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Bachelor-(Male)") ? getCount("Bachelor-(Male)")?.count : 0} টি বিজ্ঞাপন</Typography>
             </div>
           </div>
         </Card>
@@ -82,7 +87,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 ব্যাচেলর (মেয়ে)
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Bachelor-(Female)") ? getCount("Bachelor-(Female)")?.count : 0} টি বিজ্ঞাপন</Typography>
             </div>
           </div>
         </Card>
@@ -112,7 +117,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 মেস (ছেলে)
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Mess-(Male)") ? getCount("Mess-(Male)")?.count : 0} টি বিজ্ঞাপন</Typography>
             </div>
           </div>
         </Card>
@@ -142,7 +147,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 মেস (মেয়ে)
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Mess-(Female)") ? getCount("Mess-(Female)")?.count : 0} টি বিজ্ঞাপন</Typography>
             </div>
           </div>
         </Card>
@@ -174,7 +179,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 সাবলেট (ছেলে)
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Sublet-(Male)") ? getCount("Sublet-(Male)")?.count : 0} টি বিজ্ঞাপন</Typography>
             </div>
           </div>
         </Card>
@@ -206,7 +211,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 সাবলেট (মেয়ে)
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Sublet-(Female)") ? getCount("Sublet-(Female)")?.count : 0} টি বিজ্ঞাপন</Typography>
             </div>
           </div>
         </Card>
@@ -238,7 +243,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 পরিবার
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Family") ? getCount("Family")?.count : 0} টি বিজ্ঞাপন</Typography>
             </div>
           </div>
         </Card>
@@ -272,7 +277,7 @@ const DesBan = () => {
                 {" "}
                 আবাসিক হোটেল
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Hostel") ? getCount("Hostel")?.count : 0} টি বিজ্ঞাপন</Typography>
             </div>
           </div>
         </Card>
@@ -304,7 +309,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 অফিস
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Office") ? getCount("Office")?.count : 0} টি বিজ্ঞাপন</Typography>
             </div>
           </div>
         </Card>
@@ -334,7 +339,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 দোকান
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Shop") ? getCount("Shop")?.count : 0} টি বিজ্ঞাপন</Typography>
             </div>
           </div>
         </Card>
@@ -366,7 +371,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 যানবাহন
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Vehicles") ? getCount("Vehicles")?.count : 0} টি বিজ্ঞাপন</Typography>
             </div>
           </div>
         </Card>
@@ -398,7 +403,7 @@ const DesBan = () => {
               <Typography variant="h5" className="mb-2">
                 গ্যারেজ
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Garage") ? getCount("Garage")?.count : 0} টি বিজ্ঞাপন</Typography>
             </div>
           </div>
         </Card>

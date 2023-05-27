@@ -27,6 +27,7 @@ function SignUp() {
   const router = useRouter();
  
   const [agree, setAgree] = useState(false);
+  const [error, setError] = useState("");
   
 
   const handleSignUp: SubmitHandler<FormValues> = async (data: any) => {
@@ -47,8 +48,14 @@ function SignUp() {
       body: JSON.stringify(info),
     });
     const result = await res.json();
+    if(result.message === "error"){
+      return setError("emailError")
+    }
+    else{
+
+      router.push(`/signIn`);
+    }
     // setSignUpUserInfo(result);
-    router.push(`/signIn`);
   };
   // const handleGoogleSignUp = () => {
   //   providerGoogleLogIn(provider)
@@ -118,7 +125,7 @@ function SignUp() {
               {...register("password",{ required: true })}
             />
             <div
-              className="cursor-pointer absolute right-4 mt-[200px] lg:top-[136px]"
+              className="cursor-pointer absolute right-4 mt-[200px] lg:-top-[64px]"
               onClick={handlePass}
             >
               {passHidden ? (
@@ -184,6 +191,8 @@ function SignUp() {
          {errors.email && errors.password && (
             <span className="text-red-500 ">{lang ? "All These field is required" :"আপনাকে অবশ্যই সকল তথ্য দিতে হবে।"}  </span>
           )}
+          <p>{error && lang && "Something went wrong, please try a unique email or check password rules."}</p>
+          <p>{error && !lang && "কিছু ভুল হয়েছে, অনুগ্রহ করে একটি নতুন ইমেল দিয়ে চেষ্টা করুন বা পাসওয়ার্ডের নিয়মগুলি পরীক্ষা করুন৷"}</p>
            {
             lang ?  <button disabled= { agree ? false : true} className={agree ? "mt- w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800" : "mt- w-full bg-gray-300 py-2 rounded-lg font-semibold text-gray-800"}>Sign Up</button> :  <button disabled= { agree ? false : true} className={agree ? "mt- w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800" : "mt- w-full bg-gray-300 py-2 rounded-lg font-semibold text-gray-800"}>সাইন আপ</button>
            }

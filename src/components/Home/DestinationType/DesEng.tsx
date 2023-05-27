@@ -19,9 +19,14 @@ import { APIContext } from "@/Context/ApiContext/ApiContext";
  
 const DesEng = () => {
   const { setRentName }: any = useContext(NameContext);
-  const { counter }: any = useContext(APIContext);   
   const { filterTypeCity, filterTypeDivision }: any = useContext(StateContext);
+  const { counter }: any = useContext(APIContext);   
  
+ const getCount = (value:any)=>{
+  return counter.find((item:any) => item.type.eng ===  value) || null;
+ }
+
+
   return (
     <div className="w-10/12 mx-auto  grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 lg:gap-5 md:gap-2 gap-5 mt-10 md:mt-8">
       <Link
@@ -51,8 +56,8 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Bachelor (Male)
               </Typography>
-              {/* <Typography> {counter.incud?.type?.eng} Ads</Typography> */}
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Bachelor-(Male)") ? getCount("Bachelor-(Male)")?.count : 0} Ads</Typography>
+              {/* <Typography className="text-sm">The Ultimate Rental Solution</Typography> */}
               
             </div>
           </div>
@@ -86,8 +91,8 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Bachelor (Female)
               </Typography>
-              {/* <Typography> 0 Ads</Typography> */}
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Bachelor-(Female)") ? getCount("Bachelor-(Female)")?.count : 0} Ads</Typography>
+              {/* <Typography className="text-sm">The Ultimate Rental Solution</Typography> */}
             </div>
           </div>
         </Card>
@@ -118,7 +123,7 @@ const DesEng = () => {
                 Mess (Male)
               </Typography>
               {/* <Typography> 0 Ads</Typography> */}
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Mess-(Male)") ? getCount("Mess-(Male)")?.count : 0} Ads</Typography>
             </div>
           </div>
         </Card>
@@ -149,7 +154,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Mess (Female)
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Mess-(Female)") ? getCount("Mess-(Female)")?.count : 0} Ads</Typography>
             </div>
           </div>
         </Card>
@@ -181,7 +186,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Sublet (Male)
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Sublet-(Male)") ? getCount("Sublet-(Male)")?.count : 0} Ads</Typography>
             </div>
           </div>
         </Card>
@@ -213,7 +218,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Sublet (Female)
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Sublet-(Female)") ? getCount("Sublet-(Female)")?.count : 0} Ads</Typography>
             </div>
           </div>
         </Card>
@@ -245,7 +250,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Family
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Family") ? getCount("Family")?.count : 0} Ads</Typography>
             </div>
           </div>
         </Card>
@@ -279,7 +284,7 @@ const DesEng = () => {
                 {" "}
                 Hostel
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Hostel") ? getCount("Hostel")?.count : 0} Ads</Typography>
             </div>
           </div>
         </Card>
@@ -311,7 +316,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Office
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Office") ? getCount("Office")?.count : 0} Ads</Typography>
             </div>
           </div>
         </Card>
@@ -341,7 +346,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Shop
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Shop") ? getCount("Shop")?.count : 0} Ads</Typography>
             </div>
           </div>
         </Card>
@@ -374,7 +379,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Vehicles
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Vehicles") ? getCount("Vehicles")?.count : 0} Ads</Typography>
             </div>
           </div>
         </Card>
@@ -406,7 +411,7 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Garage
               </Typography>
-              <Typography className="text-sm">The Ultimate Rental Solution</Typography>
+              <Typography className="text-sm"> {getCount("Garage") ? getCount("Garage")?.count : 0} Ads</Typography>
             </div>
           </div>
         </Card>

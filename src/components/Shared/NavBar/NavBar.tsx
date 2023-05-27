@@ -338,14 +338,14 @@ export default function NavBar() {
           <div className="flex justify-center">
             {authenticated ? (
               <Button
-                className="text-gray-700 w-[148px] -ml-9 py-2 -my-2 bg-gradient-to-r from-success via-accent to-success"
+                className="text-gray-700 w-[148px] -ml-10 py-2 -my-2 bg-gradient-to-r from-success via-accent to-success"
                 onClick={handleLogOut}
                 variant="gradient"
                 size="sm"
               >
                 {" "}
                 {lang ? (
-                  <span onClick={() => setOpenNav(false)}>LogOut</span>
+                  <span className="" onClick={() => setOpenNav(false)}>LogOut</span>
                 ) : (
                   <span onClick={() => setOpenNav(false)}>লগআউট</span>
                 )}
