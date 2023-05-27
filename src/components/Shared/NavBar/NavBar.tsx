@@ -209,10 +209,10 @@ export default function NavBar() {
     <>
       <Navbar className="sticky inset-0 z-10 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-75 h-max min-w-full rounded-none py-2 px-1 md:px-0 lg:px-8 lg:py-4 border-none text-primary shadow-sm">
         <div className="flex items-center justify-between text-blue-gray-900 px-2 lg:w-11/12 lg:px-8 mx-auto">
-          <div className="flex sm:gap-5 lg:gap-12">
+          <div className="flex gap-7 lg:gap-12">
             <Link className="flex md:gap-2" onClick={handleHome} href={"/"}>
               <Image
-                className="h-7 mt-2 w-12 rounded"
+                className="h-7 mt-[7px] w-12 rounded"
                 src={logo}
                 alt={""}
               ></Image>
@@ -356,7 +356,7 @@ export default function NavBar() {
                   <Button
                     variant="gradient"
                     size="sm"
-                    className=" w-[150px] -ml-8 rounded-lg mb-3 text-gray-700 -my-2 bg-gradient-to-r from-success via-accent to-success"
+                    className="w-[148px] -ml-12 rounded-lg mb-3 text-gray-700 -my-2 bg-gradient-to-r from-success via-accent to-success"
                   >
                     <span onClick={() => setOpenNav(false)}>SignUp</span>
                   </Button>
@@ -364,7 +364,7 @@ export default function NavBar() {
                   <Button
                     variant="gradient"
                     size="sm"
-                    className=" w-[161px] -ml-6 rounded-lg mb-3 text-gray-700 -my-2 bg-gradient-to-r from-success via-accent to-success"
+                    className="w-[162px] -ml-8 rounded-lg mb-3 text-gray-700 -my-2 bg-gradient-to-r from-success via-accent to-success"
                   >
                     <span
                       className="text-[15px]"
@@ -381,14 +381,14 @@ export default function NavBar() {
             {lang ? (
               <span
                 onClick={handleLanguage}
-                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary rounded-lg cursor-pointer shadow-lg shadow-accent px-[53px] -ml-8"
+                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary rounded-lg cursor-pointer shadow-lg shadow-accent px-[53px] -ml-12"
               >
                 বাংলা
               </span>
             ) : (
               <span
                 onClick={handleLanguage}
-                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-[51px] -ml-5 rounded-lg cursor-pointer shadow-lg shadow-accent"
+                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-[51px] -ml-8 rounded-lg cursor-pointer shadow-lg shadow-accent"
               >
                 English
               </span>

@@ -1,31 +1,32 @@
 import { StateContext } from "@/Context/StateContext/StateContext";
-import AllPost from "@/components/Home/AllPost/AllPost";
 import FilterAllPosts from "@/components/Home/AllPost/FilterAllPosts";
 import React, { useContext, useState, useEffect } from "react";
 import Lottie from "lottie-react";
 import lotti from "../../image/lf20_jkbuwuhk.json";
 import axios from "axios";
 import Head from "next/head";
-import Loading from "@/components/Loading/Loading";
 
 const FilterPosts = () => {
   const { filterValue, cityName, divisionNameEng }: any =
     useContext(StateContext);
+ 
   const [filterPost, setFilterPost] = useState([]);
   const [loading , setLoading] = useState(false)
   // useEffect(() => {
+   
   //   axios
   //     .get("https://zsqur.to-leet.com/api/v1/product/filter", {
   //       params: filterValue,
   //     })
   //     .then(function (response) {
-  //       setFilterPost(response?.data?.posts);
+  //       setFilterPost(response?.data?.posts)
+       
   //     });
     
   // }, [filterValue]);
   useEffect(() => {
     setLoading(true)
-      fetch("http://localhost:5000/api/v1/product/filter", {
+      fetch("https://zsqur.to-leet.com/api/v1/product/filter", {
         method: "POST",
         headers: {
           "content-type": "application/json",
