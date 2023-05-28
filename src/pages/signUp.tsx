@@ -152,7 +152,7 @@ function SignUp() {
               )}
             </div>
            {
-            lang ?  <small className="text-red-400">The password must contain an uppercase letter and one number and one special symbol.</small> : <small className="text-red-400">পাসওয়ার্ডে একটি বড় হাতের অক্ষর এবং একটি সংখ্যা এবং একটি বিশেষ চিহ্ন থাকতে হবে।</small>
+            lang ?  <small className="text-blue-500 text-sm">( The password must contain one uppercase, three lowercase letter, one number and one special symbol.)</small> : <small className="text-blue-500">( পাসওয়ার্ডে একটি বড় হাতের অক্ষর, তিনটি ছোট হাতের অক্ষর, একটি নাম্বার এবং একটি বিশেষ চিহ্ন থাকতে হবে। )</small>
            }
            {
             lang ?  <div onClick={handleAgree} className="flex gap-2">
@@ -191,8 +191,8 @@ function SignUp() {
          {errors.email && errors.password && (
             <span className="text-red-500 ">{lang ? "All These field is required" :"আপনাকে অবশ্যই সকল তথ্য দিতে হবে।"}  </span>
           )}
-          <p>{error && lang && "Something went wrong, please try a unique email or check password rules."}</p>
-          <p>{error && !lang && "কিছু ভুল হয়েছে, অনুগ্রহ করে একটি নতুন ইমেল দিয়ে চেষ্টা করুন বা পাসওয়ার্ডের নিয়মগুলি পরীক্ষা করুন৷"}</p>
+          <p className="text-red-500">{error && lang && "Something went wrong, please try a unique email or check password rules."}</p>
+          <p className="text-red-500 text-sm -mt-5">{error && !lang && "কিছু ভুল হয়েছে, অনুগ্রহ করে একটি নতুন ইমেল দিয়ে চেষ্টা করুন বা পাসওয়ার্ডের নিয়মগুলি পরীক্ষা করুন৷"}</p>
            {
             lang ?  <button disabled= { agree ? false : true} className={agree ? "mt- w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800" : "mt- w-full bg-gray-300 py-2 rounded-lg font-semibold text-gray-800"}>Sign Up</button> :  <button disabled= { agree ? false : true} className={agree ? "mt- w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800" : "mt- w-full bg-gray-300 py-2 rounded-lg font-semibold text-gray-800"}>সাইন আপ</button>
            }
