@@ -27,7 +27,7 @@ type FormValues = {
   bedNumber: object;
   bedrooms: object;
   bathrooms: object;
-  wifi: object;
+  wifiFacility: object;
   address: string;
   title: string;
   description: string;
@@ -396,6 +396,8 @@ const PostDetails = () => {
                   className={
                     modalValue.eng === "Mess-(Male)" ||
                     modalValue.eng === "Mess-(Female)" ||
+                    modalValue.eng === "Sublet-(Male)" || 
+                    modalValue.eng === "Sublet-(Female)" ||
                     modalValue.eng === "Hostel"
                       ? "block"
                       : "hidden"
@@ -438,6 +440,8 @@ const PostDetails = () => {
                     modalValue.eng === "Office" ||
                     modalValue.eng === "Shop" ||
                     modalValue.eng === "Vehicles" ||
+                    modalValue.eng === "Sublet-(Male)" || 
+                    modalValue.eng === "Sublet-(Female)" ||
                     modalValue.eng === "Garage"
                       ? "hidden"
                       : "block"
