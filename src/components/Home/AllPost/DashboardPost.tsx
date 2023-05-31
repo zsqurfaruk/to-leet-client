@@ -133,9 +133,9 @@ const DashboardPost = ({ post }: any) => {
                   )}
                   <div className="md:flex md:gap-[135px]">
                     {!lang ? (
-                      <h2> Wifi facilities: {post?.wifiEng}</h2>
+                      <h2> Wifi facilities: {post?.wifiFacility?.eng}</h2>
                     ) : (
-                      <h2> ওয়াইফাই সুবিধাঃ {post?.wifiBan}</h2>
+                      <h2> ওয়াইফাই সুবিধাঃ {post?.wifiFacility?.ban}</h2>
                     )}
                   </div>
                 </Typography>

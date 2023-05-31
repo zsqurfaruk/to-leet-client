@@ -195,9 +195,9 @@ const ProductDetails = ({ product }: any) => {
                   )}
                   <div className="md:flex md:gap-[135px]">
                     {!lang ? (
-                      <h2> Wifi facilities: {product?.wifiEng}</h2>
+                      <h2> Wifi facilities: {product?.wifiFacility?.eng}</h2>
                     ) : (
-                      <h2> ওয়াইফাই সুবিধাঃ {product?.wifiBan}</h2>
+                      <h2> ওয়াইফাই সুবিধাঃ {product?.wifiFacility?.ban}</h2>
                     )}
                   </div>
                    
