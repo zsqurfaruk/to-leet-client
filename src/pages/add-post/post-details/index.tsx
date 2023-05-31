@@ -19,14 +19,15 @@ import Head from "next/head";
 import Select from "react-select";
 import { optionBan } from "../../../components/PostData/DataBan";
 import { optionEng } from "../../../components/PostData/DataEng";
+import { wifiBan } from "../../../components/PostData/WifiBan";
+import { wifiEng } from "../../../components/PostData/WifiEng";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
 
 type FormValues = {
   bedNumber: object;
   bedrooms: object;
   bathrooms: object;
-  wifiBan: string;
-  wifiEng: string;
+  wifi:object;
   address: string;
   title: string;
   description: string;
@@ -85,6 +86,7 @@ const PostDetails = () => {
     setBedRooms,
     bathRooms,
     setBathRooms,
+    wifi, setWifi
   }: any = useContext(PostStateContext);
 
   const { reload, setReload }: any = useContext(APIContext);
@@ -138,13 +140,27 @@ const PostDetails = () => {
     setBathRooms(newName);
   }
 
+
+  if (wifi?.name === "eng") {
+    const newName = {
+      eng: wifi?.label,
+      ban: wifi?.value,
+    };
+    setWifi(newName);
+  } else if (wifi?.name === "ban") {
+    const newName = {
+      eng: wifi?.value,
+      ban: wifi?.label,
+    };
+    setWifi(newName);
+  }
+
   const handlePost: SubmitHandler<FormValues> = async (data) => {
     const values = {
       bedrooms: bedRooms,
       bathrooms: bathRooms,
       bedNumber: bedNumbers,
-      wifiBan: data?.wifiBan,
-      wifiEng: data?.wifiEng,
+      wifi: wifi,
       address: data?.address,
       title: data?.title,
       description: data?.description,
@@ -247,15 +263,17 @@ const PostDetails = () => {
 
   const checkNumber = (e: any) => {
     if (e && isNaN(e)) {
-      setNumberError("English is the recommended language for writing valid phone number.");
+      setNumberError(
+        "English is the recommended language for writing valid phone number."
+      );
       setNumberErrorBan("সঠিক মোবাইল নাম্বার ইংরেজিতে লিখুন।");
     } else if (e && !isNaN(e)) {
       setValidNumber(e);
       setNumberError("");
-      setNumberErrorBan("")
+      setNumberErrorBan("");
     } else if (!e) {
-       setNumberError("")
-       setNumberErrorBan("")
+      setNumberError("");
+      setNumberErrorBan("");
     }
   };
   const checkAmountValidity = (e: any) => {
@@ -265,13 +283,13 @@ const PostDetails = () => {
     } else if (e && !isNaN(e)) {
       setValidAmount(e);
       setAmountError("");
-      setAmountErrorBan("")
+      setAmountErrorBan("");
     } else if (!e) {
-     setAmountError("")
-     setAmountErrorBan("")
+      setAmountError("");
+      setAmountErrorBan("");
     }
   };
-   
+ console.log(wifi)
   return (
     <>
       <Head>
@@ -379,7 +397,7 @@ const PostDetails = () => {
                 <div
                   className={
                     modalValue.eng === "Mess-(Male)" ||
-                    modalValue.eng === "Mess-(Female)" || 
+                    modalValue.eng === "Mess-(Female)" ||
                     modalValue.eng === "Hostel"
                       ? "block"
                       : "hidden"
@@ -417,11 +435,11 @@ const PostDetails = () => {
                 <div
                   className={
                     modalValue.eng === "Mess-(Male)" ||
-                    modalValue.eng === "Mess-(Female)" || 
-                    modalValue.eng === "Hostel" || 
-                    modalValue.eng === "Office" || 
-                    modalValue.eng === "Shop" || 
-                    modalValue.eng === "Vehicles" || 
+                    modalValue.eng === "Mess-(Female)" ||
+                    modalValue.eng === "Hostel" ||
+                    modalValue.eng === "Office" ||
+                    modalValue.eng === "Shop" ||
+                    modalValue.eng === "Vehicles" ||
                     modalValue.eng === "Garage"
                       ? "hidden"
                       : "block"
@@ -456,88 +474,80 @@ const PostDetails = () => {
                   )}
                 </div>
 
-                <div  className={
-                    modalValue.eng === "Office" || 
-                    modalValue.eng === "Shop" || 
-                    modalValue.eng === "Vehicles" || 
+                <div
+                  className={
+                    modalValue.eng === "Office" ||
+                    modalValue.eng === "Shop" ||
+                    modalValue.eng === "Vehicles" ||
                     modalValue.eng === "Garage"
                       ? "hidden"
                       : "block"
-                  }>
+                  }
+                >
+                  {!lang ? (
+                    <div className="form-control lg:w-6/12 mx-auto mt-8">
+                      <label className="label">
+                        <span className="label-text">Bathrooms</span>
+                      </label>
+                      <Select
+                        placeholder="Bathrooms"
+                        isSearchable
+                        options={optionEng}
+                        onChange={setBathRooms}
+                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                      />
+                    </div>
+                  ) : (
+                    <div className="form-control lg:w-6/12 mx-auto mt-8">
+                      <label className="label">
+                        <span className="label-text">বাথরুম সংখ্যা</span>
+                      </label>
+                      <Select
+                        placeholder="বাথরুম সংখ্যা"
+                        isSearchable
+                        options={optionBan}
+                        onChange={setBathRooms}
+                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                      />
+                    </div>
+                  )}
+                 
+                 
+                </div>
+                <div className={ modalValue?.eng === "Office" ||
+                    modalValue?.eng === "Shop" ||
+                    modalValue?.eng === "Vehicles" ||
+                    modalValue?.eng === "Garage"
+                      ? "hidden"
+                      : "block mt-8"}>
                 {!lang ? (
-                  <div className="form-control lg:w-6/12 mx-auto mt-8">
-                    <label className="label">
-                      <span className="label-text">Bathrooms</span>
-                    </label>
-                    <Select
-                      placeholder="Bathrooms"
-                      isSearchable
-                      options={optionEng}
-                      onChange={setBathRooms}
-                      className="bg-primary border-none text-sm h-4 text-black font-medium"
-                    />
-                  </div>
-                ) : (
-                  <div className="form-control lg:w-6/12 mx-auto mt-8">
-                    <label className="label">
-                      <span className="label-text">বাথরুম সংখ্যা</span>
-                    </label>
-                    <Select
-                      placeholder="বাথরুম সংখ্যা"
-                      isSearchable
-                      options={optionBan}
-                      onChange={setBathRooms}
-                      className="bg-primary border-none text-sm h-4 text-black font-medium"
-                    />
-                  </div>
-                )}
-
-                {!lang ? (
-                  <div className="form-control lg:w-6/12 mx-auto mt-8">
-                    <label className="label">
-                      <span className="label-text">Wifi facility</span>
-                    </label>
-                    <select
-                      {...register("wifiEng")}
-                      className="select w-full bg-primary"
-                    >
-                      <option disabled selected>
-                        Is there wifi facility?
-                      </option>
-                      <option>Yes</option>
-                      <option> No </option>
-                      <option> Up coming</option>
-                    </select>
-                    {errors.wifiEng && (
-                      <span className="text-red-500 pt-4">
-                        This field is required
-                      </span>
-                    )}
-                  </div>
-                ) : (
-                  <div className="form-control lg:w-6/12 mx-auto mt-8">
-                    <label className="label">
-                      <span className="label-text">ওয়াইফাই সুবিধা</span>
-                    </label>
-                    <select
-                      {...register("wifiBan")}
-                      className="select w-full bg-primary"
-                    >
-                      <option disabled selected>
-                        ওয়াইফাই সুবিধা আছে কি ?
-                      </option>
-                      <option>হ্যাঁ</option>
-                      <option> না </option>
-                      <option> সামনে নিয়ে আসব।</option>
-                    </select>
-                    {errors.wifiBan && (
-                      <span className="text-red-500 pt-4">
-                        আপনাকে অবশ্যই এটা পূরণ করতে হবে।
-                      </span>
-                    )}
-                  </div>
-                )}
-
+                    <div className="form-control lg:w-6/12 mx-auto mb-8">
+                      <label className="label">
+                        <span className="label-text">Wifi Facilities</span>
+                      </label>
+                      <Select
+                        placeholder="Wifi Facilities"
+                        isSearchable
+                        options={wifiEng}
+                        onChange={setWifi}
+                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                      />
+                    </div>
+                  ) : (
+                    <div className="form-control lg:w-6/12 mx-auto mb-8">
+                      <label className="label">
+                        <span className="label-text">ওয়াইফাই সুবিধাঃ</span>
+                      </label>
+                      <Select
+                        placeholder="ওয়াইফাই সুবিধাঃ"
+                        isSearchable
+                        options={wifiBan}
+                        onChange={setWifi}
+                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                      />
+                    </div>
+                  )}
+               
                 </div>
                 <div className="lg:w-6/12 mx-auto mt-8">
                   <label className="label">
@@ -621,7 +631,7 @@ const PostDetails = () => {
                     type="text"
                     placeholder={!lang ? "Rent Amount" : "টাকার পরিমান লিখুন"}
                     className="input input-bordered w-full bg-primary"
-                    onChange={(e:any)=>checkAmountValidity(e.target.value)}
+                    onChange={(e: any) => checkAmountValidity(e.target.value)}
                   />
                   {errors.description && (
                     <span className="text-red-500 pt-4">
@@ -630,9 +640,13 @@ const PostDetails = () => {
                         : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
                     </span>
                   )}
-                  {
-                    !lang ? <p className="text-red-400 mt-1">{amountError}</p> : <p className="text-red-400 mt-1 text-sm">{amountErrorBan}</p>
-                  }
+                  {!lang ? (
+                    <p className="text-red-400 mt-1">{amountError}</p>
+                  ) : (
+                    <p className="text-red-400 mt-1 text-sm">
+                      {amountErrorBan}
+                    </p>
+                  )}
                 </div>
                 <div className="flex gap-2 lg:w-1/2 mx-auto mt-10">
                   <input
@@ -1097,11 +1111,13 @@ const PostDetails = () => {
                     {!lang ? <h5>Email</h5> : <h5>ইমেইলঃ </h5>}
                     {!lang ? (
                       <small className="text-blue-400">
-                        You can't change your email. To change please contact the admin.
+                        You can't change your email. To change please contact
+                        the admin.
                       </small>
                     ) : (
                       <small className="text-blue-400">
-                        আপনি ইমেইল পরিবর্তন করতে পারবেন না। পরিবর্তন করতে এডমিনের সাথে যোগাযোগ করুন।
+                        আপনি ইমেইল পরিবর্তন করতে পারবেন না। পরিবর্তন করতে
+                        এডমিনের সাথে যোগাযোগ করুন।
                       </small>
                     )}
                   </div>
@@ -1135,9 +1151,13 @@ const PostDetails = () => {
                         : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
                     </span>
                   )}
-                  {
-                    !lang ? <p className="text-red-400 mt-1">{numberError}</p> : <p className="text-red-400 mt-1 text-sm">{numberErrorBan}</p>
-                  }
+                  {!lang ? (
+                    <p className="text-red-400 mt-1">{numberError}</p>
+                  ) : (
+                    <p className="text-red-400 mt-1 text-sm">
+                      {numberErrorBan}
+                    </p>
+                  )}
                   {/* <button className="btn btn-secondary btn-sm mt-5">
                 <span> Verify otp</span>
               </button> */}

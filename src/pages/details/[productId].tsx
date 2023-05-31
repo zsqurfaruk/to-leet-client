@@ -76,7 +76,7 @@ const ProductDetails = ({ product }: any) => {
           <div className="md:flex justify-between">
             <div>
               <CardBody className="lg:-mt-6">
-                <div className="md:flex md:gap-4">
+                <div className="md:flex md:gap-40">
                   {!lang ? (
                     <Typography
                       variant="h6"
@@ -200,11 +200,7 @@ const ProductDetails = ({ product }: any) => {
                       <h2> ওয়াইফাই সুবিধাঃ {product?.wifiBan}</h2>
                     )}
                   </div>
-                  {!lang ? (
-                    <h2>Detail address: {product?.address}</h2>
-                  ) : (
-                    <h2> বিস্তারিত ঠিকানাঃ {product?.address}</h2>
-                  )}
+                   
                 </Typography>
               </CardBody>
             </div>
@@ -214,7 +210,7 @@ const ProductDetails = ({ product }: any) => {
                   {/* <Typography variant="h6" className="uppercase mb-2 text-secondary">
           {post?.type?.eng}
         </Typography> */}
-                  <Typography  className="text-secondary text-sm font-semibold">
+                  <Typography variant="h6" className="text-secondary">
                     Date: {product?.updatedAt?.slice(0, 10)}
                   </Typography>
                 </div>
@@ -289,15 +285,25 @@ const ProductDetails = ({ product }: any) => {
               </CardBody>
             </div>
           </div>
-          <div className="ml-6 lg:ml-8">
-            <Typography variant="h5" color="blue-gray" className="my-2">
-              {product?.title}
-            </Typography>
-            <h2> {product?.description}</h2>
-            <Typography className="border border-accent py-1 px-2 rounded-md">
-              {!lang ? "Contact number:" : "মোবাইল নাম্বারঃ"} {product?.phone}
-            </Typography>
-          </div>
+          <div >
+               <div className="ml-6 lg:ml-6 -mt-5 mb-5">
+               {!lang ? (
+                  <h2>Detail address: {product?.address}</h2>
+                ) : (
+                  <h2> বিস্তারিত ঠিকানাঃ <br className="lg:hidden"/> {product?.address}</h2>
+                )}
+               </div>
+               <div className="ml-6 lg:ml-7">
+               <Typography variant="h5" color="blue-gray" className="my-2">
+                  {product?.title}
+                </Typography>
+                <h2> {product?.description}</h2>
+                <Typography className="border border-accent py-1 px-2 rounded-md mt-2">
+                  {!lang ? "Contact number:" : "মোবাইল নাম্বারঃ"}{" "}
+                  {product?.phone}
+                </Typography>
+               </div>
+              </div>
         </div>
       </Card>
       }

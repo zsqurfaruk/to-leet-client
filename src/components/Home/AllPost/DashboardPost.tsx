@@ -138,11 +138,6 @@ const DashboardPost = ({ post }: any) => {
                       <h2> ওয়াইফাই সুবিধাঃ {post?.wifiBan}</h2>
                     )}
                   </div>
-                  {!lang ? (
-                    <h2>Detail address: {post?.address}</h2>
-                  ) : (
-                    <h2> বিস্তারিত ঠিকানাঃ {post?.address}</h2>
-                  )}
                 </Typography>
               </CardBody>
             </div>
@@ -223,8 +218,16 @@ const DashboardPost = ({ post }: any) => {
               </CardBody>
             </div>
           </div>
+          <div className="ml-6 lg:ml-6 -mt-6">
+            {!lang ? (
+              <h2>Detail address: {post?.address}</h2>
+            ) : (
+              <h2> বিস্তারিত ঠিকানাঃ {post?.address}</h2>
+            )}
+          </div>
         </div>
       </Card>
+
       <div className="ml-6 lg:ml-6">
         <Typography variant="h5" color="blue-gray" className="my-2">
           {post?.title}
