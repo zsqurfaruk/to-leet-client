@@ -24,7 +24,7 @@ function AllPost({ post }: any) {
             <h2 className="text-xl font-bold"> {post?.title}</h2>
            <div className="flex justify-between">
           {
-            !lang ?  <h2 className="font-semibold"> {post?.type?.eng}</h2>:  <h2 className="font-semibold"> {post?.type?.ban}</h2>
+            !lang ?  <h2 className="font-semibold"> {post?.type?.eng} </h2>:  <h2 className="font-semibold"> {post?.type?.ban} </h2>
           }
           
             <h2>Date: {post?.updatedAt?.slice(0,10)}</h2>
@@ -32,20 +32,20 @@ function AllPost({ post }: any) {
             {post?.division?.eng && (
               <div className="flex justify-between">
                {
-                !lang ?  <h2><span className="font-semibold">District:</span> {post?.districts?.eng}</h2> :  <h2><span className="font-semibold"> জেলা:</span> {post?.districts?.ban}</h2>
+                !lang ?  <h2><span className="font-semibold">District: </span> {post?.districts?.eng} </h2> :  <h2> <span className="font-semibold"> জেলা:</span> {post?.districts?.ban} </h2>
                }
                 {
-                  !lang ? <h2><span className="font-semibold">Division:</span> {post?.division?.eng}</h2>: <h2><span className="font-semibold"> বিভাগ:</span> {post?.division?.ban}</h2>
+                  !lang ? <h2><span className="font-semibold">Division: </span> {post?.division?.eng} </h2>: <h2> <span className="font-semibold"> বিভাগ:</span> {post?.division?.ban} </h2>
                 }
               </div>
             )}
             {post?.cityName?.eng && (
               <div className="flex justify-between">
                {
-                !lang ?  <h2><span className="font-semibold">Area:</span> {post?.areaName?.eng}</h2>:  <h2><span className="font-semibold"> এলাকা:</span> {post?.areaName?.ban}</h2>
+                !lang ?  <h2> <span className="font-semibold">Area:</span> {post?.areaName?.eng}</h2>:  <h2> <span className="font-semibold"> এলাকা:</span> {post?.areaName?.ban}</h2>
                }
                {
-                !lang ?  <h2><span className="font-semibold">City:</span> {post?.cityName?.eng}</h2> :  <h2><span className="font-semibold">শহর:</span> {post?.cityName?.ban}</h2>
+                !lang ?  <h2> <span className="font-semibold">City:</span> {post?.cityName?.eng}</h2> :  <h2> <span className="font-semibold">শহর:</span> {post?.cityName?.ban}</h2>
                }
               </div>
             )}
@@ -63,10 +63,9 @@ function AllPost({ post }: any) {
           }
           {post?.bedNumber && (
                 <div>
-                  {!lang ? (
-                    <h2>Bed Number:{post?.bedNumber?.eng}</h2>
+                  {!lang ? ( <h2>Bed Number:  {post?.bedNumber?.eng} </h2>
                   ) : (
-                    <h2> বেড সংখ্যা:{post?.bedNumber?.ban}</h2>
+                    <h2> বেড সংখ্যা:  {post?.bedNumber?.ban} </h2>
                   )}
                 </div>
               )}
