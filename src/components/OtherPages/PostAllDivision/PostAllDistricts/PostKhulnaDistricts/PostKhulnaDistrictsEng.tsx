@@ -19,7 +19,7 @@ const PostKhulnaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Khulna", ban: "খুলনা" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Khulna</span>
             ) : (
               <span className="-mt-[2px]">খুলনা</span>
@@ -35,7 +35,7 @@ const PostKhulnaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Bagerhat", ban: "বাগেরহাট" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Bagerhat</span>
             ) : (
               <span className="-mt-[2px]">বাগেরহাট</span>
@@ -51,7 +51,7 @@ const PostKhulnaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Chuadanga", ban: "চুয়াডাঙ্গা" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Chuadanga</span>
             ) : (
               <span className="-mt-[2px]">চুয়াডাঙ্গা</span>
@@ -67,7 +67,7 @@ const PostKhulnaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Jessore", ban: "যশোর" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Jessore</span>
             ) : (
               <span className="-mt-[2px]">যশোর</span>
@@ -83,7 +83,7 @@ const PostKhulnaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Jhenaidah", ban: "ঝিনাইদহ" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Jhenaidah</span>
             ) : (
               <span className="-mt-[2px]">ঝিনাইদহ</span>
@@ -100,7 +100,7 @@ const PostKhulnaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Kushtia", ban: "কুষ্টিয়া" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Kushtia</span>
             ) : (
               <span className="-mt-[2px]">কুষ্টিয়া</span>
@@ -116,7 +116,7 @@ const PostKhulnaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Magura", ban: "মাগুরা" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Magura</span>
             ) : (
               <span className="-mt-[2px]">মাগুরা</span>
@@ -132,7 +132,7 @@ const PostKhulnaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Meherpur", ban: "মেহেরপুর" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Meherpur</span>
             ) : (
               <span className="-mt-[2px]">মেহেরপুর</span>
@@ -148,7 +148,7 @@ const PostKhulnaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Narail", ban: "নড়াইল" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Narail</span>
             ) : (
               <span className="-mt-[2px]">নড়াইল</span>
@@ -164,7 +164,7 @@ const PostKhulnaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Satkhira", ban: "সাতক্ষীরা" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Satkhira</span>
             ) : (
               <span className="-mt-[2px]">সাতক্ষীরা</span>

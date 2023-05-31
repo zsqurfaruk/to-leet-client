@@ -12,7 +12,7 @@ const StateInfo = ({ children }: any) => {
   const [divisionNameEng, setDivisionNameEng] = useState({});
   const [districtsName, setDistrictsName] = useState({});
   const [previous, setPrevious] = useState("");
-  const [language, setLanguage] = useState(false);
+  const [language, setLanguage] = useState(true);
   const [districtLocation, setDistrictLocation] = useState("");
   const [openModalEng, setOpenModalEng] = useState(false);
   const [openModalValue, setOpenModalValue] = useState({});

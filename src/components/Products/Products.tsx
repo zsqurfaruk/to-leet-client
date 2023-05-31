@@ -22,7 +22,7 @@ const Products = ({ product, handleDelete }: any) => {
           <div className="card-body h-64">
             <h2 className="text-xl font-bold"> {product?.title}</h2>
             <div className="flex justify-between">
-              {lang ? (
+              {!lang ? (
                 <h2 className="font-semibold"> {product?.type?.eng}</h2>
               ) : (
                 <h2 className="font-semibold"> {product?.type?.ban}</h2>
@@ -31,12 +31,12 @@ const Products = ({ product, handleDelete }: any) => {
             </div>
             {product?.division?.eng && (
               <div className="flex justify-between">
-                {lang ? (
+                {!lang ? (
                   <h2  >Division: {product?.division?.eng}</h2>
                 ) : (
                   <h2  > বিভাগ: {product?.division?.ban}</h2>
                 )}
-                {lang ? (
+                {!lang ? (
                   <h2>District: {product?.districts?.eng}</h2>
                 ) : (
                   <h2>জেলা: {product?.districts?.ban}</h2>
@@ -45,12 +45,12 @@ const Products = ({ product, handleDelete }: any) => {
             )}
             {product?.cityName?.eng && (
               <div className="flex justify-between">
-                {lang ? (
+                {!lang ? (
                   <h2 >City: {product?.cityName?.eng}</h2>
                 ) : (
                   <h2 >শহর: {product?.cityName?.ban}</h2>
                 )}
-                {lang ? (
+                {!lang ? (
                   <h2>Area: {product?.areaName?.eng}</h2>
                 ) : (
                   <h2>এলাকা: {product?.areaName?.ban}</h2>
@@ -64,20 +64,20 @@ const Products = ({ product, handleDelete }: any) => {
             )} */}
             <div className="flex justify-between">
               {
-                product?.bedrooms?.eng && <div>{lang ? (
+                product?.bedrooms?.eng && <div>{!lang ? (
                   <h2>Bedroom: {product?.bedrooms?.eng}</h2>
                 ) : (
                   <h2> বেডরুম সংখ্যা: {product?.bedrooms?.ban}</h2>
                 )}</div>
               }
-              {lang ? (
+              {!lang ? (
                 <h2>Bathroom: {product?.bathrooms?.eng}</h2>
               ) : (
                 <h2> বাথরুম সংখ্যা: {product?.bathrooms?.ban}</h2>
               )}
               {product?.bedNumber && (
                 <div>
-                  {lang ? (
+                  {!lang ? (
                     <h2>Bed Number:{product?.bedNumber?.eng}</h2>
                   ) : (
                     <h2> বেড সংখ্যা:{product?.bedNumber?.ban}</h2>
@@ -89,7 +89,7 @@ const Products = ({ product, handleDelete }: any) => {
               {" "}
               {product?.description.slice(0, 50)}...
               {
-                lang ? <span className="text-blue-500">see more</span> : <span className="text-blue-500 text-xs"> আরও দেখুন</span>
+                !lang ? <span className="text-blue-500">see more</span> : <span className="text-blue-500 text-xs"> আরও দেখুন</span>
               }
             </h2>
           </div>

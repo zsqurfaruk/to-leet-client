@@ -39,7 +39,7 @@ export default function PostModal() {
         }}
       >
         <DialogHeader className="text-xl hidden lg:flex">
-          {lang ? (
+          {!lang ? (
             <span> Select your University or Medical College</span>
           ) : (
             <span className="text-lg">
@@ -50,7 +50,7 @@ export default function PostModal() {
           )}
         </DialogHeader>
         <DialogBody className="-mt-52 md:-mt-72 lg:mt-0 text-xs">
-          {lang ? (
+          {!lang ? (
             <Select
               placeholder="Search according to your needs:"
               isSearchable
@@ -73,13 +73,13 @@ export default function PostModal() {
             className="text-red-500 bg-red-100 font-semibold rounded px-3"
             onClick={handleCancel}
           >
-            {lang ? " Cancel" : "বাতিল"}
+            {!lang ? " Cancel" : "বাতিল"}
           </button>
           <button
             className="text-secondary bg-accent px-2 rounded font-semibold"
             onClick={handleCancel}
           >
-            {lang ? " Confirm" : "নিশ্চিত করুন"}
+            {!lang ? " Confirm" : "নিশ্চিত করুন"}
           </button>
         </div>
         <DialogFooter>
@@ -89,7 +89,7 @@ export default function PostModal() {
             onClick={handleCancel}
             className="mr-1  hidden lg:flex"
           >
-            {lang ? " Cancel" : "বাতিল"}
+            {!lang ? " Cancel" : "বাতিল"}
           </Button>
           <Button
             className={
@@ -100,7 +100,7 @@ export default function PostModal() {
             onClick={handleCancel}
             // disabled={postUniversityModal === true ? false : true}
           >
-            {lang ? " Confirm" : "নিশ্চিত করুন"}
+            {!lang ? " Confirm" : "নিশ্চিত করুন"}
           </Button>
         </DialogFooter>
       </Dialog>

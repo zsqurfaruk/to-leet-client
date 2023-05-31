@@ -101,7 +101,7 @@ const SignIn = () => {
           ></Lottie>
         </div>
         <Card className="w-10/12 mx-auto" color="transparent">
-          {lang ? (
+          {!lang ? (
             <Typography className="px-4 mt-2" variant="h4" color="blue-gray">
               Sign In
             </Typography>
@@ -110,7 +110,7 @@ const SignIn = () => {
               সাইন ইন
             </Typography>
           )}
-          {lang ? (
+          {!lang ? (
             <Typography color="gray" className="mt-1 font-normal px-4">
               Enter your registered email and password to signin.
             </Typography>
@@ -125,12 +125,12 @@ const SignIn = () => {
               className="mb-4 flex flex-col gap-6 relative"
             >
               <Input
-                label={lang ? "Email*" : "ইমেইল*"}
+                label={!lang ? "Email*" : "ইমেইল*"}
                 {...register("email", { required: true })}
               />
               <Input
                 type={passHidden ? "password" : "text"}
-                label={lang ? "Password*" : "পাসওয়ার্ড*"}
+                label={!lang ? "Password*" : "পাসওয়ার্ড*"}
                 {...register("password", { required: true })}
               />{" "}
               <div
@@ -146,13 +146,13 @@ const SignIn = () => {
               {/* <p>abc1Aomar&</p> */}
               {errors.email && errors.password && (
                 <span className="text-red-500 ">
-                  {lang
+                  {!lang
                     ? "All These field is required"
                     : "আপনাকে অবশ্যই ইমেইল এবং পাসওয়ার্ড দিতে হবে।"}{" "}
                 </span>
               )}
               <Link href={"/reset"}>
-                {lang ? (
+                {!lang ? (
                   <h4 className="hover:underline">Forgot password?</h4>
                 ) : (
                   <h4 className="text-sm hover:underline">
@@ -163,13 +163,13 @@ const SignIn = () => {
               </Link>
               <div className="flex gap-2">
                 {" "}
-                {lang ? (
+                {!lang ? (
                   <p className="text-red-400">{signInError}</p>
                 ) : (
                   <p className="text-red-400">{signInErrorBan}</p>
                 )}
               </div>
-              {lang ? (
+              {!lang ? (
                 <button className="w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800">
                   Sign In
                 </button>
@@ -180,7 +180,7 @@ const SignIn = () => {
               )}
             </form>
 
-            {lang ? (
+            {!lang ? (
               <Typography color="gray" className="mt-4 text-center font-normal">
                 Already have an account?{" "}
                 <Link

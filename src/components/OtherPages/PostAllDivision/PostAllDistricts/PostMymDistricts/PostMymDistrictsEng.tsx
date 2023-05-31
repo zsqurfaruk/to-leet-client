@@ -19,7 +19,7 @@ const PostMymDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Mymensingh", ban: "ময়মনসিংহ" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Mymensingh</span>
             ) : (
               <span className="-mt-[2px]">ময়মনসিংহ</span>
@@ -35,7 +35,7 @@ const PostMymDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Jamalpur", ban: "খুলনা" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Jamalpur</span>
             ) : (
               <span className="-mt-[2px]">জামালপুর</span>
@@ -51,7 +51,7 @@ const PostMymDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Netrokona", ban: "নেত্রকোণা" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Netrokona</span>
             ) : (
               <span className="-mt-[2px]">নেত্রকোণা</span>
@@ -67,7 +67,7 @@ const PostMymDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Sherpur", ban: "শেরপুর" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Sherpur</span>
             ) : (
               <span className="-mt-[2px]">শেরপুর</span>

@@ -24,24 +24,24 @@ const PostDestinationType = () => {
         {
           postDistrictsName?.eng ?
           <h1 className="flex justify-evenly text-lg pt-5">
-          {lang ? (
+          {!lang ? (
             <span>Division: {postDivisionNameEng?.eng}</span>
           ) : (
             <span> বিভাগ: {postDivisionNameEng?.ban}</span>
           )}
-          {lang ? (
+          {!lang ? (
             <span>District: {postDistrictsName?.eng} </span>
           ) : (
             <span>জেলা : {postDistrictsName?.ban} </span>
           )}
         </h1> :
           <h1 className="flex justify-evenly text-lg pt-5">
-          {lang ? (
+          {!lang ? (
             <span>City: {postCityNameEng?.eng}</span>
           ) : (
             <span>শহর: {postCityNameEng?.ban}</span>
           )}
-          {lang ? (
+          {!lang ? (
             <span>Area: {getPostPopularAreaName?.eng} </span>
           ) : (
             <span> এলাকা: {getPostPopularAreaName?.ban} </span>
@@ -64,7 +64,7 @@ const PostDestinationType = () => {
           <Card>
             <div>
               <div>
-                {lang ? (
+                {!lang ? (
                   <Typography className="text-center">
                     Bachelor (Male)
                   </Typography>
@@ -92,7 +92,7 @@ const PostDestinationType = () => {
           <Card>
             <div>
               <div>
-                {lang ? (
+                {!lang ? (
                   <Typography className="text-center">
                     Bachelor (Female)
                   </Typography>
@@ -116,7 +116,7 @@ const PostDestinationType = () => {
           <Card>
             <div className="text-center">
               <div>
-                {lang ? (
+                {!lang ? (
                   <Typography className="text-center">Mess (Male)</Typography>
                 ) : (
                   <Typography className="text-center">মেস (ছেলে)</Typography>
@@ -136,7 +136,7 @@ const PostDestinationType = () => {
           <Card>
             <div>
               <div>
-                {lang ? (
+                {!lang ? (
                   <Typography className="text-center">Mess (Female)</Typography>
                 ) : (
                   <Typography className="text-center">মেস (মেয়ে)</Typography>
@@ -156,7 +156,7 @@ const PostDestinationType = () => {
           <Card>
             <div>
               <div>
-                {lang ? (
+                {!lang ? (
                   <Typography className="text-center">Sublet (Male)</Typography>
                 ) : (
                   <Typography className="text-center">সাবলেট (ছেলে)</Typography>
@@ -179,7 +179,7 @@ const PostDestinationType = () => {
           <Card>
             <div>
               <div>
-                {lang ? (
+                {!lang ? (
                   <Typography className="text-center">
                     Sublet (Female)
                   </Typography>
@@ -201,7 +201,7 @@ const PostDestinationType = () => {
           <Card>
             <div>
               <div>
-                {lang ? (
+                {!lang ? (
                   <Typography className="text-center">Family</Typography>
                 ) : (
                   <Typography className="text-center">পরিবার</Typography>
@@ -222,7 +222,7 @@ const PostDestinationType = () => {
           <Card>
             <div>
               <div>
-                {lang ? (
+                {!lang ? (
                   <Typography className="text-center"> Hostel</Typography>
                 ) : (
                   <Typography className="text-center">
@@ -243,7 +243,7 @@ const PostDestinationType = () => {
           <Card>
             <div>
               <div>
-                {lang ? (
+                {!lang ? (
                   <Typography className="text-center">Office</Typography>
                 ) : (
                   <Typography className="text-center">অফিস</Typography>
@@ -261,7 +261,7 @@ const PostDestinationType = () => {
           <Card>
             <div>
               <div>
-                {lang ? (
+                {!lang ? (
                   <Typography className="text-center">Shop</Typography>
                 ) : (
                   <Typography className="text-center">দোকান</Typography>
@@ -281,7 +281,7 @@ const PostDestinationType = () => {
           <Card>
             <div>
               <div>
-                {lang ? (
+                {!lang ? (
                   <Typography className="text-center">Vehicles</Typography>
                 ) : (
                   <Typography className="text-center">যানবাহন</Typography>
@@ -301,7 +301,7 @@ const PostDestinationType = () => {
           <Card>
             <div>
               <div>
-                {lang ? (
+                {!lang ? (
                   <Typography className="text-center">Garage</Typography>
                 ) : (
                   <Typography className="text-center">গ্যারেজ</Typography>

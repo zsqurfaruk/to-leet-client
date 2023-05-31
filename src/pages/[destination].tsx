@@ -56,7 +56,7 @@ const ShowAllPost = ({ products }: any) => {
                 animationData={lotti}
                 loop={true}
               ></Lottie>
-              {lang ? (
+              {!lang ? (
                 <h1 className="text-4xl text-center mb-10">No data found.</h1>
               ) : (
                 <h1 className="text-2xl -ml-5">এখনো কোন পোস্ট করা হয়নি।</h1>

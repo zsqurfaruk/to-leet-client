@@ -76,8 +76,8 @@ const ProductDetails = ({ product }: any) => {
           <div className="md:flex justify-between">
             <div>
               <CardBody className="lg:-mt-6">
-                <div className="md:flex md:gap-40">
-                  {lang ? (
+                <div className="md:flex md:gap-4">
+                  {!lang ? (
                     <Typography
                       variant="h6"
                       className="uppercase text-secondary"
@@ -101,7 +101,7 @@ const ProductDetails = ({ product }: any) => {
                 </div>
                 {product?.university?.eng && (
                   <>
-                    {lang ? (
+                    {!lang ? (
                       <h2>
                         <span className="font-semibold">Beside:</span>{" "}
                         {product?.university?.eng}
@@ -118,7 +118,7 @@ const ProductDetails = ({ product }: any) => {
                   <div className="md:flex md:gap-56">
                     {product?.bedrooms?.eng && (
                       <div>
-                        {lang ? (
+                        {!lang ? (
                           <h2>Bedrooms: {product?.bedrooms?.eng}</h2>
                         ) : (
                           <h2> বেডরুমঃ {product?.bedrooms?.ban}</h2>
@@ -128,7 +128,7 @@ const ProductDetails = ({ product }: any) => {
 
                     {product?.bedNumber?.eng && (
                       <div>
-                        {lang ? (
+                        {!lang ? (
                           <h2>Bed numbers: {product?.bedNumber?.eng}</h2>
                         ) : (
                           <h2> বেড সংখ্যাঃ {product?.bedNumber?.ban}</h2>
@@ -136,7 +136,7 @@ const ProductDetails = ({ product }: any) => {
                       </div>
                     )}
 
-                    {lang ? (
+                    {!lang ? (
                       <h2 className="md:hidden">
                         Bathrooms: {product?.bathrooms?.eng}
                       </h2>
@@ -148,7 +148,7 @@ const ProductDetails = ({ product }: any) => {
                   </div>
 
                   <div className="md:flex md:gap-[135px]">
-                    {lang ? (
+                    {!lang ? (
                       <h2>Rent : {product?.amount} taka (Monthly)</h2>
                     ) : (
                       <h2> ভাড়াঃ {product?.amount} টাকা (মাসিক)</h2>
@@ -156,20 +156,20 @@ const ProductDetails = ({ product }: any) => {
                     {product?.negotiable === true && (
                       <h2 className="md:hidden">
                         {" "}
-                        {lang ? "Negotiable" : "আলোচনা সাপেক্ষে"}{" "}
+                        {!lang ? "Negotiable" : "আলোচনা সাপেক্ষে"}{" "}
                       </h2>
                     )}
                   </div>
 
                   {product?.cityName?.eng && (
                     <div className="md:flex md:gap-[183px]">
-                      {lang ? (
+                      {!lang ? (
                         <h2>Area: {product?.areaName?.eng}</h2>
                       ) : (
                         <h2>এলাকাঃ {product?.areaName?.ban}</h2>
                       )}
                       <h2 className="md:hidden">
-                        {lang ? (
+                        {!lang ? (
                           <span> City: {product?.cityName?.eng}</span>
                         ) : (
                           <span> শহরঃ {product?.cityName?.ban}</span>
@@ -179,13 +179,13 @@ const ProductDetails = ({ product }: any) => {
                   )}
                   {product?.division?.eng && (
                     <div className="md:flex md:gap-40">
-                      {lang ? (
+                      {!lang ? (
                         <h2>District: {product?.districts?.eng}</h2>
                       ) : (
                         <h2> জেলাঃ {product?.districts?.ban}</h2>
                       )}
                       <h2 className="md:hidden">
-                        {lang ? (
+                        {!lang ? (
                           <span> Division: {product?.division?.eng}</span>
                         ) : (
                           <span> বিভাগঃ {product?.division?.ban}</span>
@@ -194,13 +194,13 @@ const ProductDetails = ({ product }: any) => {
                     </div>
                   )}
                   <div className="md:flex md:gap-[135px]">
-                    {lang ? (
+                    {!lang ? (
                       <h2> Wifi facilities: {product?.wifiEng}</h2>
                     ) : (
                       <h2> ওয়াইফাই সুবিধাঃ {product?.wifiBan}</h2>
                     )}
                   </div>
-                  {lang ? (
+                  {!lang ? (
                     <h2>Detail address: {product?.address}</h2>
                   ) : (
                     <h2> বিস্তারিত ঠিকানাঃ {product?.address}</h2>
@@ -214,13 +214,13 @@ const ProductDetails = ({ product }: any) => {
                   {/* <Typography variant="h6" className="uppercase mb-2 text-secondary">
           {post?.type?.eng}
         </Typography> */}
-                  <Typography variant="h6" className="text-secondary">
+                  <Typography  className="text-secondary text-sm font-semibold">
                     Date: {product?.updatedAt?.slice(0, 10)}
                   </Typography>
                 </div>
                 {product?.university?.ban && (
                   <h2 className="invisible">
-                    {lang ? (
+                    {!lang ? (
                       <>
                         {" "}
                         <span className="font-semibold">Beside:</span>
@@ -239,7 +239,7 @@ const ProductDetails = ({ product }: any) => {
                 <Typography color="gray" className="font-normal ">
                   <div className="md:flex md:gap-56">
                     {/* <h2>Bedrooms: {post?.bedrooms}</h2> */}
-                    {lang ? (
+                    {!lang ? (
                       <h2>Bathrooms: {product?.bathrooms?.eng}</h2>
                     ) : (
                       <h2> বাথরুমঃ {product?.bathrooms?.ban}</h2>
@@ -248,7 +248,7 @@ const ProductDetails = ({ product }: any) => {
 
                   <div className="md:flex md:gap-[135px]">
                     {/* <h2>Rent : {post?.amount} taka (Monthly)</h2> */}
-                    {lang ? (
+                    {!lang ? (
                       <h1>
                         {" "}
                         {product?.negotiable === true && <h2> Negotiable</h2>}
@@ -266,7 +266,7 @@ const ProductDetails = ({ product }: any) => {
                   {product?.cityName?.eng && (
                     <div className="md:flex md:gap-[183px]">
                       {/* <h2>Area: {post?.areaName?.eng}</h2> */}
-                      {lang ? (
+                      {!lang ? (
                         <h2>City: {product?.cityName?.eng}</h2>
                       ) : (
                         <h2> শহরঃ {product?.cityName?.ban}</h2>
@@ -276,7 +276,7 @@ const ProductDetails = ({ product }: any) => {
                   {product?.division?.eng && (
                     <div className="md:flex md:gap-40">
                       {/* <h2>District: {post?.districts?.eng}</h2> */}
-                      {lang ? (
+                      {!lang ? (
                         <h2 className="">
                           Division: {product?.division?.eng}
                         </h2>
@@ -295,7 +295,7 @@ const ProductDetails = ({ product }: any) => {
             </Typography>
             <h2> {product?.description}</h2>
             <Typography className="border border-accent py-1 px-2 rounded-md">
-              {lang ? "Contact number:" : "মোবাইল নাম্বারঃ"} {product?.phone}
+              {!lang ? "Contact number:" : "মোবাইল নাম্বারঃ"} {product?.phone}
             </Typography>
           </div>
         </div>

@@ -121,7 +121,7 @@ export default function NavBar() {
                 className="p-1 font-normal"
                 onClick={() => setOpenNav(false)}
               >
-                {lang ? (
+                {!lang ? (
                   <Button className="lg:w-[212px] -ml-10 lg:ml-0 text-primary lg:text-gray-700 -my-2 py-2 lg:text-[16px] bg-transparent border border-accent lg:border-none font-normal lg:font-semibold lg:bg-gradient-to-r from-success via-accent to-success">
                     Post your ads
                   </Button>
@@ -145,7 +145,7 @@ export default function NavBar() {
                 className="p-1 font-normal"
                 onClick={() => setOpenNav(false)}
               >
-                {lang ? (
+                {!lang ? (
                   <Button className="lg:w-[212px] text-primary lg:text-gray-700 -my-2 py-2 lg:text-[16px] bg-transparent border border-accent lg:border-none font-normal lg:font-semibold lg:bg-gradient-to-r from-success via-accent to-success">
                     Post your ads
                   </Button>
@@ -172,7 +172,7 @@ export default function NavBar() {
           >
             <Link href="/signIn">
               <li onClick={() => setOpenNav(false)} className="text-primary hidden lg:flex">
-                {lang ? <span>SignIn</span> : <span>সাইন ইন</span>}
+                {!lang ? <span>SignIn</span> : <span>সাইন ইন</span>}
               </li>
             </Link>
           </Typography>
@@ -187,7 +187,7 @@ export default function NavBar() {
           >
             <Link href="/dashboard">
               <li onClick={() => setOpenNav(false)} className="text-primary">
-                {lang ? (
+                {!lang ? (
                   <span className="border border-accent px-12 -ml-9 lg:px-2 lg:ml-0 pt-[5px] pb-[6px] rounded-lg">
                     {" "}
                     Account
@@ -221,7 +221,7 @@ export default function NavBar() {
               </Typography>
             </Link>
             <div className="mt-3 hidden lg:flex">
-              {lang ? (
+              {!lang ? (
                 <Link
                   href="/ads"
                   className="font-semibold border border-success text-primary  rounded-lg cursor-pointer px-2 py-1"
@@ -238,7 +238,7 @@ export default function NavBar() {
               )}
             </div>
             <div className="mt-2 mb-1 lg:hidden flex">
-              {lang ? (
+              {!lang ? (
                 <Link
                   href="/ads"
                   className="text-primary  rounded-lg cursor-pointer border border-success px-2 py-1 text-sm"
@@ -256,7 +256,7 @@ export default function NavBar() {
             </div>
           </div>
           <div className="hidden md:flex">
-            {lang ? (
+            {!lang ? (
               <span
                 onClick={handleLanguage}
                 className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded-lg cursor-pointer"
@@ -281,7 +281,7 @@ export default function NavBar() {
                 size="sm"
                 className="hidden lg:inline-block text-gray-700 -my-2 bg-gradient-to-r from-success via-accent to-success"
               >
-                {lang ? <span>LogOut</span> : <span>লগআউট</span>}
+                {!lang ? <span>LogOut</span> : <span>লগআউট</span>}
               </Button>
             ) : (
               <Link href={"/signUp"}>
@@ -290,7 +290,7 @@ export default function NavBar() {
                   size="sm"
                   className="hidden lg:inline-block text-gray-700 -my-2 bg-gradient-to-r from-success via-accent to-success"
                 >
-                  {lang ? <span>SignUp</span> : <span>সাইন আপ</span>}
+                  {!lang ? <span>SignUp</span> : <span>সাইন আপ</span>}
                 </Button>
               </Link>
             )}
@@ -344,7 +344,7 @@ export default function NavBar() {
                 size="sm"
               >
                 {" "}
-                {lang ? (
+                {!lang ? (
                   <span className="" onClick={() => setOpenNav(false)}>LogOut</span>
                 ) : (
                   <span onClick={() => setOpenNav(false)}>লগআউট</span>
@@ -352,7 +352,7 @@ export default function NavBar() {
               </Button>
             ) : (
               <Link href={"/signUp"}>
-                {lang ? (
+                {!lang ? (
                   <Button
                     variant="gradient"
                     size="sm"
@@ -378,7 +378,7 @@ export default function NavBar() {
             )}
           </div>
           <div className="flex justify-center rounded-full md:hidden pt-5 mb-5">
-            {lang ? (
+            {!lang ? (
               <span
                 onClick={handleLanguage}
                 className="font-semibold border border-success pt-[2px] pb-[1px] text-primary rounded-lg cursor-pointer shadow-lg shadow-accent px-[53px] -ml-12"

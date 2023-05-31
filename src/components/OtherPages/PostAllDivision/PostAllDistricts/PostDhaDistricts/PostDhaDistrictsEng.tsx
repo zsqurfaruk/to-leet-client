@@ -20,7 +20,7 @@ const PostDhaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Dhaka", ban: "ঢাকা" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Dhaka</span>
             ) : (
               <span>ঢাকা</span>
@@ -37,7 +37,7 @@ const PostDhaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Faridpur", ban: "ফরিদপুর" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Faridpur</span>
             ) : (
               <span>ফরিদপুর</span>
@@ -54,7 +54,7 @@ const PostDhaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Gazipur", ban: "গাজীপুর" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Gazipur</span>
             ) : (
               <span>গাজীপুর</span>
@@ -71,7 +71,7 @@ const PostDhaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Gopalganj", ban: "গোপালগঞ্জ" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Gopalganj</span>
             ) : (
               <span>গোপালগঞ্জ</span>
@@ -88,7 +88,7 @@ const PostDhaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Kishoreganj", ban: "কিশোরগঞ্জ" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Kishoreganj</span>
             ) : (
               <span>কিশোরগঞ্জ</span>
@@ -104,7 +104,7 @@ const PostDhaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Madaripur", ban: "মাদারীপুর" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Madaripur</span>
             ) : (
               <span>মাদারীপুর</span>
@@ -121,7 +121,7 @@ const PostDhaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Manikganj", ban: "মানিকগঞ্জ" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Manikganj</span>
             ) : (
               <span>মানিকগঞ্জ</span>
@@ -139,7 +139,7 @@ const PostDhaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Munshiganj", ban: "মুন্সিগঞ্জ" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Munshiganj</span>
             ) : (
               <span>মুন্সিগঞ্জ</span>
@@ -156,7 +156,7 @@ const PostDhaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Narayanganj", ban: "নারায়ণগঞ্জ" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Narayanganj</span>
             ) : (
               <span>নারায়ণগঞ্জ</span>
@@ -173,7 +173,7 @@ const PostDhaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Narsingdi", ban: "নরসিংদী" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Narsingdi</span>
             ) : (
               <span>নরসিংদী</span>
@@ -191,7 +191,7 @@ const PostDhaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Rajbari", ban: "রাজবাড়ী" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Rajbari</span>
             ) : (
               <span>রাজবাড়ী</span>
@@ -208,7 +208,7 @@ const PostDhaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Shariatpur", ban: "শরীয়তপুর" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Shariatpur</span>
             ) : (
               <span>শরীয়তপুর</span>
@@ -226,7 +226,7 @@ const PostDhaDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Tangail", ban: "টাঙ্গাইল" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Tangail</span>
             ) : (
               <span>টাঙ্গাইল</span>

@@ -17,7 +17,7 @@ const PostAllCityEng = () => {
               onClick={() => setPostCityNameEng({ eng: "Dhaka", ban: "ঢাকা" })}
               // name="Dhaka"
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Dhaka City</span>
             ) : (
               <span className="-mt-[2px]"> ঢাকা শহর</span>
@@ -34,7 +34,7 @@ const PostAllCityEng = () => {
               }
               // name="Chittagong"
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Chittagong City</span>
             ) : (
               <span className="-mt-[2px]"> চট্টগ্রাম শহর</span>
@@ -51,7 +51,7 @@ const PostAllCityEng = () => {
               }
               // name="Rajshahi"
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Rajshahi City</span>
             ) : (
               <span className="-mt-[2px]"> রাজশাহী শহর</span>
@@ -68,7 +68,7 @@ const PostAllCityEng = () => {
               }
               // name="Sylhet"
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Sylhet City</span>
             ) : (
               <span className="-mt-[2px]"> সিলেট শহর</span>
@@ -85,7 +85,7 @@ const PostAllCityEng = () => {
               }
               // name="Barisal"
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Barisal City</span>
             ) : (
               <span className="-mt-[2px]"> বরিশাল শহর</span>
@@ -102,7 +102,7 @@ const PostAllCityEng = () => {
               }
             
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Khulna City</span>
             ) : (
               <span className="-mt-[2px]"> খুলনা শহর</span>
@@ -119,7 +119,7 @@ const PostAllCityEng = () => {
               }
              
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Rangpur City</span>
             ) : (
               <span className="-mt-[2px]"> রংপুর শহর</span>
@@ -136,7 +136,7 @@ const PostAllCityEng = () => {
               }
              
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Mymensingh City</span>
             ) : (
               <span className="-mt-[2px]"> ময়মনসিংহ শহর</span>

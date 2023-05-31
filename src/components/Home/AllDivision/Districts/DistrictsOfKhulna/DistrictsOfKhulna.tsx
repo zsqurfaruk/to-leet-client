@@ -23,7 +23,7 @@ const DistrictsOfKhulna = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Khulna", ban: "খুলনা" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Khulna</span>
             ) : (
               <span className="-mt-[2px]">খুলনা</span>
@@ -39,7 +39,7 @@ const DistrictsOfKhulna = () => {
                 handleFilter({ eng: "Bagerhat", ban: "বাগেরহাট" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Bagerhat</span>
             ) : (
               <span className="-mt-[2px]">বাগেরহাট</span>
@@ -55,7 +55,7 @@ const DistrictsOfKhulna = () => {
                 handleFilter({ eng: "Chuadanga", ban: "চুয়াডাঙ্গা" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Chuadanga</span>
             ) : (
               <span className="-mt-[2px]">চুয়াডাঙ্গা</span>
@@ -69,7 +69,7 @@ const DistrictsOfKhulna = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Jessore", ban: "যশোর" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Jessore</span>
             ) : (
               <span className="-mt-[2px]">যশোর</span>
@@ -85,7 +85,7 @@ const DistrictsOfKhulna = () => {
                 handleFilter({ eng: "Jhenaidah", ban: "ঝিনাইদহ" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Jhenaidah</span>
             ) : (
               <span className="-mt-[2px]">ঝিনাইদহ</span>
@@ -102,7 +102,7 @@ const DistrictsOfKhulna = () => {
                 handleFilter({ eng: "Kushtia", ban: "কুষ্টিয়া" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Kushtia</span>
             ) : (
               <span className="-mt-[2px]">কুষ্টিয়া</span>
@@ -116,7 +116,7 @@ const DistrictsOfKhulna = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Magura", ban: "মাগুরা" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Magura</span>
             ) : (
               <span className="-mt-[2px]">মাগুরা</span>
@@ -132,7 +132,7 @@ const DistrictsOfKhulna = () => {
                 handleFilter({ eng: "Meherpur", ban: "মেহেরপুর" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Meherpur</span>
             ) : (
               <span className="-mt-[2px]">মেহেরপুর</span>
@@ -146,7 +146,7 @@ const DistrictsOfKhulna = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Narail", ban: "নড়াইল" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Narail</span>
             ) : (
               <span className="-mt-[2px]">নড়াইল</span>
@@ -162,7 +162,7 @@ const DistrictsOfKhulna = () => {
                 handleFilter({ eng: "Satkhira", ban: "সাতক্ষীরা" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Satkhira</span>
             ) : (
               <span className="-mt-[2px]">সাতক্ষীরা</span>

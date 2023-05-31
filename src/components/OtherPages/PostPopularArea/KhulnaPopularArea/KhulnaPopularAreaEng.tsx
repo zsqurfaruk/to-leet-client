@@ -51,7 +51,7 @@ const KhulnaPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Khulna Sadar</span>
               ) : (
                 <span className="-mt-[2px]">খুলনা সদর</span>
@@ -70,7 +70,7 @@ const KhulnaPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Daulatpur</span>
               ) : (
                 <span className="-mt-[2px]"> দৌলতপুর</span>
@@ -89,7 +89,7 @@ const KhulnaPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Khalishpur</span>
               ) : (
                 <span className="-mt-[2px]"> খালিশপুর</span>
@@ -108,7 +108,7 @@ const KhulnaPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Sonadanga</span>
               ) : (
                 <span className="-mt-[2px]"> সোনাডাংগা</span>
@@ -127,7 +127,7 @@ const KhulnaPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Boyra Bazar</span>
               ) : (
                 <span className="-mt-[2px]"> বয়রা বাজার</span>
@@ -146,7 +146,7 @@ const KhulnaPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Zero Point</span>
               ) : (
                 <span className="-mt-[2px]">  
@@ -166,7 +166,7 @@ const KhulnaPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Dumuria</span>
               ) : (
                 <span className="-mt-[2px]"> ডুমুরিয়া</span>
@@ -192,7 +192,7 @@ const KhulnaPopularAreaEng = () => {
                 }
                 name="Select-others"
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Select others</span>
               ) : (
                 <span className="-mt-[2px]"> অন্যান্য এলাকা</span>
@@ -200,7 +200,7 @@ const KhulnaPopularAreaEng = () => {
             </label>
           </li>
 
-          {lang ? (
+          {!lang ? (
             <div>
               {getPostPopularAreaName?.eng === "Select others" && (
                 <li>

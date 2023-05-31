@@ -26,7 +26,7 @@ const ShowUniversityPost = ({ university }: any) => {
             <div className="card-body h-60">
               <h2 className="text-xl font-bold"> {university?.title}</h2>
               <div className="flex justify-between">
-                {lang ? (
+                {!lang ? (
                   <h2 className="font-semibold"> {university?.type?.eng}</h2>
                 ) : (
                   <h2 className="font-semibold"> {university?.type?.ban}</h2>
@@ -35,7 +35,7 @@ const ShowUniversityPost = ({ university }: any) => {
               </div>
               {university?.division?.eng && (
                 <div className="flex justify-between">
-                  {lang ? (
+                  {!lang ? (
                     <h2>
                       <span className="font-semibold">District:</span>{" "}
                       {university?.districts?.eng}
@@ -46,7 +46,7 @@ const ShowUniversityPost = ({ university }: any) => {
                       {university?.districts?.ban}
                     </h2>
                   )}
-                  {lang ? (
+                  {!lang ? (
                     <h2>
                       <span className="font-semibold">Division:</span>{" "}
                       {university?.division?.eng}
@@ -61,7 +61,7 @@ const ShowUniversityPost = ({ university }: any) => {
               )}
               {university?.cityName?.eng && (
                 <div className="flex justify-between">
-                  {lang ? (
+                  {!lang ? (
                     <h2>
                       <span className="font-semibold">Area:</span>{" "}
                       {university?.areaName?.eng}
@@ -72,7 +72,7 @@ const ShowUniversityPost = ({ university }: any) => {
                       {university?.areaName?.ban}
                     </h2>
                   )}
-                  {lang ? (
+                  {!lang ? (
                     <h2>
                       <span className="font-semibold">City:</span>{" "}
                       {university?.cityName?.eng}
@@ -93,7 +93,7 @@ const ShowUniversityPost = ({ university }: any) => {
 
               <div className="flex justify-between">
                 {
-                  university?.bedrooms?.eng && <div>{lang ? (
+                  university?.bedrooms?.eng && <div>{!lang ? (
                     <h2>Bedrooms: {university?.bedrooms?.eng}</h2>
                   ) : (
                     <h2>বেডরুম সংখ্যা : {university?.bedrooms?.ban}</h2>
@@ -101,14 +101,14 @@ const ShowUniversityPost = ({ university }: any) => {
                 }
                 {university?.bedNumber && (
                 <div>
-                  {lang ? (
+                  {!lang ? (
                     <h2>Bed Number:{university?.bedNumber?.eng}</h2>
                   ) : (
                     <h2> বেড সংখ্যা:{university?.bedNumber?.ban}</h2>
                   )}
                 </div>
               )}
-                {lang ? (
+                {!lang ? (
                   <h2>Bathrooms: {university?.bathrooms?.eng}</h2>
                 ) : (
                   <h2> বাথরুম সংখ্যা: {university?.bathrooms?.ban}</h2>
@@ -118,7 +118,7 @@ const ShowUniversityPost = ({ university }: any) => {
               <h2>
                 {" "}
                 {university?.description?.slice(0, 50)}...
-                {lang ? (
+                {!lang ? (
                   <span className="text-blue-500">see more</span>
                 ) : (
                   <span className="text-blue-500 text-xs">আরও দেখুন </span>

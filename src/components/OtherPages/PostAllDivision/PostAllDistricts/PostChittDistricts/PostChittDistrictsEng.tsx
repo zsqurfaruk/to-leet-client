@@ -20,7 +20,7 @@ const PostChittDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Chittagong", ban: "চট্টগ্রাম" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Chittagong</span>
             ) : (
               <span className="-mt-[2px]">চট্টগ্রাম</span>
@@ -40,7 +40,7 @@ const PostChittDistrictsEng = () => {
                 })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Brahmanbaria</span>
             ) : (
               <span className="-mt-[2px]">ব্রাহ্মণবাড়িয়া</span>
@@ -57,7 +57,7 @@ const PostChittDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Comilla", ban: "কুমিল্লা" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Comilla</span>
             ) : (
               <span className="-mt-[2px]">কুমিল্লা</span>
@@ -74,7 +74,7 @@ const PostChittDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Chandpur", ban: "চাঁদপুর" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Chandpur</span>
             ) : (
               <span className="-mt-[2px]">চাঁদপুর</span>
@@ -91,7 +91,7 @@ const PostChittDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Cox's Bazar", ban: "কক্সবাজার" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Cox's Bazar</span>
             ) : (
               <span className="-mt-[2px]"> কক্সবাজার</span>
@@ -106,7 +106,7 @@ const PostChittDistrictsEng = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => setPostDistrictsName({ eng: "Feni", ban: "ফেনী" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Feni</span>
             ) : (
               <span className="-mt-[2px]">ফেনী</span>
@@ -123,7 +123,7 @@ const PostChittDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Khagrachhari", ban: "খাগড়াছড়ি" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Khagrachhari</span>
             ) : (
               <span className="-mt-[2px]">খাগড়াছড়ি</span>
@@ -140,7 +140,7 @@ const PostChittDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Lakshmipur", ban: "লক্ষ্মীপুর" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Lakshmipur</span>
             ) : (
               <span className="-mt-[2px]">লক্ষ্মীপুর</span>
@@ -157,7 +157,7 @@ const PostChittDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Noakhali", ban: "নোয়াখালী" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Noakhali</span>
             ) : (
               <span className="-mt-[2px]">নোয়াখালী</span>
@@ -173,7 +173,7 @@ const PostChittDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Rangamati", ban: "রাঙ্গামাটি" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Rangamati</span>
             ) : (
               <span className="-mt-[2px]">রাঙ্গামাটি</span>
@@ -189,7 +189,7 @@ const PostChittDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Bandarban", ban: "বান্দরবান" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Bandarban</span>
             ) : (
               <span className="-mt-[2px]">বান্দরবান</span>

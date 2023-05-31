@@ -41,12 +41,12 @@ const FilterDestinationType = () => {
       <div>
         {districtsName?.eng ? (
           <h1 className="flex justify-evenly text-lg pt-5">
-            {lang ? (
+            {!lang ? (
               <span>Division: {divisionNameEng?.eng}</span>
             ) : (
               <span> বিভাগ: {divisionNameEng?.ban}</span>
             )}
-            {lang ? (
+            {!lang ? (
               <span>District: {districtsName?.eng} </span>
             ) : (
               <span>জেলা : {districtsName?.ban} </span>
@@ -54,12 +54,12 @@ const FilterDestinationType = () => {
           </h1>
         ) : (
           <h1 className="flex justify-evenly text-lg pt-5">
-            {lang ? (
+            {!lang ? (
               <span>City: {cityName?.eng}</span>
             ) : (
               <span>শহর: {cityName?.ban}</span>
             )}
-            {lang ? (
+            {!lang ? (
               <span>Area: {homePopularAreaName?.eng} </span>
             ) : (
               <span> এলাকা: {homePopularAreaName?.ban} </span>
@@ -77,7 +77,7 @@ const FilterDestinationType = () => {
             })
           }
         >
-          {lang ? (
+          {!lang ? (
             <Typography className="text-center">Bachelor (Male)</Typography>
           ) : (
             <Typography className="text-center">ব্যাচেলর (ছেলে)</Typography>
@@ -93,7 +93,7 @@ const FilterDestinationType = () => {
             })
           }
         >
-          {lang ? (
+          {!lang ? (
             <Typography className="text-center">Bachelor (Female)</Typography>
           ) : (
             <Typography className="text-center">ব্যাচেলর (মেয়ে)</Typography>
@@ -105,7 +105,7 @@ const FilterDestinationType = () => {
             handleFilter({ eng: "Mess-(Male)", ban: "মেস-(ছেলে)" })
           }
         >
-          {lang ? (
+          {!lang ? (
             <Typography className="text-center">Mess (Male)</Typography>
           ) : (
             <Typography className="text-center">মেস (ছেলে)</Typography>
@@ -118,7 +118,7 @@ const FilterDestinationType = () => {
             handleFilter({ eng: "Mess-(Female)", ban: "মেস-(মেয়ে)" })
           }
         >
-          {lang ? (
+          {!lang ? (
             <Typography className="text-center">Mess (Female)</Typography>
           ) : (
             <Typography className="text-center">মেস (মেয়ে)</Typography>
@@ -130,7 +130,7 @@ const FilterDestinationType = () => {
             handleFilter({ eng: "Sublet-(Male)", ban: "সাবলেট-(ছেলে)" })
           }
         >
-          {lang ? (
+          {!lang ? (
             <Typography className="text-center">Sublet (Male)</Typography>
           ) : (
             <Typography className="text-center">সাবলেট (ছেলে)</Typography>
@@ -146,7 +146,7 @@ const FilterDestinationType = () => {
             })
           }
         >
-          {lang ? (
+          {!lang ? (
             <Typography className="text-center">Sublet (Female)</Typography>
           ) : (
             <Typography className="text-center">সাবলেট (মেয়ে)</Typography>
@@ -157,7 +157,7 @@ const FilterDestinationType = () => {
           className="border border-accent cursor-pointer"
           onClick={() => handleFilter({ eng: "Family", ban: "পরিবার" })}
         >
-          {lang ? (
+          {!lang ? (
             <Typography className="text-center">Family</Typography>
           ) : (
             <Typography className="text-center">পরিবার</Typography>
@@ -170,7 +170,7 @@ const FilterDestinationType = () => {
           className="border border-accent cursor-pointer"
           onClick={() => handleFilter({ eng: "Hostel", ban: "আবাসিক-হোস্টেল" })}
         >
-          {lang ? (
+          {!lang ? (
             <Typography className="text-center"> Hostel</Typography>
           ) : (
             <Typography className="text-center"> আবাসিক হোস্টেল</Typography>
@@ -181,7 +181,7 @@ const FilterDestinationType = () => {
           className="border border-accent cursor-pointer"
           onClick={() => handleFilter({ eng: "Office", ban: "অফিস" })}
         >
-          {lang ? (
+          {!lang ? (
             <Typography className="text-center">Office</Typography>
           ) : (
             <Typography className="text-center">অফিস</Typography>
@@ -192,7 +192,7 @@ const FilterDestinationType = () => {
           className="border border-accent cursor-pointer"
           onClick={() => handleFilter({ eng: "Shop", ban: "দোকান" })}
         >
-          {lang ? (
+          {!lang ? (
             <Typography className="text-center">Shop</Typography>
           ) : (
             <Typography className="text-center">দোকান</Typography>
@@ -203,7 +203,7 @@ const FilterDestinationType = () => {
           className="border border-accent cursor-pointer"
           onClick={() => handleFilter({ eng: "Vehicles", ban: "যানবাহন" })}
         >
-          {lang ? (
+          {!lang ? (
             <Typography className="text-center">Vehicles</Typography>
           ) : (
             <Typography className="text-center">যানবাহন</Typography>
@@ -214,7 +214,7 @@ const FilterDestinationType = () => {
           className="border border-accent cursor-pointer"
           onClick={() => handleFilter({ eng: "Garage", ban: "গ্যারেজ" })}
         >
-          {lang ? (
+          {!lang ? (
             <Typography className="text-center">Garage</Typography>
           ) : (
             <Typography className="text-center">গ্যারেজ</Typography>

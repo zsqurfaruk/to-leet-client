@@ -14,10 +14,10 @@ const AllCity = () => {
         onClick={handlePrevious}
         className="text-secondary text-sm mb-5 cursor-pointer hover:underline"
       >
-        {lang ? "Previous?" : "পূর্ববর্তী?"}
+        {!lang ? "Previous?" : "পূর্ববর্তী?"}
        
       </h1> */}
-      {lang ? (
+      {!lang ? (
         <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
           Select your city.
         </h1>

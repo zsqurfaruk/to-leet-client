@@ -19,7 +19,7 @@ const PostRangDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Rangpur", ban: "রংপুর" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Rangpur</span>
             ) : (
               <span className="-mt-[2px]">রংপুর</span>
@@ -35,7 +35,7 @@ const PostRangDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Panchagarh", ban: "পঞ্চগড়" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Panchagarh</span>
             ) : (
               <span className="-mt-[2px]">পঞ্চগড়</span>
@@ -51,7 +51,7 @@ const PostRangDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Thakurgaon", ban: "ঠাকুরগাঁও" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Thakurgaon</span>
             ) : (
               <span className="-mt-[2px]">ঠাকুরগাঁও</span>
@@ -67,7 +67,7 @@ const PostRangDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Dinajpur", ban: "দিনাজপুর" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Dinajpur</span>
             ) : (
               <span className="-mt-[2px]">দিনাজপুর</span>
@@ -84,7 +84,7 @@ const PostRangDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Kurigram", ban: "কুড়িগ্রাম" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Kurigram</span>
             ) : (
               <span className="-mt-[2px]">কুড়িগ্রাম</span>
@@ -100,7 +100,7 @@ const PostRangDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Nilphamari", ban: "নীলফামারী" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Nilphamari</span>
             ) : (
               <span className="-mt-[2px]">নীলফামারী</span>
@@ -116,7 +116,7 @@ const PostRangDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Lalmonirhat", ban: "লালমনিরহাট" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Lalmonirhat</span>
             ) : (
               <span className="-mt-[2px]">লালমনিরহাট</span>
@@ -132,7 +132,7 @@ const PostRangDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Gaibandha", ban: "গাইবান্ধা" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Gaibandha</span>
             ) : (
               <span className="-mt-[2px]">গাইবান্ধা</span>

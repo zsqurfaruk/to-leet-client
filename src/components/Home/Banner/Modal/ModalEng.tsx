@@ -60,7 +60,7 @@ export default function ModalEng() {
           unmount: { scale: 1, y: -100 },
         }}
       >
-        {lang ? (
+        {!lang ? (
           <DialogHeader className="text-xl hidden lg:flex">
             Select your University or Medical College
           </DialogHeader>
@@ -69,7 +69,7 @@ export default function ModalEng() {
             আপনার প্রয়োজন অনুযায়ী বিশ্ববিদ্যালয় এবং মেডিকেল কলেজ নির্বাচন করুন:
           </DialogHeader>
         )}
-        {lang ? (
+        {!lang ? (
           <DialogBody className="-mt-10 md:-mt-44 lg:mt-0 text-xs">
             <Select
               placeholder="Search according to your needs:"

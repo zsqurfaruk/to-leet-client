@@ -19,7 +19,7 @@ const PostSylDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Sylhet", ban: "সিলেট" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Sylhet</span>
             ) : (
               <span className="-mt-[2px]">সিলেট</span>
@@ -35,7 +35,7 @@ const PostSylDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Moulvibazar", ban: "মৌলভীবাজার" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Moulvibazar</span>
             ) : (
               <span className="-mt-[2px]">মৌলভীবাজার</span>
@@ -51,7 +51,7 @@ const PostSylDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Habiganj", ban: "হবিগঞ্জ" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Habiganj</span>
             ) : (
               <span className="-mt-[2px]">হবিগঞ্জ</span>
@@ -67,7 +67,7 @@ const PostSylDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Sunamganj", ban: "সুনামগঞ্জ" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Sunamganj</span>
             ) : (
               <span className="-mt-[2px]">সুনামগঞ্জ</span>

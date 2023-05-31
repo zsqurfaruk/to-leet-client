@@ -12,7 +12,7 @@ const DestinationType = () => {
   const lang = localStorage.getItem("lan");
   return (
     <section className="mb-20 mt-10 lg:-mt-10">
-      {lang ? (
+      {!lang ? (
         <h1
           id={
             filterTypeCity || filterTypeDivision
@@ -36,7 +36,7 @@ const DestinationType = () => {
         </h1>
       )}
 
-      {lang ? <DesEng></DesEng> : <DesBan></DesBan>}
+      {!lang ? <DesEng></DesEng> : <DesBan></DesBan>}
     </section>
   );
 };

@@ -21,7 +21,7 @@ const PostRajDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Rajshahi", ban: "রাজশাহী" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Rajshahi</span>
             ) : (
               <span className="-mt-[2px]">রাজশাহী</span>
@@ -37,7 +37,7 @@ const PostRajDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Sirajganj", ban: "সিরাজগঞ্জ" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Sirajganj</span>
             ) : (
               <span className="-mt-[2px]">সিরাজগঞ্জ</span>
@@ -53,7 +53,7 @@ const PostRajDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Pabna", ban: "পাবনা" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Pabna</span>
             ) : (
               <span className="-mt-[2px]">পাবনা</span>
@@ -69,7 +69,7 @@ const PostRajDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Bogra", ban: "বগুড়া" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Bogra</span>
             ) : (
               <span className="-mt-[2px]">বগুড়া</span>
@@ -85,7 +85,7 @@ const PostRajDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Joypurhat", ban: "জয়পুরহাট" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Joypurhat</span>
             ) : (
               <span className="-mt-[2px]">জয়পুরহাট</span>
@@ -101,7 +101,7 @@ const PostRajDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Naogaon", ban: "নওগাঁ" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Naogaon</span>
             ) : (
               <span className="-mt-[2px]">নওগাঁ</span>
@@ -117,7 +117,7 @@ const PostRajDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Natore", ban: "নাটোর" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Natore</span>
             ) : (
               <span className="-mt-[2px]">নাটোর</span>
@@ -136,7 +136,7 @@ const PostRajDistrictsEng = () => {
                 })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Chapainawabganj</span>
             ) : (
               <span className="-mt-[2px]">চাঁপাইনবাবগঞ্জ</span>

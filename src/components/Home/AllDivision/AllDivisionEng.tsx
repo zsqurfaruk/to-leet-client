@@ -21,7 +21,7 @@ const AllDivisionName = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Dhaka", ban: "ঢাকা" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Dhaka Division</span>
             ) : (
               <span className="-mt-[2px]"> ঢাকা বিভাগ</span>
@@ -37,7 +37,7 @@ const AllDivisionName = () => {
                 handleFilter({ eng: "Chittagong", ban: "চট্টগ্রাম" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px] ml-1">Chittagong Division</span>
             ) : (
               <span className="-mt-[2px] text-base ml-2"> চট্টগ্রাম বিভাগ</span>
@@ -51,7 +51,7 @@ const AllDivisionName = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Rajshahi", ban: "রাজশাহী" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Rajshahi Division</span>
             ) : (
               <span className="-mt-[2px]">রাজশাহী বিভাগ</span>
@@ -65,7 +65,7 @@ const AllDivisionName = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Sylhet", ban: "সিলেট" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Sylhet Division</span>
             ) : (
               <span className="-mt-[2px]"> সিলেট বিভাগ</span>
@@ -79,7 +79,7 @@ const AllDivisionName = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Barisal", ban: "বরিশাল" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Barisal Division</span>
             ) : (
               <span className="-mt-[2px]">বরিশাল বিভাগ</span>
@@ -93,7 +93,7 @@ const AllDivisionName = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Khulna", ban: "খুলনা" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Khulna Division</span>
             ) : (
               <span className="-mt-[2px]"> খুলনা বিভাগ</span>
@@ -107,7 +107,7 @@ const AllDivisionName = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Rangpur", ban: "রংপুর" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Rangpur Division</span>
             ) : (
               <span className="-mt-[2px]"> রংপুর বিভাগ</span>
@@ -123,7 +123,7 @@ const AllDivisionName = () => {
                 handleFilter({ eng: "Mymensingh", ban: "ময়মনসিংহ" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Mymensingh D:</span>
             ) : (
               <span className="-mt-[2px]"> ময়মনসিংহ বিভাগ</span>

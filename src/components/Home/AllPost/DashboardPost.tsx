@@ -18,7 +18,7 @@ const DashboardPost = ({ post }: any) => {
             <div>
               <CardBody className="lg:-mt-6">
                 <div className="md:flex md:gap-56">
-                  {lang ? (
+                  {!lang ? (
                     <Typography
                       variant="h6"
                       className="uppercase text-secondary"
@@ -39,7 +39,7 @@ const DashboardPost = ({ post }: any) => {
                 </div>
                 {post?.university?.eng && (
                   <>
-                    {lang ? (
+                    {!lang ? (
                       <h2>
                         <span className="font-semibold">Beside:</span>{" "}
                         {post?.university?.eng}
@@ -56,7 +56,7 @@ const DashboardPost = ({ post }: any) => {
                   <div className="md:flex md:gap-56">
                     {post?.bedrooms?.eng && (
                       <div>
-                        {lang ? (
+                        {!lang ? (
                           <h2>Bedrooms: {post?.bedrooms?.eng}</h2>
                         ) : (
                           <h2> বেডরুমঃ {post?.bedrooms?.ban}</h2>
@@ -66,7 +66,7 @@ const DashboardPost = ({ post }: any) => {
 
                     {post?.bedNumber?.eng && (
                       <div>
-                        {lang ? (
+                        {!lang ? (
                           <h2>Bed numbers: {post?.bedNumber?.eng}</h2>
                         ) : (
                           <h2> বেড সংখ্যাঃ {post?.bedNumber?.ban}</h2>
@@ -74,7 +74,7 @@ const DashboardPost = ({ post }: any) => {
                       </div>
                     )}
 
-                    {lang ? (
+                    {!lang ? (
                       <h2 className="md:hidden">
                         Bathrooms: {post?.bathrooms?.eng}
                       </h2>
@@ -86,7 +86,7 @@ const DashboardPost = ({ post }: any) => {
                   </div>
 
                   <div className="md:flex md:gap-[135px]">
-                    {lang ? (
+                    {!lang ? (
                       <h2>Rent : {post?.amount} taka (Monthly)</h2>
                     ) : (
                       <h2> ভাড়াঃ {post?.amount} টাকা (মাসিক)</h2>
@@ -94,20 +94,20 @@ const DashboardPost = ({ post }: any) => {
                     {post?.negotiable === true && (
                       <h2 className="md:hidden">
                         {" "}
-                        {lang ? "Negotiable" : "আলোচনা সাপেক্ষে"}{" "}
+                        {!lang ? "Negotiable" : "আলোচনা সাপেক্ষে"}{" "}
                       </h2>
                     )}
                   </div>
 
                   {post?.cityName?.eng && (
                     <div className="md:flex md:gap-[183px]">
-                      {lang ? (
+                      {!lang ? (
                         <h2>Area: {post?.areaName?.eng}</h2>
                       ) : (
                         <h2>এলাকাঃ {post?.areaName?.ban}</h2>
                       )}
                       <h2 className="md:hidden">
-                        {lang ? (
+                        {!lang ? (
                           <span> City: {post?.cityName?.eng}</span>
                         ) : (
                           <span> শহরঃ {post?.cityName?.ban}</span>
@@ -117,13 +117,13 @@ const DashboardPost = ({ post }: any) => {
                   )}
                   {post?.division?.eng && (
                     <div className="md:flex md:gap-40">
-                      {lang ? (
+                      {!lang ? (
                         <h2>District: {post?.districts?.eng}</h2>
                       ) : (
                         <h2> জেলাঃ {post?.districts?.ban}</h2>
                       )}
                       <h2 className="md:hidden">
-                        {lang ? (
+                        {!lang ? (
                           <span> Division: {post?.division?.eng}</span>
                         ) : (
                           <span> বিভাগঃ {post?.division?.ban}</span>
@@ -132,13 +132,13 @@ const DashboardPost = ({ post }: any) => {
                     </div>
                   )}
                   <div className="md:flex md:gap-[135px]">
-                    {lang ? (
+                    {!lang ? (
                       <h2> Wifi facilities: {post?.wifiEng}</h2>
                     ) : (
                       <h2> ওয়াইফাই সুবিধাঃ {post?.wifiBan}</h2>
                     )}
                   </div>
-                  {lang ? (
+                  {!lang ? (
                     <h2>Detail address: {post?.address}</h2>
                   ) : (
                     <h2> বিস্তারিত ঠিকানাঃ {post?.address}</h2>
@@ -158,7 +158,7 @@ const DashboardPost = ({ post }: any) => {
                 </div>
                 {post?.university?.ban && (
                   <h2 className="invisible">
-                    {lang ? (
+                    {!lang ? (
                       <>
                         {" "}
                         <span className="font-semibold">Beside:</span>
@@ -177,7 +177,7 @@ const DashboardPost = ({ post }: any) => {
                 <Typography color="gray" className="font-normal ">
                   <div className="md:flex md:gap-56">
                     {/* <h2>Bedrooms: {post?.bedrooms}</h2> */}
-                    {lang ? (
+                    {!lang ? (
                       <h2>Bathrooms: {post?.bathrooms?.eng}</h2>
                     ) : (
                       <h2> বাথরুমঃ {post?.bathrooms?.ban}</h2>
@@ -186,7 +186,7 @@ const DashboardPost = ({ post }: any) => {
 
                   <div className="md:flex md:gap-[135px]">
                     {/* <h2>Rent : {post?.amount} taka (Monthly)</h2> */}
-                    {lang ? (
+                    {!lang ? (
                       <h1>
                         {" "}
                         {post?.negotiable === true && <h2> Negotiable</h2>}
@@ -202,7 +202,7 @@ const DashboardPost = ({ post }: any) => {
                   {post?.cityName?.eng && (
                     <div className="md:flex md:gap-[183px]">
                       {/* <h2>Area: {post?.areaName?.eng}</h2> */}
-                      {lang ? (
+                      {!lang ? (
                         <h2>City: {post?.cityName?.eng}</h2>
                       ) : (
                         <h2> শহরঃ {post?.cityName?.ban}</h2>
@@ -212,7 +212,7 @@ const DashboardPost = ({ post }: any) => {
                   {post?.division?.eng && (
                     <div className="md:flex md:gap-40">
                       {/* <h2>District: {post?.districts?.eng}</h2> */}
-                      {lang ? (
+                      {!lang ? (
                         <h2 className="">Division: {post?.division?.eng}</h2>
                       ) : (
                         <h2 className=""> বিভাগঃ {post?.division?.ban}</h2>
@@ -231,7 +231,7 @@ const DashboardPost = ({ post }: any) => {
         </Typography>
         <h2> {post?.description}</h2>
         <Typography className="border border-accent py-1 px-2 rounded-md">
-          {lang ? "Contact number:" : "মোবাইল নাম্বারঃ"} {post?.phone}
+          {!lang ? "Contact number:" : "মোবাইল নাম্বারঃ"} {post?.phone}
         </Typography>
       </div>
     </section>

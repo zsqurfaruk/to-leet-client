@@ -30,7 +30,7 @@ const DistrictsOfRajshahi = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Rajshahi", ban: "রাজশাহী" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Rajshahi</span>
             ) : (
               <span className="-mt-[2px]">রাজশাহী</span>
@@ -46,7 +46,7 @@ const DistrictsOfRajshahi = () => {
                 handleFilter({ eng: "Sirajganj", ban: "সিরাজগঞ্জ" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Sirajganj</span>
             ) : (
               <span className="-mt-[2px]">সিরাজগঞ্জ</span>
@@ -60,7 +60,7 @@ const DistrictsOfRajshahi = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Pabna", ban: "পাবনা" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Pabna</span>
             ) : (
               <span className="-mt-[2px]">পাবনা</span>
@@ -74,7 +74,7 @@ const DistrictsOfRajshahi = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Bogra", ban: "বগুড়া" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Bogra</span>
             ) : (
               <span className="-mt-[2px]">বগুড়া</span>
@@ -90,7 +90,7 @@ const DistrictsOfRajshahi = () => {
                 handleFilter({ eng: "Joypurhat", ban: "জয়পুরহাট" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Joypurhat</span>
             ) : (
               <span className="-mt-[2px]">জয়পুরহাট</span>
@@ -104,7 +104,7 @@ const DistrictsOfRajshahi = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Naogaon", ban: "নওগাঁ" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Naogaon</span>
             ) : (
               <span className="-mt-[2px]">নওগাঁ</span>
@@ -118,7 +118,7 @@ const DistrictsOfRajshahi = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Natore", ban: "নাটোর" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Natore</span>
             ) : (
               <span className="-mt-[2px]">নাটোর</span>
@@ -137,7 +137,7 @@ const DistrictsOfRajshahi = () => {
                 })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Chapainawabganj</span>
             ) : (
               <span className="-mt-[2px]">চাঁপাইনবাবগঞ্জ</span>

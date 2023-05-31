@@ -56,9 +56,9 @@ const BariPopularAreaEng = () => {
                     ban: "সদর রোড",
                   })
                 }
-                // name={lang ? '' : ""}
+                // name={!lang ? '' : ""}
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Sadar Road</span>
               ) : (
                 <span className="-mt-[2px]"> সদর রোড</span>
@@ -79,7 +79,7 @@ const BariPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Nattullabad</span>
               ) : (
                 <span className="-mt-[2px]"> নথুল্লাবাদ</span>
@@ -97,7 +97,7 @@ const BariPopularAreaEng = () => {
                   setGetPostPopularAreaName({ eng: "Rupatali", ban: "রুপাতলি" })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Rupatali</span>
               ) : (
                 <span className="-mt-[2px]"> রুপাতলি</span>
@@ -116,7 +116,7 @@ const BariPopularAreaEng = () => {
                 }
                 name="Gournadi"
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Gournadi</span>
               ) : (
                 <span className="-mt-[2px]"> গৌরনদী</span>
@@ -137,7 +137,7 @@ const BariPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Nobogram Road</span>
               ) : (
                 <span className="-mt-[2px]"> নবগ্রাম রোড</span>
@@ -159,7 +159,7 @@ const BariPopularAreaEng = () => {
                 }
                 name="Kashipur-Bazar"
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Kashipur Bazar</span>
               ) : (
                 <span className="-mt-[2px]"> কাসিপুর বাজার</span>
@@ -178,7 +178,7 @@ const BariPopularAreaEng = () => {
                 }
                 name="Amtala"
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Amtala</span>
               ) : (
                 <span className="-mt-[2px]"> আমতলা</span>
@@ -206,7 +206,7 @@ const BariPopularAreaEng = () => {
                 }
                 name="Select-others"
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Select others</span>
               ) : (
                 <span className="-mt-[2px]"> অন্যান্য এলাকা</span>
@@ -214,7 +214,7 @@ const BariPopularAreaEng = () => {
             </label>
           </li>
 
-          {lang ? (
+          {!lang ? (
             <div>
               {getPostPopularAreaName?.eng === "Select others" && (
                 <li>

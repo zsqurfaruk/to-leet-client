@@ -51,7 +51,7 @@ const ChittPopularAreaEng = () => {
                   setGetPostPopularAreaName({ eng: "Agrabad", ban: "আগ্রাবাদ" })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Agrabad</span>
               ) : (
                 <span className="-mt-[2px]"> আগ্রাবাদ</span>
@@ -70,7 +70,7 @@ const ChittPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Chawkbazar</span>
               ) : (
                 <span className="-mt-[2px]"> চকবাজার</span>
@@ -86,7 +86,7 @@ const ChittPopularAreaEng = () => {
                   setGetPostPopularAreaName({ eng: "Kotwali", ban: "কোতয়ালী" })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Kotwali</span>
               ) : (
                 <span className="-mt-[2px]"> কোতয়ালী</span>
@@ -105,7 +105,7 @@ const ChittPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Halishahar</span>
               ) : (
                 <span className="-mt-[2px]"> হালিশহর</span>
@@ -124,7 +124,7 @@ const ChittPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Nasirabad</span>
               ) : (
                 <span className="-mt-[2px]"> নাসিরাবাদ</span>
@@ -140,7 +140,7 @@ const ChittPopularAreaEng = () => {
                   setGetPostPopularAreaName({ eng: "Oxygen", ban: "অক্সিজেন" })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Oxygen</span>
               ) : (
                 <span className="-mt-[2px]"> অক্সিজেন</span>
@@ -156,7 +156,7 @@ const ChittPopularAreaEng = () => {
                   setGetPostPopularAreaName({ eng: "Alankar", ban: "অলঙ্কার" })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Alankar</span>
               ) : (
                 <span className="-mt-[2px]"> অলঙ্কার</span>
@@ -183,7 +183,7 @@ const ChittPopularAreaEng = () => {
                 }
                 name="Select-others"
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Select others</span>
               ) : (
                 <span className="-mt-[2px]"> অন্যান্য এলাকা</span>
@@ -191,7 +191,7 @@ const ChittPopularAreaEng = () => {
             </label>
           </li>
 
-          {lang ? (
+          {!lang ? (
             <div>
               {getPostPopularAreaName?.eng === "Select others" && (
                 <li>

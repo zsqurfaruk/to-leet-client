@@ -52,7 +52,7 @@ const Banner = () => {
 
   return (
     <section className="pt-6">
-      {lan ? (
+      {!lan ? (
         <div className="md:flex justify-center gap-2 text-lg md:text-xl mx-8 md:mx-0">
           <h1 className="cursor-pointer">
             Are you searching near your university?
@@ -87,14 +87,14 @@ const Banner = () => {
                 {/* {!cityName && cityNameBan && <AllAreas></AllAreas>} */}
                 {filterTypeCity && !cityName?.eng && <AllCity></AllCity>}
               </div>
-              {lan && !filterTypeCity && !cityName?.eng && (
+              {!lan && !filterTypeCity && !cityName?.eng && (
                 <BannerEng></BannerEng>
               )}
-              {!lan && !filterTypeCity && <BannerBan></BannerBan>}
+              {lan && !filterTypeCity && <BannerBan></BannerBan>}
 
               <div className="hidden lg:block">
                 <div>
-                  {lan ? (
+                  {!lan ? (
                     <h1
                       className={
                         filterTypeCity || filterTypeDivision
@@ -127,7 +127,7 @@ const Banner = () => {
                         color="teal"
                         onClick={handleFilterTypeCity}
                         className="flex justify-end border border-secondary defaultCheck"
-                        label={lan ? "City" : "শহর"}
+                        label={!lan ? "City" : "শহর"}
                       />
                     </div>
                     <div
@@ -141,7 +141,7 @@ const Banner = () => {
                         color="teal"
                         onClick={handleFilterTypeDivision}
                         className="flex justify-end border border-secondary"
-                        label={lan ? "Division" : "বিভাগ"}
+                        label={!lan ? "Division" : "বিভাগ"}
                       />
                     </div>
                   </div>
@@ -162,7 +162,7 @@ const Banner = () => {
 
           <div className={"lg:hidden block"}>
             <div>
-              {lan ? (
+              {!lan ? (
                 <h1
                   className={
                     filterTypeCity || filterTypeDivision
@@ -195,7 +195,7 @@ const Banner = () => {
                     color="teal"
                     onClick={handleFilterTypeCity}
                     className="flex justify-end border border-secondary defaultCheck"
-                    label={lan ? "City" : "শহর"}
+                    label={!lan ? "City" : "শহর"}
                   />
                 </div>
                 <div
@@ -209,7 +209,7 @@ const Banner = () => {
                     color="teal"
                     onClick={handleFilterTypeDivision}
                     className="flex justify-end border border-secondary"
-                    label={lan ? "Division" : "বিভাগ"}
+                    label={!lan ? "Division" : "বিভাগ"}
                   />
                 </div>
               </div>

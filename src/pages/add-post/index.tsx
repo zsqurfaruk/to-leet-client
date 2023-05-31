@@ -52,17 +52,17 @@ const AddPost = () => {
             onClick={handlePrevious}
             className="text-secondary text-sm mb-5 cursor-pointer hover:underline"
           >
-            {lang ? "Change city?" : "শহর পরিবর্তন?"}
+            {!lang ? "Change city?" : "শহর পরিবর্তন?"}
           </h1>
           <h1  className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
             {
-              lang ? <span>Popular areas of {postCityNameEng.eng}:</span>: <span className="text-xl">{postCityNameEng?.ban} এর জনপ্রিয় এলাকাসমূহঃ</span>
+              !lang ? <span>Popular areas of {postCityNameEng.eng}:</span>: <span className="text-xl">{postCityNameEng?.ban} এর জনপ্রিয় এলাকাসমূহঃ</span>
             }
           </h1>
          </div>
         )}
         <div className={postCityNameEng?.eng && "hidden"}>
-          {lang ? (
+          {!lang ? (
             <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
               Select your city.
             </h1>
@@ -110,11 +110,11 @@ const AddPost = () => {
             onClick={handlePrevious}
             className="text-secondary text-sm mb-5 cursor-pointer hover:underline"
           >
-            {lang ? "Change division?" : "বিভাগ পরিবর্তন?"}
+            {!lang ? "Change division?" : "বিভাগ পরিবর্তন?"}
           </h1>
           <h1  className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
             {
-              lang ? <span>Districts of {postDivisionNameEng.eng}:</span>: <span className="text-xl">{postDivisionNameEng?.ban} এর জেলাসমুহঃ</span>
+              !lang ? <span>Districts of {postDivisionNameEng.eng}:</span>: <span className="text-xl">{postDivisionNameEng?.ban} এর জেলাসমুহঃ</span>
             }
           </h1>
          </div>
@@ -122,7 +122,7 @@ const AddPost = () => {
           <div
             className={postDivisionNameEng?.eng && "hidden"}
           >
-            {lang ? (
+            {!lang ? (
               <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
                 Select your Division.
               </h1>

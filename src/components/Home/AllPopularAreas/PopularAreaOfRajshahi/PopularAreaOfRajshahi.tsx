@@ -80,7 +80,7 @@ const PopularAreaOfRajshahi = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> New Market</span>
               ) : (
                 <span className="-mt-[2px]"> নিউ মার্কেট</span>
@@ -99,7 +99,7 @@ const PopularAreaOfRajshahi = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Shaheb Bazar</span>
               ) : (
                 <span className="-mt-[2px]"> সাহেব বাজার</span>
@@ -118,7 +118,7 @@ const PopularAreaOfRajshahi = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Uposahar</span>
               ) : (
                 <span className="-mt-[2px]"> উপশহর</span>
@@ -137,7 +137,7 @@ const PopularAreaOfRajshahi = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Kazla</span>
               ) : (
                 <span className="-mt-[2px]"> কাজলা</span>
@@ -156,7 +156,7 @@ const PopularAreaOfRajshahi = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Binodpur</span>
               ) : (
                 <span className="-mt-[2px]"> বিনোদপুর</span>
@@ -175,7 +175,7 @@ const PopularAreaOfRajshahi = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Laksimipur</span>
               ) : (
                 <span className="-mt-[2px]">লক্ষ্মীপুর </span>
@@ -195,7 +195,7 @@ const PopularAreaOfRajshahi = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Padma Resident</span>
               ) : (
                 <span className="-mt-[2px]"> পদ্মা আবাসিক</span>
@@ -221,7 +221,7 @@ const PopularAreaOfRajshahi = () => {
                 }
                 name="Select-others"
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Select others</span>
               ) : (
                 <span className="-mt-[2px]"> অন্যান্য এলাকা</span>
@@ -229,7 +229,7 @@ const PopularAreaOfRajshahi = () => {
             </label>
           </li>
 
-          {lang ? (
+          {!lang ? (
             <div>
               {homePopularAreaName?.eng === "Select others" && (
                 <li>

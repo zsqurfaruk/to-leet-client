@@ -51,7 +51,7 @@ const RangPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Shapla Chottor</span>
               ) : (
                 <span className="-mt-[2px]"> শাপলা চত্বর</span>
@@ -70,7 +70,7 @@ const RangPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Dhap</span>
               ) : (
                 <span className="-mt-[2px]"> ধাপ</span>
@@ -89,7 +89,7 @@ const RangPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Lalbag Mor</span>
               ) : (
                 <span className="-mt-[2px]"> লালবাগ মোড়</span>
@@ -108,7 +108,7 @@ const RangPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Jahaj Company More</span>
               ) : (
                 <span className="-mt-[2px]"> জাহাজ কোম্পানি মোড়</span>
@@ -127,7 +127,7 @@ const RangPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Pouro bazar</span>
               ) : (
                 <span className="-mt-[2px]"> পৌর বাজার</span>
@@ -146,7 +146,7 @@ const RangPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Vinno Jogot</span>
               ) : (
                 <span className="-mt-[2px]"> ভিন্ন জগত</span>
@@ -165,7 +165,7 @@ const RangPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> College Para</span>
               ) : (
                 <span className="-mt-[2px]"> কলেজপাড়া</span>
@@ -191,7 +191,7 @@ const RangPopularAreaEng = () => {
                 }
                 name="Select-others"
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Select others</span>
               ) : (
                 <span className="-mt-[2px]"> অন্যান্য এলাকা</span>
@@ -199,7 +199,7 @@ const RangPopularAreaEng = () => {
             </label>
           </li>
 
-          {lang ? (
+          {!lang ? (
             <div>
               {getPostPopularAreaName?.eng === "Select others" && (
                 <li>

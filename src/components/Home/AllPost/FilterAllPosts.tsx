@@ -23,7 +23,7 @@ function FilterAllPosts({ post }: any) {
           <div className="card-body h-60">
             <h2 className="text-xl font-bold"> {post?.title}</h2>
             <div className="flex justify-between">
-              {lang ? (
+              {!lang ? (
                 <h2 className="font-semibold"> {post?.type?.eng}</h2>
               ) : (
                 <h2 className="font-semibold"> {post?.type?.ban}</h2>
@@ -32,7 +32,7 @@ function FilterAllPosts({ post }: any) {
             </div>
             {/* {post?.university?.eng && (
               <div>
-                {lang ? (
+                {!lang ? (
                   <h2 className="">Beside: {post?.university?.eng}</h2>
                 ) : (
                   <h2 className=""> {post?.university?.ban} এর পাশে</h2>
@@ -41,7 +41,7 @@ function FilterAllPosts({ post }: any) {
             )} */}
             {post?.division?.eng && (
               <div className="flex justify-between">
-                {lang ? (
+                {!lang ? (
                   <h2>
                     <span className="font-semibold">District:</span>{" "}
                     {post?.districts?.eng}
@@ -52,7 +52,7 @@ function FilterAllPosts({ post }: any) {
                     {post?.districts?.ban}
                   </h2>
                 )}
-                {lang ? (
+                {!lang ? (
                   <h2>
                     <span className="font-semibold">Division:</span>{" "}
                     {post?.division?.eng}
@@ -67,7 +67,7 @@ function FilterAllPosts({ post }: any) {
             )}
             {post?.cityName?.eng && (
               <div className="flex justify-between">
-                {lang ? (
+                {!lang ? (
                   <h2>
                     <span className="font-semibold">Area:</span>{" "}
                     {post?.areaName?.eng}
@@ -78,7 +78,7 @@ function FilterAllPosts({ post }: any) {
                     {post?.areaName?.ban}
                   </h2>
                 )}
-                {lang ? (
+                {!lang ? (
                   <h2>
                     <span className="font-semibold">City:</span>{" "}
                     {post?.cityName?.eng}
@@ -95,7 +95,7 @@ function FilterAllPosts({ post }: any) {
 
             <div className="flex justify-between">
               {
-                post?.bedrooms?.eng && <div>{lang ? (
+                post?.bedrooms?.eng && <div>{!lang ? (
                   <h2>Bedrooms: {post?.bedrooms?.eng}</h2>
                 ) : (
                   <h2>বেডরুম সংখ্যা : {post?.bedrooms?.ban}</h2>
@@ -103,14 +103,14 @@ function FilterAllPosts({ post }: any) {
               }
               {post?.bedNumber?.eng && (
                 <div>
-                  {lang ? (
+                  {!lang ? (
                     <h2>Bed Number:{post?.bedNumber?.eng}</h2>
                   ) : (
                     <h2> বেড সংখ্যা:{post?.bedNumber?.ban}</h2>
                   )}
                 </div>
               )}
-              {lang ? (
+              {!lang ? (
                 <h2>Bathrooms: {post?.bathrooms?.eng}</h2>
               ) : (
                 <h2> বাথরুম সংখ্যা: {post?.bathrooms?.ban}</h2>
@@ -120,7 +120,7 @@ function FilterAllPosts({ post }: any) {
             <h2>
               {" "}
               {post?.description?.slice(0, 50)}...
-              {lang ? (
+              {!lang ? (
                 <span className="text-blue-500">see more</span>
               ) : (
                 <span className="text-blue-500 text-xs">আরও দেখুন </span>

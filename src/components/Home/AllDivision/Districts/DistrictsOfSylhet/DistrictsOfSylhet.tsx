@@ -27,7 +27,7 @@ const DistrictsOfSylhet = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Sylhet", ban: "সিলেট" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Sylhet</span>
             ) : (
               <span className="-mt-[2px]">সিলেট</span>
@@ -43,7 +43,7 @@ const DistrictsOfSylhet = () => {
                 handleFilter({ eng: "Moulvibazar", ban: "মৌলভীবাজার" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Moulvibazar</span>
             ) : (
               <span className="-mt-[2px]">মৌলভীবাজার</span>
@@ -57,7 +57,7 @@ const DistrictsOfSylhet = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Habiganj", ban: "হবিগঞ্জ" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Habiganj</span>
             ) : (
               <span className="-mt-[2px]">হবিগঞ্জ</span>
@@ -73,7 +73,7 @@ const DistrictsOfSylhet = () => {
                 handleFilter({ eng: "Sunamganj", ban: "সুনামগঞ্জ" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Sunamganj</span>
             ) : (
               <span className="-mt-[2px]">সুনামগঞ্জ</span>

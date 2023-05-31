@@ -49,7 +49,7 @@ const FilterPosts = () => {
      {
       loading ? <p className="text-center w-full py-40">Loading...</p> : <section className="lg:w-10/12 mx-auto bg-white lg:my-10 pb-10 px-5 rounded ">
       <div className="flex justify-around pt-10 text-secondary">
-        {lang ? (
+        {!lang ? (
           <div>
             {cityName?.eng && (
               <h2>
@@ -90,7 +90,7 @@ const FilterPosts = () => {
               animationData={lotti}
               loop={true}
             ></Lottie>
-            {lang ? (
+            {!lang ? (
               <h1 className="text-4xl text-center mb-10 ml-5">No data found.</h1>
             ) : (
               <h1 className="text-2xl -ml-5">এখনো কোন পোস্ট করা হয়নি।</h1>

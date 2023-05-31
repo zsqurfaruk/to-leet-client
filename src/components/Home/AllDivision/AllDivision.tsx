@@ -17,10 +17,10 @@ const AllDivision = () => {
         onClick={handlePrevious}
         className="text-secondary text-sm mb-5 lg:-ml-4 cursor-pointer hover:underline"
       >
-        {lang ? "Previous?" : "পূর্ববর্তী?"}
+        {!lang ? "Previous?" : "পূর্ববর্তী?"}
        
       </h1> */}
-        {lang ? (
+        {!lang ? (
           <h1
             className={
               filterTypeCity

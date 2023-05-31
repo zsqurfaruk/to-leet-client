@@ -56,8 +56,13 @@ const PostDetails = () => {
   const [imageUrl5, setImageUrl5] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [validNumber, setValidNumber] = useState();
+  const [numberError, setNumberError] = useState("");
+  const [numberErrorBan, setNumberErrorBan] = useState("");
+  const [validAmount, setValidAmount] = useState();
+  const [amountError, setAmountError] = useState("");
+  const [amountErrorBan, setAmountErrorBan] = useState("");
 
- 
   const {
     modalValue,
     postCityNameEng,
@@ -74,14 +79,15 @@ const PostDetails = () => {
     setPostDistrictsName,
     postDivisionNameEng,
     setPostDivisionNameEng,
-    bedNumbers, setBedNumbers,
+    bedNumbers,
+    setBedNumbers,
     bedRooms,
     setBedRooms,
     bathRooms,
     setBathRooms,
   }: any = useContext(PostStateContext);
 
- const {reload, setReload}:any = useContext(APIContext)
+  const { reload, setReload }: any = useContext(APIContext);
 
   const router = useRouter();
   const {
@@ -142,7 +148,7 @@ const PostDetails = () => {
       address: data?.address,
       title: data?.title,
       description: data?.description,
-      amount: data?.amount,
+      amount: validAmount,
       negotiable: data?.negotiable,
       img1: imageUrl1,
       img2: imageUrl2,
@@ -151,7 +157,7 @@ const PostDetails = () => {
       img5: imageUrl5,
       name: data?.name,
       email: data?.email,
-      phone: data?.phone,
+      phone: validNumber,
       terms: data?.terms,
       areaName: getPostPopularAreaName,
       cityName: postCityNameEng,
@@ -176,7 +182,7 @@ const PostDetails = () => {
     setPostDistrictsName({});
     setPostDivisionNameEng({});
     if (result?.message === "success") {
-      setReload(!reload)
+      setReload(!reload);
       router.push(`/${modalValue.eng}`);
     }
   };
@@ -239,9 +245,33 @@ const PostDetails = () => {
   const lastName = localStorage.getItem("lastName");
   const name = firstName + " " + lastName;
 
-  // console.log("bedN",bedNumbers);
-  // console.log("bedroom",bedRooms);
-  // console.log("bath", bathRooms);
+  const checkNumber = (e: any) => {
+    if (e && isNaN(e)) {
+      setNumberError("English is the recommended language for writing valid phone number.");
+      setNumberErrorBan("সঠিক মোবাইল নাম্বার ইংরেজিতে লিখুন।");
+    } else if (e && !isNaN(e)) {
+      setValidNumber(e);
+      setNumberError("");
+      setNumberErrorBan("")
+    } else if (!e) {
+       setNumberError("")
+       setNumberErrorBan("")
+    }
+  };
+  const checkAmountValidity = (e: any) => {
+    if (e && isNaN(e)) {
+      setAmountError("Please write the amount in English.");
+      setAmountErrorBan("টাকার পরিমাণ সথিকভাবে ইংরেজিতে লিখুন।");
+    } else if (e && !isNaN(e)) {
+      setValidAmount(e);
+      setAmountError("");
+      setAmountErrorBan("")
+    } else if (!e) {
+     setAmountError("")
+     setAmountErrorBan("")
+    }
+  };
+   
   return (
     <>
       <Head>
@@ -263,7 +293,7 @@ const PostDetails = () => {
             <AdditionalInfoPostPage></AdditionalInfoPostPage>
             {!modalValue.eng && (
               <div className="flex justify-center text-red-400 mt-2">
-                {lang ? (
+                {!lang ? (
                   <h5>You have to select rent type before post.</h5>
                 ) : (
                   <h5>পোস্ট করার আগে আপনাকে ভাড়ার ধরন নির্বাচন করতে হবে।</h5>
@@ -272,7 +302,7 @@ const PostDetails = () => {
             )}
             {getUniversityModalValue?.eng && (
               <div>
-                {lang ? (
+                {!lang ? (
                   <p className="text-center text-lg">
                     {" "}
                     You have selected{" "}
@@ -289,7 +319,7 @@ const PostDetails = () => {
             )}
             <div>
               <div className="my-8 ">
-                {lang ? (
+                {!lang ? (
                   <div>
                     {modalValue?.eng && (
                       <div className="flex justify-center gap-2 md:text-xl lg:-ml-10">
@@ -346,77 +376,95 @@ const PostDetails = () => {
               </div>
 
               <div>
-                
-                 
-                   <div className={modalValue.eng === "Mess-(Male)" || modalValue.eng === "Mess-(Female)" ? "block" : "hidden"}>
-                   {lang ? (
-                      <div className="form-control lg:w-6/12 mx-auto mb-8">
-                        <label className="label">
-                          <span className="label-text">
-                            Bed Number/ Numbers
-                          </span>
-                        </label>
-                        <Select
-                          placeholder="Bed Number/ Numbers"
-                          isSearchable
-                          options={optionEng}
-                          onChange={setBedNumbers}
-                          className="bg-primary border-none text-sm h-4 text-black font-medium"
-                        />
-                      </div>
-                    ) : (
-                      <div className="form-control lg:w-6/12 mx-auto mb-8">
-                        <label className="label">
-                          <span className="label-text">বেড সংখ্যা </span>
-                        </label>
-                        <Select
-                          placeholder="বেড সংখ্যা"
-                          isSearchable
-                          options={optionBan}
-                          onChange={setBedNumbers}
-                          className="bg-primary border-none text-sm h-4 text-black font-medium"
-                        />
-                      </div>
-                    )}
-                  
-                   </div>
-                 
+                <div
+                  className={
+                    modalValue.eng === "Mess-(Male)" ||
+                    modalValue.eng === "Mess-(Female)" || 
+                    modalValue.eng === "Hostel"
+                      ? "block"
+                      : "hidden"
+                  }
+                >
+                  {!lang ? (
+                    <div className="form-control lg:w-6/12 mx-auto mb-8">
+                      <label className="label">
+                        <span className="label-text">Bed Number/ Numbers</span>
+                      </label>
+                      <Select
+                        placeholder="Bed Number/ Numbers"
+                        isSearchable
+                        options={optionEng}
+                        onChange={setBedNumbers}
+                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                      />
+                    </div>
+                  ) : (
+                    <div className="form-control lg:w-6/12 mx-auto mb-8">
+                      <label className="label">
+                        <span className="label-text">বেড সংখ্যা </span>
+                      </label>
+                      <Select
+                        placeholder="বেড সংখ্যা"
+                        isSearchable
+                        options={optionBan}
+                        onChange={setBedNumbers}
+                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                      />
+                    </div>
+                  )}
+                </div>
 
+                <div
+                  className={
+                    modalValue.eng === "Mess-(Male)" ||
+                    modalValue.eng === "Mess-(Female)" || 
+                    modalValue.eng === "Hostel" || 
+                    modalValue.eng === "Office" || 
+                    modalValue.eng === "Shop" || 
+                    modalValue.eng === "Vehicles" || 
+                    modalValue.eng === "Garage"
+                      ? "hidden"
+                      : "block"
+                  }
+                >
+                  {!lang ? (
+                    <div className="form-control lg:w-6/12 mx-auto mb-8">
+                      <label className="label">
+                        <span className="label-text">Bedrooms</span>
+                      </label>
+                      <Select
+                        placeholder="Bedrooms"
+                        isSearchable
+                        options={optionEng}
+                        onChange={setBedRooms}
+                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                      />
+                    </div>
+                  ) : (
+                    <div className="form-control lg:w-6/12 mx-auto mb-8">
+                      <label className="label">
+                        <span className="label-text">বেডরুম সংখ্যা</span>
+                      </label>
+                      <Select
+                        placeholder="বেডরুম সংখ্যা"
+                        isSearchable
+                        options={optionBan}
+                        onChange={setBedRooms}
+                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                      />
+                    </div>
+                  )}
+                </div>
 
-
-
-                   <div className={modalValue.eng === "Mess-(Male)" || modalValue.eng === "Mess-(Female)" ? "hidden" : "block"}>
-                   {lang ? (
-                      <div className="form-control lg:w-6/12 mx-auto mb-8">
-                        <label className="label">
-                          <span className="label-text">Bedrooms</span>
-                        </label>
-                        <Select
-                          placeholder="Bedrooms"
-                          isSearchable
-                          options={optionEng}
-                          onChange={setBedRooms}
-                          className="bg-primary border-none text-sm h-4 text-black font-medium"
-                        />
-                      </div>
-                    ) : (
-                      <div className="form-control lg:w-6/12 mx-auto mb-8">
-                        <label className="label">
-                          <span className="label-text">বেডরুম সংখ্যা</span>
-                        </label>
-                        <Select
-                          placeholder="বেডরুম সংখ্যা"
-                          isSearchable
-                          options={optionBan}
-                          onChange={setBedRooms}
-                          className="bg-primary border-none text-sm h-4 text-black font-medium"
-                        />
-                      </div>
-                    )}
-                
-                   </div>
-            
-                {lang ? (
+                <div  className={
+                    modalValue.eng === "Office" || 
+                    modalValue.eng === "Shop" || 
+                    modalValue.eng === "Vehicles" || 
+                    modalValue.eng === "Garage"
+                      ? "hidden"
+                      : "block"
+                  }>
+                {!lang ? (
                   <div className="form-control lg:w-6/12 mx-auto mt-8">
                     <label className="label">
                       <span className="label-text">Bathrooms</span>
@@ -444,7 +492,7 @@ const PostDetails = () => {
                   </div>
                 )}
 
-                {lang ? (
+                {!lang ? (
                   <div className="form-control lg:w-6/12 mx-auto mt-8">
                     <label className="label">
                       <span className="label-text">Wifi facility</span>
@@ -490,9 +538,10 @@ const PostDetails = () => {
                   </div>
                 )}
 
+                </div>
                 <div className="lg:w-6/12 mx-auto mt-8">
                   <label className="label">
-                    {lang ? (
+                    {!lang ? (
                       <span className="label-text">Address</span>
                     ) : (
                       <span className="label-text">ঠিকানা</span>
@@ -502,7 +551,7 @@ const PostDetails = () => {
                     {...register("address", { required: true })}
                     type="text"
                     placeholder={
-                      lang
+                      !lang
                         ? "Enter your street, house number, and/or post code"
                         : "এখানে আপনার পূর্ণ ঠিকানা লিখুন।"
                     }
@@ -510,7 +559,7 @@ const PostDetails = () => {
                   />
                   {errors.address && (
                     <span className="text-red-500 pt-4">
-                      {lang
+                      {!lang
                         ? " This field is required"
                         : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
                     </span>
@@ -518,7 +567,7 @@ const PostDetails = () => {
                 </div>
                 <div className="lg:w-6/12 mx-auto mt-8">
                   <label className="label">
-                    {lang ? (
+                    {!lang ? (
                       <span className="label-text">Title</span>
                     ) : (
                       <span className="label-text"> টাইটেল লিখুন </span>
@@ -527,12 +576,12 @@ const PostDetails = () => {
                   <input
                     {...register("title", { required: true })}
                     type="text"
-                    placeholder={lang ? "Short Title" : "টাইটেল লিখুন"}
+                    placeholder={!lang ? "Short Title" : "টাইটেল লিখুন"}
                     className="input input-bordered w-full bg-primary"
                   />
                   {errors.title && (
                     <span className="text-red-500 pt-4">
-                      {lang
+                      {!lang
                         ? " This field is required"
                         : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
                     </span>
@@ -540,7 +589,7 @@ const PostDetails = () => {
                 </div>
                 <div className="lg:w-6/12 mx-auto mt-8">
                   <label className="label">
-                    {lang ? (
+                    {!lang ? (
                       <span className="label-text">Description</span>
                     ) : (
                       <span className="label-text">বিস্তারিত লিখুন</span>
@@ -549,11 +598,11 @@ const PostDetails = () => {
                   <textarea
                     {...register("description")}
                     className="textarea textarea-bordered w-full h-32 bg-primary"
-                    placeholder={lang ? "More Details" : "বিস্তারিত লিখুন"}
+                    placeholder={!lang ? "More Details" : "বিস্তারিত লিখুন"}
                   ></textarea>
                   {errors.description && (
                     <span className="text-red-500 pt-4">
-                      {lang
+                      {!lang
                         ? " This field is required"
                         : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
                     </span>
@@ -561,25 +610,29 @@ const PostDetails = () => {
                 </div>
                 <div className="lg:w-6/12 mx-auto mt-8">
                   <label className="label">
-                    {lang ? (
+                    {!lang ? (
                       <span className="label-text">Rent Amount (Tk)</span>
                     ) : (
                       <span className="label-text"> টাকার পরিমান লিখুন</span>
                     )}
                   </label>
                   <input
-                    {...register("amount")}
+                    {...register("amount", { required: true })}
                     type="text"
-                    placeholder={lang ? "Rent Amount" : "টাকার পরিমান লিখুন"}
+                    placeholder={!lang ? "Rent Amount" : "টাকার পরিমান লিখুন"}
                     className="input input-bordered w-full bg-primary"
+                    onChange={(e:any)=>checkAmountValidity(e.target.value)}
                   />
                   {errors.description && (
                     <span className="text-red-500 pt-4">
-                      {lang
+                      {!lang
                         ? " This field is required"
                         : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
                     </span>
                   )}
+                  {
+                    !lang ? <p className="text-red-400 mt-1">{amountError}</p> : <p className="text-red-400 mt-1 text-sm">{amountErrorBan}</p>
+                  }
                 </div>
                 <div className="flex gap-2 lg:w-1/2 mx-auto mt-10">
                   <input
@@ -587,7 +640,7 @@ const PostDetails = () => {
                     type="checkbox"
                     className="text-black h-4 w-4"
                   />
-                  {lang ? (
+                  {!lang ? (
                     <h1 className="-mt-1">Negotiable</h1>
                   ) : (
                     "আলোচনা সাপেক্ষে"
@@ -597,7 +650,7 @@ const PostDetails = () => {
 
                 <div className="lg:w-6/12 mx-auto mb-20">
                   <label className="label">
-                    {lang ? (
+                    {!lang ? (
                       <span className="text-xl font-bold">
                         Add up to 5 photos
                       </span>
@@ -634,7 +687,7 @@ const PostDetails = () => {
                           </div>
                         ) : (
                           <button>
-                            {lang ? (
+                            {!lang ? (
                               <label>Image 1</label>
                             ) : (
                               <label>ছবি-১</label>
@@ -652,7 +705,7 @@ const PostDetails = () => {
                             />
                             <div className="mt-1">
                               <label htmlFor="file1">
-                                {lang ? (
+                                {!lang ? (
                                   <div className="rounded border border-secondary p-2">
                                     <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
                                     <small>Upload Photo</small>
@@ -692,7 +745,7 @@ const PostDetails = () => {
                           </div>
                         ) : (
                           <button>
-                            {lang ? (
+                            {!lang ? (
                               <label>Image 2</label>
                             ) : (
                               <label>ছবি-২</label>
@@ -710,7 +763,7 @@ const PostDetails = () => {
                             />
                             <div className="mt-1">
                               <label htmlFor="file2">
-                                {lang ? (
+                                {!lang ? (
                                   <div
                                     className={
                                       imageUrl1
@@ -776,7 +829,7 @@ const PostDetails = () => {
                           </div>
                         ) : (
                           <button>
-                            {lang ? (
+                            {!lang ? (
                               <label>Image 3</label>
                             ) : (
                               <label>ছবি-৩</label>
@@ -794,7 +847,7 @@ const PostDetails = () => {
                             />
                             <div className="mt-1">
                               <label htmlFor="file3">
-                                {lang ? (
+                                {!lang ? (
                                   <div
                                     className={
                                       imageUrl1 && imageUrl2
@@ -859,7 +912,7 @@ const PostDetails = () => {
                           </div>
                         ) : (
                           <button>
-                            {lang ? (
+                            {!lang ? (
                               <label>Image 4</label>
                             ) : (
                               <label>ছবি-৪</label>
@@ -877,7 +930,7 @@ const PostDetails = () => {
                             />
                             <div className="mt-1">
                               <label htmlFor="file4">
-                                {lang ? (
+                                {!lang ? (
                                   <div
                                     className={
                                       imageUrl3
@@ -942,7 +995,7 @@ const PostDetails = () => {
                           </div>
                         ) : (
                           <button>
-                            {lang ? (
+                            {!lang ? (
                               <label>Image 5</label>
                             ) : (
                               <label>ছবি-৫</label>
@@ -960,7 +1013,7 @@ const PostDetails = () => {
                             />
                             <div className="mt-1">
                               <label htmlFor="file">
-                                {lang ? (
+                                {!lang ? (
                                   <div
                                     className={
                                       imageUrl4
@@ -1005,7 +1058,7 @@ const PostDetails = () => {
                   {!imageUrl1 && !loading && (
                     <>
                       {" "}
-                      {lang ? (
+                      {!lang ? (
                         <span className="text-sm pt-4 text-red-300">
                           You must upload at least one image.
                         </span>
@@ -1022,7 +1075,7 @@ const PostDetails = () => {
 
               {/* contact part  */}
               <div className="lg:w-1/2 mx-auto">
-                {lang ? (
+                {!lang ? (
                   <h1 className="text-xl font-bold">Contact details</h1>
                 ) : (
                   <h1 className="text-xl font-bold">
@@ -1031,7 +1084,7 @@ const PostDetails = () => {
                   </h1>
                 )}
                 <div className="mt-10">
-                  {lang ? <h5>Name:</h5> : <h5>নামঃ</h5>}
+                  {!lang ? <h5>Name:</h5> : <h5>নামঃ</h5>}
                   <input
                     {...register("name")}
                     type="text"
@@ -1041,27 +1094,14 @@ const PostDetails = () => {
                 </div>
                 <div className="mt-10">
                   <div className="flex gap-6">
-                    {lang ? <h5>Email</h5> : <h5>ইমেইলঃ </h5>}
-                    {lang ? (
+                    {!lang ? <h5>Email</h5> : <h5>ইমেইলঃ </h5>}
+                    {!lang ? (
                       <small className="text-blue-400">
-                        You can't change your email. To change please
-                        <Link
-                          className="underline font-semibold"
-                          href="/signUp"
-                        >
-                          sign up
-                        </Link>{" "}
-                        again or contact the admin.
+                        You can't change your email. To change please contact the admin.
                       </small>
                     ) : (
                       <small className="text-blue-400">
-                        আপনি ইমেইল পরিবর্তন করতে পারবেন না। পরিবর্তন করতে{" "}
-                        <Link
-                          className="underline font-semibold"
-                          href="/signUp"
-                        >
-                          সাইন আপ করুন
-                        </Link>
+                        আপনি ইমেইল পরিবর্তন করতে পারবেন না। পরিবর্তন করতে এডমিনের সাথে যোগাযোগ করুন।
                       </small>
                     )}
                   </div>
@@ -1074,37 +1114,30 @@ const PostDetails = () => {
                   />
                 </div>
                 <div className="mt-10 border border-secondary p-5">
-                  {lang ? (
+                  {!lang ? (
                     <h5>Add A Phone Number:</h5>
                   ) : (
                     <h5>একটি ফোন নাম্বার দিনঃ</h5>
                   )}
-                  {/* <PhoneInput
-                placeholder="Enter phone number"
-                value={value}
-                name="phone"
-                onChange={(e: any) => setValue(e)}
-              /> */}
-                  {/* <OtpInput
-              value={otp}
-              onChange={setOtp}
-              numInputs={6}
-              renderSeparator={<span>-</span>}
-              renderInput={(props) => <input {...props}  className="border border-black mx-1 text-2xl w-10 rounded-md"/>}
-            /> */}
+
                   <input
                     {...register("phone", { required: true })}
                     type="text"
                     placeholder="Add A Phone Number"
                     className="input input-bordered w-full mt-5 bg-primary"
+                    onChange={(e: any) => checkNumber(e.target.value)}
                   />
+
                   {errors.phone && (
                     <span className="text-red-400 pt-5">
-                      {lang
+                      {!lang
                         ? " This field is required"
                         : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
                     </span>
                   )}
+                  {
+                    !lang ? <p className="text-red-400 mt-1">{numberError}</p> : <p className="text-red-400 mt-1 text-sm">{numberErrorBan}</p>
+                  }
                   {/* <button className="btn btn-secondary btn-sm mt-5">
                 <span> Verify otp</span>
               </button> */}
@@ -1127,7 +1160,7 @@ const PostDetails = () => {
                 className="text-gray-800 w-1/2 mb-10 mt-12 font-semibold  bg-gradient-to-r from-success via-accent to-success"
                 disabled={modalValue?.eng ? false : true}
               >
-                {lang ? " Post Now" : "পোস্ট করুন"}
+                {!lang ? " Post Now" : "পোস্ট করুন"}
               </Button>
             </div>
           </div>

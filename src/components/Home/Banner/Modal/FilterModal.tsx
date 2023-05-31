@@ -47,7 +47,7 @@ export default function FilterModal() {
             onClick={handleCancel}
             className="mr-1"
           >
-            {lang ? <span>Cancel</span> : <span>বাতিল</span>}
+            {!lang ? <span>Cancel</span> : <span>বাতিল</span>}
           </Button>
         </DialogFooter>
       </Dialog>

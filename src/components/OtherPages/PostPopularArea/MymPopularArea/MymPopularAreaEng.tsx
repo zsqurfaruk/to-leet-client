@@ -54,7 +54,7 @@ const MymPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Ganginar par</span>
               ) : (
                 <span className="-mt-[2px]"> গাঙ্গিনার পাড়</span>
@@ -73,7 +73,7 @@ const MymPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Chorpara</span>
               ) : (
                 <span className="-mt-[2px]"> চরপাড়া</span>
@@ -92,7 +92,7 @@ const MymPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Valuka</span>
               ) : (
                 <span className="-mt-[2px]"> ভালুকা</span>
@@ -111,7 +111,7 @@ const MymPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Town Hall</span>
               ) : (
                 <span className="-mt-[2px]"> টাউন হল</span>
@@ -130,7 +130,7 @@ const MymPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Muktagacha</span>
               ) : (
                 <span className="-mt-[2px]"> মুক্তাগাছা</span>
@@ -149,7 +149,7 @@ const MymPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Cantonment</span>
               ) : (
                 <span className="-mt-[2px]"> ক্যান্টনমেন্ট</span>
@@ -168,7 +168,7 @@ const MymPopularAreaEng = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Naumahal</span>
               ) : (
                 <span className="-mt-[2px]"> নওমহল</span>
@@ -194,7 +194,7 @@ const MymPopularAreaEng = () => {
                 }
                 name="Select-others"
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Select others</span>
               ) : (
                 <span className="-mt-[2px]"> অন্যান্য এলাকা</span>
@@ -202,7 +202,7 @@ const MymPopularAreaEng = () => {
             </label>
           </li>
 
-          {lang ? (
+          {!lang ? (
             <div>
               {getPostPopularAreaName?.eng === "Select others" && (
                 <li>

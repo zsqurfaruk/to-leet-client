@@ -24,10 +24,10 @@ const AllAreas = () => {
         onClick={handlePrevious}
         className="text-secondary text-sm mb-5 cursor-pointer hover:underline"
       >
-        {lang ? "Change city?" : "শহর পরিবর্তন?"}
+        {!lang ? "Change city?" : "শহর পরিবর্তন?"}
       </h1>
       <h1 className="text-xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
-        {lang ? (
+        {!lang ? (
           <span>Popular areas of {cityName?.eng}:</span>
         ) : (
           <span className="text-xl">{cityName?.ban} এর জনপ্রিয় এলাকাসমূহঃ</span>

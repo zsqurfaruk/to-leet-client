@@ -19,7 +19,7 @@ const PostBariDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Barguna", ban: "বরগুনা" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Barguna</span>
             ) : (
               <span className="-mt-[2px]">বরগুনা</span>
@@ -35,7 +35,7 @@ const PostBariDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Barisal", ban: "বরিশাল" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Barisal</span>
             ) : (
               <span className="-mt-[2px]">বরিশাল</span>
@@ -51,7 +51,7 @@ const PostBariDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Bhola", ban: "ভোলা" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Bhola</span>
             ) : (
               <span className="-mt-[2px]">ভোলা</span>
@@ -68,7 +68,7 @@ const PostBariDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Jhalokati", ban: "ঝালকাঠি" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Jhalokati</span>
             ) : (
               <span className="-mt-[2px]">ঝালকাঠি</span>
@@ -84,7 +84,7 @@ const PostBariDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Patuakhali", ban: "পটুয়াখালী" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Patuakhali</span>
             ) : (
               <span className="-mt-[2px]">পটুয়াখালী</span>
@@ -100,7 +100,7 @@ const PostBariDistrictsEng = () => {
                 setPostDistrictsName({ eng: "Pirojpur", ban: "পিরোজপুর" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Pirojpur</span>
             ) : (
               <span className="-mt-[2px]">পিরোজপুর</span>

@@ -7,7 +7,7 @@ const About = () => {
   return (
     <div>
       {
-        lang ? <AboutEng></AboutEng> : <AboutBan></AboutBan>
+        !lang ? <AboutEng></AboutEng> : <AboutBan></AboutBan>
       }
     </div>
   );

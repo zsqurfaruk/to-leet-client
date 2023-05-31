@@ -31,7 +31,7 @@ const DistrictsOfChittagong = () => {
                 handleFilter({ eng: "Chittagong", ban: "চট্টগ্রাম" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Chittagong</span>
             ) : (
               <span className="-mt-[2px]">চট্টগ্রাম</span>
@@ -51,7 +51,7 @@ const DistrictsOfChittagong = () => {
                 })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Brahmanbaria</span>
             ) : (
               <span className="-mt-[2px]">ব্রাহ্মণবাড়িয়া</span>
@@ -66,7 +66,7 @@ const DistrictsOfChittagong = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Comilla", ban: "কুমিল্লা" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Comilla</span>
             ) : (
               <span className="-mt-[2px]">কুমিল্লা</span>
@@ -81,7 +81,7 @@ const DistrictsOfChittagong = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Chandpur", ban: "চাঁদপুর" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Chandpur</span>
             ) : (
               <span className="-mt-[2px]">চাঁদপুর</span>
@@ -98,7 +98,7 @@ const DistrictsOfChittagong = () => {
                 handleFilter({ eng: "Cox's Bazar", ban: "কক্সবাজার" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Cox's Bazar</span>
             ) : (
               <span className="-mt-[2px]"> কক্সবাজার</span>
@@ -113,7 +113,7 @@ const DistrictsOfChittagong = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Feni", ban: "ফেনী" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Feni</span>
             ) : (
               <span className="-mt-[2px]">ফেনী</span>
@@ -130,7 +130,7 @@ const DistrictsOfChittagong = () => {
                 handleFilter({ eng: "Khagrachhari", ban: "খাগড়াছড়ি" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Khagrachhari</span>
             ) : (
               <span className="-mt-[2px]">খাগড়াছড়ি</span>
@@ -147,7 +147,7 @@ const DistrictsOfChittagong = () => {
                 handleFilter({ eng: "Lakshmipur", ban: "লক্ষ্মীপুর" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Lakshmipur</span>
             ) : (
               <span className="-mt-[2px]">লক্ষ্মীপুর</span>
@@ -164,7 +164,7 @@ const DistrictsOfChittagong = () => {
                 handleFilter({ eng: "Noakhali", ban: "নোয়াখালী" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Noakhali</span>
             ) : (
               <span className="-mt-[2px]">নোয়াখালী</span>
@@ -180,7 +180,7 @@ const DistrictsOfChittagong = () => {
                 handleFilter({ eng: "Rangamati", ban: "রাঙ্গামাটি" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Rangamati</span>
             ) : (
               <span className="-mt-[2px]">রাঙ্গামাটি</span>
@@ -196,7 +196,7 @@ const DistrictsOfChittagong = () => {
                 handleFilter({ eng: "Bandarban", ban: "বান্দরবান" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]">Bandarban</span>
             ) : (
               <span className="-mt-[2px]">বান্দরবান</span>

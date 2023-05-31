@@ -64,7 +64,7 @@ const Reset = () => {
           className="mb-4 flex flex-col gap-6 relative"
         >
           <Input
-            label={lang ? "Email*" : "ইমেইল*"}
+            label={!lang ? "Email*" : "ইমেইল*"}
             {...register("email", { required: true })}
             onBlur={(e: any) => setGetEmail(e.target.value)}
           />
@@ -74,7 +74,7 @@ const Reset = () => {
             <>
               <Input
                 type={passHidden ? "password" : "text"}
-                label={lang ? "Password*" : "পাসওয়ার্ড*"}
+                label={!lang ? "Password*" : "পাসওয়ার্ড*"}
                 {...register("password", { required: true })}
               />{" "}
                
@@ -90,12 +90,12 @@ const Reset = () => {
               </div>
               <Input
                 type={coPassHidden ? "password" : "text"}
-                label={lang ? "Confirm Password*" : "পাসওয়ার্ড নিশ্চিত হন*"}
+                label={!lang ? "Confirm Password*" : "পাসওয়ার্ড নিশ্চিত হন*"}
                 {...register("confirmPassword", { required: true })}
                 name="confirmPassword"
               />
               {errors.confirmPassword && (
-            <span className="text-red-500 ">{lang ? "This field is required" :"আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}  </span>
+            <span className="text-red-500 ">{!lang ? "This field is required" :"আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}  </span>
           )}
               <div
                 className="cursor-pointer absolute right-4 top-[135px]"
@@ -109,13 +109,13 @@ const Reset = () => {
               </div>
             </>
           )}
-          {lang ? (
+          {!lang ? (
             <p className="text-red-400">{errorMessage}</p>
           ) : (
             <p className="text-red-400">{errorMessageBan}</p>
           )}
           <button className="w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800">
-            {lang ? "Submit" : "সাবমিট"}
+            {!lang ? "Submit" : "সাবমিট"}
           </button>
         </form>
       </div>

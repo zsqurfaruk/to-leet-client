@@ -21,7 +21,7 @@ const AllCityEng = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Dhaka", ban: "ঢাকা" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Dhaka City</span>
             ) : (
               <span className="-mt-[2px]"> ঢাকা শহর</span>
@@ -38,7 +38,7 @@ const AllCityEng = () => {
               }
               // name="Chittagong"
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Chittagong City</span>
             ) : (
               <span className="-mt-[2px]"> চট্টগ্রাম শহর</span>
@@ -53,7 +53,7 @@ const AllCityEng = () => {
               onClick={() => handleFilter({ eng: "Rajshahi", ban: "রাজশাহী" })}
               // name="Rajshahi"
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Rajshahi City</span>
             ) : (
               <span className="-mt-[2px]"> রাজশাহী শহর</span>
@@ -70,7 +70,7 @@ const AllCityEng = () => {
               }
               // name="Sylhet"
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Sylhet City</span>
             ) : (
               <span className="-mt-[2px]"> সিলেট শহর</span>
@@ -85,7 +85,7 @@ const AllCityEng = () => {
               onClick={() => handleFilter({ eng: "Barisal", ban: "বরিশাল" })}
               // name="Barisal"
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Barisal City</span>
             ) : (
               <span className="-mt-[2px]"> বরিশাল শহর</span>
@@ -99,7 +99,7 @@ const AllCityEng = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Khulna", ban: "খুলনা" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Khulna City</span>
             ) : (
               <span className="-mt-[2px]"> খুলনা শহর</span>
@@ -113,7 +113,7 @@ const AllCityEng = () => {
               className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Rangpur", ban: "রংপুর" })}
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Rangpur City</span>
             ) : (
               <span className="-mt-[2px]"> রংপুর শহর</span>
@@ -129,7 +129,7 @@ const AllCityEng = () => {
                 handleFilter({ eng: "Mymensingh", ban: "ময়মনসিংহ" })
               }
             />
-            {lang ? (
+            {!lang ? (
               <span className="-mt-[2px]"> Mymensingh City</span>
             ) : (
               <span className="-mt-[2px]"> ময়মনসিংহ শহর</span>

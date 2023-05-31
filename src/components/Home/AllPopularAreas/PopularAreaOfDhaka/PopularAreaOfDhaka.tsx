@@ -79,7 +79,7 @@ const PopularAreaOfDhaka = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Mirpur</span>
               ) : (
                 <span className="-mt-[2px]"> মিরপুর</span>
@@ -98,7 +98,7 @@ const PopularAreaOfDhaka = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Uttara</span>
               ) : (
                 <span className="-mt-[2px]"> উত্তরা</span>
@@ -117,7 +117,7 @@ const PopularAreaOfDhaka = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Farmgate</span>
               ) : (
                 <span className="-mt-[2px]"> ফার্মগেট</span>
@@ -136,7 +136,7 @@ const PopularAreaOfDhaka = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> New Market</span>
               ) : (
                 <span className="-mt-[2px]"> নিউমার্কেট</span>
@@ -155,7 +155,7 @@ const PopularAreaOfDhaka = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Mohakhali</span>
               ) : (
                 <span className="-mt-[2px]"> মহাখালী</span>
@@ -174,7 +174,7 @@ const PopularAreaOfDhaka = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Savar</span>
               ) : (
                 <span className="-mt-[2px]"> সাভার</span>
@@ -193,7 +193,7 @@ const PopularAreaOfDhaka = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Dhamrai</span>
               ) : (
                 <span className="-mt-[2px]"> ধামরাই</span>
@@ -220,7 +220,7 @@ const PopularAreaOfDhaka = () => {
                 }
                 name="Select-others"
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Select others</span>
               ) : (
                 <span className="-mt-[2px]"> অন্যান্য এলাকা</span>
@@ -228,7 +228,7 @@ const PopularAreaOfDhaka = () => {
             </label>
           </li>
 
-          {lang ? (
+          {!lang ? (
             <div>
               {homePopularAreaName?.eng === "Select others" && (
                 <li>

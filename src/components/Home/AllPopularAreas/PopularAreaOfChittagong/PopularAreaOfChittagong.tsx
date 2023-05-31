@@ -75,7 +75,7 @@ const PopularAreaOfChit = () => {
                   handleFilter({ eng: "Agrabad", ban: "আগ্রাবাদ" })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Agrabad</span>
               ) : (
                 <span className="-mt-[2px]"> আগ্রাবাদ</span>
@@ -94,7 +94,7 @@ const PopularAreaOfChit = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Chawkbazar</span>
               ) : (
                 <span className="-mt-[2px]"> চকবাজার</span>
@@ -110,7 +110,7 @@ const PopularAreaOfChit = () => {
                   handleFilter({ eng: "Kotwali", ban: "কোতয়ালী" })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Kotwali</span>
               ) : (
                 <span className="-mt-[2px]"> কোতয়ালী</span>
@@ -129,7 +129,7 @@ const PopularAreaOfChit = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Halishahar</span>
               ) : (
                 <span className="-mt-[2px]"> হালিশহর</span>
@@ -148,7 +148,7 @@ const PopularAreaOfChit = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Nasirabad</span>
               ) : (
                 <span className="-mt-[2px]"> নাসিরাবাদ</span>
@@ -164,7 +164,7 @@ const PopularAreaOfChit = () => {
                   handleFilter({ eng: "Oxygen", ban: "অক্সিজেন" })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Oxygen</span>
               ) : (
                 <span className="-mt-[2px]"> অক্সিজেন</span>
@@ -180,7 +180,7 @@ const PopularAreaOfChit = () => {
                   handleFilter({ eng: "Alankar", ban: "অলঙ্কার" })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Alankar</span>
               ) : (
                 <span className="-mt-[2px]"> অলঙ্কার</span>
@@ -207,7 +207,7 @@ const PopularAreaOfChit = () => {
                 }
                 name="Select-others"
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Select others</span>
               ) : (
                 <span className="-mt-[2px]"> অন্যান্য এলাকা</span>
@@ -215,7 +215,7 @@ const PopularAreaOfChit = () => {
             </label>
           </li>
 
-          {lang ? (
+          {!lang ? (
             <div>
               {homePopularAreaName?.eng === "Select others" && (
                 <li>

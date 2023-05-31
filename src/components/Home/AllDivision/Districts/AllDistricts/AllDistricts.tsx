@@ -27,10 +27,10 @@ const AllDistricts = () => {
           onClick={handlePrevious}
           className="text-secondary text-sm mb-5 cursor-pointer hover:underline"
         >
-          {lang ? "Change Division?" : "বিভাগ পরিবর্তন?"}
+          {!lang ? "Change Division?" : "বিভাগ পরিবর্তন?"}
         </h1>
         <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
-        {lang ? (
+        {!lang ? (
           <span>Districts of {divisionNameEng?.eng}:</span>
         ) : (
           <span className="text-xl">

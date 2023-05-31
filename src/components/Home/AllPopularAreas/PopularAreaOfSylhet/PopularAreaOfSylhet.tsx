@@ -80,7 +80,7 @@ const PopularAreaOfSylhet = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Zinda Bazar</span>
               ) : (
                 <span className="-mt-[2px]"> জিন্দা বাজার</span>
@@ -99,7 +99,7 @@ const PopularAreaOfSylhet = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Bandar Bazar</span>
               ) : (
                 <span className="-mt-[2px]"> বন্দর বাজার</span>
@@ -118,7 +118,7 @@ const PopularAreaOfSylhet = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Amber Khana</span>
               ) : (
                 <span className="-mt-[2px]"> আম্বরখানা</span>
@@ -137,7 +137,7 @@ const PopularAreaOfSylhet = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> South Surma</span>
               ) : (
                 <span className="-mt-[2px]"> সাউথ সুরমা</span>
@@ -156,7 +156,7 @@ const PopularAreaOfSylhet = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Uposhohor</span>
               ) : (
                 <span className="-mt-[2px]"> উপশহর</span>
@@ -175,7 +175,7 @@ const PopularAreaOfSylhet = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Bimanbondor</span>
               ) : (
                 <span className="-mt-[2px]"> বিমানবন্দর</span>
@@ -194,7 +194,7 @@ const PopularAreaOfSylhet = () => {
                   })
                 }
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Osmani Nagar</span>
               ) : (
                 <span className="-mt-[2px]"> ওসমানী নগর</span>
@@ -220,7 +220,7 @@ const PopularAreaOfSylhet = () => {
                 }
                 name="Select-others"
               />
-              {lang ? (
+              {!lang ? (
                 <span className="-mt-[2px]"> Select others</span>
               ) : (
                 <span className="-mt-[2px]"> অন্যান্য এলাকা</span>
@@ -228,7 +228,7 @@ const PopularAreaOfSylhet = () => {
             </label>
           </li>
 
-          {lang ? (
+          {!lang ? (
             <div>
               {homePopularAreaName?.eng === "Select others" && (
                 <li>
