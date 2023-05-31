@@ -27,7 +27,7 @@ type FormValues = {
   bedNumber: object;
   bedrooms: object;
   bathrooms: object;
-  wifi:object;
+  wifi: object;
   address: string;
   title: string;
   description: string;
@@ -154,13 +154,12 @@ const PostDetails = () => {
     };
     setWifi(newName);
   }
-
   const handlePost: SubmitHandler<FormValues> = async (data) => {
     const values = {
       bedrooms: bedRooms,
       bathrooms: bathRooms,
       bedNumber: bedNumbers,
-      wifi: wifi,
+      wifiFacility: wifi,
       address: data?.address,
       title: data?.title,
       description: data?.description,
@@ -289,7 +288,6 @@ const PostDetails = () => {
       setAmountErrorBan("");
     }
   };
- console.log(wifi)
   return (
     <>
       <Head>
@@ -485,7 +483,7 @@ const PostDetails = () => {
                   }
                 >
                   {!lang ? (
-                    <div className="form-control lg:w-6/12 mx-auto mt-8">
+                    <div className="form-control lg:w-6/12 mx-auto mt-10">
                       <label className="label">
                         <span className="label-text">Bathrooms</span>
                       </label>
@@ -498,7 +496,7 @@ const PostDetails = () => {
                       />
                     </div>
                   ) : (
-                    <div className="form-control lg:w-6/12 mx-auto mt-8">
+                    <div className="form-control lg:w-6/12 mx-auto mt-10">
                       <label className="label">
                         <span className="label-text">বাথরুম সংখ্যা</span>
                       </label>
@@ -519,9 +517,9 @@ const PostDetails = () => {
                     modalValue?.eng === "Vehicles" ||
                     modalValue?.eng === "Garage"
                       ? "hidden"
-                      : "block mt-8"}>
+                      : "block mt-10 mb-10"}>
                 {!lang ? (
-                    <div className="form-control lg:w-6/12 mx-auto mb-8">
+                    <div className="form-control lg:w-6/12 mx-auto">
                       <label className="label">
                         <span className="label-text">Wifi Facilities</span>
                       </label>
@@ -534,7 +532,7 @@ const PostDetails = () => {
                       />
                     </div>
                   ) : (
-                    <div className="form-control lg:w-6/12 mx-auto mb-8">
+                    <div className="form-control lg:w-6/12 mx-auto  ">
                       <label className="label">
                         <span className="label-text">ওয়াইফাই সুবিধাঃ</span>
                       </label>
@@ -549,7 +547,7 @@ const PostDetails = () => {
                   )}
                
                 </div>
-                <div className="lg:w-6/12 mx-auto mt-8">
+                <div className="lg:w-6/12 mx-auto ">
                   <label className="label">
                     {!lang ? (
                       <span className="label-text">Address</span>
@@ -565,7 +563,7 @@ const PostDetails = () => {
                         ? "Enter your street, house number, and/or post code"
                         : "এখানে আপনার পূর্ণ ঠিকানা লিখুন।"
                     }
-                    className="input input-bordered w-full bg-primary"
+                    className="input input-bordered w-full  "
                   />
                   {errors.address && (
                     <span className="text-red-500 pt-4">
@@ -575,7 +573,7 @@ const PostDetails = () => {
                     </span>
                   )}
                 </div>
-                <div className="lg:w-6/12 mx-auto mt-8">
+                <div className="lg:w-6/12 mx-auto mt-6">
                   <label className="label">
                     {!lang ? (
                       <span className="label-text">Title</span>
@@ -587,7 +585,7 @@ const PostDetails = () => {
                     {...register("title", { required: true })}
                     type="text"
                     placeholder={!lang ? "Short Title" : "টাইটেল লিখুন"}
-                    className="input input-bordered w-full bg-primary"
+                    className="input input-bordered w-full "
                   />
                   {errors.title && (
                     <span className="text-red-500 pt-4">
@@ -607,7 +605,7 @@ const PostDetails = () => {
                   </label>
                   <textarea
                     {...register("description")}
-                    className="textarea textarea-bordered w-full h-32 bg-primary"
+                    className="textarea textarea-bordered w-full h-32  "
                     placeholder={!lang ? "More Details" : "বিস্তারিত লিখুন"}
                   ></textarea>
                   {errors.description && (
@@ -630,7 +628,7 @@ const PostDetails = () => {
                     {...register("amount", { required: true })}
                     type="text"
                     placeholder={!lang ? "Rent Amount" : "টাকার পরিমান লিখুন"}
-                    className="input input-bordered w-full bg-primary"
+                    className="input input-bordered w-full  "
                     onChange={(e: any) => checkAmountValidity(e.target.value)}
                   />
                   {errors.description && (
