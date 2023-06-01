@@ -8,6 +8,7 @@ export interface options {
 // sudo git config --global user.email farukk6319@gmail.com
 // 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
 
+
   export const optionBan: readonly options[] = [
     {
       label: "১",
