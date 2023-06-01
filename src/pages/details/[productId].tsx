@@ -95,7 +95,7 @@ const ProductDetails = ({ product }: any) => {
                     variant="h6"
                     className="text-secondary md:hidden"
                   >
-                    Date: {product?.updatedAt?.slice(0, 10)}
+                    {!lang ? "Date:" :"তারিখঃ"} {product?.updatedAt?.slice(0, 10)}
                   </Typography>
                 </div>
                 {product?.university?.eng && (
