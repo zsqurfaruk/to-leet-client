@@ -22,6 +22,7 @@ import { optionEng } from "../../../components/PostData/DataEng";
 import { wifiBan } from "../../../components/PostData/WifiBan";
 import { wifiEng } from "../../../components/PostData/WifiEng";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
+import toast from "react-hot-toast";
 
 type FormValues = {
   bedNumber: object;
@@ -197,6 +198,7 @@ const PostDetails = () => {
     setPostDistrictsName({});
     setPostDivisionNameEng({});
     if (result?.message === "success") {
+      toast.success("Thanks for your ads.")
       setReload(!reload);
       router.push(`/${modalValue.eng}`);
     }
@@ -217,7 +219,6 @@ const PostDetails = () => {
       .then(function (response) {
         setImg(response?.data?.data?.display_url);
         setLoading(false);
-        // console.log(response.data.data.display_url);
       })
       .catch(function (error) {});
   };

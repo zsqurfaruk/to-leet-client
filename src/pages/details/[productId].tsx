@@ -2,7 +2,7 @@
 import React, { useContext, useState } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps} from "next";
 import {
   Card,
   CardHeader,
@@ -11,7 +11,6 @@ import {
 } from "@material-tailwind/react";
 import privateRoute from "@/routes/privateRoute";
 import Head from "next/head";
-import { APIContext } from "@/Context/ApiContext/ApiContext";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const ProductDetails = ({ product }: any) => {

@@ -1,8 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Card, Typography } from "@material-tailwind/react";
 import Link from "next/link";
-import { NameContext } from "@/Context/NamInfo";
 import { FcHome, FcShop } from "react-icons/fc";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import Image from "next/image";
@@ -16,16 +15,14 @@ import office from "../../../image/working-with-laptop.png";
 import car from "../../../image/car.png";
 import garage from "../../../image/garage.png";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
- 
-const DesEng = () => {
-  const { setRentName }: any = useContext(NameContext);
-  const { filterTypeCity, filterTypeDivision }: any = useContext(StateContext);
-  const { counter }: any = useContext(APIContext);   
- 
- const getCount = (value:any)=>{
-  return counter.find((item:any) => item.type.eng ===  value) || null;
- }
 
+const DesEng = () => {
+  const { filterTypeCity, filterTypeDivision }: any = useContext(StateContext);
+  const { counter }: any = useContext(APIContext);
+
+  const getCount = (value: any) => {
+    return counter.find((item: any) => item.type.eng === value) || null;
+  };
 
   return (
     <div className="w-10/12 mx-auto  grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 lg:gap-5 md:gap-2 gap-5 mt-10 md:mt-8">
@@ -33,7 +30,6 @@ const DesEng = () => {
         href={{
           pathname: "/Bachelor-(Male)",
         }}
-        onClick={() => setRentName("Bachelor-(Male)")}
       >
         <Card
           className={
@@ -56,9 +52,14 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Bachelor (Male)
               </Typography>
-              <Typography className="text-sm"> {getCount("Bachelor-(Male)") ? getCount("Bachelor-(Male)")?.count : 0} Ads</Typography>
+              <Typography className="text-sm">
+                {" "}
+                {getCount("Bachelor-(Male)")
+                  ? getCount("Bachelor-(Male)")?.count
+                  : 0}{" "}
+                Ads
+              </Typography>
               {/* <Typography className="text-sm">The Ultimate Rental Solution</Typography> */}
-              
             </div>
           </div>
         </Card>
@@ -68,7 +69,6 @@ const DesEng = () => {
         href={{
           pathname: "/Bachelor-(Female)",
         }}
-        onClick={() => setRentName("Bachelor-(Female)")}
       >
         <Card
           className={
@@ -91,7 +91,13 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Bachelor (Female)
               </Typography>
-              <Typography className="text-sm"> {getCount("Bachelor-(Female)") ? getCount("Bachelor-(Female)")?.count : 0} Ads</Typography>
+              <Typography className="text-sm">
+                {" "}
+                {getCount("Bachelor-(Female)")
+                  ? getCount("Bachelor-(Female)")?.count
+                  : 0}{" "}
+                Ads
+              </Typography>
               {/* <Typography className="text-sm">The Ultimate Rental Solution</Typography> */}
             </div>
           </div>
@@ -101,7 +107,6 @@ const DesEng = () => {
         href={{
           pathname: "/Mess-(Male)",
         }}
-        onClick={() => setRentName("Mess-(Male)")}
       >
         <Card
           className={
@@ -123,7 +128,13 @@ const DesEng = () => {
                 Mess (Male)
               </Typography>
               {/* <Typography> 0 Ads</Typography> */}
-              <Typography className="text-sm"> {getCount("Mess-(Male)") ? getCount("Mess-(Male)")?.count : 0} Ads</Typography>
+              <Typography className="text-sm">
+                {" "}
+                {getCount("Mess-(Male)")
+                  ? getCount("Mess-(Male)")?.count
+                  : 0}{" "}
+                Ads
+              </Typography>
             </div>
           </div>
         </Card>
@@ -132,7 +143,6 @@ const DesEng = () => {
         href={{
           pathname: "/Mess-(Female)",
         }}
-        onClick={() => setRentName("Mess-(Female)")}
       >
         <Card
           className={
@@ -154,7 +164,13 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Mess (Female)
               </Typography>
-              <Typography className="text-sm"> {getCount("Mess-(Female)") ? getCount("Mess-(Female)")?.count : 0} Ads</Typography>
+              <Typography className="text-sm">
+                {" "}
+                {getCount("Mess-(Female)")
+                  ? getCount("Mess-(Female)")?.count
+                  : 0}{" "}
+                Ads
+              </Typography>
             </div>
           </div>
         </Card>
@@ -163,7 +179,6 @@ const DesEng = () => {
         href={{
           pathname: "/Sublet-(Male)",
         }}
-        onClick={() => setRentName("Sublet-(Male)")}
       >
         <Card
           className={
@@ -186,7 +201,13 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Sublet (Male)
               </Typography>
-              <Typography className="text-sm"> {getCount("Sublet-(Male)") ? getCount("Sublet-(Male)")?.count : 0} Ads</Typography>
+              <Typography className="text-sm">
+                {" "}
+                {getCount("Sublet-(Male)")
+                  ? getCount("Sublet-(Male)")?.count
+                  : 0}{" "}
+                Ads
+              </Typography>
             </div>
           </div>
         </Card>
@@ -195,7 +216,6 @@ const DesEng = () => {
         href={{
           pathname: "/Sublet-(Female)",
         }}
-        onClick={() => setRentName("Sublet-(Female)")}
       >
         <Card
           className={
@@ -218,7 +238,13 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Sublet (Female)
               </Typography>
-              <Typography className="text-sm"> {getCount("Sublet-(Female)") ? getCount("Sublet-(Female)")?.count : 0} Ads</Typography>
+              <Typography className="text-sm">
+                {" "}
+                {getCount("Sublet-(Female)")
+                  ? getCount("Sublet-(Female)")?.count
+                  : 0}{" "}
+                Ads
+              </Typography>
             </div>
           </div>
         </Card>
@@ -227,7 +253,6 @@ const DesEng = () => {
         href={{
           pathname: "/Family",
         }}
-        onClick={() => setRentName("Family")}
       >
         <Card
           className={
@@ -250,17 +275,19 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Family
               </Typography>
-              <Typography className="text-sm"> {getCount("Family") ? getCount("Family")?.count : 0} Ads</Typography>
+              <Typography className="text-sm">
+                {" "}
+                {getCount("Family") ? getCount("Family")?.count : 0} Ads
+              </Typography>
             </div>
           </div>
         </Card>
       </Link>
-     
+
       <Link
         href={{
           pathname: "/Hostel",
         }}
-        onClick={() => setRentName("Hostel")}
       >
         <Card
           className={
@@ -284,7 +311,10 @@ const DesEng = () => {
                 {" "}
                 Hostel
               </Typography>
-              <Typography className="text-sm"> {getCount("Hostel") ? getCount("Hostel")?.count : 0} Ads</Typography>
+              <Typography className="text-sm">
+                {" "}
+                {getCount("Hostel") ? getCount("Hostel")?.count : 0} Ads
+              </Typography>
             </div>
           </div>
         </Card>
@@ -293,7 +323,6 @@ const DesEng = () => {
         href={{
           pathname: "/Office",
         }}
-        onClick={() => setRentName("Office")}
       >
         <Card
           className={
@@ -316,7 +345,10 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Office
               </Typography>
-              <Typography className="text-sm"> {getCount("Office") ? getCount("Office")?.count : 0} Ads</Typography>
+              <Typography className="text-sm">
+                {" "}
+                {getCount("Office") ? getCount("Office")?.count : 0} Ads
+              </Typography>
             </div>
           </div>
         </Card>
@@ -325,7 +357,6 @@ const DesEng = () => {
         href={{
           pathname: "/Shop",
         }}
-        onClick={() => setRentName("Shop")}
       >
         <Card
           className={
@@ -346,7 +377,10 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Shop
               </Typography>
-              <Typography className="text-sm"> {getCount("Shop") ? getCount("Shop")?.count : 0} Ads</Typography>
+              <Typography className="text-sm">
+                {" "}
+                {getCount("Shop") ? getCount("Shop")?.count : 0} Ads
+              </Typography>
             </div>
           </div>
         </Card>
@@ -355,7 +389,6 @@ const DesEng = () => {
         href={{
           pathname: "/Vehicles",
         }}
-        onClick={() => setRentName("Vehicles")}
       >
         <Card
           className={
@@ -379,7 +412,10 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Vehicles
               </Typography>
-              <Typography className="text-sm"> {getCount("Vehicles") ? getCount("Vehicles")?.count : 0} Ads</Typography>
+              <Typography className="text-sm">
+                {" "}
+                {getCount("Vehicles") ? getCount("Vehicles")?.count : 0} Ads
+              </Typography>
             </div>
           </div>
         </Card>
@@ -388,7 +424,6 @@ const DesEng = () => {
         href={{
           pathname: "/Garage",
         }}
-        onClick={() => setRentName("Garage")}
       >
         <Card
           className={
@@ -411,7 +446,10 @@ const DesEng = () => {
               <Typography variant="h5" className="mb-2">
                 Garage
               </Typography>
-              <Typography className="text-sm"> {getCount("Garage") ? getCount("Garage")?.count : 0} Ads</Typography>
+              <Typography className="text-sm">
+                {" "}
+                {getCount("Garage") ? getCount("Garage")?.count : 0} Ads
+              </Typography>
             </div>
           </div>
         </Card>

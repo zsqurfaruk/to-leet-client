@@ -17,6 +17,7 @@ const PostInfo = ({ children }: any) => {
   const [bedRooms, setBedRooms] = useState({});
   const [bathRooms, setBathRooms] = useState({});
   const [wifi, setWifi] = useState({});
+  
   // const [popularAreaNameForPost, setPopularAreaNameForPost] = useState("");
   // const handlePostOpenModal = (value: any) => setSize(value);
   const handlePostOpenModal = () => setPostOpenModal(!postOpenModal);
@@ -47,7 +48,8 @@ const PostInfo = ({ children }: any) => {
     bedNumbers, setBedNumbers,
     bedRooms, setBedRooms,
     bathRooms, setBathRooms,
-    wifi, setWifi
+    wifi, setWifi,
+     
   };
 
   return (

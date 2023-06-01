@@ -12,18 +12,6 @@ const FilterPosts = () => {
  
   const [filterPost, setFilterPost] = useState([]);
   const [loading , setLoading] = useState(false)
-  // useEffect(() => {
-   
-  //   axios
-  //     .get("https://zsqur.to-leet.com/api/v1/product/filter", {
-  //       params: filterValue,
-  //     })
-  //     .then(function (response) {
-  //       setFilterPost(response?.data?.posts)
-       
-  //     });
-    
-  // }, [filterValue]);
   useEffect(() => {
     setLoading(true)
       fetch("https://zsqur.to-leet.com/api/v1/product/filter", {

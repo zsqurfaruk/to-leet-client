@@ -21,7 +21,6 @@ const ApiContext = ({ children }: any) => {
       .then((data) => {
         const result = data?.filter(
           (post: any) => openModalValue?.eng === post?.university?.eng);
-     
         setLoading(false)
         setFilterPost(result);
       });
@@ -42,9 +41,7 @@ const ApiContext = ({ children }: any) => {
       .then((res) => res.json())
       .then((data) => setUserCounter(data?.data));
   }, []);
-  // const handleFilter = () => {
-  //   counterPosts.filter((lc) => lc === filterModal);
-  // };
+ 
   const [counter, setCounter] = useState([])
   useEffect(()=>{
    fetch('https://zsqur.to-leet.com/api/v1/product/category/type')
@@ -52,7 +49,6 @@ const ApiContext = ({ children }: any) => {
    .then(data=> setCounter(data?.countProduct))
   },[])
 
-// console.log(counter[0]?.type.eng)
   const info = {
     counterPosts,
     userCounter,

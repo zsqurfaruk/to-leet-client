@@ -1,20 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import Head from "next/head";
 import DestinationType from "@/components/Home/DestinationType/DestinationType";
 import PostCounter from "@/components/Home/PostCounter/PostCounter";
 import Banner from "@/components/Home/Banner/Banner";
 import { StateContext } from "@/Context/StateContext/StateContext";
-import style from "../styles/banner.module.css"
+import style from "../styles/banner.module.css";
 import About from "@/components/About/About";
- 
-
-// const inter = Inter({ subsets: ["latin"] });
 
 function Home() {
-const {filterTypeCity, filterTypeDivision,isOpen}:any = useContext(StateContext)
- const lan = localStorage.getItem("lan")
- 
+  const { filterTypeCity, filterTypeDivision, isOpen }: any =
+    useContext(StateContext);
 
   return (
     <>
@@ -25,17 +21,20 @@ const {filterTypeCity, filterTypeDivision,isOpen}:any = useContext(StateContext)
         <link className="rounded-full" rel="icon" href="/favicon.ico" />
       </Head>
       <main
-      id={isOpen ? style.modalStyle : ""}
-        className={filterTypeCity || filterTypeDivision ? "bg-primary" : "bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-70  text-white"}>
+        id={isOpen ? style.modalStyle : ""}
+        className={
+          filterTypeCity || filterTypeDivision
+            ? "bg-primary"
+            : "bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-70  text-white"
+        }
+      >
         <Banner></Banner>
         <DestinationType></DestinationType>
         <PostCounter></PostCounter>
-         <About></About>
+        <About></About>
       </main>
     </>
   );
 }
 
 export default Home;
-
- 

@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 type FormValues = {
   email: string | number;
@@ -42,6 +43,7 @@ const Reset = () => {
     setErrorMessageBan(result?.error?.eng);
     if (result.status === "success") {
       router.push("/signIn");
+      toast.success("Password reset Successful.")
     }
   };
 

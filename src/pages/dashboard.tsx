@@ -1,16 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import { Progress } from "@material-tailwind/react";
-import { GetStaticProps } from "next";
 import React, { useEffect, useState } from "react";
 import Lottie from "lottie-react";
 import lotti from "../image/lf20_jkbuwuhk.json";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Typography,
-  Avatar,
-} from "@material-tailwind/react";
 import DashboardPost from "@/components/Home/AllPost/DashboardPost";
 import privateRoute from "@/routes/privateRoute";
 import Head from "next/head";
@@ -25,9 +16,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     setLoading(true)
-    fetch(
-      `https://zsqur.to-leet.com/api/v1/product/user/email/${email}`
-    )
+    fetch(`https://zsqur.to-leet.com/api/v1/product/user/email/${email}`)
       .then((res) => res.json())
       .then((data) => {setPersonalPost(data)
         setLoading(false)});
@@ -52,7 +41,7 @@ const Dashboard = () => {
             <DashboardPost key={post._id} post={post}></DashboardPost>
           ))}
         </div>
-        {personalPost.length === 0 && (
+         {personalPost?.length < 1 && (
           <div className="flex justify-center ml-7 lg:ml-24">
             <div>
               <Lottie

@@ -9,6 +9,7 @@ import lottiImage from "../image/66268-signinanimation (1).json";
 import Lottie from "lottie-react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import Head from "next/head";
+import toast from "react-hot-toast";
 
 type FormValues = {
   firstName: string;
@@ -52,7 +53,7 @@ function SignUp() {
       return setError("emailError")
     }
     else{
-
+      toast.success("Sign Up Successful.")
       router.push(`/signIn`);
     }
     // setSignUpUserInfo(result);
@@ -191,8 +192,8 @@ function SignUp() {
          {errors.email && errors.password && (
             <span className="text-red-500 ">{!lang ? "All These field is required" :"আপনাকে অবশ্যই সকল তথ্য দিতে হবে।"}  </span>
           )}
-          <p className="text-red-500">{error && lang && "Something went wrong, please try a unique email or check password rules."}</p>
-          <p className="text-red-500 text-sm -mt-5">{error && !lang && "কিছু ভুল হয়েছে, অনুগ্রহ করে একটি নতুন ইমেল দিয়ে চেষ্টা করুন বা পাসওয়ার্ডের নিয়মগুলি পরীক্ষা করুন৷"}</p>
+          <p className="text-red-500">{error && !lang && "Something went wrong, please try a unique email or check password rules."}</p>
+          <p className="text-red-500 text-sm -mt-5">{error && lang && "কিছু ভুল হয়েছে, অনুগ্রহ করে একটি নতুন ইমেল দিয়ে চেষ্টা করুন বা পাসওয়ার্ডের নিয়মগুলি পরীক্ষা করুন৷"}</p>
            {
             !lang ?  <button disabled= { agree ? false : true} className={agree ? "mt- w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800" : "mt- w-full bg-gray-300 py-2 rounded-lg font-semibold text-gray-800"}>Sign Up</button> :  <button disabled= { agree ? false : true} className={agree ? "mt- w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800" : "mt- w-full bg-gray-300 py-2 rounded-lg font-semibold text-gray-800"}>সাইন আপ</button>
            }

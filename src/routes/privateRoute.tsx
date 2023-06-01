@@ -1,6 +1,6 @@
 import { StateContext } from "@/Context/StateContext/StateContext";
 import { useRouter } from "next/router";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 
 function privateRoute(Component: any) {
   return function AuthenticatedComponent(props: any) {
@@ -11,8 +11,10 @@ function privateRoute(Component: any) {
 
     useEffect(() => {
       if (!token || tokenValidation === "Invalid token") {
-        // alert("Session expired. Please signIn");
         localStorage.removeItem("token");
+        localStorage.removeItem("email");
+        localStorage.removeItem("firstName");
+        localStorage.removeItem("lastName");
         const { asPath } = router;
         router.push(`/signIn?next=${asPath}`);
       } else {
@@ -32,30 +34,3 @@ function privateRoute(Component: any) {
 }
 
 export default privateRoute;
-
-// import Loading from "@/components/Loading/Loading";
-// import { AuthContext } from "@/Context/AuthProvider/AuthProvider";
-// import { useRouter } from "next/router";
-// import { useContext, useEffect } from "react";
-
-// const privateRoute = (WrappedComponent: any) => {
-//   const AuthWrapper = (props: any) => {
-//     const { getToken, loading }: any = useContext(AuthContext);
-//     const router = useRouter();
-
-//     useEffect(() => {
-//       if (!getToken) {
-//         router.push("/signIn");
-//       }
-//     }, [getToken, router]);
-
-//     if (loading) {
-//       return <Loading></Loading>;
-//     }
-//     return <WrappedComponent {...props} />;
-//   };
-
-//   return AuthWrapper;
-// };
-
-// export default privateRoute;

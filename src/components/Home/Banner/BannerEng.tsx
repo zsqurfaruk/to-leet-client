@@ -49,7 +49,7 @@ const BannerEng = () => {
               ? style.bannerTextColorChange
               : style.bannerTextColor
           }
-          className=" mt-2  text-xs md:text-xl"
+          className=" mt-2 text-xs md:text-xl"
         >
           Start your search today and let us be a part of your journey to
           finding the destination of your dreams.

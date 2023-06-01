@@ -1,9 +1,29 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Card, CardBody, Typography } from "@material-tailwind/react";
+import toast from "react-hot-toast";
+import { APIContext } from "@/Context/ApiContext/ApiContext";
 
 const DashboardPost = ({ post }: any) => {
+  const [updateReload, setUpdateReload] = useState(false);
   const lang = localStorage.getItem("lan");
+  const { reload, setReload }: any = useContext(APIContext);
+
+  const handleUpdate = async () => {
+    const res = await fetch(
+      `https://zsqur.to-leet.com/api/v1/product/update/available/${post._id}`,
+      {
+        method: "PATCH",
+      }
+    );
+    const result = await res.json();
+    if (result?.message === "success") {
+      setUpdateReload(true);
+      setReload(!reload);
+        toast.success("আপডেট দেওয়ার জন্য ধন্যবাদ।")
+    }
+  };
+
   return (
     <section className="w-full mb-10">
       <Card className="lg:flex-row w-full p-5 shadow-none">
@@ -13,8 +33,26 @@ const DashboardPost = ({ post }: any) => {
           className="h-52 lg:w-60 w-full rounded-lg"
         />
 
-        <div className="-ml-6 lg:ml-0">
-          <div className="md:flex justify-between">
+        <div className="-ml-6 lg:ml-0 mt-5 mb-0 lg:mt-0">
+          {post?.available || updateReload ? (
+            <button className="ml-4 -py-2 px-2 rounded-lg text-secondary font-semibold">
+              {!lang ? "Booked" : "ভাড়া হয়েছে।"}
+            </button>
+          ) : (
+            <p className="ml-6 mb-3 ">
+              {!lang
+                ? "If it is rented then click on the booked button."
+                : "ভাড়া হয়ে গেলে পাশের বাটনে ক্লিক করুন।"}{" "}
+              <button
+                className="text-white px-3 ml-2 rounded-lg font-semibold bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900"
+                onClick={handleUpdate}
+              >
+                {!lang ? "Booked" : "ভাড়া হয়েছে।"}
+              </button>
+            </p>
+          )}
+
+          <div className="md:flex justify-between -mt-5 lg:-mt-0">
             <div>
               <CardBody className="lg:-mt-6">
                 <div className="md:flex md:gap-56">

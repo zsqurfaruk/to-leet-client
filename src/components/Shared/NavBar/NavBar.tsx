@@ -13,6 +13,7 @@ import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import logo from "../../../image/logo.png";
 import Image from "next/image";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
+import { signOut, useSession } from "next-auth/react"
 
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -40,9 +41,10 @@ export default function NavBar() {
     setPostDistrictsName,
     setGetUniversityModalValue,
   }: any = useContext(PostStateContext);
-  const { setFilterPost }: any = useContext(APIContext);
   const [authenticated, setAuthenticated] = useState(false);
   const { push, pathname } = useRouter();
+
+  // const { data: session } = useSession()
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -71,6 +73,7 @@ export default function NavBar() {
 
   const handleLogOut = () => {
     logOut();
+    
   };
 
   const handleLanguage = () => {
@@ -110,10 +113,10 @@ export default function NavBar() {
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <li className="flex justify-center md:ml-36 lg:ml-0 lg:block">
-        {!authenticated && !email ? (
-          <div className="navbar-end ml-20">
+        {/* {!authenticated && !email ? (
+          <div className="navbar-end ml-20"> */}
             {/* <Link href="/SignUp">  */}
-            <Link href="/signIn">
+            {/* <Link href="/signIn">
               <Typography
                 as="li"
                 variant="small"
@@ -131,10 +134,10 @@ export default function NavBar() {
                   </Button>
                 )}
               </Typography>
-              {/* </Link> */}
+              
             </Link>
           </div>
-        ) : (
+        ) : ( */}
           <div className="navbar-end">
             {/* <Link href="/SignUp">  */}
             <Link href="/add-post">
@@ -158,10 +161,10 @@ export default function NavBar() {
               {/* </Link> */}
             </Link>
           </div>
-        )}
+      
       </li>
       <li className="flex justify-center lg:block">
-        {!authenticated && !email ? (
+        {(!authenticated && !email) ? (
           <Typography
             as="li"
             variant="small"
@@ -220,18 +223,18 @@ export default function NavBar() {
                 To-Leet
               </Typography>
             </Link>
-            <div className="mt-3 hidden lg:flex">
+            <div className="mt-1 mb-1 hidden lg:flex ">
               {!lang ? (
                 <Link
                   href="/ads"
-                  className="font-semibold border border-success text-primary  rounded-lg cursor-pointer px-2 py-1"
+                  className="font-semibold border border-success text-primary  rounded-lg cursor-pointer px-2 py-[3px]"
                 >
                   All Ads
                 </Link>
               ) : (
                 <Link
                   href="/ads"
-                  className="font-semibold border border-success  text-primary  rounded-lg cursor-pointer px-2 py-1"
+                  className="font-semibold border border-success  text-primary  rounded-lg cursor-pointer px-2 py-[3px]"
                 >
                   সকল বিজ্ঞাপন
                 </Link>

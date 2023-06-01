@@ -1,25 +1,24 @@
-import { GoogleAuthProvider } from "firebase/auth";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useContext, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { Card, Typography, Input, Checkbox } from "@material-tailwind/react";
-import { createHash } from "crypto";
+import React, {  useState } from "react";
+import { useForm } from "react-hook-form";
+import { Card, Typography, Input } from "@material-tailwind/react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import lottiImage from "../image/66268-signinanimation (1).json";
 import Lottie from "lottie-react";
-import { StateContext } from "@/Context/StateContext/StateContext";
 import Head from "next/head";
+import toast from "react-hot-toast";
 type FormValues = {
   email: string | number;
   password: string | number;
   confirmPassword: string | number;
 };
 const SignIn = () => {
-  const { language }: any = useContext(StateContext);
   const [signInError, setSignInError] = useState("");
   const [signInErrorBan, setSignInErrorBan] = useState("");
   const [passHidden, setPassHidden] = useState(true);
+
+   
   // const {
   //   accountLogIn,
   //   providerGoogleLogIn,
@@ -67,7 +66,7 @@ const SignIn = () => {
       localStorage.setItem("email", result?.data?.user.email);
       localStorage.setItem("firstName", result?.data?.user.firstName);
       localStorage.setItem("lastName", result?.data?.user.lastName);
-      // setUserInfo(result?.data?.user);
+      toast.success("Sign In Successful.")
       const { query }:any = router;
       const nextPage = query.next || "/";
       router.push(nextPage);
@@ -83,6 +82,7 @@ const SignIn = () => {
   //     })
   //     .catch((error: any) => setSignInError(error.message));
   // };
+  
   const handle = () => {
     setPassHidden(!passHidden);
   };
