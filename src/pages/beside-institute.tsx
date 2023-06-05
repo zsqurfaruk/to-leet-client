@@ -4,18 +4,19 @@ import React, { useContext, useState } from "react";
 import Lottie from "lottie-react";
 import lotti from "../image/lf20_jkbuwuhk.json";
 import Head from "next/head";
+import Cookies from 'js-cookie';
 
 const University = () => {
-  const { filterPost, loader }: any = useContext(APIContext);
+  const { filterPost, loading }: any = useContext(APIContext);
 
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <>
       <Head>
         <title>To-Leet - Filter by institute</title>
       </Head>
       <section className="lg:w-10/12 mx-auto bg-white px-5 rounded lg:my-10">
-        {loader ? (
+        {loading ? (
           <p className="text-center w-full mt-10 py-20">Loading...</p>
         ) : (
           <>

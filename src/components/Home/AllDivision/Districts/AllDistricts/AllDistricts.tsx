@@ -17,7 +17,7 @@ const AllDistricts = () => {
     setDistrictsName({})
   };
 
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
 
   return (
     <section className="lg:mt-72 lg:ml-4 mx-7 md:mx-14 lg:mx-0">

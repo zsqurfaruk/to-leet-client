@@ -2,6 +2,7 @@ import { PostStateContext } from '@/Context/PostStateContext/PostStateContext';
 import { useRouter } from 'next/router';
 import React,{useContext} from 'react';
 import { MdOutlineLocationOn } from "react-icons/md";
+import Cookies from 'js-cookie';
 
 const AdditionalInfoPostPage = () => {
     const {
@@ -23,7 +24,7 @@ const AdditionalInfoPostPage = () => {
         setPostOpenModal(false);
         router.push("/add-post");
       };
-      const lang = localStorage.getItem("lan");
+      const lang = Cookies.get("lan");
     return (
         <div>
              <div>

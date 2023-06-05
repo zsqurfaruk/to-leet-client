@@ -12,8 +12,10 @@ import {
 import privateRoute from "@/routes/privateRoute";
 import Head from "next/head";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import Cookies from 'js-cookie';
 
 const ProductDetails = ({ product }: any) => {
+  console.log(product)
   const { img1, img2, img3, img4, img5 } = product;
  const {loading} :any = useContext(FilterContext)
   const images = [
@@ -31,7 +33,7 @@ const ProductDetails = ({ product }: any) => {
     setSlideImage(slider);
   };
 
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <>
       <Head>
@@ -246,14 +248,14 @@ const ProductDetails = ({ product }: any) => {
                     {!lang ? (
                       <h1>
                         {" "}
-                        {product?.negotiable === true && <h2> Negotiable</h2>}
+                        {product?.negotiable  ? <h2> Negotiable</h2> : <h2>Fixed</h2> }
                       </h1>
                     ) : (
                       <h1>
                         {" "}
-                        {product?.negotiable === true && (
-                          <h2> আলোচনা সাপেক্ষে</h2>
-                        )}
+                        {product?.negotiable ? 
+                          <h2> আলোচনা সাপেক্ষে</h2> : <h2>ফিক্সড</h2>
+                        }
                       </h1>
                     )}
                   </div>
@@ -299,7 +301,7 @@ const ProductDetails = ({ product }: any) => {
                 <h2> {product?.description}</h2>
                 <Typography className="border border-accent py-1 px-2 rounded-md mt-2">
                   {!lang ? "Contact number:" : "মোবাইল নাম্বারঃ"}{" "}
-                  {product?.phone}
+                  +880{product?.phone}
                 </Typography>
                </div>
               </div>
@@ -329,12 +331,17 @@ const ProductDetails = ({ product }: any) => {
 //     fallback: false,
 //   };
 // };
-export const getServerSideProps: GetServerSideProps = async ({ params }: any) => {
+export const getServerSideProps: GetServerSideProps = async (context: any) => {
+  const token = context?.req?.cookies?.token;
+  const {params} = context
   const res = await fetch(
-    `https://zsqur.to-leet.com/api/v1/product/${params?.productId}`
+    `http://localhost:5000/api/v1/product/${params?.productId}`,{
+      headers: {
+        authorization: `bearer ${token}`,
+      },
+    }
   );
   const data = await res.json();
-
   if (!data) {
     return {
       redirect: {

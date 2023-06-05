@@ -8,8 +8,7 @@ import {
 } from "@material-tailwind/react";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React from "react";
-import Select from "react-select";
-import { colourOption } from "./DataBan";
+import Cookies from 'js-cookie';
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import PostDestinationType from "@/components/OtherPages/PostDestinationType/PostDestinationType";
 
@@ -27,7 +26,7 @@ export default function PostAreaModalEng() {
     setGetPostPopularAreaName({});
     setPostDistrictsName({})
   };
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <div>
       <Dialog

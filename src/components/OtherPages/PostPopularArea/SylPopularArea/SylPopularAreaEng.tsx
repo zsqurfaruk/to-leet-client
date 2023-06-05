@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import Select from "react-select";
 import { options } from "./DataSylBan";
 import { option } from "./DataSylEng";
+import Cookies from 'js-cookie';
 
 const SylPopularAreaEng = () => {
   const {
@@ -37,7 +38,7 @@ const SylPopularAreaEng = () => {
   ) {
     setPostOpenModal(true);
   }
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <section>
       <div>

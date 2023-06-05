@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
-import { StateContext } from "@/Context/StateContext/StateContext";
-import { Checkbox } from "@material-tailwind/react";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
+import Cookies from 'js-cookie';
 
 const PostAllCityEng = () => {
   const { setPostCityNameEng }: any = useContext(PostStateContext);
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <div>
       <ul className="grid grid-cols-2 md:grid-cols-4  gap-5 gap-y-3 text-black text-sm md:text-base">

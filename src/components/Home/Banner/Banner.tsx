@@ -13,7 +13,7 @@ import { useIntl } from "react-intl";
 import BannerBan from "./BannerBan";
 import BannerEng from "./BannerEng";
 import AllAreas from "../AllCity/AllAreas/AllAreas";
-import AllDivisionEng from "../AllDivision/AllDivisionEng";
+import Cookies from 'js-cookie';
 import AllDistricts from "../AllDivision/Districts/AllDistricts/AllDistricts";
 import ModalEng from "./Modal/ModalEng";
 import PostAreaModalEng from "./Modal/PostAreaModalEng";
@@ -48,7 +48,7 @@ const Banner = () => {
     setDivisionNameEng({});
     setFilterTypeDivision(!filterTypeDivision);
   };
-  const lan = localStorage.getItem("lan");
+  const lan = Cookies.get("lan");
 
   return (
     <section className="pt-6">

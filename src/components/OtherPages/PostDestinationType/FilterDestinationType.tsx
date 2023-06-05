@@ -1,6 +1,6 @@
 import { StateContext } from "@/Context/StateContext/StateContext";
 import { Card, Typography } from "@material-tailwind/react";
-import Link from "next/link";
+import Cookies from 'js-cookie';
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
 
@@ -35,7 +35,7 @@ const FilterDestinationType = () => {
     setDistrictsName({});
   };
 
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <div className="bg-primary  w-80 md:w-[40rem] lg:w-full -ml-24 md:-ml-44 lg:ml-0 rounded-md mt-40 lg:mt-0">
       <div>

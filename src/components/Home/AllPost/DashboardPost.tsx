@@ -3,24 +3,28 @@ import React, { useState, useContext } from "react";
 import { Card, CardBody, Typography } from "@material-tailwind/react";
 import toast from "react-hot-toast";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
+import Cookies from 'js-cookie';
 
 const DashboardPost = ({ post }: any) => {
   const [updateReload, setUpdateReload] = useState(false);
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   const { reload, setReload }: any = useContext(APIContext);
 
   const handleUpdate = async () => {
     const res = await fetch(
-      `https://zsqur.to-leet.com/api/v1/product/update/available/${post._id}`,
+      `http://localhost:5000/api/v1/product/update/available/${post._id}`,
       {
         method: "PATCH",
+        headers: {
+          authorization: `bearer ${Cookies.get("token")}`,
+        },
       }
     );
     const result = await res.json();
     if (result?.message === "success") {
       setUpdateReload(true);
       setReload(!reload);
-        toast.success("আপডেট দেওয়ার জন্য ধন্যবাদ।")
+      toast.success("আপডেট দেওয়ার জন্য ধন্যবাদ।");
     }
   };
 

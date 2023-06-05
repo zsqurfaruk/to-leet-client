@@ -3,6 +3,7 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 import style from "../../../styles/banner.module.css";
 import { BsArrowDownCircleFill } from "react-icons/bs";
+ 
 
 const BannerEng = () => {
   const {

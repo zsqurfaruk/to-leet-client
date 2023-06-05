@@ -11,6 +11,7 @@ import Select from "react-select";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import { colourOptions } from "../../Home/Banner/Modal/DataEng";
 import { colourOption } from "../../Home/Banner/Modal/DataBan";
+import Cookies from 'js-cookie';
 
 export default function PostModal() {
   const {
@@ -25,7 +26,7 @@ export default function PostModal() {
     setPostUniversityModalValue({});
   };
 
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <div>
       <Dialog

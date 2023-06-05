@@ -21,11 +21,15 @@ import { optionBan } from "../../../components/PostData/DataBan";
 import { optionEng } from "../../../components/PostData/DataEng";
 import { wifiBan } from "../../../components/PostData/WifiBan";
 import { wifiEng } from "../../../components/PostData/WifiEng";
+import { totalBedBan } from "../../../components/PostData/TotalBedBan";
+import { totalBedEng } from "../../../components/PostData/TotalBed";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
 import toast from "react-hot-toast";
+import Cookies from 'js-cookie';
 
 type FormValues = {
   bedNumber: object;
+  totalBed: object;
   bedrooms: object;
   bathrooms: object;
   wifiFacility: object;
@@ -57,13 +61,13 @@ const PostDetails = () => {
   const [imageUrl4, setImageUrl4] = useState("");
   const [imageUrl5, setImageUrl5] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
   const [validNumber, setValidNumber] = useState();
   const [numberError, setNumberError] = useState("");
   const [numberErrorBan, setNumberErrorBan] = useState("");
   const [validAmount, setValidAmount] = useState();
   const [amountError, setAmountError] = useState("");
   const [amountErrorBan, setAmountErrorBan] = useState("");
+  const {loading, setLoading}:any = useContext(APIContext)
 
   const {
     modalValue,
@@ -87,7 +91,8 @@ const PostDetails = () => {
     setBedRooms,
     bathRooms,
     setBathRooms,
-    wifi, setWifi
+    wifi, setWifi,
+    totalBed, setTotalBed
   }: any = useContext(PostStateContext);
 
   const { reload, setReload }: any = useContext(APIContext);
@@ -142,6 +147,21 @@ const PostDetails = () => {
   }
 
 
+  if (totalBed?.name === "eng") {
+    const newName = {
+      eng: totalBed?.label,
+      ban: totalBed?.value,
+    };
+    setTotalBed(newName);
+  } else if (totalBed?.name === "ban") {
+    const newName = {
+      eng: totalBed?.value,
+      ban: totalBed?.label,
+    };
+    setTotalBed(newName);
+  }
+
+
   if (wifi?.name === "eng") {
     const newName = {
       eng: wifi?.label,
@@ -160,6 +180,7 @@ const PostDetails = () => {
       bedrooms: bedRooms,
       bathrooms: bathRooms,
       bedNumber: bedNumbers,
+      totalBed:  totalBed,
       wifiFacility: wifi,
       address: data?.address,
       title: data?.title,
@@ -182,14 +203,17 @@ const PostDetails = () => {
       type: modalValue,
       university: getUniversityModalValue,
     };
-    const res = await fetch("https://zsqur.to-leet.com/api/v1/product", {
+    setLoading(true)
+    const res = await fetch("http://localhost:5000/api/v1/product", {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `bearer ${Cookies.get("token")}`,
       },
       body: JSON.stringify(values),
     });
     const result = await res.json();
+    setLoading(false)
     setError(result?.error);
     setPostOpenModal(false);
     setGetUniversityModalValue({});
@@ -255,10 +279,10 @@ const PostDetails = () => {
   const handleCancel15 = () => {
     setImageUrl5("");
   };
-  const lang = localStorage.getItem("lan");
-  const userEmail = localStorage.getItem("email");
-  const firstName = localStorage.getItem("firstName");
-  const lastName = localStorage.getItem("lastName");
+  const lang = Cookies.get("lan");
+  const userEmail = Cookies.get("email");
+  const firstName = Cookies.get("firstName");
+  const lastName = Cookies.get("lastName");
   const name = firstName + " " + lastName;
 
   const checkNumber = (e: any) => {
@@ -289,6 +313,7 @@ const PostDetails = () => {
       setAmountErrorBan("");
     }
   };
+
   return (
     <>
       <Head>
@@ -407,10 +432,49 @@ const PostDetails = () => {
                   {!lang ? (
                     <div className="form-control lg:w-6/12 mx-auto mb-8">
                       <label className="label">
-                        <span className="label-text">Bed Number/ Numbers</span>
+                        <span className="label-text">Total Bed Number/ Numbers</span>
                       </label>
                       <Select
-                        placeholder="Bed Number/ Numbers"
+                        placeholder="Total Bed Number/ Numbers"
+                        isSearchable
+                        options={totalBedEng}
+                        onChange={setTotalBed}
+                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                      />
+                    </div>
+                  ) : (
+                    <div className="form-control lg:w-6/12 mx-auto mb-8">
+                      <label className="label">
+                        <span className="label-text">মোট বেড সংখ্যা </span>
+                      </label>
+                      <Select
+                        placeholder="মোট বেড সংখ্যা"
+                        isSearchable
+                        options={totalBedBan}
+                        onChange={setTotalBed}
+                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                      />
+                    </div>
+                  )}
+                </div>
+                <div
+                  className={
+                    modalValue.eng === "Mess-(Male)" ||
+                    modalValue.eng === "Mess-(Female)" ||
+                    modalValue.eng === "Sublet-(Male)" || 
+                    modalValue.eng === "Sublet-(Female)" ||
+                    modalValue.eng === "Hostel"
+                      ? "block"
+                      : "hidden"
+                  }
+                >
+                  {!lang ? (
+                    <div className="form-control lg:w-6/12 mx-auto mb-8">
+                      <label className="label">
+                        <span className="label-text">Empty Bed number / numbers</span>
+                      </label>
+                      <Select
+                        placeholder="Empty Bed number / numbers"
                         isSearchable
                         options={optionEng}
                         onChange={setBedNumbers}
@@ -420,10 +484,10 @@ const PostDetails = () => {
                   ) : (
                     <div className="form-control lg:w-6/12 mx-auto mb-8">
                       <label className="label">
-                        <span className="label-text">বেড সংখ্যা </span>
+                        <span className="label-text">ফাঁকা বেড সংখ্যা </span>
                       </label>
                       <Select
-                        placeholder="বেড সংখ্যা"
+                        placeholder="ফাঁকা বেড সংখ্যা"
                         isSearchable
                         options={optionBan}
                         onChange={setBedNumbers}
@@ -451,10 +515,10 @@ const PostDetails = () => {
                   {!lang ? (
                     <div className="form-control lg:w-6/12 mx-auto mb-8">
                       <label className="label">
-                        <span className="label-text">Bedrooms</span>
+                        <span className="label-text">Bedroom number / numbers</span>
                       </label>
                       <Select
-                        placeholder="Bedrooms"
+                        placeholder="Bedroom number / numbers"
                         isSearchable
                         options={optionEng}
                         onChange={setBedRooms}
@@ -490,10 +554,10 @@ const PostDetails = () => {
                   {!lang ? (
                     <div className="form-control lg:w-6/12 mx-auto mt-10">
                       <label className="label">
-                        <span className="label-text">Bathrooms</span>
+                        <span className="label-text">Washroom number/ numbers</span>
                       </label>
                       <Select
-                        placeholder="Bathrooms"
+                        placeholder="Washroom number / numbers"
                         isSearchable
                         options={optionEng}
                         onChange={setBathRooms}
@@ -503,10 +567,10 @@ const PostDetails = () => {
                   ) : (
                     <div className="form-control lg:w-6/12 mx-auto mt-10">
                       <label className="label">
-                        <span className="label-text">বাথরুম সংখ্যা</span>
+                        <span className="label-text"> ওয়াশরুম সংখ্যা</span>
                       </label>
                       <Select
-                        placeholder="বাথরুম সংখ্যা"
+                        placeholder="ওয়াশরুম সংখ্যা"
                         isSearchable
                         options={optionBan}
                         onChange={setBathRooms}
@@ -1180,10 +1244,15 @@ const PostDetails = () => {
             <div className="lg:w-1/2 mx-auto flex justify-end">
               <Button
                 onClick={handleSubmit(handlePost)}
-                className="text-gray-800 w-1/2 mb-10 mt-12 font-semibold  bg-gradient-to-r from-success via-accent to-success"
+                className={loading ? "text-white w-1/2 mb-10 mt-12 font-semibold  bg-gray-800" : "text-gray-800 w-1/2 mb-10 mt-12 font-semibold  bg-gradient-to-r from-success via-accent to-success"}
                 disabled={modalValue?.eng ? false : true}
-              >
-                {!lang ? " Post Now" : "পোস্ট করুন"}
+              > 
+              {
+                loading ? <> {!lang ? "Posting" : "পোস্ট হচ্ছে..."}</> : <> {!lang ? " Post Now" : "পোস্ট করুন"}</>
+              }
+                  
+
+               
               </Button>
             </div>
           </div>

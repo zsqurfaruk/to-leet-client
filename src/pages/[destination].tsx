@@ -7,6 +7,9 @@ import lotti from "../image/lf20_jkbuwuhk.json";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import Head from "next/head";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import Cookies from 'js-cookie';
+
+
 const ShowAllPost = ({ products }: any) => {
    const {loading}:any = useContext(FilterContext)
   const { setTypeCount }: any = useContext(StateContext);
@@ -15,7 +18,7 @@ const ShowAllPost = ({ products }: any) => {
   const handleDelete = async (id: any) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const res = await fetch(`https://zsqur.to-leet.com/api/v1/product/${id}`, {
+      const res = await fetch(`http://localhost:5000/api/v1/product/${id}`, {
         method: "DELETE",
       });
       const data = await res.json();
@@ -30,7 +33,7 @@ const ShowAllPost = ({ products }: any) => {
   };
 
 
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <>
       <Head>
@@ -73,7 +76,7 @@ const ShowAllPost = ({ products }: any) => {
 export default ShowAllPost;
 export const getServerSideProps: GetServerSideProps = async ({ params }: any) => {
   const res = await fetch(
-    `https://zsqur.to-leet.com/api/v1/product/rentType/${params.destination}`
+    `http://localhost:5000/api/v1/product/rentType/${params.destination}`
   );
   const data = await res.json();
   return {

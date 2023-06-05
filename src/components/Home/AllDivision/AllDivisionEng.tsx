@@ -10,7 +10,7 @@ const AllDivisionName = () => {
     setFilterValue({ ...filterValue, divisionNameEng: v });
   };
 
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <div className="lg:-ml-4">
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-black text-sm md:text-base">

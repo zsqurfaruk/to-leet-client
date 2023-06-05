@@ -22,18 +22,8 @@
 // export default Loading;
 
 import { Typography } from "@material-tailwind/react";
-import { useState, CSSProperties } from "react";
-import BarLoader from "react-spinners/ClipLoader";
-
-const override: CSSProperties = {
-  display: "block",
-  margin: "0 auto",
-  borderColor: "#00ffc8",
-};
-
+ 
 function Loading() {
-  let [loading, setLoading] = useState(true);
-  let [color, setColor] = useState("#ffffff");
 
   return (
     <div className="sweet-loading flex justify-center h-screen items-center bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-75">

@@ -1,12 +1,13 @@
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import React, { useContext } from "react";
+import Cookies from 'js-cookie';
 
 const PostBariDistrictsEng = () => {
   const {postDistrictsName ,setPostDistrictsName,setPostOpenModal }: any = useContext(PostStateContext);
   if (postDistrictsName?.eng) {
     setPostOpenModal(true);
   }
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <div>
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">

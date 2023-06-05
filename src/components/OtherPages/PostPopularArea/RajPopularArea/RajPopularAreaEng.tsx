@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import Select from "react-select";
 import { options } from "./DataRajBan";
 import { option } from "./DataRajEng";
+import Cookies from 'js-cookie';
 
 const RajPopularAreaEng = () => {
   const {
@@ -37,7 +38,7 @@ const RajPopularAreaEng = () => {
   ) {
     setPostOpenModal(true);
   }
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <section>
       <div>

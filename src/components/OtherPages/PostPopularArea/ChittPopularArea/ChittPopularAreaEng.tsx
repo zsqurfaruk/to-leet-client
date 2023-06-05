@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import Select from "react-select";
 import { options } from "./DataChittBan";
 import { option } from "./DataChittEng";
+import Cookies from 'js-cookie';
 
 const ChittPopularAreaEng = () => {
   const {
@@ -37,7 +38,7 @@ const ChittPopularAreaEng = () => {
   ) {
     setPostOpenModal(true);
   }
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <section>
       <div>

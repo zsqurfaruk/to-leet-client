@@ -11,7 +11,7 @@ const BannerBan = () => {
    
   }: any = useContext(StateContext);
  
-  const lang = localStorage.getItem("lan");
+ 
   return (
     <div className="scale-90 md:scale-100 lg:scale-110 lg:ml-5">
       <p

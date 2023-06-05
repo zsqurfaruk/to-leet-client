@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, {  useState } from "react";
+import React, {  useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Card, Typography, Input } from "@material-tailwind/react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
@@ -8,6 +8,9 @@ import lottiImage from "../image/66268-signinanimation (1).json";
 import Lottie from "lottie-react";
 import Head from "next/head";
 import toast from "react-hot-toast";
+import Cookies from 'js-cookie';
+import { APIContext } from "@/Context/ApiContext/ApiContext";
+
 type FormValues = {
   email: string | number;
   password: string | number;
@@ -17,6 +20,7 @@ const SignIn = () => {
   const [signInError, setSignInError] = useState("");
   const [signInErrorBan, setSignInErrorBan] = useState("");
   const [passHidden, setPassHidden] = useState(true);
+  const {loading, setLoading}:any = useContext(APIContext)
 
    
   // const {
@@ -48,30 +52,40 @@ const SignIn = () => {
       email: data.email,
       password: data.password,
     };
-    const res = await fetch("https://zsqur.to-leet.com/api/v1/users/signIn", {
+    setLoading(true)
+    const res = await fetch("http://localhost:5000/api/v1/users/signIn", {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        authorization: `bearer ${localStorage.getItem("token")}`,
+         authorization: `bearer ${Cookies.get("token")}`,
       },
       body: JSON.stringify(info),
     });
     const result = await res.json();
-
+    setLoading(false)
     setSignInError(result?.error?.eng);
     setSignInErrorBan(result?.error?.ban);
     const token = result?.data?.token;
     if (token) {
-      localStorage.setItem("token", token);
-      localStorage.setItem("email", result?.data?.user.email);
-      localStorage.setItem("firstName", result?.data?.user.firstName);
-      localStorage.setItem("lastName", result?.data?.user.lastName);
+      // Cookies.set('token', encodeURIComponent(JSON.stringify(token)));
+      Cookies.set('token', token);
+      Cookies.set('email', result?.data?.user.email);
+      // Cookies.set("token", token);
+      // Cookies.set("email", result?.data?.user.email);
+      Cookies.set("firstName", result?.data?.user.firstName);
+      Cookies.set("lastName", result?.data?.user.lastName);
       toast.success("Sign In Successful.")
       const { query }:any = router;
       const nextPage = query.next || "/";
       router.push(nextPage);
     }
   };
+  // const cookieValue = Cookies.get('token');
+  // if(cookieValue){
+  //   const data = decodeURIComponent(JSON.parse(cookieValue ||""))
+  //   console.log(data)
+
+  // }
 
   // const handleGoogleLogin = () => {
   //   providerGoogleLogIn(provider)
@@ -82,11 +96,10 @@ const SignIn = () => {
   //     })
   //     .catch((error: any) => setSignInError(error.message));
   // };
-  
   const handle = () => {
     setPassHidden(!passHidden);
   };
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <>
       <Head>
@@ -170,12 +183,16 @@ const SignIn = () => {
                 )}
               </div>
               {!lang ? (
-                <button className="w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800">
-                  Sign In
+                <button className={loading ? "w-full bg-gray-800 py-2 rounded-lg font-semibold text-white" : "w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800"}>
+                 {
+                  loading ? "Signing..." : "Sign In"
+                 } 
                 </button>
               ) : (
-                <button className="w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800">
-                  সাইন ইন
+                <button className={loading ? "w-full bg-gray-800 py-2 rounded-lg font-semibold text-white" : "w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800"}>
+                  {
+                  loading ? "সাইন ইন হচ্ছে..." : "সাইন ইন"
+                 } 
                 </button>
               )}
             </form>

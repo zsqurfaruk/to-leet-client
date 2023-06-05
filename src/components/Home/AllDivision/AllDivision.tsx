@@ -8,7 +8,7 @@ const AllDivision = () => {
     setFilterTypeDivision(false);
   };
 
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <div className="flex items-center mt-5 lg:mt-16 lg:ml-8 mx-7 md:mx-14 lg:mx-0">
      

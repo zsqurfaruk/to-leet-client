@@ -1,10 +1,11 @@
 import { APIContext } from "@/Context/ApiContext/ApiContext";
 import React, { useContext } from "react";
 import CountUp from "react-countup";
+import Cookies from 'js-cookie';
 
 function PostCounter() {
   const { counterPosts, userCounter }: any = useContext(APIContext);
-  const lang = localStorage.getItem("lan")
+  const lang = Cookies.get("lan")
   return (
     <div>
       <hr className="w-10/12 mx-auto"/>

@@ -12,8 +12,8 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import logo from "../../../image/logo.png";
 import Image from "next/image";
-import { APIContext } from "@/Context/ApiContext/ApiContext";
-import { signOut, useSession } from "next-auth/react"
+import Cookies from 'js-cookie';
+
 
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -47,7 +47,7 @@ export default function NavBar() {
   // const { data: session } = useSession()
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = Cookies.get("token");
     if (token) {
       setAuthenticated(true);
     } else if (!token) {
@@ -64,10 +64,10 @@ export default function NavBar() {
 
   const logOut = () => {
     setAuthenticated(false);
-    localStorage.removeItem("token");
-    localStorage.removeItem("firstName");
-    localStorage.removeItem("lastName");
-    localStorage.removeItem("email");
+    Cookies.remove("token");
+    Cookies.remove("firstName");
+    Cookies.remove("lastName");
+    Cookies.remove("email");
     return push("/signIn");
   };
 
@@ -79,12 +79,12 @@ export default function NavBar() {
   const handleLanguage = () => {
     setLanguage(!language);
     if (language) {
-      localStorage.setItem("lan", language);
+      Cookies.set("lan", language);
     } else {
-      localStorage.removeItem("lan");
+      Cookies.remove("lan");
     }
   };
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
 
   const handleHome = () => {
     setCityName({});
@@ -109,7 +109,7 @@ export default function NavBar() {
     setGetUniversityModalValue({});
   };
 
-  const email = localStorage.getItem("email");
+  const email = Cookies.get("email");
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <li className="flex justify-center md:ml-36 lg:ml-0 lg:block">

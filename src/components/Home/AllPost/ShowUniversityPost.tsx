@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 const ShowUniversityPost = ({ university }: any) => {
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   const posts = {
     info: "g7j%u*9867&n3$h!5ngo35%g^n8klo%gvb7&bj11fgfgr255rtrt",
      

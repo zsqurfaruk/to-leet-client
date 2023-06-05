@@ -61,7 +61,7 @@ const PopularAreaOfChit = () => {
   ) {
     setFilterModal(true);
   }
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <section>
       <div>

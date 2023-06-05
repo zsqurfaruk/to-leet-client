@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import Select from "react-select";
 import { options } from "./DataBariBan";
 import { option } from "./DataBariEng";
+import Cookies from 'js-cookie';
 
 const BariPopularAreaEng = () => {
   const {
@@ -39,7 +40,7 @@ const BariPopularAreaEng = () => {
   ) {
     setPostOpenModal(true);
   }
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <section>
       <div>

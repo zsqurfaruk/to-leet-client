@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
+import Cookies from 'js-cookie';
 
 const Products = ({ product }: any) => {
   const post =
     "4l5gJNnHjXPcI5jCtff8vWW8vR#4oaWbB0TKs204^%$ACcaBTpXPwH00LczlXf8vWWCtC";
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <div className="pb-10">
       <Link

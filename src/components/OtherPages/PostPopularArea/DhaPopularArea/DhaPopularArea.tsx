@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import Select from "react-select";
 import { options } from "./DataDhaBan";
 import { option } from "./DataDhaEng";
+import Cookies from 'js-cookie';
 
 const DhaPopularArea = () => {
   const { getPostPopularAreaName,setGetPostPopularAreaName,setPostOpenModal }: any = useContext(PostStateContext);
@@ -34,7 +35,7 @@ const DhaPopularArea = () => {
   ) {
     setPostOpenModal(true);
   }
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <section>
       <div>

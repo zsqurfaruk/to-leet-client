@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import logo from "../../../image/logo.png";
-import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
 import Image from "next/image";
-import Link from "next/link";
+ 
 
 const Footer = () => {
   //footer
@@ -49,7 +49,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <span className="font-bold ">Email:</span>
-                  <span> farukk6323@gmail.com</span>
+                  <span> toleet001@gmail.com</span>
                 </li>
                 <li  className=" ">
                   <a

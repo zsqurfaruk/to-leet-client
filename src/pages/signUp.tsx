@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
-import React, {  useState } from "react";
+import React, {  useState,useContext } from "react";
 import { Card, Typography, Input } from "@material-tailwind/react";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
@@ -10,6 +10,8 @@ import Lottie from "lottie-react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import Head from "next/head";
 import toast from "react-hot-toast";
+import Cookies from 'js-cookie';
+import { APIContext } from "@/Context/ApiContext/ApiContext";
 
 type FormValues = {
   firstName: string;
@@ -17,7 +19,8 @@ type FormValues = {
   email: string | number;
   password: string | number;
   confirmPassword: string | number;
-  agree:boolean
+  agree:boolean;
+  ToLeet:string
 };
 function SignUp() {
   const {
@@ -29,6 +32,7 @@ function SignUp() {
  
   const [agree, setAgree] = useState(false);
   const [error, setError] = useState("");
+  const {loading, setLoading}:any = useContext(APIContext)
   
 
   const handleSignUp: SubmitHandler<FormValues> = async (data: any) => {
@@ -38,17 +42,20 @@ function SignUp() {
       email: data?.email,
       password: data?.password,
       confirmPassword: data?.confirmPassword,
-      agree:agree
+      agree:agree,
+      ToLeet: "to-leet"
     };
-    const res = await fetch("https://zsqur.to-leet.com/api/v1/users/signup", {
+    setLoading(true)
+    const res = await fetch("http://localhost:5000/api/v1/users/signup", {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        // authorization: `bearer ${localStorage.getItem('token')}`
+        // authorization: `bearer ${Cookies.get('token')}`
       },
       body: JSON.stringify(info),
     });
     const result = await res.json();
+    setLoading(false)
     if(result.message === "error"){
       return setError("emailError")
     }
@@ -81,7 +88,7 @@ function SignUp() {
     setAgree(!agree)
   }
 
-  const lang = localStorage.getItem("lan")
+  const lang = Cookies.get("lan")
   return (
    <>
     <Head>
@@ -195,7 +202,7 @@ function SignUp() {
           <p className="text-red-500">{error && !lang && "Something went wrong, please try a unique email or check password rules."}</p>
           <p className="text-red-500 text-sm -mt-5">{error && lang && "কিছু ভুল হয়েছে, অনুগ্রহ করে একটি নতুন ইমেল দিয়ে চেষ্টা করুন বা পাসওয়ার্ডের নিয়মগুলি পরীক্ষা করুন৷"}</p>
            {
-            !lang ?  <button disabled= { agree ? false : true} className={agree ? "mt- w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800" : "mt- w-full bg-gray-300 py-2 rounded-lg font-semibold text-gray-800"}>Sign Up</button> :  <button disabled= { agree ? false : true} className={agree ? "mt- w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800" : "mt- w-full bg-gray-300 py-2 rounded-lg font-semibold text-gray-800"}>সাইন আপ</button>
+            !lang ?  <button disabled= { agree ? false : true} className={agree ? "mt- w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800" : "mt- w-full bg-gray-300 py-2 rounded-lg font-semibold text-gray-800"}> {loading ? "Creating..." :"Sign Up"}  </button> :  <button disabled= { agree ? false : true} className={agree ? "mt- w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800" : "mt- w-full bg-gray-300 py-2 rounded-lg font-semibold text-gray-800"}>{loading ? "অপেক্ষা করুন...":"সাইন আপ"}</button>
            }
           </form>
 

@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import toast from "react-hot-toast";
+import Cookies from 'js-cookie';
 
 type FormValues = {
   email: string | number;
@@ -34,7 +35,7 @@ const Reset = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        // authorization: `bearer ${localStorage.getItem("token")}`,
+        // authorization: `bearer ${Cookies.get("token")}`,
       },
       body: JSON.stringify(info),
     });
@@ -54,7 +55,7 @@ const Reset = () => {
     setCoPassHidden(!coPassHidden);
   };
 
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <>
       <Head>

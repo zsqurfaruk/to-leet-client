@@ -5,23 +5,30 @@ import lotti from "../image/lf20_jkbuwuhk.json";
 import DashboardPost from "@/components/Home/AllPost/DashboardPost";
 import privateRoute from "@/routes/privateRoute";
 import Head from "next/head";
+import Cookies from 'js-cookie';
  
 
 const Dashboard = () => {
-  const firstName = localStorage.getItem("firstName");
-  const lastName = localStorage.getItem("lastName");
-  const email = localStorage.getItem("email");
+  const firstName = Cookies.get("firstName");
+  const lastName = Cookies.get("lastName");
+  const email = Cookies.get("email");
   const [personalPost, setPersonalPost] = useState([]);
   const [loading , setLoading] = useState(false)
-
+ 
   useEffect(() => {
     setLoading(true)
-    fetch(`https://zsqur.to-leet.com/api/v1/product/user/email/${email}`)
+    fetch(`http://localhost:5000/api/v1/product/user/email/${email}`,
+    {
+      headers: {
+        authorization: `bearer ${Cookies.get("token")}`,
+      },
+    })
       .then((res) => res.json())
-      .then((data) => {setPersonalPost(data)
+      .then((data) => {
+        setPersonalPost(data)
         setLoading(false)});
   }, [email]);
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <>
       <Head>

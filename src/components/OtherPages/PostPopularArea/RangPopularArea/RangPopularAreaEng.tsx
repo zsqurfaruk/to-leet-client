@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import Select from "react-select";
 import { options } from "./DataRangBan";
 import { option } from "./DataRangEng";
+import Cookies from 'js-cookie';
 
 const RangPopularAreaEng = () => {
   const { getPostPopularAreaName,setGetPostPopularAreaName,setPostOpenModal }: any = useContext(PostStateContext);
@@ -33,7 +34,7 @@ const RangPopularAreaEng = () => {
   ) {
     setPostOpenModal(true);
   }
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <section>
       <div>

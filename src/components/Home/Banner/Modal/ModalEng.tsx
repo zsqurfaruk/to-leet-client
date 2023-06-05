@@ -12,9 +12,7 @@ import Select from "react-select";
 import { colourOptions } from "./DataEng";
 import { colourOption } from "./DataBan";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import FilterAllPosts from "../../AllPost/FilterAllPosts";
-import University from "@/pages/beside-institute";
+import Cookies from 'js-cookie';
 import { APIContext } from "@/Context/ApiContext/ApiContext";
 
 export default function ModalEng() {
@@ -46,7 +44,7 @@ export default function ModalEng() {
   }
  
 
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <div>
     

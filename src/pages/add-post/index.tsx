@@ -21,6 +21,7 @@ import PostKhulnaDistrictsEng from "@/components/OtherPages/PostAllDivision/Post
 import PostRangDistrictsEng from "@/components/OtherPages/PostAllDivision/PostAllDistricts/PostRangDistricts/PostRangDistrictsEng";
 import PostMymDistrictsEng from "@/components/OtherPages/PostAllDivision/PostAllDistricts/PostMymDistricts/PostMymDistrictsEng";
 import Head from "next/head";
+import Cookies from 'js-cookie';
 
 const AddPost = () => {
  
@@ -36,7 +37,7 @@ const AddPost = () => {
     setPostCityNameEng({});
     setPostDivisionNameEng({})
   };
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
    <>
     <Head>

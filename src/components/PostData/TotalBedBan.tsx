@@ -1,5 +1,5 @@
 export interface options {
-    value: number;
+    value: number | string;
     label: string;
     name: string;
   }
@@ -9,7 +9,7 @@ export interface options {
 // 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
 
 
-  export const optionBan: readonly options[] = [
+  export const totalBedBan: readonly options[] = [
     {
       label: "১",
       value: 1,
@@ -38,37 +38,18 @@ export interface options {
        name: "ban",
     },
     {
-      label: "৬",
-      value: 6,
+      label: "৫+",
+      value: "5+",
        name: "ban",
     },
     {
-      label: "৭",
-      value: 7,
+      label: "সিঙ্গেল রুম",
+      value: "Single room",
        name: "ban",
     },
-    {
-      label: "৮",
-      value: 8,
-       name: "ban",
-    },
-    {
-      label: "৯",
-      value: 9,
-       name: "ban",
-    },
-    {
-      label: "১০",
-      value: 10,
-       name: "ban",
-    },
+    
+    
+   
+     
   ];
   
-
-
-
-
-
-
-
- 

@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import Select from "react-select";
 import { options } from "./DataMymBan";
 import { option } from "./DataMymEng";
+import Cookies from 'js-cookie';
 
 const MymPopularAreaEng = () => {
   const {
@@ -37,7 +38,7 @@ const MymPopularAreaEng = () => {
   ) {
     setPostOpenModal(true);
   }
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <section>
       <div>

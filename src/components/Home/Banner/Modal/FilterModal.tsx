@@ -23,7 +23,7 @@ export default function FilterModal() {
     setHomePopularAreaName({});
     setDistrictsName({})
   };
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <div>
       <Dialog

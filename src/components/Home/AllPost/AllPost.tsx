@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React from "react";
+import Cookies from 'js-cookie';
 
 function AllPost({ post }: any) {
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   const posts = {
     info: "g7j%u*9867&n3$h!5ngo35%g^n8klo%gvb7&bj11fgfgr255rtrt",
   };
@@ -152,7 +153,7 @@ function AllPost({ post }: any) {
                 </div>
            
               {post?.negotiable && (
-                <div>{!lang ? <h2>Negotiable </h2> : <h2 className="text-[13px]"> আলোচনা সাপেক্ষে</h2>}</div>
+                <div>{!lang ? <h2> {post?.negotiable ? "Negotiable" : "Fixed"} </h2> : <h2 className="text-[13px]"> {post?.negotiable ? "আলোচনা সাপেক্ষে":"ফিক্সড"}</h2>}</div>
               )}
             </div>
 

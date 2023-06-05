@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import Select from "react-select";
 import { options } from "./DataKhulnaBan";
 import { option } from "./DataKhulnaEng";
+import Cookies from 'js-cookie';
 
 const KhulnaPopularAreaEng = () => {
   const { getPostPopularAreaName,setGetPostPopularAreaName,setPostOpenModal }: any = useContext(PostStateContext);
@@ -34,7 +35,7 @@ const KhulnaPopularAreaEng = () => {
   ) {
     setPostOpenModal(true);
   }
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <section>
       <div>

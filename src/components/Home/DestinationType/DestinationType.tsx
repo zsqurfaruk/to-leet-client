@@ -4,12 +4,13 @@ import style from "../../../styles/banner.module.css";
 import DesEng from "./DesEng";
 import DesBan from "./DesBan";
 import { StateContext } from "@/Context/StateContext/StateContext";
+import Cookies from 'js-cookie';
 
  
 
 const DestinationType = () => {
   const { filterTypeCity, filterTypeDivision }: any = useContext(StateContext);
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <section className="mb-20 mt-10 lg:-mt-10">
       {!lang ? (

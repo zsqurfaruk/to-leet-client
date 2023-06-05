@@ -7,7 +7,7 @@ const AllCity = () => {
   const handlePrevious = () => {
     setFilterTypeCity(false);
   };
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <section className="mx-7 md:mx-14 lg:mx-0">
       {/* <h1

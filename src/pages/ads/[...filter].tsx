@@ -3,7 +3,7 @@ import FilterAllPosts from "@/components/Home/AllPost/FilterAllPosts";
 import React, { useContext, useState, useEffect } from "react";
 import Lottie from "lottie-react";
 import lotti from "../../image/lf20_jkbuwuhk.json";
-import axios from "axios";
+import Cookies from 'js-cookie';
 import Head from "next/head";
 
 const FilterPosts = () => {
@@ -14,11 +14,11 @@ const FilterPosts = () => {
   const [loading , setLoading] = useState(false)
   useEffect(() => {
     setLoading(true)
-      fetch("https://zsqur.to-leet.com/api/v1/product/filter", {
+      fetch("http://localhost:5000/api/v1/product/filter", {
         method: "POST",
         headers: {
           "content-type": "application/json",
-          // authorization: `bearer ${localStorage.getItem("token")}`,
+          // authorization: `bearer ${Cookies.get("token")}`,
         },
         body: JSON.stringify(filterValue),
       })
@@ -27,7 +27,7 @@ const FilterPosts = () => {
       setLoading(false)});
     
   }, [filterValue]);
-  const lang = localStorage.getItem("lan");
+  const lang = Cookies.get("lan");
   return (
     <>
     <Head>
