@@ -26,6 +26,7 @@ const Footer = () => {
               {/* <Image className="h-7 w-12 mt-2" src={logo} alt=""></Image> */}
               <h1 className="ml-2 text-4xl font-bold tracking-wide  ">
                 <span className="mr-4 cursor-pointer text-warning text-4xl font-extrabold ">
+                  xczxcxzcxzc
                  To-Leet
                 </span>
               </h1>
