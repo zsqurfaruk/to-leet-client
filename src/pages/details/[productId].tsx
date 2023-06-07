@@ -9,13 +9,12 @@ import {
   CardBody,
   Typography,
 } from "@material-tailwind/react";
-import privateRoute from "@/routes/privateRoute";
+import PrivateRoute from "@/routes/privateRoute";
 import Head from "next/head";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import Cookies from "js-cookie";
 
 const ProductDetails = ({ product }: any) => {
-  console.log(product);
   const { img1, img2, img3, img4, img5 } = product;
   const { loading }: any = useContext(FilterContext);
   const images = [
@@ -41,7 +40,7 @@ const ProductDetails = ({ product }: any) => {
       </Head>
       <section className="w-full lg:w-10/12 mx-auto lg:my-10 rounded">
         {loading ? (
-          <p className="text-center w-full mt-10 py-20">Loading...</p>
+          <h2 className="text-center w-full mt-10 py-20">Loading...</h2>
         ) : (
           <Card className="lg:flex-row w-full p-10">
             <CardHeader
@@ -106,15 +105,15 @@ const ProductDetails = ({ product }: any) => {
                     {product?.university?.eng && (
                       <>
                         {!lang ? (
-                          <h2>
+                          <>
                             <span className="font-semibold">Beside:</span>{" "}
                             {product?.university?.eng}
-                          </h2>
+                          </>
                         ) : (
-                          <h2>
+                          <>
                             <span className="font-semibold"> </span>{" "}
                             {product?.university?.ban} এর পাশে
-                          </h2>
+                          </>
                         )}
                       </>
                     )}
@@ -304,23 +303,23 @@ const ProductDetails = ({ product }: any) => {
                       <div className="md:flex md:gap-[135px]">
                         {/* <h2>Rent : {post?.amount} taka (Monthly)</h2> */}
                         {!lang ? (
-                          <h1>
+                          <>
                             {" "}
                             {product?.negotiable ? (
                               <h2> Negotiable</h2>
                             ) : (
                               <h2>Fixed</h2>
                             )}
-                          </h1>
+                          </>
                         ) : (
-                          <h1>
+                          <>
                             {" "}
                             {product?.negotiable ? (
                               <h2> আলোচনা সাপেক্ষে</h2>
                             ) : (
                               <h2>ফিক্সড</h2>
                             )}
-                          </h1>
+                          </>
                         )}
                       </div>
 
@@ -428,4 +427,4 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
     },
   };
 };
-export default privateRoute(ProductDetails);
+export default PrivateRoute(ProductDetails);

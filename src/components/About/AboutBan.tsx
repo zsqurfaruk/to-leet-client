@@ -19,14 +19,14 @@ const AboutBan = () => {
       <span className={"text-warning text-lg"}>To-Leet</span> - এ স্বাগতম, নতুন
       চালু হওয়া অনলাইন হোম,মেস, অফিস, যানবাহন, গ্যারেজ, এবং দোকান ভাড়া পরিষেবা
       কোম্পানি যার লক্ষ্য আপনার ভাড়ার অভিজ্ঞতা সহজ করা।{" "}
-      <p className="hidden lg:inline">
+      <div className="hidden lg:inline">
         <span className="text-warning text-lg">To-Leet</span> - এ, আমরা বুঝি যে
         প্রত্যেকের প্রয়োজনীয়তা অনন্য, এবং নিখুঁত স্থান খোঁজা একটি বিরামহীন
         প্রক্রিয়া হওয়া উচিত। আমরা একটি স্বজ্ঞাত এবং ব্যবহারকারী-বান্ধব অনলাইন
         প্ল্যাটফর্ম তৈরি করতে প্রযুক্তির শক্তিকে কাজে লাগিয়েছি যা ভাড়ার জন্য
         বিভিন্ন জায়গা অফার করে সম্পত্তি মালিকদের একটি বিস্তৃত নেটওয়ার্কের সাথে
         গ্রাহকদের সংযুক্ত করে।
-      </p>
+      </div>
       <br />
       <div className={open ? " scroll-smooth" : "pb-5"}>
         <div>
@@ -37,15 +37,15 @@ const AboutBan = () => {
             আরও দেখুন{" "}
             <AiFillCaretDown className={"mt-1 text-xl text-warning"} />
           </button>
-          <p className={open ? "hidden" : "block"}>
-            <p className="lg:hidden inline">
+          <div className={open ? "hidden" : "block"}>
+            <div className="lg:hidden inline">
               <span className="text-warning text-lg">To-Leet</span> - এ, আমরা
               বুঝি যে প্রত্যেকের প্রয়োজনীয়তা অনন্য, এবং নিখুঁত স্থান খোঁজা
               একটি বিরামহীন প্রক্রিয়া হওয়া উচিত। আমরা একটি স্বজ্ঞাত এবং
               ব্যবহারকারী-বান্ধব অনলাইন প্ল্যাটফর্ম তৈরি করতে প্রযুক্তির শক্তিকে
               কাজে লাগিয়েছি যা ভাড়ার জন্য বিভিন্ন জায়গা অফার করে সম্পত্তি
               মালিকদের একটি বিস্তৃত নেটওয়ার্কের সাথে গ্রাহকদের সংযুক্ত করে।
-            </p>
+            </div>
             <br />
             <h1 className={"text-xl text-warning"}>
               {" "}
@@ -123,7 +123,7 @@ const AboutBan = () => {
             নিখুঁত সমাধান দিতে এখানে রয়েছে। আজই আমাদের ওয়েবসাইট পরিদর্শন করুন
             এবং আপনার আদর্শ ভাড়ার জায়গা খুঁজে পেতে ঝামেলা-মুক্ত যাত্রা শুরু
             করুন!
-          </p>
+          </div>
         </div>
         <button
           className={open ? "hidden" : "flex"}

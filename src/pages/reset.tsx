@@ -116,9 +116,9 @@ const Reset = () => {
             </>
           )}
           {!lang ? (
-            <p className="text-red-400">{errorMessage}</p>
+            <span className="text-red-400">{errorMessage}</span>
           ) : (
-            <p className="text-red-400">{errorMessageBan}</p>
+            <span className="text-red-400">{errorMessageBan}</span>
           )}
           <button className="w-full bg-warning py-2 rounded font-semibold text-primary">
             {!lang ? "Submit" : "সাবমিট"}

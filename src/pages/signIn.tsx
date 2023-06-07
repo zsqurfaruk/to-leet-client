@@ -157,7 +157,6 @@ const SignIn = () => {
                   <FaEye className="text-2xl"></FaEye>
                 )}
               </div>
-              {/* <p>abc1Aomar&</p> */}
               {errors.email && errors.password && (
                 <span className="text-red-500 ">
                   {!lang
@@ -178,9 +177,9 @@ const SignIn = () => {
               <div className="flex gap-2">
                 {" "}
                 {!lang ? (
-                  <p className="text-red-400">{signInError}</p>
+                  <span className="text-red-400">{signInError}</span>
                 ) : (
-                  <p className="text-red-400">{signInErrorBan}</p>
+                  <span className="text-red-400">{signInErrorBan}</span>
                 )}
               </div>
               {!lang ? (

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Lottie from "lottie-react";
 import lotti from "../image/lf20_jkbuwuhk.json";
 import DashboardPost from "@/components/Home/AllPost/DashboardPost";
-import privateRoute from "@/routes/privateRoute";
+import PrivateRoute from "@/routes/privateRoute";
 import Head from "next/head";
 import Cookies from 'js-cookie';
  
@@ -43,7 +43,7 @@ const Dashboard = () => {
           <hr className="mt-5 bg-accent h-[2px] rounded" />
         </div>
         {
-          loading ? <p className="text-center w-full mt-10">Loading...</p> : <> <div>
+          loading ? <h1 className="text-center w-full mt-10">Loading...</h1> : <> <div>
           {personalPost?.map((post: any) => (
             <DashboardPost key={post._id} post={post}></DashboardPost>
           ))}
@@ -69,4 +69,4 @@ const Dashboard = () => {
     </>
   );
 };
-export default privateRoute(Dashboard);
+export default PrivateRoute(Dashboard);

@@ -7,7 +7,7 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import "react-phone-number-input/style.css";
 import Link from "next/link";
-import privateRoute from "@/routes/privateRoute";
+import PrivateRoute from "@/routes/privateRoute";
 import AdditionalInfoPostPage from "@/components/AdditionalInfoPostPage/AdditionalInfoPostPage";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import PostModal from "@/components/OtherPages/PostModal/PostModal";
@@ -345,17 +345,17 @@ const PostDetails = () => {
             {getUniversityModalValue?.eng && (
               <div >
                 {!lang ? (
-                  <p className="text-center text-lg mt-2">
+                  <h2 className="text-center text-lg mt-2">
                     {" "}
                     You have selected{" "}
                     <span className="lowercase">
                       {getUniversityModalValue?.eng}
                     </span>
-                  </p>
+                  </h2>
                 ) : (
-                  <p className="text-center mt-2">
+                  <h2 className="text-center mt-2">
                     আপনি নির্বাচন করেছেন {getUniversityModalValue?.ban}
-                  </p>
+                  </h2>
                 )}
               </div>
             )}
@@ -398,7 +398,7 @@ const PostDetails = () => {
                           </span>{" "}
                           কি বিশ্ববিদ্যালয় বা মেডিকেল কলেজের পাশে?
                         </h1>
-                        <h2
+                        <h1
                           className="border shadow-md shadow-warning border-warning rounded px-3 cursor-pointer text-center"
                           onClick={() =>
                             setPostUniversityModalValue({
@@ -408,7 +408,7 @@ const PostDetails = () => {
                           }
                         >
                           হ্যাঁ
-                        </h2>
+                        </h1>
                       </div>
                     )}
 
@@ -708,11 +708,11 @@ const PostDetails = () => {
                     </span>
                   )}
                   {!lang ? (
-                    <p className="text-red-400 mt-1">{amountError}</p>
+                    <span className="text-red-400 mt-1">{amountError}</span>
                   ) : (
-                    <p className="text-red-400 mt-1 text-sm">
+                    <span className="text-red-400 mt-1 text-sm">
                       {amountErrorBan}
-                    </p>
+                    </span>
                   )}
                 </div>
                 <div className="flex gap-2 lg:w-1/2 mx-auto mt-10">
@@ -1219,11 +1219,11 @@ const PostDetails = () => {
                     </span>
                   )}
                   {!lang ? (
-                    <p className="text-red-400 mt-1">{numberError}</p>
+                    <span className="text-red-400 mt-1">{numberError}</span>
                   ) : (
-                    <p className="text-red-400 mt-1 text-sm">
+                    <span className="text-red-400 mt-1 text-sm">
                       {numberErrorBan}
-                    </p>
+                    </span>
                   )}
                   {/* <button className="btn btn-secondary btn-sm mt-5">
                 <span> Verify otp</span>
@@ -1262,4 +1262,4 @@ const PostDetails = () => {
   );
 };
 
-export default privateRoute(PostDetails);
+export default PrivateRoute(PostDetails);

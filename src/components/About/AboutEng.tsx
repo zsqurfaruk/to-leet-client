@@ -36,7 +36,7 @@ const AboutEng = () => {
             Show more{" "}
             <AiFillCaretDown className={"mt-1 text-xl text-warning"} />
           </button>
-          <p className={open ? "hidden" : "block"}>
+          <div className={open ? "hidden" : "block"}>
             <span className="lg:hidden inline">
               At To-Leet, we understand that everyone's requirements are unique,
               and finding the perfect space should be a seamless process. We
@@ -120,7 +120,7 @@ const AboutEng = () => {
             here to provide you with the perfect solution. Visit our website
             today and embark on a hassle-free journey to find your ideal rental
             space!
-          </p>
+          </div>
         </div>
         <button
           className={open ? "hidden" : "flex"}

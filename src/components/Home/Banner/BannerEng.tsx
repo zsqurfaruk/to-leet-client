@@ -1,15 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
-import { StateContext } from "@/Context/StateContext/StateContext";
-import React, { useContext } from "react";
+import React  from "react";
 import style from "../../../styles/banner.module.css";
 import { BsArrowDownCircleFill } from "react-icons/bs";
 
 const BannerEng = () => {
-  const { filterTypeCity, filterTypeDivision }: any = useContext(StateContext);
 
   return (
     <div className="scale-90 md:scale-100 ml-2">
-      <p className="md:text-2xl lg:text-xl text-gray-700 text-justify">
+      <div className="md:text-2xl lg:text-xl text-gray-700 text-justify">
         {/* <p id={style.bannerTextColor} className="text-6xl font-semibold"></p>  */}
         <span
           id={style.bannerTextColorChange}
@@ -25,9 +23,9 @@ const BannerEng = () => {
           To-Leet's
         </span> <br className="hidden lg:flex"/>
         extensive listings for rent.
-      </p>
+      </div>
       <div className="">
-        <p
+        <div
           id={style.bannerTextColorChange}
           className="mt-2 text-xs md:text-xl relative"
         >
@@ -38,7 +36,7 @@ const BannerEng = () => {
             "absolute top-5 md:top-9 right-[200px] md:right-96  lg:right-36 w-4 h-4 md:w-5 md:h-5 text-gray-700"
           }
         />
-        </p>{" "}
+        </div>{" "}
       </div>
     </div>
   );

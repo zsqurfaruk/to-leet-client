@@ -53,22 +53,22 @@ const Banner = () => {
           <h1  >
             Are you searching near your university?
           </h1>
-          <h2
+          <h1
             className="text-center gap-2 border-2  border-warning shadow shadow-warning rounded px-2 mt-2 md:mt-0 cursor-pointer"
             onClick={handleOpenModalEng}
           >
             Yes
-          </h2>
+          </h1>
         </div>
       ) : (
         <div className="text-gray-700 md:flex md:justify-center gap-2 text-sm md:text-base mx-8 md:mx-0 ">
           <h1>আপনি কি বিশ্ববিদ্যালয়ের কাছাকাছি বাসস্থান খুঁজছেন?</h1>
-          <h2
+          <h1
             className=" border-2  border-warning shadow shadow-warning  rounded px-3 cursor-pointer text-center mt-2 md:mt-0"
             onClick={handleOpenModalEng}
           >
             হ্যাঁ
-          </h2>
+          </h1>
         </div>
       )}
       <ModalEng></ModalEng>

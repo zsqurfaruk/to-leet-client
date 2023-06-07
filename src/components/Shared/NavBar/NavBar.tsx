@@ -12,8 +12,7 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import logo from "../../../image/Blue And Yellow Typography Company Logo (4).jpg";
 import Image from "next/image";
-import Cookies from 'js-cookie';
-
+import Cookies from "js-cookie";
 
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -68,18 +67,17 @@ export default function NavBar() {
     Cookies.remove("firstName");
     Cookies.remove("lastName");
     Cookies.remove("email");
-    Cookies.remove("city")
-    Cookies.remove("area")
-    Cookies.remove("district")
-    Cookies.remove("division")
-    Cookies.remove("filterMV")
-    Cookies.remove("openMV")
+    Cookies.remove("city");
+    Cookies.remove("area");
+    Cookies.remove("district");
+    Cookies.remove("division");
+    Cookies.remove("filterMV");
+    Cookies.remove("openMV");
     return push("/signIn");
   };
 
   const handleLogOut = () => {
     logOut();
-    
   };
 
   const handleLanguage = () => {
@@ -113,70 +111,71 @@ export default function NavBar() {
       setPostOpenModal(false);
     setPostDistrictsName({});
     setGetUniversityModalValue({});
-    Cookies.remove("city")
-    Cookies.remove("area")
-    Cookies.remove("district")
-    Cookies.remove("division")
-    Cookies.remove("filterMV")
-    Cookies.remove("openMV")
+    Cookies.remove("city");
+    Cookies.remove("area");
+    Cookies.remove("district");
+    Cookies.remove("division");
+    Cookies.remove("filterMV");
+    Cookies.remove("openMV");
   };
 
   const email = Cookies.get("email");
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <li className="flex justify-center md:ml-36 lg:ml-0 lg:block">
+        <li className="flex justify-center md:ml-36 lg:ml-0 lg:block">
+      <Link href="/add-post">
           <div className="navbar-end">
             {/* <Link href="/SignUp">  */}
-            <Link href="/add-post">
-              <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-                onClick={() => setOpenNav(false)}
-              >
-                {!lang ? (
-                  <Button className="lg:w-[212px] text-primary -my-2 py-2 lg:text-[15px] bg-transparent border border-accent  font-normal lg:font-semibold rounded">
-                    Post your ads
-                  </Button>
-                ) : (
-                  <Button className="lg:w-[212px] text-primary -my-2 py-2 lg:text-[15px] bg-transparent border border-accent font-normal lg:font-semibold rounded">
-                    আপনার বিজ্ঞাপন দিন
-                  </Button>
-                )}
-              </Typography>
-              {/* </Link> */}
-            </Link>
+            <Typography
+              variant="small"
+              color="blue-gray"
+              className="p-1 font-normal"
+              onClick={() => setOpenNav(false)}
+            >
+              {!lang ? (
+                <Button className="lg:w-[212px] text-primary -my-2 py-2 lg:text-[15px] bg-transparent border border-accent  font-normal lg:font-semibold rounded">
+                  Post your ads
+                </Button>
+              ) : (
+                <Button className="lg:w-[212px] text-primary -my-2 py-2 lg:text-[15px] bg-transparent border border-accent font-normal lg:font-semibold rounded">
+                  আপনার বিজ্ঞাপন দিন
+                </Button>
+              )}
+            </Typography>
           </div>
-      
-      </li>
+      </Link>
+        </li>
       <li className="flex justify-center lg:block">
-        {(!authenticated && !email) ? (
+        {!authenticated && !email ? (
           <Typography
-            as="li"
             variant="small"
             color="blue-gray"
             className="p-1 font-normal"
-            ripple={false}
+            ripple="false"
             onClick={() => setOpenNav(false)}
           >
             <Link href="/signIn">
-              <li onClick={() => setOpenNav(false)} className="text-primary hidden lg:flex">
+              <span
+                onClick={() => setOpenNav(false)}
+                className="text-primary hidden lg:flex"
+              >
                 {!lang ? <span>SignIn</span> : <span>সাইন ইন</span>}
-              </li>
+              </span>
             </Link>
           </Typography>
         ) : (
           <Typography
-            as="li"
             variant="small"
             color="blue-gray"
             className="p-1 font-normal"
-            ripple={false}
+            ripple={"false"}
             onClick={() => setOpenNav(false)}
           >
             <Link href="/dashboard">
-              <li onClick={() => setOpenNav(false)} className="text-primary mt-1">
+              <span
+                onClick={() => setOpenNav(false)}
+                className="text-primary mt-1"
+              >
                 {!lang ? (
                   <span className="border border-accent px-12 -ml-9 lg:px-2 lg:ml-0 pt-[5px] pb-[6px] rounded">
                     {" "}
@@ -187,7 +186,7 @@ export default function NavBar() {
                     অ্যাকাউন্ট
                   </span>
                 )}
-              </li>
+              </span>
             </Link>
           </Typography>
         )}
@@ -206,7 +205,7 @@ export default function NavBar() {
                 src={logo}
                 alt={""}
               ></Image> */}
-               {/* // text-transparent bg-clip-text bg-gradient-to-r from-primary via-gray-700 to-primary */}
+              {/* // text-transparent bg-clip-text bg-gradient-to-r from-primary via-gray-700 to-primary */}
               <Typography className="mr-4 cursor-pointer text-4xl font-semibold md:font-extrabold text-primary">
                 To-Leet
               </Typography>
@@ -277,7 +276,6 @@ export default function NavBar() {
             ) : (
               <Link href={"/signUp"}>
                 <Button
-                   
                   size="sm"
                   className="hidden lg:inline-block text-gray-700 -my-2 bg-accent  rounded"
                 >
@@ -328,16 +326,22 @@ export default function NavBar() {
           <div className="mt-10"> {navList}</div>
           <div className="flex justify-center">
             {authenticated ? (
-              <div
-               
-                onClick={handleLogOut}
-                
-              >
+              <div onClick={handleLogOut}>
                 {" "}
                 {!lang ? (
-                  <Button className="text-gray-700 w-[149px] -ml-9 py-2 -my-2 bg-accent rounded" onClick={() => setOpenNav(false)}>LogOut</Button>
+                  <Button
+                    className="text-gray-700 w-[149px] -ml-9 py-2 -my-2 bg-accent rounded"
+                    onClick={() => setOpenNav(false)}
+                  >
+                    LogOut
+                  </Button>
                 ) : (
-                  <Button  className="text-gray-700 w-[162px] -ml-[23px] py-2 -my-2 bg-accent rounded" onClick={() => setOpenNav(false)}>লগআউট</Button>
+                  <Button
+                    className="text-gray-700 w-[162px] -ml-[23px] py-2 -my-2 bg-accent rounded"
+                    onClick={() => setOpenNav(false)}
+                  >
+                    লগআউট
+                  </Button>
                 )}
               </div>
             ) : (

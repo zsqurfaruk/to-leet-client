@@ -221,16 +221,16 @@ function SignUp() {
                     : "আপনাকে অবশ্যই সকল তথ্য দিতে হবে।"}{" "}
                 </span>
               )}
-              <p className="text-red-500">
+              <span className="text-red-500">
                 {error &&
                   !lang &&
                   "Something went wrong, please try a unique email or check password rules."}
-              </p>
-              <p className="text-red-500 text-sm -mt-5">
+              </span>
+              <span className="text-red-500 text-sm -mt-5">
                 {error &&
                   lang &&
                   "কিছু ভুল হয়েছে, অনুগ্রহ করে একটি নতুন ইমেল দিয়ে চেষ্টা করুন বা পাসওয়ার্ডের নিয়মগুলি পরীক্ষা করুন৷"}
-              </p>
+              </span>
               {!lang ? (
                 <button
                   disabled={agree ? false : true}

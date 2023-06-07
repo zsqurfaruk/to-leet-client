@@ -41,7 +41,7 @@ const ShowAllPost = ({ products }: any) => {
       </Head>
       <section className="lg:my-20">
         {
-          loading ? <p className="text-center w-full mt-10 py-16">Loading...</p> : <><div className="bg-white px-10 lg:w-10/12 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:gap-5 rounded">
+          loading ? <h1 className="text-center w-full mt-10 py-16">Loading...</h1> : <><div className="bg-white px-10 lg:w-10/12 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:gap-5 rounded">
           {deleteAndFilterPost?.length > 0 &&
             deleteAndFilterPost?.map((product: any) => (
               <Products

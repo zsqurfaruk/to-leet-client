@@ -17,7 +17,7 @@ const University = () => {
       </Head>
       <section className="lg:w-10/12 mx-auto bg-white px-5 rounded lg:my-10">
         {loading ? (
-          <p className="text-center w-full mt-10 py-20">Loading...</p>
+          <h1 className="text-center w-full mt-10 py-20">Loading...</h1>
         ) : (
           <>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-10">

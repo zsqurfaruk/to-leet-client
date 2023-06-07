@@ -1,9 +1,9 @@
 import { StateContext } from "@/Context/StateContext/StateContext";
 import { useRouter } from "next/router";
 import { useEffect, useContext } from "react";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
-function privateRoute(Component: any) {
+function PrivateRoute(Component: any) {
   return function AuthenticatedComponent(props: any) {
     const { tokenValidation, setTokenValidation }: any =
       useContext(StateContext);
@@ -34,4 +34,4 @@ function privateRoute(Component: any) {
   };
 }
 
-export default privateRoute;
+export default PrivateRoute;

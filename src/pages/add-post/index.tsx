@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import privateRoute from "@/routes/privateRoute";
+import PrivateRoute from "@/routes/privateRoute";
 import PostAllCityEng from "@/components/OtherPages/PostAllCities/PostAllCitiesEng/PostAllCitiesEng";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import PostAllDivisionEng from "@/components/OtherPages/PostAllDivision/PostAllDivisionEng/PostAllDivisionEng";
@@ -176,4 +176,4 @@ const AddPost = () => {
   );
 };
 
-export default privateRoute(AddPost);
+export default PrivateRoute(AddPost);

@@ -32,9 +32,9 @@ const Footer = () => {
             </a>
            <h1 className="text-xl lg:ml-2 text-warning">The Ultimate Rental Solution</h1>
             <div className="mt-4 lg:max-w-sm">
-              <p className=" text-warning">
+              <div className=" text-warning">
                 
-              </p>
+              </div>
             </div>
           </div>
           <div className="">
@@ -73,7 +73,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="pt-5 pb-10 border-t-2 border-warning text-center">
-          <p className="text-sm  ">
+          <p className="text-sm">
             © Copyright 2023 To-Leet All rights reserved.
           </p>
         </div>

@@ -10,19 +10,17 @@ import { Toaster } from "react-hot-toast";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
+          <ApiContext>
     <FilterInfo>
       <PostInfo>
         <StateInfo>
-          <ApiContext>
             <NavBar></NavBar>
-            <div>
-              <Component {...pageProps} />
-            </div>
+            <Component {...pageProps} />
             <Toaster />
             <Footer></Footer>
-          </ApiContext>
         </StateInfo>
       </PostInfo>
     </FilterInfo>
+          </ApiContext>
   );
 }

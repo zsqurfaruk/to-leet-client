@@ -43,7 +43,7 @@ const DashboardPost = ({ post }: any) => {
               {!lang ? "Booked" : "ভাড়া হয়েছে।"}
             </button>
           ) : (
-            <p className="ml-6 mb-3 ">
+            <div className="ml-6 mb-3 ">
               {!lang
                 ? "If it is rented then click on the booked button."
                 : "ভাড়া হয়ে গেলে পাশের বাটনে ক্লিক করুন।"}{" "}
@@ -53,7 +53,7 @@ const DashboardPost = ({ post }: any) => {
               >
                 {!lang ? "Booked" : "ভাড়া হয়েছে।"}
               </button>
-            </p>
+            </div>
           )}
 
           <div className="md:flex justify-between -mt-5 lg:-mt-0">
@@ -183,13 +183,13 @@ const DashboardPost = ({ post }: any) => {
                       ) : (
                         <h2>এলাকাঃ {post?.areaName?.ban}</h2>
                       )}
-                      <h2 className="md:hidden">
+                      <div className="md:hidden">
                         {!lang ? (
                           <span> City: {post?.cityName?.eng}</span>
                         ) : (
                           <span> শহরঃ {post?.cityName?.ban}</span>
                         )}
-                      </h2>
+                      </div>
                     </div>
                   )}
                   {post?.division?.eng && (
@@ -199,13 +199,13 @@ const DashboardPost = ({ post }: any) => {
                       ) : (
                         <h2> জেলাঃ {post?.districts?.ban}</h2>
                       )}
-                      <h2 className="md:hidden">
+                      <div className="md:hidden">
                         {!lang ? (
                           <span> Division: {post?.division?.eng}</span>
                         ) : (
                           <span> বিভাগঃ {post?.division?.ban}</span>
                         )}
-                      </h2>
+                      </div>
                     </div>
                   )}
                   <div className="md:flex md:gap-[135px]">
@@ -229,7 +229,7 @@ const DashboardPost = ({ post }: any) => {
                   </Typography>
                 </div>
                 {post?.university?.ban && (
-                  <h2 className="invisible">
+                  <div className="invisible">
                     {!lang ? (
                       <>
                         {" "}
@@ -243,7 +243,7 @@ const DashboardPost = ({ post }: any) => {
                         <span> {post?.university?.ban} এর পাশে।</span>
                       </>
                     )}
-                  </h2>
+                  </div>
                 )}
 
                 <Typography color="gray" className="font-normal ">
@@ -287,15 +287,15 @@ const DashboardPost = ({ post }: any) => {
                   <div className="md:flex md:gap-[135px]">
                     {/* <h2>Rent : {post?.amount} taka (Monthly)</h2> */}
                     {!lang ? (
-                      <h1>
+                      <h2>
                         {" "}
-                        {post?.negotiable === true && <h2> Negotiable</h2>}
-                      </h1>
+                        {post?.negotiable === true && <span> Negotiable</span>}
+                      </h2>
                     ) : (
-                      <h1>
+                      <h2>
                         {" "}
-                        {post?.negotiable === true && <h2> আলোচনা সাপেক্ষে</h2>}
-                      </h1>
+                        {post?.negotiable === true && <span> আলোচনা সাপেক্ষে</span>}
+                      </h2>
                     )}
                   </div>
 
@@ -337,7 +337,7 @@ const DashboardPost = ({ post }: any) => {
         <Typography variant="h5" color="blue-gray" className="my-2">
           {post?.title}
         </Typography>
-        <h2> {post?.description}</h2>
+        <Typography> {post?.description}</Typography>
         <Typography className="border border-accent py-1 px-2 rounded-md">
           {!lang ? "Contact number:" : "মোবাইল নাম্বারঃ"} {post?.phone}
         </Typography>

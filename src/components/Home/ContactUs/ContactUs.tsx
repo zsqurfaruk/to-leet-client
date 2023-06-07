@@ -15,12 +15,12 @@ export const ContactUs = () => {
             Get In Touch
           </h2>
 
-          <p className="text-white text-start lg:w-8/12 mx-auto hidden lg:flex">
+          <h2 className="text-white text-start lg:w-8/12 mx-auto hidden lg:flex">
             Great genius takes shape by contact with another great genius,{" "}
             <span className="flex lg:hidden">
               but, less by assimilation than by friction.
             </span>
-          </p>
+          </h2>
         </div>
         <div>
           <div>
