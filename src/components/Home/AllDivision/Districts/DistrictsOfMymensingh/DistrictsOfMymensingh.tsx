@@ -1,6 +1,7 @@
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
+import Cookies from "js-cookie";
 
 const DistrictsOfMym = () => {
   const {
@@ -14,6 +15,7 @@ const DistrictsOfMym = () => {
   const handleFilter = (v: any) => {
     setDistrictsName(v);
     setFilterValue({ ...filterValue, districtsName: v });
+    Cookies.set("district", JSON.stringify(v),{ expires: 1 })
   };
   if (districtsName?.eng) {
     setFilterModal(true);
@@ -21,12 +23,12 @@ const DistrictsOfMym = () => {
   const lang = Cookies.get("lan");
   return (
     <div>
-      <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">
+      <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
         <li>
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 handleFilter({ eng: "Mymensingh", ban: "ময়মনসিংহ" })
               }
@@ -42,7 +44,7 @@ const DistrictsOfMym = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Jamalpur", ban: "খুলনা" })}
             />
             {!lang ? (
@@ -56,7 +58,7 @@ const DistrictsOfMym = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 handleFilter({ eng: "Netrokona", ban: "নেত্রকোণা" })
               }
@@ -72,7 +74,7 @@ const DistrictsOfMym = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Sherpur", ban: "শেরপুর" })}
             />
             {!lang ? (

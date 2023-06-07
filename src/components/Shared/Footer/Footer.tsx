@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import logo from "../../../image/logo.png";
+import logo from "../../../image/logo-f.png";
 import { FaFacebookF } from "react-icons/fa";
 import Image from "next/image";
  
@@ -8,9 +8,9 @@ import Image from "next/image";
 const Footer = () => {
   //footer
   return (
-    <div className="relative bg-gradient-to-r from-gray-700 via-black to-gray-700  text-white ">
+    <div className="relative text-warning">
       <svg
-        className="absolute top-0 w-full h-1  text-success"
+        className="absolute top-0 w-full h-1 "
         preserveAspectRatio="none"
         viewBox="0 0 1440 54"
       >
@@ -23,17 +23,17 @@ const Footer = () => {
         <div className="md:flex justify-between mb-3">
           <div>
             <a className="flex">
-              <Image className="h-7 w-12 mt-2" src={logo} alt=""></Image>
-              {/* <img className="h-10 w-10 rounded-lg" src={logo} alt="" /> */}
-              <h1 className="ml-2 text-4xl font-bold tracking-wide text-gray-100 uppercase ">
-                <span className="mr-4 cursor-pointer text-primary text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">
+              {/* <Image className="h-7 w-12 mt-2" src={logo} alt=""></Image> */}
+              {/* <img className="h-10 w-10 rounded" src={logo} alt="" /> */}
+              <h1 className="ml-2 text-4xl font-bold tracking-wide  ">
+                <span className="mr-4 cursor-pointer text-warning text-4xl font-extrabold ">
                  To-Leet
                 </span>
               </h1>
             </a>
-           <h1 className="text-xl lg:ml-2 text-accent">The Ultimate Rental Solution</h1>
+           <h1 className="text-xl lg:ml-2 text-warning">The Ultimate Rental Solution</h1>
             <div className="mt-4 lg:max-w-sm">
-              <p className=" text-gray-400">
+              <p className=" text-warning">
                 
               </p>
             </div>
@@ -41,14 +41,15 @@ const Footer = () => {
           <div className="">
             
             <div>
-              <ul className="mt-2 space-y-2 text-gray-400">
-                <li>
+              <ul className="mt-2 space-y-2 text-warning">
+                {/* <li>
                   <span className="font-bold ">Phone:</span>{" "}
-                  {/* <br className="flex md:hidden" />{" "} */}
+                 
                   <span> +8801816478478</span>
-                </li>
+                </li> */}
+                <li className="font-semibold ">Contact with us.</li>
                 <li>
-                  <span className="font-bold ">Email:</span>
+                  <span className="font-semibold ">Email:</span>
                   <span> toleet001@gmail.com</span>
                 </li>
                 <li  className=" ">
@@ -72,8 +73,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="pt-5 pb-10 border-t border-deep-purple-accent-200 text-center">
-          <p className="text-sm text-gray-400">
+        <div className="pt-5 pb-10 border-t-2 border-warning text-center">
+          <p className="text-sm  ">
             © Copyright 2023 To-Leet All rights reserved.
           </p>
         </div>

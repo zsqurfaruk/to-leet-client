@@ -44,13 +44,13 @@ const BariPopularAreaEng = () => {
   return (
     <section>
       <div>
-        <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">
+        <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
           {/* <Link href={"/AddProduct"}> */}
           <li>
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
                     eng: "Sadar Road",
@@ -72,7 +72,7 @@ const BariPopularAreaEng = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={(e: any) =>
                   setGetPostPopularAreaName({
                     eng: "Nattullabad",
@@ -93,7 +93,7 @@ const BariPopularAreaEng = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={(e: any) =>
                   setGetPostPopularAreaName({ eng: "Rupatali", ban: "রুপাতলি" })
                 }
@@ -111,7 +111,7 @@ const BariPopularAreaEng = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({ eng: "Gournadi", ban: "গৌরনদী" })
                 }
@@ -130,7 +130,7 @@ const BariPopularAreaEng = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={(e: any) =>
                   setGetPostPopularAreaName({
                     eng: "Nobogram Road",
@@ -151,7 +151,7 @@ const BariPopularAreaEng = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
                     eng: "Kashipur Bazar",
@@ -173,7 +173,7 @@ const BariPopularAreaEng = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({ eng: "Amtala", ban: "আমতলা" })
                 }
@@ -198,7 +198,7 @@ const BariPopularAreaEng = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={(e: any) =>
                   setGetPostPopularAreaName({
                     eng: "Select others",
@@ -224,7 +224,7 @@ const BariPopularAreaEng = () => {
                     isSearchable
                     options={option}
                     onChange={setGetPostPopularAreaName}
-                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                    className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                   />
                 </li>
               )}
@@ -238,7 +238,7 @@ const BariPopularAreaEng = () => {
                     isSearchable
                     options={options}
                     onChange={setGetPostPopularAreaName}
-                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                    className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                   />
                 </li>
               )}

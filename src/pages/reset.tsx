@@ -59,9 +59,12 @@ const Reset = () => {
   return (
     <>
       <Head>
-        <title>To-Leet - Reset Password</title>
+        <title>To Leet - Reset Password</title>
       </Head>
-      <div className="md:w-10/12 lg:w-4/12 mx-auto my-20 bg-white p-10 rounded-lg">
+      <div className="md:w-10/12 lg:w-4/12 mx-auto my-20 shadow-2xl p-10 rounded">
+       {
+        !lang ?  <h1 className="mb-1 text-xl text-warning ">Enter your registered email.</h1> :  <h1 className="mb-1 text-xl text-warning "> আপনার নিবন্ধন করা ইমেইল দিন।</h1> 
+       }
         <form
           onSubmit={handleSubmit(handleResetPass)}
           className="mb-4 flex flex-col gap-6 relative"
@@ -117,7 +120,7 @@ const Reset = () => {
           ) : (
             <p className="text-red-400">{errorMessageBan}</p>
           )}
-          <button className="w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800">
+          <button className="w-full bg-warning py-2 rounded font-semibold text-primary">
             {!lang ? "Submit" : "সাবমিট"}
           </button>
         </form>

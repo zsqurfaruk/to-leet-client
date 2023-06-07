@@ -1,5 +1,6 @@
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
+import Cookies from "js-cookie";
 
 const AllDivisionName = () => {
   const { setDivisionNameEng, setFilterValue, filterValue }: any =
@@ -8,17 +9,18 @@ const AllDivisionName = () => {
   const handleFilter = (v: any) => {
     setDivisionNameEng(v);
     setFilterValue({ ...filterValue, divisionNameEng: v });
+    Cookies.set("division", JSON.stringify(v),{ expires: 1 })
   };
 
   const lang = Cookies.get("lan");
   return (
     <div className="lg:-ml-4">
-      <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-black text-sm md:text-base">
+      <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-gray-700 text-sm md:text-base">
         <li>
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Dhaka", ban: "ঢাকা" })}
             />
             {!lang ? (
@@ -32,7 +34,7 @@ const AllDivisionName = () => {
           <label className="flex gap-2 lg:gap-0 lg:text-sm">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 handleFilter({ eng: "Chittagong", ban: "চট্টগ্রাম" })
               }
@@ -48,7 +50,7 @@ const AllDivisionName = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Rajshahi", ban: "রাজশাহী" })}
             />
             {!lang ? (
@@ -62,7 +64,7 @@ const AllDivisionName = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Sylhet", ban: "সিলেট" })}
             />
             {!lang ? (
@@ -76,7 +78,7 @@ const AllDivisionName = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Barisal", ban: "বরিশাল" })}
             />
             {!lang ? (
@@ -90,7 +92,7 @@ const AllDivisionName = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Khulna", ban: "খুলনা" })}
             />
             {!lang ? (
@@ -104,7 +106,7 @@ const AllDivisionName = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Rangpur", ban: "রংপুর" })}
             />
             {!lang ? (
@@ -118,7 +120,7 @@ const AllDivisionName = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 handleFilter({ eng: "Mymensingh", ban: "ময়মনসিংহ" })
               }

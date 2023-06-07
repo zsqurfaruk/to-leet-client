@@ -1,6 +1,7 @@
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
+import Cookies from "js-cookie";
 
 const DistrictsOfDhaka = () => {
   const {
@@ -14,6 +15,7 @@ const DistrictsOfDhaka = () => {
   const handleFilter = (v: any) => {
     setDistrictsName(v);
     setFilterValue({ ...filterValue, districtsName: v });
+    Cookies.set("district", JSON.stringify(v),{ expires: 1 })
   };
   if (districtsName?.eng) {
     setFilterModal(true);
@@ -22,12 +24,12 @@ const DistrictsOfDhaka = () => {
   const lang = Cookies.get("lan");
   return (
     <div>
-      <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">
+      <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
         <li>
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Dhaka", ban: "ঢাকা" })}
             />
             {!lang ? (
@@ -42,7 +44,7 @@ const DistrictsOfDhaka = () => {
           <label className="flex gap-[6px]">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Faridpur", ban: "ফরিদপুর" })}
             />
             {!lang ? (
@@ -57,7 +59,7 @@ const DistrictsOfDhaka = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Gazipur", ban: "গাজীপুর" })}
             />
             {!lang ? (
@@ -72,7 +74,7 @@ const DistrictsOfDhaka = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 handleFilter({ eng: "Gopalganj", ban: "গোপালগঞ্জ" })
               }
@@ -89,7 +91,7 @@ const DistrictsOfDhaka = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 handleFilter({ eng: "Kishoreganj", ban: "কিশোরগঞ্জ" })
               }
@@ -105,7 +107,7 @@ const DistrictsOfDhaka = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 handleFilter({ eng: "Madaripur", ban: "মাদারীপুর" })
               }
@@ -122,7 +124,7 @@ const DistrictsOfDhaka = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 handleFilter({ eng: "Manikganj", ban: "মানিকগঞ্জ" })
               }
@@ -140,7 +142,7 @@ const DistrictsOfDhaka = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 handleFilter({ eng: "Munshiganj", ban: "মুন্সিগঞ্জ" })
               }
@@ -157,7 +159,7 @@ const DistrictsOfDhaka = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 handleFilter({ eng: "Narayanganj", ban: "নারায়ণগঞ্জ" })
               }
@@ -174,7 +176,7 @@ const DistrictsOfDhaka = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Narsingdi", ban: "নরসিংদী" })}
             />
             {!lang ? (
@@ -190,7 +192,7 @@ const DistrictsOfDhaka = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Rajbari", ban: "রাজবাড়ী" })}
             />
             {!lang ? (
@@ -205,7 +207,7 @@ const DistrictsOfDhaka = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 handleFilter({ eng: "Shariatpur", ban: "শরীয়তপুর" })
               }
@@ -223,7 +225,7 @@ const DistrictsOfDhaka = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Tangail", ban: "টাঙ্গাইল" })}
             />
             {!lang ? (

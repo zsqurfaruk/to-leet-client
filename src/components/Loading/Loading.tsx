@@ -26,7 +26,7 @@ import { Typography } from "@material-tailwind/react";
 function Loading() {
 
   return (
-    <div className="sweet-loading flex justify-center h-screen items-center bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-75">
+    <div className="sweet-loading flex justify-center h-screen items-center bg-neutral">
       {/* <BarLoader
         color="#36d7b7"
         speedMultiplier={0}
@@ -37,10 +37,10 @@ function Loading() {
         data-testid="loader"
       /> */}
      <div>
-     <Typography className="mr-4 text-center text-primary text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">
+     <Typography className="mr-4 text-center text-4xl font-bold text-warning">
         To-Leet
       </Typography>
-      <Typography className="mr-4 cursor-pointer text-primary text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">
+      <Typography className="mr-4 cursor-pointer text-warning text-xl font-semibold">
       The Ultimate Rental Solution
       </Typography>
      </div>

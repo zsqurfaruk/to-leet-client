@@ -10,12 +10,12 @@ const PostSylDistrictsEng = () => {
   const lang = Cookies.get("lan");
   return (
     <div>
-      <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">
+      <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
         <li>
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDistrictsName({ eng: "Sylhet", ban: "সিলেট" })
               }
@@ -31,7 +31,7 @@ const PostSylDistrictsEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDistrictsName({ eng: "Moulvibazar", ban: "মৌলভীবাজার" })
               }
@@ -47,7 +47,7 @@ const PostSylDistrictsEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDistrictsName({ eng: "Habiganj", ban: "হবিগঞ্জ" })
               }
@@ -63,7 +63,7 @@ const PostSylDistrictsEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDistrictsName({ eng: "Sunamganj", ban: "সুনামগঞ্জ" })
               }

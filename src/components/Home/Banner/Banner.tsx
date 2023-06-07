@@ -13,7 +13,7 @@ import { useIntl } from "react-intl";
 import BannerBan from "./BannerBan";
 import BannerEng from "./BannerEng";
 import AllAreas from "../AllCity/AllAreas/AllAreas";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import AllDistricts from "../AllDivision/Districts/AllDistricts/AllDistricts";
 import ModalEng from "./Modal/ModalEng";
 import PostAreaModalEng from "./Modal/PostAreaModalEng";
@@ -27,12 +27,8 @@ const Banner = () => {
     cityName,
     setCityName,
     divisionNameEng,
-    divisionNameBan,
-    setDivisionNameBan,
     setDivisionNameEng,
-    handleOpenModalBan,
     handleOpenModalEng,
-    openModalValue,
   }: any = useContext(StateContext);
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
@@ -53,23 +49,22 @@ const Banner = () => {
   return (
     <section className="pt-6">
       {!lan ? (
-        <div className="md:flex justify-center gap-2 text-lg md:text-xl mx-8 md:mx-0">
-          <h1 className="cursor-pointer">
+        <div className="text-gray-700 md:flex justify-center gap-2 text-lg md:text-xl mx-8 md:mx-0">
+          <h1  >
             Are you searching near your university?
           </h1>
           <h2
-            className=" text-center gap-2 border shadow-lg shadow-accent border-accent rounded-lg px-2 cursor-pointer mt-2 md:mt-0"
+            className="text-center gap-2 border-2  border-warning shadow shadow-warning rounded px-2 mt-2 md:mt-0 cursor-pointer"
             onClick={handleOpenModalEng}
           >
             Yes
           </h2>
         </div>
       ) : (
-        <div className="md:flex md:justify-center gap-2 text-sm md:text-base mx-8 md:mx-0">
+        <div className="text-gray-700 md:flex md:justify-center gap-2 text-sm md:text-base mx-8 md:mx-0 ">
           <h1>আপনি কি বিশ্ববিদ্যালয়ের কাছাকাছি বাসস্থান খুঁজছেন?</h1>
-
           <h2
-            className="border shadow-lg shadow-accent border-accent rounded-lg px-3 cursor-pointer text-center mt-2 md:mt-0"
+            className=" border-2  border-warning shadow shadow-warning  rounded px-3 cursor-pointer text-center mt-2 md:mt-0"
             onClick={handleOpenModalEng}
           >
             হ্যাঁ
@@ -80,7 +75,7 @@ const Banner = () => {
       <PostAreaModalEng></PostAreaModalEng>
       <div className="pt-5 md:w-10/12 mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2">
-          <div className="lg:h-screen flex items-center mt-8 lg:-mt-16 text-white">
+          <div className="lg:h-screen flex items-center mt-8 lg:-mt-16">
             <div>
               <div className="-mt-5 lg:-mt-32 mb-5 lg:mb-0">
                 {cityName?.eng && <AllAreas></AllAreas>}
@@ -95,54 +90,38 @@ const Banner = () => {
               <div className="hidden lg:block">
                 <div>
                   {!lan ? (
-                    <h1
-                      className={
-                        filterTypeCity || filterTypeDivision
-                          ? "text-black mt-5 lg:mt-10 text-2xl"
-                          : "mt-5 lg:mt-10 text-2xl "
-                      }
-                    >
+                    <h1 className={"mt-5 lg:mt-10 text-2xl text-gray-700 ml-2"}>
                       Search by:
                     </h1>
                   ) : (
-                    <h1
-                      className={
-                        filterTypeCity || filterTypeDivision
-                          ? "text-black mt-5 lg:mt-10 text-xl  "
-                          : "mt-5 lg:mt-10 text-2xl  "
-                      }
-                    >
+                    <h1 className={"mt-5 lg:mt-10 text-2xl text-gray-700  "}>
                       অনুসন্ধান করুন :
                     </h1>
                   )}
                   <div className="flex justify-around mt-5 ">
-                    <div
-                      className={
-                        filterTypeCity || filterTypeDivision
-                          ? "pl-2 pr-4"
-                          : "pl-2 pr-4 shadow-lg bg-accent rounded"
-                      }
-                    >
-                      <Checkbox
-                        color="teal"
-                        onClick={handleFilterTypeCity}
-                        className="flex justify-end border border-secondary defaultCheck"
-                        label={!lan ? "City" : "শহর"}
-                      />
+                    <div className="pl-2 pr-4 shadow-lg bg-warning bg-opacity-70 rounded py-2 text-primary">
+                      <label className="flex gap-2">
+                        <input
+                          type="checkbox"
+                          className="checkbox checkbox-primary h-[18px] w-[19px] mt-[2px]"
+                          onClick={handleFilterTypeCity}
+                        />
+                        <span>{!lan ? "City" : "শহর"}</span>
+                      </label>
                     </div>
                     <div
                       className={
-                        filterTypeCity || filterTypeDivision
-                          ? "pl-2 pr-4"
-                          : "pl-2 pr-4 shadow-lg bg-accent rounded"
+                        "pl-2 pr-4 shadow-lg bg-warning bg-opacity-70 rounded text-primary pt-2"
                       }
                     >
-                      <Checkbox
-                        color="teal"
-                        onClick={handleFilterTypeDivision}
-                        className="flex justify-end border border-secondary"
-                        label={!lan ? "Division" : "বিভাগ"}
-                      />
+                      <label className="flex gap-2">
+                        <input
+                          type="checkbox"
+                          className="checkbox checkbox-primary h-[18px] w-[19px] mt-[2px]"
+                          onClick={handleFilterTypeDivision}
+                        />
+                        <span className=" ">{!lan ? "Division" : "বিভাগ"}</span>
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -160,68 +139,54 @@ const Banner = () => {
             <AllDivision></AllDivision>
           )}
 
-          <div className={"lg:hidden block"}>
+          <div className="lg:hidden block">
             <div>
               {!lan ? (
-                <h1
-                  className={
-                    filterTypeCity || filterTypeDivision
-                      ? "text-black mt-5 lg:mt-10 text-2xl ml-7 md:ml-1 lg:ml-7"
-                      : "mt-5 lg:mt-10 text-2xl ml-7 md:ml-1 lg:ml-7"
-                  }
-                >
+                <h1 className={filterTypeCity || filterTypeDivision ? " mt-5 lg:mt-10 text-xl text-gray-700 ml-[30px] md:ml-20" : "mt-5 lg:mt-10 text-xl text-gray-700 ml-5 md:ml-0"}>
                   Search by:
                 </h1>
               ) : (
-                <h1
-                  className={
-                    filterTypeCity || filterTypeDivision
-                      ? "text-black mt-5 lg:mt-10 text-xl  ml-7 md:ml-1 lg:ml-7"
-                      : "mt-5 lg:mt-10 text-2xl ml-7 md:ml-1 lg:ml-7"
-                  }
-                >
+                <h1 className={filterTypeCity || filterTypeDivision ? "mt-5 lg:mt-10 text-lg text-gray-700 ml-[30px] md:ml-20" : "mt-5 lg:mt-10 text-xl text-gray-700 ml-5 md:ml-0"}>
                   অনুসন্ধান করুন :
                 </h1>
               )}
               <div className="flex justify-around mt-5 ">
-                <div
-                  className={
-                    filterTypeCity || filterTypeDivision
-                      ? "pl-2 pr-4"
-                      : "pl-2 pr-4 shadow-lg bg-accent rounded"
-                  }
-                >
-                  <Checkbox
-                    color="teal"
-                    onClick={handleFilterTypeCity}
-                    className="flex justify-end border border-secondary defaultCheck"
-                    label={!lan ? "City" : "শহর"}
-                  />
+                <div className="pl-2 pr-4 shadow-lg bg-warning rounded py-2 text-primary">
+                  <label className="flex gap-2">
+                    <input
+                      type="checkbox"
+                      className="checkbox checkbox-primary h-[18px] w-[19px] mt-[2px]"
+                      onClick={handleFilterTypeCity}
+                    />
+                    <span>{!lan ? "City" : "শহর"}</span>
+                  </label>
                 </div>
                 <div
                   className={
-                    filterTypeCity || filterTypeDivision
-                      ? "pl-2 pr-4"
-                      : "pl-2 pr-4 shadow-lg bg-accent rounded"
+                    "pl-2 pr-4 shadow-lg bg-warning rounded text-primary pt-2"
                   }
                 >
-                  <Checkbox
-                    color="teal"
-                    onClick={handleFilterTypeDivision}
-                    className="flex justify-end border border-secondary"
-                    label={!lan ? "Division" : "বিভাগ"}
-                  />
+                  <label className="flex gap-2">
+                    <input
+                      type="checkbox"
+                      className="checkbox checkbox-primary h-[18px] w-[19px] mt-[2px]"
+                      onClick={handleFilterTypeDivision}
+                    />
+                    <span >{!lan ? "Division" : "বিভাগ"}</span>
+                  </label>
                 </div>
               </div>
             </div>
           </div>
+          <div className="mt-32">
           {!filterTypeDivision && (
             <Lottie
-              className="lg:scale-110 hidden lg:flex"
+              className="lg:scale-110 hidden lg:flex "
               animationData={lottiImage}
               loop={true}
             ></Lottie>
           )}
+          </div>
         </div>
       </div>
     </section>

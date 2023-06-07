@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import Select from "react-select";
 import { options } from "./BariDataBan";
 import { option } from "./BariDataEng";
+import Cookies from "js-cookie";
 
 const PopularAreaOfBarishal = () => {
   const {
@@ -21,6 +22,7 @@ const PopularAreaOfBarishal = () => {
         };
         setHomePopularAreaName(newName);
         setFilterValue({ ...filterValue, homePopularAreaName: newName });
+        Cookies.set("area", JSON.stringify(newName),{ expires: 1 })
         setFilterModal(true);
       } else if (v?.name === "ban") {
         const newName = {
@@ -29,11 +31,13 @@ const PopularAreaOfBarishal = () => {
         };
         setHomePopularAreaName(newName);
         setFilterValue({ ...filterValue, homePopularAreaName: newName });
+        Cookies.set("area", JSON.stringify(newName),{ expires: 1 })
         setFilterModal(true);
       }
     } else {
       setHomePopularAreaName(v);
       setFilterValue({ ...filterValue, homePopularAreaName: v });
+      Cookies.set("area", JSON.stringify(v),{ expires: 1 })
     }
   };
 
@@ -71,13 +75,13 @@ const PopularAreaOfBarishal = () => {
   return (
     <section>
       <div>
-        <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">
+        <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
           {/* <Link href={"/AddProduct"}> */}
           <li>
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   handleFilter({
                     eng: "Sadar Road",
@@ -99,7 +103,7 @@ const PopularAreaOfBarishal = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={(e: any) =>
                   handleFilter({
                     eng: "Nattullabad",
@@ -120,7 +124,7 @@ const PopularAreaOfBarishal = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={(e: any) =>
                   handleFilter({ eng: "Rupatali", ban: "রুপাতলি" })
                 }
@@ -138,7 +142,7 @@ const PopularAreaOfBarishal = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() => handleFilter({ eng: "Gournadi", ban: "গৌরনদী" })}
                 name="Gournadi"
               />
@@ -155,7 +159,7 @@ const PopularAreaOfBarishal = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={(e: any) =>
                   handleFilter({
                     eng: "Nobogram Road",
@@ -176,7 +180,7 @@ const PopularAreaOfBarishal = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   handleFilter({
                     eng: "Kashipur Bazar",
@@ -198,7 +202,7 @@ const PopularAreaOfBarishal = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() => handleFilter({ eng: "Amtala", ban: "আমতলা" })}
                 name="Amtala"
               />
@@ -219,7 +223,7 @@ const PopularAreaOfBarishal = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   handleFilter({
                     eng: "Select others",
@@ -245,7 +249,7 @@ const PopularAreaOfBarishal = () => {
                     isSearchable
                     options={option}
                     onChange={handleFilter}
-                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                    className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                   />
                 </li>
               )}
@@ -259,7 +263,7 @@ const PopularAreaOfBarishal = () => {
                     isSearchable
                     options={options}
                     onChange={handleFilter}
-                    className="bg-primary border-none h-4 text-black font-medium text-xs"
+                    className="bg-primary border-none h-4 text-gray-700 font-medium text-xs"
                   />
                 </li>
               )}

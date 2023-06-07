@@ -32,7 +32,7 @@ export default function PostAreaModalEng() {
       <Dialog
         open={postOpenModal}
         handler={handlePostOpenModal}
-        className="bg-transparent lg:bg-primary lg:px-10"
+        className="bg-transparent lg:bg-neutral lg:px-10"
         // id={style.modalChange}
         animate={{
           mount: { scale: 1, y: -80 },

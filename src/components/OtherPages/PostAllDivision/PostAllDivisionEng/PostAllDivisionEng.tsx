@@ -8,12 +8,12 @@ const PostAllDivisionEng = () => {
   const lang = Cookies.get("lan");
   return (
     <div className="lg:-ml-4">
-      <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-black text-sm md:text-base">
+      <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-gray-700 text-sm md:text-base">
         <li>
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDivisionNameEng({ eng: "Dhaka", ban: "ঢাকা" })
               }
@@ -29,7 +29,7 @@ const PostAllDivisionEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDivisionNameEng({ eng: "Chittagong", ban: "চট্টগ্রাম" })
               }
@@ -45,7 +45,7 @@ const PostAllDivisionEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDivisionNameEng({ eng: "Rajshahi", ban: "রাজশাহী" })
               }
@@ -61,7 +61,7 @@ const PostAllDivisionEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDivisionNameEng({ eng: "Sylhet", ban: "সিলেট" })
               }
@@ -77,7 +77,7 @@ const PostAllDivisionEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDivisionNameEng({ eng: "Barisal", ban: "বরিশাল" })
               }
@@ -93,7 +93,7 @@ const PostAllDivisionEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDivisionNameEng({ eng: "Khulna", ban: "খুলনা" })
               }
@@ -109,7 +109,7 @@ const PostAllDivisionEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDivisionNameEng({ eng: "Rangpur", ban: "রংপুর" })
               }
@@ -125,7 +125,7 @@ const PostAllDivisionEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDivisionNameEng({ eng: "Mymensingh", ban: "ময়মনসিংহ" })
               }

@@ -4,6 +4,7 @@ import Select from "react-select";
 import { options } from "./RangDataBan";
 import { option } from "./RangDataEng";
 import { StateContext } from "@/Context/StateContext/StateContext";
+import Cookies from "js-cookie";
 
 const PopularAreaOfRangpur = () => {
   const { setHomePopularAreaName,setFilterValue,filterValue,  homePopularAreaName, setFilterModal }: any =useContext(StateContext); 
@@ -19,6 +20,7 @@ const PopularAreaOfRangpur = () => {
         };
         setHomePopularAreaName(newName);
         setFilterValue({...filterValue, homePopularAreaName:newName})
+        Cookies.set("area", JSON.stringify(newName),{ expires: 1 })
         setFilterModal(true);
       } else if (v?.name === "ban") {
         const newName = {
@@ -27,12 +29,14 @@ const PopularAreaOfRangpur = () => {
         };
         setHomePopularAreaName(newName);
         setFilterValue({...filterValue, homePopularAreaName:newName})
+        Cookies.set("area", JSON.stringify(newName),{ expires: 1 })
         setFilterModal(true);
       }
     }
     else{
       setHomePopularAreaName(v)
       setFilterValue({...filterValue, homePopularAreaName:v})
+      Cookies.set("area", JSON.stringify(v),{ expires: 1 })
     }
    
   }
@@ -67,13 +71,13 @@ const PopularAreaOfRangpur = () => {
   return (
     <section>
       <div>
-        <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">
+        <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
          
           <li>
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   handleFilter({
                     eng: "Shapla Chottor",
@@ -92,7 +96,7 @@ const PopularAreaOfRangpur = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   handleFilter({
                     eng: "Dhap",
@@ -111,7 +115,7 @@ const PopularAreaOfRangpur = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   handleFilter({
                     eng: "Lalbag Mor",
@@ -130,7 +134,7 @@ const PopularAreaOfRangpur = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   handleFilter({
                     eng: "Jahaj Company More",
@@ -149,7 +153,7 @@ const PopularAreaOfRangpur = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   handleFilter({
                     eng: "Pouro bazar",
@@ -168,7 +172,7 @@ const PopularAreaOfRangpur = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   handleFilter({
                     eng: "Vinno Jogot",
@@ -187,7 +191,7 @@ const PopularAreaOfRangpur = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   handleFilter({
                     eng: "College Para",
@@ -212,7 +216,7 @@ const PopularAreaOfRangpur = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={(e: any) =>
                   handleFilter({
                     eng: "Select others",
@@ -238,7 +242,7 @@ const PopularAreaOfRangpur = () => {
                     isSearchable
                     options={option}
                     onChange={handleFilter}
-                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                    className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                   />
                 </li>
               )}
@@ -252,7 +256,7 @@ const PopularAreaOfRangpur = () => {
                     isSearchable
                     options={options}
                     onChange={handleFilter}
-                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                    className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                   />
                 </li>
               )}

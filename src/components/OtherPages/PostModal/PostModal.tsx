@@ -57,7 +57,7 @@ export default function PostModal() {
               isSearchable
               options={colourOptions}
               onChange={setGetUniversityModalValue}
-              className="text-sm bg-primary w-80 md:w-[40rem]  mr-10 md:mr-12 lg:mr-0 lg:w-full -ml-24 md:-ml-40 lg:ml-0 mx-auto text-black font-medium"
+              className="text-sm bg-primary w-80 md:w-[40rem]  mr-10 md:mr-12 lg:mr-0 lg:w-full -ml-24 md:-ml-40 lg:ml-0 mx-auto text-gray-700 font-medium"
             />
           ) : (
             <Select
@@ -65,7 +65,7 @@ export default function PostModal() {
               isSearchable
               options={colourOption}
               onChange={setGetUniversityModalValue}
-              className="text-sm bg-primary w-80 md:w-[40rem]  mr-10 md:mr-12 lg:mr-0 lg:w-full -ml-24 md:-ml-40 lg:ml-0 mx-auto text-black font-medium"
+              className="text-sm bg-primary w-80 md:w-[40rem]  mr-10 md:mr-12 lg:mr-0 lg:w-full -ml-24 md:-ml-40 lg:ml-0 mx-auto text-gray-700 font-medium"
             />
           )}
         </DialogBody>
@@ -77,7 +77,7 @@ export default function PostModal() {
             {!lang ? " Cancel" : "বাতিল"}
           </button>
           <button
-            className="text-secondary bg-accent px-2 rounded font-semibold"
+            className="text-warning bg-accent px-2 rounded font-semibold"
             onClick={handleCancel}
           >
             {!lang ? " Confirm" : "নিশ্চিত করুন"}

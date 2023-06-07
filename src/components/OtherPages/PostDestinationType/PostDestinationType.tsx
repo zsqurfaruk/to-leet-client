@@ -20,7 +20,7 @@ const PostDestinationType = () => {
   };
   const lang = Cookies.get("lan");
   return (
-    <div className="bg-primary  w-80 md:w-[40rem] lg:w-full -ml-24 md:-ml-44 lg:ml-0 rounded-md mt-40 lg:mt-0">
+    <div className="bg-neutral  w-80 md:w-[40rem] lg:w-full -ml-24 md:-ml-44 lg:ml-0 rounded-md mt-40 lg:mt-0">
       <div>
         {
           postDistrictsName?.eng ?
@@ -66,11 +66,11 @@ const PostDestinationType = () => {
             <div>
               <div>
                 {!lang ? (
-                  <Typography className="text-center">
+                  <Typography className="text-center border border-warning rounded-full">
                     Bachelor (Male)
                   </Typography>
                 ) : (
-                  <Typography className="text-center">
+                  <Typography className="text-center border border-warning rounded-full">
                     ব্যাচেলর (ছেলে)
                   </Typography>
                 )}
@@ -94,11 +94,11 @@ const PostDestinationType = () => {
             <div>
               <div>
                 {!lang ? (
-                  <Typography className="text-center">
+                  <Typography className="text-center border border-warning rounded-full">
                     Bachelor (Female)
                   </Typography>
                 ) : (
-                  <Typography className="text-center">
+                  <Typography className="text-center border border-warning rounded-full">
                     ব্যাচেলর (মেয়ে)
                   </Typography>
                 )}
@@ -118,9 +118,9 @@ const PostDestinationType = () => {
             <div className="text-center">
               <div>
                 {!lang ? (
-                  <Typography className="text-center">Mess (Male)</Typography>
+                  <Typography className="text-center border border-warning rounded-full">Mess (Male)</Typography>
                 ) : (
-                  <Typography className="text-center">মেস (ছেলে)</Typography>
+                  <Typography className="text-center border border-warning rounded-full">মেস (ছেলে)</Typography>
                 )}
               </div>
             </div>
@@ -138,9 +138,9 @@ const PostDestinationType = () => {
             <div>
               <div>
                 {!lang ? (
-                  <Typography className="text-center">Mess (Female)</Typography>
+                  <Typography className="text-center border border-warning rounded-full">Mess (Female)</Typography>
                 ) : (
-                  <Typography className="text-center">মেস (মেয়ে)</Typography>
+                  <Typography className="text-center border border-warning rounded-full">মেস (মেয়ে)</Typography>
                 )}
               </div>
             </div>
@@ -158,9 +158,9 @@ const PostDestinationType = () => {
             <div>
               <div>
                 {!lang ? (
-                  <Typography className="text-center">Sublet (Male)</Typography>
+                  <Typography className="text-center border border-warning rounded-full">Sublet (Male)</Typography>
                 ) : (
-                  <Typography className="text-center">সাবলেট (ছেলে)</Typography>
+                  <Typography className="text-center border border-warning rounded-full">সাবলেট (ছেলে)</Typography>
                 )}
               </div>
             </div>
@@ -181,11 +181,11 @@ const PostDestinationType = () => {
             <div>
               <div>
                 {!lang ? (
-                  <Typography className="text-center">
+                  <Typography className="text-center border border-warning rounded-full">
                     Sublet (Female)
                   </Typography>
                 ) : (
-                  <Typography className="text-center">সাবলেট (মেয়ে)</Typography>
+                  <Typography className="text-center border border-warning rounded-full">সাবলেট (মেয়ে)</Typography>
                 )}
               </div>
             </div>
@@ -203,9 +203,9 @@ const PostDestinationType = () => {
             <div>
               <div>
                 {!lang ? (
-                  <Typography className="text-center">Family</Typography>
+                  <Typography className="text-center border border-warning rounded-full">Family</Typography>
                 ) : (
-                  <Typography className="text-center">পরিবার</Typography>
+                  <Typography className="text-center border border-warning rounded-full">পরিবার</Typography>
                 )}
               </div>
             </div>
@@ -224,9 +224,9 @@ const PostDestinationType = () => {
             <div>
               <div>
                 {!lang ? (
-                  <Typography className="text-center"> Hostel</Typography>
+                  <Typography className="text-center border border-warning rounded-full"> Hostel</Typography>
                 ) : (
-                  <Typography className="text-center">
+                  <Typography className="text-center border border-warning rounded-full">
                     {" "}
                     আবাসিক হোস্টেল
                   </Typography>
@@ -245,9 +245,9 @@ const PostDestinationType = () => {
             <div>
               <div>
                 {!lang ? (
-                  <Typography className="text-center">Office</Typography>
+                  <Typography className="text-center border border-warning rounded-full">Office</Typography>
                 ) : (
-                  <Typography className="text-center">অফিস</Typography>
+                  <Typography className="text-center border border-warning rounded-full">অফিস</Typography>
                 )}
               </div>
             </div>
@@ -263,9 +263,9 @@ const PostDestinationType = () => {
             <div>
               <div>
                 {!lang ? (
-                  <Typography className="text-center">Shop</Typography>
+                  <Typography className="text-center border border-warning rounded-full">Shop</Typography>
                 ) : (
-                  <Typography className="text-center">দোকান</Typography>
+                  <Typography className="text-center border border-warning rounded-full">দোকান</Typography>
                 )}
               </div>
             </div>
@@ -283,9 +283,9 @@ const PostDestinationType = () => {
             <div>
               <div>
                 {!lang ? (
-                  <Typography className="text-center">Vehicles</Typography>
+                  <Typography className="text-center border border-warning rounded-full">Vehicles</Typography>
                 ) : (
-                  <Typography className="text-center">যানবাহন</Typography>
+                  <Typography className="text-center border border-warning rounded-full">যানবাহন</Typography>
                 )}
               </div>
             </div>
@@ -303,9 +303,9 @@ const PostDestinationType = () => {
             <div>
               <div>
                 {!lang ? (
-                  <Typography className="text-center">Garage</Typography>
+                  <Typography className="text-center border border-warning rounded-full">Garage</Typography>
                 ) : (
-                  <Typography className="text-center">গ্যারেজ</Typography>
+                  <Typography className="text-center border border-warning rounded-full">গ্যারেজ</Typography>
                 )}
               </div>
             </div>

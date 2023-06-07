@@ -41,21 +41,21 @@ const AddPost = () => {
   return (
    <>
     <Head>
-        <title>To-Leet - Add Post</title>
+        <title>To Leet - Add Post</title>
       </Head>
     <section>
       <PostAreaModalEng></PostAreaModalEng>
-      <div className="lg:w-10/12 md:w-10/12 md:mx-auto  bg-white p-5 lg:p-14 lg:my-16">
+      <div className="lg:w-10/12 md:w-10/12 md:mx-auto bg-white p-5 lg:p-14 lg:my-16 rounded">
         <div className="lg:w-10/12 mx-auto">
         {postCityNameEng?.eng && (
          <div>
            <h1
             onClick={handlePrevious}
-            className="text-secondary text-sm mb-5 cursor-pointer hover:underline"
+            className="text-warning text-sm mb-5 cursor-pointer hover:underline"
           >
             {!lang ? "Change city?" : "শহর পরিবর্তন?"}
           </h1>
-          <h1  className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
+          <h1  className="text-2xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
             {
               !lang ? <span>Popular areas of {postCityNameEng.eng}:</span>: <span className="text-xl">{postCityNameEng?.ban} এর জনপ্রিয় এলাকাসমূহঃ</span>
             }
@@ -64,11 +64,11 @@ const AddPost = () => {
         )}
         <div className={postCityNameEng?.eng && "hidden"}>
           {!lang ? (
-            <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
+            <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
               Select your city.
             </h1>
           ) : (
-            <h1 className="text-xl mb-5 border-l-4 border-b-4 border-accent text-black pl-2">
+            <h1 className="text-xl mb-5 border-l-4 border-b-4 border-warning text-gray-700 pl-2">
               শহর নির্বাচন করুন।
             </h1>
           )}
@@ -109,11 +109,11 @@ const AddPost = () => {
          <div>
            <h1
             onClick={handlePrevious}
-            className="text-secondary text-sm mb-5 cursor-pointer hover:underline"
+            className="text-warning text-sm mb-5 cursor-pointer hover:underline"
           >
             {!lang ? "Change division?" : "বিভাগ পরিবর্তন?"}
           </h1>
-          <h1  className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
+          <h1  className="text-2xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
             {
               !lang ? <span>Districts of {postDivisionNameEng.eng}:</span>: <span className="text-xl">{postDivisionNameEng?.ban} এর জেলাসমুহঃ</span>
             }
@@ -124,11 +124,11 @@ const AddPost = () => {
             className={postDivisionNameEng?.eng && "hidden"}
           >
             {!lang ? (
-              <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
+              <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
                 Select your Division.
               </h1>
             ) : (
-              <h1 className="text-xl mb-5 border-l-4 border-b-4 border-accent text-black pl-2">
+              <h1 className="text-xl mb-5 border-l-4 border-b-4 border-warning text-gray-700 pl-2">
                 বিভাগ নির্বাচন করুন।
               </h1>
             )}

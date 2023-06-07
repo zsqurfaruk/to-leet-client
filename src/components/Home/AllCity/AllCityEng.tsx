@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { StateContext } from "@/Context/StateContext/StateContext";
+import Cookies from "js-cookie";
 
 const AllCityEng = () => {
   const { setCityName, filterValue, setFilterValue }: any =
@@ -8,17 +9,18 @@ const AllCityEng = () => {
   const handleFilter = (v: any) => {
     setCityName(v);
     setFilterValue({ ...filterValue, cityName: v });
+    Cookies.set("city", JSON.stringify(v),{ expires: 1 })
   };
 
   const lang = Cookies.get("lan");
   return (
     <div>
-      <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-black text-sm md:text-base">
+      <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-gray-700 text-sm md:text-base">
         <li>
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Dhaka", ban: "ঢাকা" })}
             />
             {!lang ? (
@@ -32,7 +34,7 @@ const AllCityEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 handleFilter({ eng: "Chittagong", ban: "চট্টগ্রাম" })
               }
@@ -49,7 +51,7 @@ const AllCityEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Rajshahi", ban: "রাজশাহী" })}
               // name="Rajshahi"
             />
@@ -64,7 +66,7 @@ const AllCityEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={(e: any) =>
                 handleFilter({ eng: "Sylhet", ban: "সিলেট" })
               }
@@ -81,7 +83,7 @@ const AllCityEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Barisal", ban: "বরিশাল" })}
               // name="Barisal"
             />
@@ -96,7 +98,7 @@ const AllCityEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Khulna", ban: "খুলনা" })}
             />
             {!lang ? (
@@ -110,7 +112,7 @@ const AllCityEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => handleFilter({ eng: "Rangpur", ban: "রংপুর" })}
             />
             {!lang ? (
@@ -124,7 +126,7 @@ const AllCityEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 handleFilter({ eng: "Mymensingh", ban: "ময়মনসিংহ" })
               }

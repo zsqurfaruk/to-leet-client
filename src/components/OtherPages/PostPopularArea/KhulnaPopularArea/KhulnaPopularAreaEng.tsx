@@ -39,12 +39,12 @@ const KhulnaPopularAreaEng = () => {
   return (
     <section>
       <div>
-        <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">
+        <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
           <li>
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
                     eng: "Khulna Sadar",
@@ -63,7 +63,7 @@ const KhulnaPopularAreaEng = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
                     eng: "Daulatpur",
@@ -82,7 +82,7 @@ const KhulnaPopularAreaEng = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
                     eng: "Khalishpur",
@@ -101,7 +101,7 @@ const KhulnaPopularAreaEng = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
                     eng: "Sonadanga",
@@ -120,7 +120,7 @@ const KhulnaPopularAreaEng = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
                     eng: "Boyra Bazar",
@@ -139,7 +139,7 @@ const KhulnaPopularAreaEng = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
                     eng: "Zero Point",
@@ -159,7 +159,7 @@ const KhulnaPopularAreaEng = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
                     eng: "Dumuria",
@@ -184,7 +184,7 @@ const KhulnaPopularAreaEng = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={(e: any) =>
                   setGetPostPopularAreaName({
                     eng: "Select others",
@@ -210,7 +210,7 @@ const KhulnaPopularAreaEng = () => {
                     isSearchable
                     options={option}
                     onChange={setGetPostPopularAreaName}
-                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                    className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                   />
                 </li>
               )}
@@ -224,7 +224,7 @@ const KhulnaPopularAreaEng = () => {
                     isSearchable
                     options={options}
                     onChange={setGetPostPopularAreaName}
-                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                    className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                   />
                 </li>
               )}

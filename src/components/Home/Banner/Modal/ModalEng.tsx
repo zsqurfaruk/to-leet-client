@@ -18,7 +18,6 @@ import { APIContext } from "@/Context/ApiContext/ApiContext";
 export default function ModalEng() {
   const {
     handleOpenModalEng,
-    setOpenModalEng,
     openModalEng,
     openModalValue,
     setOpenModalValue,
@@ -35,12 +34,14 @@ export default function ModalEng() {
       ban: openModalValue?.value,
     };
     setOpenModalValue(newName);
+    Cookies.set("openMV",newName?.eng)
   } else if (openModalValue?.name === "ban") {
     const newName = {
       eng: openModalValue?.value,
       ban: openModalValue?.label,
     };
     setOpenModalValue(newName);
+    Cookies.set("openMV",newName?.eng)
   }
  
 
@@ -51,7 +52,7 @@ export default function ModalEng() {
       <Dialog
         open={openModalEng}
         handler={handleOpenModalEng}
-        className="bg-transparent lg:bg-primary lg:px-10"
+        className="bg-transparent lg:bg-neutral lg:px-10"
         // id={style.modalChange}
         animate={{
           mount: { scale: 1, y: -80 },
@@ -74,7 +75,7 @@ export default function ModalEng() {
               isSearchable
               options={colourOptions}
               onChange={setOpenModalValue}
-              className="text-sm bg-primary w-80 md:w-[40rem]  mr-10 md:mr-12 lg:mr-0 lg:w-full -ml-24 md:-ml-40 lg:ml-0 mx-auto text-black font-medium"
+              className="text-sm bg-primary w-80 md:w-[40rem]  mr-10 md:mr-12 lg:mr-0 lg:w-full -ml-24 md:-ml-40 lg:ml-0 mx-auto text-gray-700 font-medium"
             />
           </DialogBody>
         ) : (
@@ -88,7 +89,7 @@ export default function ModalEng() {
               isSearchable
               options={colourOption}
               onChange={setOpenModalValue}
-              className="text-sm bg-primary w-80 md:w-[40rem] lg:w-full mr-10 md:mr-12 lg:mr-0  -ml-24 md:-ml-40 lg:ml-0 mx-auto text-black font-medium"
+              className="text-sm bg-primary w-80 md:w-[40rem] lg:w-full mr-10 md:mr-12 lg:mr-0  -ml-24 md:-ml-40 lg:ml-0 mx-auto text-gray-700 font-medium"
             />
           </DialogBody>
         )}
@@ -108,7 +109,7 @@ export default function ModalEng() {
             }}
           >
             <button
-              className="text-secondary bg-accent px-2 rounded font-semibold"
+              className="text-primary bg-gradient-to-r from-accent to-warning px-3 py-2 rounded font-semibold"
               onClick={handleFilterUniversity}
             >
               Confirm
@@ -135,7 +136,7 @@ export default function ModalEng() {
             <Button
               className={
                 openModalValue?.eng
-                  ? "bg-gradient-to-r from-accent to-cyan-500  hidden lg:flex"
+                  ? "bg-gradient-to-r from-accent to-warning  hidden lg:flex"
                   : "bg-gray-600  hidden lg:flex"
               }
               onClick={handleFilterUniversity}

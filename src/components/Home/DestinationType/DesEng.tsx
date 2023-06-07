@@ -33,17 +33,14 @@ const DesEng = () => {
       >
         <Card
           className={
-            filterTypeCity || filterTypeDivision
-              ? "bg-transparent text-black border border-secondary"
-              : "bg-transparent text-white border border-accent"
+             "bg-transparent text-gray-700 border border-warning" 
           }
         >
           <div className="flex mx-5 gap-5 my-2">
             <Image
               className={
-                filterTypeCity || filterTypeDivision
-                  ? "h-14 w-14 border rounded-lg border-secondary px-1"
-                  : "h-14 w-14 border rounded-lg px-1"
+                 "h-14 w-14 border rounded-lg border-warning px-1"
+                  
               }
               src={man}
               alt={"Male"}
@@ -59,7 +56,7 @@ const DesEng = () => {
                   : 0}{" "}
                 Ads
               </Typography>
-              {/* <Typography className="text-sm">The Ultimate Rental Solution</Typography> */}
+              
             </div>
           </div>
         </Card>
@@ -72,17 +69,15 @@ const DesEng = () => {
       >
         <Card
           className={
-            filterTypeCity || filterTypeDivision
-              ? "bg-transparent text-black border border-secondary"
-              : "bg-transparent text-white border border-accent"
+            "bg-transparent text-gray-700 border border-warning"
+              
           }
         >
           <div className="flex mx-5 gap-5 my-2">
             <Image
               className={
-                filterTypeCity || filterTypeDivision
-                  ? "h-14 w-14 border rounded-lg border-secondary px-1"
-                  : "h-14 w-14 border rounded-lg px-1"
+                 "h-14 w-14 border rounded-lg border-warning px-1"
+                  
               }
               src={female}
               alt={"Female"}
@@ -110,17 +105,15 @@ const DesEng = () => {
       >
         <Card
           className={
-            filterTypeCity || filterTypeDivision
-              ? "bg-transparent text-black border border-secondary"
-              : "bg-transparent text-white border border-accent"
+             "bg-transparent text-gray-700 border border-warning"
+              
           }
         >
           <div className="flex mx-5 gap-5 my-2">
             <FcHome
               className={
-                filterTypeCity || filterTypeDivision
-                  ? "h-14 w-14 border rounded-lg border-secondary"
-                  : "h-14 w-14 border rounded-lg"
+                 "h-14 w-14 border rounded-lg border-warning"
+                  
               }
             ></FcHome>
             <div>
@@ -146,17 +139,15 @@ const DesEng = () => {
       >
         <Card
           className={
-            filterTypeCity || filterTypeDivision
-              ? "bg-transparent text-black border border-secondary"
-              : "bg-transparent text-white border border-accent"
+             "bg-transparent text-gray-700 border border-warning"
+              
           }
         >
           <div className="flex mx-5 gap-5 my-2">
             <FcHome
               className={
-                filterTypeCity || filterTypeDivision
-                  ? "h-14 w-14 border rounded-lg border-secondary"
-                  : "h-14 w-14 border rounded-lg"
+                  "h-14 w-14 border rounded-lg border-warning"
+                  
               }
             ></FcHome>
 
@@ -182,17 +173,15 @@ const DesEng = () => {
       >
         <Card
           className={
-            filterTypeCity || filterTypeDivision
-              ? "bg-transparent text-black border border-secondary"
-              : "bg-transparent text-white border border-accent"
+              "bg-transparent text-gray-700 border border-warning"
+              
           }
         >
           <div className="flex mx-5 gap-5 my-2">
             <Image
               className={
-                filterTypeCity || filterTypeDivision
-                  ? "h-14 w-14 border rounded-lg border-secondary px-1"
-                  : "h-14 w-14 border rounded-lg px-1 bg-white"
+                  "h-14 w-14 border rounded-lg border-warning px-1"
+                  
               }
               src={subletMale}
               alt={"subletMale"}
@@ -219,17 +208,15 @@ const DesEng = () => {
       >
         <Card
           className={
-            filterTypeCity || filterTypeDivision
-              ? "bg-transparent text-black border border-secondary"
-              : "bg-transparent text-white border border-accent"
+             "bg-transparent text-gray-700 border border-warning"
+               
           }
         >
           <div className="flex mx-5 gap-5 my-2">
             <Image
               className={
-                filterTypeCity || filterTypeDivision
-                  ? "h-14 w-14 border rounded-lg border-secondary px-1"
-                  : "h-14 w-14 border rounded-lg px-1 bg-white"
+                 "h-14 w-14 border rounded-lg border-warning px-1"
+                  
               }
               src={subletFemale}
               alt={"subletFemale"}
@@ -256,17 +243,15 @@ const DesEng = () => {
       >
         <Card
           className={
-            filterTypeCity || filterTypeDivision
-              ? "bg-transparent text-black border border-secondary"
-              : "bg-transparent text-white border border-accent"
+              "bg-transparent text-gray-700 border border-warning"
+              
           }
         >
           <div className="flex mx-5 gap-5 my-2">
             <Image
               className={
-                filterTypeCity || filterTypeDivision
-                  ? "h-14 w-14 border rounded-lg border-secondary px-1"
-                  : "h-14 w-14 border rounded-lg px-1 bg-white"
+                 "h-14 w-14 border rounded-lg border-warning px-1"
+                   
               }
               src={family}
               alt={"family"}
@@ -291,17 +276,15 @@ const DesEng = () => {
       >
         <Card
           className={
-            filterTypeCity || filterTypeDivision
-              ? "bg-transparent text-black border border-secondary"
-              : "bg-transparent text-white border border-accent"
+            "bg-transparent text-gray-700 border border-warning"
+              
           }
         >
           <div className="flex mx-5 gap-5 my-2">
             <Image
               className={
-                filterTypeCity || filterTypeDivision
-                  ? "h-14 w-14 border rounded-lg border-secondary px-1"
-                  : "h-14 w-14 border rounded-lg px-1"
+                  "h-14 w-14 border rounded-lg border-warning px-1"
+                  
               }
               src={hotel}
               alt={"hotel"}
@@ -326,17 +309,14 @@ const DesEng = () => {
       >
         <Card
           className={
-            filterTypeCity || filterTypeDivision
-              ? "bg-transparent text-black border border-secondary"
-              : "bg-transparent text-white border border-accent"
+             "bg-transparent text-gray-700 border border-warning"
+               
           }
         >
           <div className="flex mx-5 gap-5 my-2">
             <Image
               className={
-                filterTypeCity || filterTypeDivision
-                  ? "h-14 w-14 border rounded-lg border-secondary px-1"
-                  : "h-14 w-14 border rounded-lg px-1 bg-white"
+                "h-14 w-14 border border-warning rounded-lg px-1  "
               }
               src={office}
               alt={"office"}
@@ -360,17 +340,15 @@ const DesEng = () => {
       >
         <Card
           className={
-            filterTypeCity || filterTypeDivision
-              ? "bg-transparent text-black border border-secondary"
-              : "bg-transparent text-white border border-accent"
+             "bg-transparent text-gray-700 border border-warning"
+               
           }
         >
           <div className="flex mx-5 gap-5 my-2">
             <FcShop
               className={
-                filterTypeCity || filterTypeDivision
-                  ? "h-14 w-14 border rounded-lg border-secondary "
-                  : "h-14 w-14 border rounded-lg "
+                 "h-14 w-14 border rounded-lg border-warning"
+                  
               }
             ></FcShop>
             <div>
@@ -392,17 +370,15 @@ const DesEng = () => {
       >
         <Card
           className={
-            filterTypeCity || filterTypeDivision
-              ? "bg-transparent text-black border border-secondary"
-              : "bg-transparent text-white border border-accent"
+             "bg-transparent text-gray-700 border border-warning"
+              
           }
         >
           <div className="flex mx-5 gap-5 my-2">
             <Image
               className={
-                filterTypeCity || filterTypeDivision
-                  ? "h-14 w-14 border rounded-lg border-secondary px-1"
-                  : "h-14 w-14 border rounded-lg px-1"
+                 "h-14 w-14 border rounded-lg border-warning px-1"
+                   
               }
               src={car}
               alt={"car"}
@@ -427,17 +403,15 @@ const DesEng = () => {
       >
         <Card
           className={
-            filterTypeCity || filterTypeDivision
-              ? "bg-transparent text-black border border-secondary"
-              : "bg-transparent text-white border border-accent"
+             "bg-transparent text-gray-700 border border-warning"
+              
           }
         >
           <div className="flex mx-5 gap-5 my-2">
             <Image
               className={
-                filterTypeCity || filterTypeDivision
-                  ? "h-14 w-14 border rounded-lg border-secondary px-1"
-                  : "h-14 w-14 border rounded-lg px-1"
+                 "h-14 w-14 border rounded-lg border-warning px-1"
+                  
               }
               src={garage}
               alt={"garage"}

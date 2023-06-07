@@ -7,12 +7,12 @@ const PostAllCityEng = () => {
   const lang = Cookies.get("lan");
   return (
     <div>
-      <ul className="grid grid-cols-2 md:grid-cols-4  gap-5 gap-y-3 text-black text-sm md:text-base">
+      <ul className="grid grid-cols-2 md:grid-cols-4  gap-5 gap-y-3 text-gray-700 text-sm md:text-base">
         <li>
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => setPostCityNameEng({ eng: "Dhaka", ban: "ঢাকা" })}
               // name="Dhaka"
             />
@@ -27,7 +27,7 @@ const PostAllCityEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostCityNameEng({ eng: "Chittagong", ban: "চট্টগ্রাম" })
               }
@@ -44,7 +44,7 @@ const PostAllCityEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostCityNameEng({ eng: "Rajshahi", ban: "রাজশাহী" })
               }
@@ -61,7 +61,7 @@ const PostAllCityEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={(e: any) =>
                 setPostCityNameEng({ eng: "Sylhet", ban: "সিলেট" })
               }
@@ -78,7 +78,7 @@ const PostAllCityEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostCityNameEng({ eng: "Barisal", ban: "বরিশাল" })
               }
@@ -95,7 +95,7 @@ const PostAllCityEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostCityNameEng({ eng: "Khulna", ban: "খুলনা" })
               }
@@ -112,7 +112,7 @@ const PostAllCityEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostCityNameEng({ eng: "Rangpur", ban: "রংপুর" })
               }
@@ -129,7 +129,7 @@ const PostAllCityEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostCityNameEng({ eng: "Mymensingh", ban: "ময়মনসিংহ" })
               }

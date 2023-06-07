@@ -22,17 +22,17 @@ module.exports =withMT(
   
             secondary: "#3E54AC",
   
-            accent: "#00ffc8",
+            accent: "#e6ec34",
   
-            neutral: "#73A38B",
+            neutral: "#f1feff",
   
             "base-100": "#FFFFFF",
   
             info: "#3ABFF8",
   
-            success: "#16d8a7ec",
+            success: "#e6ec34",
   
-            warning: "#FBBD23",
+            warning: "#1490a3d6",
   
             error: "#F87272",
           },

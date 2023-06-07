@@ -37,7 +37,7 @@ const ShowAllPost = ({ products }: any) => {
   return (
     <>
       <Head>
-        <title>To-Leet - Filter by Rent Type</title>
+        <title>To Leet - Filter by Rent Type</title>
       </Head>
       <section className="lg:my-20">
         {

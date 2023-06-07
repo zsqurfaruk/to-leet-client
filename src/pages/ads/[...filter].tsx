@@ -31,12 +31,12 @@ const FilterPosts = () => {
   return (
     <>
     <Head>
-    <title>To-Leet - Location - Type</title>
+    <title>To Leet - Location - Type</title>
   </Head>
     
      {
       loading ? <p className="text-center w-full py-40">Loading...</p> : <section className="lg:w-10/12 mx-auto bg-white lg:my-10 pb-10 px-5 rounded ">
-      <div className="flex justify-around pt-10 text-secondary">
+      <div className="flex justify-around pt-10 text-warning">
         {!lang ? (
           <div>
             {cityName?.eng && (

@@ -9,6 +9,7 @@ import DistrictsOfRajshahi from "../DistrictsOfRajshahi/DistrictsOfRajshahi";
 import DistrictsOfRangpur from "../DistrictsOfRangpur/DistrictsOfRangpur";
 import DistrictsOfSylhet from "../DistrictsOfSylhet/DistrictsOfSylhet";
 import FilterModal from "@/components/Home/Banner/Modal/FilterModal";
+import Cookies from "js-cookie";
 
 const AllDistricts = () => {
   const { divisionNameEng, setDivisionNameEng, setDistrictsName }: any = useContext(StateContext);
@@ -25,11 +26,11 @@ const AllDistricts = () => {
       <div>
         <h1
           onClick={handlePrevious}
-          className="text-secondary text-sm mb-5 cursor-pointer hover:underline"
+          className="text-warning text-sm mb-5 cursor-pointer hover:underline"
         >
           {!lang ? "Change Division?" : "বিভাগ পরিবর্তন?"}
         </h1>
-        <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
+        <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
         {!lang ? (
           <span>Districts of {divisionNameEng?.eng}:</span>
         ) : (

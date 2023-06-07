@@ -4,7 +4,8 @@ import React, {  useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Card, Typography, Input } from "@material-tailwind/react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import lottiImage from "../image/66268-signinanimation (1).json";
+// import lottiImage from "../image/66268-signinanimation (1).json";
+import lottiImage from "../image/lf20_s50p1rff.json";
 import Lottie from "lottie-react";
 import Head from "next/head";
 import toast from "react-hot-toast";
@@ -103,23 +104,23 @@ const SignIn = () => {
   return (
     <>
       <Head>
-        <title>To-Leet - Sign in</title>
+        <title>To Leet - Sign in</title>
       </Head>
-      <section className="lg:w-10/12 lg:mx-auto grid lg:grid-cols-2 gap-20 my-10 lg:my-24">
+      <section className="lg:w-10/12 lg:mx-auto grid lg:grid-cols-2 gap-20 my-10 lg:my-24  py-5">
         <div className="hidden lg:flex">
           <Lottie
-            className="-mt-14 scale-110"
+            className="-mt-16 scale-110 opacity-60"
             animationData={lottiImage}
             loop={true}
           ></Lottie>
         </div>
-        <Card className="w-10/12 mx-auto" color="transparent">
+        <Card className="w-10/12 mx-auto border-4 border-neutral bg-neutral shadow-2xl"  >
           {!lang ? (
-            <Typography className="px-4 mt-2" variant="h4" color="blue-gray">
+            <Typography className="px-4 mt-2 text-warning" variant="h4">
               Sign In
             </Typography>
           ) : (
-            <Typography className="px-4 mt-2" variant="h4" color="blue-gray">
+            <Typography className="px-4 mt-2 text-warning" variant="h4" >
               সাইন ইন
             </Typography>
           )}
@@ -183,13 +184,13 @@ const SignIn = () => {
                 )}
               </div>
               {!lang ? (
-                <button className={loading ? "w-full bg-gray-800 py-2 rounded-lg font-semibold text-white" : "w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800"}>
+                <button className={loading ? "w-full bg-gray-800 py-2 rounded font-semibold text-white" : "w-full bg-warning bg-opacity-70 py-2 rounded font-semibold text-primary"}>
                  {
                   loading ? "Signing..." : "Sign In"
                  } 
                 </button>
               ) : (
-                <button className={loading ? "w-full bg-gray-800 py-2 rounded-lg font-semibold text-white" : "w-full bg-gradient-to-r from-success via-accent to-success py-2 rounded-lg font-semibold text-gray-800"}>
+                <button className={loading ? "w-full bg-gray-800 py-2 rounded font-semibold text-primary" : "w-full bg-warning bg-opacity-70 py-2 rounded font-semibold text-primary"}>
                   {
                   loading ? "সাইন ইন হচ্ছে..." : "সাইন ইন"
                  } 
@@ -202,7 +203,7 @@ const SignIn = () => {
                 Already have an account?{" "}
                 <Link
                   href="/signUp"
-                  className="font-medium text-blue-500 transition-colors hover:text-blue-700"
+                  className="font-medium text-warning"
                 >
                   Sign Up
                 </Link>
@@ -212,7 +213,7 @@ const SignIn = () => {
                 আপনার কি অ্যাকাউন্ট আছে?{" "}
                 <Link
                   href="/signUp"
-                  className="font-medium text-blue-500 transition-colors hover:text-blue-700"
+                  className="font-medium text-warning"
                 >
                   সাইন আপ
                 </Link>

@@ -11,12 +11,12 @@ const PostChittDistrictsEng = () => {
   const lang = Cookies.get("lan");
   return (
     <div>
-      <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">
+      <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
         <li>
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDistrictsName({ eng: "Chittagong", ban: "চট্টগ্রাম" })
               }
@@ -33,7 +33,7 @@ const PostChittDistrictsEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDistrictsName({
                   eng: "Brahmanbaria",
@@ -53,7 +53,7 @@ const PostChittDistrictsEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDistrictsName({ eng: "Comilla", ban: "কুমিল্লা" })
               }
@@ -70,7 +70,7 @@ const PostChittDistrictsEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDistrictsName({ eng: "Chandpur", ban: "চাঁদপুর" })
               }
@@ -87,7 +87,7 @@ const PostChittDistrictsEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDistrictsName({ eng: "Cox's Bazar", ban: "কক্সবাজার" })
               }
@@ -104,7 +104,7 @@ const PostChittDistrictsEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() => setPostDistrictsName({ eng: "Feni", ban: "ফেনী" })}
             />
             {!lang ? (
@@ -119,7 +119,7 @@ const PostChittDistrictsEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDistrictsName({ eng: "Khagrachhari", ban: "খাগড়াছড়ি" })
               }
@@ -136,7 +136,7 @@ const PostChittDistrictsEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDistrictsName({ eng: "Lakshmipur", ban: "লক্ষ্মীপুর" })
               }
@@ -153,7 +153,7 @@ const PostChittDistrictsEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDistrictsName({ eng: "Noakhali", ban: "নোয়াখালী" })
               }
@@ -169,7 +169,7 @@ const PostChittDistrictsEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDistrictsName({ eng: "Rangamati", ban: "রাঙ্গামাটি" })
               }
@@ -185,7 +185,7 @@ const PostChittDistrictsEng = () => {
           <label className="flex gap-2">
             <input
               type="checkbox"
-              className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
                 setPostDistrictsName({ eng: "Bandarban", ban: "বান্দরবান" })
               }

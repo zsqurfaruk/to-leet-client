@@ -31,7 +31,7 @@ const AdditionalInfoPostPage = () => {
           <div className="flex justify-between lg:hidden">
             {!lang ? <h1>Fill In The Details</h1> : <h1>বিস্তারিত তথ্য দিন</h1>}
             <h1 className="cursor-pointer flex" onClick={handlePrevious}>
-              <MdOutlineLocationOn className="text-accent h-6 w-6"></MdOutlineLocationOn>
+              <MdOutlineLocationOn className="text-warning h-6 w-6"></MdOutlineLocationOn>
               {!lang ? "Change?" : "পরিবর্তন?"}
             </h1>
           </div>
@@ -49,7 +49,7 @@ const AdditionalInfoPostPage = () => {
               className="cursor-pointer hidden lg:flex"
               onClick={handlePrevious}
             >
-              <MdOutlineLocationOn className="text-accent h-6 w-6"></MdOutlineLocationOn>
+              <MdOutlineLocationOn className="text-warning h-6 w-6"></MdOutlineLocationOn>
               {!lang ? "Change?" : "পরিবর্তন?"}
             </h1>
             <div>
@@ -91,7 +91,7 @@ const AdditionalInfoPostPage = () => {
               <h1>ধরনঃ {modalValue?.ban}</h1>
             )}
           </div>
-          <hr className="text-black" />
+          <hr className="text-gray-700" />
           {/* {!lang ? (
             <h1 className="flex justify-end">See our posting rules</h1>
           ) : (

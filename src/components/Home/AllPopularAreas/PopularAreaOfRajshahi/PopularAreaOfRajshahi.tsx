@@ -1,24 +1,29 @@
-import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import React, { useContext } from "react";
 import Select from "react-select";
 import { options } from "./RajDataBan";
 import { option } from "./RajDataEng";
 import { StateContext } from "@/Context/StateContext/StateContext";
+import Cookies from "js-cookie";
 
 const PopularAreaOfRajshahi = () => {
-  const { setHomePopularAreaName,setFilterValue,filterValue,  homePopularAreaName, setFilterModal }: any =useContext(StateContext); 
+  const {
+    setHomePopularAreaName,
+    setFilterValue,
+    filterValue,
+    homePopularAreaName,
+    setFilterModal,
+  }: any = useContext(StateContext);
 
-  const handleFilter=(v:any)=>{
-    
-    if(v?.name){
-
+  const handleFilter = (v: any) => {
+    if (v?.name) {
       if (v?.name === "eng") {
         const newName = {
           eng: v?.label,
           ban: v?.value,
         };
         setHomePopularAreaName(newName);
-        setFilterValue({...filterValue, homePopularAreaName:newName})
+        setFilterValue({ ...filterValue, homePopularAreaName: newName });
+        Cookies.set("area", JSON.stringify(newName),{ expires: 1 })
         setFilterModal(true);
       } else if (v?.name === "ban") {
         const newName = {
@@ -26,31 +31,16 @@ const PopularAreaOfRajshahi = () => {
           ban: v?.label,
         };
         setHomePopularAreaName(newName);
-        setFilterValue({...filterValue, homePopularAreaName:newName})
+        setFilterValue({ ...filterValue, homePopularAreaName: newName });
+        Cookies.set("area", JSON.stringify(newName),{ expires: 1 })
         setFilterModal(true);
       }
+    } else {
+      setHomePopularAreaName(v);
+      setFilterValue({ ...filterValue, homePopularAreaName: v });
+      Cookies.set("area", JSON.stringify(v),{ expires: 1 })
     }
-    else{
-      setHomePopularAreaName(v)
-      setFilterValue({...filterValue, homePopularAreaName:v})
-    }
-   
-  }
-  // if (homePopularAreaName?.name === "eng") {
-  //   const newName = {
-  //     eng: homePopularAreaName?.label,
-  //     ban: homePopularAreaName?.value,
-  //   };
-  //   setHomePopularAreaName(newName);
-  //   setFilterModal(true);
-  // } else if (homePopularAreaName?.name === "ban") {
-  //   const newName = {
-  //     eng: homePopularAreaName?.value,
-  //     ban: homePopularAreaName?.label,
-  //   };
-  //   setHomePopularAreaName(newName);
-  //   setFilterModal(true);
-  // }
+  };
 
   if (
     homePopularAreaName?.eng === "New Market" ||
@@ -67,12 +57,12 @@ const PopularAreaOfRajshahi = () => {
   return (
     <section>
       <div>
-        <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">
+        <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
           <li>
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   handleFilter({
                     eng: "New Market",
@@ -91,7 +81,7 @@ const PopularAreaOfRajshahi = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   handleFilter({
                     eng: "Shaheb Bazar",
@@ -110,7 +100,7 @@ const PopularAreaOfRajshahi = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   handleFilter({
                     eng: "Uposahar",
@@ -129,7 +119,7 @@ const PopularAreaOfRajshahi = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   handleFilter({
                     eng: "Kazla",
@@ -148,7 +138,7 @@ const PopularAreaOfRajshahi = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   handleFilter({
                     eng: "Binodpur",
@@ -167,7 +157,7 @@ const PopularAreaOfRajshahi = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   handleFilter({
                     eng: "Laksimipur",
@@ -187,7 +177,7 @@ const PopularAreaOfRajshahi = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   handleFilter({
                     eng: "Padma Residental Area",
@@ -204,15 +194,13 @@ const PopularAreaOfRajshahi = () => {
           </li>
           <li
             className={
-              homePopularAreaName?.eng === "Select others"
-                ? "hidden"
-                : "flex"
+              homePopularAreaName?.eng === "Select others" ? "hidden" : "flex"
             }
           >
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={(e: any) =>
                   handleFilter({
                     eng: "Select others",
@@ -238,7 +226,7 @@ const PopularAreaOfRajshahi = () => {
                     isSearchable
                     options={option}
                     onChange={handleFilter}
-                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                    className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                   />
                 </li>
               )}
@@ -252,7 +240,7 @@ const PopularAreaOfRajshahi = () => {
                     isSearchable
                     options={options}
                     onChange={handleFilter}
-                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                    className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                   />
                 </li>
               )}

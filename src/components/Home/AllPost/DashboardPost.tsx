@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import { Card, CardBody, Typography } from "@material-tailwind/react";
 import toast from "react-hot-toast";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
 const DashboardPost = ({ post }: any) => {
   const [updateReload, setUpdateReload] = useState(false);
@@ -34,12 +34,12 @@ const DashboardPost = ({ post }: any) => {
         <img
           src={post?.img1}
           alt=""
-          className="h-52 lg:w-60 w-full rounded-lg"
+          className="h-52 lg:w-60 w-full rounded"
         />
 
         <div className="-ml-6 lg:ml-0 mt-5 mb-0 lg:mt-0">
           {post?.available || updateReload ? (
-            <button className="ml-4 -py-2 px-2 rounded-lg text-secondary font-semibold">
+            <button className="ml-4 -py-2 px-2 rounded text-warning font-semibold">
               {!lang ? "Booked" : "ভাড়া হয়েছে।"}
             </button>
           ) : (
@@ -48,7 +48,7 @@ const DashboardPost = ({ post }: any) => {
                 ? "If it is rented then click on the booked button."
                 : "ভাড়া হয়ে গেলে পাশের বাটনে ক্লিক করুন।"}{" "}
               <button
-                className="text-white px-3 ml-2 rounded-lg font-semibold bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900"
+                className="text-primary px-3 ml-2 rounded font-semibold bg-warning"
                 onClick={handleUpdate}
               >
                 {!lang ? "Booked" : "ভাড়া হয়েছে।"}
@@ -61,21 +61,15 @@ const DashboardPost = ({ post }: any) => {
               <CardBody className="lg:-mt-6">
                 <div className="md:flex md:gap-56">
                   {!lang ? (
-                    <Typography
-                      variant="h6"
-                      className="uppercase text-secondary"
-                    >
+                    <Typography variant="h6" className="uppercase text-warning">
                       {post?.type?.eng}
                     </Typography>
                   ) : (
-                    <Typography
-                      variant="h6"
-                      className="uppercase text-secondary"
-                    >
+                    <Typography variant="h6" className="uppercase text-warning">
                       {post?.type?.ban}
                     </Typography>
                   )}
-                  <Typography variant="h6" className="text-secondary md:hidden">
+                  <Typography variant="h6" className="text-warning md:hidden">
                     Date: {post?.updatedAt?.slice(0, 10)}
                   </Typography>
                 </div>
@@ -106,32 +100,73 @@ const DashboardPost = ({ post }: any) => {
                       </div>
                     )}
 
-                    {post?.bedNumber?.eng && (
-                      <div>
+                    {post?.totalBed && (
+                      <div
+                        className={
+                          post?.type?.eng === "Mess-(Male)" ||
+                          post?.type?.eng === "Mess-(Female)" ||
+                          post?.type?.eng === "Sublet-(Male)" ||
+                          post?.type?.eng === "Sublet-(Female)"
+                            ? "flex"
+                            : "hidden"
+                        }
+                      >
                         {!lang ? (
-                          <h2>Bed numbers: {post?.bedNumber?.eng}</h2>
+                          <h2>Total Bed: {post?.totalBed?.eng} </h2>
                         ) : (
-                          <h2> বেড সংখ্যাঃ {post?.bedNumber?.ban}</h2>
+                          <h2>মোট বেড: {post?.totalBed?.ban} </h2>
                         )}
                       </div>
                     )}
 
-                    {!lang ? (
-                      <h2 className="md:hidden">
-                        Bathrooms: {post?.bathrooms?.eng}
-                      </h2>
-                    ) : (
-                      <h2 className="md:hidden">
-                        বাথরুমঃ {post?.bathrooms?.ban}
-                      </h2>
+                    {post?.bedNumber && (
+                      <div className="md:hidden">
+                        {!lang ? (
+                          <h2>Empty Bed: {post?.bedNumber?.eng} </h2>
+                        ) : (
+                          <h2>ফাঁকা বেড: {post?.bedNumber?.ban} </h2>
+                        )}
+                      </div>
                     )}
                   </div>
-
+                  <div
+                    className={
+                      post?.type?.eng === "Mess-(Male)" ||
+                      post?.type?.eng === "Mess-(Female)" ||
+                      post?.type?.eng === "Sublet-(Male)" ||
+                      post?.type?.eng === "Sublet-(Female)"
+                        ? "flex"
+                        : "hidden"
+                    }
+                  >
+                    {!lang ? (
+                      <h2>Bathrooms: {post?.bathrooms?.eng}</h2>
+                    ) : (
+                      <h2>বাথরুমঃ {post?.bathrooms?.ban}</h2>
+                    )}
+                  </div>
                   <div className="md:flex md:gap-[135px]">
                     {!lang ? (
-                      <h2>Rent : {post?.amount} taka (Monthly)</h2>
+                      <h2>
+                        {post?.type?.eng === "Mess-(Male)" ||
+                        post?.type?.eng === "Mess-(Female)" ||
+                        post?.type?.eng === "Sublet-(Male)" ||
+                        post?.type?.eng === "Sublet-(Female)"
+                          ? "Per seat:"
+                          : "Amount"}{" "}
+                        {post?.amount} Taka{" "}
+                      </h2>
                     ) : (
-                      <h2> ভাড়াঃ {post?.amount} টাকা (মাসিক)</h2>
+                      <h2>
+                        {" "}
+                        {post?.type?.eng === "Mess-(Male)" ||
+                        post?.type?.eng === "Mess-(Female)" ||
+                        post?.type?.eng === "Sublet-(Male)" ||
+                        post?.type?.eng === "Sublet-(Female)"
+                          ? "প্রতি সিটঃ"
+                          : "ভাড়াঃ"}{" "}
+                        {post?.amount} টাকা{" "}
+                      </h2>
                     )}
                     {post?.negotiable === true && (
                       <h2 className="md:hidden">
@@ -186,10 +221,10 @@ const DashboardPost = ({ post }: any) => {
             <div className="hidden md:flex">
               <CardBody className="lg:-mt-6">
                 <div className="md:flex md:gap-40">
-                  {/* <Typography variant="h6" className="uppercase mb-2 text-secondary">
+                  {/* <Typography variant="h6" className="uppercase mb-2 text-warning">
             {post?.type?.eng}
           </Typography> */}
-                  <Typography variant="h6" className="text-secondary">
+                  <Typography variant="h6" className="text-warning">
                     Date: {post?.updatedAt?.slice(0, 10)}
                   </Typography>
                 </div>
@@ -214,13 +249,41 @@ const DashboardPost = ({ post }: any) => {
                 <Typography color="gray" className="font-normal ">
                   <div className="md:flex md:gap-56">
                     {/* <h2>Bedrooms: {post?.bedrooms}</h2> */}
-                    {!lang ? (
-                      <h2>Bathrooms: {post?.bathrooms?.eng}</h2>
-                    ) : (
-                      <h2> বাথরুমঃ {post?.bathrooms?.ban}</h2>
+                    <div
+                      className={
+                        post?.type?.eng === "Mess-(Male)" ||
+                        post?.type?.eng === "Mess-(Female)" ||
+                        post?.type?.eng === "Sublet-(Male)" ||
+                        post?.type?.eng === "Sublet-(Female)"
+                          ? "hidden"
+                          : "flex"
+                      }
+                    >
+                      {!lang ? (
+                        <h2>Bathrooms: {post?.bathrooms?.eng}</h2>
+                      ) : (
+                        <h2>বাথরুমঃ {post?.bathrooms?.ban}</h2>
+                      )}
+                    </div>
+                    {post?.bedNumber && (
+                      <div>
+                        {!lang ? (
+                          <h2>Empty Bed: {post?.bedNumber?.eng} </h2>
+                        ) : (
+                          <h2>ফাঁকা বেড: {post?.bedNumber?.ban} </h2>
+                        )}
+                      </div>
                     )}
                   </div>
-
+                  <div
+                        className={post.totalBed ? "invisible" : "hidden"}
+                      >
+                        {!lang ? (
+                          <h2>Empty Bed: {post?.bedNumber?.eng} </h2>
+                        ) : (
+                          <h2>ফাঁকা বেড: {post?.bedNumber?.ban} </h2>
+                        )}
+                      </div>
                   <div className="md:flex md:gap-[135px]">
                     {/* <h2>Rent : {post?.amount} taka (Monthly)</h2> */}
                     {!lang ? (

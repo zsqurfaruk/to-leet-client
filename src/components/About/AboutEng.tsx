@@ -1,16 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
-import { StateContext } from "@/Context/StateContext/StateContext";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { IoMdArrowDropup } from "react-icons/io";
 
 const AboutEng = () => {
   const [open, setOpen] = useState(true);
-  const {filterTypeCity, filterTypeDivision}:any = useContext(StateContext)
 
   return (
-    <div className="w-10/12 mx-auto py-10 text-justify">
-      <h1 className={filterTypeCity|| filterTypeDivision ? "text-2xl font-semibold text-black" : "text-2xl font-semibold text-accent"}>
+    <div className="w-10/12 mx-auto py-10 text-justify text-gray-700">
+      <h1 className={"text-2xl font-semibold text-warning"}>
         "To-Leet": The Ultimate Rental Solution
       </h1>
       <br />
@@ -20,12 +18,14 @@ const AboutEng = () => {
       showcase your products, the search for suitable rentals can be
       time-consuming and frustrating. But worry no more! Welcome to To-Leet, the
       newly launched online home, mess,hostel, office, garage, and shop rental
-      service company that aims to simplify your rental experience. At To-Leet,
-      we understand that everyone's requirements are unique, and finding the
-      perfect space should be a seamless process. We have leveraged the power of
-      technology to create an intuitive and user-friendly online platform that
-      connects renters with an extensive network of property owners offering
-      diverse spaces for rent.
+      service company that aims to simplify your rental experience.{" "}
+      <span className="hidden lg:inline">
+        At To-Leet, we understand that everyone's requirements are unique, and
+        finding the perfect space should be a seamless process. We have
+        leveraged the power of technology to create an intuitive and
+        user-friendly online platform that connects renters with an extensive
+        network of property owners offering diverse spaces for rent.
+      </span>
       <br />
       <div className={open ? "scroll-smooth" : "pb-5"}>
         <div>
@@ -33,27 +33,36 @@ const AboutEng = () => {
             className={open ? "flex" : "hidden py-5"}
             onClick={() => setOpen(!open)}
           >
-            Show more <AiFillCaretDown className={filterTypeCity || filterTypeDivision  ?"mt-1 text-xl text-black" : "mt-1 text-xl text-accent"} />
+            Show more{" "}
+            <AiFillCaretDown className={"mt-1 text-xl text-warning"} />
           </button>
           <p className={open ? "hidden" : "block"}>
+            <span className="lg:hidden inline">
+              At To-Leet, we understand that everyone's requirements are unique,
+              and finding the perfect space should be a seamless process. We
+              have leveraged the power of technology to create an intuitive and
+              user-friendly online platform that connects renters with an
+              extensive network of property owners offering diverse spaces for
+              rent.
+            </span>
             <br />
-            <h1 className={filterTypeCity || filterTypeDivision ? "text-2xl text-black font-semibold":"text-2xl text-accent font-semibold"}>
+            <h1 className={"text-2xl text-warning font-semibold"}>
               {" "}
               Here's what sets To-Leet apart from traditional rental services:
             </h1>
             <br />
-            <span className={filterTypeCity || filterTypeDivision ? "text-lg text-black font-semibold":"text-lg text-accent font-semibold"}>
+            <span className={"text-lg text-warning font-semibold"}>
               Comprehensive Space Options:
             </span>{" "}
             <br /> Whether you're searching for a cozy apartment, a spacious
             garage, or a commercial shop,
-            <span className={filterTypeCity || filterTypeDivision ?"text-black font-semibold": "text-accent font-semibold"}> To-Leet</span> has got
-            you covered. Our platform features a wide range of rental options,
-            catering to various needs and preferences. With our vast selection,
-            you'll find the ideal space to suit your requirements.
+            <span className={"text-warning font-semibold"}> To-Leet</span> has
+            got you covered. Our platform features a wide range of rental
+            options, catering to various needs and preferences. With our vast
+            selection, you'll find the ideal space to suit your requirements.
             <br />
             <br />
-            <span className={filterTypeCity || filterTypeDivision ?"text-lg text-black font-semibold":"text-lg text-accent font-semibold"}>
+            <span className={"text-lg text-warning font-semibold"}>
               {" "}
               Advanced Search and Filtering:
             </span>{" "}
@@ -64,7 +73,7 @@ const AboutEng = () => {
             saving you valuable time and effort.
             <br />
             <br />
-            <span className={filterTypeCity || filterTypeDivision ?"text-lg text-black font-semibold":"text-lg text-accent font-semibold"}>
+            <span className={"text-lg text-warning font-semibold"}>
               {" "}
               Detailed Property Profiles:
             </span>{" "}
@@ -76,42 +85,48 @@ const AboutEng = () => {
             space best aligns with your needs.
             <br />
             <br />
-            <span className={filterTypeCity || filterTypeDivision ?"text-lg text-black font-semibold":"text-lg text-accent font-semibold"}>
+            <span className={"text-lg text-warning font-semibold"}>
               Transparent Rental Process:
             </span>{" "}
-            <br />  <span className={filterTypeCity || filterTypeDivision ?"text-black font-semibold": "text-accent font-semibold"}> To-Leet</span> believes in transparency, which is why we facilitate
-            direct communication between renters and property owners. Through
-            our secure messaging system, you can ask questions, discuss terms,
-            and negotiate rental agreements without any intermediaries, ensuring
-            a smooth and transparent rental process.
+            <br />{" "}
+            <span className={"text-warning font-semibold"}> To-Leet</span>{" "}
+            believes in transparency, which is why we facilitate direct
+            communication between renters and property owners. Through our
+            secure messaging system, you can ask questions, discuss terms, and
+            negotiate rental agreements without any intermediaries, ensuring a
+            smooth and transparent rental process.
             <br />
             <br />
-            <span className={filterTypeCity || filterTypeDivision ?"text-lg text-black font-semibold":"text-lg  text-accent font-semibold"}>
+            <span className={"text-lg  text-warning font-semibold"}>
               {" "}
               Secure and Trustworthy:
             </span>{" "}
-            <br /> We prioritize your safety and peace of mind. <span className={filterTypeCity || filterTypeDivision ?"text-black font-semibold": "text-accent font-semibold"}> To-Leet </span>
+            <br /> We prioritize your safety and peace of mind.{" "}
+            <span className={"text-warning font-semibold"}> To-Leet </span>
             thoroughly verifies property owners and ensures that all listings
             are legitimate and accurate.
             <br />
-            <span className={filterTypeCity || filterTypeDivision ?"text-black font-semibold": "text-accent font-semibold"}> To-Leet</span> is revolutionizing the way people search for and rent homes,
-            garages, and shops. Our innovative online platform, coupled with our
+            <span className={"text-warning font-semibold"}> To-Leet</span> is
+            revolutionizing the way people search for and rent homes, garages,
+            and shops. Our innovative online platform, coupled with our
             commitment to exceptional customer service, aims to make your rental
             experience seamless, efficient, and enjoyable.
             <br />
             <br />
             So, whether you're an entrepreneur looking for a prime retail
             location, a hobbyist in need of a dedicated workshop, or simply
-            seeking extra storage space,  <span className={filterTypeCity || filterTypeDivision ?"text-black font-semibold": "text-accent font-semibold"}> To-Leet</span> is here to provide you with the
-            perfect solution. Visit our website today and embark on a
-            hassle-free journey to find your ideal rental space!
+            seeking extra storage space,{" "}
+            <span className={"text-warning font-semibold"}> To-Leet</span> is
+            here to provide you with the perfect solution. Visit our website
+            today and embark on a hassle-free journey to find your ideal rental
+            space!
           </p>
         </div>
         <button
           className={open ? "hidden" : "flex"}
           onClick={() => setOpen(!open)}
         >
-          Show less <IoMdArrowDropup className={filterTypeCity || filterTypeDivision ? "mb-1 text-3xl text-black":"mb-1 text-3xl text-accent"} />
+          Show less <IoMdArrowDropup className={"mb-1 text-3xl text-warning"} />
         </button>
       </div>
     </div>

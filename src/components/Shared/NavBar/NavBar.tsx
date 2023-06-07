@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
-import logo from "../../../image/logo.png";
+import logo from "../../../image/Blue And Yellow Typography Company Logo (4).jpg";
 import Image from "next/image";
 import Cookies from 'js-cookie';
 
@@ -68,6 +68,12 @@ export default function NavBar() {
     Cookies.remove("firstName");
     Cookies.remove("lastName");
     Cookies.remove("email");
+    Cookies.remove("city")
+    Cookies.remove("area")
+    Cookies.remove("district")
+    Cookies.remove("division")
+    Cookies.remove("filterMV")
+    Cookies.remove("openMV")
     return push("/signIn");
   };
 
@@ -107,37 +113,18 @@ export default function NavBar() {
       setPostOpenModal(false);
     setPostDistrictsName({});
     setGetUniversityModalValue({});
+    Cookies.remove("city")
+    Cookies.remove("area")
+    Cookies.remove("district")
+    Cookies.remove("division")
+    Cookies.remove("filterMV")
+    Cookies.remove("openMV")
   };
 
   const email = Cookies.get("email");
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <li className="flex justify-center md:ml-36 lg:ml-0 lg:block">
-        {/* {!authenticated && !email ? (
-          <div className="navbar-end ml-20"> */}
-            {/* <Link href="/SignUp">  */}
-            {/* <Link href="/signIn">
-              <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-                onClick={() => setOpenNav(false)}
-              >
-                {!lang ? (
-                  <Button className="lg:w-[212px] -ml-10 lg:ml-0 text-primary lg:text-gray-700 -my-2 py-2 lg:text-[16px] bg-transparent border border-accent lg:border-none font-normal lg:font-semibold lg:bg-gradient-to-r from-success via-accent to-success">
-                    Post your ads
-                  </Button>
-                ) : (
-                  <Button className="lg:w-[212px] -ml-10 lg:ml-0 text-primary lg:text-gray-700 -my-2 py-2 lg:text-[16px] bg-transparent border border-accent lg:border-none font-normal lg:font-semibold lg:bg-gradient-to-r from-success via-accent to-success">
-                    আপনার বিজ্ঞাপন দিন
-                  </Button>
-                )}
-              </Typography>
-              
-            </Link>
-          </div>
-        ) : ( */}
           <div className="navbar-end">
             {/* <Link href="/SignUp">  */}
             <Link href="/add-post">
@@ -149,11 +136,11 @@ export default function NavBar() {
                 onClick={() => setOpenNav(false)}
               >
                 {!lang ? (
-                  <Button className="lg:w-[212px] text-primary lg:text-gray-700 -my-2 py-2 lg:text-[16px] bg-transparent border border-accent lg:border-none font-normal lg:font-semibold lg:bg-gradient-to-r from-success via-accent to-success">
+                  <Button className="lg:w-[212px] text-primary -my-2 py-2 lg:text-[15px] bg-transparent border border-accent  font-normal lg:font-semibold rounded">
                     Post your ads
                   </Button>
                 ) : (
-                  <Button className="lg:w-[212px] text-primary lg:text-gray-700 -my-2 py-2 lg:text-[16px] bg-transparent border border-accent lg:border-none font-normal lg:font-semibold lg:bg-gradient-to-r from-success via-accent to-success">
+                  <Button className="lg:w-[212px] text-primary -my-2 py-2 lg:text-[15px] bg-transparent border border-accent font-normal lg:font-semibold rounded">
                     আপনার বিজ্ঞাপন দিন
                   </Button>
                 )}
@@ -189,14 +176,14 @@ export default function NavBar() {
             onClick={() => setOpenNav(false)}
           >
             <Link href="/dashboard">
-              <li onClick={() => setOpenNav(false)} className="text-primary">
+              <li onClick={() => setOpenNav(false)} className="text-primary mt-1">
                 {!lang ? (
-                  <span className="border border-accent px-12 -ml-9 lg:px-2 lg:ml-0 pt-[5px] pb-[6px] rounded-lg">
+                  <span className="border border-accent px-12 -ml-9 lg:px-2 lg:ml-0 pt-[5px] pb-[6px] rounded">
                     {" "}
                     Account
                   </span>
                 ) : (
-                  <span className="border border-accent px-[50px] -ml-5 lg:px-2 lg:ml-0 pt-[5px] pb-[6px] rounded-lg">
+                  <span className="border border-accent px-[50px] -ml-[22px] lg:px-2 lg:ml-0 pt-[5px] pb-[6px] rounded">
                     অ্যাকাউন্ট
                   </span>
                 )}
@@ -210,16 +197,17 @@ export default function NavBar() {
 
   return (
     <>
-      <Navbar className="sticky inset-0 z-10 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-opacity-75 h-max min-w-full rounded-none py-2 px-1 md:px-0 lg:px-8 lg:py-4 border-none text-primary shadow-sm">
-        <div className="flex items-center justify-between text-blue-gray-900 px-2 lg:w-11/12 lg:px-8 mx-auto">
+      <Navbar className="sticky inset-0 z-10 bg-warning bg-opacity-75 h-max min-w-full rounded-none py-2 px-1 md:px-0 lg:px-8 lg:py-4 border-none text-primary shadow-sm">
+        <div className="flex items-center justify-between text-blue-gray-900 px-2 w-11/12 md:w-10/12 lg:w-11/12 lg:px-8 mx-auto">
           <div className="flex gap-7 lg:gap-12">
             <Link className="flex md:gap-2" onClick={handleHome} href={"/"}>
-              <Image
+              {/* <Image
                 className="h-7 mt-[7px] w-12 rounded"
                 src={logo}
                 alt={""}
-              ></Image>
-              <Typography className="mr-4 cursor-pointer text-primary text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">
+              ></Image> */}
+               {/* // text-transparent bg-clip-text bg-gradient-to-r from-primary via-gray-700 to-primary */}
+              <Typography className="mr-4 cursor-pointer text-4xl font-semibold md:font-extrabold text-primary">
                 To-Leet
               </Typography>
             </Link>
@@ -227,14 +215,14 @@ export default function NavBar() {
               {!lang ? (
                 <Link
                   href="/ads"
-                  className="font-semibold border border-success text-primary  rounded-lg cursor-pointer px-2 py-[3px]"
+                  className="font-semibold border border-success text-primary  rounded cursor-pointer px-2 py-[3px]"
                 >
                   All Ads
                 </Link>
               ) : (
                 <Link
                   href="/ads"
-                  className="font-semibold border border-success  text-primary  rounded-lg cursor-pointer px-2 py-[3px]"
+                  className="font-semibold border border-success  text-primary  rounded cursor-pointer px-2 py-[3px]"
                 >
                   সকল বিজ্ঞাপন
                 </Link>
@@ -244,14 +232,14 @@ export default function NavBar() {
               {!lang ? (
                 <Link
                   href="/ads"
-                  className="text-primary  rounded-lg cursor-pointer border border-success px-2 py-1 text-sm"
+                  className="text-primary  rounded cursor-pointer border border-success px-2 py-1 text-sm"
                 >
                   All Ads
                 </Link>
               ) : (
                 <Link
                   href="/ads"
-                  className="text-primary  rounded-lg cursor-pointer border border-success px-1 pt-[6px] text-xs"
+                  className="text-primary  rounded cursor-pointer border border-success px-1 pt-[6px] text-xs"
                 >
                   সকল বিজ্ঞাপন
                 </Link>
@@ -262,14 +250,14 @@ export default function NavBar() {
             {!lang ? (
               <span
                 onClick={handleLanguage}
-                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded-lg cursor-pointer"
+                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded cursor-pointer"
               >
                 বাংলা
               </span>
             ) : (
               <span
                 onClick={handleLanguage}
-                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded-lg cursor-pointer"
+                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded cursor-pointer"
               >
                 English
               </span>
@@ -282,16 +270,16 @@ export default function NavBar() {
                 onClick={handleLogOut}
                 // variant="gradient"
                 size="sm"
-                className="hidden lg:inline-block text-gray-700 -my-2 bg-gradient-to-r from-success via-accent to-success"
+                className="hidden lg:inline-block text-gray-700 -my-2 bg-accent rounded"
               >
                 {!lang ? <span>LogOut</span> : <span>লগআউট</span>}
               </Button>
             ) : (
               <Link href={"/signUp"}>
                 <Button
-                  variant="gradient"
+                   
                   size="sm"
-                  className="hidden lg:inline-block text-gray-700 -my-2 bg-gradient-to-r from-success via-accent to-success"
+                  className="hidden lg:inline-block text-gray-700 -my-2 bg-accent  rounded"
                 >
                   {!lang ? <span>SignUp</span> : <span>সাইন আপ</span>}
                 </Button>
@@ -340,34 +328,31 @@ export default function NavBar() {
           <div className="mt-10"> {navList}</div>
           <div className="flex justify-center">
             {authenticated ? (
-              <Button
-                className="text-gray-700 w-[148px] -ml-10 py-2 -my-2 bg-gradient-to-r from-success via-accent to-success"
+              <div
+               
                 onClick={handleLogOut}
-                variant="gradient"
-                size="sm"
+                
               >
                 {" "}
                 {!lang ? (
-                  <span className="" onClick={() => setOpenNav(false)}>LogOut</span>
+                  <Button className="text-gray-700 w-[149px] -ml-9 py-2 -my-2 bg-accent rounded" onClick={() => setOpenNav(false)}>LogOut</Button>
                 ) : (
-                  <span onClick={() => setOpenNav(false)}>লগআউট</span>
+                  <Button  className="text-gray-700 w-[162px] -ml-[23px] py-2 -my-2 bg-accent rounded" onClick={() => setOpenNav(false)}>লগআউট</Button>
                 )}
-              </Button>
+              </div>
             ) : (
               <Link href={"/signUp"}>
                 {!lang ? (
                   <Button
-                    variant="gradient"
                     size="sm"
-                    className="w-[148px] -ml-12 rounded-lg mb-3 text-gray-700 -my-2 bg-gradient-to-r from-success via-accent to-success"
+                    className="w-[150px] -ml-9 mb-3 text-gray-700 -my-2 bg-accent rounded"
                   >
                     <span onClick={() => setOpenNav(false)}>SignUp</span>
                   </Button>
                 ) : (
                   <Button
-                    variant="gradient"
                     size="sm"
-                    className="w-[162px] -ml-8 rounded-lg mb-3 text-gray-700 -my-2 bg-gradient-to-r from-success via-accent to-success"
+                    className="w-[163px] -ml-6 rounded mb-3 text-gray-700 -my-2 bg-accent"
                   >
                     <span
                       className="text-[15px]"
@@ -384,14 +369,14 @@ export default function NavBar() {
             {!lang ? (
               <span
                 onClick={handleLanguage}
-                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary rounded-lg cursor-pointer shadow-lg shadow-accent px-[53px] -ml-12"
+                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary rounded cursor-pointer shadow-lg shadow-accent px-[53px] -ml-9"
               >
                 বাংলা
               </span>
             ) : (
               <span
                 onClick={handleLanguage}
-                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-[51px] -ml-8 rounded-lg cursor-pointer shadow-lg shadow-accent"
+                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-[51px] -ml-6 rounded cursor-pointer shadow-lg shadow-accent"
               >
                 English
               </span>

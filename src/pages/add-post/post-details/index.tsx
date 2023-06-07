@@ -317,15 +317,15 @@ const PostDetails = () => {
   return (
     <>
       <Head>
-        <title>To-Leet - Post Details</title>
+        <title>To Leet - Post Details</title>
       </Head>
       <div>
         {error ? (
           <div className="h-96 flex items-center justify-center">
             {" "}
-            <div>
+            <div className="shadow-2xl p-10 rounded">
               <h1>{error}</h1>{" "}
-              <Link className="text-secondary underline" href={"/"}>
+              <Link className="text-warning underline" href={"/"}>
                 Home
               </Link>
             </div>
@@ -343,9 +343,9 @@ const PostDetails = () => {
               </div>
             )}
             {getUniversityModalValue?.eng && (
-              <div>
+              <div >
                 {!lang ? (
-                  <p className="text-center text-lg">
+                  <p className="text-center text-lg mt-2">
                     {" "}
                     You have selected{" "}
                     <span className="lowercase">
@@ -353,7 +353,7 @@ const PostDetails = () => {
                     </span>
                   </p>
                 ) : (
-                  <p className="text-center">
+                  <p className="text-center mt-2">
                     আপনি নির্বাচন করেছেন {getUniversityModalValue?.ban}
                   </p>
                 )}
@@ -367,13 +367,13 @@ const PostDetails = () => {
                       <div className="flex justify-center gap-2 md:text-xl lg:-ml-10">
                         <h1 className="cursor-pointer">
                           Is the{" "}
-                          <span className="text-success">
+                          <span className="text-warning">
                             {modalValue?.eng}
                           </span>{" "}
                           near university or medical college?
                         </h1>
                         <h2
-                          className="flex gap-2 border shadow-md shadow-accent border-accent rounded-lg px-2 cursor-pointer"
+                          className="flex gap-2 border shadow-md shadow-warning border-warning rounded px-2 cursor-pointer"
                           onClick={() =>
                             setPostUniversityModalValue({
                               eng: "yes",
@@ -393,13 +393,13 @@ const PostDetails = () => {
                     {modalValue.ban && (
                       <div className="flex justify-center gap-2 text-sm md:text-base lg:-ml-32">
                         <h1>
-                          <span className="text-success">
+                          <span className="text-warning">
                             {modalValue?.ban}
                           </span>{" "}
                           কি বিশ্ববিদ্যালয় বা মেডিকেল কলেজের পাশে?
                         </h1>
                         <h2
-                          className="border shadow-md shadow-accent border-accent rounded-lg px-3 cursor-pointer text-center"
+                          className="border shadow-md shadow-warning border-warning rounded px-3 cursor-pointer text-center"
                           onClick={() =>
                             setPostUniversityModalValue({
                               eng: "yes",
@@ -439,7 +439,7 @@ const PostDetails = () => {
                         isSearchable
                         options={totalBedEng}
                         onChange={setTotalBed}
-                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                        className="bg-primary border-warning  text-sm h-4 text-gray-700 font-medium"
                       />
                     </div>
                   ) : (
@@ -452,7 +452,7 @@ const PostDetails = () => {
                         isSearchable
                         options={totalBedBan}
                         onChange={setTotalBed}
-                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                        className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                       />
                     </div>
                   )}
@@ -478,7 +478,7 @@ const PostDetails = () => {
                         isSearchable
                         options={optionEng}
                         onChange={setBedNumbers}
-                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                        className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                       />
                     </div>
                   ) : (
@@ -491,7 +491,7 @@ const PostDetails = () => {
                         isSearchable
                         options={optionBan}
                         onChange={setBedNumbers}
-                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                        className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                       />
                     </div>
                   )}
@@ -522,7 +522,7 @@ const PostDetails = () => {
                         isSearchable
                         options={optionEng}
                         onChange={setBedRooms}
-                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                        className="bg-primary  border-none text-sm h-4 text-gray-700 font-medium"
                       />
                     </div>
                   ) : (
@@ -535,7 +535,7 @@ const PostDetails = () => {
                         isSearchable
                         options={optionBan}
                         onChange={setBedRooms}
-                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                        className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                       />
                     </div>
                   )}
@@ -561,7 +561,7 @@ const PostDetails = () => {
                         isSearchable
                         options={optionEng}
                         onChange={setBathRooms}
-                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                        className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                       />
                     </div>
                   ) : (
@@ -574,7 +574,7 @@ const PostDetails = () => {
                         isSearchable
                         options={optionBan}
                         onChange={setBathRooms}
-                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                        className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                       />
                     </div>
                   )}
@@ -597,7 +597,7 @@ const PostDetails = () => {
                         isSearchable
                         options={wifiEng}
                         onChange={setWifi}
-                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                        className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                       />
                     </div>
                   ) : (
@@ -610,7 +610,7 @@ const PostDetails = () => {
                         isSearchable
                         options={wifiBan}
                         onChange={setWifi}
-                        className="bg-primary border-none text-sm h-4 text-black font-medium"
+                        className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                       />
                     </div>
                   )}
@@ -719,7 +719,7 @@ const PostDetails = () => {
                   <input
                     {...register("negotiable")}
                     type="checkbox"
-                    className="text-black h-4 w-4"
+                    className="text-gray-700 h-4 w-4"
                   />
                   {!lang ? (
                     <h1 className="-mt-1">Negotiable</h1>
@@ -787,12 +787,12 @@ const PostDetails = () => {
                             <div className="mt-1">
                               <label htmlFor="file1">
                                 {!lang ? (
-                                  <div className="rounded border border-secondary p-2">
+                                  <div className="rounded border border-warning p-2">
                                     <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
                                     <small>Upload Photo</small>
                                   </div>
                                 ) : (
-                                  <div className="rounded border border-secondary p-2">
+                                  <div className="rounded border border-warning p-2">
                                     <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
                                     <small> ছবি যুক্ত করুন</small>
                                   </div>
@@ -848,7 +848,7 @@ const PostDetails = () => {
                                   <div
                                     className={
                                       imageUrl1
-                                        ? "rounded border border-secondary p-2"
+                                        ? "rounded border border-warning p-2"
                                         : "rounded border   border-gray-400 p-2"
                                     }
                                   >
@@ -865,7 +865,7 @@ const PostDetails = () => {
                                   <div
                                     className={
                                       imageUrl1
-                                        ? "rounded border border-secondary p-2"
+                                        ? "rounded border border-warning p-2"
                                         : "rounded border   border-gray-400 p-2"
                                     }
                                   >
@@ -932,7 +932,7 @@ const PostDetails = () => {
                                   <div
                                     className={
                                       imageUrl1 && imageUrl2
-                                        ? "rounded border border-secondary p-2"
+                                        ? "rounded border border-warning p-2"
                                         : "rounded border border-gray-400 p-2"
                                     }
                                   >
@@ -949,7 +949,7 @@ const PostDetails = () => {
                                   <div
                                     className={
                                       imageUrl1 && imageUrl2
-                                        ? "rounded border border-secondary p-2"
+                                        ? "rounded border border-warning p-2"
                                         : "rounded border border-gray-400 p-2"
                                     }
                                   >
@@ -1015,7 +1015,7 @@ const PostDetails = () => {
                                   <div
                                     className={
                                       imageUrl3
-                                        ? "rounded border border-secondary p-2"
+                                        ? "rounded border border-warning p-2"
                                         : "rounded border border-gray-400 p-2"
                                     }
                                   >
@@ -1032,7 +1032,7 @@ const PostDetails = () => {
                                   <div
                                     className={
                                       imageUrl3
-                                        ? "rounded border border-secondary p-2"
+                                        ? "rounded border border-warning p-2"
                                         : "rounded border border-gray-400 p-2"
                                     }
                                   >
@@ -1098,7 +1098,7 @@ const PostDetails = () => {
                                   <div
                                     className={
                                       imageUrl4
-                                        ? "rounded border border-secondary p-2"
+                                        ? "rounded border border-warning p-2"
                                         : "rounded border border-gray-400 p-2"
                                     }
                                   >
@@ -1115,7 +1115,7 @@ const PostDetails = () => {
                                   <div
                                     className={
                                       imageUrl4
-                                        ? "rounded border border-secondary p-2"
+                                        ? "rounded border border-warning p-2"
                                         : "rounded border border-gray-400 p-2"
                                     }
                                   >
@@ -1196,7 +1196,7 @@ const PostDetails = () => {
                     readOnly
                   />
                 </div>
-                <div className="mt-10 border border-secondary p-5">
+                <div className="mt-10 border border-warning p-5">
                   {!lang ? (
                     <h5>Add A Phone Number:</h5>
                   ) : (
@@ -1235,7 +1235,7 @@ const PostDetails = () => {
             {/* <input
               {...register("terms")}
               type="checkbox"
-              className="text-black h-4 w-4"
+              className="text-gray-700 h-4 w-4"
             /> */}
             {/* <h1 className="-mt-1">
               I have read and accept the Terms and Conditions
@@ -1244,7 +1244,7 @@ const PostDetails = () => {
             <div className="lg:w-1/2 mx-auto flex justify-end">
               <Button
                 onClick={handleSubmit(handlePost)}
-                className={loading ? "text-white w-1/2 mb-10 mt-12 font-semibold  bg-gray-800" : "text-gray-800 w-1/2 mb-10 mt-12 font-semibold  bg-gradient-to-r from-success via-accent to-success"}
+                className={loading ? "text-white w-1/2 mb-10 mt-12 font-semibold  bg-gray-800" : "text-primary w-1/2 mb-10 mt-12 font-semibold  bg-warning"}
                 disabled={modalValue?.eng ? false : true}
               > 
               {

@@ -22,6 +22,7 @@ const FilterDestinationType = () => {
   const handleFilter = (v: any) => {
     setFilterModalValue(v);
     setFilterValue({ ...filterValue, filterModalValue: v });
+    Cookies.set("filterMV", JSON.stringify(v),{ expires: 1 })
     router.push(
       `/ads/${cityName?.eng || divisionNameEng?.eng}/${
         homePopularAreaName?.eng || districtsName?.eng
@@ -37,7 +38,7 @@ const FilterDestinationType = () => {
 
   const lang = Cookies.get("lan");
   return (
-    <div className="bg-primary  w-80 md:w-[40rem] lg:w-full -ml-24 md:-ml-44 lg:ml-0 rounded-md mt-40 lg:mt-0">
+    <div className="bg-neutral text-gray-700 w-80 md:w-[40rem] lg:w-full -ml-24 md:-ml-44 lg:ml-0 rounded-md mt-40 lg:mt-0">
       <div>
         {districtsName?.eng ? (
           <h1 className="flex justify-evenly text-lg pt-5">
@@ -69,7 +70,7 @@ const FilterDestinationType = () => {
       </div>
       <div className=" p-5 grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 lg:gap-5 md:gap-2 gap-1  md:mt-8">
         <Card
-          className="border border-accent cursor-pointer"
+          className="border border-warning cursor-pointer"
           onClick={() =>
             handleFilter({
               eng: "Bachelor-(Male)",
@@ -85,7 +86,7 @@ const FilterDestinationType = () => {
         </Card>
 
         <Card
-          className="border border-accent cursor-pointer"
+          className="border border-warning cursor-pointer"
           onClick={() =>
             handleFilter({
               eng: "Bachelor-(Female)",
@@ -100,7 +101,7 @@ const FilterDestinationType = () => {
           )}
         </Card>
         <Card
-          className="border border-accent cursor-pointer"
+          className="border border-warning cursor-pointer"
           onClick={() =>
             handleFilter({ eng: "Mess-(Male)", ban: "মেস-(ছেলে)" })
           }
@@ -113,7 +114,7 @@ const FilterDestinationType = () => {
         </Card>
 
         <Card
-          className="border border-accent cursor-pointer"
+          className="border border-warning cursor-pointer"
           onClick={() =>
             handleFilter({ eng: "Mess-(Female)", ban: "মেস-(মেয়ে)" })
           }
@@ -125,7 +126,7 @@ const FilterDestinationType = () => {
           )}
         </Card>
         <Card
-          className="border border-accent cursor-pointer"
+          className="border border-warning cursor-pointer"
           onClick={() =>
             handleFilter({ eng: "Sublet-(Male)", ban: "সাবলেট-(ছেলে)" })
           }
@@ -138,7 +139,7 @@ const FilterDestinationType = () => {
         </Card>
 
         <Card
-          className="border border-accent cursor-pointer"
+          className="border border-warning cursor-pointer"
           onClick={() =>
             handleFilter({
               eng: "Sublet-(Female)",
@@ -154,7 +155,7 @@ const FilterDestinationType = () => {
         </Card>
 
         <Card
-          className="border border-accent cursor-pointer"
+          className="border border-warning cursor-pointer"
           onClick={() => handleFilter({ eng: "Family", ban: "পরিবার" })}
         >
           {!lang ? (
@@ -167,7 +168,7 @@ const FilterDestinationType = () => {
        
 
         <Card
-          className="border border-accent cursor-pointer"
+          className="border border-warning cursor-pointer"
           onClick={() => handleFilter({ eng: "Hostel", ban: "আবাসিক-হোস্টেল" })}
         >
           {!lang ? (
@@ -178,7 +179,7 @@ const FilterDestinationType = () => {
         </Card>
 
         <Card
-          className="border border-accent cursor-pointer"
+          className="border border-warning cursor-pointer"
           onClick={() => handleFilter({ eng: "Office", ban: "অফিস" })}
         >
           {!lang ? (
@@ -189,7 +190,7 @@ const FilterDestinationType = () => {
         </Card>
 
         <Card
-          className="border border-accent cursor-pointer"
+          className="border border-warning cursor-pointer"
           onClick={() => handleFilter({ eng: "Shop", ban: "দোকান" })}
         >
           {!lang ? (
@@ -200,7 +201,7 @@ const FilterDestinationType = () => {
         </Card>
 
         <Card
-          className="border border-accent cursor-pointer"
+          className="border border-warning cursor-pointer"
           onClick={() => handleFilter({ eng: "Vehicles", ban: "যানবাহন" })}
         >
           {!lang ? (
@@ -211,7 +212,7 @@ const FilterDestinationType = () => {
         </Card>
 
         <Card
-          className="border border-accent cursor-pointer"
+          className="border border-warning cursor-pointer"
           onClick={() => handleFilter({ eng: "Garage", ban: "গ্যারেজ" })}
         >
           {!lang ? (

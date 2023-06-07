@@ -1,37 +1,24 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useContext } from "react";
-import style from "../../../styles/banner.module.css";
+import React from "react";
 import DesEng from "./DesEng";
 import DesBan from "./DesBan";
-import { StateContext } from "@/Context/StateContext/StateContext";
-import Cookies from 'js-cookie';
-
- 
+import Cookies from "js-cookie";
 
 const DestinationType = () => {
-  const { filterTypeCity, filterTypeDivision }: any = useContext(StateContext);
   const lang = Cookies.get("lan");
   return (
-    <section className="mb-20 mt-10 lg:-mt-10">
+    <section className="mb-20 mt-10 lg:-mt-24">
       {!lang ? (
         <h1
-          id={
-            filterTypeCity || filterTypeDivision
-              ? "text-secondary"
-              : style.bannerTextColor
-          }
-          className="text-center text-3xl font-semibold lg:-mt-4"
+         
+          className="text-center text-3xl font-semibold lg:-mt-4 text-warning"
         >
           What's your need?
         </h1>
       ) : (
         <h1
-          id={
-            filterTypeCity || filterTypeDivision
-              ? "text-secondary"
-              : style.bannerTextColor
-          }
-          className="text-center text-xl font-semibold lg:-mt-4"
+        
+          className="text-center text-xl font-semibold lg:-mt-4 text-warning"
         >
           আপনার প্রয়োজন অনুযায়ী খুজুন
         </h1>

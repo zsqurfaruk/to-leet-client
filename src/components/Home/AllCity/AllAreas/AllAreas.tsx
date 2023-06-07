@@ -8,6 +8,7 @@ import PopularAreaOfMym from "../../AllPopularAreas/PopularAreaOfMymensingh/Popu
 import PopularAreaOfRajshahi from "../../AllPopularAreas/PopularAreaOfRajshahi/PopularAreaOfRajshahi";
 import PopularAreaOfRangpur from "../../AllPopularAreas/PopularAreaOfRangpur/PopularAreaOfRangpur";
 import FilterModal from "../../Banner/Modal/FilterModal";
+import Cookies from "js-cookie";
 
 const AllAreas = () => {
   const { cityName, setCityName, setHomePopularAreaName }: any = useContext(StateContext);
@@ -22,11 +23,11 @@ const AllAreas = () => {
     <section className="mx-7 md:mx-14 lg:mx-0">
       <h1
         onClick={handlePrevious}
-        className="text-secondary text-sm mb-5 cursor-pointer hover:underline"
+        className="text-warning text-sm mb-5 cursor-pointer hover:underline"
       >
         {!lang ? "Change city?" : "শহর পরিবর্তন?"}
       </h1>
-      <h1 className="text-xl mb-5 border-l-4 border-b-4 border-accent pl-2 text-black">
+      <h1 className="text-xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
         {!lang ? (
           <span>Popular areas of {cityName?.eng}:</span>
         ) : (

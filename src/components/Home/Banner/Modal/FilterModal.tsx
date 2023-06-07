@@ -8,6 +8,7 @@ import {
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React from "react";
 import FilterDestinationType from "@/components/OtherPages/PostDestinationType/FilterDestinationType";
+import Cookies from "js-cookie";
 
 export default function FilterModal() {
   const {
@@ -29,7 +30,7 @@ export default function FilterModal() {
       <Dialog
         open={filterModal}
         handler={handleFilterModal}
-        className="bg-transparent lg:bg-primary lg:px-10"
+        className="bg-transparent lg:bg-neutral lg:px-10"
         // id={style.modalChange}
         animate={{
           mount: { scale: 1, y: -80 },

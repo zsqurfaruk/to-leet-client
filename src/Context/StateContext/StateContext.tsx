@@ -1,4 +1,5 @@
 import Loading from "@/components/Loading/Loading";
+import Cookies from "js-cookie";
 import React, { createContext, useEffect, useState } from "react";
 
 export const StateContext = createContext({});
@@ -19,17 +20,23 @@ const StateInfo = ({ children }: any) => {
   const [filterModal, setFilterModal] = useState(false);
   const [filterModalValue, setFilterModalValue] = useState({});
   const [typeCount, setTypeCount] = useState([]);
+
+  const city = Cookies.get("city")
+  const area = Cookies.get("area")
+  const district = Cookies.get("district")
+  const division = Cookies.get("division")
+  const filter = Cookies.get("filterMV")
   const [filterValue, setFilterValue] = useState({
-    cityName: cityName,
-    homePopularAreaName: homePopularAreaName,
-    filterModalValue: filterModalValue,
-    divisionNameEng: divisionNameEng,
-    districtsName: districtsName,
-    openModalValue:openModalValue
+    cityName: city,
+    homePopularAreaName: area,
+    filterModalValue: filter,
+    divisionNameEng: division,
+    districtsName: district,
+     
   });
   const handleOpenModalEng = () => setOpenModalEng(!openModalEng);
   const handleFilterModal = () => setFilterModal(!filterModal);
-
+// console.log(filterValue)
   const [loading, setLoading] = useState(true);
   useEffect(()=>{
     setLoading(false);

@@ -11,7 +11,7 @@ function AllAds() {
   return (
     <>
       <Head>
-        <title>To-Leet - All Ads</title>
+        <title>To Leet - All Ads</title>
       </Head>
       <section className="lg:my-10 lg:w-10/12 mx-auto bg-white px-10 rounded">
         {allDataLoading ? (
@@ -28,22 +28,4 @@ function AllAds() {
   );
 }
 
-// export const getStaticProps: GetStaticProps = async () => {
-//   const res = await fetch(`https://zsqur.to-leet.com/api/v1/product`);
-//   const data = await res.json();
-
-//   if (!data) {
-//     return {
-//       redirect: {
-//         destination: "/",
-//         permanent: false,
-//       },
-//     };
-//   }
-//   return {
-//     props: {
-//       product: data,
-//     },
-//   };
-// };
 export default AllAds;

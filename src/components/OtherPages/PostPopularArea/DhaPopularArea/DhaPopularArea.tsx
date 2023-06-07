@@ -39,12 +39,12 @@ const DhaPopularArea = () => {
   return (
     <section>
       <div>
-        <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-black text-sm lg:text-base">
+        <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
           <li>
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
                     eng: "Mirpur",
@@ -63,7 +63,7 @@ const DhaPopularArea = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
                     eng: "Uttara",
@@ -82,7 +82,7 @@ const DhaPopularArea = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
                     eng: "Farmgate",
@@ -101,7 +101,7 @@ const DhaPopularArea = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
                     eng: "New Market",
@@ -120,7 +120,7 @@ const DhaPopularArea = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
                     eng: "Mohakhali",
@@ -139,7 +139,7 @@ const DhaPopularArea = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
                     eng: "Savar",
@@ -158,7 +158,7 @@ const DhaPopularArea = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
                     eng: "Dhamrai",
@@ -184,7 +184,7 @@ const DhaPopularArea = () => {
             <label className="flex gap-2">
               <input
                 type="checkbox"
-                className="checkbox checkbox-accent border-secondary h-[18px] w-[19px]"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={(e: any) =>
                   setGetPostPopularAreaName({
                     eng: "Select others",
@@ -210,7 +210,7 @@ const DhaPopularArea = () => {
                     isSearchable
                     options={option}
                     onChange={setGetPostPopularAreaName}
-                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                    className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                   />
                 </li>
               )}
@@ -224,7 +224,7 @@ const DhaPopularArea = () => {
                     isSearchable
                     options={options}
                     onChange={setGetPostPopularAreaName}
-                    className="bg-primary border-none text-sm h-4 text-black font-medium"
+                    className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
                   />
                 </li>
               )}

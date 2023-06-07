@@ -2,6 +2,7 @@ import axios from "axios";
 import { GetStaticProps } from "next";
 import React, { createContext, useEffect, useState, useContext } from "react";
 import { StateContext } from "../StateContext/StateContext";
+import Cookies from "js-cookie";
 
 export const APIContext = createContext({});
 
@@ -14,13 +15,15 @@ const ApiContext = ({ children }: any) => {
   const [reload, setReload] = useState(false)
   const [allDataLoading, setAllDataLoading] = useState(false)
 
+ const universityValue = Cookies.get("openMV")
+
   const handleFilterUniversity = () => {
     setLoading(true)
     fetch(`http://localhost:5000/api/v1/product`)
       .then((res) => res.json())
       .then((data) => {
         const result = data?.filter(
-          (post: any) => openModalValue?.eng === post?.university?.eng);
+          (post: any) => universityValue === post?.university?.eng);
         setLoading(false)
         setFilterPost(result);
       });
