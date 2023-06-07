@@ -1,12 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
-import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useState, useContext } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { IoMdArrowDropup } from "react-icons/io";
 
 const AboutBan = () => {
   const [open, setOpen] = useState(true);
-  const { filterTypeCity, filterTypeDivision }: any = useContext(StateContext);
   return (
     <div className="w-10/12 mx-auto py-10 text-justify text-gray-700">
       <h1 className="text-2xl font-semibold text-warning">
