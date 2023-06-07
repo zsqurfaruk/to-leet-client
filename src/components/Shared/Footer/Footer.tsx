@@ -24,7 +24,6 @@ const Footer = () => {
           <div>
             <a className="flex">
               {/* <Image className="h-7 w-12 mt-2" src={logo} alt=""></Image> */}
-              {/* <img className="h-10 w-10 rounded" src={logo} alt="" /> */}
               <h1 className="ml-2 text-4xl font-bold tracking-wide  ">
                 <span className="mr-4 cursor-pointer text-warning text-4xl font-extrabold ">
                  To-Leet
