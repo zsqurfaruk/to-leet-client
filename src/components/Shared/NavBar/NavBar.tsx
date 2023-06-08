@@ -73,6 +73,7 @@ export default function NavBar() {
     Cookies.remove("division");
     Cookies.remove("filterMV");
     Cookies.remove("openMV");
+    Cookies.remove("next-auth.session-token");
     return push("/signIn");
   };
 

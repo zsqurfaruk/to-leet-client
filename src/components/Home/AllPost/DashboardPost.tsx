@@ -12,7 +12,7 @@ const DashboardPost = ({ post }: any) => {
 
   const handleUpdate = async () => {
     const res = await fetch(
-      `http://localhost:5000/api/v1/product/update/available/${post._id}`,
+      `https://zsqur.to-leet.com/api/v1/product/update/available/${post._id}`,
       {
         method: "PATCH",
         headers: {

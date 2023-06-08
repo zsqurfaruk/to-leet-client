@@ -45,7 +45,7 @@ function SignUp() {
       ToLeet: "to-leet",
     };
     setLoading(true);
-    const res = await fetch("http://localhost:5000/api/v1/users/signup", {
+    const res = await fetch("https://zsqur.to-leet.com/api/v1/users/signup", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -54,7 +54,6 @@ function SignUp() {
       body: JSON.stringify(info),
     });
     const result = await res.json();
-    console.log(result)
     setLoading(false);
     if (result.message === "Internal server error") {
       return setError("emailError");

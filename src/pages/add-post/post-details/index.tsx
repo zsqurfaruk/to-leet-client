@@ -204,7 +204,7 @@ const PostDetails = () => {
       university: getUniversityModalValue,
     };
     setLoading(true)
-    const res = await fetch("http://localhost:5000/api/v1/product", {
+    const res = await fetch("https://zsqur.to-leet.com/api/v1/product", {
       method: "POST",
       headers: {
         "content-type": "application/json",

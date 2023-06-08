@@ -19,7 +19,7 @@ const ApiContext = ({ children }: any) => {
 
   const handleFilterUniversity = () => {
     setLoading(true)
-    fetch(`http://localhost:5000/api/v1/product`)
+    fetch(`https://zsqur.to-leet.com/api/v1/product`)
       .then((res) => res.json())
       .then((data) => {
         const result = data?.filter(
@@ -31,7 +31,7 @@ const ApiContext = ({ children }: any) => {
 
   useEffect(() => {
     setAllDataLoading(true)
-    fetch("http://localhost:5000/api/v1/product")
+    fetch("https://zsqur.to-leet.com/api/v1/product")
       .then((res) => res.json())
       .then((data) => {setCounterPosts(data)
         setAllDataLoading(false)});
@@ -40,14 +40,14 @@ const ApiContext = ({ children }: any) => {
 
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/users/signup")
+    fetch("https://zsqur.to-leet.com/api/v1/users/signup")
       .then((res) => res.json())
       .then((data) => setUserCounter(data));
   }, []);
  
   const [counter, setCounter] = useState([])
   useEffect(()=>{
-   fetch('http://localhost:5000/api/v1/product/category/type')
+   fetch('https://zsqur.to-leet.com/api/v1/product/category/type')
    .then(res=>res.json())
    .then(data=> setCounter(data?.countProduct))
   },[reload])

@@ -17,7 +17,7 @@ const Dashboard = () => {
  
   useEffect(() => {
     setLoading(true)
-    fetch(`http://localhost:5000/api/v1/product/user/email/${email}`,
+    fetch(`https://zsqur.to-leet.com/api/v1/product/user/email/${email}`,
     {
       headers: {
         authorization: `bearer ${Cookies.get("token")}`,
