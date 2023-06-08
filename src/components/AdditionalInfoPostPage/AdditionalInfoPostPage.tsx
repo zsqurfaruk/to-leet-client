@@ -38,7 +38,6 @@ const AdditionalInfoPostPage = () => {
         <hr className="mt-3 flex lg:hidden" />
         <div className="flex justify-between py-5">
           <h1 className="hidden lg:flex">
-            {" "}
             {!lang ? <span>Fill In The Details</span> : <span>বিস্তারিত তথ্য দিন</span>}
           </h1>
           <h1

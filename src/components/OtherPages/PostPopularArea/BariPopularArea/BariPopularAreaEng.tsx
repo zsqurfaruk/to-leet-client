@@ -131,7 +131,7 @@ const BariPopularAreaEng = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-                onClick={(e: any) =>
+                onClick={() =>
                   setGetPostPopularAreaName({
                     eng: "Nobogram Road",
                     ban: "নবগ্রাম রোড",

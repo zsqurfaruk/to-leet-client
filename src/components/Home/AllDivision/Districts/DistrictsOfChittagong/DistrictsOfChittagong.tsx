@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 import Cookies from "js-cookie";

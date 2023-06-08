@@ -1,13 +1,11 @@
-import { StateContext } from "@/Context/StateContext/StateContext";
-import React, { useContext  } from "react";
+import React from "react";
 import AllDivisionName from "./AllDivisionEng";
 import Cookies from "js-cookie";
 
 const AllDivision = () => {
-  const { filterTypeCity, setFilterTypeDivision }: any = useContext(StateContext);
-  const handlePrevious = () => {
-    setFilterTypeDivision(false);
-  };
+  // const handlePrevious = () => {
+  //   setFilterTypeDivision(false);
+  // };
 
   const lang = Cookies.get("lan");
   return (
@@ -36,7 +34,6 @@ const AllDivision = () => {
               "text-xl mb-5 border-l-4 border-b-4 border-warning lg:-ml-4 pl-2"
             }
           >
-            {" "}
             বিভাগ নির্বাচন করুন
           </h1>
         )}

@@ -1,4 +1,3 @@
-import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 import Cookies from "js-cookie";
@@ -138,7 +137,6 @@ const DistrictsOfDhaka = () => {
         </li>
 
         <li>
-          {" "}
           <label className="flex gap-2">
             <input
               type="checkbox"

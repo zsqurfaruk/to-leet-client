@@ -104,7 +104,7 @@ const PopularAreaOfBarishal = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-                onClick={(e: any) =>
+                onClick={() =>
                   handleFilter({
                     eng: "Nattullabad",
                     ban: "নথুল্লাবাদ",
@@ -125,7 +125,7 @@ const PopularAreaOfBarishal = () => {
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-                onClick={(e: any) =>
+                onClick={() =>
                   handleFilter({ eng: "Rupatali", ban: "রুপাতলি" })
                 }
               />

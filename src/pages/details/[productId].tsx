@@ -98,7 +98,7 @@ const ProductDetails = ({ product }: any) => {
                         variant="h6"
                         className="text-warning md:hidden"
                       >
-                        {!lang ? "Date:" : "তারিখঃ"}{" "}
+                        {!lang ? "Date:" : "তারিখঃ"} 
                         {product?.updatedAt?.slice(0, 10)}
                       </Typography>
                     </div>
@@ -106,18 +106,18 @@ const ProductDetails = ({ product }: any) => {
                       <>
                         {!lang ? (
                           <>
-                            <span className="font-semibold">Beside:</span>{" "}
+                            <span className="font-semibold">Beside:</span> 
                             {product?.university?.eng}
                           </>
                         ) : (
                           <>
-                            <span className="font-semibold"> </span>{" "}
+                            <span className="font-semibold"> </span> 
                             {product?.university?.ban} এর পাশে
                           </>
                         )}
                       </>
                     )}
-                    <Typography color="gray" className="font-normal ">
+                    <Typography color="gray" className="font-normal">
                       <div className="md:flex md:gap-56">
                         {product?.bedrooms?.eng && (
                           <div>
@@ -184,7 +184,7 @@ const ProductDetails = ({ product }: any) => {
                         {product?.negotiable === true && (
                           <h2 className="md:hidden">
                             {" "}
-                            {!lang ? "Negotiable" : "আলোচনা সাপেক্ষে"}{" "}
+                            {!lang ? "Negotiable" : "আলোচনা সাপেক্ষে"} 
                           </h2>
                         )}
                       </div>

@@ -1,4 +1,3 @@
-import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 import Cookies from "js-cookie";
@@ -45,7 +44,7 @@ const DistrictsOfMym = () => {
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-              onClick={() => handleFilter({ eng: "Jamalpur", ban: "খুলনা" })}
+              onClick={() => handleFilter({ eng: "Jamalpur", ban: "জামালপুর" })}
             />
             {!lang ? (
               <span className="-mt-[2px]">Jamalpur</span>

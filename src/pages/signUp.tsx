@@ -171,7 +171,7 @@ function SignUp() {
                   <FaEye className="text-2xl"></FaEye>
                 )}
               </div>
-              {!lang ? (
+              {/* {!lang ? (
                 <small className="text-warning text-sm">
                   ( The password must contain one uppercase, three lowercase
                   letter, one number and one special symbol.)
@@ -181,7 +181,7 @@ function SignUp() {
                   ( পাসওয়ার্ডে একটি বড় হাতের অক্ষর, তিনটি ছোট হাতের অক্ষর,
                   একটি নাম্বার এবং একটি বিশেষ চিহ্ন থাকতে হবে। )
                 </small>
-              )}
+              )} */}
               {!lang ? (
                 <div onClick={handleAgree} className="flex gap-2">
                   <input
@@ -225,12 +225,12 @@ function SignUp() {
               <span className="text-red-500">
                 {error &&
                   !lang &&
-                  "Something went wrong, please try a unique email or check password rules."}
+                  "Something went wrong, please try a unique email or check password."}
               </span>
               <span className="text-red-500 text-sm -mt-5">
                 {error &&
                   lang &&
-                  "কিছু ভুল হয়েছে, অনুগ্রহ করে একটি নতুন ইমেল দিয়ে চেষ্টা করুন বা পাসওয়ার্ডের নিয়মগুলি পরীক্ষা করুন৷"}
+                  "কিছু ভুল হয়েছে, অনুগ্রহ করে একটি নতুন ইমেল দিয়ে চেষ্টা করুন বা পাসওয়ার্ড নিশ্চিত করুন৷"}
               </span>
               {!lang ? (
                 <button
