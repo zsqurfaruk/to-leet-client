@@ -51,7 +51,7 @@ const Footer = () => {
                   <span className="font-semibold ">Email:</span>
                   <span> toleet001@gmail.com</span>
                 </li>
-                <li  className=" ">
+                <li>
                   <a
                     href="https://www.facebook.com/To-Leet-101248609651271"
                     className="flex gap-1"

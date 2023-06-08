@@ -54,8 +54,9 @@ function SignUp() {
       body: JSON.stringify(info),
     });
     const result = await res.json();
+    console.log(result)
     setLoading(false);
-    if (result.message === "error") {
+    if (result.message === "Internal server error") {
       return setError("emailError");
     } else {
       toast.success("Sign Up Successful.");
