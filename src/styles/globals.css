@@ -2,10 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-    background-color: #f1feff;
+:root {
+  background-color: #f1feff;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
-#modalStyle{
-    filter: blur(5px);
-    -webkit-filter: blur(1px);}
+#modalStyle {
+  filter: blur(5px);
+  -webkit-filter: blur(1px);
+}

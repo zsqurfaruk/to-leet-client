@@ -43,7 +43,6 @@ export default function ModalEng() {
     setOpenModalValue(newName);
     Cookies.set("openMV",newName?.eng)
   }
- 
 
   const lang = Cookies.get("lan");
   return (
