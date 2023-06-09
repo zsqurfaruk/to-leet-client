@@ -18,6 +18,7 @@ const Reset = () => {
   const [getEmail, setGetEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [errorMessageBan, setErrorMessageBan] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const {
     register,
@@ -31,6 +32,7 @@ const Reset = () => {
       password: data.password,
       confirmPassword: data.confirmPassword,
     };
+    setLoading(true)
     const res = await fetch("https://zsqur.to-leet.com/api/v1/users/reset/email", {
       method: "POST",
       headers: {
@@ -40,6 +42,7 @@ const Reset = () => {
       body: JSON.stringify(info),
     });
     const result = await res.json();
+    setLoading(false)
     setErrorMessage(result?.error?.eng);
     setErrorMessageBan(result?.error?.eng);
     if (result.status === "success") {
@@ -120,9 +123,14 @@ const Reset = () => {
           ) : (
             <span className="text-red-400">{errorMessageBan}</span>
           )}
-          <button className="w-full bg-warning py-2 rounded font-semibold text-primary">
+          {
+            loading ?  <button className="w-full bg-gray-700 py-2 rounded font-semibold text-primary">
+            {!lang ? "Working..." : "পরিবর্তন হচ্ছে..."}
+          </button> :  <button className="w-full bg-warning py-2 rounded font-semibold text-primary">
             {!lang ? "Submit" : "সাবমিট"}
           </button>
+          }
+          
         </form>
       </div>
     </>

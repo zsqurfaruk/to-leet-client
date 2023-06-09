@@ -25,7 +25,7 @@ import { totalBedBan } from "../../../components/PostData/TotalBedBan";
 import { totalBedEng } from "../../../components/PostData/TotalBed";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
 import toast from "react-hot-toast";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
 type FormValues = {
   bedNumber: object;
@@ -67,7 +67,7 @@ const PostDetails = () => {
   const [validAmount, setValidAmount] = useState();
   const [amountError, setAmountError] = useState("");
   const [amountErrorBan, setAmountErrorBan] = useState("");
-  const {loading, setLoading}:any = useContext(APIContext)
+  const [loading, setLoading] = useState(false);
 
   const {
     modalValue,
@@ -91,8 +91,10 @@ const PostDetails = () => {
     setBedRooms,
     bathRooms,
     setBathRooms,
-    wifi, setWifi,
-    totalBed, setTotalBed
+    wifi,
+    setWifi,
+    totalBed,
+    setTotalBed,
   }: any = useContext(PostStateContext);
 
   const { reload, setReload }: any = useContext(APIContext);
@@ -146,7 +148,6 @@ const PostDetails = () => {
     setBathRooms(newName);
   }
 
-
   if (totalBed?.name === "eng") {
     const newName = {
       eng: totalBed?.label,
@@ -160,7 +161,6 @@ const PostDetails = () => {
     };
     setTotalBed(newName);
   }
-
 
   if (wifi?.name === "eng") {
     const newName = {
@@ -180,7 +180,7 @@ const PostDetails = () => {
       bedrooms: bedRooms,
       bathrooms: bathRooms,
       bedNumber: bedNumbers,
-      totalBed:  totalBed,
+      totalBed: totalBed,
       wifiFacility: wifi,
       address: data?.address,
       title: data?.title,
@@ -203,7 +203,7 @@ const PostDetails = () => {
       type: modalValue,
       university: getUniversityModalValue,
     };
-    setLoading(true)
+    setLoading(true);
     const res = await fetch("https://zsqur.to-leet.com/api/v1/product", {
       method: "POST",
       headers: {
@@ -213,7 +213,7 @@ const PostDetails = () => {
       body: JSON.stringify(values),
     });
     const result = await res.json();
-    setLoading(false)
+    setLoading(false);
     setError(result?.error);
     setPostOpenModal(false);
     setGetUniversityModalValue({});
@@ -222,7 +222,7 @@ const PostDetails = () => {
     setPostDistrictsName({});
     setPostDivisionNameEng({});
     if (result?.message === "success") {
-      toast.success("Thanks for your ads.")
+      toast.success("Thanks for your ads.");
       setReload(!reload);
       router.push(`/${modalValue.eng}`);
     }
@@ -343,7 +343,7 @@ const PostDetails = () => {
               </div>
             )}
             {getUniversityModalValue?.eng && (
-              <div >
+              <div>
                 {!lang ? (
                   <h2 className="text-center text-lg mt-2">
                     {" "}
@@ -422,7 +422,7 @@ const PostDetails = () => {
                   className={
                     modalValue.eng === "Mess-(Male)" ||
                     modalValue.eng === "Mess-(Female)" ||
-                    modalValue.eng === "Sublet-(Male)" || 
+                    modalValue.eng === "Sublet-(Male)" ||
                     modalValue.eng === "Sublet-(Female)" ||
                     modalValue.eng === "Hostel"
                       ? "block"
@@ -432,7 +432,9 @@ const PostDetails = () => {
                   {!lang ? (
                     <div className="form-control lg:w-6/12 mx-auto mb-8">
                       <label className="label">
-                        <span className="label-text">Total Bed Number/ Numbers</span>
+                        <span className="label-text">
+                          Total Bed Number/ Numbers
+                        </span>
                       </label>
                       <Select
                         placeholder="Total Bed Number/ Numbers"
@@ -461,7 +463,7 @@ const PostDetails = () => {
                   className={
                     modalValue.eng === "Mess-(Male)" ||
                     modalValue.eng === "Mess-(Female)" ||
-                    modalValue.eng === "Sublet-(Male)" || 
+                    modalValue.eng === "Sublet-(Male)" ||
                     modalValue.eng === "Sublet-(Female)" ||
                     modalValue.eng === "Hostel"
                       ? "block"
@@ -471,7 +473,9 @@ const PostDetails = () => {
                   {!lang ? (
                     <div className="form-control lg:w-6/12 mx-auto mb-8">
                       <label className="label">
-                        <span className="label-text">Empty Bed number / numbers</span>
+                        <span className="label-text">
+                          Empty Bed number / numbers
+                        </span>
                       </label>
                       <Select
                         placeholder="Empty Bed number / numbers"
@@ -505,7 +509,7 @@ const PostDetails = () => {
                     modalValue.eng === "Office" ||
                     modalValue.eng === "Shop" ||
                     modalValue.eng === "Vehicles" ||
-                    modalValue.eng === "Sublet-(Male)" || 
+                    modalValue.eng === "Sublet-(Male)" ||
                     modalValue.eng === "Sublet-(Female)" ||
                     modalValue.eng === "Garage"
                       ? "hidden"
@@ -515,7 +519,9 @@ const PostDetails = () => {
                   {!lang ? (
                     <div className="form-control lg:w-6/12 mx-auto mb-8">
                       <label className="label">
-                        <span className="label-text">Bedroom number / numbers</span>
+                        <span className="label-text">
+                          Bedroom number / numbers
+                        </span>
                       </label>
                       <Select
                         placeholder="Bedroom number / numbers"
@@ -554,7 +560,9 @@ const PostDetails = () => {
                   {!lang ? (
                     <div className="form-control lg:w-6/12 mx-auto mt-10">
                       <label className="label">
-                        <span className="label-text">Washroom number/ numbers</span>
+                        <span className="label-text">
+                          Washroom number/ numbers
+                        </span>
                       </label>
                       <Select
                         placeholder="Washroom number / numbers"
@@ -578,16 +586,18 @@ const PostDetails = () => {
                       />
                     </div>
                   )}
-                 
-                 
                 </div>
-                <div className={ modalValue?.eng === "Office" ||
+                <div
+                  className={
+                    modalValue?.eng === "Office" ||
                     modalValue?.eng === "Shop" ||
                     modalValue?.eng === "Vehicles" ||
                     modalValue?.eng === "Garage"
                       ? "hidden"
-                      : "block mt-10 mb-10"}>
-                {!lang ? (
+                      : "block mt-10 mb-10"
+                  }
+                >
+                  {!lang ? (
                     <div className="form-control lg:w-6/12 mx-auto">
                       <label className="label">
                         <span className="label-text">Wifi Facilities</span>
@@ -614,7 +624,6 @@ const PostDetails = () => {
                       />
                     </div>
                   )}
-               
                 </div>
                 <div className="lg:w-6/12 mx-auto ">
                   <label className="label">
@@ -1244,15 +1253,18 @@ const PostDetails = () => {
             <div className="lg:w-1/2 mx-auto flex justify-end">
               <Button
                 onClick={handleSubmit(handlePost)}
-                className={loading ? "text-white w-1/2 mb-10 mt-12 font-semibold  bg-gray-800" : "text-primary w-1/2 mb-10 mt-12 font-semibold  bg-warning"}
+                className={
+                  loading
+                    ? "text-white w-1/2 mb-10 mt-12 font-semibold  bg-gray-800"
+                    : "text-primary w-1/2 mb-10 mt-12 font-semibold  bg-warning"
+                }
                 disabled={modalValue?.eng ? false : true}
-              > 
-              {
-                loading ? <> {!lang ? "Posting" : "পোস্ট হচ্ছে..."}</> : <> {!lang ? " Post Now" : "পোস্ট করুন"}</>
-              }
-                  
-
-               
+              >
+                {loading ? (
+                  <> {!lang ? "Posting" : "পোস্ট হচ্ছে..."}</>
+                ) : (
+                  <> {!lang ? " Post Now" : "পোস্ট করুন"}</>
+                )}
               </Button>
             </div>
           </div>

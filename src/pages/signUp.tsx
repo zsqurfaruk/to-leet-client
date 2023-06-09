@@ -28,7 +28,6 @@ function SignUp() {
     formState: { errors },
   } = useForm<FormValues>();
   const router = useRouter();
-
   const [agree, setAgree] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
