@@ -29,7 +29,7 @@ const BannerEng = () => {
           id={style.bannerTextColorChange}
           className="mt-2"
         >
-         <h1 className="relative text-sm md:text-base"> Start your search today and let us be a part of your journey to <br className="hidden lg:flex"/>
+         <h1 className="relative text-[16px] md:text-[17.7px]"> Start your search today and let us be a part of your journey to <br className="hidden lg:flex"/>
           finding the rental <br className="hidden md:flex lg:hidden"/> solution of your dreams.</h1>
         {/* <BsArrowDownCircleFill
           className={

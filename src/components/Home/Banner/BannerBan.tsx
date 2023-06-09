@@ -31,7 +31,7 @@ const BannerBan = () => {
       <div className="relative">
         <div
           id={style.bannerTextColorChange}
-          className="mt-1 md:mt-2 text-xs md:text-sm text-justify leading-5 md:leading-6 lg:leading-[11px]"
+          className="mt-1 md:mt-2 text-sm text-justify leading-5 md:leading-6 lg:leading-[11px]"
         >
           
           আজই আপনার অনুসন্ধান শুরু করুন এবং আপনার ভাড়ার সর্বোত্তম    সমাধান খুঁজে পেতে<br className="hidden lg:flex"/> 
