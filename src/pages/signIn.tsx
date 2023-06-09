@@ -1,16 +1,14 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, {  useContext, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Card, Typography, Input } from "@material-tailwind/react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-// import lottiImage from "../image/66268-signinanimation (1).json";
 import lottiImage from "../image/lf20_s50p1rff.json";
 import Lottie from "lottie-react";
 import Head from "next/head";
 import toast from "react-hot-toast";
 import Cookies from 'js-cookie';
-import { APIContext } from "@/Context/ApiContext/ApiContext";
 
 type FormValues = {
   email: string | number;
@@ -21,7 +19,7 @@ const SignIn = () => {
   const [signInError, setSignInError] = useState("");
   const [signInErrorBan, setSignInErrorBan] = useState("");
   const [passHidden, setPassHidden] = useState(true);
-  const {loading, setLoading}:any = useContext(APIContext)
+  const [loading, setLoading]= useState(false)
 
    
   // const {

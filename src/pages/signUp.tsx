@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Card, Typography, Input } from "@material-tailwind/react";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
@@ -11,7 +11,6 @@ import { FaEyeSlash, FaEye } from "react-icons/fa";
 import Head from "next/head";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
-import { APIContext } from "@/Context/ApiContext/ApiContext";
 
 type FormValues = {
   firstName: string;
@@ -32,7 +31,7 @@ function SignUp() {
 
   const [agree, setAgree] = useState(false);
   const [error, setError] = useState("");
-  const { loading, setLoading }: any = useContext(APIContext);
+  const [loading, setLoading] = useState(false);
 
   const handleSignUp: SubmitHandler<FormValues> = async (data: any) => {
     const info = {
@@ -240,8 +239,7 @@ function SignUp() {
                       : "mt- w-full bg-gray-300 py-2 rounded font-semibold text-gray-800"
                   }
                 >
-                  {" "}
-                  {loading ? "Creating..." : "Sign Up"}{" "}
+                  {loading ? "Creating..." : "Sign Up"}
                 </button>
               ) : (
                 <button

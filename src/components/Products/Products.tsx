@@ -14,7 +14,7 @@ const Products = ({ product }: any) => {
           query: { post: encodeURIComponent(JSON.stringify(post)) },
         }}
       >
-        <div className="card card-compact bg-base-100 shadow-xl mt-10">
+        <div className="card card-compact shadow-xl mt-10">
           <figure>
             <img src={product?.img1} alt="Shoes" className="h-36 w-full" />
           </figure>

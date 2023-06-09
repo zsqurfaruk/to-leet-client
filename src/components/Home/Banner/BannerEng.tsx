@@ -7,7 +7,7 @@ const BannerEng = () => {
 
   return (
     <div className="scale-90 md:scale-100 ml-2">
-      <div className="md:text-2xl lg:text-xl text-gray-700 text-justify">
+      <div className="text-lg md:text-2xl lg:text-xl text-gray-700">
         {/* <p id={style.bannerTextColor} className="text-6xl font-semibold"></p>  */}
         <span
           id={style.bannerTextColorChange}
@@ -24,19 +24,19 @@ const BannerEng = () => {
         </span> <br className="hidden lg:flex"/>
         extensive listings for rent.
       </div>
-      <div className="">
+      <div>
         <div
           id={style.bannerTextColorChange}
-          className="mt-2 text-xs md:text-xl relative"
+          className="mt-2"
         >
-          Start your search today and let us be a part of your journey to <br className="hidden lg:flex"/>
-          finding the rental solution of your dreams.
-        <BsArrowDownCircleFill
+         <h1 className="relative text-sm md:text-base"> Start your search today and let us be a part of your journey to <br className="hidden lg:flex"/>
+          finding the rental <br className="hidden md:flex lg:hidden"/> solution of your dreams.</h1>
+        {/* <BsArrowDownCircleFill
           className={
-            "absolute top-5 md:top-9 right-[200px] md:right-96  lg:right-36 w-4 h-4 md:w-5 md:h-5 text-gray-700"
+            "absolute bottom-0 left-[68%] lg:left-[56%] w-4 h-4 md:w-[18px] md:h-[18px] text-gray-700"
           }
-        />
-        </div>{" "}
+        /> */}
+        </div> 
       </div>
     </div>
   );

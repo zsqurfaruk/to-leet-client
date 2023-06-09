@@ -123,8 +123,8 @@ export default function NavBar() {
   const email = Cookies.get("email");
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-        <li className="flex justify-center lg:ml-0 lg:block">
-      <Link href="/add-post">
+      <li className="flex justify-center lg:ml-0 lg:block">
+        <Link href="/add-post">
           <div className="navbar-end">
             {/* <Link href="/SignUp">  */}
             <Typography
@@ -138,15 +138,19 @@ export default function NavBar() {
                   Post your ads
                 </Button>
               ) : (
-                <Button className="w-[162px] lg:w-[212px] -ml-6 lg:ml-36 text-primary -my-2 py-2 lg:text-[16px] bg-transparent border border-accent font-normal lg:font-semibold rounded">
-                  <span className="hidden lg:flex text-[15px]">আপনার  বিজ্ঞাপন দিন</span> 
-                  <span className="lg:hidden flex text-[15px]  pl-4"> বিজ্ঞাপন দিন</span> 
-                </Button>
+                <>
+                  <Button className="w-[162px] lg:w-[212px] -ml-6 lg:ml-36 text-primary -my-2 py-2 lg:text-[15px] bg-transparent border border-accent font-normal lg:font-semibold rounded hidden lg:flex">
+                    আপনার বিজ্ঞাপন দিন
+                  </Button>
+                  <Button className="w-[164px] lg:w-[212px] -ml-[22px] lg:ml-36 text-primary -my-2 py-2  lg:text-[13px] bg-transparent border border-accent font-normal lg:font-semibold rounded flex lg:hidden">
+                  আপনার বিজ্ঞাপন দিন
+                  </Button>
+                </>
               )}
             </Typography>
           </div>
-      </Link>
-        </li>
+        </Link>
+      </li>
       <li className="flex justify-center lg:block">
         {!authenticated && !email ? (
           <Typography
