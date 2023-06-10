@@ -7,7 +7,7 @@ function PostCounter() {
   const { counterPosts, userCounter }: any = useContext(APIContext);
   const lang = Cookies.get("lan")
   return (
-    <div className="bg-warning bg-opacity-70">
+    <div className="bg-warning bg-opacity-90">
       <hr className="w-10/12 mx-auto"/>
       <div className="flex justify-evenly gap-2 w-10/12 mx-auto pb-20 pt-10 mt-10">
         <div className="text-primary border-2 border-accent shadow-md shadow-accent text-xl md:text-3xl md:font-semibold  p-10 rounded">

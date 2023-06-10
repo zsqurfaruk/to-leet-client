@@ -370,7 +370,7 @@ const ProductDetails = ({ product }: any) => {
                   </Typography>
                   <h2> {product?.description}</h2>
                   <Typography className="border border-accent py-1 px-2 rounded-md mt-2">
-                    {!lang ? "Contact number:" : "মোবাইল নাম্বারঃ"} +880
+                    {!lang ? "Contact number:" : "মোবাইল নাম্বারঃ"} +
                     {product?.phone}
                   </Typography>
                 </div>

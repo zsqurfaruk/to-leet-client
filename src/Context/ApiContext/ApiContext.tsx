@@ -15,18 +15,19 @@ const ApiContext = ({ children }: any) => {
   const [loading, setLoading] = useState(false);
   const [reload, setReload] = useState(false);
   const [allDataLoading, setAllDataLoading] = useState(false);
+  const [uniLoading, setUniLoading] = useState(false)
 
   const universityValue = Cookies.get("openMV");
 
   const handleFilterUniversity = () => {
-    setLoading(true);
+    setUniLoading(true);
     fetch(`https://zsqur.to-leet.com/api/v1/product`)
       .then((res) => res.json())
       .then((data) => {
         const result = data?.filter(
           (post: any) => universityValue === post?.university?.eng
         );
-        setLoading(false);
+        setUniLoading(false);
         setFilterPost(result);
       });
   };
@@ -66,6 +67,7 @@ const ApiContext = ({ children }: any) => {
     reload,
     setReload,
     allDataLoading,
+    uniLoading
   };
   return (
     <APIContext.Provider value={info}>

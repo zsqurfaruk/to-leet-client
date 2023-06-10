@@ -339,7 +339,7 @@ const DashboardPost = ({ post }: any) => {
         </Typography>
         <Typography> {post?.description}</Typography>
         <Typography className="border border-accent py-1 px-2 rounded-md">
-          {!lang ? "Contact number:" : "মোবাইল নাম্বারঃ"} {post?.phone}
+          {!lang ? "Contact number:" : "মোবাইল নাম্বারঃ"} +{post?.phone}
         </Typography>
       </div>
     </section>

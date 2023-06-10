@@ -13,7 +13,7 @@ function PrivateRoute(Component: any) {
     useEffect(() => {
       if (!token || tokenValidation === "Invalid token") {
         Cookies.remove("token");
-        Cookies.remove("email");
+        Cookies.remove("authentication");
         Cookies.remove("firstName");
         Cookies.remove("lastName");
         const { asPath } = router;

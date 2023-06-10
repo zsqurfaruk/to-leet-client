@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 import { useContext, useState } from "react";
 import axios from "axios";
-import "react-phone-number-input/style.css";
 import Link from "next/link";
 import PrivateRoute from "@/routes/privateRoute";
 import AdditionalInfoPostPage from "@/components/AdditionalInfoPostPage/AdditionalInfoPostPage";
@@ -61,13 +60,14 @@ const PostDetails = () => {
   const [imageUrl4, setImageUrl4] = useState("");
   const [imageUrl5, setImageUrl5] = useState("");
   const [error, setError] = useState("");
-  const [validNumber, setValidNumber] = useState();
+  const [validNumber, setValidNumber] = useState(0);
   const [numberError, setNumberError] = useState("");
   const [numberErrorBan, setNumberErrorBan] = useState("");
   const [validAmount, setValidAmount] = useState();
   const [amountError, setAmountError] = useState("");
   const [amountErrorBan, setAmountErrorBan] = useState("");
   const [loading, setLoading] = useState(false);
+  const [postLoading, sePostLoading] = useState(false);
 
   const {
     modalValue,
@@ -193,8 +193,9 @@ const PostDetails = () => {
       img4: imageUrl4,
       img5: imageUrl5,
       name: data?.name,
+      // register: data?.register,
+      phone: data?.phone || validNumber,
       email: data?.email,
-      phone: validNumber,
       terms: data?.terms,
       areaName: getPostPopularAreaName,
       cityName: postCityNameEng,
@@ -203,7 +204,7 @@ const PostDetails = () => {
       type: modalValue,
       university: getUniversityModalValue,
     };
-    setLoading(true);
+    sePostLoading(true);
     const res = await fetch("https://zsqur.to-leet.com/api/v1/product", {
       method: "POST",
       headers: {
@@ -213,7 +214,6 @@ const PostDetails = () => {
       body: JSON.stringify(values),
     });
     const result = await res.json();
-    setLoading(false);
     setError(result?.error);
     setPostOpenModal(false);
     setGetUniversityModalValue({});
@@ -225,6 +225,7 @@ const PostDetails = () => {
       toast.success("Thanks for your ads.");
       setReload(!reload);
       router.push(`/${modalValue.eng}`);
+      sePostLoading(false);
     }
   };
 
@@ -279,16 +280,11 @@ const PostDetails = () => {
   const handleCancel15 = () => {
     setImageUrl5("");
   };
-  const lang = Cookies.get("lan");
-  const userEmail = Cookies.get("email");
-  const firstName = Cookies.get("firstName");
-  const lastName = Cookies.get("lastName");
-  const name = firstName + " " + lastName;
 
   const checkNumber = (e: any) => {
     if (e && isNaN(e)) {
       setNumberError(
-        "English is the recommended language for writing valid phone number."
+        "English is the recommended language for writing valid mobile number."
       );
       setNumberErrorBan("সঠিক মোবাইল নাম্বার ইংরেজিতে লিখুন।");
     } else if (e && !isNaN(e)) {
@@ -314,6 +310,24 @@ const PostDetails = () => {
     }
   };
 
+  const lang = Cookies.get("lan");
+  const authentication = Cookies.get("authentication");
+  const firstName = Cookies.get("firstName");
+  const lastName = Cookies.get("lastName");
+  const name = firstName + " " + lastName;
+
+  let getNumber;
+  let checkAuthentication;
+  if (authentication) {
+    if (!isNaN(parseInt(authentication))) {
+      // setNumber(inputValue)
+      getNumber = authentication;
+      
+    } else if (authentication.includes("@") && authentication.includes(".")) {
+      checkAuthentication = authentication;
+      
+    } 
+  }
   return (
     <>
       <Head>
@@ -1183,9 +1197,10 @@ const PostDetails = () => {
                   />
                 </div>
                 <div className="mt-10">
-                  <div className="flex gap-6">
-                    {!lang ? <h5>Email</h5> : <h5>ইমেইলঃ </h5>}
-                    {!lang ? (
+                <div className="flex gap-6">
+                  {!lang ? <h5>Email</h5> : <h5>ইমেইলঃ </h5>}
+                
+                   { checkAuthentication && <>{!lang ? (
                       <small className="text-blue-400">
                         You can't change your email. To change please contact
                         the admin.
@@ -1195,49 +1210,71 @@ const PostDetails = () => {
                         আপনি ইমেইল পরিবর্তন করতে পারবেন না। পরিবর্তন করতে
                         এডমিনের সাথে যোগাযোগ করুন।
                       </small>
-                    )}
-                  </div>
-                  <input
-                    {...register("email")}
-                    type="email"
-                    className="input input-bordered w-full bg-primary"
-                    defaultValue={userEmail || ""}
-                    readOnly
-                  />
+                    )}</>}
+                 
                 </div>
+                <input
+                  {...register("email", { required: true })}
+                  type="email"
+                  className="input input-bordered w-full bg-primary"
+                  defaultValue={checkAuthentication}
+                  readOnly={checkAuthentication ? true : false}
+                />
+                {errors.email && (
+                  <span className="text-red-400 pt-5">
+                    {!lang
+                      ? " This field is required"
+                      : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
+                  </span>
+                )}
+                 
+              </div>
                 <div className="mt-10 border border-warning p-5">
-                  {!lang ? (
-                    <h5>Add A Phone Number:</h5>
-                  ) : (
-                    <h5>একটি ফোন নাম্বার দিনঃ</h5>
-                  )}
+                {!lang ? (
+                  <h5>Add A Mobile Number:</h5>
+                ) : (
+                  <h5>একটি মোবাইল নাম্বার দিনঃ</h5>
+                )}
 
-                  <input
-                    {...register("phone", { required: true })}
-                    type="text"
-                    placeholder="Add A Phone Number"
-                    className="input input-bordered w-full mt-5 bg-primary"
-                    onChange={(e: any) => checkNumber(e.target.value)}
-                  />
+                {
+                  getNumber ? <input
+                  {...register("phone",{ required: true })}
+                  type="text"
+                  placeholder="Add A Mobile Number"
+                  className="input input-bordered w-full mt-5 bg-primary"
+                  // onChange={(e: any) => checkNumber(e.target.value)}
+                  defaultValue={getNumber}
+                  // readOnly={getNumber ? true : false}
+                /> : <input
+                {...register("phone",{ required: true })}
+                type="text"
+                placeholder="Add A Mobile Number"
+                className="input input-bordered w-full mt-5 bg-primary"
+                onChange={(e: any) => checkNumber(e.target.value)}
+                 
+              />
+                }
 
-                  {errors.phone && (
-                    <span className="text-red-400 pt-5">
-                      {!lang
-                        ? " This field is required"
-                        : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
-                    </span>
-                  )}
-                  {!lang ? (
-                    <span className="text-red-400 mt-1">{numberError}</span>
-                  ) : (
-                    <span className="text-red-400 mt-1 text-sm">
-                      {numberErrorBan}
-                    </span>
-                  )}
-                  {/* <button className="btn btn-secondary btn-sm mt-5">
-                <span> Verify otp</span>
-              </button> */}
-                </div>
+                {errors.phone && (
+                  <span className="text-red-400 pt-5">
+                    {!lang
+                      ? " This field is required"
+                      : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
+                  </span>
+                )}
+                {!lang ? (
+                  <span className="text-red-400 mt-1">{numberError}</span>
+                ) : (
+                  <span className="text-red-400 mt-1 text-sm">
+                    {numberErrorBan}
+                  </span>
+                )}
+                {/* <button className="btn btn-secondary btn-sm mt-5">
+              <span> Verify otp</span>
+            </button> */}
+              </div>
+              
+                
               </div>
             </div>
             {/* <div className="flex gap-2 lg:w-1/2 mx-auto mt-10"> */}
@@ -1254,13 +1291,13 @@ const PostDetails = () => {
               <Button
                 onClick={handleSubmit(handlePost)}
                 className={
-                  loading
+                  postLoading
                     ? "text-white w-1/2 mb-10 mt-12 font-semibold  bg-gray-800"
                     : "text-primary w-1/2 mb-10 mt-12 font-semibold  bg-warning"
                 }
                 disabled={modalValue?.eng ? false : true}
               >
-                {loading ? (
+                {postLoading ? (
                   <> {!lang ? "Posting" : "পোস্ট হচ্ছে..."}</>
                 ) : (
                   <> {!lang ? " Post Now" : "পোস্ট করুন"}</>

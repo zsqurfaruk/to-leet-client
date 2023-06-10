@@ -9,7 +9,6 @@ import { Checkbox, Radio } from "@material-tailwind/react";
 import AllCity from "../AllCity/AllCity";
 import AllDivision from "../AllDivision/AllDivision";
 import { StateContext } from "@/Context/StateContext/StateContext";
-import { useIntl } from "react-intl";
 import BannerBan from "./BannerBan";
 import BannerEng from "./BannerEng";
 import AllAreas from "../AllCity/AllAreas/AllAreas";
@@ -99,7 +98,7 @@ const Banner = () => {
                     </h1>
                   )}
                   <div className="flex justify-around mt-5 ">
-                    <div className="pl-2 pr-4 shadow-lg bg-warning bg-opacity-70 rounded py-2 text-primary">
+                    <div className="pl-2 pr-4 shadow-lg bg-warning rounded py-2 text-primary">
                       <label className="flex gap-2">
                         <input
                           type="checkbox"
@@ -111,7 +110,7 @@ const Banner = () => {
                     </div>
                     <div
                       className={
-                        "pl-2 pr-4 shadow-lg bg-warning bg-opacity-70 rounded text-primary pt-2"
+                        "pl-2 pr-4 shadow-lg bg-warning rounded text-primary pt-2"
                       }
                     >
                       <label className="flex gap-2">
