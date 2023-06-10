@@ -134,12 +134,12 @@ const SignIn = () => {
               সাইন ইন
             </Typography>
           )}
-          {!lang && getNm && !getEm && (
+          {!lang && !getEm && (
             <Typography color="gray" className="mt-1 font-normal  ">
               Enter your registered mobile number and password to signin.
             </Typography>
           )}
-          {lang && getNm && !getEm && (
+          {lang && !getEm && (
             <Typography color="gray" className="mt-1 font-normal   text-sm">
               সাইন ইন করতে আপনার নিবন্ধিত মোবাইল নাম্বার এবং পাসওয়ার্ড লিখুন।
             </Typography>

@@ -134,26 +134,17 @@ function SignUp() {
               সাইন আপ
             </Typography>
           )}
-          {!lang && getNm && !getEm && (
+          {!lang && (
             <Typography color="gray" className="mt-1 font-normal  ">
               Enter your details to registration.
             </Typography>
           )}
-          {lang && getNm && !getEm && (
+          {lang && (
             <Typography color="gray" className="mt-1 font-normal   text-sm">
               নিবন্ধিত করতে আপনার বিবরণ লিখুন।
             </Typography>
           )}
-          {!lang && getEm && !getNm && (
-            <Typography color="gray" className="mt-1 font-normal  ">
-              Enter your registered email and password to signin.
-            </Typography>
-          )}
-          {lang && getEm && !getNm && (
-            <Typography color="gray" className="mt-1 font-normal   text-sm">
-              সাইন ইন করতে আপনার নিবন্ধিত ইমেল এবং পাসওয়ার্ড লিখুন।
-            </Typography>
-          )}
+           
 
           {!getNm && getEm && (
             <>

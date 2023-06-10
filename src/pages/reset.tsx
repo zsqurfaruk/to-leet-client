@@ -138,7 +138,7 @@ const Reset = () => {
             Enter your registered email.
           </h1>
         )}
-        {!lang && getNm && (
+        {!lang && !getEm && (
           <h1 className="mb-2 text-lg text-warning ">
             Enter your registered mobile number.
           </h1>
@@ -149,14 +149,14 @@ const Reset = () => {
             আপনার নিবন্ধন করা ইমেইল দিন।
           </h1>
         )}
-        {lang && getNm && (
+        {lang && !getEm && (
           <h1 className="mb-2 text-lg text-warning ">
             {" "}
             আপনার নিবন্ধন করা মোবাইল নাম্বার দিন।
           </h1>
         )}
 
-        {getNm && (
+        {!getEm && (
           <form
             onSubmit={handleSubmit(handleResetPass)}
             className="mb-4 flex flex-col gap-6 relative"
