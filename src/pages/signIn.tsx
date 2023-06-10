@@ -9,8 +9,8 @@ import Lottie from "lottie-react";
 import Head from "next/head";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
-import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import PhoneInput from "react-phone-input-2";
  
 type FormValues = {
   email: string | number;
