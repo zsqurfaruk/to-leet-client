@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Card, Typography, Input, Button } from "@material-tailwind/react";
+import { Card, Typography, Input } from "@material-tailwind/react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import lottiImage from "../image/lf20_s50p1rff.json";
 import Lottie from "lottie-react";
@@ -178,19 +178,19 @@ const SignIn = () => {
           {!getEm && (
             <>
               {!lang ? (
-                <Button
+                <button
                   onClick={handleLoginMethodEmail}
                   className="bg-warning text-primary text-lg py-[6px] font-medium rounded  mt-5"
                 >
                   Continue with Email
-                </Button>
+                </button>
               ) : (
-                <Button
+                <button
                   onClick={handleLoginMethodEmail}
                   className="bg-warning text-primary text-lg py-[6px] font-medium rounded  mt-5"
                 >
                   ইমেইল দিয়ে চালিয়ে যান।
-                </Button>
+                </button>
               )}
             </>
           )}

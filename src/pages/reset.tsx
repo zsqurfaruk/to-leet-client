@@ -1,4 +1,4 @@
-import { Button, Input, Typography } from "@material-tailwind/react";
+import { Input} from "@material-tailwind/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -44,7 +44,6 @@ const Reset = () => {
         method: "POST",
         headers: {
           "content-type": "application/json",
-          // authorization: `bearer ${Cookies.get("token")}`,
         },
         body: JSON.stringify(info),
       }

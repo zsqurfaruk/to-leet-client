@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
 import React, { useState } from "react";
-import { Card, Typography, Input, Button } from "@material-tailwind/react";
+import { Card, Typography, Input } from "@material-tailwind/react";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 import { useRouter } from "next/router";
