@@ -28,6 +28,7 @@ import Cookies from "js-cookie";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import parsePhoneNumberFromString from "libphonenumber-js";
+import { AiOutlineMinus } from "react-icons/ai";
 
 type FormValues = {
   bedNumber: object;
@@ -63,8 +64,6 @@ const PostDetails = () => {
   const [imageUrl4, setImageUrl4] = useState("");
   const [imageUrl5, setImageUrl5] = useState("");
   const [error, setError] = useState("");
-  const [numberError, setNumberError] = useState("");
-  const [numberErrorBan, setNumberErrorBan] = useState("");
   const [validAmount, setValidAmount] = useState();
   const [amountError, setAmountError] = useState("");
   const [amountErrorBan, setAmountErrorBan] = useState("");
@@ -73,6 +72,8 @@ const PostDetails = () => {
   const [countryNumber, setCountryNumber] = useState();
   const [isValid, setIsValid] = useState(true);
   const [isValidNum, setIsValidNum] = useState(true);
+  const [anotherNumber, setAnotherNumber] = useState(false);
+  const [minusNumber, setMinusNumber] = useState(false);
 
   const {
     modalValue,
@@ -211,7 +212,7 @@ const PostDetails = () => {
       img4: imageUrl4,
       img5: imageUrl5,
       name: data?.name,
-      phone: countryNumber,
+      phone: countryNumber || data?.phone,
       email: data?.email,
       terms: data?.terms,
       areaName: getPostPopularAreaName,
@@ -249,7 +250,7 @@ const PostDetails = () => {
   const imageUploadHandler = (event: any, setImg: any) => {
     setLoading(true);
     const imageData = new FormData();
-    imageData.set("key", "c49cb06155adb366044d147043658858");
+    imageData.set("key", "49a57cce0acfac6a6e93d404f46d3e5a");
     imageData.append("image", event.target.files[0]);
     imageData.append("image", event.target.files[1]);
     imageData.append("image", event.target.files[2]);
@@ -343,991 +344,1059 @@ const PostDetails = () => {
       checkAuthentication = authentication;
     }
   }
+
+  const handleAnotherNumber = () => {
+    setAnotherNumber(!anotherNumber);
+    setMinusNumber(!minusNumber);
+  };
+
+  const handleCancel = () => {
+    setAnotherNumber(!anotherNumber);
+    setMinusNumber(!minusNumber);
+  };
+  const handleMinus = () => {
+    setMinusNumber(!minusNumber);
+  };
   return (
     <>
       <Head>
         <title>To Leet - Post Details</title>
       </Head>
       <div>
-        {error ? (
-          <div className="h-96 flex items-center justify-center">
-            {" "}
-            <div className="shadow-2xl p-10 rounded">
-              <h1>{error}</h1>{" "}
-              <Link className="text-warning underline" href={"/"}>
-                Home
-              </Link>
+        <div className="bg-white p-5 lg:w-10/12 mx-auto">
+          <AdditionalInfoPostPage></AdditionalInfoPostPage>
+          {!modalValue.eng && (
+            <div className="flex justify-center text-red-300 mt-2">
+              {!lang ? (
+                <h5>You have to select rent type before post.</h5>
+              ) : (
+                <h5>পোস্ট করার আগে আপনাকে ভাড়ার ধরন নির্বাচন করতে হবে।</h5>
+              )}
             </div>
-          </div>
-        ) : (
-          <div className="bg-white p-5 lg:w-10/12 mx-auto">
-            <AdditionalInfoPostPage></AdditionalInfoPostPage>
-            {!modalValue.eng && (
-              <div className="flex justify-center text-red-400 mt-2">
-                {!lang ? (
-                  <h5>You have to select rent type before post.</h5>
-                ) : (
-                  <h5>পোস্ট করার আগে আপনাকে ভাড়ার ধরন নির্বাচন করতে হবে।</h5>
-                )}
-              </div>
-            )}
-            {getUniversityModalValue?.eng && (
-              <div>
-                {!lang ? (
-                  <h2 className="text-center text-lg mt-2">
-                    {" "}
-                    You have selected{" "}
-                    <span className="lowercase">
-                      {getUniversityModalValue?.eng}
-                    </span>
-                  </h2>
-                ) : (
-                  <h2 className="text-center mt-2">
-                    আপনি নির্বাচন করেছেন {getUniversityModalValue?.ban}
-                  </h2>
-                )}
-              </div>
-            )}
+          )}
+          {getUniversityModalValue?.eng && (
             <div>
-              <div className="my-8 ">
-                {!lang ? (
-                  <div>
-                    {modalValue?.eng && (
-                      <div className="flex justify-center gap-2 md:text-xl lg:-ml-10">
-                        <h1 className="cursor-pointer">
-                          Is the{" "}
-                          <span className="text-warning">
-                            {modalValue?.eng}
-                          </span>{" "}
-                          near university or medical college?
-                        </h1>
-                        <h2
-                          className="flex gap-2 border shadow-md shadow-warning border-warning rounded px-2 cursor-pointer"
-                          onClick={() =>
-                            setPostUniversityModalValue({
-                              eng: "yes",
-                              ban: "হ্যাঁ",
-                            })
-                          }
-                        >
-                          Yes
-                        </h2>
-                      </div>
-                    )}
+              {!lang ? (
+                <h2 className="text-center text-lg mt-2">
+                  {" "}
+                  You have selected{" "}
+                  <span className="lowercase">
+                    {getUniversityModalValue?.eng}
+                  </span>
+                </h2>
+              ) : (
+                <h2 className="text-center mt-2">
+                  আপনি নির্বাচন করেছেন {getUniversityModalValue?.ban}
+                </h2>
+              )}
+            </div>
+          )}
+          <div>
+            <div className="my-8 ">
+              {!lang ? (
+                <div>
+                  {modalValue?.eng && (
+                    <div className="flex justify-center gap-2 md:text-xl lg:-ml-10">
+                      <h1 className="cursor-pointer">
+                        Is the{" "}
+                        <span className="text-warning">{modalValue?.eng}</span>{" "}
+                        near university or medical college?
+                      </h1>
+                      <h2
+                        className="flex gap-2 border shadow-md shadow-warning border-warning rounded px-2 cursor-pointer"
+                        onClick={() =>
+                          setPostUniversityModalValue({
+                            eng: "yes",
+                            ban: "হ্যাঁ",
+                          })
+                        }
+                      >
+                        Yes
+                      </h2>
+                    </div>
+                  )}
 
-                    <PostModal></PostModal>
+                  <PostModal></PostModal>
+                </div>
+              ) : (
+                <div>
+                  {modalValue.ban && (
+                    <div className="flex justify-center gap-2 text-sm md:text-base lg:-ml-32">
+                      <h1>
+                        <span className="text-warning">{modalValue?.ban}</span>{" "}
+                        কি বিশ্ববিদ্যালয় বা মেডিকেল কলেজের পাশে?
+                      </h1>
+                      <h1
+                        className="border shadow-md shadow-warning border-warning rounded px-3 cursor-pointer text-center"
+                        onClick={() =>
+                          setPostUniversityModalValue({
+                            eng: "yes",
+                            ban: "হ্যাঁ",
+                          })
+                        }
+                      >
+                        হ্যাঁ
+                      </h1>
+                    </div>
+                  )}
+
+                  <PostModal></PostModal>
+                </div>
+              )}
+            </div>
+
+            <div>
+              <div
+                className={
+                  modalValue.eng === "Mess-(Male)" ||
+                  modalValue.eng === "Mess-(Female)" ||
+                  modalValue.eng === "Sublet-(Male)" ||
+                  modalValue.eng === "Sublet-(Female)" ||
+                  modalValue.eng === "Hostel"
+                    ? "block"
+                    : "hidden"
+                }
+              >
+                {!lang ? (
+                  <div className="form-control lg:w-6/12 mx-auto mb-8">
+                    <label className="label">
+                      <span className="label-text">
+                        Total Bed Number/ Numbers
+                      </span>
+                    </label>
+                    <Select
+                      placeholder="Total Bed Number/ Numbers"
+                      isSearchable
+                      options={totalBedEng}
+                      onChange={setTotalBed}
+                      className="bg-primary border-warning  text-sm h-4 text-gray-700 font-medium"
+                    />
                   </div>
                 ) : (
-                  <div>
-                    {modalValue.ban && (
-                      <div className="flex justify-center gap-2 text-sm md:text-base lg:-ml-32">
-                        <h1>
-                          <span className="text-warning">
-                            {modalValue?.ban}
-                          </span>{" "}
-                          কি বিশ্ববিদ্যালয় বা মেডিকেল কলেজের পাশে?
-                        </h1>
-                        <h1
-                          className="border shadow-md shadow-warning border-warning rounded px-3 cursor-pointer text-center"
-                          onClick={() =>
-                            setPostUniversityModalValue({
-                              eng: "yes",
-                              ban: "হ্যাঁ",
-                            })
-                          }
-                        >
-                          হ্যাঁ
-                        </h1>
-                      </div>
-                    )}
-
-                    <PostModal></PostModal>
+                  <div className="form-control lg:w-6/12 mx-auto mb-8">
+                    <label className="label">
+                      <span className="label-text">মোট বেড সংখ্যা </span>
+                    </label>
+                    <Select
+                      placeholder="মোট বেড সংখ্যা"
+                      isSearchable
+                      options={totalBedBan}
+                      onChange={setTotalBed}
+                      className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                    />
+                  </div>
+                )}
+              </div>
+              <div
+                className={
+                  modalValue.eng === "Mess-(Male)" ||
+                  modalValue.eng === "Mess-(Female)" ||
+                  modalValue.eng === "Sublet-(Male)" ||
+                  modalValue.eng === "Sublet-(Female)" ||
+                  modalValue.eng === "Hostel"
+                    ? "block"
+                    : "hidden"
+                }
+              >
+                {!lang ? (
+                  <div className="form-control lg:w-6/12 mx-auto mb-8">
+                    <label className="label">
+                      <span className="label-text">
+                        Empty Bed number / numbers
+                      </span>
+                    </label>
+                    <Select
+                      placeholder="Empty Bed number / numbers"
+                      isSearchable
+                      options={optionEng}
+                      onChange={setBedNumbers}
+                      className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                    />
+                  </div>
+                ) : (
+                  <div className="form-control lg:w-6/12 mx-auto mb-8">
+                    <label className="label">
+                      <span className="label-text">ফাঁকা বেড সংখ্যা </span>
+                    </label>
+                    <Select
+                      placeholder="ফাঁকা বেড সংখ্যা"
+                      isSearchable
+                      options={optionBan}
+                      onChange={setBedNumbers}
+                      className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                    />
                   </div>
                 )}
               </div>
 
-              <div>
-                <div
-                  className={
-                    modalValue.eng === "Mess-(Male)" ||
-                    modalValue.eng === "Mess-(Female)" ||
-                    modalValue.eng === "Sublet-(Male)" ||
-                    modalValue.eng === "Sublet-(Female)" ||
-                    modalValue.eng === "Hostel"
-                      ? "block"
-                      : "hidden"
-                  }
-                >
-                  {!lang ? (
-                    <div className="form-control lg:w-6/12 mx-auto mb-8">
-                      <label className="label">
-                        <span className="label-text">
-                          Total Bed Number/ Numbers
-                        </span>
-                      </label>
-                      <Select
-                        placeholder="Total Bed Number/ Numbers"
-                        isSearchable
-                        options={totalBedEng}
-                        onChange={setTotalBed}
-                        className="bg-primary border-warning  text-sm h-4 text-gray-700 font-medium"
-                      />
-                    </div>
-                  ) : (
-                    <div className="form-control lg:w-6/12 mx-auto mb-8">
-                      <label className="label">
-                        <span className="label-text">মোট বেড সংখ্যা </span>
-                      </label>
-                      <Select
-                        placeholder="মোট বেড সংখ্যা"
-                        isSearchable
-                        options={totalBedBan}
-                        onChange={setTotalBed}
-                        className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
-                      />
-                    </div>
-                  )}
-                </div>
-                <div
-                  className={
-                    modalValue.eng === "Mess-(Male)" ||
-                    modalValue.eng === "Mess-(Female)" ||
-                    modalValue.eng === "Sublet-(Male)" ||
-                    modalValue.eng === "Sublet-(Female)" ||
-                    modalValue.eng === "Hostel"
-                      ? "block"
-                      : "hidden"
-                  }
-                >
-                  {!lang ? (
-                    <div className="form-control lg:w-6/12 mx-auto mb-8">
-                      <label className="label">
-                        <span className="label-text">
-                          Empty Bed number / numbers
-                        </span>
-                      </label>
-                      <Select
-                        placeholder="Empty Bed number / numbers"
-                        isSearchable
-                        options={optionEng}
-                        onChange={setBedNumbers}
-                        className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
-                      />
-                    </div>
-                  ) : (
-                    <div className="form-control lg:w-6/12 mx-auto mb-8">
-                      <label className="label">
-                        <span className="label-text">ফাঁকা বেড সংখ্যা </span>
-                      </label>
-                      <Select
-                        placeholder="ফাঁকা বেড সংখ্যা"
-                        isSearchable
-                        options={optionBan}
-                        onChange={setBedNumbers}
-                        className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
-                      />
-                    </div>
-                  )}
-                </div>
-
-                <div
-                  className={
-                    modalValue.eng === "Mess-(Male)" ||
-                    modalValue.eng === "Mess-(Female)" ||
-                    modalValue.eng === "Hostel" ||
-                    modalValue.eng === "Office" ||
-                    modalValue.eng === "Shop" ||
-                    modalValue.eng === "Vehicles" ||
-                    modalValue.eng === "Sublet-(Male)" ||
-                    modalValue.eng === "Sublet-(Female)" ||
-                    modalValue.eng === "Garage"
-                      ? "hidden"
-                      : "block"
-                  }
-                >
-                  {!lang ? (
-                    <div className="form-control lg:w-6/12 mx-auto mb-8">
-                      <label className="label">
-                        <span className="label-text">
-                          Bedroom number / numbers
-                        </span>
-                      </label>
-                      <Select
-                        placeholder="Bedroom number / numbers"
-                        isSearchable
-                        options={optionEng}
-                        onChange={setBedRooms}
-                        className="bg-primary  border-none text-sm h-4 text-gray-700 font-medium"
-                      />
-                    </div>
-                  ) : (
-                    <div className="form-control lg:w-6/12 mx-auto mb-8">
-                      <label className="label">
-                        <span className="label-text">বেডরুম সংখ্যা</span>
-                      </label>
-                      <Select
-                        placeholder="বেডরুম সংখ্যা"
-                        isSearchable
-                        options={optionBan}
-                        onChange={setBedRooms}
-                        className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
-                      />
-                    </div>
-                  )}
-                </div>
-
-                <div
-                  className={
-                    modalValue.eng === "Office" ||
-                    modalValue.eng === "Shop" ||
-                    modalValue.eng === "Vehicles" ||
-                    modalValue.eng === "Garage"
-                      ? "hidden"
-                      : "block"
-                  }
-                >
-                  {!lang ? (
-                    <div className="form-control lg:w-6/12 mx-auto mt-10">
-                      <label className="label">
-                        <span className="label-text">
-                          Washroom number/ numbers
-                        </span>
-                      </label>
-                      <Select
-                        placeholder="Washroom number / numbers"
-                        isSearchable
-                        options={optionEng}
-                        onChange={setBathRooms}
-                        className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
-                      />
-                    </div>
-                  ) : (
-                    <div className="form-control lg:w-6/12 mx-auto mt-10">
-                      <label className="label">
-                        <span className="label-text"> ওয়াশরুম সংখ্যা</span>
-                      </label>
-                      <Select
-                        placeholder="ওয়াশরুম সংখ্যা"
-                        isSearchable
-                        options={optionBan}
-                        onChange={setBathRooms}
-                        className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
-                      />
-                    </div>
-                  )}
-                </div>
-                <div
-                  className={
-                    modalValue?.eng === "Office" ||
-                    modalValue?.eng === "Shop" ||
-                    modalValue?.eng === "Vehicles" ||
-                    modalValue?.eng === "Garage"
-                      ? "hidden"
-                      : "block mt-10 mb-10"
-                  }
-                >
-                  {!lang ? (
-                    <div className="form-control lg:w-6/12 mx-auto">
-                      <label className="label">
-                        <span className="label-text">Wifi Facilities</span>
-                      </label>
-                      <Select
-                        placeholder="Wifi Facilities"
-                        isSearchable
-                        options={wifiEng}
-                        onChange={setWifi}
-                        className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
-                      />
-                    </div>
-                  ) : (
-                    <div className="form-control lg:w-6/12 mx-auto  ">
-                      <label className="label">
-                        <span className="label-text">ওয়াইফাই সুবিধাঃ</span>
-                      </label>
-                      <Select
-                        placeholder="ওয়াইফাই সুবিধাঃ"
-                        isSearchable
-                        options={wifiBan}
-                        onChange={setWifi}
-                        className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
-                      />
-                    </div>
-                  )}
-                </div>
-                <div className="lg:w-6/12 mx-auto ">
-                  <label className="label">
-                    {!lang ? (
-                      <span className="label-text">Address</span>
-                    ) : (
-                      <span className="label-text">ঠিকানা</span>
-                    )}
-                  </label>
-                  <input
-                    {...register("address", { required: true })}
-                    type="text"
-                    placeholder={
-                      !lang
-                        ? "Enter your street, house number, and/or post code"
-                        : "এখানে আপনার পূর্ণ ঠিকানা লিখুন।"
-                    }
-                    className="input input-bordered w-full  "
-                  />
-                  {errors.address && (
-                    <span className="text-red-500 pt-4">
-                      {!lang
-                        ? " This field is required"
-                        : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
-                    </span>
-                  )}
-                </div>
-                <div className="lg:w-6/12 mx-auto mt-6">
-                  <label className="label">
-                    {!lang ? (
-                      <span className="label-text">Title</span>
-                    ) : (
-                      <span className="label-text"> টাইটেল লিখুন </span>
-                    )}
-                  </label>
-                  <input
-                    {...register("title", { required: true })}
-                    type="text"
-                    placeholder={!lang ? "Short Title" : "টাইটেল লিখুন"}
-                    className="input input-bordered w-full "
-                  />
-                  {errors.title && (
-                    <span className="text-red-500 pt-4">
-                      {!lang
-                        ? " This field is required"
-                        : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
-                    </span>
-                  )}
-                </div>
-                <div className="lg:w-6/12 mx-auto mt-8">
-                  <label className="label">
-                    {!lang ? (
-                      <span className="label-text">Description</span>
-                    ) : (
-                      <span className="label-text">বিস্তারিত লিখুন</span>
-                    )}
-                  </label>
-                  <textarea
-                    {...register("description")}
-                    className="textarea textarea-bordered w-full h-32  "
-                    placeholder={!lang ? "More Details" : "বিস্তারিত লিখুন"}
-                  ></textarea>
-                  {errors.description && (
-                    <span className="text-red-500 pt-4">
-                      {!lang
-                        ? " This field is required"
-                        : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
-                    </span>
-                  )}
-                </div>
-                <div className="lg:w-6/12 mx-auto mt-8">
-                  <label className="label">
-                    {!lang ? (
-                      <span className="label-text">Rent Amount (Tk)</span>
-                    ) : (
-                      <span className="label-text"> টাকার পরিমান লিখুন</span>
-                    )}
-                  </label>
-                  <input
-                    {...register("amount", { required: true })}
-                    type="text"
-                    placeholder={!lang ? "Rent Amount" : "টাকার পরিমান লিখুন"}
-                    className="input input-bordered w-full  "
-                    onChange={(e: any) => checkAmountValidity(e.target.value)}
-                  />
-                  {errors.description && (
-                    <span className="text-red-500 pt-4">
-                      {!lang
-                        ? " This field is required"
-                        : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
-                    </span>
-                  )}
-                  {!lang ? (
-                    <span className="text-red-400 mt-1">{amountError}</span>
-                  ) : (
-                    <span className="text-red-400 mt-1 text-sm">
-                      {amountErrorBan}
-                    </span>
-                  )}
-                </div>
-                <div className="flex gap-2 lg:w-1/2 mx-auto mt-10">
-                  <input
-                    {...register("negotiable")}
-                    type="checkbox"
-                    className="text-gray-700 h-4 w-4"
-                  />
-                  {!lang ? (
-                    <h1 className="-mt-1">Negotiable</h1>
-                  ) : (
-                    "আলোচনা সাপেক্ষে"
-                  )}
-                </div>
-                <hr className="my-10" />
-
-                <div className="lg:w-6/12 mx-auto mb-20">
-                  <label className="label">
-                    {!lang ? (
-                      <span className="text-xl font-bold">
-                        Add up to 5 photos
+              <div
+                className={
+                  modalValue.eng === "Mess-(Male)" ||
+                  modalValue.eng === "Mess-(Female)" ||
+                  modalValue.eng === "Hostel" ||
+                  modalValue.eng === "Office" ||
+                  modalValue.eng === "Shop" ||
+                  modalValue.eng === "Vehicles" ||
+                  modalValue.eng === "Sublet-(Male)" ||
+                  modalValue.eng === "Sublet-(Female)" ||
+                  modalValue.eng === "Garage"
+                    ? "hidden"
+                    : "block"
+                }
+              >
+                {!lang ? (
+                  <div className="form-control lg:w-6/12 mx-auto mb-8">
+                    <label className="label">
+                      <span className="label-text">
+                        Bedroom number / numbers
                       </span>
-                    ) : (
-                      <span className="text-lg font-bold">
-                        {" "}
-                        সর্বোচ্চ পাঁচটি ছবি যুক্ত করুন{" "}
-                      </span>
-                    )}
-                  </label>
-
-                  <div className="grid grid-cols-3 md:grid-cols-5 gap-5 md:gap-7">
-                    {!imageUrl1 && loading ? (
-                      <div className="mt-9 ml-5">
-                        {" "}
-                        <Spinner></Spinner>
-                      </div>
-                    ) : (
-                      <>
-                        {imageUrl1 ? (
-                          <div className="relative">
-                            <img
-                              className="h-16 w-24 mt-7"
-                              src={imageUrl1}
-                              alt=""
-                            />
-                            <button
-                              onClick={handleCancel11}
-                              className="bg-primary absolute top-7 right-1"
-                            >
-                              {" "}
-                              <RxCrossCircled />{" "}
-                            </button>
-                          </div>
-                        ) : (
-                          <button>
-                            {!lang ? (
-                              <label>Image 1</label>
-                            ) : (
-                              <label>ছবি-১</label>
-                            )}
-                            <input
-                              onChange={(e) =>
-                                imageUploadHandler(e, setImageUrl1)
-                              }
-                              type="file"
-                              id="file1"
-                              accept="image/*"
-                              placeholder="Upload Images"
-                              className="file-input file-input-primary w-full hidden"
-                              required
-                            />
-                            <div className="mt-1">
-                              <label htmlFor="file1">
-                                {!lang ? (
-                                  <div className="rounded border border-warning p-2">
-                                    <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
-                                    <small>Upload Photo</small>
-                                  </div>
-                                ) : (
-                                  <div className="rounded border border-warning p-2">
-                                    <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
-                                    <small> ছবি যুক্ত করুন</small>
-                                  </div>
-                                )}
-                              </label>
-                            </div>
-                          </button>
-                        )}
-                      </>
-                    )}
-                    {imageUrl1 && !imageUrl2 && loading ? (
-                      <div className="mt-9 ml-5">
-                        {" "}
-                        <Spinner></Spinner>
-                      </div>
-                    ) : (
-                      <>
-                        {imageUrl2 ? (
-                          <div className="relative">
-                            <img
-                              className="h-16 w-24 mt-7"
-                              src={imageUrl2}
-                              alt=""
-                            />
-                            <button
-                              onClick={handleCancel12}
-                              className="bg-primary absolute top-7 right-1"
-                            >
-                              <RxCrossCircled />
-                            </button>
-                          </div>
-                        ) : (
-                          <button>
-                            {!lang ? (
-                              <label>Image 2</label>
-                            ) : (
-                              <label>ছবি-২</label>
-                            )}
-                            <input
-                              onChange={(e) =>
-                                imageUploadHandler(e, setImageUrl2)
-                              }
-                              type="file"
-                              id="file2"
-                              accept="image/*"
-                              placeholder="Upload Images"
-                              className="file-input file-input-primary w-full hidden"
-                              disabled={imageUrl1 ? false : true}
-                            />
-                            <div className="mt-1">
-                              <label htmlFor="file2">
-                                {!lang ? (
-                                  <div
-                                    className={
-                                      imageUrl1
-                                        ? "rounded border border-warning p-2"
-                                        : "rounded border   border-gray-400 p-2"
-                                    }
-                                  >
-                                    <BsImage
-                                      className={
-                                        imageUrl1
-                                          ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
-                                          : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
-                                      }
-                                    />
-                                    <small>Upload Photo</small>
-                                  </div>
-                                ) : (
-                                  <div
-                                    className={
-                                      imageUrl1
-                                        ? "rounded border border-warning p-2"
-                                        : "rounded border   border-gray-400 p-2"
-                                    }
-                                  >
-                                    <BsImage
-                                      className={
-                                        imageUrl1
-                                          ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
-                                          : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
-                                      }
-                                    />
-                                    <small> ছবি যুক্ত করুন</small>
-                                  </div>
-                                )}
-                              </label>
-                            </div>
-                          </button>
-                        )}
-                      </>
-                    )}
-
-                    {imageUrl1 && imageUrl2 && !imageUrl3 && loading ? (
-                      <div className="mt-9 ml-5">
-                        {" "}
-                        <Spinner></Spinner>
-                      </div>
-                    ) : (
-                      <>
-                        {imageUrl3 ? (
-                          <div className="relative">
-                            <img
-                              className="h-16 w-24 mt-7"
-                              src={imageUrl3}
-                              alt=""
-                            />
-                            <button
-                              onClick={handleCancel13}
-                              className="bg-primary absolute top-7 right-1"
-                            >
-                              {" "}
-                              <RxCrossCircled />{" "}
-                            </button>
-                          </div>
-                        ) : (
-                          <button>
-                            {!lang ? (
-                              <label>Image 3</label>
-                            ) : (
-                              <label>ছবি-৩</label>
-                            )}
-                            <input
-                              onChange={(e) =>
-                                imageUploadHandler(e, setImageUrl3)
-                              }
-                              type="file"
-                              id="file3"
-                              accept="image/*"
-                              placeholder="Upload Images"
-                              className="file-input file-input-primary w-full hidden"
-                              disabled={imageUrl1 && imageUrl2 ? false : true}
-                            />
-                            <div className="mt-1">
-                              <label htmlFor="file3">
-                                {!lang ? (
-                                  <div
-                                    className={
-                                      imageUrl1 && imageUrl2
-                                        ? "rounded border border-warning p-2"
-                                        : "rounded border border-gray-400 p-2"
-                                    }
-                                  >
-                                    <BsImage
-                                      className={
-                                        imageUrl1 && imageUrl2
-                                          ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
-                                          : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
-                                      }
-                                    />
-                                    <small>Upload Photo</small>
-                                  </div>
-                                ) : (
-                                  <div
-                                    className={
-                                      imageUrl1 && imageUrl2
-                                        ? "rounded border border-warning p-2"
-                                        : "rounded border border-gray-400 p-2"
-                                    }
-                                  >
-                                    <BsImage
-                                      className={
-                                        imageUrl1 && imageUrl2
-                                          ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
-                                          : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
-                                      }
-                                    />
-                                    <small> ছবি যুক্ত করুন</small>
-                                  </div>
-                                )}
-                              </label>
-                            </div>
-                          </button>
-                        )}
-                      </>
-                    )}
-                    {imageUrl3 && !imageUrl4 && loading ? (
-                      <div className="mt-9 ml-5">
-                        {" "}
-                        <Spinner></Spinner>
-                      </div>
-                    ) : (
-                      <>
-                        {imageUrl4 ? (
-                          <div className="relative">
-                            <img
-                              className="h-16 w-24 mt-7"
-                              src={imageUrl4}
-                              alt=""
-                            />
-                            <button
-                              onClick={handleCancel14}
-                              className="bg-primary absolute top-7 right-1"
-                            >
-                              {" "}
-                              <RxCrossCircled />{" "}
-                            </button>
-                          </div>
-                        ) : (
-                          <button>
-                            {!lang ? (
-                              <label>Image 4</label>
-                            ) : (
-                              <label>ছবি-৪</label>
-                            )}
-                            <input
-                              onChange={(e) =>
-                                imageUploadHandler(e, setImageUrl4)
-                              }
-                              type="file"
-                              id="file4"
-                              accept="image/*"
-                              placeholder="Upload Images"
-                              className="file-input file-input-primary w-full hidden"
-                              disabled={imageUrl3 ? false : true}
-                            />
-                            <div className="mt-1">
-                              <label htmlFor="file4">
-                                {!lang ? (
-                                  <div
-                                    className={
-                                      imageUrl3
-                                        ? "rounded border border-warning p-2"
-                                        : "rounded border border-gray-400 p-2"
-                                    }
-                                  >
-                                    <BsImage
-                                      className={
-                                        imageUrl3
-                                          ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
-                                          : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
-                                      }
-                                    />
-                                    <small>Upload Photo</small>
-                                  </div>
-                                ) : (
-                                  <div
-                                    className={
-                                      imageUrl3
-                                        ? "rounded border border-warning p-2"
-                                        : "rounded border border-gray-400 p-2"
-                                    }
-                                  >
-                                    <BsImage
-                                      className={
-                                        imageUrl3
-                                          ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
-                                          : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
-                                      }
-                                    />
-                                    <small> ছবি যুক্ত করুন</small>
-                                  </div>
-                                )}
-                              </label>
-                            </div>
-                          </button>
-                        )}
-                      </>
-                    )}
-                    {imageUrl4 && !imageUrl5 && loading ? (
-                      <div className="mt-9 ml-5">
-                        {" "}
-                        <Spinner></Spinner>
-                      </div>
-                    ) : (
-                      <>
-                        {imageUrl5 ? (
-                          <div className="relative">
-                            <img
-                              className="h-16 w-24 mt-7"
-                              src={imageUrl5}
-                              alt=""
-                            />
-                            <button
-                              onClick={handleCancel15}
-                              className="bg-primary absolute top-7 right-1"
-                            >
-                              {" "}
-                              <RxCrossCircled />{" "}
-                            </button>
-                          </div>
-                        ) : (
-                          <button>
-                            {!lang ? (
-                              <label>Image 5</label>
-                            ) : (
-                              <label>ছবি-৫</label>
-                            )}
-                            <input
-                              onChange={(e) =>
-                                imageUploadHandler(e, setImageUrl5)
-                              }
-                              type="file"
-                              id="file"
-                              accept="image/*"
-                              placeholder="Upload Images"
-                              className="file-input file-input-primary w-full hidden"
-                              disabled={imageUrl4 ? false : true}
-                            />
-                            <div className="mt-1">
-                              <label htmlFor="file">
-                                {!lang ? (
-                                  <div
-                                    className={
-                                      imageUrl4
-                                        ? "rounded border border-warning p-2"
-                                        : "rounded border border-gray-400 p-2"
-                                    }
-                                  >
-                                    <BsImage
-                                      className={
-                                        imageUrl4
-                                          ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
-                                          : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
-                                      }
-                                    />
-                                    <small>Upload Photo</small>
-                                  </div>
-                                ) : (
-                                  <div
-                                    className={
-                                      imageUrl4
-                                        ? "rounded border border-warning p-2"
-                                        : "rounded border border-gray-400 p-2"
-                                    }
-                                  >
-                                    <BsImage
-                                      className={
-                                        imageUrl4
-                                          ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
-                                          : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
-                                      }
-                                    />
-                                    <small> ছবি যুক্ত করুন</small>
-                                  </div>
-                                )}
-                              </label>
-                            </div>
-                          </button>
-                        )}
-                      </>
-                    )}
+                    </label>
+                    <Select
+                      placeholder="Bedroom number / numbers"
+                      isSearchable
+                      options={optionEng}
+                      onChange={setBedRooms}
+                      className="bg-primary  border-none text-sm h-4 text-gray-700 font-medium"
+                    />
                   </div>
-                  {!imageUrl1 && !loading && (
-                    <>
+                ) : (
+                  <div className="form-control lg:w-6/12 mx-auto mb-8">
+                    <label className="label">
+                      <span className="label-text">বেডরুম সংখ্যা</span>
+                    </label>
+                    <Select
+                      placeholder="বেডরুম সংখ্যা"
+                      isSearchable
+                      options={optionBan}
+                      onChange={setBedRooms}
+                      className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                    />
+                  </div>
+                )}
+              </div>
+
+              <div
+                className={
+                  modalValue.eng === "Office" ||
+                  modalValue.eng === "Shop" ||
+                  modalValue.eng === "Vehicles" ||
+                  modalValue.eng === "Garage"
+                    ? "hidden"
+                    : "block"
+                }
+              >
+                {!lang ? (
+                  <div className="form-control lg:w-6/12 mx-auto mt-10">
+                    <label className="label">
+                      <span className="label-text">
+                        Washroom number/ numbers
+                      </span>
+                    </label>
+                    <Select
+                      placeholder="Washroom number / numbers"
+                      isSearchable
+                      options={optionEng}
+                      onChange={setBathRooms}
+                      className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                    />
+                  </div>
+                ) : (
+                  <div className="form-control lg:w-6/12 mx-auto mt-10">
+                    <label className="label">
+                      <span className="label-text"> ওয়াশরুম সংখ্যা</span>
+                    </label>
+                    <Select
+                      placeholder="ওয়াশরুম সংখ্যা"
+                      isSearchable
+                      options={optionBan}
+                      onChange={setBathRooms}
+                      className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                    />
+                  </div>
+                )}
+              </div>
+              <div
+                className={
+                  modalValue?.eng === "Office" ||
+                  modalValue?.eng === "Shop" ||
+                  modalValue?.eng === "Vehicles" ||
+                  modalValue?.eng === "Garage"
+                    ? "hidden"
+                    : "block mt-10 mb-10"
+                }
+              >
+                {!lang ? (
+                  <div className="form-control lg:w-6/12 mx-auto">
+                    <label className="label">
+                      <span className="label-text">Wifi Facilities</span>
+                    </label>
+                    <Select
+                      placeholder="Wifi Facilities"
+                      isSearchable
+                      options={wifiEng}
+                      onChange={setWifi}
+                      className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                    />
+                  </div>
+                ) : (
+                  <div className="form-control lg:w-6/12 mx-auto  ">
+                    <label className="label">
+                      <span className="label-text">ওয়াইফাই সুবিধাঃ</span>
+                    </label>
+                    <Select
+                      placeholder="ওয়াইফাই সুবিধাঃ"
+                      isSearchable
+                      options={wifiBan}
+                      onChange={setWifi}
+                      className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                    />
+                  </div>
+                )}
+              </div>
+              <div className="lg:w-6/12 mx-auto ">
+                <label className="label">
+                  {!lang ? (
+                    <span className="label-text">Address</span>
+                  ) : (
+                    <span className="label-text">ঠিকানা</span>
+                  )}
+                </label>
+                <input
+                  {...register("address", { required: true })}
+                  type="text"
+                  placeholder={
+                    !lang
+                      ? "Enter your street, house number, and/or post code"
+                      : "এখানে আপনার পূর্ণ ঠিকানা লিখুন।"
+                  }
+                  className="input input-bordered w-full  "
+                />
+                {errors.address && (
+                  <span className="text-red-500 pt-4">
+                    {!lang
+                      ? " This field is required"
+                      : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
+                  </span>
+                )}
+              </div>
+              <div className="lg:w-6/12 mx-auto mt-6">
+                <label className="label">
+                  {!lang ? (
+                    <span className="label-text">Title</span>
+                  ) : (
+                    <span className="label-text"> টাইটেল লিখুন </span>
+                  )}
+                </label>
+                <input
+                  {...register("title", { required: true })}
+                  type="text"
+                  placeholder={!lang ? "Short Title" : "টাইটেল লিখুন"}
+                  className="input input-bordered w-full "
+                />
+                {errors.title && (
+                  <span className="text-red-500 pt-4">
+                    {!lang
+                      ? " This field is required"
+                      : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
+                  </span>
+                )}
+              </div>
+              <div className="lg:w-6/12 mx-auto mt-8">
+                <label className="label">
+                  {!lang ? (
+                    <span className="label-text">Description</span>
+                  ) : (
+                    <span className="label-text">বিস্তারিত লিখুন</span>
+                  )}
+                </label>
+                <textarea
+                  {...register("description")}
+                  className="textarea textarea-bordered w-full h-32  "
+                  placeholder={!lang ? "More Details" : "বিস্তারিত লিখুন"}
+                ></textarea>
+                {errors.description && (
+                  <span className="text-red-500 pt-4">
+                    {!lang
+                      ? " This field is required"
+                      : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
+                  </span>
+                )}
+              </div>
+              <div className="lg:w-6/12 mx-auto mt-8">
+                <label className="label">
+                  {!lang ? (
+                    <span className="label-text">Rent Amount (Tk)</span>
+                  ) : (
+                    <span className="label-text"> টাকার পরিমান লিখুন</span>
+                  )}
+                </label>
+                <input
+                  {...register("amount", { required: true })}
+                  type="text"
+                  placeholder={!lang ? "Rent Amount" : "টাকার পরিমান লিখুন"}
+                  className="input input-bordered w-full  "
+                  onChange={(e: any) => checkAmountValidity(e.target.value)}
+                />
+                {errors.description && (
+                  <span className="text-red-500 pt-4">
+                    {!lang
+                      ? " This field is required"
+                      : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
+                  </span>
+                )}
+                {!lang ? (
+                  <span className="text-red-300 mt-1">{amountError}</span>
+                ) : (
+                  <span className="text-red-300 mt-1 text-sm">
+                    {amountErrorBan}
+                  </span>
+                )}
+              </div>
+              <div className="flex gap-2 lg:w-1/2 mx-auto mt-10">
+                <input
+                  {...register("negotiable")}
+                  type="checkbox"
+                  className="text-gray-700 h-4 w-4"
+                />
+                {!lang ? (
+                  <h1 className="-mt-1">Negotiable</h1>
+                ) : (
+                  "আলোচনা সাপেক্ষে"
+                )}
+              </div>
+              <hr className="my-10" />
+
+              <div className="lg:w-6/12 mx-auto mb-20">
+                <label className="label">
+                  {!lang ? (
+                    <span className="text-xl font-bold">
+                      Add up to 5 photos
+                    </span>
+                  ) : (
+                    <span className="text-lg font-bold">
                       {" "}
-                      {!lang ? (
-                        <span className="text-sm pt-4 text-red-300">
-                          You must upload at least one image.
-                        </span>
+                      সর্বোচ্চ পাঁচটি ছবি যুক্ত করুন{" "}
+                    </span>
+                  )}
+                </label>
+
+                <div className="grid grid-cols-3 md:grid-cols-5 gap-5 md:gap-7">
+                  {!imageUrl1 && loading ? (
+                    <div className="mt-9 ml-5">
+                      {" "}
+                      <Spinner></Spinner>
+                    </div>
+                  ) : (
+                    <>
+                      {imageUrl1 ? (
+                        <div className="relative">
+                          <img
+                            className="h-16 w-24 mt-7"
+                            src={imageUrl1}
+                            alt=""
+                          />
+                          <button
+                            onClick={handleCancel11}
+                            className="bg-primary absolute top-7 right-1"
+                          >
+                            {" "}
+                            <RxCrossCircled />{" "}
+                          </button>
+                        </div>
                       ) : (
-                        <span className="text-xs pt-4 text-red-300">
-                          আপনাকে অন্তত একটি ছবি আপলোড করতে হবে।
-                        </span>
+                        <button>
+                          {!lang ? (
+                            <label>Image 1</label>
+                          ) : (
+                            <label>ছবি-১</label>
+                          )}
+                          <input
+                            onChange={(e) =>
+                              imageUploadHandler(e, setImageUrl1)
+                            }
+                            type="file"
+                            id="file1"
+                            accept="image/*"
+                            placeholder="Upload Images"
+                            className="file-input file-input-primary w-full hidden"
+                            required
+                          />
+                          <div className="mt-1">
+                            <label htmlFor="file1">
+                              {!lang ? (
+                                <div className="rounded border border-warning p-2">
+                                  <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+                                  <small>Upload Photo</small>
+                                </div>
+                              ) : (
+                                <div className="rounded border border-warning p-2">
+                                  <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+                                  <small> ছবি যুক্ত করুন</small>
+                                </div>
+                              )}
+                            </label>
+                          </div>
+                        </button>
+                      )}
+                    </>
+                  )}
+                  {imageUrl1 && !imageUrl2 && loading ? (
+                    <div className="mt-9 ml-5">
+                      {" "}
+                      <Spinner></Spinner>
+                    </div>
+                  ) : (
+                    <>
+                      {imageUrl2 ? (
+                        <div className="relative">
+                          <img
+                            className="h-16 w-24 mt-7"
+                            src={imageUrl2}
+                            alt=""
+                          />
+                          <button
+                            onClick={handleCancel12}
+                            className="bg-primary absolute top-7 right-1"
+                          >
+                            <RxCrossCircled />
+                          </button>
+                        </div>
+                      ) : (
+                        <button>
+                          {!lang ? (
+                            <label>Image 2</label>
+                          ) : (
+                            <label>ছবি-২</label>
+                          )}
+                          <input
+                            onChange={(e) =>
+                              imageUploadHandler(e, setImageUrl2)
+                            }
+                            type="file"
+                            id="file2"
+                            accept="image/*"
+                            placeholder="Upload Images"
+                            className="file-input file-input-primary w-full hidden"
+                            disabled={imageUrl1 ? false : true}
+                          />
+                          <div className="mt-1">
+                            <label htmlFor="file2">
+                              {!lang ? (
+                                <div
+                                  className={
+                                    imageUrl1
+                                      ? "rounded border border-warning p-2"
+                                      : "rounded border   border-gray-400 p-2"
+                                  }
+                                >
+                                  <BsImage
+                                    className={
+                                      imageUrl1
+                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
+                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                    }
+                                  />
+                                  <small>Upload Photo</small>
+                                </div>
+                              ) : (
+                                <div
+                                  className={
+                                    imageUrl1
+                                      ? "rounded border border-warning p-2"
+                                      : "rounded border   border-gray-400 p-2"
+                                  }
+                                >
+                                  <BsImage
+                                    className={
+                                      imageUrl1
+                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
+                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                    }
+                                  />
+                                  <small> ছবি যুক্ত করুন</small>
+                                </div>
+                              )}
+                            </label>
+                          </div>
+                        </button>
+                      )}
+                    </>
+                  )}
+
+                  {imageUrl1 && imageUrl2 && !imageUrl3 && loading ? (
+                    <div className="mt-9 ml-5">
+                      {" "}
+                      <Spinner></Spinner>
+                    </div>
+                  ) : (
+                    <>
+                      {imageUrl3 ? (
+                        <div className="relative">
+                          <img
+                            className="h-16 w-24 mt-7"
+                            src={imageUrl3}
+                            alt=""
+                          />
+                          <button
+                            onClick={handleCancel13}
+                            className="bg-primary absolute top-7 right-1"
+                          >
+                            {" "}
+                            <RxCrossCircled />{" "}
+                          </button>
+                        </div>
+                      ) : (
+                        <button>
+                          {!lang ? (
+                            <label>Image 3</label>
+                          ) : (
+                            <label>ছবি-৩</label>
+                          )}
+                          <input
+                            onChange={(e) =>
+                              imageUploadHandler(e, setImageUrl3)
+                            }
+                            type="file"
+                            id="file3"
+                            accept="image/*"
+                            placeholder="Upload Images"
+                            className="file-input file-input-primary w-full hidden"
+                            disabled={imageUrl1 && imageUrl2 ? false : true}
+                          />
+                          <div className="mt-1">
+                            <label htmlFor="file3">
+                              {!lang ? (
+                                <div
+                                  className={
+                                    imageUrl1 && imageUrl2
+                                      ? "rounded border border-warning p-2"
+                                      : "rounded border border-gray-400 p-2"
+                                  }
+                                >
+                                  <BsImage
+                                    className={
+                                      imageUrl1 && imageUrl2
+                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
+                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                    }
+                                  />
+                                  <small>Upload Photo</small>
+                                </div>
+                              ) : (
+                                <div
+                                  className={
+                                    imageUrl1 && imageUrl2
+                                      ? "rounded border border-warning p-2"
+                                      : "rounded border border-gray-400 p-2"
+                                  }
+                                >
+                                  <BsImage
+                                    className={
+                                      imageUrl1 && imageUrl2
+                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
+                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                    }
+                                  />
+                                  <small> ছবি যুক্ত করুন</small>
+                                </div>
+                              )}
+                            </label>
+                          </div>
+                        </button>
+                      )}
+                    </>
+                  )}
+                  {imageUrl3 && !imageUrl4 && loading ? (
+                    <div className="mt-9 ml-5">
+                      {" "}
+                      <Spinner></Spinner>
+                    </div>
+                  ) : (
+                    <>
+                      {imageUrl4 ? (
+                        <div className="relative">
+                          <img
+                            className="h-16 w-24 mt-7"
+                            src={imageUrl4}
+                            alt=""
+                          />
+                          <button
+                            onClick={handleCancel14}
+                            className="bg-primary absolute top-7 right-1"
+                          >
+                            {" "}
+                            <RxCrossCircled />{" "}
+                          </button>
+                        </div>
+                      ) : (
+                        <button>
+                          {!lang ? (
+                            <label>Image 4</label>
+                          ) : (
+                            <label>ছবি-৪</label>
+                          )}
+                          <input
+                            onChange={(e) =>
+                              imageUploadHandler(e, setImageUrl4)
+                            }
+                            type="file"
+                            id="file4"
+                            accept="image/*"
+                            placeholder="Upload Images"
+                            className="file-input file-input-primary w-full hidden"
+                            disabled={imageUrl3 ? false : true}
+                          />
+                          <div className="mt-1">
+                            <label htmlFor="file4">
+                              {!lang ? (
+                                <div
+                                  className={
+                                    imageUrl3
+                                      ? "rounded border border-warning p-2"
+                                      : "rounded border border-gray-400 p-2"
+                                  }
+                                >
+                                  <BsImage
+                                    className={
+                                      imageUrl3
+                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
+                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                    }
+                                  />
+                                  <small>Upload Photo</small>
+                                </div>
+                              ) : (
+                                <div
+                                  className={
+                                    imageUrl3
+                                      ? "rounded border border-warning p-2"
+                                      : "rounded border border-gray-400 p-2"
+                                  }
+                                >
+                                  <BsImage
+                                    className={
+                                      imageUrl3
+                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
+                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                    }
+                                  />
+                                  <small> ছবি যুক্ত করুন</small>
+                                </div>
+                              )}
+                            </label>
+                          </div>
+                        </button>
+                      )}
+                    </>
+                  )}
+                  {imageUrl4 && !imageUrl5 && loading ? (
+                    <div className="mt-9 ml-5">
+                      {" "}
+                      <Spinner></Spinner>
+                    </div>
+                  ) : (
+                    <>
+                      {imageUrl5 ? (
+                        <div className="relative">
+                          <img
+                            className="h-16 w-24 mt-7"
+                            src={imageUrl5}
+                            alt=""
+                          />
+                          <button
+                            onClick={handleCancel15}
+                            className="bg-primary absolute top-7 right-1"
+                          >
+                            {" "}
+                            <RxCrossCircled />{" "}
+                          </button>
+                        </div>
+                      ) : (
+                        <button>
+                          {!lang ? (
+                            <label>Image 5</label>
+                          ) : (
+                            <label>ছবি-৫</label>
+                          )}
+                          <input
+                            onChange={(e) =>
+                              imageUploadHandler(e, setImageUrl5)
+                            }
+                            type="file"
+                            id="file"
+                            accept="image/*"
+                            placeholder="Upload Images"
+                            className="file-input file-input-primary w-full hidden"
+                            disabled={imageUrl4 ? false : true}
+                          />
+                          <div className="mt-1">
+                            <label htmlFor="file">
+                              {!lang ? (
+                                <div
+                                  className={
+                                    imageUrl4
+                                      ? "rounded border border-warning p-2"
+                                      : "rounded border border-gray-400 p-2"
+                                  }
+                                >
+                                  <BsImage
+                                    className={
+                                      imageUrl4
+                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
+                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                    }
+                                  />
+                                  <small>Upload Photo</small>
+                                </div>
+                              ) : (
+                                <div
+                                  className={
+                                    imageUrl4
+                                      ? "rounded border border-warning p-2"
+                                      : "rounded border border-gray-400 p-2"
+                                  }
+                                >
+                                  <BsImage
+                                    className={
+                                      imageUrl4
+                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
+                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                    }
+                                  />
+                                  <small> ছবি যুক্ত করুন</small>
+                                </div>
+                              )}
+                            </label>
+                          </div>
+                        </button>
                       )}
                     </>
                   )}
                 </div>
-              </div>
-              <hr className="my-10" />
-
-              {/* contact part  */}
-              <div className="lg:w-1/2 mx-auto">
-                {!lang ? (
-                  <h1 className="text-xl font-bold">Contact details</h1>
-                ) : (
-                  <h1 className="text-xl font-bold">
+                {!imageUrl1 && !loading && (
+                  <>
                     {" "}
-                    আপনার সম্মন্ধে বিস্তারিতঃ{" "}
-                  </h1>
+                    {!lang ? (
+                      <span className="text-sm pt-4 text-red-300">
+                        You must upload at least one image.
+                      </span>
+                    ) : (
+                      <span className="text-xs pt-4 text-red-300">
+                        আপনাকে অন্তত একটি ছবি আপলোড করতে হবে।
+                      </span>
+                    )}
+                  </>
                 )}
-                <div className="mt-10">
-                  {!lang ? <h5>Name:</h5> : <h5>নামঃ</h5>}
-                  <input
-                    {...register("name")}
-                    type="text"
-                    className="input input-bordered w-full mt-2"
-                    placeholder="Enter your full name."
-                    defaultValue={name}
-                  />
-                </div>
-                <div className="mt-10">
-                  <div className="flex gap-6">
-                    {!lang ? <h5>Email</h5> : <h5>ইমেইলঃ </h5>}
+              </div>
+            </div>
+            <hr className="my-10" />
 
-                    {checkAuthentication && (
+            {/* contact part  */}
+            <div className="lg:w-1/2 mx-auto">
+              {!lang ? (
+                <h1 className="text-xl font-bold">Contact details</h1>
+              ) : (
+                <h1 className="text-xl font-bold">
+                  {" "}
+                  আপনার সম্মন্ধে বিস্তারিতঃ{" "}
+                </h1>
+              )}
+              <div className="mt-10">
+                {!lang ? <h5>Name:</h5> : <h5>নামঃ</h5>}
+                <input
+                  {...register("name")}
+                  type="text"
+                  className="input input-bordered w-full mt-2"
+                  placeholder="Enter your full name."
+                  defaultValue={name}
+                />
+              </div>
+              <div className="mt-10">
+                <div className="flex gap-6">
+                  {!lang ? <h5>Email</h5> : <h5>ইমেইলঃ </h5>}
+
+                  {checkAuthentication && (
+                    <>
+                      {!lang ? (
+                        <small className="text-blue-400 pt-1">
+                          You can't change your email. To change please contact
+                          the admin.
+                        </small>
+                      ) : (
+                        <small className="text-blue-400 pt-1">
+                          আপনি ইমেইল পরিবর্তন করতে পারবেন না। পরিবর্তন করতে
+                          এডমিনের সাথে যোগাযোগ করুন।
+                        </small>
+                      )}
+                    </>
+                  )}
+                </div>
+                <input
+                  {...register("email", { required: true })}
+                  type="email"
+                  className="input input-bordered w-full mt-2"
+                  defaultValue={checkAuthentication}
+                  placeholder="Enter your email."
+                  readOnly={checkAuthentication ? true : false}
+                />
+                {errors.email && (
+                  <span className="text-red-300 pt-5">
+                    {!lang
+                      ? " This field is required"
+                      : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
+                  </span>
+                )}
+              </div>
+              <div className="mt-10 border border-warning py-7 px-5">
+                {!lang ? (
+                  <h5 className="mb-2">Add A Mobile Number:</h5>
+                ) : (
+                  <h5 className="mb-2">একটি মোবাইল নাম্বার দিনঃ</h5>
+                )}
+                <div className="mb-3">
+                  {!lang && !isValidNum && (
+                    <p className="text-red-300">
+                      {" "}
+                      19 | 18 | 17 | 16 | 15 | 14 | 13 | use anyone to start.{" "}
+                    </p>
+                  )}
+                  {lang && !isValidNum && (
+                    <p className="text-red-300 text-sm">
+                      19 | 18 | 17 | 16 | 15 | 14 | 13 । যে কোন একটি দিয়ে শুরু
+                      করুন।{" "}
+                    </p>
+                  )}
+                  <div className={!isValidNum ? "hidden" : "flex"}>
+                    {!lang ? (
                       <>
-                        {!lang ? (
-                          <small className="text-blue-400">
-                            You can't change your email. To change please
-                            contact the admin.
-                          </small>
-                        ) : (
-                          <small className="text-blue-400">
-                            আপনি ইমেইল পরিবর্তন করতে পারবেন না। পরিবর্তন করতে
-                            এডমিনের সাথে যোগাযোগ করুন।
-                          </small>
+                        {!isValid && (
+                          <p className="text-red-300">
+                            Please enter a valid full mobile number.
+                          </p>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        {!isValid && (
+                          <p className="text-red-300">
+                            {" "}
+                            সঠিক পূর্ণ মোবাইল নাম্বার দিন।{" "}
+                          </p>
                         )}
                       </>
                     )}
-                    
                   </div>
-                  <input
-                    {...register("email", { required: true })}
-                    type="email"
-                    className="input input-bordered w-full mt-2"
-                    defaultValue={checkAuthentication}
-                    placeholder="Enter your email."
-                    readOnly={checkAuthentication ? true : false}
-                  />
-                  {errors.email && (
-                    <span className="text-red-400 pt-5">
-                      {!lang
-                        ? " This field is required"
-                        : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
-                    </span>
-                  )}
                 </div>
-                <div className="mt-10 border border-warning py-7 px-5">
-                  {!lang ? (
-                    <h5 className="mb-2">Add A Mobile Number:</h5>
-                  ) : (
-                    <h5 className="mb-2">একটি মোবাইল নাম্বার দিনঃ</h5>
-                  )}
-                  <div className="mb-3">
-                    {!lang && !isValidNum && (
-                      <p className="text-red-400">
-                        {" "}
-                        19 | 18 | 17 | 16 | 15 | 14 | 13 | use anyone to start.{" "}
-                      </p>
-                    )}
-                    {lang && !isValidNum && (
-                      <p className="text-red-400 text-sm">
-                        19 | 18 | 17 | 16 | 15 | 14 | 13 । যে কোন একটি দিয়ে শুরু
-                        করুন।{" "}
-                      </p>
-                    )}
-                    <div className={!isValidNum ? "hidden" : "flex"}>
-                      {!lang ? (
-                        <>
-                          {!isValid && (
-                            <p className="text-red-400">
-                              Please enter a valid full mobile number.
-                            </p>
-                          )}
-                        </>
-                      ) : (
-                        <>
-                          {!isValid && (
-                            <p className="text-red-400">
-                              {" "}
-                              সঠিক পূর্ণ মোবাইল নাম্বার দিন।{" "}
-                            </p>
-                          )}
-                        </>
-                      )}
-                    </div>
-                  </div>
+                <div className="relative">
                   {getNumber ? (
-                    //   <input
-                    //   {...register("phone",{ required: true })}
-                    //   type="text"
-                    //   placeholder="Add A Mobile Number"
-                    //   className="input input-bordered w-full mt-5 bg-primary"
-                    //   // onChange={(e: any) => checkNumber(e.target.value)}
-                    //   defaultValue={getNumber}
-                    //   // readOnly={getNumber ? true : false}
-                    // />
-                    <PhoneInput
-                      value={getNumber}
-                      onChange={handleCountryNumberValue}
-                      countryCodeEditable={false}
-                      inputStyle={{
-                        width: "100%",
-                        paddingTop: "7px",
-                        paddingBottom: "7px",
-                        // backgroundColor: "#f1feff",
-                      }}
-                      country="bd"
-                      onlyCountries={["bd"]}
-                      inputProps={{
-                        name: "phone",
-                        required: true,
-                        autoFocus: false,
-                      }}
-                      isValid={(value: any, country: any) => {
-                        if (value.match(/12345/)) {
-                          return (
-                            "Invalid value: " + value + ", " + country.name
-                          );
-                        } else if (value.match(/1234/)) {
-                          return false;
-                        } else {
-                          return true;
-                        }
-                      }}
-                    />
+                    <>
+                      {!minusNumber && (
+                        <input
+                          {...register("phone")}
+                          type="text"
+                          placeholder="Add A Mobile Number"
+                          className="input input-bordered focus:border-none  w-full mt-5"
+                          // onChange={(e: any) => checkNumber(e.target.value)}
+                          defaultValue={minusNumber ? "" : getNumber}
+                          readOnly
+                        />
+                      )}
+
+                      {!minusNumber && (
+                        <button
+                          onClick={handleMinus}
+                          className="absolute top-5 right-0 bg-red-400 px-1 text-primary rounded"
+                        >
+                          {" "}
+                          <AiOutlineMinus />
+                        </button>
+                      )}
+                      {!lang ? (
+                        <button
+                          disabled={anotherNumber ? true : false}
+                          onClick={handleAnotherNumber}
+                          className={
+                            anotherNumber
+                              ? "text-gray-400 my-2"
+                              : "my-2 text-warning"
+                          }
+                        >
+                          <span
+                            className={
+                              anotherNumber
+                                ? "text-gray-400"
+                                : "bg-warning text-primary rounded-full px-1"
+                            }
+                          >
+                            +
+                          </span>{" "}
+                          Use Another mobile number
+                        </button>
+                      ) : (
+                        <button
+                          disabled={anotherNumber ? true : false}
+                          onClick={handleAnotherNumber}
+                          className={
+                            anotherNumber
+                              ? "text-gray-400 my-2"
+                              : "my-2 text-warning"
+                          }
+                        >
+                          <span
+                            className={
+                              anotherNumber
+                                ? "text-gray-400"
+                                : "bg-warning text-primary rounded-full px-1"
+                            }
+                          >
+                            +
+                          </span>{" "}
+                          অন্য নাম্বার যোগ করুন{" "}
+                        </button>
+                      )}
+                      {anotherNumber && (
+                        <PhoneInput
+                          value={countryNumber}
+                          onChange={handleCountryNumberValue}
+                          countryCodeEditable={false}
+                          placeholder="Enter full number***"
+                          inputStyle={{
+                            width: "100%",
+                            paddingTop: "7px",
+                            paddingBottom: "7px",
+                          }}
+                          country="bd"
+                          onlyCountries={["bd"]}
+                          inputProps={{
+                            name: "phone",
+                            required: true,
+                            autoFocus: false,
+                          }}
+                          isValid={(value: any, country: any) => {
+                            if (value.match(/12345/)) {
+                              return (
+                                "Invalid value: " + value + ", " + country.name
+                              );
+                            } else if (value.match(/1234/)) {
+                              return false;
+                            } else {
+                              return true;
+                            }
+                          }}
+                        />
+                      )}
+                      {anotherNumber && (
+                        <div className="flex justify-end mt-2">
+                          {!lang ? (
+                            <button onClick={handleCancel} className=" ">
+                              Cancel
+                            </button>
+                          ) : (
+                            <button onClick={handleCancel}>বাতিল করুন</button>
+                          )}
+                        </div>
+                      )}
+                    </>
                   ) : (
                     //   <input
                     //   {...register("phone",{ required: true })}
@@ -1342,6 +1411,7 @@ const PostDetails = () => {
                       value={countryNumber}
                       onChange={handleCountryNumberValue}
                       countryCodeEditable={false}
+                      placeholder="Enter full number***"
                       inputStyle={{
                         width: "100%",
                         paddingTop: "7px",
@@ -1368,58 +1438,67 @@ const PostDetails = () => {
                       }}
                     />
                   )}
-
-                  {errors.phone && (
-                    <span className="text-red-400 pt-5">
-                      {!lang
-                        ? " This field is required"
-                        : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
-                    </span>
-                  )}
-                  {!lang ? (
-                    <span className="text-red-400 mt-1">{numberError}</span>
-                  ) : (
-                    <span className="text-red-400 mt-1 text-sm">
-                      {numberErrorBan}
-                    </span>
-                  )}
-                  {/* <button className="btn btn-secondary btn-sm mt-5">
-              <span> Verify otp</span>
-            </button> */}
                 </div>
               </div>
             </div>
-            {/* <div className="flex gap-2 lg:w-1/2 mx-auto mt-10"> */}
-            {/* <input
+          </div>
+          {/* <div className="flex gap-2 lg:w-1/2 mx-auto mt-10"> */}
+          {/* <input
               {...register("terms")}
               type="checkbox"
               className="text-gray-700 h-4 w-4"
             /> */}
-            {/* <h1 className="-mt-1">
+          {/* <h1 className="-mt-1">
               I have read and accept the Terms and Conditions
             </h1> */}
-            {/* </div> */}
-            <div className="lg:w-1/2 mx-auto flex justify-end">
-              <Button
-                onClick={handleSubmit(handlePost)}
-                className={
-                  postLoading
-                    ? "text-white w-1/2 mb-10 mt-12 font-semibold  bg-gray-800"
-                    : "text-primary w-1/2 mb-10 mt-12 font-semibold  bg-warning"
-                }
-                disabled={
-                  modalValue?.eng && isValid && isValidNum ? false : true
-                }
-              >
-                {postLoading ? (
-                  <> {!lang ? "Posting" : "পোস্ট হচ্ছে..."}</>
+          {/* </div> */}
+
+          <div className="text-center mt-5">
+            {error && (
+              <div className=" ">
+                <h1 className="my-1 text-warning">{error}</h1>
+                {!lang ? (
+                  <h1 className="text-red-300 mb-5">
+                    Please fill all the fields carefully. Or back to{" "}
+                    <Link className="underline text-warning" href={"/"}>
+                      Home
+                    </Link>
+                  </h1>
                 ) : (
-                  <> {!lang ? " Post Now" : "পোস্ট করুন"}</>
+                  <h1 className="text-red-300 text-sm mb-5">
+                    {" "}
+                    অনুগ্রহ করে সথিকভাবে সব গুলো ফিল্ড পূরণ পুরন করুন। অথবা{" "}
+                    <Link className="underline text-warning" href={"/"}>
+                      হোম
+                    </Link>{" "}
+                    এ ফিরে যান।
+                  </h1>
                 )}
-              </Button>
-            </div>
+              </div>
+            )}
           </div>
-        )}
+          <div className="lg:w-1/2 mx-auto flex justify-end">
+            <Button
+              onClick={handleSubmit(handlePost)}
+              className={
+                postLoading
+                  ? "text-primary w-1/2 mb-10 mt-5 font-semibold  bg-gray-800 "
+                  : "text-primary w-1/2 mb-10 mt-5 font-semibold  bg-warning"
+              }
+              disabled={
+                modalValue?.eng && isValid && isValidNum && !error
+                  ? false
+                  : true
+              }
+            >
+              {postLoading ? (
+                <> {!lang ? "Posting" : "পোস্ট হচ্ছে..."}</>
+              ) : (
+                <> {!lang ? " Post Now" : "পোস্ট করুন"}</>
+              )}
+            </Button>
+          </div>
+        </div>
       </div>
     </>
   );
