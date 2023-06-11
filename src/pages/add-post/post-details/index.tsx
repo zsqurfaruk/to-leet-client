@@ -63,7 +63,6 @@ const PostDetails = () => {
   const [imageUrl4, setImageUrl4] = useState("");
   const [imageUrl5, setImageUrl5] = useState("");
   const [error, setError] = useState("");
-  const [validNumber, setValidNumber] = useState(0);
   const [numberError, setNumberError] = useState("");
   const [numberErrorBan, setNumberErrorBan] = useState("");
   const [validAmount, setValidAmount] = useState();
@@ -1208,7 +1207,8 @@ const PostDetails = () => {
                   <input
                     {...register("name")}
                     type="text"
-                    className="input input-bordered w-full bg-primary"
+                    className="input input-bordered w-full mt-2"
+                    placeholder="Enter your full name."
                     defaultValue={name}
                   />
                 </div>
@@ -1231,12 +1231,14 @@ const PostDetails = () => {
                         )}
                       </>
                     )}
+                    
                   </div>
                   <input
                     {...register("email", { required: true })}
                     type="email"
-                    className="input input-bordered w-full bg-primary"
+                    className="input input-bordered w-full mt-2"
                     defaultValue={checkAuthentication}
+                    placeholder="Enter your email."
                     readOnly={checkAuthentication ? true : false}
                   />
                   {errors.email && (
@@ -1305,14 +1307,14 @@ const PostDetails = () => {
                         width: "100%",
                         paddingTop: "7px",
                         paddingBottom: "7px",
-                        backgroundColor: "#f1feff",
+                        // backgroundColor: "#f1feff",
                       }}
                       country="bd"
                       onlyCountries={["bd"]}
                       inputProps={{
                         name: "phone",
                         required: true,
-                        autoFocus: true,
+                        autoFocus: false,
                       }}
                       isValid={(value: any, country: any) => {
                         if (value.match(/12345/)) {
@@ -1344,14 +1346,14 @@ const PostDetails = () => {
                         width: "100%",
                         paddingTop: "7px",
                         paddingBottom: "7px",
-                        backgroundColor: "#f1feff",
+                        // backgroundColor: "#f1feff",
                       }}
                       country="bd"
                       onlyCountries={["bd"]}
                       inputProps={{
                         name: "phone",
                         required: true,
-                        autoFocus: true,
+                        autoFocus: false,
                       }}
                       isValid={(value: any, country: any) => {
                         if (value.match(/12345/)) {

@@ -384,7 +384,7 @@ const ProductDetails = ({ product }: any) => {
                     {!lang ? "Contact number:" : "মোবাইল নাম্বারঃ"} +
                     {product?.phone}
                   </Typography>
-                   <button className="absolute top-0 right-0 border-l-2  border-warning bg-accent px-2 py-[5.5px] rounded" onClick={() => handleCopyLine("+" + product?.phone)}>copy</button>
+                   <button className="absolute top-0 right-0 border-l-2  border-warning bg-accent px-1 py-[5.5px] rounded" onClick={() => handleCopyLine("+" + product?.phone)}>copy</button>
                   </div>
                 </div>
               </div>
