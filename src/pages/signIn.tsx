@@ -11,6 +11,8 @@ import toast from "react-hot-toast";
 import Cookies from "js-cookie";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
+import parsePhoneNumberFromString from "libphonenumber-js";
+ 
  
 type FormValues = {
   email: string | number;
@@ -25,6 +27,8 @@ const SignIn = () => {
   const [numberMethod, setNumberMethod] = useState("");
   const [emailMethod, setEmailMethod] = useState("");
   const [countryNumber, setCountryNumber] = useState();
+  const [isValid, setIsValid] = useState(true);
+  const [isValidNum, setIsValidNum] = useState(true);
   // const {
   //   accountLogIn,
   //   providerGoogleLogIn,
@@ -77,10 +81,10 @@ const SignIn = () => {
       Cookies.set("firstName", result?.data?.user.firstName);
       Cookies.set("lastName", result?.data?.user.lastName);
       setLoading(false);
-      toast.success("Sign In Successful.");
       const { query }: any = router;
       const nextPage = query.next || "/";
       router.push(nextPage);
+      toast.success("Sign In Successful.");
     }
   };
   // const cookieValue = Cookies.get('token');
@@ -108,6 +112,12 @@ const SignIn = () => {
 
   const handleCountryNumberValue = (value: any) => {
     setCountryNumber(value);
+    const phoneNumber = parsePhoneNumberFromString(value, 'BD');
+    const isValidNumber = phoneNumber ? phoneNumber.isValid() && phoneNumber.country === 'BD' : false;
+    const isFixedLength = value.length === 13;
+    const startsWithFixedNumber = /^88017|^88016|^88015|^88014|^88013|^88018|^88019/.test(value);
+    setIsValid(isValidNumber && isFixedLength);
+    setIsValidNum(startsWithFixedNumber);
   };
   const getNm = Cookies.get("nm");
   const getEm = Cookies.get("em");
@@ -117,6 +127,7 @@ const SignIn = () => {
         <title>To Leet - Sign in</title>
       </Head>
       <section className="lg:w-10/12 lg:mx-auto grid lg:grid-cols-2 gap-20 my-10 lg:my-24  py-5">
+      
         <div className="hidden lg:flex">
           <Lottie
             className="-mt-16 scale-110 opacity-60"
@@ -124,24 +135,24 @@ const SignIn = () => {
             loop={true}
           ></Lottie>
         </div>
-        <Card className="lg:w-9/12 mx-auto px-5 border-4 border-neutral bg-neutral shadow-2xl">
+        <Card className="md:w-9/12 mx-auto px-10 lg:px-5 border-4 border-neutral bg-neutral shadow-none md:shadow-2xl">
           {!lang ? (
-            <Typography className="  mt-2 text-warning" variant="h4">
+            <Typography className="mt-2 text-warning" variant="h4">
               Sign In
             </Typography>
           ) : (
-            <Typography className="  mt-2 text-warning" variant="h4">
+            <Typography className="mt-2 text-warning" variant="h4">
               সাইন ইন
             </Typography>
           )}
           {!lang && !getEm && (
             <Typography color="gray" className="mt-1 font-normal  ">
-              Enter your registered mobile number and password to signin.
+              Enter registered mobile number and password to signin.
             </Typography>
           )}
           {lang && !getEm && (
             <Typography color="gray" className="mt-1 font-normal   text-sm">
-              সাইন ইন করতে আপনার নিবন্ধিত মোবাইল নাম্বার এবং পাসওয়ার্ড লিখুন।
+              সাইন ইন করতে নিবন্ধিত মোবাইল নাম্বার এবং পাসওয়ার্ড লিখুন।
             </Typography>
           )}
           {!lang && getEm && !getNm && (
@@ -154,20 +165,19 @@ const SignIn = () => {
               সাইন ইন করতে আপনার নিবন্ধিত ইমেল এবং পাসওয়ার্ড লিখুন।
             </Typography>
           )}
-
           {!getNm && getEm && (
             <>
               {!lang ? (
                 <button
                   onClick={handleLoginMethodNumber}
-                  className="bg-warning text-primary text-lg py-[6px] font-medium rounded  mt-5"
+                  className="bg-warning text-primary  py-2 font-medium rounded  mt-5"
                 >
                   Continue with Mobile Number.
                 </button>
               ) : (
                 <button
                   onClick={handleLoginMethodNumber}
-                  className="bg-warning text-primary text-lg py-[6px] font-medium rounded  mt-5"
+                  className="bg-warning text-primary text-[15px] py-2 font-medium rounded  mt-5"
                 >
                   মোবাইল নাম্বার দিয়ে চালিয়ে যান।
                 </button>
@@ -180,14 +190,14 @@ const SignIn = () => {
               {!lang ? (
                 <button
                   onClick={handleLoginMethodEmail}
-                  className="bg-warning text-primary text-lg py-[6px] font-medium rounded  mt-5"
+                  className="bg-warning text-primary  py-2 font-medium rounded  mt-5"
                 >
-                  Continue with Email
+                  Continue with Email.
                 </button>
               ) : (
                 <button
                   onClick={handleLoginMethodEmail}
-                  className="bg-warning text-primary text-lg py-[6px] font-medium rounded  mt-5"
+                  className="bg-warning text-primary text-[15px] py-2 font-medium rounded  mt-5"
                 >
                   ইমেইল দিয়ে চালিয়ে যান।
                 </button>
@@ -195,6 +205,19 @@ const SignIn = () => {
             </>
           )}
           <div className="divider">OR</div>
+         <div className={getEm ? "hidden" : "flex"}>
+         {
+            !lang && !isValidNum && <p className="text-red-400"> 19 | 18 | 17 | 16 | 15 | 14 | 13 | use anyone to start. </p>
+          }
+          {
+            lang && !isValidNum && <p className="text-red-400 text-sm">19 | 18 | 17 | 16 | 15 | 14 | 13 । যে কোন একটি দিয়ে শুরু করুন। </p>
+          }
+           <div className={!isValidNum ? "hidden" : "flex"}>
+         {
+            !lang ? <>{!isValid && <p className="text-red-400">Please enter a valid full mobile number.</p>}</> : <>{!isValid && <p className="text-red-400"> সঠিক পূর্ণ মোবাইল নাম্বার দিন। </p>}</>
+          }
+         </div>
+         </div>
           {!getEm && (
             <div className="mb-2 w-full -mt-6">
               <form
@@ -206,12 +229,15 @@ const SignIn = () => {
                     <PhoneInput
                       value={countryNumber}
                       onChange={handleCountryNumberValue}
+                      countryCodeEditable={false}
+                      
                       inputStyle={{
                         width: "100%",
                         paddingTop: "7px",
                         paddingBottom: "7px",
                         backgroundColor: "#f1feff",
                       }}
+                      enableAreaCodes={true}
                       country="bd"
                       onlyCountries={["bd"]}
                       inputProps={{
@@ -220,13 +246,17 @@ const SignIn = () => {
                         autoFocus: true,
                       }}
                       isValid={(value: any, country: any) => {
-                        if (value.match(/12345/)) {
+                        if (value.match(/1234/)) {
                           return (
                             "Invalid value: " + value + ", " + country.name
                           );
-                        } else if (value.match(/1234/)) {
+                        } else if (value.match(/123/)) {
                           return false;
-                        } else {
+                        } else if(value.length > 13){
+                             return false
+                        }
+                         
+                        else {
                           return true;
                         }
                       }}
@@ -282,20 +312,22 @@ const SignIn = () => {
                 {!lang ? (
                   <button
                     className={
-                      loading
-                        ? "w-full bg-gray-800 py-2 rounded font-semibold text-white -mt-8"
-                        : "w-full bg-warning py-2 rounded font-semibold text-primary -mt-8"
+                      loading || (!isValid || !isValidNum)
+                        ? "w-full bg-gray-800 py-2  rounded font-semibold text-white -mt-8"
+                        : "w-full bg-warning py-2  rounded font-semibold text-primary -mt-8"
                     }
+                    disabled = {!isValid || !isValidNum ? true : false}
                   >
                     {loading ? "Signing..." : "Sign In"}
                   </button>
                 ) : (
                   <button
                     className={
-                      loading
-                        ? "w-full bg-gray-800 py-2 rounded font-semibold text-primary -mt-8"
-                        : "w-full bg-warning  py-2 rounded font-semibold text-primary -mt-8"
+                      loading || (!isValid || !isValidNum)
+                        ? "w-full bg-gray-800 py-2   rounded font-semibold text-primary -mt-8"
+                        : "w-full bg-warning  py-2   rounded font-semibold text-primary -mt-8"
                     }
+                    disabled = {!isValid || !isValidNum ? true : false}
                   >
                     {loading ? "সাইন ইন হচ্ছে..." : "সাইন ইন"}
                   </button>

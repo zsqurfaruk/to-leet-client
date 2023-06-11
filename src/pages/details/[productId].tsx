@@ -13,6 +13,7 @@ import PrivateRoute from "@/routes/privateRoute";
 import Head from "next/head";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import Cookies from "js-cookie";
+import { toast } from "react-hot-toast";
 
 const ProductDetails = ({ product }: any) => {
   const { img1, img2, img3, img4, img5 } = product;
@@ -32,6 +33,13 @@ const ProductDetails = ({ product }: any) => {
     setSlideImage(slider);
   };
 
+  const handleCopyLine = (line:any) => {
+    navigator.clipboard.writeText(line);
+    toast.success("Copied")
+  };
+  const handleContextMenu = (event:any) => {
+    event.preventDefault();
+  };
   const lang = Cookies.get("lan");
   return (
     <>
@@ -55,6 +63,7 @@ const ProductDetails = ({ product }: any) => {
                       src={slideImage?.value}
                       alt=""
                       className="h-96 w-full rounded"
+                      draggable= "false"
                     />
                   </PhotoView>
                 </PhotoProvider>
@@ -67,6 +76,7 @@ const ProductDetails = ({ product }: any) => {
                           onClick={() => handleImageChange(i)}
                           alt=""
                           className="lg:h-20 h-16 w-14 lg:w-32 rounded"
+                           draggable= "false"
                         />
                       )}
                     </div>
@@ -369,10 +379,13 @@ const ProductDetails = ({ product }: any) => {
                     {product?.title}
                   </Typography>
                   <h2> {product?.description}</h2>
+                  <div className="relative">
                   <Typography className="border border-accent py-1 px-2 rounded-md mt-2">
                     {!lang ? "Contact number:" : "মোবাইল নাম্বারঃ"} +
                     {product?.phone}
                   </Typography>
+                   <button className="absolute top-0 right-0 border-l-2  border-warning bg-accent px-2 py-[5.5px] rounded" onClick={() => handleCopyLine("+" + product?.phone)}>copy</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -382,25 +395,6 @@ const ProductDetails = ({ product }: any) => {
     </>
   );
 };
-
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const res = await fetch(
-//     `https://zsqur.to-leet.com/api/v1/product`
-//   );
-//   const data = await res.json();
-
-//   const paths = data?.map((post: any) => {
-//     return {
-//       params: {
-//         productId: `${post?._id}`,
-//       },
-//     };
-//   });
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// };
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
   const token = context?.req?.cookies?.token;
   const { params } = context;

@@ -16,7 +16,7 @@ const Products = ({ product }: any) => {
       >
         <div className="card card-compact shadow-xl mt-10">
           <figure>
-            <img src={product?.img1} alt="Shoes" className="h-36 w-full" />
+            <img src={product?.img1} alt="Shoes" className="h-36 w-full" draggable= "false"/>
           </figure>
           <div className="card-body h-64 py-2">
             <h2 className="text-lg font-bold"> {product?.title}</h2>

@@ -19,7 +19,7 @@ function FilterAllPosts({ post }: any) {
     >
       <div className="card card-compact bg-base-100 shadow-xl mt-10">
         <figure>
-          <img src={post?.img1} alt="Shoes" className="h-36 w-full" />
+          <img src={post?.img1} alt="Shoes" className="h-36 w-full" draggable= "false"/>
         </figure>
         <div className="card-body h-64 py-2">
           <h2 className="text-lg font-bold"> {post?.title}</h2>

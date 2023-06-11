@@ -13,6 +13,7 @@ import toast from "react-hot-toast";
 import Cookies from "js-cookie";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
+import parsePhoneNumberFromString from "libphonenumber-js";
 
 type FormValues = {
   firstName: string;
@@ -36,20 +37,10 @@ function SignUp() {
   const [numberMethod, setNumberMethod] = useState("");
   const [emailMethod, setEmailMethod] = useState("");
   const [countryNumber, setCountryNumber] = useState();
+  const [isValid, setIsValid] = useState(true);
+  const [isValid2, setIsValid2] = useState(true);
 
   const handleSignUp: SubmitHandler<FormValues> = async (data: any) => {
-    // let getEmail;
-    // const inputValue = data?.email
-    // if (!isNaN(inputValue)) {
-    //   // setNumber(inputValue)
-    //   getEmail= inputValue
-    //   // console.log("Input value is a number.",number);
-    // } else if (inputValue.includes('@') && inputValue.includes('.')) {
-    //   getEmail = inputValue
-    //   // console.log("Input value is an email address.",email);
-    // } else {
-    //   console.log("Input value is neither a number nor an email address.");
-    // }
     const info = {
       firstName: data?.firstName,
       lastName: data?.lastName,
@@ -73,8 +64,8 @@ function SignUp() {
     if (result.message === "Internal server error") {
       return setError("emailError");
     } else {
-      toast.success("Sign Up Successful.");
       router.push(`/signIn`);
+      toast.success("Sign Up Successful.");
     }
     // setSignUpUserInfo(result);
   };
@@ -106,6 +97,15 @@ function SignUp() {
 
   const handleCountryNumberValue = (value: any) => {
     setCountryNumber(value);
+    const phoneNumber = parsePhoneNumberFromString(value, "BD");
+    const isValidNumber = phoneNumber
+      ? phoneNumber.isValid() && phoneNumber.country === "BD"
+      : false;
+    const isFixedLength = value.length === 13;
+    const startsWithFixedNumber =
+      /^88017|^88016|^88015|^88014|^88013|^88018|^88019/.test(value);
+    setIsValid(isValidNumber && isFixedLength);
+    setIsValid2(startsWithFixedNumber);
   };
   const getNm = Cookies.get("nm");
   const getEm = Cookies.get("em");
@@ -124,7 +124,7 @@ function SignUp() {
             loop={true}
           ></Lottie>
         </div>
-        <Card className="w-10/12 mx-auto border-4 px-5 border-neutral bg-neutral shadow-2xl">
+        <Card className="w-full md:w-10/12 mx-auto border-4 px-10 lg:px-5 border-neutral bg-neutral shadow-none md:shadow-2xl">
           {!lang ? (
             <Typography className="  mt-2 text-warning" variant="h4">
               Sign Up
@@ -144,21 +144,20 @@ function SignUp() {
               নিবন্ধিত করতে আপনার বিবরণ লিখুন।
             </Typography>
           )}
-           
 
           {!getNm && getEm && (
             <>
               {!lang ? (
                 <button
                   onClick={handleLoginMethodNumber}
-                  className="bg-warning text-primary text-lg py-[6px] font-medium rounded mt-5"
+                  className="bg-warning text-primary  py-2 font-medium rounded mt-5"
                 >
                   Continue with Mobile Number.
                 </button>
               ) : (
                 <button
                   onClick={handleLoginMethodNumber}
-                  className="bg-warning text-primary text-lg py-[6px] font-medium rounded  mt-5"
+                  className="bg-warning text-primary text-[15px] py-2 font-medium rounded  mt-5"
                 >
                   মোবাইল নাম্বার দিয়ে চালিয়ে যান।
                 </button>
@@ -171,14 +170,14 @@ function SignUp() {
               {!lang ? (
                 <button
                   onClick={handleLoginMethodEmail}
-                  className="bg-warning text-primary text-lg py-2 font-medium rounded mt-5"
+                  className="bg-warning text-primary py-2 font-medium rounded mt-5"
                 >
-                  Continue with Email
+                  Continue with Email.
                 </button>
               ) : (
                 <button
                   onClick={handleLoginMethodEmail}
-                  className="bg-warning text-primary text-lg py-2 font-medium rounded mt-5"
+                  className="bg-warning text-primary text-[15px] py-2 font-medium rounded mt-5"
                 >
                   ইমেইল দিয়ে চালিয়ে যান।
                 </button>
@@ -186,6 +185,39 @@ function SignUp() {
             </>
           )}
           <div className="divider">OR</div>
+          <div className={getEm ? "hidden" : "flex"}>
+            {!lang && !isValid2 && (
+              <p className="text-red-400">
+                {" "}
+                19 | 18 | 17 | 16 | 15 | 14 | 13 | use anyone to start.{" "}
+              </p>
+            )}
+            {lang && !isValid2 && (
+              <p className="text-red-400 text-sm">
+                19 | 18 | 17 | 16 | 15 | 14 | 13 । যে কোন একটি দিয়ে শুরু করুন।{" "}
+              </p>
+            )}
+            <div className={!isValid2 ? "hidden" : "flex"}>
+              {!lang ? (
+                <>
+                  {!isValid && (
+                    <p className="text-red-400">
+                      Please enter a valid full mobile number.
+                    </p>
+                  )}
+                </>
+              ) : (
+                <>
+                  {!isValid && (
+                    <p className="text-red-400">
+                      {" "}
+                      সঠিক পূর্ণ মোবাইল নাম্বার দিন।{" "}
+                    </p>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
           {getEm && (
             <div className="mt-3 mb-2 w-full ">
               <form
@@ -349,24 +381,15 @@ function SignUp() {
             </div>
           )}
           {!getEm && (
-            <div className="mt-3 mb-2 w-full px-4">
+            <div className="mt-3 mb-2 w-full">
               <form
                 onSubmit={handleSubmit(handleSignUp)}
                 className="mb-4 flex flex-col gap-6 relative"
               >
-                <div className="lg:flex-row lg:gap-2 flex flex-col gap-6">
-                  <Input
-                    label={!lang ? "First Name***" : "নামের প্রথম অংশ***"}
-                    {...register("firstName", { required: true })}
-                  />
-                  <Input
-                    label={!lang ? "Last Name***" : "নামের শেষের অংশ***"}
-                    {...register("lastName", { required: true })}
-                  />
-                </div>
                 <PhoneInput
                   value={countryNumber}
                   onChange={handleCountryNumberValue}
+                  countryCodeEditable={false}
                   inputStyle={{
                     width: "100%",
                     paddingTop: "7px",
@@ -390,13 +413,24 @@ function SignUp() {
                     }
                   }}
                 />
+                <div className="lg:flex-row lg:gap-2 flex flex-col gap-6">
+                  <Input
+                    label={!lang ? "First Name***" : "নামের প্রথম অংশ***"}
+                    {...register("firstName", { required: true })}
+                  />
+                  <Input
+                    label={!lang ? "Last Name***" : "নামের শেষের অংশ***"}
+                    {...register("lastName", { required: true })}
+                  />
+                </div>
+
                 <Input
                   type={passHidden ? "password" : "text"}
                   label={!lang ? "Password***" : "পাসওয়ার্ড***"}
                   {...register("password", { required: true })}
                 />
                 <div
-                  className="cursor-pointer absolute right-4 mt-[200px] lg:-top-[64px]"
+                  className="cursor-pointer absolute right-4 mt-[195px] lg:-top-[68px]"
                   onClick={handlePass}
                 >
                   {passHidden ? (
@@ -414,7 +448,7 @@ function SignUp() {
                   {...register("confirmPassword", { required: true })}
                 />
                 <div
-                  className="cursor-pointer absolute right-4 top-[264px] lg:top-[200px]"
+                  className="cursor-pointer absolute right-4 top-[260px] lg:top-[195px]"
                   onClick={handleCoPass}
                 >
                   {coPassHidden ? (
@@ -486,22 +520,22 @@ function SignUp() {
                 </span>
                 {!lang ? (
                   <button
-                    disabled={agree ? false : true}
+                    disabled={agree && isValid && isValid2 ? false : true}
                     className={
-                      agree
-                        ? "mt- w-full bg-warning py-2 rounded font-semibold text-primary -mt-8"
-                        : "mt- w-full bg-gray-300 py-2 rounded font-semibold text-gray-800 -mt-8"
+                      agree && !loading && isValid && isValid2
+                        ? " w-full bg-warning py-2 rounded font-semibold text-primary -mt-10"
+                        : " w-full bg-gray-300 py-2 rounded font-semibold text-gray-800 -mt-10"
                     }
                   >
                     {loading ? "Creating..." : "Sign Up"}
                   </button>
                 ) : (
                   <button
-                    disabled={agree ? false : true}
+                    disabled={agree && isValid && isValid2 ? false : true}
                     className={
-                      agree
-                        ? "mt- w-full bg-warning py-2 rounded font-semibold text-primary -mt-8"
-                        : "mt- w-full bg-gray-300 py-2 rounded font-semibold text-gray-800 -mt-8"
+                      agree && !loading && isValid && isValid2
+                        ? "w-full bg-warning py-2 rounded font-semibold text-primary -mt-10"
+                        : " w-full bg-gray-300 py-2 rounded font-semibold text-gray-800 -mt-10"
                     }
                   >
                     {loading ? "অপেক্ষা করুন..." : "সাইন আপ"}

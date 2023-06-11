@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import Cookies from "js-cookie";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
+import parsePhoneNumberFromString from "libphonenumber-js";
 
 type FormValues = {
   email: string | number;
@@ -24,6 +25,8 @@ const Reset = () => {
   const [numberMethod, setNumberMethod] = useState("");
   const [emailMethod, setEmailMethod] = useState("");
   const [countryNumber, setCountryNumber] = useState();
+  const [isValid, setIsValid] = useState(true);
+  const [isValidNum, setIsValidNum] = useState(true);
   const router = useRouter();
   const {
     register,
@@ -80,6 +83,12 @@ const Reset = () => {
 
   const handleCountryNumberValue = (value: any) => {
     setCountryNumber(value);
+    const phoneNumber = parsePhoneNumberFromString(value, 'BD');
+    const isValidNumber = phoneNumber ? phoneNumber.isValid() && phoneNumber.country === 'BD' : false;
+    const isFixedLength = value.length === 13;
+    const startsWithFixedNumber = /^88017|^88016|^88015|^88014|^88013|^88018|^88019/.test(value);
+    setIsValid(isValidNumber && isFixedLength);
+    setIsValidNum(startsWithFixedNumber);
   };
   const getNm = Cookies.get("nm");
   const getEm = Cookies.get("em");
@@ -89,7 +98,7 @@ const Reset = () => {
       <Head>
         <title>To Leet - Reset Password</title>
       </Head>
-      <div className="md:w-10/12 lg:w-4/12 mx-auto my-20 shadow-2xl p-10 rounded">
+      <div className="md:w-10/12 lg:w-4/12 mx-auto my-10 shadow-2xl p-10 rounded">
         <div>
           {!getNm && getEm && (
             <>
@@ -118,7 +127,7 @@ const Reset = () => {
                   onClick={handleLoginMethodEmail}
                   className="w-full bg-warning text-primary text-lg py-[6px] font-medium rounded  mt-5"
                 >
-                  Continue with Email
+                  Continue with Email.
                 </button>
               ) : (
                 <button
@@ -154,7 +163,19 @@ const Reset = () => {
             আপনার নিবন্ধন করা মোবাইল নাম্বার দিন।
           </h1>
         )}
-
+  <div className={getEm ? "hidden" : "flex mb-3"}>
+         {
+            !lang && !isValidNum && <p className="text-red-400"> 19 | 18 | 17 | 16 | 15 | 14 | 13 | use anyone to start. </p>
+          }
+          {
+            lang && !isValidNum && <p className="text-red-400 text-sm">19 | 18 | 17 | 16 | 15 | 14 | 13 । যে কোন একটি দিয়ে শুরু করুন। </p>
+          }
+           <div className={!isValidNum ? "hidden" : "flex"}>
+         {
+            !lang ? <>{!isValid && <p className="text-red-400">Please enter a valid full mobile number.</p>}</> : <>{!isValid && <p className="text-red-400"> সঠিক পূর্ণ মোবাইল নাম্বার দিন। </p>}</>
+          }
+         </div>
+         </div>
         {!getEm && (
           <form
             onSubmit={handleSubmit(handleResetPass)}
@@ -164,6 +185,7 @@ const Reset = () => {
               <PhoneInput
                 value={countryNumber}
                 onChange={handleCountryNumberValue}
+                countryCodeEditable={false}
                 inputStyle={{
                   width: "100%",
                   paddingTop: "7px",
@@ -198,7 +220,7 @@ const Reset = () => {
                   {...register("password", { required: true })}
                 />{" "}
                 <div
-                  className="cursor-pointer absolute right-4 top-[72px]"
+                  className="cursor-pointer absolute right-4 top-[68px]"
                   onClick={handlePass}
                 >
                   {passHidden ? (
@@ -221,7 +243,7 @@ const Reset = () => {
                   </span>
                 )}
                 <div
-                  className="cursor-pointer absolute right-4 top-[135px]"
+                  className="cursor-pointer absolute right-4 top-[131px]"
                   onClick={handleCoPass}
                 >
                   {coPassHidden ? (

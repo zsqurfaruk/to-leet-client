@@ -35,6 +35,7 @@ const DashboardPost = ({ post }: any) => {
           src={post?.img1}
           alt=""
           className="h-52 lg:w-60 w-full rounded"
+          draggable= "false"
         />
 
         <div className="-ml-6 lg:ml-0 mt-5 mb-0 lg:mt-0">

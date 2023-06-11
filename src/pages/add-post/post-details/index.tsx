@@ -25,6 +25,9 @@ import { totalBedEng } from "../../../components/PostData/TotalBed";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
+import "react-phone-input-2/lib/style.css";
+import PhoneInput from "react-phone-input-2";
+import parsePhoneNumberFromString from "libphonenumber-js";
 
 type FormValues = {
   bedNumber: object;
@@ -68,6 +71,9 @@ const PostDetails = () => {
   const [amountErrorBan, setAmountErrorBan] = useState("");
   const [loading, setLoading] = useState(false);
   const [postLoading, sePostLoading] = useState(false);
+  const [countryNumber, setCountryNumber] = useState();
+  const [isValid, setIsValid] = useState(true);
+  const [isValidNum, setIsValidNum] = useState(true);
 
   const {
     modalValue,
@@ -175,6 +181,19 @@ const PostDetails = () => {
     };
     setWifi(newName);
   }
+
+  const handleCountryNumberValue = (value: any) => {
+    setCountryNumber(value);
+    const phoneNumber = parsePhoneNumberFromString(value, "BD");
+    const isValidNumber = phoneNumber
+      ? phoneNumber.isValid() && phoneNumber.country === "BD"
+      : false;
+    const isFixedLength = value.length === 13;
+    const startsWithFixedNumber =
+      /^88017|^88016|^88015|^88014|^88013|^88018|^88019/.test(value);
+    setIsValid(isValidNumber && isFixedLength);
+    setIsValidNum(startsWithFixedNumber);
+  };
   const handlePost: SubmitHandler<FormValues> = async (data) => {
     const values = {
       bedrooms: bedRooms,
@@ -193,8 +212,7 @@ const PostDetails = () => {
       img4: imageUrl4,
       img5: imageUrl5,
       name: data?.name,
-      // register: data?.register,
-      phone: data?.phone || validNumber,
+      phone: countryNumber,
       email: data?.email,
       terms: data?.terms,
       areaName: getPostPopularAreaName,
@@ -281,21 +299,21 @@ const PostDetails = () => {
     setImageUrl5("");
   };
 
-  const checkNumber = (e: any) => {
-    if (e && isNaN(e)) {
-      setNumberError(
-        "English is the recommended language for writing valid mobile number."
-      );
-      setNumberErrorBan("সঠিক মোবাইল নাম্বার ইংরেজিতে লিখুন।");
-    } else if (e && !isNaN(e)) {
-      setValidNumber(e);
-      setNumberError("");
-      setNumberErrorBan("");
-    } else if (!e) {
-      setNumberError("");
-      setNumberErrorBan("");
-    }
-  };
+  // const checkNumber = (e: any) => {
+  //   if (e && isNaN(e)) {
+  //     setNumberError(
+  //       "English is the recommended language for writing valid mobile number."
+  //     );
+  //     setNumberErrorBan("সঠিক মোবাইল নাম্বার ইংরেজিতে লিখুন।");
+  //   } else if (e && !isNaN(e)) {
+  //     setValidNumber(e);
+  //     setNumberError("");
+  //     setNumberErrorBan("");
+  //   } else if (!e) {
+  //     setNumberError("");
+  //     setNumberErrorBan("");
+  //   }
+  // };
   const checkAmountValidity = (e: any) => {
     if (e && isNaN(e)) {
       setAmountError("Please write the amount in English.");
@@ -322,11 +340,9 @@ const PostDetails = () => {
     if (!isNaN(parseInt(authentication))) {
       // setNumber(inputValue)
       getNumber = authentication;
-      
     } else if (authentication.includes("@") && authentication.includes(".")) {
       checkAuthentication = authentication;
-      
-    } 
+    }
   }
   return (
     <>
@@ -1197,84 +1213,178 @@ const PostDetails = () => {
                   />
                 </div>
                 <div className="mt-10">
-                <div className="flex gap-6">
-                  {!lang ? <h5>Email</h5> : <h5>ইমেইলঃ </h5>}
-                
-                   { checkAuthentication && <>{!lang ? (
-                      <small className="text-blue-400">
-                        You can't change your email. To change please contact
-                        the admin.
-                      </small>
-                    ) : (
-                      <small className="text-blue-400">
-                        আপনি ইমেইল পরিবর্তন করতে পারবেন না। পরিবর্তন করতে
-                        এডমিনের সাথে যোগাযোগ করুন।
-                      </small>
-                    )}</>}
-                 
+                  <div className="flex gap-6">
+                    {!lang ? <h5>Email</h5> : <h5>ইমেইলঃ </h5>}
+
+                    {checkAuthentication && (
+                      <>
+                        {!lang ? (
+                          <small className="text-blue-400">
+                            You can't change your email. To change please
+                            contact the admin.
+                          </small>
+                        ) : (
+                          <small className="text-blue-400">
+                            আপনি ইমেইল পরিবর্তন করতে পারবেন না। পরিবর্তন করতে
+                            এডমিনের সাথে যোগাযোগ করুন।
+                          </small>
+                        )}
+                      </>
+                    )}
+                  </div>
+                  <input
+                    {...register("email", { required: true })}
+                    type="email"
+                    className="input input-bordered w-full bg-primary"
+                    defaultValue={checkAuthentication}
+                    readOnly={checkAuthentication ? true : false}
+                  />
+                  {errors.email && (
+                    <span className="text-red-400 pt-5">
+                      {!lang
+                        ? " This field is required"
+                        : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
+                    </span>
+                  )}
                 </div>
-                <input
-                  {...register("email", { required: true })}
-                  type="email"
-                  className="input input-bordered w-full bg-primary"
-                  defaultValue={checkAuthentication}
-                  readOnly={checkAuthentication ? true : false}
-                />
-                {errors.email && (
-                  <span className="text-red-400 pt-5">
-                    {!lang
-                      ? " This field is required"
-                      : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
-                  </span>
-                )}
-                 
-              </div>
-                <div className="mt-10 border border-warning p-5">
-                {!lang ? (
-                  <h5>Add A Mobile Number:</h5>
-                ) : (
-                  <h5>একটি মোবাইল নাম্বার দিনঃ</h5>
-                )}
+                <div className="mt-10 border border-warning py-7 px-5">
+                  {!lang ? (
+                    <h5 className="mb-2">Add A Mobile Number:</h5>
+                  ) : (
+                    <h5 className="mb-2">একটি মোবাইল নাম্বার দিনঃ</h5>
+                  )}
+                  <div className="mb-3">
+                    {!lang && !isValidNum && (
+                      <p className="text-red-400">
+                        {" "}
+                        19 | 18 | 17 | 16 | 15 | 14 | 13 | use anyone to start.{" "}
+                      </p>
+                    )}
+                    {lang && !isValidNum && (
+                      <p className="text-red-400 text-sm">
+                        19 | 18 | 17 | 16 | 15 | 14 | 13 । যে কোন একটি দিয়ে শুরু
+                        করুন।{" "}
+                      </p>
+                    )}
+                    <div className={!isValidNum ? "hidden" : "flex"}>
+                      {!lang ? (
+                        <>
+                          {!isValid && (
+                            <p className="text-red-400">
+                              Please enter a valid full mobile number.
+                            </p>
+                          )}
+                        </>
+                      ) : (
+                        <>
+                          {!isValid && (
+                            <p className="text-red-400">
+                              {" "}
+                              সঠিক পূর্ণ মোবাইল নাম্বার দিন।{" "}
+                            </p>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  </div>
+                  {getNumber ? (
+                    //   <input
+                    //   {...register("phone",{ required: true })}
+                    //   type="text"
+                    //   placeholder="Add A Mobile Number"
+                    //   className="input input-bordered w-full mt-5 bg-primary"
+                    //   // onChange={(e: any) => checkNumber(e.target.value)}
+                    //   defaultValue={getNumber}
+                    //   // readOnly={getNumber ? true : false}
+                    // />
+                    <PhoneInput
+                      value={getNumber}
+                      onChange={handleCountryNumberValue}
+                      countryCodeEditable={false}
+                      inputStyle={{
+                        width: "100%",
+                        paddingTop: "7px",
+                        paddingBottom: "7px",
+                        backgroundColor: "#f1feff",
+                      }}
+                      country="bd"
+                      onlyCountries={["bd"]}
+                      inputProps={{
+                        name: "phone",
+                        required: true,
+                        autoFocus: true,
+                      }}
+                      isValid={(value: any, country: any) => {
+                        if (value.match(/12345/)) {
+                          return (
+                            "Invalid value: " + value + ", " + country.name
+                          );
+                        } else if (value.match(/1234/)) {
+                          return false;
+                        } else {
+                          return true;
+                        }
+                      }}
+                    />
+                  ) : (
+                    //   <input
+                    //   {...register("phone",{ required: true })}
+                    //   type="text"
+                    //   placeholder="Add A Mobile Number"
+                    //   className="input input-bordered w-full mt-5 bg-primary"
+                    //   onChange={(e: any) => checkNumber(e.target.value)}
 
-                {
-                  getNumber ? <input
-                  {...register("phone",{ required: true })}
-                  type="text"
-                  placeholder="Add A Mobile Number"
-                  className="input input-bordered w-full mt-5 bg-primary"
-                  // onChange={(e: any) => checkNumber(e.target.value)}
-                  defaultValue={getNumber}
-                  // readOnly={getNumber ? true : false}
-                /> : <input
-                {...register("phone",{ required: true })}
-                type="text"
-                placeholder="Add A Mobile Number"
-                className="input input-bordered w-full mt-5 bg-primary"
-                onChange={(e: any) => checkNumber(e.target.value)}
-                 
-              />
-                }
+                    // />
 
-                {errors.phone && (
-                  <span className="text-red-400 pt-5">
-                    {!lang
-                      ? " This field is required"
-                      : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
-                  </span>
-                )}
-                {!lang ? (
-                  <span className="text-red-400 mt-1">{numberError}</span>
-                ) : (
-                  <span className="text-red-400 mt-1 text-sm">
-                    {numberErrorBan}
-                  </span>
-                )}
-                {/* <button className="btn btn-secondary btn-sm mt-5">
+                    <PhoneInput
+                      value={countryNumber}
+                      onChange={handleCountryNumberValue}
+                      countryCodeEditable={false}
+                      inputStyle={{
+                        width: "100%",
+                        paddingTop: "7px",
+                        paddingBottom: "7px",
+                        backgroundColor: "#f1feff",
+                      }}
+                      country="bd"
+                      onlyCountries={["bd"]}
+                      inputProps={{
+                        name: "phone",
+                        required: true,
+                        autoFocus: true,
+                      }}
+                      isValid={(value: any, country: any) => {
+                        if (value.match(/12345/)) {
+                          return (
+                            "Invalid value: " + value + ", " + country.name
+                          );
+                        } else if (value.match(/1234/)) {
+                          return false;
+                        } else {
+                          return true;
+                        }
+                      }}
+                    />
+                  )}
+
+                  {errors.phone && (
+                    <span className="text-red-400 pt-5">
+                      {!lang
+                        ? " This field is required"
+                        : "আপনাকে অবশ্যই এটা পূরণ করতে হবে।"}
+                    </span>
+                  )}
+                  {!lang ? (
+                    <span className="text-red-400 mt-1">{numberError}</span>
+                  ) : (
+                    <span className="text-red-400 mt-1 text-sm">
+                      {numberErrorBan}
+                    </span>
+                  )}
+                  {/* <button className="btn btn-secondary btn-sm mt-5">
               <span> Verify otp</span>
             </button> */}
-              </div>
-              
-                
+                </div>
               </div>
             </div>
             {/* <div className="flex gap-2 lg:w-1/2 mx-auto mt-10"> */}
@@ -1295,7 +1405,9 @@ const PostDetails = () => {
                     ? "text-white w-1/2 mb-10 mt-12 font-semibold  bg-gray-800"
                     : "text-primary w-1/2 mb-10 mt-12 font-semibold  bg-warning"
                 }
-                disabled={modalValue?.eng ? false : true}
+                disabled={
+                  modalValue?.eng && isValid && isValidNum ? false : true
+                }
               >
                 {postLoading ? (
                   <> {!lang ? "Posting" : "পোস্ট হচ্ছে..."}</>

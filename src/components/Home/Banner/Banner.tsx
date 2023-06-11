@@ -2,10 +2,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import lottiImage from "../../../image/lf30_p5tali1o (1).json";
 import Lottie from "lottie-react";
-import style from "../../../styles/banner.module.css";
-import { BsArrowDownCircleFill } from "react-icons/bs";
-import { useRouter } from "next/router";
-import { Checkbox, Radio } from "@material-tailwind/react";
 import AllCity from "../AllCity/AllCity";
 import AllDivision from "../AllDivision/AllDivision";
 import { StateContext } from "@/Context/StateContext/StateContext";
@@ -183,6 +179,7 @@ const Banner = () => {
               className="lg:scale-110 hidden lg:flex "
               animationData={lottiImage}
               loop={true}
+              draggable= "false"
             ></Lottie>
           )}
           </div>
