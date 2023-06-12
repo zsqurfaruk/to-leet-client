@@ -8,7 +8,7 @@ const AboutBan = () => {
   return (
     <div className="w-10/12 mx-auto py-10 text-justify text-gray-700">
       <h1 className="text-2xl font-semibold text-warning">
-        "To-Leet": The Ultimate Rental Solution
+        To-Leet : The Ultimate Rental Solution
       </h1>
       <br />
       আজকের দ্রুত গতির এবং সদা পরিবর্তনশীল বিশ্বে, আপনার প্রয়োজনের জন্য সঠিক
@@ -16,9 +16,7 @@ const AboutBan = () => {
       স্টোরেজ, আপনার শখ পূরণের জন্য একটি ওয়ার্কশপ বা আপনার পণ্য প্রদর্শনের জন্য
       একটি খুচরা জায়গার প্রয়োজন হোক না কেন, উপযুক্ত ভাড়ার জন্য অনুসন্ধান
       সময়সাপেক্ষ এবং হতাশাজনক হতে পারে। তবে আর চিন্তা করবেন না!
-      <span className="text-warning text-lg">To-Leet</span> - এ স্বাগতম, নতুন
-      চালু হওয়া অনলাইন হোম,মেস, অফিস, যানবাহন, গ্যারেজ, এবং দোকান ভাড়া পরিষেবা
-      কোম্পানি যার লক্ষ্য আপনার ভাড়ার অভিজ্ঞতা সহজ করা।
+      <span className="text-warning text-lg"> To-Leet</span> - এ স্বাগতম, <span className="text-warning text-lg">To-Leet</span> হল সবচেয়ে নিরাপদ এবং সহজ অনলাইন বাড়ি, মেস, হোস্টেল, অফিস, গ্যারেজ এবং দোকান ভাড়ার পরিষেবা কোম্পানি যার লক্ষ্য আপনার ভাড়ার অভিজ্ঞতাকে সহজ করা।
       <div className="hidden lg:inline">
         <span className="text-warning text-lg">To-Leet</span> - এ, আমরা বুঝি যে
         প্রত্যেকের প্রয়োজনীয়তা অনন্য, এবং নিখুঁত স্থান খোঁজা একটি বিরামহীন

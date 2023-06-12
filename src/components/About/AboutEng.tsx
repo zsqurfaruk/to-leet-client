@@ -7,20 +7,19 @@ const AboutEng = () => {
   const [open, setOpen] = useState(true);
 
   return (
-    <div className="w-10/12 mx-auto py-10 text-justify text-gray-700">
+    <div className="w-10/12 mx-auto py-10 text-gray-700">
       <h1 className="text-2xl font-semibold text-warning">
-        "To-Leet": The Ultimate Rental Solution
+        To-Leet : The Ultimate Rental Solution
       </h1>
-      <br />
+     <div className="text-justify">
+     <br />
       In today's fast-paced and ever-changing world, finding the right space for
       your needs can be a daunting task. Whether you require extra storage for
       your belongings, a workshop to pursue your hobbies, or a retail space to
       showcase your products, the search for suitable rentals can be
-      time-consuming and frustrating. But worry no more! Welcome to To-Leet, the
-      newly launched online home, mess,hostel, office, garage, and shop rental
-      service company that aims to simplify your rental experience.
-      <span className="hidden lg:inline">
-        At To-Leet, we understand that everyone's requirements are unique, and
+      time-consuming and frustrating. But worry no more! <br />
+      Welcome to  <span className="text-warning font-semibold"> To-Leet</span> is the most secure and easy online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience.
+      <span className="hidden lg:inline"> At  <span className="text-warning font-semibold"> To-Leet</span>, we understand that everyone's requirements are unique, and
         finding the perfect space should be a seamless process. We have
         leveraged the power of technology to create an intuitive and
         user-friendly online platform that connects renters with an extensive
@@ -125,6 +124,7 @@ const AboutEng = () => {
           Show less <IoMdArrowDropup className="mb-1 text-3xl text-warning" />
         </button>
       </div>
+     </div>
     </div>
   );
 };
