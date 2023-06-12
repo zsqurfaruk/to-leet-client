@@ -10,9 +10,7 @@ const BannerEng = () => {
           id={style.bannerTextColorChange}
           className="text-2xl md:text-5xl font-semibold"
         >
-          Find
-        </span>
-         your rental solution with
+          Find </span>your rental solution with
         <span
           id={style.bannerTextColorChange}
           className="text-2xl md:text-5xl font-semibold"

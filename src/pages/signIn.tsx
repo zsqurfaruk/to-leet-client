@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Card, Typography, Input } from "@material-tailwind/react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
@@ -12,6 +12,7 @@ import Cookies from "js-cookie";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import parsePhoneNumberFromString from "libphonenumber-js";
+import { StateContext } from "@/Context/StateContext/StateContext";
  
  
 type FormValues = {
@@ -29,13 +30,8 @@ const SignIn = () => {
   const [countryNumber, setCountryNumber] = useState();
   const [isValid, setIsValid] = useState(true);
   const [isValidNum, setIsValidNum] = useState(true);
-  // const {
-  //   accountLogIn,
-  //   providerGoogleLogIn,
-  //   setUserInfo,
-  //   signUpUserInfo,
-  // }: any = useContext(AuthContext);
-  // const provider = new GoogleAuthProvider();
+  const { isOpen }: any = useContext(StateContext);
+ 
   const router = useRouter();
   const {
     register,
@@ -43,16 +39,7 @@ const SignIn = () => {
     formState: { errors },
   } = useForm<FormValues>();
 
-  // const handleLogin = (event: any) => {
-  //   accountLogIn(event.target.email.value, event.target.password.value)
-  //     .then((result: any) => {
-  //       const user = result.user;
-  //       // setLogInUserEmail(data.email);
-  //       // toast.success('Login success')
-  //       router.push("/");
-  //     })
-  //     .catch((error: any) => setSignInError(error.message && error.code));
-  // };
+  
   const handleSignIn = async (data: any) => {
     const info = {
       email: countryNumber || data?.email,

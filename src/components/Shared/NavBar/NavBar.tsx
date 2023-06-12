@@ -10,8 +10,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
-import logo from "../../../image/Blue And Yellow Typography Company Logo (4).jpg";
-import Image from "next/image";
 import Cookies from "js-cookie";
 
 export default function NavBar() {
@@ -42,8 +40,6 @@ export default function NavBar() {
   }: any = useContext(PostStateContext);
   const [authenticated, setAuthenticated] = useState(false);
   const { push, pathname } = useRouter();
-
-  // const { data: session } = useSession()
 
   useEffect(() => {
     const token = Cookies.get("token");
@@ -101,8 +97,6 @@ export default function NavBar() {
     setOpenModalEng(false);
     setFilterModalValue({});
     setFilterModal(false);
-    // setFilterPost([])
-    // handleOpenModalEng(false)
     setFilterValue({});
     setFilterTypeCity(false);
     setFilterTypeDivision(false);
@@ -273,7 +267,6 @@ export default function NavBar() {
             {authenticated ? (
               <Button
                 onClick={handleLogOut}
-                // variant="gradient"
                 size="sm"
                 className="hidden lg:inline-block text-gray-700 -my-2 bg-accent rounded"
               >

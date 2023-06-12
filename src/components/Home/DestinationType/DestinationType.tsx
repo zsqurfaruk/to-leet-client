@@ -13,7 +13,7 @@ const DestinationType = () => {
           What's your need?
         </h1>
       ) : (
-        <h1 className="text-center text-xl font-semibold lg:-mt-4 text-warning">
+        <h1 className="text-center text-xl font-semibold lg:-mt-6 text-warning">
           আপনার প্রয়োজন অনুযায়ী খুজুন
         </h1>
       )}

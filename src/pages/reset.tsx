@@ -1,7 +1,7 @@
 import { Input} from "@material-tailwind/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { useForm } from "react-hook-form";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import toast from "react-hot-toast";
@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import parsePhoneNumberFromString from "libphonenumber-js";
+import { StateContext } from "@/Context/StateContext/StateContext";
 
 type FormValues = {
   email: string | number;
@@ -27,6 +28,7 @@ const Reset = () => {
   const [countryNumber, setCountryNumber] = useState();
   const [isValid, setIsValid] = useState(true);
   const [isValidNum, setIsValidNum] = useState(true);
+  const { isOpen }: any = useContext(StateContext);
   const router = useRouter();
   const {
     register,

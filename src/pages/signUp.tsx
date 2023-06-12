@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Card, Typography, Input } from "@material-tailwind/react";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
@@ -14,6 +14,7 @@ import Cookies from "js-cookie";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import parsePhoneNumberFromString from "libphonenumber-js";
+import { StateContext } from "@/Context/StateContext/StateContext";
 
 type FormValues = {
   firstName: string;
@@ -39,6 +40,7 @@ function SignUp() {
   const [countryNumber, setCountryNumber] = useState();
   const [isValid, setIsValid] = useState(true);
   const [isValid2, setIsValid2] = useState(true);
+  const { isOpen }: any = useContext(StateContext);
 
   const handleSignUp: SubmitHandler<FormValues> = async (data: any) => {
     const info = {

@@ -4,9 +4,11 @@ import Head from "next/head";
 import DestinationType from "@/components/Home/DestinationType/DestinationType";
 import PostCounter from "@/components/Home/PostCounter/PostCounter";
 import Banner from "@/components/Home/Banner/Banner";
+import { StateContext } from "@/Context/StateContext/StateContext";
 import About from "@/components/About/About";
 
 function Home() {
+  const { isOpen }: any = useContext(StateContext);
 
   return (
     <>
