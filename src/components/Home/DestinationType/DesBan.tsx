@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import { Card, Typography } from "@material-tailwind/react";
 import Link from "next/link";
 import { FcHome, FcShop } from "react-icons/fc";
-import { StateContext } from "@/Context/StateContext/StateContext";
 import Image from "next/image";
 import man from "../../../image/man (1).png";
 import female from "../../../image/worker.png";
@@ -16,9 +15,7 @@ import car from "../../../image/car.png";
 import garage from "../../../image/garage.png";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
 const DesBan = () => {
-  const { filterTypeCity, filterTypeDivision }: any = useContext(StateContext);
   const { counter }: any = useContext(APIContext);
-
   const getCount = (value: any) => {
     return counter.find((item: any) => item.type.eng === value) || null;
   };
