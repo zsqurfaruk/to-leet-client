@@ -68,7 +68,7 @@ const PostDetails = () => {
   const [amountError, setAmountError] = useState("");
   const [amountErrorBan, setAmountErrorBan] = useState("");
   const [loading, setLoading] = useState(false);
-  const [postLoading, sePostLoading] = useState(false);
+  const [postLoading, setPostLoading] = useState(false);
   const [countryNumber, setCountryNumber] = useState();
   const [isValid, setIsValid] = useState(true);
   const [isValidNum, setIsValidNum] = useState(true);
@@ -224,7 +224,7 @@ const PostDetails = () => {
       type: modalValue,
       university: getUniversityModalValue,
     };
-    sePostLoading(true);
+    setPostLoading(true);
     const res = await fetch("https://zsqur.to-leet.com/api/v1/product", {
       method: "POST",
       headers: {
@@ -245,12 +245,12 @@ const PostDetails = () => {
       toast.success("Thanks for your ads.");
       setReload(!reload);
       router.push(`/${modalValue.eng}`);
-      sePostLoading(false);
+      setPostLoading(false);
     }
   };
 
   const imageUploadHandler = (event: any, setImg: any) => {
-    setLoading(true);
+    
     const imageData = new FormData();
     imageData.set("key", "49a57cce0acfac6a6e93d404f46d3e5a");
     imageData.append("image", event.target.files[0]);
@@ -258,7 +258,7 @@ const PostDetails = () => {
     imageData.append("image", event.target.files[2]);
     imageData.append("image", event.target.files[3]);
     imageData.append("image", event.target.files[4]);
-
+    setLoading(true);
     axios
       .post("https://api.imgbb.com/1/upload", imageData)
       .then(function (response) {

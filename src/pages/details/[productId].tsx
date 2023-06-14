@@ -394,7 +394,6 @@ const ProductDetails = ({ product }: any) => {
   );
 };
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
-
   const cookieValue = context?.req?.cookies?.token;
   const token = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
   const { params } = context;
@@ -407,6 +406,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
     }
   );
   const data = await res.json();
+  
   if (!data) {
     return {
       redirect: {

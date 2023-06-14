@@ -18,7 +18,7 @@ const AboutEng = () => {
       your belongings, a workshop to pursue your hobbies, or a retail space to
       showcase your products, the search for suitable rentals can be
       time-consuming and frustrating. But worry no more! <br />
-      Welcome to  <span className="text-warning font-semibold"> To-Leet</span> is the most secure and easy online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience.
+      Welcome to To-Leet, <span className="text-warning font-semibold"> To-Leet</span> is the most secure and easy online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience.
       <span className="hidden lg:inline"> At  <span className="text-warning font-semibold"> To-Leet</span>, we understand that everyone's requirements are unique, and
         finding the perfect space should be a seamless process. We have
         leveraged the power of technology to create an intuitive and

@@ -1,11 +1,11 @@
 import React from "react";
 
-const Analytics = () => {
+const GoogleAnalytics = () => {
   return (
-    <div>
+    <>
       <script
         async
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=G-28G505GM60`}
       ></script>
       <script
         dangerouslySetInnerHTML={{
@@ -13,13 +13,12 @@ const Analytics = () => {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE}');
+              gtag('config', 'G-28G505GM60');
             `,
         }}
       />
-      
-    </div>
+    </>
   );
 };
 
-export default Analytics;
+export default GoogleAnalytics;
