@@ -37,9 +37,7 @@ const ProductDetails = ({ product }: any) => {
     navigator.clipboard.writeText(line);
     toast.success("Copied")
   };
-  const handleContextMenu = (event:any) => {
-    event.preventDefault();
-  };
+  
   const lang = Cookies.get("lan");
   return (
     <>
@@ -396,7 +394,9 @@ const ProductDetails = ({ product }: any) => {
   );
 };
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
-  const token = context?.req?.cookies?.token;
+
+  const cookieValue = context?.req?.cookies?.token;
+  const token = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
   const { params } = context;
   const res = await fetch(
     `https://zsqur.to-leet.com/api/v1/product/${params?.productId}`,

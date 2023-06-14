@@ -188,7 +188,7 @@ const ShowUniversityPost = ({ university }: any) => {
                     university?.type?.eng === "Sublet-(Male)" ||
                     university?.type?.eng === "Sublet-(Female)"
                       ? "Per seat:"
-                      : "Amount"}{" "}
+                      : "Rent:"}{" "}
                     {university?.amount} Taka{" "}
                   </h2>
                 ) : (

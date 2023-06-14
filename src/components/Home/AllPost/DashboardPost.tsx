@@ -10,13 +10,15 @@ const DashboardPost = ({ post }: any) => {
   const lang = Cookies.get("lan");
   const { reload, setReload }: any = useContext(APIContext);
 
+  const cookieValue = Cookies.get('token');
+  const token = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
   const handleUpdate = async () => {
     const res = await fetch(
       `https://zsqur.to-leet.com/api/v1/product/update/available/${post._id}`,
       {
         method: "PATCH",
         headers: {
-          authorization: `bearer ${Cookies.get("token")}`,
+          authorization: `bearer ${token}`,
         },
       }
     );
@@ -154,7 +156,7 @@ const DashboardPost = ({ post }: any) => {
                         post?.type?.eng === "Sublet-(Male)" ||
                         post?.type?.eng === "Sublet-(Female)"
                           ? "Per seat:"
-                          : "Amount"}{" "}
+                          : "Rent:"}{" "}
                         {post?.amount} Taka{" "}
                       </h2>
                     ) : (

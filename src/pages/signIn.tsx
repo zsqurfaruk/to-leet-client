@@ -39,7 +39,8 @@ const SignIn = () => {
     formState: { errors },
   } = useForm<FormValues>();
 
-  
+  const cookieValue = Cookies.get('token');
+  const tkn = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
   const handleSignIn = async (data: any) => {
     const info = {
       email: countryNumber || data?.email,
@@ -50,7 +51,7 @@ const SignIn = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        authorization: `bearer ${Cookies.get("token")}`,
+        authorization: `bearer ${tkn}`,
       },
       body: JSON.stringify(info),
     });
@@ -60,13 +61,13 @@ const SignIn = () => {
     setSignInErrorBan(result?.error?.ban);
     const token = result?.data?.token;
     if (token) {
-      // Cookies.set('token', encodeURIComponent(JSON.stringify(token)));
-      Cookies.set("token", token);
-      Cookies.set("authentication", result?.data?.user?.email);
+      Cookies.set('token', encodeURIComponent(JSON.stringify(token)),{ expires: 5 });
+      // Cookies.set("token", token,{ expires: 5 });
+      Cookies.set("authentication", result?.data?.user?.email,{ expires: 5 });
       // Cookies.set("token", token);
       // Cookies.set("email", result?.data?.user.email);
-      Cookies.set("firstName", result?.data?.user.firstName);
-      Cookies.set("lastName", result?.data?.user.lastName);
+      Cookies.set("firstName", result?.data?.user.firstName,{ expires: 5 });
+      Cookies.set("lastName", result?.data?.user.lastName,{ expires: 5 });
       setLoading(false);
       const { query }: any = router;
       const nextPage = query.next || "/";
@@ -75,8 +76,8 @@ const SignIn = () => {
     }
   };
   // const cookieValue = Cookies.get('token');
-  // if(cookieValue){
-  //   const data = decodeURIComponent(JSON.parse(cookieValue ||""))
+  // const data = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
+  // // if(cookieValue){
   //   console.log(data)
 
   const handle = () => {

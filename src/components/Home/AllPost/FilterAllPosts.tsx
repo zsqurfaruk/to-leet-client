@@ -188,7 +188,7 @@ function FilterAllPosts({ post }: any) {
                   post?.type?.eng === "Sublet-(Male)" ||
                   post?.type?.eng === "Sublet-(Female)"
                     ? "Per seat:"
-                    : "Amount"
+                    : "Rent:"
                 }  {post?.amount} Taka </h2>
               ) : (
                 <h2> {

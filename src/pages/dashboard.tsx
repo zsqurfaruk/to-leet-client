@@ -13,12 +13,14 @@ const Dashboard = () => {
   const email = Cookies.get("authentication");
   const [personalPost, setPersonalPost] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  
+  const cookieValue = Cookies.get('token');
+  const token = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
   useEffect(() => {
     setLoading(true);
     fetch(`https://zsqur.to-leet.com/api/v1/product/user/email/${email}`, {
       headers: {
-        authorization: `bearer ${Cookies.get("token")}`,
+        authorization: `bearer ${token}`,
       },
     })
       .then((res) => res.json())
@@ -26,7 +28,7 @@ const Dashboard = () => {
         setPersonalPost(data);
         setLoading(false);
       });
-  }, [email]);
+  }, [email, token]);
 
   let getNumber;
   let checkAuthentication;

@@ -194,6 +194,8 @@ const PostDetails = () => {
     setIsValid(isValidNumber && isFixedLength);
     setIsValidNum(startsWithFixedNumber);
   };
+  const cookieValue = Cookies.get('token');
+  const tkn = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
   const handlePost: SubmitHandler<FormValues> = async (data) => {
     const values = {
       bedrooms: bedRooms,
@@ -227,7 +229,7 @@ const PostDetails = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        authorization: `bearer ${Cookies.get("token")}`,
+        authorization: `bearer ${tkn}`,
       },
       body: JSON.stringify(values),
     });

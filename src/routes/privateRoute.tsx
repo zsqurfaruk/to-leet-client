@@ -8,8 +8,8 @@ function PrivateRoute(Component: any) {
     const { tokenValidation, setTokenValidation }: any =
       useContext(StateContext);
     const router = useRouter();
-    const token = Cookies.get("token");
-
+    const cookieValue = Cookies.get('token');
+    const token = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
     useEffect(() => {
       if (!token || tokenValidation === "Invalid token") {
         Cookies.remove("token");
@@ -23,7 +23,7 @@ function PrivateRoute(Component: any) {
           method: "POST",
           headers: {
             "content-type": "application/json",
-            authorization: `bearer ${Cookies.get("token")}`,
+             authorization: `bearer ${token}`,
           },
         })
           .then((res) => res.json())

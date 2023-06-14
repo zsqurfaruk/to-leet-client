@@ -41,14 +41,15 @@ export default function NavBar() {
   const [authenticated, setAuthenticated] = useState(false);
   const { push, pathname } = useRouter();
 
+  const cookieValue = Cookies.get('token');
+  const token = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
   useEffect(() => {
-    const token = Cookies.get("token");
     if (token) {
       setAuthenticated(true);
     } else if (!token) {
       setAuthenticated(false);
     }
-  }, [pathname]);
+  }, [pathname, token]);
 
   React.useEffect(() => {
     window.addEventListener(
@@ -344,13 +345,13 @@ export default function NavBar() {
                 )}
               </div>
             ) : (
-              <Link href={"/signUp"}>
+              <Link href={"/signIn"}>
                 {!lang ? (
                   <Button
                     size="sm"
                     className="w-[150px] -ml-9 mb-3 text-gray-700 -my-2 bg-accent rounded"
                   >
-                    <span onClick={() => setOpenNav(false)}>SignUp</span>
+                    <span onClick={() => setOpenNav(false)}>SignIn</span>
                   </Button>
                 ) : (
                   <Button
@@ -361,7 +362,7 @@ export default function NavBar() {
                       className="text-[15px]"
                       onClick={() => setOpenNav(false)}
                     >
-                      সাইন আপ
+                      সাইন ইন
                     </span>
                   </Button>
                 )}

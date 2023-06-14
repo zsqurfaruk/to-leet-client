@@ -177,7 +177,7 @@ const Products = ({ product }: any) => {
                     product?.type?.eng === "Sublet-(Male)" ||
                     product?.type?.eng === "Sublet-(Female)"
                       ? "Per seat:"
-                      : "Amount"}{" "}
+                      : "Rent:"}{" "}
                     {product?.amount} Taka{" "}
                   </h2>
                 ) : (

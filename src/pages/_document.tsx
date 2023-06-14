@@ -9,7 +9,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <body contextMenu={`return false`}>
+      <body>
         <Main />
         <NextScript />
       </body>
