@@ -1,26 +1,30 @@
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
-import { Card, Typography } from "@material-tailwind/react";
+import { Button, Card, Typography } from "@material-tailwind/react";
 import Link from "next/link";
 import React, { useContext } from "react";
 import Cookies from 'js-cookie';
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const PostDestinationType = () => {
   const {
     getPostPopularAreaName,
     postCityNameEng,
     setPostOpenModal,
-    setGetPopularAreaName,
+    setGetPostPopularAreaName,
     setModalValue,
     postDistrictsName,
-    postDivisionNameEng
-  }: any = useContext(PostStateContext);
+    postDivisionNameEng,
+    setPostDistrictsName
+  }: any = useContext(PostStateContext)
+  const {lang}:any = useContext(FilterContext)
   const handleCancel = () => {
     setPostOpenModal(false);
-    setGetPopularAreaName("");
+    setGetPostPopularAreaName({});
+    setPostDistrictsName({})
   };
-  const lang = Cookies.get("lan");
+   
   return (
-    <div className="bg-neutral  w-80 md:w-[40rem] lg:w-full -ml-24 md:-ml-44 lg:ml-0 rounded-md mt-40 lg:mt-0">
+    <div className="bg-neutral w-12/12 md:w-12/12 lg:w-full rounded-md mt-40 lg:mt-0">
       <div>
         {
           postDistrictsName?.eng ?
@@ -313,12 +317,12 @@ const PostDestinationType = () => {
         </Link>
       </div>
       <div className="flex lg:hidden justify-end py-3 mr-7">
-        <button
+        <Button
           className="text-red-500 bg-red-100 font-semibold rounded px-5 py-3"
           onClick={handleCancel}
         >
-          cancel
-        </button>
+          Cancel
+        </Button>
       </div>
     </div>
   );

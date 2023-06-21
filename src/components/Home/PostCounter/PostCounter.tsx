@@ -1,23 +1,121 @@
 import { APIContext } from "@/Context/ApiContext/ApiContext";
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import CountUp from "react-countup";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 function PostCounter() {
+  const {lang}:any = useContext(FilterContext)
   const { counterPosts, userCounter }: any = useContext(APIContext);
-  const lang = Cookies.get("lan")
+  const [startCounting, setStartCounting] = useState(false);
+  const [count, setCount] = useState(0);
+  const [userCount, setUserCount] = useState(0);
+
+  useEffect(() => {
+    setStartCounting(true);
+    const interval = setInterval(() => {
+      setCount((prevCount) => {
+        if (prevCount >= counterPosts.length) {
+          clearInterval(interval); // Stop counting animation
+          return prevCount;
+        } else {
+          return prevCount + 1;
+        }
+      });
+    }, 100);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [counterPosts.length]);
+
+  useEffect(() => {
+    setStartCounting(true);
+    const interval = setInterval(() => {
+      setUserCount((prevCount) => {
+        if (prevCount >= userCounter.length) {
+          clearInterval(interval); // Stop counting animation
+          return prevCount;
+        } else {
+          return prevCount + 1;
+        }
+      });
+    }, 100);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [userCounter.length]);
+
+  const banglaNumber = count
+    .toString()
+    .replace(/0/g, "০")
+    .replace(/1/g, "১")
+    .replace(/2/g, "২")
+    .replace(/3/g, "৩")
+    .replace(/4/g, "৪")
+    .replace(/5/g, "৫")
+    .replace(/6/g, "৬")
+    .replace(/7/g, "৭")
+    .replace(/8/g, "৮")
+    .replace(/9/g, "৯");
+  const banglaNumberUser = userCount
+    .toString()
+    .replace(/0/g, "০")
+    .replace(/1/g, "১")
+    .replace(/2/g, "২")
+    .replace(/3/g, "৩")
+    .replace(/4/g, "৪")
+    .replace(/5/g, "৫")
+    .replace(/6/g, "৬")
+    .replace(/7/g, "৭")
+    .replace(/8/g, "৮")
+    .replace(/9/g, "৯");
+
+   
   return (
     <div className="bg-warning bg-opacity-90">
-      <hr className="w-10/12 mx-auto"/>
+      <hr className="w-10/12 mx-auto" />
       <div className="flex justify-evenly gap-2 w-10/12 mx-auto pb-20 pt-10 mt-10">
         <div className="text-primary border-2 border-accent shadow-md shadow-accent text-xl md:text-3xl md:font-semibold  p-10 rounded">
-         {!lang ? <span>Total Ads:</span> : <span className="text-lg md:text-2xl">মোট বিজ্ঞাপনঃ </span>} <CountUp end={counterPosts?.length} duration={10} />
+          {!lang ? (
+            <span>
+              Total Ads: <CountUp end={counterPosts?.length} duration={10} />
+            </span>
+          ) : (
+            <span className="text-lg md:text-2xl">
+              মোট বিজ্ঞাপনঃ{" "}
+              {startCounting && (
+                <CountUp
+                  end={count}
+                  duration={10}
+                  formattingFn={() => banglaNumber}
+                />
+              )}{" "}
+              টি
+            </span>
+          )}
         </div>
         <div className="text-primary text-xl md:text-3xl md:font-semibold  border-2 border-accent shadow-md shadow-accent p-8 md:p-10 rounded">
-          {!lang ? <span>Total Users:</span> : <span className="text-lg md:text-2xl">মোট ব্যবহারকারীঃ </span> } <CountUp end={userCounter?.length} duration={10} />
+          {!lang ? (
+            <span>
+              Total Users: <CountUp end={userCounter?.length} duration={10} />
+            </span>
+          ) : (
+            <span className="text-lg md:text-2xl">
+              মোট ব্যবহারকারীঃ{" "}
+              {startCounting && (
+                <CountUp
+                  end={userCount}
+                  duration={10}
+                  formattingFn={() => banglaNumberUser}
+                />
+              )}{" "}
+            </span>
+          )}
         </div>
       </div>
-      <hr className="w-10/12 mx-auto"/>
+      <hr className="w-10/12 mx-auto" />
     </div>
   );
 }

@@ -22,7 +22,7 @@ const DesEng = () => {
   };
 
   return (
-    <div className="w-10/12 mx-auto  grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 lg:gap-5 md:gap-2 gap-5 mt-10 md:mt-8">
+    <div className="w-10/12 mx-auto  grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 lg:gap-5 md:gap-2 gap-5 mt-5 md:mt-6">
       <Link
         href={{
           pathname: "/Bachelor-(Male)",

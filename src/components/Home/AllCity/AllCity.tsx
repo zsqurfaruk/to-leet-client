@@ -1,12 +1,13 @@
-import React from "react";
+import React,{useContext} from "react";
 import AllCityEng from "./AllCityEng";
 import Cookies from "js-cookie";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const AllCity = () => {
   // const handlePrevious = () => {
   //   setFilterTypeCity(false);
   // };
-  const lang = Cookies.get("lan");
+  const {lang}:any = useContext(FilterContext)
   return (
     <section className="mx-7 md:mx-14 lg:mx-0">
       {/* <h1

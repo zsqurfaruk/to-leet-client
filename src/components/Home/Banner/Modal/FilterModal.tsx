@@ -8,7 +8,7 @@ import {
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React from "react";
 import FilterDestinationType from "@/components/OtherPages/PostDestinationType/FilterDestinationType";
-import Cookies from "js-cookie";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 export default function FilterModal() {
   const {
@@ -18,13 +18,13 @@ export default function FilterModal() {
     setHomePopularAreaName,
     setDistrictsName
   }: any = useContext(StateContext);
-
+  const {lang}:any = useContext(FilterContext)
   const handleCancel = () => {
     setFilterModal(false);
     setHomePopularAreaName({});
     setDistrictsName({})
   };
-  const lang = Cookies.get("lan");
+   
   return (
     <div>
       <Dialog
@@ -37,7 +37,7 @@ export default function FilterModal() {
           unmount: { scale: 1, y: -100 },
         }}
       >
-        <DialogBody className="-mt-52 md:-mt-72 lg:mt-0  text-xs">
+        <DialogBody className="-mt-20 md:-mt-72 lg:mt-0 text-xs">
           <FilterDestinationType></FilterDestinationType>
         </DialogBody>
 

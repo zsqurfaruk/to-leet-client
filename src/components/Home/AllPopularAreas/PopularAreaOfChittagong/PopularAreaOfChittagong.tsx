@@ -4,9 +4,11 @@ import Select from "react-select";
 import { options } from "./ChitDataBan";
 import { option } from "./ChitDataEng";
 import Cookies from "js-cookie";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const PopularAreaOfChit = () => {
   const { setHomePopularAreaName, setFilterValue,filterValue, homePopularAreaName, setFilterModal }: any =useContext(StateContext);
+  const {lang}:any = useContext(FilterContext)
   const handleFilter=(v:any)=>{
     if(v?.name){
 
@@ -64,7 +66,7 @@ const PopularAreaOfChit = () => {
   ) {
     setFilterModal(true);
   }
-  const lang = Cookies.get("lan");
+  
   return (
     <section>
       <div>

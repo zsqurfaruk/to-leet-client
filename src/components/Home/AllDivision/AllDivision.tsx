@@ -1,15 +1,16 @@
-import React from "react";
+import React,{useContext} from "react";
 import AllDivisionName from "./AllDivisionEng";
 import Cookies from "js-cookie";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const AllDivision = () => {
   // const handlePrevious = () => {
   //   setFilterTypeDivision(false);
   // };
 
-  const lang = Cookies.get("lan");
+  const {lang}:any = useContext(FilterContext)
   return (
-    <div className="flex items-center mt-5 lg:mt-16 lg:ml-8 mx-7 md:mx-14 lg:mx-0">
+    <div className="w-full flex items-center mt-5 lg:mt-16 lg:ml-8 mx-7 md:mx-0">
      
       <div>
       {/* <h1

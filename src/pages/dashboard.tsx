@@ -1,13 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Lottie from "lottie-react";
 import lotti from "../image/lf20_jkbuwuhk.json";
 import DashboardPost from "@/components/Home/AllPost/DashboardPost";
 import PrivateRoute from "@/routes/privateRoute";
 import Head from "next/head";
 import Cookies from "js-cookie";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const Dashboard = () => {
+  const {lang}:any = useContext(FilterContext)
   const firstName = Cookies.get("firstName");
   const lastName = Cookies.get("lastName");
   const email = Cookies.get("authentication");
@@ -41,14 +43,14 @@ const Dashboard = () => {
     }
   }
 
-  const lang = Cookies.get("lan");
+  
   return (
     <>
       <Head>
         <title>To Leet - Dashboard</title>
       </Head>
       <div className="lg:flex gap-10 w-full lg:w-10/12 mx-auto bg-white p-5 md:p-10  md:scale-100">
-        <div className="basis-1/4  pb-5 mb-5">
+        <div className="basis-1/5  pb-5 mb-5">
           <h2>
             {firstName} {lastName}
           </h2>
@@ -61,7 +63,7 @@ const Dashboard = () => {
         ) : (
           <>
             {" "}
-            <div>
+            <div className="px-5 grid grid-cols-1 md:grid-cols-3 gap-5">
               {personalPost?.map((post: any) => (
                 <DashboardPost key={post._id} post={post}></DashboardPost>
               ))}

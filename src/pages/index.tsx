@@ -10,7 +10,6 @@ import About from "@/components/About/About";
 
 function Home() {
   const { isOpen }: any = useContext(StateContext);
-
   return (
     <>
       <Head>

@@ -1,10 +1,11 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import AboutEng from './AboutEng';
 import AboutBan from './AboutBan';
 import Cookies from 'js-cookie';
+import { FilterContext } from '@/Context/FilterContext/FilterContext';
 
 const About = () => {
-  const lang = Cookies.get("lan")
+  const {lang}:any = useContext(FilterContext)
   return (
     <>
       {

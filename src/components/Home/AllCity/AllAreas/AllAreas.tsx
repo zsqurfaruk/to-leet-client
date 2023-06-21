@@ -9,25 +9,27 @@ import PopularAreaOfRajshahi from "../../AllPopularAreas/PopularAreaOfRajshahi/P
 import PopularAreaOfRangpur from "../../AllPopularAreas/PopularAreaOfRangpur/PopularAreaOfRangpur";
 import FilterModal from "../../Banner/Modal/FilterModal";
 import Cookies from "js-cookie";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const AllAreas = () => {
   const { cityName, setCityName, setHomePopularAreaName }: any = useContext(StateContext);
+  const {lang}:any = useContext(FilterContext)
   const handlePrevious = () => {
     setCityName({});
     setHomePopularAreaName({})
   };
 
-  const lang = Cookies.get("lan");
+   
 
   return (
-    <section className="mx-7 md:mx-14 lg:mx-0">
+    <section className="w-full mx-7 md:mx-0">
       <h1
         onClick={handlePrevious}
         className="text-warning text-sm mb-5 cursor-pointer hover:underline"
       >
         {!lang ? "Change city?" : "শহর পরিবর্তন?"}
       </h1>
-      <h1 className="text-xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
+      <h1 className="text-xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700 w-10/12">
         {!lang ? (
           <span>Popular areas of {cityName?.eng}:</span>
         ) : (

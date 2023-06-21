@@ -10,19 +10,19 @@ import DistrictsOfRangpur from "../DistrictsOfRangpur/DistrictsOfRangpur";
 import DistrictsOfSylhet from "../DistrictsOfSylhet/DistrictsOfSylhet";
 import FilterModal from "@/components/Home/Banner/Modal/FilterModal";
 import Cookies from "js-cookie";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const AllDistricts = () => {
-  const { divisionNameEng, setDivisionNameEng, setDistrictsName }: any = useContext(StateContext);
+  const { divisionNameEng, setDivisionNameEng, setDistrictsName }: any =
+    useContext(StateContext);
+  const { lang }: any = useContext(FilterContext);
   const handlePrevious = () => {
     setDivisionNameEng({});
-    setDistrictsName({})
+    setDistrictsName({});
   };
 
-  const lang = Cookies.get("lan");
-
   return (
-    <section className="lg:mt-72 lg:ml-4 mx-7 md:mx-14 lg:mx-0">
-      
+    <section className="w-full lg:mt-72 lg:ml-4 mx-7 md:mx-0">
       <div>
         <h1
           onClick={handlePrevious}
@@ -30,16 +30,14 @@ const AllDistricts = () => {
         >
           {!lang ? "Change Division?" : "বিভাগ পরিবর্তন?"}
         </h1>
-        <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
-        {!lang ? (
-          <span>Districts of {divisionNameEng?.eng}:</span>
-        ) : (
-          <span className="text-xl">
-            {divisionNameEng?.ban} এর জেলাসমুহঃ
-          </span>
-        )}
-        <FilterModal></FilterModal>
-      </h1>
+        <h1 className="w-10/12 md:full text-2xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
+          {!lang ? (
+            <span>Districts of {divisionNameEng?.eng}:</span>
+          ) : (
+            <span className="text-xl">{divisionNameEng?.ban} এর জেলাসমুহঃ</span>
+          )}
+          <FilterModal></FilterModal>
+        </h1>
         {divisionNameEng?.eng === "Dhaka" && (
           <DistrictsOfDhaka></DistrictsOfDhaka>
         )}

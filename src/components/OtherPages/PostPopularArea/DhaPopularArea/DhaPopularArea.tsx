@@ -4,9 +4,11 @@ import Select from "react-select";
 import { options } from "./DataDhaBan";
 import { option } from "./DataDhaEng";
 import Cookies from 'js-cookie';
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const DhaPopularArea = () => {
   const { getPostPopularAreaName,setGetPostPopularAreaName,setPostOpenModal }: any = useContext(PostStateContext);
+  const {lang}:any = useContext(FilterContext)
   if (getPostPopularAreaName?.name === "eng") {
     const newName = {
       eng: getPostPopularAreaName?.label,
@@ -35,7 +37,7 @@ const DhaPopularArea = () => {
   ) {
     setPostOpenModal(true);
   }
-  const lang = Cookies.get("lan");
+  
   return (
     <section>
       <div>

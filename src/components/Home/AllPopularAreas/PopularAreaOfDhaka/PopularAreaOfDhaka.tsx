@@ -4,10 +4,11 @@ import { options } from "./DhaDataBan";
 import { option } from "./DhaDataEng"
 import { StateContext } from "@/Context/StateContext/StateContext";
 import Cookies from "js-cookie";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const PopularAreaOfDhaka = () => {
   const { setHomePopularAreaName,setFilterValue,filterValue,  homePopularAreaName, setFilterModal }: any =useContext(StateContext);
-
+  const {lang}:any = useContext(FilterContext)
   const handleFilter=(v:any)=>{
     if(v?.name){
 
@@ -66,7 +67,7 @@ const PopularAreaOfDhaka = () => {
   ) {
     setFilterModal(true);
   }
-  const lang = Cookies.get("lan");
+   
   return (
     <section>
       <div>

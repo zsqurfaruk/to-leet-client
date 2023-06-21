@@ -12,12 +12,13 @@ import {
 import PrivateRoute from "@/routes/privateRoute";
 import Head from "next/head";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
-import Cookies from "js-cookie";
 import { toast } from "react-hot-toast";
+import RelatedPosts from "@/components/RelatedPost/RelatedPosts";
+import Loader from "@/components/Loading/Loader";
 
 const ProductDetails = ({ product }: any) => {
   const { img1, img2, img3, img4, img5 } = product;
-  const { loading }: any = useContext(FilterContext);
+  const { loading, lang }: any = useContext(FilterContext);
   const images = [
     { id: 0, value: img1 },
     { id: 1, value: img2 },
@@ -33,26 +34,44 @@ const ProductDetails = ({ product }: any) => {
     setSlideImage(slider);
   };
 
-  const handleCopyLine = (line:any) => {
+  const handleCopyLine = (line: any) => {
     navigator.clipboard.writeText(line);
-    toast.success("Copied")
+    if(lang){
+      toast.success("কপি করা হয়েছে।");
+    }else{
+      toast.success("Copied");
+    }
   };
-  
-  const lang = Cookies.get("lan");
+  const banglaNumber = product.amount
+    .toString()
+    .replace(/0/g, "০")
+    .replace(/1/g, "১")
+    .replace(/2/g, "২")
+    .replace(/3/g, "৩")
+    .replace(/4/g, "৪")
+    .replace(/5/g, "৫")
+    .replace(/6/g, "৬")
+    .replace(/7/g, "৭")
+    .replace(/8/g, "৮")
+    .replace(/9/g, "৯");
+  const dateString = product?.updatedAt?.slice(0, 10);
+  const dateParts = dateString.split("-");
+  const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+
   return (
     <>
       <Head>
         <title>To Leet - Details </title>
       </Head>
-      <section className="w-full lg:w-10/12 mx-auto lg:my-10 rounded">
+      <section className="w-full lg:w-10/12 mx-auto lg:my-10">
         {loading ? (
-          <h2 className="text-center w-full mt-10 py-20">Loading...</h2>
+          <Loader></Loader>
         ) : (
           <Card className="lg:flex-row w-full p-10">
             <CardHeader
               shadow={false}
               floated={false}
-              className="lg:w-2/5 shrink-0 m-0 rounded-r-none"
+              className="lg:w-2/5 shrink-0 m-0 rounded-none"
             >
               <div>
                 <PhotoProvider>
@@ -61,7 +80,7 @@ const ProductDetails = ({ product }: any) => {
                       src={slideImage?.value}
                       alt=""
                       className="h-96 w-full rounded"
-                      draggable= "false"
+                      draggable="false"
                     />
                   </PhotoView>
                 </PhotoProvider>
@@ -73,8 +92,8 @@ const ProductDetails = ({ product }: any) => {
                           src={img?.value}
                           onClick={() => handleImageChange(i)}
                           alt=""
-                          className="lg:h-20 h-16 w-14 lg:w-32 rounded"
-                           draggable= "false"
+                          className="lg:h-20 h-16 w-14 lg:w-32 rounded cursor-pointer"
+                          draggable="false"
                         />
                       )}
                     </div>
@@ -106,20 +125,37 @@ const ProductDetails = ({ product }: any) => {
                         variant="h6"
                         className="text-warning md:hidden"
                       >
-                        {!lang ? "Date:" : "তারিখঃ"} 
-                        {product?.updatedAt?.slice(0, 10)}
+                        {!lang ? (
+                          <h2 className="font-semibold">{formattedDate}</h2>
+                        ) : (
+                          <h2 className="font-semibold">
+                            {product?.updatedAt
+                              ? formattedDate
+                                  .replace(/0/g, "০")
+                                  .replace(/1/g, "১")
+                                  .replace(/2/g, "২")
+                                  .replace(/3/g, "৩")
+                                  .replace(/4/g, "৪")
+                                  .replace(/5/g, "৫")
+                                  .replace(/6/g, "৬")
+                                  .replace(/7/g, "৭")
+                                  .replace(/8/g, "৮")
+                                  .replace(/9/g, "৯")
+                              : ""}
+                          </h2>
+                        )}
                       </Typography>
                     </div>
                     {product?.university?.eng && (
                       <>
                         {!lang ? (
                           <>
-                            <span className="font-semibold">Beside:</span> 
+                            <span className="font-semibold">Beside:</span>
                             {product?.university?.eng}
                           </>
                         ) : (
                           <>
-                            <span className="font-semibold"> </span> 
+                            <span className="font-semibold"> </span>
                             {product?.university?.ban} এর পাশে
                           </>
                         )}
@@ -136,7 +172,7 @@ const ProductDetails = ({ product }: any) => {
                             )}
                           </div>
                         )}
-                       
+
                         {product?.totalBed && (
                           <div
                             className={
@@ -187,12 +223,12 @@ const ProductDetails = ({ product }: any) => {
                         {!lang ? (
                           <h2>Rent : {product?.amount} taka (Monthly)</h2>
                         ) : (
-                          <h2> ভাড়াঃ {product?.amount} টাকা (মাসিক)</h2>
+                          <h2> ভাড়াঃ {banglaNumber} টাকা (মাসিক)</h2>
                         )}
                         {product?.negotiable === true && (
                           <h2 className="md:hidden">
                             {" "}
-                            {!lang ? "Negotiable" : "আলোচনা সাপেক্ষে"} 
+                            {!lang ? "Negotiable" : "আলোচনা সাপেক্ষে"}
                           </h2>
                         )}
                       </div>
@@ -249,7 +285,25 @@ const ProductDetails = ({ product }: any) => {
           {post?.type?.eng}
         </Typography> */}
                       <Typography variant="h6" className="text-warning">
-                        Date: {product?.updatedAt?.slice(0, 10)}
+                        {!lang ? (
+                          <h2 className="font-semibold">{formattedDate}</h2>
+                        ) : (
+                          <h2 className="font-semibold">
+                            {product?.updatedAt
+                              ? formattedDate
+                                  .replace(/0/g, "০")
+                                  .replace(/1/g, "১")
+                                  .replace(/2/g, "২")
+                                  .replace(/3/g, "৩")
+                                  .replace(/4/g, "৪")
+                                  .replace(/5/g, "৫")
+                                  .replace(/6/g, "৬")
+                                  .replace(/7/g, "৭")
+                                  .replace(/8/g, "৮")
+                                  .replace(/9/g, "৯")
+                              : ""}
+                          </h2>
+                        )}
                       </Typography>
                     </div>
                     {product?.university?.ban && (
@@ -378,11 +432,39 @@ const ProductDetails = ({ product }: any) => {
                   </Typography>
                   <h2> {product?.description}</h2>
                   <div className="relative">
-                  <Typography className="border border-accent py-1 px-2 rounded-md mt-2">
-                    {!lang ? "Contact number:" : "মোবাইল নাম্বারঃ"} +
-                    {product?.phone}
-                  </Typography>
-                   <button className="absolute top-0 right-0 border-l-2  border-warning bg-accent px-1 py-[5.5px] rounded" onClick={() => handleCopyLine("+" + product?.phone)}>copy</button>
+                    <Typography className="border border-accent py-1 px-2 rounded-md mt-2">
+                      {!lang ? (
+                        <Typography>
+                          Contact number: +{product?.phone}
+                        </Typography>
+                      ) : (
+                        <Typography>
+                          মোবাইল নাম্বারঃ +
+                          <span>
+                            {product?.phone &&
+                              product.phone
+                                .toString()
+                                .replace(/0/g, "০")
+                                .replace(/1/g, "১")
+                                .replace(/2/g, "২")
+                                .replace(/3/g, "৩")
+                                .replace(/4/g, "৪")
+                                .replace(/5/g, "৫")
+                                .replace(/6/g, "৬")
+                                .replace(/7/g, "৭")
+                                .replace(/8/g, "৮")
+                                .replace(/9/g, "৯")}
+                          </span>
+                        </Typography>
+                      )}
+                    </Typography>
+
+                    <button
+                      className="absolute top-0 right-0 border-l-2  border-warning bg-accent px-1 py-[5.5px] rounded"
+                      onClick={() => handleCopyLine("+" + product?.phone)}
+                    >
+                      copy
+                    </button>
                   </div>
                 </div>
               </div>
@@ -390,15 +472,24 @@ const ProductDetails = ({ product }: any) => {
           </Card>
         )}
       </section>
+      <br />
+      <RelatedPosts
+        id={product._id}
+        type={product.type}
+        areaName={product.areaName}
+        cityName={product.cityName}
+      ></RelatedPosts>
     </>
   );
 };
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
   const cookieValue = context?.req?.cookies?.token;
-  const token = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
+  const token = cookieValue
+    ? JSON.parse(decodeURIComponent(cookieValue))
+    : null;
   const { params } = context;
   const res = await fetch(
-    `https://zsqur.to-leet.com/api/v1/product/${params?.productId}`,
+    `http://localhost:5000/api/v1/product/${params?.productId}`,
     {
       headers: {
         authorization: `bearer ${token}`,
@@ -406,7 +497,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
     }
   );
   const data = await res.json();
-  
+
   if (!data) {
     return {
       redirect: {

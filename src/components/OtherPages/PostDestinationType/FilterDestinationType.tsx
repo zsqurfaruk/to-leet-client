@@ -1,5 +1,6 @@
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { StateContext } from "@/Context/StateContext/StateContext";
-import { Card, Typography } from "@material-tailwind/react";
+import { Button, Card, Typography } from "@material-tailwind/react";
 import Cookies from 'js-cookie';
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
@@ -17,7 +18,8 @@ const FilterDestinationType = () => {
     filterModalValue,
     setFilterValue,
     filterValue,
-  }: any = useContext(StateContext);
+  }: any = useContext(StateContext)
+  const {lang}:any = useContext(FilterContext)
   const router = useRouter();
   const handleFilter = (v: any) => {
     setFilterModalValue(v);
@@ -36,9 +38,9 @@ const FilterDestinationType = () => {
     setDistrictsName({});
   };
 
-  const lang = Cookies.get("lan");
+  
   return (
-    <div className="bg-neutral text-gray-700 w-80 md:w-[40rem] lg:w-full -ml-24 md:-ml-44 lg:ml-0 rounded-md mt-40 lg:mt-0">
+    <div className="bg-neutral text-gray-700 w-12/12 md:w-12/12 lg:w-full rounded-md mt-40 lg:mt-0 p-5 ">
       <div>
         {districtsName?.eng ? (
           <h1 className="flex justify-evenly text-lg pt-5">
@@ -68,7 +70,7 @@ const FilterDestinationType = () => {
           </h1>
         )}
       </div>
-      <div className=" p-5 grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 lg:gap-5 md:gap-2 gap-1  md:mt-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 lg:gap-5 md:gap-2 gap-1 mt-3 md:mt-8">
         <Card
           className="border border-warning cursor-pointer"
           onClick={() =>
@@ -223,12 +225,12 @@ const FilterDestinationType = () => {
         </Card>
       </div>
       <div className="flex lg:hidden justify-end py-3 mr-7">
-        <button
+        <Button
           className="text-red-500 bg-red-100 font-semibold rounded px-5 py-3"
           onClick={handleCancel}
         >
-          cancel
-        </button>
+          Cancel
+        </Button>
       </div>
     </div>
   );

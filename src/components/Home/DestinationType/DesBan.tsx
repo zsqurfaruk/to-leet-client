@@ -20,7 +20,7 @@ const DesBan = () => {
     return counter.find((item: any) => item.type.eng === value) || null;
   };
   return (
-    <div className="w-10/12 mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 lg:gap-5 md:gap-2 gap-5 mt-10 md:mt-8">
+    <div className="w-10/12 mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 lg:gap-5 md:gap-2 gap-5 mt-5 md:mt-7">
       <Link
         href={{
           pathname: "/Bachelor-(Male)",
@@ -50,8 +50,17 @@ const DesBan = () => {
                 {" "}
                 {getCount("Bachelor-(Male)")
                   ? getCount("Bachelor-(Male)")?.count
-                  : 0}{" "}
-                টি বিজ্ঞাপন
+                  .toString()
+                  .replace(/0/g, "০")
+                  .replace(/1/g, "১")
+                  .replace(/2/g, "২")
+                  .replace(/3/g, "৩")
+                  .replace(/4/g, "৪")
+                  .replace(/5/g, "৫")
+                  .replace(/6/g, "৬")
+                  .replace(/7/g, "৭")
+                  .replace(/8/g, "৮")
+                  .replace(/9/g, "৯"): "০"} টি বিজ্ঞাপন
               </Typography>
             </div>
           </div>
@@ -86,7 +95,17 @@ const DesBan = () => {
                 {" "}
                 {getCount("Bachelor-(Female)")
                   ? getCount("Bachelor-(Female)")?.count
-                  : 0}{" "}
+                  .toString()
+                  .replace(/0/g, "০")
+                  .replace(/1/g, "১")
+                  .replace(/2/g, "২")
+                  .replace(/3/g, "৩")
+                  .replace(/4/g, "৪")
+                  .replace(/5/g, "৫")
+                  .replace(/6/g, "৬")
+                  .replace(/7/g, "৭")
+                  .replace(/8/g, "৮")
+                  .replace(/9/g, "৯"): "০"}{" "}
                 টি বিজ্ঞাপন
               </Typography>
             </div>
@@ -119,7 +138,17 @@ const DesBan = () => {
                 {" "}
                 {getCount("Mess-(Male)")
                   ? getCount("Mess-(Male)")?.count
-                  : 0}{" "}
+                  .toString()
+                  .replace(/0/g, "০")
+                  .replace(/1/g, "১")
+                  .replace(/2/g, "২")
+                  .replace(/3/g, "৩")
+                  .replace(/4/g, "৪")
+                  .replace(/5/g, "৫")
+                  .replace(/6/g, "৬")
+                  .replace(/7/g, "৭")
+                  .replace(/8/g, "৮")
+                  .replace(/9/g, "৯"): "০"}{" "}
                 টি বিজ্ঞাপন
               </Typography>
             </div>
@@ -152,7 +181,17 @@ const DesBan = () => {
                 {" "}
                 {getCount("Mess-(Female)")
                   ? getCount("Mess-(Female)")?.count
-                  : 0}{" "}
+                  .toString()
+                  .replace(/0/g, "০")
+                  .replace(/1/g, "১")
+                  .replace(/2/g, "২")
+                  .replace(/3/g, "৩")
+                  .replace(/4/g, "৪")
+                  .replace(/5/g, "৫")
+                  .replace(/6/g, "৬")
+                  .replace(/7/g, "৭")
+                  .replace(/8/g, "৮")
+                  .replace(/9/g, "৯"): "০"}{" "}
                 টি বিজ্ঞাপন
               </Typography>
             </div>
@@ -187,7 +226,17 @@ const DesBan = () => {
                 {" "}
                 {getCount("Sublet-(Male)")
                   ? getCount("Sublet-(Male)")?.count
-                  : 0}{" "}
+                  .toString()
+                  .replace(/0/g, "০")
+                  .replace(/1/g, "১")
+                  .replace(/2/g, "২")
+                  .replace(/3/g, "৩")
+                  .replace(/4/g, "৪")
+                  .replace(/5/g, "৫")
+                  .replace(/6/g, "৬")
+                  .replace(/7/g, "৭")
+                  .replace(/8/g, "৮")
+                  .replace(/9/g, "৯"): "০"}{" "}
                 টি বিজ্ঞাপন
               </Typography>
             </div>
@@ -222,7 +271,17 @@ const DesBan = () => {
                 {" "}
                 {getCount("Sublet-(Female)")
                   ? getCount("Sublet-(Female)")?.count
-                  : 0}{" "}
+                  .toString()
+                  .replace(/0/g, "০")
+                  .replace(/1/g, "১")
+                  .replace(/2/g, "২")
+                  .replace(/3/g, "৩")
+                  .replace(/4/g, "৪")
+                  .replace(/5/g, "৫")
+                  .replace(/6/g, "৬")
+                  .replace(/7/g, "৭")
+                  .replace(/8/g, "৮")
+                  .replace(/9/g, "৯"): "০"}{" "}
                 টি বিজ্ঞাপন
               </Typography>
             </div>
@@ -255,7 +314,18 @@ const DesBan = () => {
               </Typography>
               <Typography className="text-sm">
                 {" "}
-                {getCount("Family") ? getCount("Family")?.count : 0} টি বিজ্ঞাপন
+                {getCount("Family") ? getCount("Family")?.count
+                  .toString()
+                  .replace(/0/g, "০")
+                  .replace(/1/g, "১")
+                  .replace(/2/g, "২")
+                  .replace(/3/g, "৩")
+                  .replace(/4/g, "৪")
+                  .replace(/5/g, "৫")
+                  .replace(/6/g, "৬")
+                  .replace(/7/g, "৭")
+                  .replace(/8/g, "৮")
+                  .replace(/9/g, "৯"): "০"} টি বিজ্ঞাপন
               </Typography>
             </div>
           </div>
@@ -289,7 +359,18 @@ const DesBan = () => {
               </Typography>
               <Typography className="text-sm">
                 {" "}
-                {getCount("Hostel") ? getCount("Hostel")?.count : 0} টি বিজ্ঞাপন
+                {getCount("Hostel") ? getCount("Hostel")?.count
+                  .toString()
+                  .replace(/0/g, "০")
+                  .replace(/1/g, "১")
+                  .replace(/2/g, "২")
+                  .replace(/3/g, "৩")
+                  .replace(/4/g, "৪")
+                  .replace(/5/g, "৫")
+                  .replace(/6/g, "৬")
+                  .replace(/7/g, "৭")
+                  .replace(/8/g, "৮")
+                  .replace(/9/g, "৯"): "০"} টি বিজ্ঞাপন
               </Typography>
             </div>
           </div>
@@ -321,7 +402,18 @@ const DesBan = () => {
               </Typography>
               <Typography className="text-sm">
                 {" "}
-                {getCount("Office") ? getCount("Office")?.count : 0} টি বিজ্ঞাপন
+                {getCount("Office") ? getCount("Office")?.count
+                  .toString()
+                  .replace(/0/g, "০")
+                  .replace(/1/g, "১")
+                  .replace(/2/g, "২")
+                  .replace(/3/g, "৩")
+                  .replace(/4/g, "৪")
+                  .replace(/5/g, "৫")
+                  .replace(/6/g, "৬")
+                  .replace(/7/g, "৭")
+                  .replace(/8/g, "৮")
+                  .replace(/9/g, "৯"): "০"} টি বিজ্ঞাপন
               </Typography>
             </div>
           </div>
@@ -351,7 +443,18 @@ const DesBan = () => {
               </Typography>
               <Typography className="text-sm">
                 {" "}
-                {getCount("Shop") ? getCount("Shop")?.count : 0} টি বিজ্ঞাপন
+                {getCount("Shop") ? getCount("Shop")?.count
+                  .toString()
+                  .replace(/0/g, "০")
+                  .replace(/1/g, "১")
+                  .replace(/2/g, "২")
+                  .replace(/3/g, "৩")
+                  .replace(/4/g, "৪")
+                  .replace(/5/g, "৫")
+                  .replace(/6/g, "৬")
+                  .replace(/7/g, "৭")
+                  .replace(/8/g, "৮")
+                  .replace(/9/g, "৯"): "০"} টি বিজ্ঞাপন
               </Typography>
             </div>
           </div>
@@ -383,7 +486,18 @@ const DesBan = () => {
               </Typography>
               <Typography className="text-sm">
                 {" "}
-                {getCount("Vehicles") ? getCount("Vehicles")?.count : 0} টি
+                {getCount("Vehicles") ? getCount("Vehicles")?.count
+                  .toString()
+                  .replace(/0/g, "০")
+                  .replace(/1/g, "১")
+                  .replace(/2/g, "২")
+                  .replace(/3/g, "৩")
+                  .replace(/4/g, "৪")
+                  .replace(/5/g, "৫")
+                  .replace(/6/g, "৬")
+                  .replace(/7/g, "৭")
+                  .replace(/8/g, "৮")
+                  .replace(/9/g, "৯"): "০"} টি
                 বিজ্ঞাপন
               </Typography>
             </div>
@@ -416,7 +530,18 @@ const DesBan = () => {
               </Typography>
               <Typography className="text-sm">
                 {" "}
-                {getCount("Garage") ? getCount("Garage")?.count : 0} টি বিজ্ঞাপন
+                {getCount("Garage") ? getCount("Garage")?.count
+                  .toString()
+                  .replace(/0/g, "০")
+                  .replace(/1/g, "১")
+                  .replace(/2/g, "২")
+                  .replace(/3/g, "৩")
+                  .replace(/4/g, "৪")
+                  .replace(/5/g, "৫")
+                  .replace(/6/g, "৬")
+                  .replace(/7/g, "৭")
+                  .replace(/8/g, "৮")
+                  .replace(/9/g, "৯"): "০"} টি বিজ্ঞাপন
               </Typography>
             </div>
           </div>

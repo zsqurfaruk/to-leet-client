@@ -29,6 +29,7 @@ import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import parsePhoneNumberFromString from "libphonenumber-js";
 import { AiOutlineMinus } from "react-icons/ai";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 type FormValues = {
   bedNumber: object;
@@ -102,7 +103,7 @@ const PostDetails = () => {
     totalBed,
     setTotalBed,
   }: any = useContext(PostStateContext);
-
+  const {lang}:any = useContext(FilterContext)
   const { reload, setReload }: any = useContext(APIContext);
 
   const router = useRouter();
@@ -330,7 +331,7 @@ const PostDetails = () => {
     }
   };
 
-  const lang = Cookies.get("lan");
+  
   const authentication = Cookies.get("authentication");
   const firstName = Cookies.get("firstName");
   const lastName = Cookies.get("lastName");

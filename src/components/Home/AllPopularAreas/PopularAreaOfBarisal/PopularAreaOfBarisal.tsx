@@ -4,6 +4,7 @@ import Select from "react-select";
 import { options } from "./BariDataBan";
 import { option } from "./BariDataEng";
 import Cookies from "js-cookie";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const PopularAreaOfBarishal = () => {
   const {
@@ -13,6 +14,7 @@ const PopularAreaOfBarishal = () => {
     filterValue,
     setFilterValue,
   }: any = useContext(StateContext);
+  const {lang}:any = useContext(FilterContext)
   const handleFilter = (v: any) => {
     if (v?.name) {
       if (v?.name === "eng") {
@@ -71,7 +73,7 @@ const PopularAreaOfBarishal = () => {
   else{
     setFilterModal(false);
   }
-  const lang = Cookies.get("lan");
+   
   return (
     <section>
       <div>

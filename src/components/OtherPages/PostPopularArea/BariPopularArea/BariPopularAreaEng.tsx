@@ -4,6 +4,7 @@ import Select from "react-select";
 import { options } from "./DataBariBan";
 import { option } from "./DataBariEng";
 import Cookies from 'js-cookie';
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const BariPopularAreaEng = () => {
   const {
@@ -11,7 +12,7 @@ const BariPopularAreaEng = () => {
     setGetPostPopularAreaName,
     setPostOpenModal,
   }: any = useContext(PostStateContext);
-
+  const {lang}:any = useContext(FilterContext)
   if (getPostPopularAreaName?.name === "eng") {
     const newName = {
       eng: getPostPopularAreaName?.label,
@@ -40,7 +41,7 @@ const BariPopularAreaEng = () => {
   ) {
     setPostOpenModal(true);
   }
-  const lang = Cookies.get("lan");
+  
   return (
     <section>
       <div>

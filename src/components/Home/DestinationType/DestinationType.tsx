@@ -1,13 +1,24 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
+import React,{useContext} from "react";
 import DesEng from "./DesEng";
 import DesBan from "./DesBan";
-import Cookies from "js-cookie";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { StateContext } from "@/Context/StateContext/StateContext";
+ 
 
 const DestinationType = () => {
-  const lang = Cookies.get("lan");
+  const {lang}:any = useContext(FilterContext)
+  const {filterTypeDivision, divisionNameEng}:any = useContext(StateContext)
+  
   return (
-    <section className="mb-20 -mt-10 lg:-mt-24">
+    <section  className={
+      filterTypeDivision && Object.keys(divisionNameEng).length === 0
+        ? "mb-20 mt-10 lg:-mt-[296px]"
+        : filterTypeDivision && divisionNameEng
+        ? "mb-20 mt-10 lg:-mt-[235px]"
+        : "mb-20 mt-10 lg:-mt-52"
+    }
+     >
       {!lang ? (
         <h1 className="text-center text-3xl font-semibold lg:-mt-4 text-warning">
           What's your need?

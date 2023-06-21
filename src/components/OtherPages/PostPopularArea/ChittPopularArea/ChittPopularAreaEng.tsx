@@ -4,6 +4,7 @@ import Select from "react-select";
 import { options } from "./DataChittBan";
 import { option } from "./DataChittEng";
 import Cookies from 'js-cookie';
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const ChittPopularAreaEng = () => {
   const {
@@ -11,6 +12,7 @@ const ChittPopularAreaEng = () => {
     setGetPostPopularAreaName,
     setPostOpenModal,
   }: any = useContext(PostStateContext);
+  const {lang}:any = useContext(FilterContext)
   if (getPostPopularAreaName?.name === "eng") {
     const newName = {
       eng: getPostPopularAreaName?.label,
@@ -38,7 +40,7 @@ const ChittPopularAreaEng = () => {
   ) {
     setPostOpenModal(true);
   }
-  const lang = Cookies.get("lan");
+   
   return (
     <section>
       <div>

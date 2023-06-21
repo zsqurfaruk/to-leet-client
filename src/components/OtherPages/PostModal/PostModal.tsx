@@ -12,6 +12,7 @@ import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import { colourOptions } from "../../Home/Banner/Modal/DataEng";
 import { colourOption } from "../../Home/Banner/Modal/DataBan";
 import Cookies from 'js-cookie';
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 export default function PostModal() {
   const {
@@ -20,13 +21,14 @@ export default function PostModal() {
     setPostUniversityModal,
     setPostUniversityModalValue,
     setGetUniversityModalValue,
-  }: any = useContext(PostStateContext);
+  }: any = useContext(PostStateContext)
+  const {lang}:any = useContext(FilterContext)
   const handleCancel = () => {
     setPostUniversityModal(false);
     setPostUniversityModalValue({});
   };
 
-  const lang = Cookies.get("lan");
+  
   return (
     <div>
       <Dialog
@@ -70,12 +72,12 @@ export default function PostModal() {
           )}
         </DialogBody>
         <div className="flex lg:hidden justify-around py-3 w-80 -ml-20 md:-ml-1">
-          <button
+          <Button
             className="text-red-500 bg-red-100 font-semibold rounded px-3"
             onClick={handleCancel}
           >
             {!lang ? " Cancel" : "বাতিল"}
-          </button>
+          </Button>
           <button
             className="text-warning bg-accent px-2 rounded font-semibold"
             onClick={handleCancel}

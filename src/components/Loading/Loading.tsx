@@ -1,7 +1,7 @@
 import { Typography } from "@material-tailwind/react";
  
 function Loading() {
-
+ 
   return (
     <div className="sweet-loading flex justify-center h-screen items-center bg-neutral">
      <div>

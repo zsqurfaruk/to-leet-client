@@ -22,6 +22,7 @@ import PostRangDistrictsEng from "@/components/OtherPages/PostAllDivision/PostAl
 import PostMymDistrictsEng from "@/components/OtherPages/PostAllDivision/PostAllDistricts/PostMymDistricts/PostMymDistrictsEng";
 import Head from "next/head";
 import Cookies from 'js-cookie';
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const AddPost = () => {
  
@@ -31,13 +32,13 @@ const AddPost = () => {
     setPostDivisionNameEng,
     postDivisionNameEng,
   }: any = useContext(PostStateContext);
-
+  const {lang}:any = useContext(FilterContext)
  
   const handlePrevious = () => {
     setPostCityNameEng({});
     setPostDivisionNameEng({})
   };
-  const lang = Cookies.get("lan");
+  
   return (
    <>
     <Head>

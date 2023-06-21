@@ -5,11 +5,12 @@ import Lottie from "lottie-react";
 import lotti from "../../image/lf20_jkbuwuhk.json";
 import Cookies from 'js-cookie';
 import Head from "next/head";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const FilterPosts = () => {
   const { filterValue, cityName, divisionNameEng }: any =
     useContext(StateContext);
- 
+    const {lang}:any = useContext(FilterContext)
   const [filterPost, setFilterPost] = useState([]);
   const [loading , setLoading] = useState(false)
   useEffect(() => {
@@ -27,7 +28,7 @@ const FilterPosts = () => {
       setLoading(false)});
     
   }, [filterValue]);
-  const lang = Cookies.get("lan");
+  
   return (
     <>
     <Head>
@@ -35,8 +36,8 @@ const FilterPosts = () => {
   </Head>
     
      {
-      loading ? <h2 className="text-center w-full py-40">Loading...</h2> : <section className="lg:w-10/12 mx-auto bg-white lg:my-10 pb-10 px-5 rounded ">
-      <div className="flex justify-around pt-10 text-warning">
+      loading ? <h2 className="text-center w-full py-40">Loading...</h2> : <section className="lg:w-10/12 mx-auto bg-white lg:my-10 pb-10 px-10 rounded ">
+      <div className="flex justify-around py-5 text-warning ">
         {!lang ? (
           <div>
             {cityName?.eng && (

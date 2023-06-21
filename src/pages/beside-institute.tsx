@@ -5,22 +5,23 @@ import Lottie from "lottie-react";
 import lotti from "../image/lf20_jkbuwuhk.json";
 import Head from "next/head";
 import Cookies from "js-cookie";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const University = () => {
   const { filterPost, uniLoading }: any = useContext(APIContext);
-
-  const lang = Cookies.get("lan");
+  const {lang}:any = useContext(FilterContext)
+  
   return (
     <>
       <Head>
         <title>To Leet - Filter by institute</title>
       </Head>
-      <section className="lg:w-10/12 mx-auto bg-white px-5 rounded lg:my-10">
+      <section className=" lg:w-10/12 mx-auto bg-white px-10 rounded lg:my-10">
         {uniLoading ? (
           <h1 className="text-center w-full mt-10 py-20 text-xl">Loading...</h1>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 py-10">
               {filterPost?.map((university: any) => (
                 <ShowUniversityPost
                   key={university._id}

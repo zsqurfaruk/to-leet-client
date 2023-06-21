@@ -14,6 +14,7 @@ import { colourOption } from "./DataBan";
 import Link from "next/link";
 import Cookies from 'js-cookie';
 import { APIContext } from "@/Context/ApiContext/ApiContext";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 export default function ModalEng() {
   const {
@@ -22,7 +23,7 @@ export default function ModalEng() {
     openModalValue,
     setOpenModalValue,
   }: any = useContext(StateContext);
-
+  const {lang}:any = useContext(FilterContext)
   const { handleFilterUniversity}: any = useContext(APIContext);
   const handleCancel = () => {
     handleOpenModalEng();
@@ -44,7 +45,7 @@ export default function ModalEng() {
     Cookies.set("openMV",newName?.eng)
   }
 
-  const lang = Cookies.get("lan");
+   
   return (
     <div>
     
@@ -74,12 +75,12 @@ export default function ModalEng() {
               isSearchable
               options={colourOptions}
               onChange={setOpenModalValue}
-              className="text-sm bg-primary w-80 md:w-[40rem]  mr-10 md:mr-12 lg:mr-0 lg:w-full -ml-24 md:-ml-40 lg:ml-0 mx-auto text-gray-700 font-medium"
+              className="text-sm bg-primary w-12/12 md:w-12/12 lg:w-full mx-auto text-gray-700 font-medium"
             />
           </DialogBody>
         ) : (
           <DialogBody className="-mt-10 md:-mt-44 lg:mt-0  text-xs">
-            <h2 className="text-primary text-lg md:text-xl mb-5 w-80 md:w-[600px] -ml-24 md:-ml-40 lg:ml-0 flex lg:hidden">
+            <h2 className="text-primary text-lg md:text-xl mb-5 w-12/12 md:w-12/12 lg:w-full flex lg:hidden">
               আপনার প্রয়োজন অনুযায়ী বিশ্ববিদ্যালয় এবং মেডিকেল কলেজ নির্বাচন
               করুন:{" "}
             </h2>
@@ -88,17 +89,17 @@ export default function ModalEng() {
               isSearchable
               options={colourOption}
               onChange={setOpenModalValue}
-              className="text-sm bg-primary w-80 md:w-[40rem] lg:w-full mr-10 md:mr-12 lg:mr-0  -ml-24 md:-ml-40 lg:ml-0 mx-auto text-gray-700 font-medium"
+              className="text-sm bg-primary w-12/12 md:w-12/12 lg:w-full mx-auto text-gray-700 font-medium"
             />
           </DialogBody>
         )}
-        <div className="flex lg:hidden justify-around py-3 w-80 -ml-20 md:-ml-1">
-          <button
+        <div className="flex lg:hidden justify-around py-3 w-12/12 md:w-12/12 lg:w-full">
+          <Button
             className="text-red-500 bg-red-100 font-semibold rounded px-3"
             onClick={handleCancel}
           >
             Cancel
-          </button>
+          </Button>
           <Link
             href={{
               pathname: "/beside-institute",

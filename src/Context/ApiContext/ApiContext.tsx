@@ -34,7 +34,7 @@ const ApiContext = ({ children }: any) => {
 
   useEffect(() => {
     setAllDataLoading(true);
-    fetch("https://zsqur.to-leet.com/api/v1/product")
+    fetch("http://localhost:5000/api/v1/product")
       .then((res) => res.json())
       .then((data) => {
         setCounterPosts(data);

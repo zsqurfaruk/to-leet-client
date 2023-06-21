@@ -11,12 +11,11 @@ import { useRouter } from "next/router";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import Cookies from "js-cookie";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
   const {
-    setLanguage,
-    language,
     setCityName,
     setDivisionNameEng,
     setDistrictsName,
@@ -38,6 +37,7 @@ export default function NavBar() {
     setPostDistrictsName,
     setGetUniversityModalValue,
   }: any = useContext(PostStateContext);
+  const {lang, setLang}:any = useContext(FilterContext)
   const [authenticated, setAuthenticated] = useState(false);
   const { push, pathname } = useRouter();
 
@@ -78,16 +78,21 @@ export default function NavBar() {
     logOut();
   };
 
-  const handleLanguage = () => {
-    setLanguage(!language);
-    if (language) {
-      Cookies.set("lan", language);
-    } else {
-      Cookies.remove("lan");
-    }
-  };
-  const lang = Cookies.get("lan");
+  // const [language, setLanguage] = useState(false);
 
+  const handleLanguageChange = () => {
+    const newLanguage = !lang;
+    setLang(newLanguage);
+    localStorage.setItem('lan', JSON.stringify(newLanguage));
+  };
+
+  useEffect(() => {
+    const storedLanguage = localStorage.getItem('lan');
+    if (storedLanguage) {
+      setLang(JSON.parse(storedLanguage));
+    }
+  }, [setLang]);
+  // const lang = localStorage.getItem("lan");
   const handleHome = () => {
     setCityName({});
     setDivisionNameEng({}),
@@ -249,14 +254,14 @@ export default function NavBar() {
           <div className="hidden md:flex">
             {!lang ? (
               <span
-                onClick={handleLanguage}
+                onClick={handleLanguageChange}
                 className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded cursor-pointer"
               >
                 বাংলা
               </span>
             ) : (
               <span
-                onClick={handleLanguage}
+              onClick={handleLanguageChange}
                 className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded cursor-pointer"
               >
                 English
@@ -372,14 +377,14 @@ export default function NavBar() {
           <div className="flex justify-center rounded-full md:hidden pt-5 mb-5">
             {!lang ? (
               <span
-                onClick={handleLanguage}
+                onClick={handleLanguageChange}
                 className="font-semibold border border-success pt-[2px] pb-[1px] text-primary rounded cursor-pointer shadow-lg shadow-accent px-[53px] -ml-9"
               >
                 বাংলা
               </span>
             ) : (
               <span
-                onClick={handleLanguage}
+                onClick={handleLanguageChange}
                 className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-[51px] -ml-6 rounded cursor-pointer shadow-lg shadow-accent"
               >
                 English

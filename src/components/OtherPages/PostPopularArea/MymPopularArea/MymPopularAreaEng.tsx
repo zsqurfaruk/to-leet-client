@@ -4,13 +4,15 @@ import Select from "react-select";
 import { options } from "./DataMymBan";
 import { option } from "./DataMymEng";
 import Cookies from 'js-cookie';
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const MymPopularAreaEng = () => {
   const {
     getPostPopularAreaName,
     setGetPostPopularAreaName,
     setPostOpenModal,
-  }: any = useContext(PostStateContext);
+  }: any = useContext(PostStateContext)
+  const {lang}:any = useContext(FilterContext)
   if (getPostPopularAreaName?.name === "eng") {
     const newName = {
       eng: getPostPopularAreaName?.label,
@@ -38,7 +40,7 @@ const MymPopularAreaEng = () => {
   ) {
     setPostOpenModal(true);
   }
-  const lang = Cookies.get("lan");
+  
   return (
     <section>
       <div>

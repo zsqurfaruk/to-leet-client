@@ -1,11 +1,12 @@
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import React, { useContext } from "react";
 import Cookies from 'js-cookie';
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const PostAllDivisionEng = () => {
   const { setPostDivisionNameEng }: any =
     useContext(PostStateContext);
-  const lang = Cookies.get("lan");
+    const {lang}:any = useContext(FilterContext)
   return (
     <div className="lg:-ml-4">
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-gray-700 text-sm md:text-base">

@@ -11,6 +11,7 @@ import React from "react";
 import Cookies from 'js-cookie';
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import PostDestinationType from "@/components/OtherPages/PostDestinationType/PostDestinationType";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 export default function PostAreaModalEng() {
   const {
@@ -20,13 +21,13 @@ export default function PostAreaModalEng() {
     setGetPostPopularAreaName,
     setPostDistrictsName
   }: any = useContext(PostStateContext);
-
+  const {lang}:any = useContext(FilterContext)
   const handleCancel = () => {
     setPostOpenModal(false);
     setGetPostPopularAreaName({});
     setPostDistrictsName({})
   };
-  const lang = Cookies.get("lan");
+   
   return (
     <div>
       <Dialog
@@ -39,7 +40,7 @@ export default function PostAreaModalEng() {
           unmount: { scale: 1, y: -100 },
         }}
       >
-        <DialogBody className="-mt-52 md:-mt-72 lg:mt-0  text-xs">
+        <DialogBody className="-mt-20 md:-mt-72 lg:mt-0 text-xs">
           <PostDestinationType></PostDestinationType>
         </DialogBody>
 

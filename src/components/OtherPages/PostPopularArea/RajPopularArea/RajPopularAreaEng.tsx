@@ -4,13 +4,15 @@ import Select from "react-select";
 import { options } from "./DataRajBan";
 import { option } from "./DataRajEng";
 import Cookies from 'js-cookie';
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const RajPopularAreaEng = () => {
   const {
     getPostPopularAreaName,
     setGetPostPopularAreaName,
     setPostOpenModal,
-  }: any = useContext(PostStateContext);
+  }: any = useContext(PostStateContext)
+  const {lang}:any = useContext(FilterContext)
   if (getPostPopularAreaName?.name === "eng") {
     const newName = {
       eng: getPostPopularAreaName?.label,
@@ -38,7 +40,7 @@ const RajPopularAreaEng = () => {
   ) {
     setPostOpenModal(true);
   }
-  const lang = Cookies.get("lan");
+ 
   return (
     <section>
       <div>

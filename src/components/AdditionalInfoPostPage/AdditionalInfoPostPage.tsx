@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import { MdOutlineLocationOn } from "react-icons/md";
 import Cookies from "js-cookie";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const AdditionalInfoPostPage = () => {
   const {
@@ -16,6 +17,7 @@ const AdditionalInfoPostPage = () => {
     postDivisionNameEng,
     setPostDivisionNameEng,
   }: any = useContext(PostStateContext);
+  const {lang}:any = useContext(FilterContext)
   const router = useRouter();
   const handlePrevious = () => {
     setGetPostPopularAreaName({});
@@ -24,7 +26,7 @@ const AdditionalInfoPostPage = () => {
     setPostOpenModal(false);
     router.push("/add-post");
   };
-  const lang = Cookies.get("lan");
+   
   return (
     <div>
       <div>

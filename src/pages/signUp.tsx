@@ -15,6 +15,7 @@ import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import parsePhoneNumberFromString from "libphonenumber-js";
 import { StateContext } from "@/Context/StateContext/StateContext";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 type FormValues = {
   firstName: string;
@@ -41,6 +42,7 @@ function SignUp() {
   const [isValid, setIsValid] = useState(true);
   const [isValid2, setIsValid2] = useState(true);
   const { isOpen }: any = useContext(StateContext);
+  const {lang}:any = useContext(FilterContext)
 
   const handleSignUp: SubmitHandler<FormValues> = async (data: any) => {
     const info = {
@@ -112,7 +114,7 @@ function SignUp() {
   const getNm = Cookies.get("nm");
   const getEm = Cookies.get("em");
 
-  const lang = Cookies.get("lan");
+  
   return (
     <>
       <Head>

@@ -4,10 +4,11 @@ import Select from "react-select";
 import { options } from "./SylDataBan";
 import { option } from "./SylDataEng";
 import Cookies from "js-cookie";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const PopularAreaOfSylhet = () => {
   const { setHomePopularAreaName,setFilterValue,filterValue,  homePopularAreaName, setFilterModal }: any =useContext(StateContext); 
-
+  const {lang}:any = useContext(FilterContext)
   const handleFilter=(v:any)=>{
      
     if(v?.name){
@@ -66,7 +67,7 @@ const PopularAreaOfSylhet = () => {
   ) {
     setFilterModal(true);
   }
-  const lang = Cookies.get("lan");
+   
   return (
     <section>
       <div>

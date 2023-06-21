@@ -4,6 +4,7 @@ import { options } from "./RajDataBan";
 import { option } from "./RajDataEng";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import Cookies from "js-cookie";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const PopularAreaOfRajshahi = () => {
   const {
@@ -13,7 +14,7 @@ const PopularAreaOfRajshahi = () => {
     homePopularAreaName,
     setFilterModal,
   }: any = useContext(StateContext);
-
+  const {lang}:any = useContext(FilterContext)
   const handleFilter = (v: any) => {
     if (v?.name) {
       if (v?.name === "eng") {
@@ -53,7 +54,7 @@ const PopularAreaOfRajshahi = () => {
   ) {
     setFilterModal(true);
   }
-  const lang = Cookies.get("lan");
+  
   return (
     <section>
       <div>

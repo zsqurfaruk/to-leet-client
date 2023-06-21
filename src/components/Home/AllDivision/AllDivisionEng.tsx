@@ -1,18 +1,19 @@
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 import Cookies from "js-cookie";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const AllDivisionName = () => {
   const { setDivisionNameEng, setFilterValue, filterValue }: any =
     useContext(StateContext);
-
+    const {lang}:any = useContext(FilterContext)
   const handleFilter = (v: any) => {
     setDivisionNameEng(v);
     setFilterValue({ ...filterValue, divisionNameEng: v });
     Cookies.set("division", JSON.stringify(v),{ expires: 1 })
   };
 
-  const lang = Cookies.get("lan");
+  
   return (
     <div className="lg:-ml-4">
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-gray-700 text-sm md:text-base">

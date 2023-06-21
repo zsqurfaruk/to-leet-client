@@ -1,6 +1,7 @@
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 import Cookies from "js-cookie";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const DistrictsOfRajshahi = () => {
   const {
@@ -10,7 +11,7 @@ const DistrictsOfRajshahi = () => {
     filterValue,
     setFilterModal,
   }: any = useContext(StateContext);
-
+  const {lang}:any = useContext(FilterContext)
   const handleFilter = (v: any) => {
     setDistrictsName(v);
     setFilterValue({ ...filterValue, districtsName: v });
@@ -19,7 +20,7 @@ const DistrictsOfRajshahi = () => {
   if (districtsName?.eng) {
     setFilterModal(true);
   }
-  const lang = Cookies.get("lan");
+   
   return (
     <div>
       {" "}

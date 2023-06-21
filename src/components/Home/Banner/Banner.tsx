@@ -12,6 +12,7 @@ import Cookies from "js-cookie";
 import AllDistricts from "../AllDivision/Districts/AllDistricts/AllDistricts";
 import ModalEng from "./Modal/ModalEng";
 import PostAreaModalEng from "./Modal/PostAreaModalEng";
+import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const Banner = () => {
   const {
@@ -23,8 +24,10 @@ const Banner = () => {
     setCityName,
     divisionNameEng,
     setDivisionNameEng,
-    handleOpenModalEng,
+    handleOpenModalEng, 
   }: any = useContext(StateContext);
+
+  const {lang}:any = useContext(FilterContext)
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -39,11 +42,11 @@ const Banner = () => {
     setDivisionNameEng({});
     setFilterTypeDivision(!filterTypeDivision);
   };
-  const lan = Cookies.get("lan");
+  // const lan = Cookies.get("lan");
 
   return (
     <section className="pt-6">
-      {!lan ? (
+      {!lang ? (
         <div className="text-gray-700 md:flex justify-center gap-2 text-lg md:text-xl mx-8 md:mx-0">
           <h1  >
             Are you searching near your university?
@@ -77,14 +80,14 @@ const Banner = () => {
                 {/* {!cityName && cityNameBan && <AllAreas></AllAreas>} */}
                 {filterTypeCity && !cityName?.eng && <AllCity></AllCity>}
               </div>
-              {!lan && !filterTypeCity && !cityName?.eng && (
+              {!lang && !filterTypeCity && !cityName?.eng && (
                 <BannerEng></BannerEng>
               )}
-              {lan && !filterTypeCity && <BannerBan></BannerBan>}
+              {lang && !filterTypeCity && <BannerBan></BannerBan>}
 
               <div className="hidden lg:block">
                 <div>
-                  {!lan ? (
+                  {!lang ? (
                     <h1 className={"mt-5 lg:mt-10 text-2xl text-gray-700 ml-2"}>
                       Search by:
                     </h1>
@@ -101,7 +104,7 @@ const Banner = () => {
                           className="checkbox checkbox-primary h-[18px] w-[19px] mt-[2px]"
                           onClick={handleFilterTypeCity}
                         />
-                        <span>{!lan ? "City" : "শহর"}</span>
+                        <span>{!lang ? "City" : "শহর"}</span>
                       </label>
                     </div>
                     <div
@@ -115,7 +118,7 @@ const Banner = () => {
                           className="checkbox checkbox-primary h-[18px] w-[19px] mt-[2px]"
                           onClick={handleFilterTypeDivision}
                         />
-                        <span className=" ">{!lan ? "Division" : "বিভাগ"}</span>
+                        <span className=" ">{!lang ? "Division" : "বিভাগ"}</span>
                       </label>
                     </div>
                   </div>
@@ -136,8 +139,8 @@ const Banner = () => {
 
           <div className="lg:hidden block">
             <div>
-              {!lan ? (
-                <h1 className={filterTypeCity || filterTypeDivision ? " mt-5 lg:mt-10 text-xl text-gray-700 ml-[30px] md:ml-20" : "mt-5 lg:mt-10 text-xl text-gray-700 ml-[27px] md:ml-0"}>
+              {!lang ? (
+                <h1 className={filterTypeCity || filterTypeDivision ? "mt-5 lg:mt-10 text-xl text-gray-700 ml-[30px] md:ml-20" : "mt-5 lg:mt-10 text-xl text-gray-700 ml-[27px] md:ml-0"}>
                   Search by:
                 </h1>
               ) : (
@@ -153,7 +156,7 @@ const Banner = () => {
                       className="checkbox checkbox-primary h-[18px] w-[19px] mt-[2px]"
                       onClick={handleFilterTypeCity}
                     />
-                    <span>{!lan ? "City" : "শহর"}</span>
+                    <span>{!lang ? "City" : "শহর"}</span>
                   </label>
                 </div>
                 <div
@@ -167,16 +170,16 @@ const Banner = () => {
                       className="checkbox checkbox-primary h-[18px] w-[19px] mt-[2px]"
                       onClick={handleFilterTypeDivision}
                     />
-                    <span >{!lan ? "Division" : "বিভাগ"}</span>
+                    <span >{!lang ? "Division" : "বিভাগ"}</span>
                   </label>
                 </div>
               </div>
             </div>
           </div>
-          <div className="mt-32">
+          <div className="lg:mt-36 xl:mt-20">
           {!filterTypeDivision && (
             <Lottie
-              className="lg:scale-110 hidden lg:flex "
+              className="lg:scale-125 xl:scale-110 hidden lg:flex "
               animationData={lottiImage}
               loop={true}
               draggable= "false"
