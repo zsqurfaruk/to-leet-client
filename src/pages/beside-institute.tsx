@@ -14,7 +14,7 @@ const University = () => {
   return (
     <>
       <Head>
-        <title>To Leet - Filter by institute</title>
+        <title>To-Leet - Filter by institute</title>
       </Head>
       <section className=" lg:w-10/12 mx-auto bg-white px-10 rounded lg:my-10">
         {uniLoading ? (

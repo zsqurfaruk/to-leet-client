@@ -14,6 +14,7 @@ import office from "../../../image/working-with-laptop.png";
 import car from "../../../image/car.png";
 import garage from "../../../image/garage.png";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
+import style from "../../../styles/banner.module.css"
 
 const DesEng = () => {
   const { counter }: any = useContext(APIContext);
@@ -43,7 +44,7 @@ const DesEng = () => {
               alt={"Male"}
             ></Image>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 Bachelor (Male)
               </Typography>
               <Typography className="text-sm">
@@ -80,7 +81,7 @@ const DesEng = () => {
               alt={"Female"}
             ></Image>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 Bachelor (Female)
               </Typography>
               <Typography className="text-sm">
@@ -114,7 +115,7 @@ const DesEng = () => {
               }
             ></FcHome>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 Mess (Male)
               </Typography>
               {/* <Typography> 0 Ads</Typography> */}
@@ -149,7 +150,7 @@ const DesEng = () => {
             ></FcHome>
 
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 Mess (Female)
               </Typography>
               <Typography className="text-sm">
@@ -184,7 +185,7 @@ const DesEng = () => {
               alt={"subletMale"}
             ></Image>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 Sublet (Male)
               </Typography>
               <Typography className="text-sm">
@@ -219,7 +220,7 @@ const DesEng = () => {
               alt={"subletFemale"}
             ></Image>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 Sublet (Female)
               </Typography>
               <Typography className="text-sm">
@@ -254,7 +255,7 @@ const DesEng = () => {
               alt={"family"}
             ></Image>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 Family
               </Typography>
               <Typography className="text-sm">
@@ -287,7 +288,7 @@ const DesEng = () => {
               alt={"hotel"}
             ></Image>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 {" "}
                 Hostel
               </Typography>
@@ -319,7 +320,7 @@ const DesEng = () => {
               alt={"office"}
             ></Image>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 Office
               </Typography>
               <Typography className="text-sm">
@@ -349,7 +350,7 @@ const DesEng = () => {
               }
             ></FcShop>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 Shop
               </Typography>
               <Typography className="text-sm">
@@ -382,7 +383,7 @@ const DesEng = () => {
             ></Image>
 
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 Vehicles
               </Typography>
               <Typography className="text-sm">
@@ -414,7 +415,7 @@ const DesEng = () => {
               alt={"garage"}
             ></Image>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 Garage
               </Typography>
               <Typography className="text-sm">

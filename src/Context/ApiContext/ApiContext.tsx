@@ -71,7 +71,7 @@ const ApiContext = ({ children }: any) => {
   };
   return (
     <APIContext.Provider value={info}>
-      {loading ? <Loading></Loading> : children}
+      {children}
     </APIContext.Provider>
   );
 };

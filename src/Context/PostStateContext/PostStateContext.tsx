@@ -64,7 +64,7 @@ const PostInfo = ({ children }: any) => {
   }, []);
   return (
     <PostStateContext.Provider value={info}>
-      {loading ? <Loading></Loading> : children}
+      {children}
     </PostStateContext.Provider>
   );
 };

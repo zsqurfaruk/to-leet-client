@@ -32,7 +32,7 @@ const FilterPosts = () => {
   return (
     <>
     <Head>
-    <title>To Leet - Location - Type</title>
+    <title>To-Leet - Location - Type</title>
   </Head>
     
      {

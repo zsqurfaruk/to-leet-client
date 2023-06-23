@@ -47,7 +47,7 @@ const Dashboard = () => {
   return (
     <>
       <Head>
-        <title>To Leet - Dashboard</title>
+        <title>To-Leet - Dashboard</title>
       </Head>
       <div className="lg:flex gap-10 w-full lg:w-10/12 mx-auto bg-white p-5 md:p-10  md:scale-100">
         <div className="basis-1/5  pb-5 mb-5">

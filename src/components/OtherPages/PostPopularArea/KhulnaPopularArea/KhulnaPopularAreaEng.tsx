@@ -5,6 +5,13 @@ import { options } from "./DataKhulnaBan";
 import { option } from "./DataKhulnaEng";
 import Cookies from 'js-cookie';
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+const selectStyles = {
+  control: (styles:any, { isFocused }:any) => ({
+    ...styles,
+    borderColor: isFocused ? '#1598ac' : '#1598ac',
+    boxShadow: isFocused ? '0 0 0 .5px #1598ac' : 'none',
+  }),
+};
 
 const KhulnaPopularAreaEng = () => {
   const { getPostPopularAreaName,setGetPostPopularAreaName,setPostOpenModal }: any = useContext(PostStateContext)
@@ -213,6 +220,7 @@ const KhulnaPopularAreaEng = () => {
                     options={option}
                     onChange={setGetPostPopularAreaName}
                     className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                    styles={selectStyles}
                   />
                 </li>
               )}
@@ -227,6 +235,7 @@ const KhulnaPopularAreaEng = () => {
                     options={options}
                     onChange={setGetPostPopularAreaName}
                     className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                    styles={selectStyles}
                   />
                 </li>
               )}

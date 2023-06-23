@@ -29,7 +29,7 @@ const AllAreas = () => {
       >
         {!lang ? "Change city?" : "শহর পরিবর্তন?"}
       </h1>
-      <h1 className="text-xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700 w-10/12">
+      <h1 className="text-xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700 w-10/12 md:w-full">
         {!lang ? (
           <span>Popular areas of {cityName?.eng}:</span>
         ) : (

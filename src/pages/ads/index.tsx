@@ -98,7 +98,7 @@ function AllAds() {
   return (
     <>
       <Head>
-        <title>To Leet - All Ads</title>
+        <title>To-Leet - All Ads</title>
       </Head>
       <section className="lg:my-5 lg:w-10/12 mx-auto bg-white px-10 rounded">
       {renderData(currentItems)}

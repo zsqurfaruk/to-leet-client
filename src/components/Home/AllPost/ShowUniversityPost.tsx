@@ -164,7 +164,7 @@ return (
           {university?.bedrooms?.eng && (
             <div>
               {!lang ? (
-                <h2>Bedrooms: {university?.bedrooms?.eng}</h2>
+                <h2>Bedroom: {university?.bedrooms?.eng}</h2>
               ) : (
                 <h2>বেডরুম সংখ্যা : {university?.bedrooms?.ban}</h2>
               )}
@@ -232,7 +232,7 @@ return (
             }
           >
             {!lang ? (
-              <h2>Bathrooms: {university?.bathrooms?.eng}</h2>
+              <h2>Bathroom: {university?.bathrooms?.eng}</h2>
             ) : (
               <h2> বাথরুম সংখ্যা: {university?.bathrooms?.ban}</h2>
             )}

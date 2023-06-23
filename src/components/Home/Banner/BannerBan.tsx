@@ -8,7 +8,7 @@ const BannerBan = () => {
     <div className="scale-90 md:scale-100 lg:scale-110 lg:ml-5">
       <div
         className={
-          filterTypeDivision ? "   text-gray-700" : " mx-auto text-gray-700"
+          filterTypeDivision ? "text-gray-700" : "mx-auto text-gray-700"
         }
       >
         <span

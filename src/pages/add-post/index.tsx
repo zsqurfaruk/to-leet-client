@@ -42,7 +42,7 @@ const AddPost = () => {
   return (
    <>
     <Head>
-        <title>To Leet - Add Post</title>
+        <title>To-Leet - Add Post</title>
       </Head>
     <section>
       <PostAreaModalEng></PostAreaModalEng>

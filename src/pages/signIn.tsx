@@ -114,7 +114,7 @@ const SignIn = () => {
   return (
     <>
       <Head>
-        <title>To Leet - Sign in</title>
+        <title>To-Leet - Sign in</title>
       </Head>
       <section className="lg:w-10/12 lg:mx-auto grid lg:grid-cols-2 gap-20 my-10 lg:my-24  py-5">
         <div className="hidden lg:flex">

@@ -9,8 +9,8 @@ import Head from "next/head";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import Cookies from "js-cookie";
 
-const ShowAllPost = ({ products }: any) => {
-  const { loading,lang }: any = useContext(FilterContext);
+const ShowAllPost = ({ products,loading }: any) => {
+  const {lang }: any = useContext(FilterContext);
   const { setTypeCount }: any = useContext(StateContext);
   setTypeCount(products);
   const [deleteAndFilterPost, setDeleteAndFilterPost] = useState(products);
@@ -38,7 +38,7 @@ const ShowAllPost = ({ products }: any) => {
   return (
     <>
       <Head>
-        <title>To Leet - Filter by Rent Type</title>
+        <title>To-Leet - Filter by Rent Type</title>
       </Head>
       <section className="lg:my-10 bg-white lg:w-10/12 mx-auto">
         {loading ? (
@@ -80,17 +80,26 @@ const ShowAllPost = ({ products }: any) => {
   );
 };
 
-export default ShowAllPost;
-export const getServerSideProps: GetServerSideProps = async ({
-  params,
-}: any) => {
-  const res = await fetch(
-    `https://zsqur.to-leet.com/api/v1/product/rentType/${params.destination}`
-  );
-  const data = await res.json();
+
+export const getServerSideProps: GetServerSideProps = async ({ params }: any) => {
+  let loading = true;
+  let products = [];
+
+  try {
+    const res = await fetch(
+      `http://localhost:5000/api/v1/product/rentType/${params.destination}`
+    );
+    products = await res.json();
+    loading = false;
+  } catch (error) {
+    console.error(error);
+  }
+
   return {
     props: {
-      products: data,
+      products,
+      loading,
     },
   };
 };
+export default ShowAllPost;

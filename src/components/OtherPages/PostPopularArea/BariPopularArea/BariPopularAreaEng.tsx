@@ -5,7 +5,13 @@ import { options } from "./DataBariBan";
 import { option } from "./DataBariEng";
 import Cookies from 'js-cookie';
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
-
+const selectStyles = {
+  control: (styles:any, { isFocused }:any) => ({
+    ...styles,
+    borderColor: isFocused ? '#1598ac' : '#1598ac',
+    boxShadow: isFocused ? '0 0 0 .5px #1598ac' : 'none',
+  }),
+};
 const BariPopularAreaEng = () => {
   const {
     getPostPopularAreaName,
@@ -226,6 +232,7 @@ const BariPopularAreaEng = () => {
                     options={option}
                     onChange={setGetPostPopularAreaName}
                     className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                    styles={selectStyles}
                   />
                 </li>
               )}
@@ -240,6 +247,7 @@ const BariPopularAreaEng = () => {
                     options={options}
                     onChange={setGetPostPopularAreaName}
                     className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                    styles={selectStyles}
                   />
                 </li>
               )}

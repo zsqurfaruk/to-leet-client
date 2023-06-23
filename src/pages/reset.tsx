@@ -100,7 +100,7 @@ const Reset = () => {
   return (
     <>
       <Head>
-        <title>To Leet - Reset Password</title>
+        <title>To-Leet - Reset Password</title>
       </Head>
       <div className="md:w-10/12 lg:w-4/12 mx-auto my-10 shadow-2xl p-10 rounded">
         <div>

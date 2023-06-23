@@ -16,9 +16,9 @@ import { toast } from "react-hot-toast";
 import RelatedPosts from "@/components/RelatedPost/RelatedPosts";
 import Loader from "@/components/Loading/Loader";
 
-const ProductDetails = ({ product }: any) => {
+const ProductDetails = ({ product,loading,errorMessage }: any) => {
   const { img1, img2, img3, img4, img5 } = product;
-  const { loading, lang }: any = useContext(FilterContext);
+  const { lang }: any = useContext(FilterContext);
   const images = [
     { id: 0, value: img1 },
     { id: 1, value: img2 },
@@ -58,15 +58,18 @@ const ProductDetails = ({ product }: any) => {
   const dateParts = dateString.split("-");
   const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
 
+  if (loading) {
+    return <div className="text-center text-xl">Loading...</div>;
+  }
+  if (errorMessage) {
+    return <div>{errorMessage}</div>;
+  }
   return (
     <>
       <Head>
-        <title>To Leet - Details </title>
+        <title>To-Leet - Details </title>
       </Head>
       <section className="w-full lg:w-10/12 mx-auto lg:my-10">
-        {loading ? (
-          <Loader></Loader>
-        ) : (
           <Card className="lg:flex-row w-full p-10">
             <CardHeader
               shadow={false}
@@ -150,7 +153,7 @@ const ProductDetails = ({ product }: any) => {
                       <>
                         {!lang ? (
                           <>
-                            <span className="font-semibold">Beside:</span>
+                            <span className="font-semibold">Beside: </span>
                             {product?.university?.eng}
                           </>
                         ) : (
@@ -166,7 +169,7 @@ const ProductDetails = ({ product }: any) => {
                         {product?.bedrooms?.eng && (
                           <div>
                             {!lang ? (
-                              <h2>Bedrooms: {product?.bedrooms?.eng}</h2>
+                              <h2>Bedroom: {product?.bedrooms?.eng}</h2>
                             ) : (
                               <h2> বেডরুমঃ {product?.bedrooms?.ban}</h2>
                             )}
@@ -209,11 +212,11 @@ const ProductDetails = ({ product }: any) => {
                           product?.type?.eng === "Sublet-(Male)" ||
                           product?.type?.eng === "Sublet-(Female)"
                             ? "flex"
-                            : "hidden"
+                            : "md:hidden"
                         }
                       >
                         {!lang ? (
-                          <h2>Bathrooms: {product?.bathrooms?.eng}</h2>
+                          <h2>Bathroom: {product?.bathrooms?.eng}</h2>
                         ) : (
                           <h2>বাথরুমঃ {product?.bathrooms?.ban}</h2>
                         )}
@@ -338,7 +341,7 @@ const ProductDetails = ({ product }: any) => {
                           }
                         >
                           {!lang ? (
-                            <h2>Bathrooms: {product?.bathrooms?.eng}</h2>
+                            <h2>Bathroom: {product?.bathrooms?.eng}</h2>
                           ) : (
                             <h2>বাথরুমঃ {product?.bathrooms?.ban}</h2>
                           )}
@@ -470,7 +473,6 @@ const ProductDetails = ({ product }: any) => {
               </div>
             </div>
           </Card>
-        )}
       </section>
       <br />
       <RelatedPosts
@@ -488,28 +490,52 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
     ? JSON.parse(decodeURIComponent(cookieValue))
     : null;
   const { params } = context;
-  const res = await fetch(
-    `http://localhost:5000/api/v1/product/${params?.productId}`,
-    {
-      headers: {
-        authorization: `bearer ${token}`,
-      },
-    }
-  );
-  const data = await res.json();
 
-  if (!data) {
+  // Set the loading status to true
+  let loading = true;
+  let errorMessage = '';
+
+  try {
+    const res = await fetch(
+      `http://localhost:5000/api/v1/product/${params?.productId}`,
+      {
+        headers: {
+          authorization: `bearer ${token}`,
+        },
+      }
+    );
+    const data = await res.json();
+
+    if (!data) {
+      return {
+        redirect: {
+          destination: "/",
+          permanent: false,
+        },
+      };
+    }
+
+    // Set the loading status to false once the data is fetched
+    loading = false;
+
     return {
-      redirect: {
-        destination: "/",
-        permanent: false,
+      props: {
+        product: data,
+        loading: loading, 
+        errorMessage: null,// Pass the loading status as a prop
+      },
+    };
+  } catch (error) {
+    errorMessage = 'An error occurred. Please try again later.';
+
+    return {
+      props: {
+        product: null,
+        loading: loading,
+        errorMessage: errorMessage, // Pass the loading status as a prop
       },
     };
   }
-  return {
-    props: {
-      product: data,
-    },
-  };
 };
+
 export default PrivateRoute(ProductDetails);

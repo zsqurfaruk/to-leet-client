@@ -165,7 +165,7 @@ return (
           {post?.bedrooms?.eng && (
             <div>
               {!lang ? (
-                <h2>Bedrooms: {post?.bedrooms?.eng}</h2>
+                <h2>Bedroom: {post?.bedrooms?.eng}</h2>
               ) : (
                 <h2>বেডরুম সংখ্যা : {post?.bedrooms?.ban}</h2>
               )}
@@ -233,7 +233,7 @@ return (
             }
           >
             {!lang ? (
-              <h2>Bathrooms: {post?.bathrooms?.eng}</h2>
+              <h2>Bathroom: {post?.bathrooms?.eng}</h2>
             ) : (
               <h2> বাথরুম সংখ্যা: {post?.bathrooms?.ban}</h2>
             )}

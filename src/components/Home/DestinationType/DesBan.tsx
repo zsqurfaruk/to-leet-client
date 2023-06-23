@@ -14,6 +14,8 @@ import office from "../../../image/working-with-laptop.png";
 import car from "../../../image/car.png";
 import garage from "../../../image/garage.png";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
+import style from "../../../styles/banner.module.css"
+
 const DesBan = () => {
   const { counter }: any = useContext(APIContext);
   const getCount = (value: any) => {
@@ -42,7 +44,7 @@ const DesBan = () => {
               alt={"Male"}
             ></Image>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 ব্যাচেলর (ছেলে)
               </Typography>
               {/* <Typography>০ টি বিজ্ঞাপন</Typography> */}
@@ -88,7 +90,7 @@ const DesBan = () => {
               alt={"Female"}
             ></Image>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 ব্যাচেলর (মেয়ে)
               </Typography>
               <Typography className="text-sm">
@@ -131,7 +133,7 @@ const DesBan = () => {
               }
             ></FcHome>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 মেস (ছেলে)
               </Typography>
               <Typography className="text-sm">
@@ -174,7 +176,7 @@ const DesBan = () => {
               }
             ></FcHome>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 মেস (মেয়ে)
               </Typography>
               <Typography className="text-sm">
@@ -219,7 +221,7 @@ const DesBan = () => {
               alt={"subletMale"}
             ></Image>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 সাবলেট (ছেলে)
               </Typography>
               <Typography className="text-sm">
@@ -264,7 +266,7 @@ const DesBan = () => {
               alt={"subletFemale"}
             ></Image>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 সাবলেট (মেয়ে)
               </Typography>
               <Typography className="text-sm">
@@ -309,7 +311,7 @@ const DesBan = () => {
               alt={"family"}
             ></Image>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 পরিবার
               </Typography>
               <Typography className="text-sm">
@@ -353,7 +355,7 @@ const DesBan = () => {
               alt={"hotel"}
             ></Image>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 {" "}
                 আবাসিক হোটেল
               </Typography>
@@ -397,7 +399,7 @@ const DesBan = () => {
               alt={"office"}
             ></Image>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 অফিস
               </Typography>
               <Typography className="text-sm">
@@ -438,7 +440,7 @@ const DesBan = () => {
               }
             ></FcShop>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 দোকান
               </Typography>
               <Typography className="text-sm">
@@ -481,7 +483,7 @@ const DesBan = () => {
               alt={"car"}
             ></Image>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 যানবাহন
               </Typography>
               <Typography className="text-sm">
@@ -525,7 +527,7 @@ const DesBan = () => {
               alt={"garage"}
             ></Image>
             <div>
-              <Typography variant="h5" className="mb-2">
+              <Typography variant="h5" className={`mb-2 ${style.fontSize}`}>
                 গ্যারেজ
               </Typography>
               <Typography className="text-sm">

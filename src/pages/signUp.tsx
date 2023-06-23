@@ -118,7 +118,7 @@ function SignUp() {
   return (
     <>
       <Head>
-        <title>To Leet - Sign up</title>
+        <title>To-Leet - Sign up</title>
       </Head>
       <section className="lg:w-10/12 lg:mx-auto grid lg:grid-cols-2 gap-20 my-10">
         <div className="hidden lg:flex">

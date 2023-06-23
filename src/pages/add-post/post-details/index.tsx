@@ -12,7 +12,7 @@ import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import PostModal from "@/components/OtherPages/PostModal/PostModal";
 import { BsImage } from "react-icons/bs";
 import { RxCrossCircled } from "react-icons/rx";
-import { Button } from "@material-tailwind/react";
+import { Button, Input } from "@material-tailwind/react";
 import Spinner from "@/components/Spinner/Spinner";
 import Head from "next/head";
 import Select from "react-select";
@@ -30,7 +30,14 @@ import PhoneInput from "react-phone-input-2";
 import parsePhoneNumberFromString from "libphonenumber-js";
 import { AiOutlineMinus } from "react-icons/ai";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
-
+import style from "../../../styles/banner.module.css"
+const selectStyles = {
+  control: (styles:any, { isFocused }:any) => ({
+    ...styles,
+    borderColor: isFocused ? '#1598ac' : '#1598ac',
+    boxShadow: isFocused ? '0 0 0 1px #1598ac' : 'none',
+  }),
+};
 type FormValues = {
   bedNumber: object;
   totalBed: object;
@@ -243,7 +250,11 @@ const PostDetails = () => {
     setPostDistrictsName({});
     setPostDivisionNameEng({});
     if (result?.message === "success") {
-      toast.success("Thanks for your ads.");
+      if(lang){
+        toast.success("আপনার বিজ্ঞাপনের জন্য আপনাকে ধন্যবাদ.")
+      }else{
+        toast.success("Thank you for your ads.");
+      }
       setReload(!reload);
       router.push(`/${modalValue.eng}`);
       setPostLoading(false);
@@ -363,7 +374,7 @@ const PostDetails = () => {
   return (
     <>
       <Head>
-        <title>To Leet - Post Details</title>
+        <title>To-Leet - Post Details</title>
       </Head>
       <div>
         <div className="bg-white p-5 lg:w-10/12 mx-auto">
@@ -473,6 +484,7 @@ const PostDetails = () => {
                       options={totalBedEng}
                       onChange={setTotalBed}
                       className="bg-primary border-warning  text-sm h-4 text-gray-700 font-medium"
+                      styles={selectStyles}
                     />
                   </div>
                 ) : (
@@ -486,6 +498,7 @@ const PostDetails = () => {
                       options={totalBedBan}
                       onChange={setTotalBed}
                       className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                      styles={selectStyles}
                     />
                   </div>
                 )}
@@ -514,6 +527,7 @@ const PostDetails = () => {
                       options={optionEng}
                       onChange={setBedNumbers}
                       className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                      styles={selectStyles}
                     />
                   </div>
                 ) : (
@@ -527,6 +541,7 @@ const PostDetails = () => {
                       options={optionBan}
                       onChange={setBedNumbers}
                       className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                      styles={selectStyles}
                     />
                   </div>
                 )}
@@ -560,6 +575,7 @@ const PostDetails = () => {
                       options={optionEng}
                       onChange={setBedRooms}
                       className="bg-primary  border-none text-sm h-4 text-gray-700 font-medium"
+                      styles={selectStyles}
                     />
                   </div>
                 ) : (
@@ -573,6 +589,7 @@ const PostDetails = () => {
                       options={optionBan}
                       onChange={setBedRooms}
                       className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                      styles={selectStyles}
                     />
                   </div>
                 )}
@@ -601,6 +618,7 @@ const PostDetails = () => {
                       options={optionEng}
                       onChange={setBathRooms}
                       className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                      styles={selectStyles}
                     />
                   </div>
                 ) : (
@@ -614,6 +632,7 @@ const PostDetails = () => {
                       options={optionBan}
                       onChange={setBathRooms}
                       className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                      styles={selectStyles}
                     />
                   </div>
                 )}
@@ -639,6 +658,7 @@ const PostDetails = () => {
                       options={wifiEng}
                       onChange={setWifi}
                       className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                      styles={selectStyles}
                     />
                   </div>
                 ) : (
@@ -652,6 +672,7 @@ const PostDetails = () => {
                       options={wifiBan}
                       onChange={setWifi}
                       className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
+                      styles={selectStyles}
                     />
                   </div>
                 )}
@@ -672,7 +693,7 @@ const PostDetails = () => {
                       ? "Enter your street, house number, and/or post code"
                       : "এখানে আপনার পূর্ণ ঠিকানা লিখুন।"
                   }
-                  className="input input-bordered w-full  "
+                  className="border border-warning p-2 focus:border-warning focus:outline-none focus:ring-1 focus:ring-warning rounded  w-full"
                 />
                 {errors.address && (
                   <span className="text-red-500 pt-4">
@@ -685,7 +706,7 @@ const PostDetails = () => {
               <div className="lg:w-6/12 mx-auto mt-6">
                 <label className="label">
                   {!lang ? (
-                    <span className="label-text">Title</span>
+                    <span className="label-text">Short Title</span>
                   ) : (
                     <span className="label-text"> টাইটেল লিখুন </span>
                   )}
@@ -694,7 +715,7 @@ const PostDetails = () => {
                   {...register("title", { required: true })}
                   type="text"
                   placeholder={!lang ? "Short Title" : "টাইটেল লিখুন"}
-                  className="input input-bordered w-full "
+                  className="border border-warning p-2 focus:border-warning focus:outline-none focus:ring-1 focus:ring-warning rounded  w-full"
                 />
                 {errors.title && (
                   <span className="text-red-500 pt-4">
@@ -714,7 +735,7 @@ const PostDetails = () => {
                 </label>
                 <textarea
                   {...register("description")}
-                  className="textarea textarea-bordered w-full h-32  "
+                  className="border border-warning p-2 focus:border-warning focus:outline-none focus:ring-1 focus:ring-warning rounded  w-full h-32"
                   placeholder={!lang ? "More Details" : "বিস্তারিত লিখুন"}
                 ></textarea>
                 {errors.description && (
@@ -737,7 +758,7 @@ const PostDetails = () => {
                   {...register("amount", { required: true })}
                   type="text"
                   placeholder={!lang ? "Rent Amount" : "টাকার পরিমান লিখুন"}
-                  className="input input-bordered w-full  "
+                  className="border border-warning p-2 focus:border-warning focus:outline-none focus:ring-1 focus:ring-warning rounded  w-full"
                   onChange={(e: any) => checkAmountValidity(e.target.value)}
                 />
                 {errors.description && (
@@ -807,7 +828,7 @@ const PostDetails = () => {
                           </button>
                         </div>
                       ) : (
-                        <button>
+                        <button >
                           {!lang ? (
                             <label>Image 1</label>
                           ) : (
@@ -821,18 +842,18 @@ const PostDetails = () => {
                             id="file1"
                             accept="image/*"
                             placeholder="Upload Images"
-                            className="file-input file-input-primary w-full hidden"
+                            className="file-input file-input-primary w-full hidden cursor-pointer"
                             required
                           />
                           <div className="mt-1">
                             <label htmlFor="file1">
                               {!lang ? (
-                                <div className="rounded border border-warning p-2">
+                                <div className="rounded border border-warning p-2 cursor-pointer">
                                   <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
                                   <small>Upload Photo</small>
                                 </div>
                               ) : (
-                                <div className="rounded border border-warning p-2">
+                                <div className="rounded border border-warning p-2 cursor-pointer">
                                   <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
                                   <small> ছবি যুক্ত করুন</small>
                                 </div>
@@ -888,7 +909,7 @@ const PostDetails = () => {
                                 <div
                                   className={
                                     imageUrl1
-                                      ? "rounded border border-warning p-2"
+                                      ? "rounded border border-warning p-2 cursor-pointer"
                                       : "rounded border   border-gray-400 p-2"
                                   }
                                 >
@@ -905,8 +926,8 @@ const PostDetails = () => {
                                 <div
                                   className={
                                     imageUrl1
-                                      ? "rounded border border-warning p-2"
-                                      : "rounded border   border-gray-400 p-2"
+                                      ? "rounded border border-warning p-2 cursor-pointer"
+                                      : "rounded border border-gray-400 p-2"
                                   }
                                 >
                                   <BsImage
@@ -963,7 +984,7 @@ const PostDetails = () => {
                             id="file3"
                             accept="image/*"
                             placeholder="Upload Images"
-                            className="file-input file-input-primary w-full hidden"
+                            className="file-input file-input-primary w-full hidden cursor-pointer"
                             disabled={imageUrl1 && imageUrl2 ? false : true}
                           />
                           <div className="mt-1">
@@ -972,7 +993,7 @@ const PostDetails = () => {
                                 <div
                                   className={
                                     imageUrl1 && imageUrl2
-                                      ? "rounded border border-warning p-2"
+                                      ? "rounded border border-warning p-2 cursor-pointer"
                                       : "rounded border border-gray-400 p-2"
                                   }
                                 >
@@ -989,7 +1010,7 @@ const PostDetails = () => {
                                 <div
                                   className={
                                     imageUrl1 && imageUrl2
-                                      ? "rounded border border-warning p-2"
+                                      ? "rounded border border-warning p-2 cursor-pointer"
                                       : "rounded border border-gray-400 p-2"
                                   }
                                 >
@@ -1055,7 +1076,7 @@ const PostDetails = () => {
                                 <div
                                   className={
                                     imageUrl3
-                                      ? "rounded border border-warning p-2"
+                                      ? "rounded border border-warning p-2 cursor-pointer"
                                       : "rounded border border-gray-400 p-2"
                                   }
                                 >
@@ -1072,7 +1093,7 @@ const PostDetails = () => {
                                 <div
                                   className={
                                     imageUrl3
-                                      ? "rounded border border-warning p-2"
+                                      ? "rounded border border-warning p-2 cursor-pointer"
                                       : "rounded border border-gray-400 p-2"
                                   }
                                 >
@@ -1138,7 +1159,7 @@ const PostDetails = () => {
                                 <div
                                   className={
                                     imageUrl4
-                                      ? "rounded border border-warning p-2"
+                                      ? "rounded border border-warning p-2 cursor-pointer"
                                       : "rounded border border-gray-400 p-2"
                                   }
                                 >
@@ -1155,7 +1176,7 @@ const PostDetails = () => {
                                 <div
                                   className={
                                     imageUrl4
-                                      ? "rounded border border-warning p-2"
+                                      ? "rounded border border-warning p-2 cursor-pointer"
                                       : "rounded border border-gray-400 p-2"
                                   }
                                 >
@@ -1209,7 +1230,7 @@ const PostDetails = () => {
                 <input
                   {...register("name")}
                   type="text"
-                  className="input input-bordered w-full mt-2"
+                  className="border border-warning p-2 focus:border-warning focus:outline-none focus:ring-1 focus:ring-warning rounded  w-full mt-2"
                   placeholder="Enter your full name."
                   defaultValue={name}
                 />
@@ -1237,7 +1258,7 @@ const PostDetails = () => {
                 <input
                   {...register("email", { required: true })}
                   type="email"
-                  className="input input-bordered w-full mt-2"
+                  className="border border-warning p-2 focus:border-warning focus:outline-none focus:ring-1 focus:ring-warning rounded  w-full mt-2"
                   defaultValue={checkAuthentication}
                   placeholder="Enter your email."
                   readOnly={checkAuthentication ? true : false}
@@ -1298,7 +1319,7 @@ const PostDetails = () => {
                           {...register("phone")}
                           type="text"
                           placeholder="Add A Mobile Number"
-                          className="input input-bordered focus:border-none  w-full mt-5"
+                          className="border border-warning p-2 focus:border-warning focus:outline-none focus:ring-1 focus:ring-warning rounded  w-full mt-5"
                           // onChange={(e: any) => checkNumber(e.target.value)}
                           defaultValue={minusNumber ? "" : getNumber}
                           readOnly

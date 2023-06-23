@@ -30,7 +30,7 @@ const AllDistricts = () => {
         >
           {!lang ? "Change Division?" : "বিভাগ পরিবর্তন?"}
         </h1>
-        <h1 className="w-10/12 md:full text-2xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
+        <h1 className="w-10/12 md:w-full text-2xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
           {!lang ? (
             <span>Districts of {divisionNameEng?.eng}:</span>
           ) : (

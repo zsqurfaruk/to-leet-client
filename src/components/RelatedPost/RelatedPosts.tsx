@@ -15,7 +15,7 @@ const RelatedPosts = ({ type, areaName, cityName, id }: any) => {
   };
   useEffect(() => {
     // setLoading(true)
-    fetch("http://localhost:5000/api/v1/product/filter", {
+    fetch(`http://localhost:5000/api/v1/product/filter?limit=${2}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

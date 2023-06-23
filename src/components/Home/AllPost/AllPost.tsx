@@ -42,7 +42,7 @@ const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
       </figure>
       <div className="card-body border-b border-l border-r border-gray-300 rounded-b min-h-44">
         <div className="-mt-2 text-warning">
-          {post?.title?.length > 30 ? (
+          {post?.title?.length > 31 ? (
             <h2 className="text-md font-semibold">
               {" "}
               {post?.title.slice(0, 30)}...
@@ -164,7 +164,7 @@ const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
           {post?.bedrooms?.eng && (
             <div>
               {!lang ? (
-                <h2>Bedrooms: {post?.bedrooms?.eng}</h2>
+                <h2>Bedroom: {post?.bedrooms?.eng}</h2>
               ) : (
                 <h2>বেডরুম সংখ্যা : {post?.bedrooms?.ban}</h2>
               )}
@@ -232,7 +232,7 @@ const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
             }
           >
             {!lang ? (
-              <h2>Bathrooms: {post?.bathrooms?.eng}</h2>
+              <h2>Bathroom: {post?.bathrooms?.eng}</h2>
             ) : (
               <h2> বাথরুম সংখ্যা: {post?.bathrooms?.ban}</h2>
             )}

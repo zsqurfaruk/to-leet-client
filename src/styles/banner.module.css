@@ -5,20 +5,23 @@
 #bannerTextColorChange {
   color: #1490a3d6;
 }
-
- .inputStyle{
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 8px;
-  font-size: 16px;
- }
-
- .disabled {
-   
-   
-  color: #ccc;
-  cursor: default;
+ 
+ @media screen and (max-width: 360px) {
+  .fontSize {
+    font-size: 15px;
+  }
 }
+ @media screen and (min-width: 1024px) and (max-width: 1535px) {
+  .fontSize {
+    font-size: 17.5px;
+  }
+}
+ @media screen and (min-width: 1536px) {
+  .fontSize {
+    font-size: 20px;
+  }
+}
+
 
  
 

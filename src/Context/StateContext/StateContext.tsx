@@ -74,7 +74,7 @@ const StateInfo = ({ children }: any) => {
     filterValue,
     setFilterValue,
   };
-  return <StateContext.Provider value={info}>{loading ? <Loading></Loading> : children}</StateContext.Provider>;
+  return <StateContext.Provider value={info}>{children}</StateContext.Provider>;
 };
 
 export default StateInfo;
