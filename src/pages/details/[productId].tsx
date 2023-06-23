@@ -497,7 +497,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 
   try {
     const res = await fetch(
-      `http://localhost:5000/api/v1/product/${params?.productId}`,
+      `https://zsqur.to-leet.com/api/v1/product/${params?.productId}`,
       {
         headers: {
           authorization: `bearer ${token}`,

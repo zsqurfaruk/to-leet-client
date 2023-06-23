@@ -48,16 +48,6 @@ function AllAds() {
   const lastIndex = currentPage * limit;
   const startIndex = lastIndex - limit;
   const currentItems = counterPosts.slice(startIndex, lastIndex);
-  // useEffect(() => {
-  //   setAllDataLoading(false)
-  // }, [ ]);
-  // useEffect(() => {
-  //   // Set the value on cookies
-  //   Cookies.set("currentPage", JSON.stringify(counterPosts), {
-  //     expires: 1,
-  //     path: "/",
-  //   });
-  // }, [counterPosts]);
 
   const renderData = (counterPosts: any) => {
     return (

@@ -7,7 +7,6 @@ import lotti from "../image/lf20_jkbuwuhk.json";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import Head from "next/head";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
-import Cookies from "js-cookie";
 
 const ShowAllPost = ({ products,loading }: any) => {
   const {lang }: any = useContext(FilterContext);
@@ -87,13 +86,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params }: any) =>
 
   try {
     const res = await fetch(
-      `http://localhost:5000/api/v1/product/rentType/${params.destination}`
+      `https://zsqur.to-leet.com/api/v1/product/rentType/${params.destination}`
     );
     products = await res.json();
     loading = false;
-  } catch (error) {
-    console.error(error);
-  }
+  } catch (error) {}
 
   return {
     props: {
