@@ -1048,8 +1048,7 @@ const PostDetails = () => {
                             onClick={handleCancel14}
                             className="bg-primary absolute top-7 right-1"
                           >
-                            {" "}
-                            <RxCrossCircled />{" "}
+                            <RxCrossCircled />
                           </button>
                         </div>
                       ) : (
