@@ -2,16 +2,17 @@
 import React, { useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { IoMdArrowDropup } from "react-icons/io";
+import style from "../../styles/banner.module.css"
 
 const AboutEng = () => {
   const [open, setOpen] = useState(true);
 
   return (
     <div className="w-10/12 mx-auto py-10 text-gray-700">
-      <h1 className="text-2xl font-semibold text-warning">
-        To-Leet : The Ultimate Rental Solution
+      <h1 className={`${style.aboutStyle} text-[17px] md:text-2xl font-semibold text-warning`}>
+        To-Leet: The Ultimate Rental Solution
       </h1>
-     <div className="text-justify">
+     <div className="text-justify -mt-4">
      <br />
       In today's fast-paced and ever-changing world, finding the right space for
       your needs can be a daunting task. Whether you require extra storage for

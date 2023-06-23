@@ -2,14 +2,16 @@
 import React, { useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { IoMdArrowDropup } from "react-icons/io";
+import style from "../../styles/banner.module.css"
 
 const AboutBan = () => {
   const [open, setOpen] = useState(true);
   return (
-    <div className="w-10/12 mx-auto py-10 text-justify text-gray-700">
-      <h1 className="text-2xl font-semibold text-warning">
-        To-Leet : The Ultimate Rental Solution
+    <div className="w-10/12 mx-auto py-10 text-gray-700">
+      <h1 className={`${style.aboutStyle} text-[17px] md:text-2xl font-semibold text-warning`}>
+        To-Leet: The Ultimate Rental Solution
       </h1>
+      <div className="text-justify -mt-3">
       <br />
       আজকের দ্রুত গতির এবং সদা পরিবর্তনশীল বিশ্বে, আপনার প্রয়োজনের জন্য সঠিক
       স্থান খুঁজে পাওয়া একটি কঠিন কাজ হতে পারে। আপনার জিনিসপত্রের জন্য অতিরিক্ত
@@ -124,6 +126,7 @@ const AboutBan = () => {
         >
           কম দেখান <IoMdArrowDropup className="mb-1 text-3xl text-warning" />
         </button>
+      </div>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import style from "../../../styles/banner.module.css";
 const BannerBan = () => {
   const { filterTypeDivision }: any = useContext(StateContext);
   return (
-    <div className="scale-90 md:scale-100 lg:scale-110 lg:ml-5">
+    <div className="scale-90 px-3 md:scale-100 lg:scale-110 lg:ml-5 -mt-10">
       <div
         className={
           filterTypeDivision ? "text-gray-700" : "mx-auto text-gray-700"

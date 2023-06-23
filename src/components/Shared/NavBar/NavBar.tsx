@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import {
   Navbar,
-  MobileNav,
   Typography,
   Button,
   IconButton,
+  Collapse,
 } from "@material-tailwind/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -12,6 +12,7 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import Cookies from "js-cookie";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import style from '../../../styles/banner.module.css'
 
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -204,7 +205,7 @@ export default function NavBar() {
     <>
       <Navbar className="sticky top-0 z-10 bg-warning bg-opacity-100 h-max min-w-full rounded-none py-2 px-1 md:px-0 lg:px-8 lg:py-4 border-none text-primary shadow-sm">
         <div className="flex items-center justify-between text-blue-gray-900 px-2 w-11/12 md:w-10/12 lg:w-11/12 lg:px-8 mx-auto">
-          <div className="flex gap-7 lg:gap-12">
+          <div className={`flex ${style.gapStyle} gap-9 lg:gap-12`}>
             <Link className="flex md:gap-2" onClick={handleHome} href={"/"}>
               {/* <Image
                 className="h-7 mt-[7px] w-12 rounded"
@@ -212,7 +213,7 @@ export default function NavBar() {
                 alt={""}
               ></Image> */}
               {/* // text-transparent bg-clip-text bg-gradient-to-r from-primary via-gray-700 to-primary */}
-              <Typography className="mr-4 cursor-pointer text-4xl font-semibold md:font-extrabold text-primary">
+              <Typography className={`mr-4 cursor-pointer text-4xl font-semibold md:font-extrabold text-primary ${style.navNameStyle}`}>
                 To-Leet
               </Typography>
             </Link>
@@ -327,7 +328,7 @@ export default function NavBar() {
             </IconButton>
           </div>
         </div>
-        <MobileNav open={openNav}>
+        <Collapse  open={openNav}>
           <div className="mt-10"> {navList}</div>
           <div className="flex justify-center">
             {authenticated ? (
@@ -391,7 +392,7 @@ export default function NavBar() {
               </span>
             )}
           </div>
-        </MobileNav>
+        </Collapse>
       </Navbar>
     </>
   );

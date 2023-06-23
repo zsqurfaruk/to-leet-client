@@ -4,7 +4,7 @@ import style from "../../../styles/banner.module.css";
 
 const BannerEng = () => {
   return (
-    <div className="scale-90 md:scale-100 ml-2">
+    <div className="scale-90 md:scale-100 ml-2 -mt-10">
       <div className="text-lg md:text-2xl lg:text-xl text-gray-700">
         <span
           id={style.bannerTextColorChange}

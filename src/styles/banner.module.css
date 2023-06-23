@@ -6,6 +6,19 @@
   color: #1490a3d6;
 }
  
+ @media screen and (max-width: 350px) {
+  .navNameStyle {
+    font-size: 25px;
+    font-weight: 600;
+   
+  }
+  .gapStyle{
+    gap: 9px;
+  }
+  .aboutStyle{
+    font-size: 14px;
+  }
+}
  @media screen and (max-width: 360px) {
   .fontSize {
     font-size: 15px;

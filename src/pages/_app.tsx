@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
     };
   }, []);
   return (
-    // <DisableRightClick>
+    <DisableRightClick>
       <FilterInfo>
         <PostInfo>
           <StateInfo>
@@ -45,6 +45,6 @@ export default function App({ Component, pageProps }: AppProps) {
           </StateInfo>
         </PostInfo>
       </FilterInfo>
-    // </DisableRightClick>
+    </DisableRightClick>
   );
 }
