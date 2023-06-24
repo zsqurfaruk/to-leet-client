@@ -98,7 +98,7 @@ export default function ModalEng() {
             className="text-red-500 bg-red-100 font-semibold rounded px-3"
             onClick={handleCancel}
           >
-            Cancel
+            {!lang ? " Cancel" : "বাতিল"}
           </Button>
           <Link
             href={{
@@ -112,7 +112,7 @@ export default function ModalEng() {
               className="text-primary bg-gradient-to-r from-accent to-warning px-3 py-2 rounded font-semibold"
               onClick={handleFilterUniversity}
             >
-              Confirm
+              {!lang ? " Confirm" : "নিশ্চিত করুন"}
             </button>
           </Link>
         </div>
@@ -142,7 +142,7 @@ export default function ModalEng() {
               onClick={handleFilterUniversity}
               disabled={!openModalValue?.eng ? true : false}
             >
-              <span  >Confirm</span>
+              <span>Confirm</span>
             </Button>
           </Link>
         </DialogFooter>

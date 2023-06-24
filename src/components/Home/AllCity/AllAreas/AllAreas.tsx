@@ -19,8 +19,6 @@ const AllAreas = () => {
     setHomePopularAreaName({})
   };
 
-   
-
   return (
     <section className="w-full mx-7 md:mx-0">
       <h1

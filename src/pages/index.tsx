@@ -7,8 +7,6 @@ import PostCounter from "@/components/Home/PostCounter/PostCounter";
 import Banner from "@/components/Home/Banner/Banner";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import About from "@/components/About/About";
-import ChatPlugin from "./chatPlugin";
-
 
 function Home() {
   const { isOpen }: any = useContext(StateContext);
@@ -31,13 +29,13 @@ function Home() {
         <meta property="og:url" content="https://to-leet.com/" />
         <meta
           property="og:title"
-          content="To-Leet - The Ultimate Rental Solution"
+          content="To-Leet - The Ultimate Rental Solution | ToLet | Rent in bangladesh"
         />
         <meta property="og:description" content="" />
-        <meta property="og:site_name" content="To-Leet" />
+        <meta property="og:site_name" content="to-leet.com" />
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="title" content="To Leet - The Ultimate Rental Solution" />
+        <meta name="title" content="To-Leet - The Ultimate Rental Solution | ToLet | Rent in bangladesh" />
         <meta name="keywords" />
         <meta
           name="description"
@@ -52,17 +50,16 @@ function Home() {
         <meta property="og:url" content="https://to-leet.com/" />
         <meta
           property="og:title"
-          content="To-Leet - The Ultimate Rental Solution"
+          content="To-Leet - The Ultimate Rental Solution | ToLet | Rent in bangladesh"
         />
         <meta property="og:description" content="" />
-        <meta property="og:site_name" content="To-Leet" />
+        <meta property="og:site_name" content="to-leet.com" />
       </Head>
       <main className="bg-white">
         <Banner></Banner>
         <DestinationType></DestinationType>
         <PostCounter></PostCounter>
         <About></About>
-        <ChatPlugin></ChatPlugin>
       </main>
     </>
   );

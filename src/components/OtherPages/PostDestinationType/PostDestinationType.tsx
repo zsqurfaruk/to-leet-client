@@ -24,7 +24,7 @@ const PostDestinationType = () => {
   };
    
   return (
-    <div className="bg-neutral w-12/12 md:w-12/12 lg:w-full rounded-md mt-40 lg:mt-0">
+    <div className="bg-neutral text-gray-700 w-12/12 md:w-12/12 lg:w-full rounded-md mt-40 lg:mt-0 p-5 ">
       <div>
         {
           postDistrictsName?.eng ?

@@ -9,7 +9,7 @@ const AboutEng = () => {
 
   return (
     <div className="w-10/12 mx-auto py-10 text-gray-700">
-      <h1 className={`${style.aboutStyle} text-[17px] md:text-2xl font-semibold text-warning`}>
+      <h1 className={`${style.aboutStyle}   md:text-2xl font-semibold text-warning`}>
         To-Leet: The Ultimate Rental Solution
       </h1>
      <div className="text-justify -mt-4">
@@ -19,9 +19,8 @@ const AboutEng = () => {
       your belongings, a workshop to pursue your hobbies, or a retail space to
       showcase your products, the search for suitable rentals can be
       time-consuming and frustrating. But worry no more! <br />
-      Welcome to To-Leet, <span className="text-warning font-semibold"> To-Leet</span> is the most secure and easy online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience.
-      <span className="hidden lg:inline"> At  <span className="text-warning font-semibold"> To-Leet</span>, we understand that everyone's requirements are unique, and
-        finding the perfect space should be a seamless process. We have
+      Welcome to To-Leet, <span className="text-warning font-semibold"> To-Leet </span> is the most secure and easy online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience.
+      <span className="hidden lg:inline"> At  <span className="text-warning font-semibold"> To-Leet </span>, we understand that everyone's requirements are unique, and finding the perfect space should be a seamless process. We have
         leveraged the power of technology to create an intuitive and
         user-friendly online platform that connects renters with an extensive
         network of property owners offering diverse spaces for rent.
@@ -55,7 +54,7 @@ const AboutEng = () => {
             </span>
             <br /> Whether you're searching for a cozy apartment, a spacious
             garage, or a commercial shop,
-            <span className="text-warning font-semibold"> To-Leet</span> has
+            <span className="text-warning font-semibold"> To-Leet </span> has
             got you covered. Our platform features a wide range of rental
             options, catering to various needs and preferences. With our vast
             selection, you'll find the ideal space to suit your requirements.
@@ -86,7 +85,7 @@ const AboutEng = () => {
               Transparent Rental Process:
             </span>
             <br />
-            <span className="text-warning font-semibold"> To-Leet</span>
+            <span className="text-warning font-semibold"> To-Leet </span>
             believes in transparency, which is why we facilitate direct
             communication between renters and property owners. Through our
             secure messaging system, you can ask questions, discuss terms, and
@@ -102,7 +101,7 @@ const AboutEng = () => {
             thoroughly verifies property owners and ensures that all listings
             are legitimate and accurate.
             <br />
-            <span className="text-warning font-semibold"> To-Leet</span> is
+            <span className="text-warning font-semibold"> To-Leet </span> is
             revolutionizing the way people search for and rent homes, garages,
             and shops. Our innovative online platform, coupled with our
             commitment to exceptional customer service, aims to make your rental
@@ -112,7 +111,7 @@ const AboutEng = () => {
             So, whether you're an entrepreneur looking for a prime retail
             location, a hobbyist in need of a dedicated workshop, or simply
             seeking extra storage space,
-            <span className="text-warning font-semibold"> To-Leet</span> is
+            <span className="text-warning font-semibold"> To-Leet </span> is
             here to provide you with the perfect solution. Visit our website
             today and embark on a hassle-free journey to find your ideal rental
             space!
