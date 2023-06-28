@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useContext, useEffect, useState } from "react";
 import {
   Navbar,
@@ -209,11 +210,7 @@ export default function NavBar() {
         <div className="flex items-center justify-between text-blue-gray-900 px-2 w-11/12 md:w-10/12 lg:w-11/12 lg:px-8 mx-auto">
           <div className={`${styles.gapStyle} flex md:gap-12`}>
             <Link onClick={handleHome} href={"/"}>
-              <Image
-                className={`md:h-[34px] ${styles.navPicSize} md:w-[117px]`}
-                src={logo}
-                alt={""}
-              ></Image>
+              <img  className={`md:h-[34px] ${styles.navPicSize} md:w-[117px]`} src="https://i.ibb.co/Qm3YbbN/Simple-Box-Solution-Game-Store-Logo-1-removebg-preview.png" alt="" />
               {/* // text-transparent bg-clip-text bg-gradient-to-r from-primary via-gray-700 to-primary */}
               {/* <Typography className={`${styles.navNameStyle} mr-4 cursor-pointer font-semibold md:font-extrabold md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary`}>
                QuickVara
