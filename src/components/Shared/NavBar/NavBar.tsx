@@ -209,15 +209,15 @@ export default function NavBar() {
         <div className="flex items-center justify-between text-blue-gray-900 px-2 w-11/12 md:w-10/12 lg:w-11/12 lg:px-8 mx-auto">
           <div className={`${styles.gapStyle} flex md:gap-12`}>
             <Link onClick={handleHome} href={"/"}>
-              {/* <Image
-                className={`md:h-10 ${styles.navPicSize} md:w-36`}
+              <Image
+                className={`md:h-[34px] ${styles.navPicSize} md:w-[117px]`}
                 src={logo}
                 alt={""}
-              ></Image> */}
+              ></Image>
               {/* // text-transparent bg-clip-text bg-gradient-to-r from-primary via-gray-700 to-primary */}
-              <Typography className={`${styles.navNameStyle} mr-4 cursor-pointer font-semibold md:font-extrabold md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary`}>
+              {/* <Typography className={`${styles.navNameStyle} mr-4 cursor-pointer font-semibold md:font-extrabold md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary`}>
                QuickVara
-              </Typography>
+              </Typography> */}
             </Link>
             <div className="md:mt-1 mb-1 hidden lg:flex ">
               {!lang ? (
@@ -247,7 +247,7 @@ export default function NavBar() {
               ) : (
                 <Link
                   href="/ads"
-                  className="text-primary  rounded cursor-pointer border border-success px-1 pt-[6px] text-xs"
+                  className="text-primary  rounded cursor-pointer border border-success px-1 pt-[4px] text-xs"
                 >
                   সকল বিজ্ঞাপন
                 </Link>

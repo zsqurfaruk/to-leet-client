@@ -1,21 +1,31 @@
+
 @media screen and (max-width: 300px) {
   .navNameStyle {
     font-size: 1.25rem;
     line-height: 2.55rem;
     font-weight: 700;
   }
+  .navPicSize{
+    width: 100px ;
+    height: 30px;
+  }
   .gapStyle {
-    gap: 0px;
+    gap: 20px;
   }
 }
+
 @media screen and (min-width: 300px) and (max-width: 375px) {
   .navNameStyle {
     font-size: 1.4rem;
     line-height: 2.6rem;
     font-weight: 700;
   }
+  .navPicSize{
+    width: 106px ;
+    height: 30px;
+  }
   .gapStyle {
-    gap: 15px;
+    gap: 28px;
   }
 }
 @media screen and (min-width: 375px) and (max-width: 720px) {
@@ -24,7 +34,11 @@
     line-height: 2.6rem;
     font-weight: 700;
   }
-  .gapStyle {
-    gap: 17px;
+  .navPicSize{
+    width: 112px ;
+    height: 31px;
   }
-}
+  .gapStyle {
+    gap: 60px;
+  }
+};
