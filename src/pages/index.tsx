@@ -26,7 +26,7 @@ function Home() {
         <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="QuickVara, To Let,To-Let, to let, to-let, quickvara, toleet, Basa Vara, Vara, Rent, rent, leet, house rent | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent |  to-let  |  tolet  |  real estate "
+          content="QuickVara, To Let,To-Let, quickvara, toleet, Basa Vara, Vara, Rent, rent, leet, house rent | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent |  to-let  |  tolet  |  real estate "
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://quickvara.com/" />
