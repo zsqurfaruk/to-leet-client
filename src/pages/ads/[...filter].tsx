@@ -15,7 +15,7 @@ const FilterPosts = () => {
   const [loading , setLoading] = useState(false)
   useEffect(() => {
     setLoading(true)
-      fetch("https://zsqur.to-leet.com/api/v1/product/filter", {
+      fetch("https://zsqur.quickvara.com/api/v1/product/filter", {
         method: "POST",
         headers: {
           "content-type": "application/json",

@@ -19,7 +19,7 @@ function PrivateRoute(Component: any) {
         const { asPath } = router;
         router.push(`/signIn?next=${asPath}`);
       } else {
-        fetch("https://zsqur.to-leet.com/api/v1/users/me", {
+        fetch("https://zsqur.quickvara.com/api/v1/users/me", {
           method: "POST",
           headers: {
             "content-type": "application/json",

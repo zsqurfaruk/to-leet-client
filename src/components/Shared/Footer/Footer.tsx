@@ -49,11 +49,11 @@ const Footer = () => {
                 <li className="font-semibold ">Contact with us.</li>
                 <li>
                   <span className="font-semibold ">Email:</span>
-                  <span> toleet001@gmail.com</span>
+                  <span> quickvara001@gmail.com</span>
                 </li>
                 <li>
                   <a
-                    href="https://www.facebook.com/To-Leet-101248609651271"
+                    href="https://www.facebook.com/QuickVara-107503685729345"
                     className="flex gap-1"
                   > Facebook
                     <FaFacebookF className="mt-1"></FaFacebookF>

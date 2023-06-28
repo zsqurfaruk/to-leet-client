@@ -15,7 +15,7 @@ const RelatedPosts = ({ type, areaName, cityName, id }: any) => {
   };
   useEffect(() => {
     // setLoading(true)
-    fetch(`https://zsqur.to-leet.com/api/v1/product/filter?limit=${2}`, {
+    fetch(`https://zsqur.quickvara.com/api/v1/product/filter?limit=${2}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

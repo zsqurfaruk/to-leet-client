@@ -17,7 +17,7 @@ const ShowAllPost = ({ products,loading }: any) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
       const res = await fetch(
-        `https://zsqur.to-leet.com/api/v1/product/${id}`,
+        `https://zsqur.quickvara.com/api/v1/product/${id}`,
         {
           method: "DELETE",
         }
@@ -126,7 +126,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }: any) =>
 
   try {
     const res = await fetch(
-      `https://zsqur.to-leet.com/api/v1/product/rentType/${params.destination}`
+      `https://zsqur.quickvara.com/api/v1/product/rentType/${params.destination}`
     );
     products = await res.json();
     loading = false;

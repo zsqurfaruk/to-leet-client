@@ -4,8 +4,12 @@
     line-height: 2.55rem;
     font-weight: 700;
   }
+  .navPicSize{
+    width: 5rem ;
+    height: 35px;
+  }
   .gapStyle {
-    gap: 0px;
+    gap: 20px;
   }
 }
 
@@ -15,8 +19,12 @@
     line-height: 2.6rem;
     font-weight: 700;
   }
+  .navPicSize{
+    width: 7rem ;
+    height: 35px;
+  }
   .gapStyle {
-    gap: 15px;
+    gap: 28px;
   }
 }
 @media screen and (min-width: 375px) and (max-width: 720px) {
@@ -25,7 +33,11 @@
     line-height: 2.6rem;
     font-weight: 700;
   }
+  .navPicSize{
+    width: 8rem ;
+    height: 36px;
+  }
   .gapStyle {
-    gap: 17px;
+    gap: 60px;
   }
 };

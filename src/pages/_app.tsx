@@ -13,7 +13,7 @@ import { Toaster } from "react-hot-toast";
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "https://www.googletagmanager.com/gtag/js?id=G-37NBKQCCGD";
+    script.src = "https://www.googletagmanager.com/gtag/js?id=G-VZQZNKVB27";
     script.async = true;
     document.body.appendChild(script);
 
@@ -22,7 +22,8 @@ export default function App({ Component, pageProps }: AppProps) {
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-37NBKQCCGD');
+  
+    gtag('config', 'G-VZQZNKVB27');
     `;
     document.body.appendChild(inlineScript);
 
@@ -31,20 +32,21 @@ export default function App({ Component, pageProps }: AppProps) {
       document.body.removeChild(inlineScript);
     };
   }, []);
+
   return (
-    // <DisableRightClick>
-      <FilterInfo>
-        <PostInfo>
-          <StateInfo>
-            <ApiContext>
-              <NavBar></NavBar>
-              <Component {...pageProps} />
-              <Toaster />
-              <Footer></Footer>
-            </ApiContext>
-          </StateInfo>
-        </PostInfo>
-      </FilterInfo>
-    // </DisableRightClick>
+    <DisableRightClick>
+    <FilterInfo>
+      <PostInfo>
+        <StateInfo>
+          <ApiContext>
+            <NavBar></NavBar>
+            <Component {...pageProps} />
+            <Toaster />
+            <Footer></Footer>
+          </ApiContext>
+        </StateInfo>
+      </PostInfo>
+    </FilterInfo>
+    </DisableRightClick>
   );
 }

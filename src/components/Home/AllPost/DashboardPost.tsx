@@ -17,7 +17,7 @@ const DashboardPost = ({ post }: any) => {
     : null;
   const handleUpdate = async () => {
     const res = await fetch(
-      `https://zsqur.to-leet.com/api/v1/product/update/available/${post._id}`,
+      `https://zsqur.quickvara.com/api/v1/product/update/available/${post._id}`,
       {
         method: "PATCH",
         headers: {

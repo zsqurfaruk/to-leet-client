@@ -21,7 +21,7 @@ const ApiContext = ({ children }: any) => {
 
   const handleFilterUniversity = () => {
     setUniLoading(true);
-    fetch(`https://zsqur.to-leet.com/api/v1/product`)
+    fetch(`https://zsqur.quickvara.com/api/v1/product`)
       .then((res) => res.json())
       .then((data) => {
         const result = data?.filter(
@@ -34,7 +34,7 @@ const ApiContext = ({ children }: any) => {
 
   useEffect(() => {
     setAllDataLoading(true);
-    fetch("https://zsqur.to-leet.com/api/v1/product")
+    fetch("https://zsqur.quickvara.com/api/v1/product")
       .then((res) => res.json())
       .then((data) => {
         setCounterPosts(data);
@@ -43,14 +43,14 @@ const ApiContext = ({ children }: any) => {
   }, [reload]);
 
   useEffect(() => {
-    fetch("https://zsqur.to-leet.com/api/v1/users/signup")
+    fetch("https://zsqur.quickvara.com/api/v1/users/signup")
       .then((res) => res.json())
       .then((data) => setUserCounter(data));
   }, []);
 
   const [counter, setCounter] = useState([]);
   useEffect(() => {
-    fetch("https://zsqur.to-leet.com/api/v1/product/category/type")
+    fetch("https://zsqur.quickvara.com/api/v1/product/category/type")
       .then((res) => res.json())
       .then((data) => setCounter(data?.countProduct));
   }, [reload]);
