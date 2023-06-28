@@ -128,7 +128,6 @@ export default function NavBar() {
       <li className="flex justify-center lg:ml-0 lg:block">
         <Link href="/add-post" passHref>
           <div className="navbar-end">
-            {/* <Link href="/SignUp">  */}
             <Typography
               variant="small"
               color="blue-gray"
@@ -208,7 +207,7 @@ export default function NavBar() {
         <div className="flex items-center justify-between text-blue-gray-900 px-2 w-11/12 md:w-10/12 lg:w-11/12 lg:px-8 mx-auto">
           <div className={`${styles.gapStyle} flex md:gap-12`}>
             <Link onClick={handleHome} href={"/"} passHref>
-              <Typography className={`${styles.navNameStyle} mr-4 cursor-pointer font-semibold md:font-extrabold md:text-4xl text-success`}>
+              <Typography className={`${styles.navNameStyle} mr-4 cursor-pointer font-semibold md:font-extrabold md:text-4xl text-success `}>
                QuickVara
               </Typography>
             </Link>
