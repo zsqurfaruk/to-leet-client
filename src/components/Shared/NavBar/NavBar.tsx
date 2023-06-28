@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import React, { useContext, useEffect, useState } from "react";
 import {
   Navbar,
@@ -126,8 +125,9 @@ export default function NavBar() {
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <li className="flex justify-center lg:ml-0 lg:block">
-        <Link href="/add-post" passHref>
+        <Link href="/add-post">
           <div className="navbar-end">
+            {/* <Link href="/SignUp">  */}
             <Typography
               variant="small"
               color="blue-gray"
@@ -161,7 +161,7 @@ export default function NavBar() {
             ripple="false"
             onClick={() => setOpenNav(false)}
           >
-            <Link href="/signIn" passHref>
+            <Link href="/signIn">
               <span
                 onClick={() => setOpenNav(false)}
                 className="text-primary hidden lg:flex"
@@ -178,7 +178,7 @@ export default function NavBar() {
             ripple={"false"}
             onClick={() => setOpenNav(false)}
           >
-            <Link href="/dashboard" passHref>
+            <Link href="/dashboard">
               <span
                 onClick={() => setOpenNav(false)}
                 className="text-primary mt-1"
@@ -206,17 +206,22 @@ export default function NavBar() {
       <Navbar className="sticky top-0 z-10 bg-warning bg-opacity-100 h-max min-w-full rounded-none py-2 px-1 md:px-0 lg:px-8 lg:py-4 border-none text-primary shadow-sm">
         <div className="flex items-center justify-between text-blue-gray-900 px-2 w-11/12 md:w-10/12 lg:w-11/12 lg:px-8 mx-auto">
           <div className={`${styles.gapStyle} flex md:gap-12`}>
-            <Link onClick={handleHome} href={"/"} passHref>
-              <Typography className={`${styles.navNameStyle} mr-4 cursor-pointer font-semibold md:font-extrabold md:text-4xl text-success `}>
+            <Link onClick={handleHome} href={"/"}>
+              {/* <Image
+                className="h-7 mt-[7px] w-12 rounded"
+                src={logo}
+                alt={""}
+              ></Image> */}
+              {/* // text-transparent bg-clip-text bg-gradient-to-r from-primary via-gray-700 to-primary */}
+              <Typography className={` mr-4 cursor-pointer text-3xl font-semibold md:font-extrabold md:text-4xl text-success`}>
                QuickVara
               </Typography>
             </Link>
-            <div className="md:mt-1 mb-1 hidden lg:flex ">
+            <div className="mt-1 mb-1 hidden lg:flex ">
               {!lang ? (
                 <Link
                   href="/ads"
                   className="font-semibold border border-success text-primary  rounded cursor-pointer px-2 py-[3px]"
-                  passHref
                 >
                   All Ads
                 </Link>
@@ -234,15 +239,13 @@ export default function NavBar() {
                 <Link
                   href="/ads"
                   className="text-primary  rounded cursor-pointer border border-success px-2 py-1 text-sm"
-                  passHref
                 >
                   All Ads
                 </Link>
               ) : (
                 <Link
                   href="/ads"
-                  className="text-primary  rounded cursor-pointer border border-success px-1 pt-[6px] text-xs"
-                  passHref
+                  className="text-primary  rounded cursor-pointer border border-success px-1 pb-[4px] pt-[6px] text-xs"
                 >
                   সকল বিজ্ঞাপন
                 </Link>
@@ -277,7 +280,7 @@ export default function NavBar() {
                 {!lang ? <span>LogOut</span> : <span>লগআউট</span>}
               </Button>
             ) : (
-              <Link href={"/signUp"} passHref>
+              <Link href={"/signUp"}>
                 <Button
                   size="sm"
                   className="hidden lg:inline-block text-gray-700 -my-2 bg-accent  rounded"
@@ -348,7 +351,7 @@ export default function NavBar() {
                 )}
               </div>
             ) : (
-              <Link href={"/signIn"} passHref>
+              <Link href={"/signIn"}>
                 {!lang ? (
                   <Button
                     size="sm"

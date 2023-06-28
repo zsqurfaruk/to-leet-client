@@ -1,4 +1,3 @@
-
 @media screen and (max-width: 300px) {
   .navNameStyle {
     font-size: 1.25rem;
@@ -9,7 +8,6 @@
     gap: 0px;
   }
 }
-
 @media screen and (min-width: 300px) and (max-width: 375px) {
   .navNameStyle {
     font-size: 1.4rem;
@@ -17,7 +15,7 @@
     font-weight: 700;
   }
   .gapStyle {
-    gap: 12px;
+    gap: 5px;
   }
 }
 @media screen and (min-width: 375px) and (max-width: 720px) {
@@ -27,6 +25,6 @@
     font-weight: 700;
   }
   .gapStyle {
-    gap: 17px;
+    gap: 14px;
   }
-};
+}
