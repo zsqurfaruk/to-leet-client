@@ -220,7 +220,8 @@ return (
               )}
             </div>
           )}
-          <div
+          {
+            product?.bathrooms && <div
             className={
               product?.type?.eng === "Mess-(Male)" ||
               product?.type?.eng === "Mess-(Female)" ||
@@ -236,6 +237,7 @@ return (
               <h2> বাথরুম সংখ্যা: {product?.bathrooms?.ban}</h2>
             )}
           </div>
+          }
         </div>
         <div className="flex justify-between -mt-[6px]">
           <div>

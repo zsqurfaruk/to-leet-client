@@ -42,7 +42,7 @@ export default function Document() {
         <meta property="og:url" content="https://to-leet.com/" />
         <meta
           property="og:title"
-          content="RentHaven | havenly | haven | toleet | Tolet | Basa Vara | to leet | house rent | rent"
+          content="QuickVara - The Ultimate Rental Solution | Basa Vara | RentHaven | havenly | haven | toleet | Tolet | to leet | house rent | rent"
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="to-leet.com" />

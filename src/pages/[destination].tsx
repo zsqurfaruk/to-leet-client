@@ -37,47 +37,47 @@ const ShowAllPost = ({ products,loading }: any) => {
   return (
     <>
       <Head>
-        <title>To-Leet - Filter by Rent Type</title>
+        <title>QuickVara - Filter by Rent Type</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keywords" />
         <meta
           name="description"
-          content="Find your rental solution with To-Leet's extensive listings for rent. To-Leet is the most secure and easy online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience."
+          content="Find your rental solution with QuickVara's extensive listings for rent. QuickVara is the most secure, easy and quick online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience."
         />
-        <meta name="author" content="to-leet.com" />
+        <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="To Let, To-Let, to let, to-let, to leet, toleet, To-Leet, To Leet, To Leet, Basa Vara, Vara, Rent, rent, leet, house rent | havenly | haven | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent | to-let | tolet | real estate "
+          content="QuickVara, To Let, To-Let, to let, to-let, toleet, Basa Vara, Vara, Rent, rent, leet, house rent | havenly | haven | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent | to-let | tolet | real estate "
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://to-leet.com/" />
+        <meta property="og:url" content="https://quickvara.com/" />
         <meta
           property="og:title"
-          content={`To-Leet - Filter by Rent Type | toleet | havenly | haven | Tolet | Basa Vara | toleet | rent`}
+          content={`QuickVara - Filter by Rent Type | Tolet | Basa Vara | toleet | rent | havenly`}
         />
         <meta property="og:description" content="" />
-        <meta property="og:site_name" content="to-leet.com" />
+        <meta property="og:site_name" content="quickvara.com" />
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="title" content="To-Leet - Filter by Rent Type | toleet | havenly | haven |Tolet | Basa Vara | toleet | rent" />
+        <meta name="title" content="QuickVara - Filter by Rent Type | Tolet | Basa Vara | toleet | rent | havenly" />
         <meta name="keywords" />
         <meta
           name="description"
-          content="Find your rental solution with To-Leet's extensive listings for rent. To-Leet is the most secure and easy online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience."
+          content="Find your rental solution with QuickVara's extensive listings for rent. QuickVara is the most secure, easy and quick online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience."
         />
-        <meta name="author" content="to-leet.com" />
+        <meta name="author" content="QuickVara.com" />
         <meta
           name="keyword"
-          content="To-Let, To Let, tolet, ToLet, to let, to-let, to leet, toleet, To-Leet, To Leet, To Leet, Basa Vara, Vara, Rent, rent, leet, house rent| havenly | haven | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent |  to-let  | real estate , bikroy,"
+          content="QuickVara, To-Let, To Let, tolet, ToLet, to let, to-let, toleet, Basa Vara, Vara, Rent, rent, leet, house rent| havenly | haven | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent |  to-let  | real estate , bikroy,"
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://to-leet.com/" />
+        <meta property="og:url" content="https://quickvara.com/" />
         <meta
           property="og:title"
-          content="To-Leet - Filter by Rent Type | toleet | havenly | haven | Tolet | Basa Vara | toleet | rent"
+          content="QuickVara - Filter by Rent Type | Tolet | Basa Vara | toleet | rent | havenly"
         />
         <meta property="og:description" content="" />
-        <meta property="og:site_name" content="to-leet.com" />
+        <meta property="og:site_name" content="quickvara.com" />
       </Head>
       <section className="lg:my-10 bg-white lg:w-10/12 mx-auto">
         {loading ? (

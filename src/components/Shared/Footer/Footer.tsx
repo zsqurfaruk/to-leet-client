@@ -26,7 +26,7 @@ const Footer = () => {
               {/* <Image className="h-7 w-12 mt-2" src={logo} alt=""></Image> */}
               <h1 className="ml-2 text-4xl font-bold tracking-wide">
                 <span className="-ml-2 lg:ml-0 cursor-pointer text-warning text-4xl font-extrabold ">
-                 To-Leet
+                QuickVara
                 </span>
               </h1>
             </a>
@@ -74,7 +74,7 @@ const Footer = () => {
         </div>
         <div className="pt-5 pb-10 border-t-2 border-warning text-center">
           <p className="text-sm">
-            © Copyright 2023 To-Leet All rights reserved.
+            © Copyright 2023 QuickVara All rights reserved.
           </p>
         </div>
       </div>

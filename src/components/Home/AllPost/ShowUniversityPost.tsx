@@ -221,7 +221,8 @@ return (
               )}
             </div>
           )}
-          <div
+          {
+            university?.bathrooms && <div
             className={
               university?.type?.eng === "Mess-(Male)" ||
               university?.type?.eng === "Mess-(Female)" ||
@@ -237,6 +238,7 @@ return (
               <h2> বাথরুম সংখ্যা: {university?.bathrooms?.ban}</h2>
             )}
           </div>
+          }
         </div>
         <div className="flex justify-between -mt-[6px]">
           <div>

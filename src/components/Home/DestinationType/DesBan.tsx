@@ -14,7 +14,7 @@ import office from "../../../image/working-with-laptop.png";
 import car from "../../../image/car.png";
 import garage from "../../../image/garage.png";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
-import style from "../../../styles/banner.module.css"
+import style from "../../../styles/des.module.css"
 
 const DesBan = () => {
   const { counter }: any = useContext(APIContext);

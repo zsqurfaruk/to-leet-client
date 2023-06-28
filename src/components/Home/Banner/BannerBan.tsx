@@ -8,22 +8,27 @@ const BannerBan = () => {
     <div className="scale-90 px-3 md:scale-100 lg:scale-110 lg:ml-5 -mt-10">
       <div
         className={
-          filterTypeDivision ? "text-gray-700" : "mx-auto text-gray-700"
+          filterTypeDivision ? "text-gray-700 lg:leading-[27px]" : "mx-auto text-gray-700  lg:leading-[27px]"
         }
       >
+       
         <span
           id={style.bannerTextColorChange}
-          className="text-5xl font-semibold"
+          className="text-[20px] md:text-[39px] font-semibold"
         >
-          {" "}
-          To-Leet{" "}
-        </span>
-        এর বিস্তৃত তালিকা থেকে আপনার ভাড়ার সমাধান খুঁজুন।
+         QuickVara </span>
+        এর বিস্তৃত তালিকার সাথে সহজে এবং দ্রুত <br className="hidden lg:flex"/> ঝামেলা-মুক্ত ভাড়া সমাধান খুঁজে নিন। 
+        {/* <span> যেখানে আপনার বিশ্বাস নির্ভরযোগ্য, সেখানে  <span
+          id={style.bannerTextColorChange}
+          className="text-xl font-semibold"
+        >
+         QuickVara
+        </span> রয়েছে অপূর্ণিত। </span> */}
       </div>
       <div className="relative">
         <div
           id={style.bannerTextColorChange}
-          className="mt-1 md:mt-2 text-sm text-justify leading-5 md:leading-6 lg:leading-[11px]"
+          className="mt-1 md:mt-3 text-sm text-justify leading-5 md:leading-6 lg:leading-[11px]"
         >
           আজই আপনার অনুসন্ধান শুরু করুন এবং আপনার ভাড়ার সর্বোত্তম সমাধান খুঁজে
           পেতে

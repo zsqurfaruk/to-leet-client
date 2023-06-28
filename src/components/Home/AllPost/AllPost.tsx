@@ -221,7 +221,8 @@ const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
               )}
             </div>
           )}
-          <div
+          {
+            post?.bathrooms && <div
             className={
               post?.type?.eng === "Mess-(Male)" ||
               post?.type?.eng === "Mess-(Female)" ||
@@ -237,6 +238,7 @@ const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
               <h2> বাথরুম সংখ্যা: {post?.bathrooms?.ban}</h2>
             )}
           </div>
+          }
         </div>
         <div className="flex justify-between -mt-[6px]">
           <div>

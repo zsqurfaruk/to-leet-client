@@ -10,10 +10,13 @@ import About from "@/components/About/About";
 
 function Home() {
   const { isOpen }: any = useContext(StateContext);
+  const title = `The Ultimate Rental Solution`;
+
+  document.title = title;
   return (
     <>
       <Head>
-        <title>The Ultimate Rental Solution</title>
+      <title> {document.title = title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keywords" />
         <meta

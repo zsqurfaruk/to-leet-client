@@ -2,15 +2,15 @@
 import React, { useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { IoMdArrowDropup } from "react-icons/io";
-import style from "../../styles/banner.module.css"
+import styles from "../../styles/about.module.css"
 
 const AboutEng = () => {
   const [open, setOpen] = useState(true);
 
   return (
     <div className="w-10/12 mx-auto py-10 text-gray-700">
-      <h1 className={`${style.aboutStyle}   md:text-2xl font-semibold text-warning`}>
-        To-Leet: The Ultimate Rental Solution
+      <h1 className={`${styles.aboutStyle}   md:text-2xl font-semibold text-warning`}>
+       QuickVara: The Ultimate Rental Solution
       </h1>
      <div className="text-justify -mt-4">
      <br />
@@ -19,8 +19,8 @@ const AboutEng = () => {
       your belongings, a workshop to pursue your hobbies, or a retail space to
       showcase your products, the search for suitable rentals can be
       time-consuming and frustrating. But worry no more! <br />
-      Welcome to To-Leet, <span className="text-warning font-semibold"> To-Leet </span> is the most secure and easy online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience.
-      <span className="hidden lg:inline"> At  <span className="text-warning font-semibold"> To-Leet </span>, we understand that everyone's requirements are unique, and finding the perfect space should be a seamless process. We have
+      Welcome to QuickVara, <span className="text-warning font-semibold"> QuickVara </span> is the most secure and easy online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience.
+      <span className="hidden lg:inline"> At  <span className="text-warning font-semibold"> QuickVara </span>, we understand that everyone's requirements are unique, and finding the perfect space should be a seamless process. We have
         leveraged the power of technology to create an intuitive and
         user-friendly online platform that connects renters with an extensive
         network of property owners offering diverse spaces for rent.
@@ -37,7 +37,7 @@ const AboutEng = () => {
           </button>
           <div className={open ? "hidden" : "block"}>
             <span className="lg:hidden inline">
-              At To-Leet, we understand that everyone's requirements are unique,
+              At  <span className="text-warning font-semibold"> QuickVara </span>, we understand that everyone's requirements are unique,
               and finding the perfect space should be a seamless process. We
               have leveraged the power of technology to create an intuitive and
               user-friendly online platform that connects renters with an
@@ -46,7 +46,7 @@ const AboutEng = () => {
             </span>
             <br />
             <h1 className="text-2xl text-warning font-semibold">
-              Here's what sets To-Leet apart from traditional rental services:
+              Here's what sets 'QuickVara' apart from traditional rental services:
             </h1>
             <br />
             <span className="text-lg text-warning font-semibold">
@@ -54,7 +54,7 @@ const AboutEng = () => {
             </span>
             <br /> Whether you're searching for a cozy apartment, a spacious
             garage, or a commercial shop,
-            <span className="text-warning font-semibold"> To-Leet </span> has
+            <span className="text-warning font-semibold"> QuickVara </span> has
             got you covered. Our platform features a wide range of rental
             options, catering to various needs and preferences. With our vast
             selection, you'll find the ideal space to suit your requirements.
@@ -74,7 +74,7 @@ const AboutEng = () => {
               Detailed Property Profiles:
             </span>
             <br />
-            Each rental space listed on To-Leet comes with a comprehensive
+            Each rental space listed on  <span className="text-warning font-semibold"> QuickVara </span> comes with a comprehensive
             profile, including high-resolution photos, detailed descriptions,
             amenities, availability, and pricing information. This wealth of
             information allows you to make an informed decision about which
@@ -85,7 +85,7 @@ const AboutEng = () => {
               Transparent Rental Process:
             </span>
             <br />
-            <span className="text-warning font-semibold"> To-Leet </span>
+            <span className="text-warning font-semibold"> QuickVara </span>
             believes in transparency, which is why we facilitate direct
             communication between renters and property owners. Through our
             secure messaging system, you can ask questions, discuss terms, and
@@ -97,11 +97,11 @@ const AboutEng = () => {
               Secure and Trustworthy:
             </span>
             <br /> We prioritize your safety and peace of mind.
-            <span className="text-warning font-semibold"> To-Leet </span>
+            <span className="text-warning font-semibold"> QuickVara </span>
             thoroughly verifies property owners and ensures that all listings
             are legitimate and accurate.
             <br />
-            <span className="text-warning font-semibold"> To-Leet </span> is
+            <span className="text-warning font-semibold"> QuickVara </span> is
             revolutionizing the way people search for and rent homes, garages,
             and shops. Our innovative online platform, coupled with our
             commitment to exceptional customer service, aims to make your rental
@@ -111,7 +111,7 @@ const AboutEng = () => {
             So, whether you're an entrepreneur looking for a prime retail
             location, a hobbyist in need of a dedicated workshop, or simply
             seeking extra storage space,
-            <span className="text-warning font-semibold"> To-Leet </span> is
+            <span className="text-warning font-semibold"> QuickVara </span> is
             here to provide you with the perfect solution. Visit our website
             today and embark on a hassle-free journey to find your ideal rental
             space!

@@ -6,37 +6,3 @@
   color: #1490a3d6;
 }
 
-@media screen and (max-width: 350px) {
-  .navNameStyle {
-    font-size: 25px;
-    font-weight: 600;
-  }
-  .gapStyle {
-    gap: 9px;
-  }
-}
-@media screen and (max-width: 360px) {
-  .fontSize {
-    font-size: 15px;
-  }
-}
-@media screen and (max-width: 375px) {
-  .aboutStyle {
-    font-size: 14px;
-  }
-}
-@media screen and (min-width: 376px) and (max-width: 819px) {
-  .aboutStyle {
-    font-size: 18px;
-  }
-}
-@media screen and (min-width: 1024px) and (max-width: 1535px) {
-  .fontSize {
-    font-size: 17.5px;
-  }
-}
-@media screen and (min-width: 1536px) {
-  .fontSize {
-    font-size: 20px;
-  }
-}

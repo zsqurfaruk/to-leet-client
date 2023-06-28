@@ -10,7 +10,7 @@ const AllDivision = () => {
 
   const {lang}:any = useContext(FilterContext)
   return (
-    <div className="w-full flex items-center mt-5 lg:mt-16 lg:ml-8 mx-7 md:mx-0">
+    <div className="w-full flex items-center px-8 md:px-0 mt-5 lg:mt-16 lg:ml-8 md:mx-0">
      
       <div>
       {/* <h1

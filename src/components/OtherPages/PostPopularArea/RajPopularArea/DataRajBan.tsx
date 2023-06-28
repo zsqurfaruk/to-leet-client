@@ -70,6 +70,11 @@ export interface options {
       name:  "ban"
     },
     {
+      label: "মেহেরচন্ডি",
+      value: "Meherchandi",
+      name:  "ban"
+    },
+    {
       label: "মতিহার",
       value: "Motihar",
       name:  "ban"

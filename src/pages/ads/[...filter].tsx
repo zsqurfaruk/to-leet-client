@@ -28,51 +28,53 @@ const FilterPosts = () => {
       setLoading(false)});
     
   }, [filterValue]);
-  
+
+  const title = `QuickVara in ${filterValue?.homePopularAreaName?.eng || filterValue?.districtsName?.eng}, ${filterValue?.cityName?.eng || filterValue?.divisionNameEng?.eng}`;
+  document.title = title;
   return (
     <>
     <Head>
-    <title>To-Leet - Location - Type</title>
+    <title>{ document.title = title || "The Ultimate Rental Solution"}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keywords" />
         <meta
           name="description"
-          content="Find your rental solution with To-Leet's extensive listings for rent. To-Leet is the most secure and easy online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience."
+          content="Here you can find a hassle-free rental solution according to your needs. Our company aims to simplify your rental experience."
         />
-        <meta name="author" content="to-leet.com" />
+        <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="To Let, To-Let, to let, to-let, to leet, toleet, To-Leet, To Leet, To Leet, Basa Vara, Vara, Rent, rent, leet, house rent | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent | to-let | tolet | real estate "
+          content="QuickVara, to-let, tolet, Basa Vara, Vara, Rent, To Let, To-Let, toleet, leet, house rent, flat rent in dhaka, flat rent, flat rent dhaka, apartment rent, real estate, bikroy"
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://to-leet.com/" />
+        <meta property="og:url" content="https://quickvara.com/" />
         <meta
           property="og:title"
-          content="To-Leet - Location - Type | toleet | Property Tolet | Basa Vara | to leet | house rent | rent"
+          content={`QuickVara in ${filterValue?.homePopularAreaName?.eng}, ${filterValue?.cityName?.eng}`}
         />
         <meta property="og:description" content="" />
-        <meta property="og:site_name" content="to-leet.com" />
+        <meta property="og:site_name" content="quickvara.com" />
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="title" content="To-Leet - Location - Type | toleet | Property Tolet | Basa Vara | to leet | house rent | rent" />
+        <meta name="title" content={`QuickVara in ${filterValue?.homePopularAreaName?.eng}, ${filterValue?.cityName?.eng}`} />
         <meta name="keywords" />
         <meta
           name="description"
-          content="Find your rental solution with To-Leet's extensive listings for rent. To-Leet is the most secure and easy online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience."
+          content="Here you can find a hassle-free rental solution according to your needs. Our company aims to simplify your rental experience."
         />
-        <meta name="author" content="to-leet.com" />
+        <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="To-Let, To Let, tolet, ToLet, to let, to-let, to leet, toleet, To-Leet, To Leet, To Leet, Basa Vara, Vara, Rent, rent, leet, house rent | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent |  to-let  | real estate , bikroy,"
+          content="QuickVara, to-let, tolet, Basa Vara, Vara, Rent, To Let, To-Let, toleet, leet, house rent, flat rent in dhaka, flat rent, flat rent dhaka, apartment rent, real estate, bikroy"
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://to-leet.com/" />
+        <meta property="og:url" content="https://quickvara.com/" />
         <meta
           property="og:title"
-          content="To-Leet - Location - Type | toleet | Property Tolet | Basa Vara | to leet | house rent | rent"
+          content={`QuickVara in ${filterValue?.homePopularAreaName?.eng}, ${filterValue?.cityName?.eng}`}
         />
         <meta property="og:description" content="" />
-        <meta property="og:site_name" content="to-leet.com" />
+        <meta property="og:site_name" content="quickvara.com" />
   </Head>
     
      {

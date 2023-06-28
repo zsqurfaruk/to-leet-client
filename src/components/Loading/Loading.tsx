@@ -19,7 +19,7 @@ function Loading() {
      
        <div>
       <Typography className="mr-4 text-center text-4xl font-bold text-warning">
-         To-Leet
+        QuickVara
        </Typography>
        <Typography className="mr-4 cursor-pointer text-warning text-xl font-semibold">
        The Ultimate Rental Solution

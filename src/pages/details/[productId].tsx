@@ -67,7 +67,7 @@ const ProductDetails = ({ product,loading,errorMessage }: any) => {
   return (
     <>
       <Head>
-        <title>To-Leet - Ads Details </title>
+        <title>QuickVara - Ads Details </title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keywords" />
         <meta
@@ -228,9 +228,9 @@ const ProductDetails = ({ product,loading,errorMessage }: any) => {
                             }
                           >
                             {!lang ? (
-                              <h2>Total Bed: {product?.totalBed?.eng} </h2>
+                              <h2> <span className={product?.totalBed?.eng === "Single room" ? "hidden" : "inline"}>Total Bed:</span> {product?.totalBed?.eng} </h2>
                             ) : (
-                              <h2>মোট বেড: {product?.totalBed?.ban} </h2>
+                              <h2> <span className={product?.totalBed?.eng === "Single room" ? "hidden" : "inline"}>মোট বেড:</span> {product?.totalBed?.ban} </h2>
                             )}
                           </div>
                         )}
@@ -245,7 +245,8 @@ const ProductDetails = ({ product,loading,errorMessage }: any) => {
                           </div>
                         )}
                       </div>
-                      <div
+                      {
+                        product?.bathrooms && <div
                         className={
                           product?.type?.eng === "Mess-(Male)" ||
                           product?.type?.eng === "Mess-(Female)" ||
@@ -261,6 +262,7 @@ const ProductDetails = ({ product,loading,errorMessage }: any) => {
                           <h2>বাথরুমঃ {product?.bathrooms?.ban}</h2>
                         )}
                       </div>
+                      }
 
                       <div className="md:flex md:gap-[135px]">
                         {!lang ? (
@@ -308,7 +310,8 @@ const ProductDetails = ({ product,loading,errorMessage }: any) => {
                           </h2>
                         </div>
                       )}
-                      <div className="md:flex md:gap-[135px]">
+                      {
+                        product?.wifiFacility && <div className="md:flex md:gap-[135px]">
                         {!lang ? (
                           <h2>
                             {" "}
@@ -318,6 +321,7 @@ const ProductDetails = ({ product,loading,errorMessage }: any) => {
                           <h2> ওয়াইফাই সুবিধাঃ {product?.wifiFacility?.ban}</h2>
                         )}
                       </div>
+                      }
                     </Typography>
                   </CardBody>
                 </div>
@@ -370,7 +374,8 @@ const ProductDetails = ({ product,loading,errorMessage }: any) => {
                     <Typography color="gray" className="font-normal ">
                       <div className="md:flex md:gap-56">
                         {/* <h2>Bedrooms: {post?.bedrooms}</h2> */}
-                        <div
+                        {
+                          product?.bathrooms && <div
                           className={
                             product?.type?.eng === "Mess-(Male)" ||
                             product?.type?.eng === "Mess-(Female)" ||
@@ -386,6 +391,7 @@ const ProductDetails = ({ product,loading,errorMessage }: any) => {
                             <h2>বাথরুমঃ {product?.bathrooms?.ban}</h2>
                           )}
                         </div>
+                        }
                         {product?.bedNumber && (
                           <div>
                             {!lang ? (
@@ -405,8 +411,8 @@ const ProductDetails = ({ product,loading,errorMessage }: any) => {
                           <h2>ফাঁকা বেড: {product?.bedNumber?.ban} </h2>
                         )}
                       </div>
+                        <h2 className={product?.totalBed?.eng === "Single room" ? "invisible" : "hidden"}>Rent : {product?.amount} taka (Monthly)</h2>
                       <div className="md:flex md:gap-[135px]">
-                        {/* <h2>Rent : {post?.amount} taka (Monthly)</h2> */}
                         {!lang ? (
                           <>
                             {" "}

@@ -22,7 +22,7 @@ const AllDistricts = () => {
   };
 
   return (
-    <section className="w-full lg:mt-72 lg:ml-4 mx-7 md:mx-0">
+    <section className="w-full lg:mt-72 lg:ml-4 px-8 md:px-0 md:mx-0">
       <div>
         <h1
           onClick={handlePrevious}
@@ -30,7 +30,7 @@ const AllDistricts = () => {
         >
           {!lang ? "Change Division?" : "বিভাগ পরিবর্তন?"}
         </h1>
-        <h1 className="w-10/12 md:w-full text-2xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
+        <h1 className="w-11/12 md:w-full text-2xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
           {!lang ? (
             <span>Districts of {divisionNameEng?.eng}:</span>
           ) : (

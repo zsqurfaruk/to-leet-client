@@ -70,6 +70,11 @@ export interface options {
       name: "eng",
     },
     {
+      value: "মেহেরচন্ডি",
+      label: "Meherchandi",
+      name: "eng",
+    },
+    {
       value: "মতিহার",
       label: "Motihar",
       name: "eng",

@@ -8,15 +8,15 @@ const BannerEng = () => {
       <div className="text-lg md:text-2xl lg:text-xl text-gray-700">
         <span
           id={style.bannerTextColorChange}
-          className="text-2xl md:text-5xl font-semibold"
+          className="text-[21px] md:text-[42px] font-semibold"
         >
-          Find </span>your rental solution with <span
+          Find</span> your rental solution with <span
           id={style.bannerTextColorChange}
-          className="text-2xl md:text-5xl font-semibold"
+          className="text-[21px] md:text-[40px] font-semibold"
         >
-          To-Leet's
+          QuickVara's 
         </span> <br className="hidden lg:flex"/>
-        extensive listings for rent.
+        extensive listings for a hassle-free renting experience.
       </div>
       <div>
         <div
