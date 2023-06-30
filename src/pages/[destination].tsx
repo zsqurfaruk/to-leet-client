@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import Products from "@/components/Products/Products";
 import { GetServerSideProps } from "next";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import Lottie from "lottie-react";
 import lotti from "../image/lf20_jkbuwuhk.json";
 import { StateContext } from "@/Context/StateContext/StateContext";
@@ -10,7 +10,7 @@ import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const ShowAllPost = ({ products,loading }: any) => {
   const {lang }: any = useContext(FilterContext);
-  const { setTypeCount,openModalValue }: any = useContext(StateContext);
+  const { setTypeCount, destinationType}: any = useContext(StateContext);
   setTypeCount(products);
   const [deleteAndFilterPost, setDeleteAndFilterPost] = useState(products);
   const handleDelete = async (id: any) => {
@@ -32,12 +32,16 @@ const ShowAllPost = ({ products,loading }: any) => {
       }
     }
   };
+  let title =  "";
+  if(destinationType){
+    title = `QuickVara - ${destinationType}`
+  }
 
-//  console.log(openModalValue.type.eng)
+  document.title = title;
   return (
     <>
       <Head>
-        <title>QuickVara - Filter by Rent Type</title>
+        <title>{title || "Filter by Rent Type"}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keywords" />
         <meta

@@ -9,7 +9,7 @@ const AllCity = () => {
   // };
   const {lang}:any = useContext(FilterContext)
   return (
-    <section className="w-full px-8 md:px-0">
+    <section className="min-w-full px-8 md:px-0">
       {/* <h1
         onClick={handlePrevious}
         className="text-warning text-sm mb-5 cursor-pointer hover:underline"

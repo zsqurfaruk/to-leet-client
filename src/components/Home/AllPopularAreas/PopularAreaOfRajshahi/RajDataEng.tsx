@@ -70,8 +70,8 @@ export interface options {
       name: "eng",
     },
     {
-      value: "মেহেরচন্ডি",
-      label: "Meherchandi",
+      value: "পদ্মা আবাসিক এলাকা",
+      label: "Padma Residental Area",
       name: "eng",
     },
     {

@@ -14,7 +14,6 @@ import Head from "next/head";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { toast } from "react-hot-toast";
 import RelatedPosts from "@/components/RelatedPost/RelatedPosts";
-import Loader from "@/components/Loading/Loader";
 
 const ProductDetails = ({ product,loading,errorMessage }: any) => {
   const { img1, img2, img3, img4, img5 } = product;
@@ -67,7 +66,7 @@ const ProductDetails = ({ product,loading,errorMessage }: any) => {
   return (
     <>
       <Head>
-        <title>QuickVara - Ads Details </title>
+        <title>QuickVara - {product?.type?.eng} Details </title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keywords" />
         <meta

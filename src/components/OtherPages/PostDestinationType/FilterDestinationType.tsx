@@ -26,9 +26,9 @@ const FilterDestinationType = () => {
     setFilterValue({ ...filterValue, filterModalValue: v });
     Cookies.set("filterMV", JSON.stringify(v),{ expires: 1 })
     router.push(
-      `/ads/${cityName?.eng || divisionNameEng?.eng}/${
-        homePopularAreaName?.eng || districtsName?.eng
-      }`
+      `/ads/${
+        (homePopularAreaName?.eng || districtsName?.eng)?.toLowerCase()
+      }/${(cityName?.eng || divisionNameEng?.eng)?.toLowerCase()}`
     );
   };
 

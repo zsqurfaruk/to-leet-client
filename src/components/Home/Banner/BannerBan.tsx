@@ -5,7 +5,7 @@ import style from "../../../styles/banner.module.css";
 const BannerBan = () => {
   const { filterTypeDivision }: any = useContext(StateContext);
   return (
-    <div className="scale-90 px-3 md:scale-100 lg:scale-110 lg:ml-5 -mt-10">
+    <div className="scale-90 px-3 md:scale-100 lg:scale-110 lg:ml-5 -mt-16">
       <div
         className={
           filterTypeDivision ? "text-gray-700 lg:leading-[27px]" : "mx-auto text-gray-700  lg:leading-[27px]"
@@ -14,7 +14,7 @@ const BannerBan = () => {
        
         <span
           id={style.bannerTextColorChange}
-          className="text-[20px] md:text-[39px] font-semibold"
+          className="text-[30px] md:text-[39px] font-semibold"
         >
          QuickVara </span>
         এর বিস্তৃত তালিকার সাথে সহজে এবং দ্রুত <br className="hidden lg:flex"/> ঝামেলা-মুক্ত ভাড়া সমাধান খুঁজে নিন। 

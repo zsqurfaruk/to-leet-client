@@ -52,7 +52,7 @@ const Banner = () => {
             Are you searching near your university?
           </h1>
           <h1
-            className="text-center gap-2 border-2  border-warning shadow shadow-warning rounded px-2 mt-2 md:mt-0 cursor-pointer"
+            className="text-center gap-2 border-2 text-sm md:text-base border-warning shadow shadow-warning rounded px-2 mt-2 md:mt-0 cursor-pointer"
             onClick={handleOpenModalEng}
           >
             Yes

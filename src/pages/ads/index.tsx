@@ -92,7 +92,7 @@ function AllAds() {
         <meta name="keywords" />
         <meta
           name="description"
-          content="Find your rental solution with QuickVara's extensive listings for rent. We have listed all the ads here for your convenience."
+          content="Find your rental solution with quickvara's extensive listings for rent. We have listed all the ads here for your convenience."
         />
         <meta name="author" content="quickvara.com" />
         <meta
@@ -113,7 +113,7 @@ function AllAds() {
         <meta name="keywords" />
         <meta
           name="description"
-          content="Find your rental solution with QuickVara's extensive listings for rent. We have listed all the ads here for your convenience."
+          content="Find your rental solution with quickvara's extensive listings for rent. We have listed all the ads here for your convenience."
         />
         <meta name="author" content="quickvara.com" />
         <meta

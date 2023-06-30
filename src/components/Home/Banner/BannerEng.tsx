@@ -4,15 +4,15 @@ import style from "../../../styles/banner.module.css";
 
 const BannerEng = () => {
   return (
-    <div className="scale-90 md:scale-100 ml-2 -mt-10">
+    <div className="scale-90 md:scale-100 ml-2 -mt-12">
       <div className="text-lg md:text-2xl lg:text-xl text-gray-700">
         <span
           id={style.bannerTextColorChange}
-          className="text-[21px] md:text-[42px] font-semibold"
+          className="text-[30px] md:text-[42px] font-semibold"
         >
-          Find</span> your rental solution with <span
+          Find</span> the suitable rental solution with <span
           id={style.bannerTextColorChange}
-          className="text-[21px] md:text-[40px] font-semibold"
+          className="text-[30px] md:text-[40px] font-semibold"
         >
           QuickVara's 
         </span> <br className="hidden lg:flex"/>

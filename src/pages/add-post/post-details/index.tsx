@@ -586,7 +586,8 @@ const PostDetails = () => {
                   </div>
                 )}
               </div>
-
+              <div className={ modalValue.eng === "Sublet-(Male)" ||
+                  modalValue.eng === "Sublet-(Female)" ? "text-center divider w-6/12 mx-auto pt-4" : "hidden"}>OR</div>
               <div
                 className={
                   modalValue.eng === "Mess-(Male)" ||
@@ -595,8 +596,6 @@ const PostDetails = () => {
                   modalValue.eng === "Office" ||
                   modalValue.eng === "Shop" ||
                   modalValue.eng === "Vehicles" ||
-                  modalValue.eng === "Sublet-(Male)" ||
-                  modalValue.eng === "Sublet-(Female)" ||
                   modalValue.eng === "Garage"
                     ? "hidden"
                     : "block"
@@ -606,11 +605,11 @@ const PostDetails = () => {
                   <div className="form-control lg:w-6/12 mx-auto mb-8">
                     <label className="label">
                       <span className="label-text">
-                        Bedroom number / numbers
+                        Bedroom Number / Numbers
                       </span>
                     </label>
                     <Select
-                      placeholder="Bedroom number / numbers"
+                      placeholder="Bedroom Number / Numbers"
                       isSearchable
                       options={optionEng}
                       onChange={setBedRooms}
@@ -649,11 +648,11 @@ const PostDetails = () => {
                   <div className="form-control lg:w-6/12 mx-auto mt-10">
                     <label className="label">
                       <span className="label-text">
-                        Washroom number/ numbers
+                        Washroom Number/ Numbers
                       </span>
                     </label>
                     <Select
-                      placeholder="Washroom number / numbers"
+                      placeholder="Washroom Number / Numbers"
                       isSearchable
                       options={optionEng}
                       onChange={setBathRooms}
@@ -717,7 +716,7 @@ const PostDetails = () => {
                   </div>
                 )}
               </div>
-              <div className="lg:w-6/12 mx-auto ">
+              <div className="lg:w-6/12 mx-auto">
                 <label className="label">
                   {!lang ? (
                     <span className="label-text">Address</span>

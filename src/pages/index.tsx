@@ -21,12 +21,12 @@ function Home() {
         <meta name="keywords" />
         <meta
           name="description"
-          content="Find your rental solution with quickvara's extensive listings for rent. QuickVara is the most secure and easy online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience."
+          content="Find your rental solution with quickvara's extensive listings for a hassle-free renting experience. QuickVara is the most secure and easy online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience."
         />
         <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="QuickVara, To Let,To-Let, quickvara, toleet, Basa Vara, Vara, Rent, rent, leet, house rent | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent |  to-let  |  tolet  |  real estate "
+          content="QuickVara, To Let, To-Let, toleet, Basa Vara, Vara, Rent, rent, leet, house rent , havenly , haven , flat rent in dhaka , flat rent , flat rent dhaka , apartment rent, real estate, bikroy"
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://quickvara.com/" />
@@ -36,18 +36,20 @@ function Home() {
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
+        <meta property="og:image" content="https://i.ibb.co/gv3DdvJ/Simple-Box-Solution-Game-Store-Logo-2.jpg" />
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="sitemap" type="application/xml" title="Sitemap" href="https://quickvara.com/sitemap.xml"/>
         <meta name="title" content="QuickVara - The Ultimate Rental Solution | ToLet | Rent in bangladesh" />
         <meta name="keywords" />
         <meta
           name="description"
-          content="Find your rental solution with quickvara's extensive listings for rent. QuickVara is the most secure and easy online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience."
+          content="Find your rental solution with quickvara's extensive listings for a hassle-free renting experience. QuickVara is the most secure and easy online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience."
         />
         <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="QuickVara, To-Let,To Let, tolet, ToLet, to let, to-let,quickvara, toleet, Basa Vara, Vara, Rent, rent, leet, house rent | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent |  to-let  |  real estate , bikroy,"
+          content="QuickVara, To Let, To-Let, toleet, Basa Vara, Vara, Rent, rent, leet, house rent , havenly , haven , flat rent in dhaka , flat rent , flat rent dhaka , apartment rent, real estate, bikroy"
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://quickvara.com/" />
@@ -57,6 +59,7 @@ function Home() {
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
+        <meta property="og:image" content="https://i.ibb.co/gv3DdvJ/Simple-Box-Solution-Game-Store-Logo-2.jpg" />
       </Head>
       <main className="bg-white">
         <Banner></Banner>

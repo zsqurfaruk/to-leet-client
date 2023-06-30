@@ -3,13 +3,11 @@ import FilterAllPosts from "@/components/Home/AllPost/FilterAllPosts";
 import React, { useContext, useState, useEffect } from "react";
 import Lottie from "lottie-react";
 import lotti from "../../image/lf20_jkbuwuhk.json";
-import Cookies from 'js-cookie';
 import Head from "next/head";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const FilterPosts = () => {
-  const { filterValue, cityName, divisionNameEng }: any =
-    useContext(StateContext);
+  const { filterValue, cityName, divisionNameEng, districtsName,titleArea, titleCity, titleDistrict, titleDivision}: any = useContext(StateContext);
     const {lang}:any = useContext(FilterContext)
   const [filterPost, setFilterPost] = useState([]);
   const [loading , setLoading] = useState(false)
@@ -28,13 +26,21 @@ const FilterPosts = () => {
       setLoading(false)});
     
   }, [filterValue]);
+  // const title = `QuickVara in ${titleArea && titleArea || titleDistrict && titleDistrict}, ${titleCity || titleDivision}`;
+  // document.title = title;
+  let title = "";
 
-  const title = `QuickVara in ${filterValue?.homePopularAreaName?.eng || filterValue?.districtsName?.eng}, ${filterValue?.cityName?.eng || filterValue?.divisionNameEng?.eng}`;
+  if (titleArea && titleCity && !titleDistrict && !titleDivision) {
+    title = `QuickVara in ${titleArea}, ${titleCity}`;
+  } else if (titleDistrict && titleDivision && !titleArea && !titleCity) {
+    title = `QuickVara in ${titleDistrict}, ${titleDivision}`;
+  }
+    
   document.title = title;
   return (
     <>
     <Head>
-    <title>{ document.title = title || "The Ultimate Rental Solution"}</title>
+    <title>{document.title = title || "Search by Area"}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keywords" />
         <meta
@@ -50,13 +56,13 @@ const FilterPosts = () => {
         <meta property="og:url" content="https://quickvara.com/" />
         <meta
           property="og:title"
-          content={`QuickVara in ${filterValue?.homePopularAreaName?.eng}, ${filterValue?.cityName?.eng}`}
+          content={`QuickVara in ${titleArea || titleDistrict}, ${titleCity || titleDivision}`}
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="title" content={`QuickVara in ${filterValue?.homePopularAreaName?.eng}, ${filterValue?.cityName?.eng}`} />
+        <meta name="title" content={`QuickVara in ${titleArea || titleDistrict}, ${titleCity || titleDivision}`} />
         <meta name="keywords" />
         <meta
           name="description"
@@ -71,7 +77,7 @@ const FilterPosts = () => {
         <meta property="og:url" content="https://quickvara.com/" />
         <meta
           property="og:title"
-          content={`QuickVara in ${filterValue?.homePopularAreaName?.eng}, ${filterValue?.cityName?.eng}`}
+          content={`QuickVara in ${titleArea || titleDistrict}, ${titleCity || titleDivision}`}
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />

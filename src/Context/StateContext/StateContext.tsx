@@ -19,6 +19,11 @@ const StateInfo = ({ children }: any) => {
   const [filterModal, setFilterModal] = useState(false);
   const [filterModalValue, setFilterModalValue] = useState({});
   const [typeCount, setTypeCount] = useState([]);
+  const [destinationType, setDestinationType] = useState("")
+  const [titleCity, setTitleCity] = useState("")
+  const [titleArea, setTitleArea] = useState("")
+  const [titleDistrict, setTitleDistrict] = useState("")
+  const [titleDivision, setTitleDivision] = useState("")
 
   const city = Cookies.get("city")
   const area = Cookies.get("area")
@@ -73,6 +78,11 @@ const StateInfo = ({ children }: any) => {
     setFilterModalValue,
     filterValue,
     setFilterValue,
+    destinationType, setDestinationType,
+    titleCity, setTitleCity,
+    titleArea, setTitleArea,
+    titleDistrict, setTitleDistrict,
+    titleDivision, setTitleDivision
   };
   return <StateContext.Provider value={info}>{children}</StateContext.Provider>;
 };

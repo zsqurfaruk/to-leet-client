@@ -20,6 +20,7 @@ const PopularAreaOfRajshahi = () => {
     filterValue,
     homePopularAreaName,
     setFilterModal,
+    setTitleArea
   }: any = useContext(StateContext);
   const {lang}:any = useContext(FilterContext)
   const handleFilter = (v: any) => {
@@ -30,6 +31,7 @@ const PopularAreaOfRajshahi = () => {
           ban: v?.value,
         };
         setHomePopularAreaName(newName);
+        setTitleArea(newName?.eng)
         setFilterValue({ ...filterValue, homePopularAreaName: newName });
         Cookies.set("area", JSON.stringify(newName),{ expires: 1 })
         setFilterModal(true);
@@ -39,6 +41,7 @@ const PopularAreaOfRajshahi = () => {
           ban: v?.label,
         };
         setHomePopularAreaName(newName);
+        setTitleArea(newName?.eng)
         setFilterValue({ ...filterValue, homePopularAreaName: newName });
         Cookies.set("area", JSON.stringify(newName),{ expires: 1 })
         setFilterModal(true);
@@ -57,7 +60,7 @@ const PopularAreaOfRajshahi = () => {
     homePopularAreaName?.eng === "Kazla" ||
     homePopularAreaName?.eng === "Binodpur" ||
     homePopularAreaName?.eng === "Laksimipur" ||
-    homePopularAreaName?.eng === "Padma Residental Area"
+    homePopularAreaName?.eng === "Meherchandi"
   ) {
     setFilterModal(true);
   }
@@ -66,84 +69,8 @@ const PopularAreaOfRajshahi = () => {
     <section>
       <div>
         <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
-          <li>
-            <label className="flex gap-2">
-              <input
-                type="checkbox"
-                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-                onClick={() =>
-                  handleFilter({
-                    eng: "New Market",
-                    ban: "নিউ মার্কেট",
-                  })
-                }
-              />
-              {!lang ? (
-                <span className="-mt-[2px]"> New Market</span>
-              ) : (
-                <span className="-mt-[2px]"> নিউ মার্কেট</span>
-              )}
-            </label>
-          </li>
-          <li>
-            <label className="flex gap-2">
-              <input
-                type="checkbox"
-                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-                onClick={() =>
-                  handleFilter({
-                    eng: "Shaheb Bazar",
-                    ban: "সাহেব বাজার",
-                  })
-                }
-              />
-              {!lang ? (
-                <span className="-mt-[2px]"> Shaheb Bazar</span>
-              ) : (
-                <span className="-mt-[2px]"> সাহেব বাজার</span>
-              )}
-            </label>
-          </li>
-          <li>
-            <label className="flex gap-2">
-              <input
-                type="checkbox"
-                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-                onClick={() =>
-                  handleFilter({
-                    eng: "Uposahar",
-                    ban: "উপশহর",
-                  })
-                }
-              />
-              {!lang ? (
-                <span className="-mt-[2px]"> Uposahar</span>
-              ) : (
-                <span className="-mt-[2px]"> উপশহর</span>
-              )}
-            </label>
-          </li>
-          <li>
-            <label className="flex gap-2">
-              <input
-                type="checkbox"
-                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-                onClick={() =>
-                  handleFilter({
-                    eng: "Kazla",
-                    ban: "কাজলা",
-                  })
-                }
-              />
-              {!lang ? (
-                <span className="-mt-[2px]"> Kazla</span>
-              ) : (
-                <span className="-mt-[2px]"> কাজলা</span>
-              )}
-            </label>
-          </li>
-          <li>
-            <label className="flex gap-2">
+        <li>
+            <label onClick={()=>setTitleArea("Binodpur")} className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -162,7 +89,26 @@ const PopularAreaOfRajshahi = () => {
             </label>
           </li>
           <li>
-            <label className="flex gap-2">
+            <label onClick={()=>setTitleArea("Kazla")} className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+                onClick={() =>
+                  handleFilter({
+                    eng: "Kazla",
+                    ban: "কাজলা",
+                  })
+                }
+              />
+              {!lang ? (
+                <span className="-mt-[2px]"> Kazla</span>
+              ) : (
+                <span className="-mt-[2px]"> কাজলা</span>
+              )}
+            </label>
+          </li>
+          <li>
+            <label onClick={()=>setTitleArea("Laksimipur")} className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -180,26 +126,83 @@ const PopularAreaOfRajshahi = () => {
               )}
             </label>
           </li>
-
           <li>
-            <label className="flex gap-2">
+            <label onClick={()=>setTitleArea("Meherchandi")} className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   handleFilter({
-                    eng: "Padma Residental Area",
-                    ban: "পদ্মা আবাসিক এলাকা",
+                    eng: "Meherchandi",
+                    ban: "মেহেরচন্ডি",
                   })
                 }
               />
               {!lang ? (
-                <span className="-mt-[2px]"> Padma Resident</span>
+                <span className="-mt-[2px]"> Meherchandi</span>
               ) : (
-                <span className="-mt-[2px]"> পদ্মা আবাসিক</span>
+                <span className="-mt-[2px]"> মেহেরচন্ডি</span>
               )}
             </label>
           </li>
+          <li>
+            <label onClick={()=>setTitleArea("New Market")} className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+                onClick={() =>
+                  handleFilter({
+                    eng: "New Market",
+                    ban: "নিউ মার্কেট",
+                  })
+                }
+              />
+              {!lang ? (
+                <span className="-mt-[2px]"> New Market</span>
+              ) : (
+                <span className="-mt-[2px]"> নিউ মার্কেট</span>
+              )}
+            </label>
+          </li>
+          <li>
+            <label onClick={()=>setTitleArea("Shaheb Bazar")} className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+                onClick={() =>
+                  handleFilter({
+                    eng: "Shaheb Bazar",
+                    ban: "সাহেব বাজার",
+                  })
+                }
+              />
+              {!lang ? (
+                <span className="-mt-[2px]"> Shaheb Bazar</span>
+              ) : (
+                <span className="-mt-[2px]"> সাহেব বাজার</span>
+              )}
+            </label>
+          </li>
+          <li>
+            <label onClick={()=>setTitleArea("Uposahar")} className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+                onClick={() =>
+                  handleFilter({
+                    eng: "Uposahar",
+                    ban: "উপশহর",
+                  })
+                }
+              />
+              {!lang ? (
+                <span className="-mt-[2px]"> Uposahar</span>
+              ) : (
+                <span className="-mt-[2px]"> উপশহর</span>
+              )}
+            </label>
+          </li>
+          
           <li
             className={
               homePopularAreaName?.eng === "Select others" ? "hidden" : "flex"

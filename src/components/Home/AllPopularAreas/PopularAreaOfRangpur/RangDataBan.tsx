@@ -44,8 +44,8 @@ export interface options {
      name: "ban"
    },
    {
-     label: "বদরগঞ্জ",
-     value: "Bodorganj",
+     label: "জাহাজ কোম্পানি মোড়",
+     value: "Jahaj Company More",
      name: "ban"
    },
    {

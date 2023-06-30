@@ -15,9 +15,11 @@ import car from "../../../image/car.png";
 import garage from "../../../image/garage.png";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
 import style from "../../../styles/des.module.css"
+import { StateContext } from "@/Context/StateContext/StateContext";
 
 const DesEng = () => {
   const { counter }: any = useContext(APIContext);
+  const { setDestinationType }: any = useContext(StateContext);
   const getCount = (value: any) => {
     return counter.find((item: any) => item.type.eng === value) || null;
   };
@@ -28,6 +30,7 @@ const DesEng = () => {
         href={{
           pathname: "/Bachelor-(Male)",
         }}
+        onClick={()=>setDestinationType("Bachelor Male")}
       >
         <Card
           className={
@@ -64,6 +67,7 @@ const DesEng = () => {
         href={{
           pathname: "/Bachelor-(Female)",
         }}
+        onClick={()=>setDestinationType("Bachelor Female")}
       >
         <Card
           className={
@@ -100,6 +104,7 @@ const DesEng = () => {
         href={{
           pathname: "/Mess-(Male)",
         }}
+        onClick={()=>setDestinationType("Mess Male")}
       >
         <Card
           className={
@@ -134,6 +139,7 @@ const DesEng = () => {
         href={{
           pathname: "/Mess-(Female)",
         }}
+        onClick={()=>setDestinationType("Mess Female")}
       >
         <Card
           className={
@@ -168,6 +174,7 @@ const DesEng = () => {
         href={{
           pathname: "/Sublet-(Male)",
         }}
+        onClick={()=>setDestinationType("Sublet Male")}
       >
         <Card
           className={
@@ -203,6 +210,7 @@ const DesEng = () => {
         href={{
           pathname: "/Sublet-(Female)",
         }}
+        onClick={()=>setDestinationType("Sublet Female")}
       >
         <Card
           className={
@@ -238,6 +246,7 @@ const DesEng = () => {
         href={{
           pathname: "/Family",
         }}
+        onClick={()=>setDestinationType("Family")}
       >
         <Card
           className={
@@ -271,6 +280,7 @@ const DesEng = () => {
         href={{
           pathname: "/Hostel",
         }}
+        onClick={()=>setDestinationType("Hostel")}
       >
         <Card
           className={
@@ -304,6 +314,7 @@ const DesEng = () => {
         href={{
           pathname: "/Office",
         }}
+        onClick={()=>setDestinationType("Office")}
       >
         <Card
           className={
@@ -335,6 +346,7 @@ const DesEng = () => {
         href={{
           pathname: "/Shop",
         }}
+        onClick={()=>setDestinationType("Shop")}
       >
         <Card
           className={
@@ -365,6 +377,7 @@ const DesEng = () => {
         href={{
           pathname: "/Vehicles",
         }}
+        onClick={()=>setDestinationType("Vehicles")}
       >
         <Card
           className={
@@ -398,6 +411,7 @@ const DesEng = () => {
         href={{
           pathname: "/Garage",
         }}
+        onClick={()=>setDestinationType("Garage")}
       >
         <Card
           className={

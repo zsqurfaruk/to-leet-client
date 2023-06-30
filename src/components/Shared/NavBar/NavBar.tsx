@@ -29,6 +29,10 @@ export default function NavBar() {
     setFilterModal,
     handleOpenModalEng,
     setOpenModalEng,
+    setTitleArea,
+    setTitleCity,
+    setTitleDistrict,
+    setTitleDivision
   }: any = useContext(StateContext);
   const {
     setPostCityNameEng,
@@ -119,6 +123,10 @@ export default function NavBar() {
     Cookies.remove("division");
     Cookies.remove("filterMV");
     Cookies.remove("openMV");
+    setTitleArea("")
+    setTitleCity("")
+    setTitleDistrict("")
+    setTitleDivision("")
   };
 
   const email = Cookies.get("authentication");
@@ -213,7 +221,7 @@ export default function NavBar() {
                 alt={""}
               ></Image> */}
               {/* // text-transparent bg-clip-text bg-gradient-to-r from-primary via-gray-700 to-primary */}
-              <Typography className={` mr-4 cursor-pointer text-3xl font-semibold md:font-extrabold md:text-4xl text-success`}>
+              <Typography className={`pt-1 md:pt-0 mr-4 cursor-pointer text-3xl font-semibold md:font-bold md:text-[40px] text-success`}>
                QuickVara
               </Typography>
             </Link>

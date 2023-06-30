@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const AllCityEng = () => {
-  const { setCityName, filterValue, setFilterValue }: any =
+  const { setCityName, filterValue, setFilterValue, setTitleCity }: any =
     useContext(StateContext);
     const {lang}:any = useContext(FilterContext)
   const handleFilter = (v: any) => {
@@ -12,13 +12,12 @@ const AllCityEng = () => {
     setFilterValue({ ...filterValue, cityName: v });
     Cookies.set("city", JSON.stringify(v),{ expires: 1 })
   };
-
-  
+ 
   return (
     <div>
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-gray-700 text-sm md:text-base">
         <li>
-          <label className="flex gap-2">
+          <label onClick={()=>setTitleCity("Dhaka")} className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -32,7 +31,7 @@ const AllCityEng = () => {
           </label>
         </li>
         <li>
-          <label className="flex gap-2">
+          <label onClick={()=>setTitleCity("Chittagong")} className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -48,7 +47,7 @@ const AllCityEng = () => {
           </label>
         </li>
         <li>
-          <label className="flex gap-2">
+          <label onClick={()=>setTitleCity("Rajshahi")} className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -61,8 +60,51 @@ const AllCityEng = () => {
             )}
           </label>
         </li>
+      
         <li>
-          <label className="flex gap-2">
+          <label onClick={()=>setTitleCity("Barisal")} className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+              onClick={() => handleFilter({ eng: "Barisal", ban: "বরিশাল" })}
+            />
+            {!lang ? (
+              <span className="-mt-[2px]"> Barisal City</span>
+            ) : (
+              <span className="-mt-[2px]"> বরিশাল শহর</span>
+            )}
+          </label>
+        </li>
+        <li>
+          <label onClick={()=>setTitleCity("Khulna")} className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+              onClick={() => handleFilter({ eng: "Khulna", ban: "খুলনা" })}
+            />
+            {!lang ? (
+              <span className="-mt-[2px]"> Khulna City</span>
+            ) : (
+              <span className="-mt-[2px]"> খুলনা শহর</span>
+            )}
+          </label>
+        </li>
+        <li>
+          <label onClick={()=>setTitleCity("Rangpur")} className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+              onClick={() => handleFilter({ eng: "Rangpur", ban: "রংপুর" })}
+            />
+            {!lang ? (
+              <span className="-mt-[2px]"> Rangpur City</span>
+            ) : (
+              <span className="-mt-[2px]"> রংপুর শহর</span>
+            )}
+          </label>
+        </li>
+        <li>
+          <label onClick={()=>setTitleCity("Sylhet")} className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -78,49 +120,7 @@ const AllCityEng = () => {
           </label>
         </li>
         <li>
-          <label className="flex gap-2">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-              onClick={() => handleFilter({ eng: "Barisal", ban: "বরিশাল" })}
-            />
-            {!lang ? (
-              <span className="-mt-[2px]"> Barisal City</span>
-            ) : (
-              <span className="-mt-[2px]"> বরিশাল শহর</span>
-            )}
-          </label>
-        </li>
-        <li>
-          <label className="flex gap-2">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-              onClick={() => handleFilter({ eng: "Khulna", ban: "খুলনা" })}
-            />
-            {!lang ? (
-              <span className="-mt-[2px]"> Khulna City</span>
-            ) : (
-              <span className="-mt-[2px]"> খুলনা শহর</span>
-            )}
-          </label>
-        </li>
-        <li>
-          <label className="flex gap-2">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-              onClick={() => handleFilter({ eng: "Rangpur", ban: "রংপুর" })}
-            />
-            {!lang ? (
-              <span className="-mt-[2px]"> Rangpur City</span>
-            ) : (
-              <span className="-mt-[2px]"> রংপুর শহর</span>
-            )}
-          </label>
-        </li>
-        <li>
-          <label className="flex gap-2">
+          <label onClick={()=>setTitleCity("Mymensingh")} className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"

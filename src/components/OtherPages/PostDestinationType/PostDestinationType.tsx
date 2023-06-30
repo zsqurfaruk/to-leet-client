@@ -98,11 +98,11 @@ const PostDestinationType = () => {
             <div>
               <div>
                 {!lang ? (
-                  <Typography className="text-center border border-warning rounded-full">
+                  <Typography className="text-center text-[15px] py-[6px] px-[1px] border border-warning rounded-full">
                     Bachelor (Female)
                   </Typography>
                 ) : (
-                  <Typography className="text-center border border-warning rounded-full">
+                  <Typography className="text-center   border border-warning rounded-full">
                     ব্যাচেলর (মেয়ে)
                   </Typography>
                 )}

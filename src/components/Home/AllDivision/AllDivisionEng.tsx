@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
 
 const AllDivisionName = () => {
-  const { setDivisionNameEng, setFilterValue, filterValue }: any =
+  const { setDivisionNameEng, setFilterValue, filterValue, setTitleDivision }: any =
     useContext(StateContext);
     const {lang}:any = useContext(FilterContext)
   const handleFilter = (v: any) => {
@@ -18,7 +18,7 @@ const AllDivisionName = () => {
     <div className="lg:-ml-4">
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-gray-700 text-sm md:text-base">
         <li>
-          <label className="flex gap-2">
+          <label onClick={()=>setTitleDivision("Dhaka")} className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -32,7 +32,7 @@ const AllDivisionName = () => {
           </label>
         </li>
         <li>
-          <label className="flex gap-2 lg:gap-0 lg:text-sm">
+          <label onClick={()=>setTitleDivision("Chittagong")} className="flex gap-2 lg:gap-0 lg:text-sm">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -48,7 +48,7 @@ const AllDivisionName = () => {
           </label>
         </li>
         <li>
-          <label className="flex gap-2">
+          <label onClick={()=>setTitleDivision("Rajshahi")} className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -62,21 +62,7 @@ const AllDivisionName = () => {
           </label>
         </li>
         <li>
-          <label className="flex gap-2">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-              onClick={() => handleFilter({ eng: "Sylhet", ban: "সিলেট" })}
-            />
-            {!lang ? (
-              <span className="-mt-[2px]"> Sylhet Division</span>
-            ) : (
-              <span className="-mt-[2px]"> সিলেট বিভাগ</span>
-            )}
-          </label>
-        </li>
-        <li>
-          <label className="flex gap-2">
+          <label onClick={()=>setTitleDivision("Barisal")} className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -90,7 +76,7 @@ const AllDivisionName = () => {
           </label>
         </li>
         <li>
-          <label className="flex gap-2">
+          <label onClick={()=>setTitleDivision("Khulna")} className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -104,7 +90,7 @@ const AllDivisionName = () => {
           </label>
         </li>
         <li>
-          <label className="flex gap-2">
+          <label onClick={()=>setTitleDivision("Rangpur")} className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -117,8 +103,22 @@ const AllDivisionName = () => {
             )}
           </label>
         </li>
+         <li>
+          <label onClick={()=>setTitleDivision("Sylhet")} className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+              onClick={() => handleFilter({ eng: "Sylhet", ban: "সিলেট" })}
+            />
+            {!lang ? (
+              <span className="-mt-[2px]"> Sylhet Division</span>
+            ) : (
+              <span className="-mt-[2px]"> সিলেট বিভাগ</span>
+            )}
+          </label>
+        </li>
         <li>
-          <label className="flex gap-2">
+          <label onClick={()=>setTitleDivision("Mymensingh")} className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"

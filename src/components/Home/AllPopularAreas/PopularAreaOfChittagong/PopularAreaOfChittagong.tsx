@@ -14,7 +14,7 @@ const selectStyles = {
 };
 
 const PopularAreaOfChit = () => {
-  const { setHomePopularAreaName, setFilterValue,filterValue, homePopularAreaName, setFilterModal }: any =useContext(StateContext);
+  const { setHomePopularAreaName, setFilterValue,filterValue, homePopularAreaName, setFilterModal,setTitleArea }: any =useContext(StateContext);
   const {lang}:any = useContext(FilterContext)
   const handleFilter=(v:any)=>{
     if(v?.name){
@@ -25,6 +25,7 @@ const PopularAreaOfChit = () => {
           ban: v?.value,
         };
         setHomePopularAreaName(newName);
+        setTitleArea(newName?.eng)
         setFilterValue({...filterValue, homePopularAreaName:newName})
         Cookies.set("area", JSON.stringify(newName),{ expires: 1 })
         setFilterModal(true);
@@ -34,6 +35,7 @@ const PopularAreaOfChit = () => {
           ban: v?.label,
         };
         setHomePopularAreaName(newName);
+        setTitleArea(newName?.eng)
         setFilterValue({...filterValue, homePopularAreaName:newName})
         Cookies.set("area", JSON.stringify(newName),{ expires: 1 })
         setFilterModal(true);
@@ -79,7 +81,7 @@ const PopularAreaOfChit = () => {
       <div>
         <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
           <li>
-            <label className="flex gap-2">
+            <label onClick={()=>setTitleArea("Agrabad")} className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -95,7 +97,23 @@ const PopularAreaOfChit = () => {
             </label>{" "}
           </li>
           <li>
-            <label className="flex gap-2">
+            <label onClick={()=>setTitleArea("Alankar")} className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+                onClick={() =>
+                  handleFilter({ eng: "Alankar", ban: "অলঙ্কার" })
+                }
+              />
+              {!lang ? (
+                <span className="-mt-[2px]"> Alankar</span>
+              ) : (
+                <span className="-mt-[2px]"> অলঙ্কার</span>
+              )}
+            </label>
+          </li>
+          <li>
+            <label onClick={()=>setTitleArea("Chawkbazar")} className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -114,7 +132,7 @@ const PopularAreaOfChit = () => {
             </label>
           </li>
           <li>
-            <label className="flex gap-2">
+            <label onClick={()=>setTitleArea("Kotwali")} className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -130,7 +148,7 @@ const PopularAreaOfChit = () => {
             </label>
           </li>
           <li>
-            <label className="flex gap-2">
+            <label onClick={()=>setTitleArea("Halishahar")} className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -149,7 +167,7 @@ const PopularAreaOfChit = () => {
             </label>
           </li>
           <li>
-            <label className="flex gap-2">
+            <label onClick={()=>setTitleArea("Nasirabad")} className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -168,7 +186,7 @@ const PopularAreaOfChit = () => {
             </label>
           </li>
           <li>
-            <label className="flex gap-2">
+            <label onClick={()=>setTitleArea("Oxygen")} className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -180,22 +198,6 @@ const PopularAreaOfChit = () => {
                 <span className="-mt-[2px]"> Oxygen</span>
               ) : (
                 <span className="-mt-[2px]"> অক্সিজেন</span>
-              )}
-            </label>
-          </li>
-          <li>
-            <label className="flex gap-2">
-              <input
-                type="checkbox"
-                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-                onClick={() =>
-                  handleFilter({ eng: "Alankar", ban: "অলঙ্কার" })
-                }
-              />
-              {!lang ? (
-                <span className="-mt-[2px]"> Alankar</span>
-              ) : (
-                <span className="-mt-[2px]"> অলঙ্কার</span>
               )}
             </label>
           </li>
