@@ -13,6 +13,7 @@ import AllDistricts from "../AllDivision/Districts/AllDistricts/AllDistricts";
 import ModalEng from "./Modal/ModalEng";
 import PostAreaModalEng from "./Modal/PostAreaModalEng";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 const Banner = () => {
   const {
@@ -27,7 +28,7 @@ const Banner = () => {
     handleOpenModalEng, 
   }: any = useContext(StateContext);
 
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -43,7 +44,7 @@ const Banner = () => {
     setFilterTypeDivision(!filterTypeDivision);
   };
   // const lan = Cookies.get("lan");
-
+  const lang = useSelector((state:any) => state.language.language);
   return (
     <section className="pt-6">
       {!lang ? (

@@ -23,6 +23,7 @@ import PostMymDistrictsEng from "@/components/OtherPages/PostAllDivision/PostAll
 import Head from "next/head";
 import Cookies from 'js-cookie';
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 const AddPost = () => {
  
@@ -32,13 +33,13 @@ const AddPost = () => {
     setPostDivisionNameEng,
     postDivisionNameEng,
   }: any = useContext(PostStateContext);
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
  
   const handlePrevious = () => {
     setPostCityNameEng({});
     setPostDivisionNameEng({})
   };
-  
+  const lang = useSelector((state:any) => state.language.language);
   return (
    <>
     <Head>

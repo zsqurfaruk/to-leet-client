@@ -2,13 +2,15 @@ import React,{useContext} from "react";
 import AllDivisionName from "./AllDivisionEng";
 import Cookies from "js-cookie";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 const AllDivision = () => {
   // const handlePrevious = () => {
   //   setFilterTypeDivision(false);
   // };
 
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
+  const lang = useSelector((state:any) => state.language.language);
   return (
     <div className="w-full flex items-center px-8 md:px-0 mt-5 lg:mt-16 lg:ml-8 md:mx-0">
      

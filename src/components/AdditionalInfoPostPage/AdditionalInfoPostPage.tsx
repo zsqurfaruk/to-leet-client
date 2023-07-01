@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import { MdOutlineLocationOn } from "react-icons/md";
 import Cookies from "js-cookie";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 const AdditionalInfoPostPage = () => {
   const {
@@ -17,7 +18,7 @@ const AdditionalInfoPostPage = () => {
     postDivisionNameEng,
     setPostDivisionNameEng,
   }: any = useContext(PostStateContext);
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
   const router = useRouter();
   const handlePrevious = () => {
     setGetPostPopularAreaName({});
@@ -26,7 +27,7 @@ const AdditionalInfoPostPage = () => {
     setPostOpenModal(false);
     router.push("/add-post");
   };
-   
+  const lang = useSelector((state:any) => state.language.language);
   return (
     <div>
       <div>

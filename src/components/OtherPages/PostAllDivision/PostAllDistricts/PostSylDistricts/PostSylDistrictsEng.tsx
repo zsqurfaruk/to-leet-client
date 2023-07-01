@@ -2,14 +2,15 @@ import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import React, { useContext } from "react";
 import Cookies from 'js-cookie';
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 const PostSylDistrictsEng = () => {
   const { postDistrictsName, setPostDistrictsName,setPostOpenModal }: any = useContext(PostStateContext);
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
   if (postDistrictsName?.eng) {
     setPostOpenModal(true);
   }
-  
+  const lang = useSelector((state:any) => state.language.language);
   return (
     <div>
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">

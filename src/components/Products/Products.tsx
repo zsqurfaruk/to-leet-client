@@ -2,9 +2,11 @@
 import Link from "next/link";
 import React, { useContext } from "react";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 const Products = ({ product }: any) => {
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
+  const lang = useSelector((state:any) => state.language.language);
   const post =
     "4l5gJNnHjXPcI5jCtff8vWW8vR#4oaWbB0TKs204^%$ACcaBTpXPwH00LczlXf8vWWCtCfds";
    
@@ -29,6 +31,7 @@ return (
       pathname: `/details/${product._id}`,
       query: { post: encodeURIComponent(JSON.stringify(post)) },
     }}
+    passHref
   >
     <div className="card card-compact rounded">
       <figure>
@@ -244,9 +247,7 @@ return (
             {!lang ? (
               <h2>
                 {product?.type?.eng === "Mess-(Male)" ||
-                product?.type?.eng === "Mess-(Female)" ||
-                product?.type?.eng === "Sublet-(Male)" ||
-                product?.type?.eng === "Sublet-(Female)" ? (
+                product?.type?.eng === "Mess-(Female)"  ? (
                   <>
                     <span
                       className={
@@ -268,9 +269,7 @@ return (
               <h2>
                 {" "}
                 {product?.type?.eng === "Mess-(Male)" ||
-                product?.type?.eng === "Mess-(Female)" ||
-                product?.type?.eng === "Sublet-(Male)" ||
-                product?.type?.eng === "Sublet-(Female)" ? (
+                product?.type?.eng === "Mess-(Female)" ? (
                   <>
                     <span
                       className={

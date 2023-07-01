@@ -5,6 +5,7 @@ import { options } from "./ChitDataBan";
 import { option } from "./ChitDataEng";
 import Cookies from "js-cookie";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 const selectStyles = {
   control: (styles:any, { isFocused }:any) => ({
     ...styles,
@@ -15,7 +16,7 @@ const selectStyles = {
 
 const PopularAreaOfChit = () => {
   const { setHomePopularAreaName, setFilterValue,filterValue, homePopularAreaName, setFilterModal,setTitleArea }: any =useContext(StateContext);
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
   const handleFilter=(v:any)=>{
     if(v?.name){
 
@@ -75,7 +76,7 @@ const PopularAreaOfChit = () => {
   ) {
     setFilterModal(true);
   }
-  
+  const lang = useSelector((state:any) => state.language.language);
   return (
     <section>
       <div>

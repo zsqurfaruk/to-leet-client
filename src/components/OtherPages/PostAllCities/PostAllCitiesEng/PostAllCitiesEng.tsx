@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import Cookies from 'js-cookie';
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 const PostAllCityEng = () => {
   const { setPostCityNameEng }: any = useContext(PostStateContext);
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
+  const lang = useSelector((state:any) => state.language.language);
   return (
     <div>
       <ul className="grid grid-cols-2 md:grid-cols-4  gap-5 gap-y-3 text-gray-700 text-sm md:text-base">

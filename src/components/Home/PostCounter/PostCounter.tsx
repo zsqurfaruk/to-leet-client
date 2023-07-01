@@ -3,19 +3,31 @@ import React, { useContext, useState, useEffect } from "react";
 import CountUp from "react-countup";
 import Cookies from "js-cookie";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/app/store";
+import { getAllPosts } from "@/redux/features/AllPosts/AllPostsSlice";
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 
 function PostCounter() {
-  const {lang}:any = useContext(FilterContext)
-  const { counterPosts, userCounter }: any = useContext(APIContext);
+  // const {lang}:any = useContext(FilterContext)
+  const lang = useSelector((state:any) => state.language.language);
+  const {userCounter }: any = useContext(APIContext);
   const [startCounting, setStartCounting] = useState(false);
   const [count, setCount] = useState(0);
   const [userCount, setUserCount] = useState(0);
+
+  const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
+  const { allPosts } = useSelector((state: RootState) => state.allPosts);
+
+ useEffect(() => {
+  dispatch(getAllPosts());
+}, [dispatch]);
 
   useEffect(() => {
     setStartCounting(true);
     const interval = setInterval(() => {
       setCount((prevCount) => {
-        if (prevCount >= counterPosts.length) {
+        if (prevCount >= allPosts.length) {
           clearInterval(interval); // Stop counting animation
           return prevCount;
         } else {
@@ -27,7 +39,7 @@ function PostCounter() {
     return () => {
       clearInterval(interval);
     };
-  }, [counterPosts.length]);
+  }, [allPosts.length]);
 
   useEffect(() => {
     setStartCounting(true);
@@ -80,7 +92,7 @@ function PostCounter() {
         <div className="text-primary border-2 border-accent shadow-md shadow-accent text-xl md:text-3xl md:font-semibold  p-10 rounded">
           {!lang ? (
             <span>
-              Total Ads: <CountUp end={counterPosts?.length} duration={10} />
+              Total Ads: <CountUp end={allPosts?.length} duration={5} />
             </span>
           ) : (
             <span className="text-lg md:text-2xl">
@@ -88,7 +100,7 @@ function PostCounter() {
               {startCounting && (
                 <CountUp
                   end={count}
-                  duration={10}
+                  duration={5}
                   formattingFn={() => banglaNumber}
                 />
               )}{" "}
@@ -99,7 +111,7 @@ function PostCounter() {
         <div className="text-primary text-xl md:text-3xl md:font-semibold  border-2 border-accent shadow-md shadow-accent p-8 md:p-10 rounded">
           {!lang ? (
             <span>
-              Total Users: <CountUp end={userCounter?.length} duration={10} />
+              Total Users: <CountUp end={userCounter?.length} duration={5} />
             </span>
           ) : (
             <span className="text-lg md:text-2xl">
@@ -107,7 +119,7 @@ function PostCounter() {
               {startCounting && (
                 <CountUp
                   end={userCount}
-                  duration={10}
+                  duration={5}
                   formattingFn={() => banglaNumberUser}
                 />
               )}{" "}

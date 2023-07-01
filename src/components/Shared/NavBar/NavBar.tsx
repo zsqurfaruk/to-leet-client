@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/link-passhref */
 import React, { useContext, useEffect, useState } from "react";
 import {
   Navbar,
@@ -13,6 +14,11 @@ import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import Cookies from "js-cookie";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import styles from "../../../styles/response.module.css"
+import { useDispatch, useSelector } from "react-redux";
+import { toggleLanguage } from "@/redux/features/Language/LanguageSlice";
+import Image from "next/image";
+import logo from "../../../image/Simple_Box_Solution_Game_Store_Logo__1_-removebg-preview.png"
+
 
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -32,7 +38,8 @@ export default function NavBar() {
     setTitleArea,
     setTitleCity,
     setTitleDistrict,
-    setTitleDivision
+    setTitleDivision,
+    setDestinationType
   }: any = useContext(StateContext);
   const {
     setPostCityNameEng,
@@ -42,9 +49,10 @@ export default function NavBar() {
     setPostDistrictsName,
     setGetUniversityModalValue,
   }: any = useContext(PostStateContext);
-  const {lang, setLang}:any = useContext(FilterContext)
+  const {setLang}:any = useContext(FilterContext)
   const [authenticated, setAuthenticated] = useState(false);
   const { push, pathname } = useRouter();
+  
 
   const cookieValue = Cookies.get('token');
   const token = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
@@ -85,18 +93,41 @@ export default function NavBar() {
 
   // const [language, setLanguage] = useState(false);
 
+  // const dispatch = useDispatch();
+  // const lang = useSelector((state) => state.language.language);
+
+  // const handleLanguageChange = () => {
+  //   const newLanguage = !lang;
+  //   dispatch(toggleLanguage(newLanguage));
+  //   localStorage.setItem('lan', JSON.stringify(newLanguage));
+  // };
+  const dispatch = useDispatch();
   const handleLanguageChange = () => {
     const newLanguage = !lang;
-    setLang(newLanguage);
+    dispatch(toggleLanguage(newLanguage)); // Dispatch the toggleLanguage action
     localStorage.setItem('lan', JSON.stringify(newLanguage));
   };
+  
+  // const handleLanguageChange = () => {
+  //   const newLanguage = !lang;
+  //   setLang(newLanguage);
+  //   localStorage.setItem('lan', JSON.stringify(newLanguage));
+  // };
+  const lang = useSelector((state:any) => state.language.language);
 
   useEffect(() => {
     const storedLanguage = localStorage.getItem('lan');
     if (storedLanguage) {
-      setLang(JSON.parse(storedLanguage));
+      dispatch(toggleLanguage(JSON.parse(storedLanguage))); // Dispatch the toggleLanguage action with the stored language value
     }
-  }, [setLang]);
+  }, [dispatch]);
+  
+  // useEffect(() => {
+  //   const storedLanguage = localStorage.getItem('lan');
+  //   if (storedLanguage) {
+  //     setLang(JSON.parse(storedLanguage));
+  //   }
+  // }, [setLang]);
   // const lang = localStorage.getItem("lan");
   const handleHome = () => {
     setCityName({});
@@ -127,6 +158,7 @@ export default function NavBar() {
     setTitleCity("")
     setTitleDistrict("")
     setTitleDivision("")
+    setDestinationType("")
   };
 
   const email = Cookies.get("authentication");
@@ -213,17 +245,17 @@ export default function NavBar() {
     <>
       <Navbar className="sticky top-0 z-10 bg-warning bg-opacity-100 h-max min-w-full rounded-none py-2 px-1 md:px-0 lg:px-8 lg:py-4 border-none text-primary shadow-sm">
         <div className="flex items-center justify-between text-blue-gray-900 px-2 w-11/12 md:w-10/12 lg:w-11/12 lg:px-8 mx-auto">
-          <div className={`${styles.gapStyle} flex md:gap-12`}>
+          <div className={`gap-10 flex md:gap-12`}>
             <Link onClick={handleHome} href={"/"}>
-              {/* <Image
-                className="h-7 mt-[7px] w-12 rounded"
+              <Image
+                className="h-9  w-32 rounded"
                 src={logo}
                 alt={""}
-              ></Image> */}
+              ></Image>
               {/* // text-transparent bg-clip-text bg-gradient-to-r from-primary via-gray-700 to-primary */}
-              <Typography className={`pt-1 md:pt-0 mr-4 cursor-pointer text-3xl font-semibold md:font-bold md:text-[40px] text-success`}>
+              {/* <Typography className={`pt-1 md:pt-0 mr-4 cursor-pointer text-3xl font-semibold md:font-bold md:text-[40px] text-success`}>
                QuickVara
-              </Typography>
+              </Typography> */}
             </Link>
             <div className="mt-1 mb-1 hidden lg:flex ">
               {!lang ? (

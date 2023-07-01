@@ -11,15 +11,16 @@ import FilterModal from "../../Banner/Modal/FilterModal";
 import Cookies from "js-cookie";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import PopularAreaOfSylhet from "../../AllPopularAreas/PopularAreaOfSylhet/PopularAreaOfSylhet";
+import { useSelector } from "react-redux";
 
 const AllAreas = () => {
   const { cityName, setCityName, setHomePopularAreaName }: any = useContext(StateContext);
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
   const handlePrevious = () => {
     setCityName({});
     setHomePopularAreaName({})
   };
-
+  const lang = useSelector((state:any) => state.language.language);
   return (
     <section className="min-w-full px-8 md:px-0">
       <h1

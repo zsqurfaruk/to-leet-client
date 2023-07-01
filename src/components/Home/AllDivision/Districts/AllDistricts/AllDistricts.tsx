@@ -11,16 +11,17 @@ import DistrictsOfSylhet from "../DistrictsOfSylhet/DistrictsOfSylhet";
 import FilterModal from "@/components/Home/Banner/Modal/FilterModal";
 import Cookies from "js-cookie";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 const AllDistricts = () => {
   const { divisionNameEng, setDivisionNameEng, setDistrictsName }: any =
     useContext(StateContext);
-  const { lang }: any = useContext(FilterContext);
+  // const { lang }: any = useContext(FilterContext);
   const handlePrevious = () => {
     setDivisionNameEng({});
     setDistrictsName({});
   };
-
+  const lang = useSelector((state:any) => state.language.language);
   return (
     <section className="w-full lg:mt-72 lg:ml-4 px-8 md:px-0 md:mx-0">
       <div>

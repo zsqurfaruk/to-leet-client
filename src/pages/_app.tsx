@@ -9,6 +9,9 @@ import DisableRightClick from "@/DisableRightClick/DisableRightClick";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Toaster } from "react-hot-toast";
+import { store } from "@/redux/app/store";
+import { Provider } from 'react-redux'
+
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -35,6 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <DisableRightClick>
+    <Provider store={store}>
     <FilterInfo>
       <PostInfo>
         <StateInfo>
@@ -47,6 +51,7 @@ export default function App({ Component, pageProps }: AppProps) {
         </StateInfo>
       </PostInfo>
     </FilterInfo>
-    </DisableRightClick>
+    </Provider>
+  </DisableRightClick>
   );
 }

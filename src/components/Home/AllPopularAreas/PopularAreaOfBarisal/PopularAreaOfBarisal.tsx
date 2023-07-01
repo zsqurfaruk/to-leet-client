@@ -5,6 +5,7 @@ import { options } from "./BariDataBan";
 import { option } from "./BariDataEng";
 import Cookies from "js-cookie";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 const selectStyles = {
   control: (styles:any, { isFocused }:any) => ({
     ...styles,
@@ -22,7 +23,7 @@ const PopularAreaOfBarishal = () => {
     setFilterValue,
     setTitleArea
   }: any = useContext(StateContext);
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
   const handleFilter = (v: any) => {
     if (v?.name) {
       if (v?.name === "eng") {
@@ -83,7 +84,7 @@ const PopularAreaOfBarishal = () => {
   else{
     setFilterModal(false);
   }
-   
+  const lang = useSelector((state:any) => state.language.language);
   return (
     <section>
       <div>

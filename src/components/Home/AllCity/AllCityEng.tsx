@@ -2,17 +2,18 @@ import React, { useContext } from "react";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import Cookies from "js-cookie";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 const AllCityEng = () => {
   const { setCityName, filterValue, setFilterValue, setTitleCity }: any =
     useContext(StateContext);
-    const {lang}:any = useContext(FilterContext)
+    // const {lang}:any = useContext(FilterContext)
   const handleFilter = (v: any) => {
     setCityName(v);
     setFilterValue({ ...filterValue, cityName: v });
     Cookies.set("city", JSON.stringify(v),{ expires: 1 })
   };
- 
+  const lang = useSelector((state:any) => state.language.language);
   return (
     <div>
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-gray-700 text-sm md:text-base">

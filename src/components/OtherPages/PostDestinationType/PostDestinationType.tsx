@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useContext } from "react";
 import Cookies from 'js-cookie';
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 const PostDestinationType = () => {
   const {
@@ -16,13 +17,13 @@ const PostDestinationType = () => {
     postDivisionNameEng,
     setPostDistrictsName
   }: any = useContext(PostStateContext)
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
   const handleCancel = () => {
     setPostOpenModal(false);
     setGetPostPopularAreaName({});
     setPostDistrictsName({})
-  };
-   
+  }
+  const lang = useSelector((state:any) => state.language.language);
   return (
     <div className="bg-neutral text-gray-700 w-12/12 md:w-12/12 lg:w-full rounded-md mt-40 lg:mt-0 p-5 ">
       <div>

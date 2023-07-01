@@ -6,10 +6,10 @@ import DashboardPost from "@/components/Home/AllPost/DashboardPost";
 import PrivateRoute from "@/routes/privateRoute";
 import Head from "next/head";
 import Cookies from "js-cookie";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
   const firstName = Cookies.get("firstName");
   const lastName = Cookies.get("lastName");
   const email = Cookies.get("authentication");
@@ -43,7 +43,7 @@ const Dashboard = () => {
     }
   }
 
-  
+  const lang = useSelector((state:any) => state.language.language);
   return (
     <>
       <Head>

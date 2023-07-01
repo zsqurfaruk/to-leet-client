@@ -1,10 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import AllPost from "@/components/Home/AllPost/AllPost";
 import Head from "next/head";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/app/store";
+import { getAllPosts } from "@/redux/features/AllPosts/AllPostsSlice";
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 
 function AllAds() {
-  const { counterPosts, loading }: any = useContext(APIContext);
+  // const { counterPosts, loading }: any = useContext(APIContext);
   // const [allDataLoading, setAllDataLoading] = useState(true);
   // const [counterPosts, setcounterPosts] = useState([]);
   // const [pageCount, setPageCount] = useState(1);
@@ -14,12 +18,19 @@ function AllAds() {
   const [pageNumberLimit, setPageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
+  const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
+  const { allPosts } = useSelector((state: RootState) => state.allPosts);
+
+ useEffect(() => {
+  dispatch(getAllPosts());
+}, [dispatch]);
+
 
   const handleClick = (e: any) => {
     setCurrentPage(Number(e.target.id));
   };
   const pages: number[] = [];
-  for (let i = 1; i <= Math.ceil(counterPosts.length / limit); i++) {
+  for (let i = 1; i <= Math.ceil(allPosts.length / limit); i++) {
     pages.push(i);
   }
 
@@ -46,13 +57,13 @@ function AllAds() {
 
   const lastIndex = currentPage * limit;
   const startIndex = lastIndex - limit;
-  const currentItems = counterPosts.slice(startIndex, lastIndex);
+  const currentItems = allPosts.slice(startIndex, lastIndex);
 
-  const renderData = (counterPosts: any) => {
+  const renderData = (allPosts: any) => {
     return (
       <>
         <div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 py-10">
-          {counterPosts?.map((post: any) => (
+          {allPosts?.map((post: any) => (
             <AllPost key={post._id} post={post}></AllPost>
           ))}
         </div>

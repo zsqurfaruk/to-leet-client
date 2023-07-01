@@ -6,11 +6,12 @@ import lotti from "../image/lf20_jkbuwuhk.json";
 import Head from "next/head";
 import Cookies from "js-cookie";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 const University = () => {
   const { filterPost, uniLoading }: any = useContext(APIContext);
-  const {lang}:any = useContext(FilterContext)
-  
+  // const {lang}:any = useContext(FilterContext)
+  const lang = useSelector((state:any) => state.language.language);
   return (
     <>
       <Head>

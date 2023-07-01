@@ -3,9 +3,11 @@ import React, { useContext, useEffect, useState } from "react";
 import Post from "./Post";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 const RelatedPosts = ({ type, areaName, cityName, id }: any) => {
-  const { lang }: any = useContext(FilterContext);
+  // const { lang }: any = useContext(FilterContext);
+  const lang = useSelector((state:any) => state.language.language);
   const { reload }: any = useContext(APIContext);
   const [getValue, setGetValue] = useState([]);
   const filterValue = {

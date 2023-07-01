@@ -15,6 +15,7 @@ import Link from "next/link";
 import Cookies from 'js-cookie';
 import { APIContext } from "@/Context/ApiContext/ApiContext";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 export default function ModalEng() {
   const {
@@ -23,7 +24,7 @@ export default function ModalEng() {
     openModalValue,
     setOpenModalValue,
   }: any = useContext(StateContext);
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
   const { handleFilterUniversity}: any = useContext(APIContext);
   const handleCancel = () => {
     handleOpenModalEng();
@@ -45,7 +46,7 @@ export default function ModalEng() {
     Cookies.set("openMV",newName?.eng)
   }
 
-   
+  const lang = useSelector((state:any) => state.language.language);
   return (
     <div>
     

@@ -3,9 +3,11 @@ import Link from "next/link";
 import React,{useContext} from "react";
 import Cookies from "js-cookie";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 function FilterAllPosts({ post }: any) {
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
+  const lang = useSelector((state:any) => state.language.language);
   const posts = {
     info: "g7j%u*9867&n3$h!5ngo35%g^n8klo%gvb7&bj11fgfgr255rtrt",
      
@@ -31,6 +33,7 @@ return (
       pathname: `/details/${post._id}`,
       query: { post: encodeURIComponent(JSON.stringify(posts)) },
     }}
+    passHref
   >
     <div className="card card-compact rounded">
       <figure>
@@ -246,9 +249,7 @@ return (
             {!lang ? (
               <h2>
                 {post?.type?.eng === "Mess-(Male)" ||
-                post?.type?.eng === "Mess-(Female)" ||
-                post?.type?.eng === "Sublet-(Male)" ||
-                post?.type?.eng === "Sublet-(Female)" ? (
+                post?.type?.eng === "Mess-(Female)"  ? (
                   <>
                     <span
                       className={
@@ -270,9 +271,7 @@ return (
               <h2>
                 {" "}
                 {post?.type?.eng === "Mess-(Male)" ||
-                post?.type?.eng === "Mess-(Female)" ||
-                post?.type?.eng === "Sublet-(Male)" ||
-                post?.type?.eng === "Sublet-(Female)" ? (
+                post?.type?.eng === "Mess-(Female)" ? (
                   <>
                     <span
                       className={

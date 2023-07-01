@@ -11,6 +11,7 @@ import PhoneInput from "react-phone-input-2";
 import parsePhoneNumberFromString from "libphonenumber-js";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 type FormValues = {
   email: string | number;
@@ -30,7 +31,7 @@ const Reset = () => {
   const [isValid, setIsValid] = useState(true);
   const [isValidNum, setIsValidNum] = useState(true);
   const { isOpen }: any = useContext(StateContext);
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
   const router = useRouter();
   const {
     register,
@@ -96,7 +97,7 @@ const Reset = () => {
   };
   const getNm = Cookies.get("nm");
   const getEm = Cookies.get("em");
-  
+  const lang = useSelector((state:any) => state.language.language);
   return (
     <>
       <Head>

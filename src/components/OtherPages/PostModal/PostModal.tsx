@@ -13,6 +13,7 @@ import { colourOptions } from "../../Home/Banner/Modal/DataEng";
 import { colourOption } from "../../Home/Banner/Modal/DataBan";
 import Cookies from "js-cookie";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 export default function PostModal() {
   const {
@@ -23,12 +24,12 @@ export default function PostModal() {
     setPostUniversityModalValue,
     setGetUniversityModalValue,
   }: any = useContext(PostStateContext);
-  const { lang }: any = useContext(FilterContext);
+  // const { lang }: any = useContext(FilterContext);
   const handleCancel = () => {
     setPostUniversityModal(false);
     setPostUniversityModalValue({});
-  };
-
+  }
+  const lang = useSelector((state:any) => state.language.language);
   return (
     <div>
       <Dialog

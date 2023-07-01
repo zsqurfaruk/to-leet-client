@@ -5,6 +5,7 @@ import { options } from "./DataRajBan";
 import { option } from "./DataRajEng";
 import Cookies from 'js-cookie';
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 const selectStyles = {
   control: (styles:any, { isFocused }:any) => ({
     ...styles,
@@ -19,7 +20,7 @@ const RajPopularAreaEng = () => {
     setGetPostPopularAreaName,
     setPostOpenModal,
   }: any = useContext(PostStateContext)
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
   if (getPostPopularAreaName?.name === "eng") {
     const newName = {
       eng: getPostPopularAreaName?.label,
@@ -47,7 +48,7 @@ const RajPopularAreaEng = () => {
   ) {
     setPostOpenModal(true);
   }
- 
+  const lang = useSelector((state:any) => state.language.language);
   return (
     <section>
       <div>

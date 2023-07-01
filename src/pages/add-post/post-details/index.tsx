@@ -31,6 +31,7 @@ import parsePhoneNumberFromString from "libphonenumber-js";
 import { AiOutlineMinus } from "react-icons/ai";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import style from "../../../styles/banner.module.css"
+import { useSelector } from "react-redux";
 const selectStyles = {
   control: (styles:any, { isFocused }:any) => ({
     ...styles,
@@ -110,7 +111,8 @@ const PostDetails = () => {
     totalBed,
     setTotalBed,
   }: any = useContext(PostStateContext);
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
+  const lang = useSelector((state:any) => state.language.language);
   const { reload, setReload }: any = useContext(APIContext);
 
   const router = useRouter();

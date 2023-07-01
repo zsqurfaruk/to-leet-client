@@ -4,6 +4,7 @@ import { Button, Card, Typography } from "@material-tailwind/react";
 import Cookies from 'js-cookie';
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
+import { useSelector } from "react-redux";
 
 const FilterDestinationType = () => {
   const {
@@ -19,7 +20,7 @@ const FilterDestinationType = () => {
     setFilterValue,
     filterValue,
   }: any = useContext(StateContext)
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
   const router = useRouter();
   const handleFilter = (v: any) => {
     setFilterModalValue(v);
@@ -38,7 +39,7 @@ const FilterDestinationType = () => {
     setDistrictsName({});
   };
 
-  
+  const lang = useSelector((state:any) => state.language.language); 
   return (
     <div className="bg-neutral text-gray-700 w-12/12 md:w-12/12 lg:w-full rounded-md mt-40 lg:mt-0 p-5 ">
       <div>

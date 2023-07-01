@@ -14,10 +14,12 @@ import Head from "next/head";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { toast } from "react-hot-toast";
 import RelatedPosts from "@/components/RelatedPost/RelatedPosts";
+import { useSelector } from "react-redux";
 
 const ProductDetails = ({ product,loading,errorMessage }: any) => {
   const { img1, img2, img3, img4, img5 } = product;
-  const { lang }: any = useContext(FilterContext);
+  // const { lang }: any = useContext(FilterContext);
+  const lang = useSelector((state:any) => state.language.language);
   const images = [
     { id: 0, value: img1 },
     { id: 1, value: img2 },
@@ -63,6 +65,7 @@ const ProductDetails = ({ product,loading,errorMessage }: any) => {
   if (errorMessage) {
     return <div>{errorMessage}</div>;
   }
+  
   return (
     <>
       <Head>

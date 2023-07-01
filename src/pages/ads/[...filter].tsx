@@ -5,10 +5,11 @@ import Lottie from "lottie-react";
 import lotti from "../../image/lf20_jkbuwuhk.json";
 import Head from "next/head";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 const FilterPosts = () => {
   const { filterValue, cityName, divisionNameEng, districtsName,titleArea, titleCity, titleDistrict, titleDivision}: any = useContext(StateContext);
-    const {lang}:any = useContext(FilterContext)
+    // const {lang}:any = useContext(FilterContext)
   const [filterPost, setFilterPost] = useState([]);
   const [loading , setLoading] = useState(false)
   useEffect(() => {
@@ -37,6 +38,7 @@ const FilterPosts = () => {
   }
     
   document.title = title;
+  const lang = useSelector((state:any) => state.language.language);
   return (
     <>
     <Head>

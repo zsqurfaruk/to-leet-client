@@ -1,16 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
 import Cookies from "js-cookie";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import { useSelector } from "react-redux";
 
 const DashboardPost = ({ post }: any) => {
   const [updateReload, setUpdateReload] = useState(false);
-  const {lang}:any = useContext(FilterContext)
+  // const {lang}:any = useContext(FilterContext)
+  const lang = useSelector((state:any) => state.language.language);
   const { reload, setReload }: any = useContext(APIContext);
-
   const cookieValue = Cookies.get("token");
   const token = cookieValue
     ? JSON.parse(decodeURIComponent(cookieValue))
@@ -32,6 +32,7 @@ const DashboardPost = ({ post }: any) => {
       toast.success("আপডেট দেওয়ার জন্য ধন্যবাদ।");
     }
   };
+  
   const posts = {
     info: "g7j%u*9867&n3$h!5ngo35%g^n8klo%gvb7&bj11fgfgr255rtrt",
   };
@@ -51,12 +52,7 @@ const dateString = post?.updatedAt?.slice(0, 10);
 const dateParts = dateString.split("-");
 const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
   return (
-    <Link
-    href={{
-      pathname: `/details/${post._id}`,
-      query: { post: encodeURIComponent(JSON.stringify(posts)) },
-    }}
-  >
+    
     <div className="card card-compact rounded">
       <figure>
         <img
@@ -271,9 +267,7 @@ const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
             {!lang ? (
               <h2>
                 {post?.type?.eng === "Mess-(Male)" ||
-                post?.type?.eng === "Mess-(Female)" ||
-                post?.type?.eng === "Sublet-(Male)" ||
-                post?.type?.eng === "Sublet-(Female)" ? (
+                post?.type?.eng === "Mess-(Female)"  ? (
                   <>
                     <span
                       className={
@@ -295,9 +289,7 @@ const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
               <h2>
                 {" "}
                 {post?.type?.eng === "Mess-(Male)" ||
-                post?.type?.eng === "Mess-(Female)" ||
-                post?.type?.eng === "Sublet-(Male)" ||
-                post?.type?.eng === "Sublet-(Female)" ? (
+                post?.type?.eng === "Mess-(Female)"  ? (
                   <>
                     <span
                       className={
@@ -327,8 +319,17 @@ const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
             )}
           </div>
         </div>
-
-        <h2 className="flex justify-end -mt-2 -mb-2">
+       {
+        !post?.available && <>{
+          !lang ? <button onClick={handleUpdate} className="text-start mb-3">For rent update, <span className="text-warning underline font-semibold">click here.</span></button> :  <button onClick={handleUpdate} className="mb-3 text-[13px] text-start">ভাড়া হলে এখানে <span className="text-warning underline font-semibold">ক্লিক</span> করুন</button>
+        }</>
+       }
+      <Link  href={{
+      pathname: `/details/${post._id}`,
+      query: { post: encodeURIComponent(JSON.stringify(posts)) },
+    }}
+    passHref>
+       <h2 className="flex justify-end -mt-2 -mb-2">
           {" "}
           {/* {post?.description?.slice(0, 50)}... */}
           {!lang ? (
@@ -341,9 +342,11 @@ const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
             </span>
           )}
         </h2>
+      </Link>
+       
       </div>
     </div>
-  </Link>
+ 
   );
 };
 
