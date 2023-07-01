@@ -31,6 +31,7 @@ const DesEng = () => {
           pathname: "/Bachelor-(Male)",
         }}
         onClick={()=>setDestinationType("Bachelor Male")}
+        passHref
       >
         <Card
           className={
@@ -68,6 +69,7 @@ const DesEng = () => {
           pathname: "/Bachelor-(Female)",
         }}
         onClick={()=>setDestinationType("Bachelor Female")}
+        passHref
       >
         <Card
           className={
@@ -105,6 +107,7 @@ const DesEng = () => {
           pathname: "/Mess-(Male)",
         }}
         onClick={()=>setDestinationType("Mess Male")}
+        passHref
       >
         <Card
           className={
@@ -140,6 +143,7 @@ const DesEng = () => {
           pathname: "/Mess-(Female)",
         }}
         onClick={()=>setDestinationType("Mess Female")}
+        passHref
       >
         <Card
           className={
@@ -175,6 +179,7 @@ const DesEng = () => {
           pathname: "/Sublet-(Male)",
         }}
         onClick={()=>setDestinationType("Sublet Male")}
+        passHref
       >
         <Card
           className={
@@ -211,6 +216,7 @@ const DesEng = () => {
           pathname: "/Sublet-(Female)",
         }}
         onClick={()=>setDestinationType("Sublet Female")}
+        passHref
       >
         <Card
           className={
@@ -247,6 +253,7 @@ const DesEng = () => {
           pathname: "/Family",
         }}
         onClick={()=>setDestinationType("Family")}
+        passHref
       >
         <Card
           className={
@@ -281,6 +288,7 @@ const DesEng = () => {
           pathname: "/Hostel",
         }}
         onClick={()=>setDestinationType("Hostel")}
+        passHref
       >
         <Card
           className={
@@ -315,6 +323,7 @@ const DesEng = () => {
           pathname: "/Office",
         }}
         onClick={()=>setDestinationType("Office")}
+        passHref
       >
         <Card
           className={
@@ -347,6 +356,7 @@ const DesEng = () => {
           pathname: "/Shop",
         }}
         onClick={()=>setDestinationType("Shop")}
+        passHref
       >
         <Card
           className={
@@ -378,6 +388,7 @@ const DesEng = () => {
           pathname: "/Vehicles",
         }}
         onClick={()=>setDestinationType("Vehicles")}
+        passHref
       >
         <Card
           className={
@@ -412,6 +423,7 @@ const DesEng = () => {
           pathname: "/Garage",
         }}
         onClick={()=>setDestinationType("Garage")}
+        passHref
       >
         <Card
           className={

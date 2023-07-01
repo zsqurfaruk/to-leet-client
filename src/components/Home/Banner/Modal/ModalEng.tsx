@@ -108,6 +108,7 @@ export default function ModalEng() {
                 type: encodeURIComponent(JSON.stringify(openModalValue.eng)),
               },
             }}
+            passHref
           >
             <button
               className="text-primary bg-gradient-to-r from-accent to-warning px-3 py-2 rounded font-semibold"
@@ -133,6 +134,7 @@ export default function ModalEng() {
                 type: encodeURIComponent(JSON.stringify(openModalValue.eng)),
               },
             }}
+            passHref
           >
             <Button
               className={

@@ -66,6 +66,7 @@ const PostDestinationType = () => {
               ban: "ব্যাচেলর-(ছেলে)",
             })
           }
+          passHref
         >
           <Card>
             <div>
@@ -94,6 +95,7 @@ const PostDestinationType = () => {
               ban: "ব্যাচেলর-(মেয়ে)",
             })
           }
+          passHref
         >
           <Card>
             <div>
@@ -118,6 +120,7 @@ const PostDestinationType = () => {
           onClick={() =>
             setModalValue({ eng: "Mess-(Male)", ban: "মেস-(ছেলে)" })
           }
+          passHref
         >
           <Card>
             <div className="text-center">
@@ -138,6 +141,7 @@ const PostDestinationType = () => {
           onClick={() =>
             setModalValue({ eng: "Mess-(Female)", ban: "মেস-(মেয়ে)" })
           }
+          passHref
         >
           <Card>
             <div>
@@ -158,6 +162,7 @@ const PostDestinationType = () => {
           onClick={() =>
             setModalValue({ eng: "Sublet-(Male)", ban: "সাবলেট-(ছেলে)" })
           }
+          passHref
         >
           <Card>
             <div>
@@ -181,6 +186,7 @@ const PostDestinationType = () => {
               ban: "সাবলেট-(মেয়ে)",
             })
           }
+          passHref
         >
           <Card>
             <div>
@@ -203,6 +209,7 @@ const PostDestinationType = () => {
           onClick={() =>
             setModalValue({ eng: "Family", ban: "পরিবার" })
           }
+          passHref
         >
           <Card>
             <div>
@@ -224,6 +231,7 @@ const PostDestinationType = () => {
           onClick={() =>
             setModalValue({ eng: "Hostel", ban: "আবাসিক-হোস্টেল" })
           }
+          passHref
         >
           <Card>
             <div>
@@ -245,6 +253,7 @@ const PostDestinationType = () => {
             pathname: "/add-post/post-details",
           }}
           onClick={() => setModalValue({ eng: "Office", ban: "অফিস" })}
+          passHref
         >
           <Card>
             <div>
@@ -263,6 +272,7 @@ const PostDestinationType = () => {
             pathname: "/add-post/post-details",
           }}
           onClick={() => setModalValue({ eng: "Shop", ban: "দোকান" })}
+          passHref
         >
           <Card>
             <div>
@@ -283,6 +293,7 @@ const PostDestinationType = () => {
           onClick={() =>
             setModalValue({ eng: "Vehicles", ban: "যানবাহন" })
           }
+          passHref
         >
           <Card>
             <div>
@@ -303,6 +314,7 @@ const PostDestinationType = () => {
           onClick={() =>
             setModalValue({ eng: "Garage", ban: "গ্যারেজ" })
           }
+          passHref
         >
           <Card>
             <div>

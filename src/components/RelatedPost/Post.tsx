@@ -32,6 +32,7 @@ function Post({ post }: any) {
         pathname: `/details/${post._id}`,
         query: { post: encodeURIComponent(JSON.stringify(posts)) },
       }}
+      passHref
     >
       <div className="card card-compact rounded">
         <figure>
