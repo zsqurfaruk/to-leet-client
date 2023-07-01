@@ -42,7 +42,7 @@ const FilterPosts = () => {
   return (
     <>
     <Head>
-    <title>{document.title = title || "Search by Area"}</title>
+    <title>{document.title = title || "Filter by Location"}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keywords" />
         <meta
