@@ -90,17 +90,7 @@ export default function NavBar() {
   const handleLogOut = () => {
     logOut();
   };
-
-  // const [language, setLanguage] = useState(false);
-
-  // const dispatch = useDispatch();
-  // const lang = useSelector((state) => state.language.language);
-
-  // const handleLanguageChange = () => {
-  //   const newLanguage = !lang;
-  //   dispatch(toggleLanguage(newLanguage));
-  //   localStorage.setItem('lan', JSON.stringify(newLanguage));
-  // };
+ 
   const dispatch = useDispatch();
   const handleLanguageChange = () => {
     const newLanguage = !lang;
@@ -108,11 +98,6 @@ export default function NavBar() {
     localStorage.setItem('lan', JSON.stringify(newLanguage));
   };
   
-  // const handleLanguageChange = () => {
-  //   const newLanguage = !lang;
-  //   setLang(newLanguage);
-  //   localStorage.setItem('lan', JSON.stringify(newLanguage));
-  // };
   const lang = useSelector((state:any) => state.language.language);
 
   useEffect(() => {
@@ -122,13 +107,7 @@ export default function NavBar() {
     }
   }, [dispatch]);
   
-  // useEffect(() => {
-  //   const storedLanguage = localStorage.getItem('lan');
-  //   if (storedLanguage) {
-  //     setLang(JSON.parse(storedLanguage));
-  //   }
-  // }, [setLang]);
-  // const lang = localStorage.getItem("lan");
+ 
   const handleHome = () => {
     setCityName({});
     setDivisionNameEng({}),
@@ -159,6 +138,7 @@ export default function NavBar() {
     setTitleDistrict("")
     setTitleDivision("")
     setDestinationType("")
+    sessionStorage.removeItem("page")
   };
 
   const email = Cookies.get("authentication");

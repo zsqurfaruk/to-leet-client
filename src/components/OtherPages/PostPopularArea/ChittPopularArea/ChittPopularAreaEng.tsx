@@ -75,6 +75,22 @@ const ChittPopularAreaEng = () => {
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
+                  setGetPostPopularAreaName({ eng: "Alankar", ban: "অলঙ্কার" })
+                }
+              />
+              {!lang ? (
+                <span className="-mt-[2px]"> Alankar</span>
+              ) : (
+                <span className="-mt-[2px]"> অলঙ্কার</span>
+              )}
+            </label>
+          </li>
+          <li>
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+                onClick={() =>
                   setGetPostPopularAreaName({
                     eng: "Chawkbazar",
                     ban: "চকবাজার",
@@ -158,22 +174,7 @@ const ChittPopularAreaEng = () => {
               )}
             </label>
           </li>
-          <li>
-            <label className="flex gap-2">
-              <input
-                type="checkbox"
-                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-                onClick={() =>
-                  setGetPostPopularAreaName({ eng: "Alankar", ban: "অলঙ্কার" })
-                }
-              />
-              {!lang ? (
-                <span className="-mt-[2px]"> Alankar</span>
-              ) : (
-                <span className="-mt-[2px]"> অলঙ্কার</span>
-              )}
-            </label>
-          </li>
+         
 
           <li
             className={

@@ -57,7 +57,7 @@ const University = () => {
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
       </Head>
-      <section className=" lg:w-10/12 mx-auto bg-white px-10 rounded lg:my-10">
+      <section className=" lg:w-10/12 mx-auto bg-white px-[32px] rounded lg:my-10">
         {uniLoading ? (
           <h1 className="text-center w-full mt-10 py-20 text-xl">Loading...</h1>
         ) : (

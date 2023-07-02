@@ -32,15 +32,15 @@ const ApiContext = ({ children }: any) => {
       });
   };
 
-  useEffect(() => {
-    setAllDataLoading(true);
-    fetch("https://zsqur.quickvara.com/api/v1/product")
-      .then((res) => res.json())
-      .then((data) => {
-        setCounterPosts(data);
-        setAllDataLoading(false);
-      });
-  }, [reload]);
+  // useEffect(() => {
+  //   setAllDataLoading(true);
+  //   fetch("https://zsqur.quickvara.com/api/v1/product")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setCounterPosts(data);
+  //       setAllDataLoading(false);
+  //     });
+  // }, [reload]);
 
   useEffect(() => {
     fetch("https://zsqur.quickvara.com/api/v1/users/signup")

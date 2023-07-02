@@ -14,23 +14,7 @@ const PostKhulnaDistrictsEng = () => {
   return (
     <div>
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
-        <li>
-          <label className="flex gap-2">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-              onClick={() =>
-                setPostDistrictsName({ eng: "Khulna", ban: "খুলনা" })
-              }
-            />
-            {!lang ? (
-              <span className="-mt-[2px]">Khulna</span>
-            ) : (
-              <span className="-mt-[2px]">খুলনা</span>
-            )}
-          </label>
-        </li>
-        <li>
+      <li>
           <label className="flex gap-2">
             <input
               type="checkbox"
@@ -62,6 +46,24 @@ const PostKhulnaDistrictsEng = () => {
             )}
           </label>
         </li>
+        <li>
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Khulna", ban: "খুলনা" })
+              }
+            />
+            {!lang ? (
+              <span className="-mt-[2px]">Khulna</span>
+            ) : (
+              <span className="-mt-[2px]">খুলনা</span>
+            )}
+          </label>
+        </li>
+        
+        
         <li>
           <label className="flex gap-2">
             <input

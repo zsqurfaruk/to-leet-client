@@ -1,22 +1,17 @@
 /* eslint-disable @next/next/next-script-for-ga */
 /* eslint-disable react/no-unescaped-entities */
-import React, { useContext } from "react";
+import React from "react";
 import Head from "next/head";
 import DestinationType from "@/components/Home/DestinationType/DestinationType";
 import PostCounter from "@/components/Home/PostCounter/PostCounter";
 import Banner from "@/components/Home/Banner/Banner";
-import { StateContext } from "@/Context/StateContext/StateContext";
 import About from "@/components/About/About";
 
 function Home() {
-  const { isOpen }: any = useContext(StateContext);
-  const title = `The Ultimate Rental Solution`;
-
-  document.title = title;
   return (
     <>
       <Head>
-      <title> {document.title = title}</title>
+      <title> The Ultimate Rental Solution</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keywords" />
         <meta
@@ -32,15 +27,14 @@ function Home() {
         <meta property="og:url" content="https://quickvara.com/" />
         <meta
           property="og:title"
-          content="QuickVara - The Ultimate Rental Solution | ToLet | Rent in bangladesh"
+          content="QuickVara - The Ultimate Rental Solution | Basa Vara | ToLet | Rent in Bangladesh"
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
         <meta property="og:image" content="https://i.ibb.co/gv3DdvJ/Simple-Box-Solution-Game-Store-Logo-2.jpg" />
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="sitemap" type="application/xml" title="Sitemap" href="https://quickvara.com/sitemap.xml"/>
-        <meta name="title" content="QuickVara - The Ultimate Rental Solution | ToLet | Rent in bangladesh" />
+        <meta name="title" content="QuickVara - The Ultimate Rental Solution | Basa Vara | ToLet | Rent in Bangladesh" />
         <meta name="keywords" />
         <meta
           name="description"
@@ -55,11 +49,12 @@ function Home() {
         <meta property="og:url" content="https://quickvara.com/" />
         <meta
           property="og:title"
-          content="QuickVara - The Ultimate Rental Solution | ToLet | Rent in bangladesh"
+          content="QuickVara - The Ultimate Rental Solution | Basa Vara | ToLet | Rent in Bangladesh"
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
         <meta property="og:image" content="https://i.ibb.co/gv3DdvJ/Simple-Box-Solution-Game-Store-Logo-2.jpg" />
+        <link rel="sitemap" type="application/xml" title="Sitemap" href="https://quickvara.com/sitemap.xml"/>
       </Head>
       <main className="bg-white">
         <Banner></Banner>

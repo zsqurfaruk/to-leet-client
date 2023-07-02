@@ -7,19 +7,20 @@ import PrivateRoute from "@/routes/privateRoute";
 import Head from "next/head";
 import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
+import { APIContext } from "@/Context/ApiContext/ApiContext";
 
 const Dashboard = () => {
-  // const {lang}:any = useContext(FilterContext)
+  const {reload}:any = useContext(APIContext)
   const firstName = Cookies.get("firstName");
   const lastName = Cookies.get("lastName");
   const email = Cookies.get("authentication");
   const [personalPost, setPersonalPost] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   
   const cookieValue = Cookies.get('token');
   const token = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
   useEffect(() => {
-    setLoading(true);
+    // setLoading(true);
     fetch(`https://zsqur.quickvara.com/api/v1/product/user/email/${email}`, {
       headers: {
         authorization: `bearer ${token}`,
@@ -30,7 +31,7 @@ const Dashboard = () => {
         setPersonalPost(data);
         setLoading(false);
       });
-  }, [email, token]);
+  }, [email, token, reload]);
 
   let getNumber;
   let checkAuthentication;
@@ -103,7 +104,7 @@ const Dashboard = () => {
         ) : (
           <>
             {" "}
-            <div className="px-5 grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="px-[14px] grid grid-cols-1 md:grid-cols-3 gap-5">
               {personalPost?.map((post: any) => (
                 <DashboardPost key={post._id} post={post}></DashboardPost>
               ))}

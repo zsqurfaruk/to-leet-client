@@ -14,18 +14,22 @@ function AllAds() {
   // const [pageCount, setPageCount] = useState(1);
   const [limit, setLimit] = useState(20);
   // const currentPage = useRef<number>(1);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(
+    Number(sessionStorage.getItem("page")) || 1
+  );
   const [pageNumberLimit, setPageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
-  const { allPosts } = useSelector((state: RootState) => state.allPosts);
+  const { allPosts }:any = useSelector((state: RootState) => state.allPosts);
 
  useEffect(() => {
   dispatch(getAllPosts());
 }, [dispatch]);
 
-
+useEffect(() => {
+  sessionStorage.setItem("page", currentPage.toString());
+}, [currentPage]);
   const handleClick = (e: any) => {
     setCurrentPage(Number(e.target.id));
   };
@@ -140,7 +144,7 @@ function AllAds() {
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
       </Head>
-      <section className="lg:my-5 lg:w-10/12 mx-auto bg-white px-10 rounded">
+      <section className="lg:my-5 lg:w-10/12 mx-auto bg-white px-[32px] rounded">
       {renderData(currentItems)}
         <ul
           className={

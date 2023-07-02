@@ -141,11 +141,11 @@ const Banner = () => {
           <div className="lg:hidden block">
             <div>
               {!lang ? (
-                <h1 className={filterTypeCity || filterTypeDivision ? "mt-5 lg:mt-10 text-xl text-gray-700 ml-[30px] md:ml-20" : "mt-5 lg:mt-10 text-xl text-gray-700 ml-[27px] md:ml-0"}>
+                <h1 className={filterTypeCity || filterTypeDivision ? "mt-5 lg:mt-10 text-xl text-gray-700 ml-[30px] md:ml-20" : "mt-1 lg:mt-10 text-xl text-gray-700 ml-[27px] md:ml-0"}>
                   Search by:
                 </h1>
               ) : (
-                <h1 className={filterTypeCity || filterTypeDivision ? "mt-5 lg:mt-10 text-lg text-gray-700 ml-[30px] md:ml-20" : "mt-5 lg:mt-10 text-xl text-gray-700 ml-[25px] md:ml-0"}>
+                <h1 className={filterTypeCity || filterTypeDivision ? "mt-5 lg:mt-10 text-lg text-gray-700 ml-[30px] md:ml-20" : "mt-2 lg:mt-10 text-lg text-gray-700 ml-[30px] md:ml-0"}>
                   অনুসন্ধান করুন :
                 </h1>
               )}

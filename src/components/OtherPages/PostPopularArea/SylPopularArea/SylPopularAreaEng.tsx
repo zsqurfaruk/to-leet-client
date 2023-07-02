@@ -3,14 +3,14 @@ import React, { useContext } from "react";
 import Select from "react-select";
 import { options } from "./DataSylBan";
 import { option } from "./DataSylEng";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
 const selectStyles = {
-  control: (styles:any, { isFocused }:any) => ({
+  control: (styles: any, { isFocused }: any) => ({
     ...styles,
-    borderColor: isFocused ? '#1598ac' : '#1598ac',
-    boxShadow: isFocused ? '0 0 0 .5px #1598ac' : 'none',
+    borderColor: isFocused ? "#1598ac" : "#1598ac",
+    boxShadow: isFocused ? "0 0 0 .5px #1598ac" : "none",
   }),
 };
 
@@ -48,7 +48,7 @@ const SylPopularAreaEng = () => {
   ) {
     setPostOpenModal(true);
   }
-  const lang = useSelector((state:any) => state.language.language);
+  const lang = useSelector((state: any) => state.language.language);
   return (
     <section>
       <div>
@@ -60,18 +60,19 @@ const SylPopularAreaEng = () => {
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
-                    eng: "Zinda Bazar",
-                    ban: "জিন্দা বাজার",
+                    eng: "Amber Khana",
+                    ban: "আম্বরখানা",
                   })
                 }
               />
               {!lang ? (
-                <span className="-mt-[2px]"> Zinda Bazar</span>
+                <span className="-mt-[2px]"> Amber Khana</span>
               ) : (
-                <span className="-mt-[2px]"> জিন্দা বাজার</span>
+                <span className="-mt-[2px]"> আম্বরখানা</span>
               )}
             </label>
           </li>
+
           <li>
             <label className="flex gap-2">
               <input
@@ -98,15 +99,34 @@ const SylPopularAreaEng = () => {
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
-                    eng: "Amber Khana",
-                    ban: "আম্বরখানা",
+                    eng: "Bimanbondor",
+                    ban: "বিমানবন্দর",
                   })
                 }
               />
               {!lang ? (
-                <span className="-mt-[2px]"> Amber Khana</span>
+                <span className="-mt-[2px]"> Bimanbondor</span>
               ) : (
-                <span className="-mt-[2px]"> আম্বরখানা</span>
+                <span className="-mt-[2px]"> বিমানবন্দর</span>
+              )}
+            </label>
+          </li>
+          <li>
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+                onClick={() =>
+                  setGetPostPopularAreaName({
+                    eng: "Osmani Nagar",
+                    ban: "ওসমানী নগর",
+                  })
+                }
+              />
+              {!lang ? (
+                <span className="-mt-[2px]"> Osmani Nagar</span>
+              ) : (
+                <span className="-mt-[2px]"> ওসমানী নগর</span>
               )}
             </label>
           </li>
@@ -148,6 +168,7 @@ const SylPopularAreaEng = () => {
               )}
             </label>
           </li>
+
           <li>
             <label className="flex gap-2">
               <input
@@ -155,34 +176,15 @@ const SylPopularAreaEng = () => {
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
-                    eng: "Bimanbondor",
-                    ban: "বিমানবন্দর",
+                    eng: "Zinda Bazar",
+                    ban: "জিন্দা বাজার",
                   })
                 }
               />
               {!lang ? (
-                <span className="-mt-[2px]"> Bimanbondor</span>
+                <span className="-mt-[2px]"> Zinda Bazar</span>
               ) : (
-                <span className="-mt-[2px]"> বিমানবন্দর</span>
-              )}
-            </label>
-          </li>
-          <li>
-            <label className="flex gap-2">
-              <input
-                type="checkbox"
-                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-                onClick={() =>
-                  setGetPostPopularAreaName({
-                    eng: "Osmani Nagar",
-                    ban: "ওসমানী নগর",
-                  })
-                }
-              />
-              {!lang ? (
-                <span className="-mt-[2px]"> Osmani Nagar</span>
-              ) : (
-                <span className="-mt-[2px]"> ওসমানী নগর</span>
+                <span className="-mt-[2px]"> জিন্দা বাজার</span>
               )}
             </label>
           </li>

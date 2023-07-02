@@ -50,45 +50,26 @@ const DhaPopularArea = () => {
     <section>
       <div>
         <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
-          <li>
+        <li>
             <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
-                    eng: "Mirpur",
-                    ban: "মিরপুর",
+                    eng: "Dhamrai",
+                    ban: "ধামরাই",
                   })
                 }
               />
               {!lang ? (
-                <span className="-mt-[2px]"> Mirpur</span>
+                <span className="-mt-[2px]"> Dhamrai</span>
               ) : (
-                <span className="-mt-[2px]"> মিরপুর</span>
+                <span className="-mt-[2px]"> ধামরাই</span>
               )}
             </label>
           </li>
-          <li>
-            <label className="flex gap-2">
-              <input
-                type="checkbox"
-                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-                onClick={() =>
-                  setGetPostPopularAreaName({
-                    eng: "Uttara",
-                    ban: "উত্তরা",
-                  })
-                }
-              />
-              {!lang ? (
-                <span className="-mt-[2px]"> Uttara</span>
-              ) : (
-                <span className="-mt-[2px]"> উত্তরা</span>
-              )}
-            </label>
-          </li>
-          <li>
+        <li>
             <label className="flex gap-2">
               <input
                 type="checkbox"
@@ -114,15 +95,15 @@ const DhaPopularArea = () => {
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
-                    eng: "New Market",
-                    ban: "নিউমার্কেট",
+                    eng: "Mirpur",
+                    ban: "মিরপুর",
                   })
                 }
               />
               {!lang ? (
-                <span className="-mt-[2px]"> New Market</span>
+                <span className="-mt-[2px]"> Mirpur</span>
               ) : (
-                <span className="-mt-[2px]"> নিউমার্কেট</span>
+                <span className="-mt-[2px]"> মিরপুর</span>
               )}
             </label>
           </li>
@@ -152,6 +133,25 @@ const DhaPopularArea = () => {
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
+                    eng: "New Market",
+                    ban: "নিউমার্কেট",
+                  })
+                }
+              />
+              {!lang ? (
+                <span className="-mt-[2px]"> New Market</span>
+              ) : (
+                <span className="-mt-[2px]"> নিউমার্কেট</span>
+              )}
+            </label>
+          </li>
+          <li>
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+                onClick={() =>
+                  setGetPostPopularAreaName({
                     eng: "Savar",
                     ban: "সাভার",
                   })
@@ -171,19 +171,18 @@ const DhaPopularArea = () => {
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
-                    eng: "Dhamrai",
-                    ban: "ধামরাই",
+                    eng: "Uttara",
+                    ban: "উত্তরা",
                   })
                 }
               />
               {!lang ? (
-                <span className="-mt-[2px]"> Dhamrai</span>
+                <span className="-mt-[2px]"> Uttara</span>
               ) : (
-                <span className="-mt-[2px]"> ধামরাই</span>
+                <span className="-mt-[2px]"> উত্তরা</span>
               )}
             </label>
           </li>
-        
           <li
             className={
               getPostPopularAreaName?.eng === "Select others"

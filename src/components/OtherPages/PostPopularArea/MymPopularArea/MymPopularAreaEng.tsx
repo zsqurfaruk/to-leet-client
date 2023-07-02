@@ -53,26 +53,26 @@ const MymPopularAreaEng = () => {
     <section>
       <div>
         <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
-          <li>
+        <li>
             <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
-                    eng: "Ganginar par",
-                    ban: "গাঙ্গিনার পাড়",
+                    eng: "Cantonment",
+                    ban: "ক্যান্টনমেন্ট",
                   })
                 }
               />
               {!lang ? (
-                <span className="-mt-[2px]"> Ganginar par</span>
+                <span className="-mt-[2px]"> Cantonment</span>
               ) : (
-                <span className="-mt-[2px]"> গাঙ্গিনার পাড়</span>
+                <span className="-mt-[2px]"> ক্যান্টনমেন্ট</span>
               )}
             </label>
           </li>
-          <li>
+        <li>
             <label className="flex gap-2">
               <input
                 type="checkbox"
@@ -98,15 +98,54 @@ const MymPopularAreaEng = () => {
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
-                    eng: "Valuka",
-                    ban: "ভালুকা",
+                    eng: "Ganginar par",
+                    ban: "গাঙ্গিনার পাড়",
                   })
                 }
               />
               {!lang ? (
-                <span className="-mt-[2px]"> Valuka</span>
+                <span className="-mt-[2px]"> Ganginar par</span>
               ) : (
-                <span className="-mt-[2px]"> ভালুকা</span>
+                <span className="-mt-[2px]"> গাঙ্গিনার পাড়</span>
+              )}
+            </label>
+          </li>
+          
+          <li>
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+                onClick={() =>
+                  setGetPostPopularAreaName({
+                    eng: "Muktagacha",
+                    ban: "মুক্তাগাছা",
+                  })
+                }
+              />
+              {!lang ? (
+                <span className="-mt-[2px]"> Muktagacha</span>
+              ) : (
+                <span className="-mt-[2px]"> মুক্তাগাছা</span>
+              )}
+            </label>
+          </li>
+          <li>
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+                onClick={() =>
+                  setGetPostPopularAreaName({
+                    eng: "Naumahal",
+                    ban: "নওমহল",
+                  })
+                }
+              />
+              {!lang ? (
+                <span className="-mt-[2px]"> Naumahal</span>
+              ) : (
+                <span className="-mt-[2px]"> নওমহল</span>
               )}
             </label>
           </li>
@@ -136,53 +175,15 @@ const MymPopularAreaEng = () => {
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
                   setGetPostPopularAreaName({
-                    eng: "Muktagacha",
-                    ban: "মুক্তাগাছা",
+                    eng: "Valuka",
+                    ban: "ভালুকা",
                   })
                 }
               />
               {!lang ? (
-                <span className="-mt-[2px]"> Muktagacha</span>
+                <span className="-mt-[2px]"> Valuka</span>
               ) : (
-                <span className="-mt-[2px]"> মুক্তাগাছা</span>
-              )}
-            </label>
-          </li>
-          <li>
-            <label className="flex gap-2">
-              <input
-                type="checkbox"
-                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-                onClick={() =>
-                  setGetPostPopularAreaName({
-                    eng: "Cantonment",
-                    ban: "ক্যান্টনমেন্ট",
-                  })
-                }
-              />
-              {!lang ? (
-                <span className="-mt-[2px]"> Cantonment</span>
-              ) : (
-                <span className="-mt-[2px]"> ক্যান্টনমেন্ট</span>
-              )}
-            </label>
-          </li>
-          <li>
-            <label className="flex gap-2">
-              <input
-                type="checkbox"
-                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-                onClick={() =>
-                  setGetPostPopularAreaName({
-                    eng: "Naumahal",
-                    ban: "নওমহল",
-                  })
-                }
-              />
-              {!lang ? (
-                <span className="-mt-[2px]"> Naumahal</span>
-              ) : (
-                <span className="-mt-[2px]"> নওমহল</span>
+                <span className="-mt-[2px]"> ভালুকা</span>
               )}
             </label>
           </li>

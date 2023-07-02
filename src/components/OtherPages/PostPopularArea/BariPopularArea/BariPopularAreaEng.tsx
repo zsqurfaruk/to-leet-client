@@ -3,8 +3,6 @@ import React, { useContext } from "react";
 import Select from "react-select";
 import { options } from "./DataBariBan";
 import { option } from "./DataBariEng";
-import Cookies from 'js-cookie';
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
 const selectStyles = {
   control: (styles:any, { isFocused }:any) => ({
@@ -53,68 +51,23 @@ const BariPopularAreaEng = () => {
     <section>
       <div>
         <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
-          {/* <Link href={"/AddProduct"}> */}
-          <li>
+        <li>
             <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
-                  setGetPostPopularAreaName({
-                    eng: "Sadar Road",
-                    ban: "সদর রোড",
-                  })
+                  setGetPostPopularAreaName({ eng: "Amtala", ban: "আমতলা" })
                 }
-                // name={!lang ? '' : ""}
+                name="Amtala"
               />
               {!lang ? (
-                <span className="-mt-[2px]"> Sadar Road</span>
+                <span className="-mt-[2px]"> Amtala</span>
               ) : (
-                <span className="-mt-[2px]"> সদর রোড</span>
+                <span className="-mt-[2px]"> আমতলা</span>
               )}
             </label>
           </li>
-          {/* </Link>
-          <Link href="/AddProduct"> */}
-          <li>
-            <label className="flex gap-2">
-              <input
-                type="checkbox"
-                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-                onClick={(e: any) =>
-                  setGetPostPopularAreaName({
-                    eng: "Nattullabad",
-                    ban: "নথুল্লাবাদ",
-                  })
-                }
-              />
-              {!lang ? (
-                <span className="-mt-[2px]"> Nattullabad</span>
-              ) : (
-                <span className="-mt-[2px]"> নথুল্লাবাদ</span>
-              )}
-            </label>
-          </li>
-          {/* </Link>
-          <Link href="/AddProduct"> */}
-          <li>
-            <label className="flex gap-2">
-              <input
-                type="checkbox"
-                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-                onClick={(e: any) =>
-                  setGetPostPopularAreaName({ eng: "Rupatali", ban: "রুপাতলি" })
-                }
-              />
-              {!lang ? (
-                <span className="-mt-[2px]"> Rupatali</span>
-              ) : (
-                <span className="-mt-[2px]"> রুপাতলি</span>
-              )}
-            </label>
-          </li>
-          {/* </Link>
-          <Link href={"/AddProduct"}> */}
           <li>
             <label className="flex gap-2">
               <input
@@ -132,29 +85,6 @@ const BariPopularAreaEng = () => {
               )}
             </label>
           </li>
-          {/* </Link>
-          <Link href="/AddProduct"> */}
-          <li>
-            <label className="flex gap-2">
-              <input
-                type="checkbox"
-                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-                onClick={() =>
-                  setGetPostPopularAreaName({
-                    eng: "Nobogram Road",
-                    ban: "নবগ্রাম রোড",
-                  })
-                }
-              />
-              {!lang ? (
-                <span className="-mt-[2px]"> Nobogram Road</span>
-              ) : (
-                <span className="-mt-[2px]"> নবগ্রাম রোড</span>
-              )}
-            </label>
-          </li>
-          {/* </Link>
-          <Link href="/AddProduct"> */}
           <li>
             <label className="flex gap-2">
               <input
@@ -175,26 +105,80 @@ const BariPopularAreaEng = () => {
               )}
             </label>
           </li>
-          {/* </Link>
-          <Link href="/AddProduct"> */}
+          <li>
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+                onClick={(e: any) =>
+                  setGetPostPopularAreaName({
+                    eng: "Nattullabad",
+                    ban: "নথুল্লাবাদ",
+                  })
+                }
+              />
+              {!lang ? (
+                <span className="-mt-[2px]"> Nattullabad</span>
+              ) : (
+                <span className="-mt-[2px]"> নথুল্লাবাদ</span>
+              )}
+            </label>
+          </li>
           <li>
             <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
                 onClick={() =>
-                  setGetPostPopularAreaName({ eng: "Amtala", ban: "আমতলা" })
+                  setGetPostPopularAreaName({
+                    eng: "Nobogram Road",
+                    ban: "নবগ্রাম রোড",
+                  })
                 }
-                name="Amtala"
               />
               {!lang ? (
-                <span className="-mt-[2px]"> Amtala</span>
+                <span className="-mt-[2px]"> Nobogram Road</span>
               ) : (
-                <span className="-mt-[2px]"> আমতলা</span>
+                <span className="-mt-[2px]"> নবগ্রাম রোড</span>
               )}
             </label>
           </li>
-          {/* </Link> */}
+          <li>
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+                onClick={(e: any) =>
+                  setGetPostPopularAreaName({ eng: "Rupatali", ban: "রুপাতলি" })
+                }
+              />
+              {!lang ? (
+                <span className="-mt-[2px]"> Rupatali</span>
+              ) : (
+                <span className="-mt-[2px]"> রুপাতলি</span>
+              )}
+            </label>
+          </li>
+          <li>
+            <label className="flex gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+                onClick={() =>
+                  setGetPostPopularAreaName({
+                    eng: "Sadar Road",
+                    ban: "সদর রোড",
+                  })
+                }
+                // name={!lang ? '' : ""}
+              />
+              {!lang ? (
+                <span className="-mt-[2px]"> Sadar Road</span>
+              ) : (
+                <span className="-mt-[2px]"> সদর রোড</span>
+              )}
+            </label>
+          </li>
 
           <li
             className={

@@ -15,24 +15,23 @@ const PostChittDistrictsEng = () => {
   return (
     <div>
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
-        <li>
+      <li>
           <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
-                setPostDistrictsName({ eng: "Chittagong", ban: "চট্টগ্রাম" })
+                setPostDistrictsName({ eng: "Bandarban", ban: "বান্দরবান" })
               }
             />
             {!lang ? (
-              <span className="-mt-[2px]">Chittagong</span>
+              <span className="-mt-[2px]">Bandarban</span>
             ) : (
-              <span className="-mt-[2px]">চট্টগ্রাম</span>
+              <span className="-mt-[2px]">বান্দরবান</span>
             )}
           </label>
         </li>
-
-        <li>
+      <li>
           <label className="flex gap-2">
             <input
               type="checkbox"
@@ -51,7 +50,23 @@ const PostChittDistrictsEng = () => {
             )}
           </label>
         </li>
-
+        <li>
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Chittagong", ban: "চট্টগ্রাম" })
+              }
+            />
+            {!lang ? (
+              <span className="-mt-[2px]">Chittagong</span>
+            ) : (
+              <span className="-mt-[2px]">চট্টগ্রাম</span>
+            )}
+          </label>
+        </li>
+ 
         <li>
           <label className="flex gap-2">
             <input
@@ -184,22 +199,7 @@ const PostChittDistrictsEng = () => {
             )}
           </label>
         </li>
-        <li>
-          <label className="flex gap-2">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-              onClick={() =>
-                setPostDistrictsName({ eng: "Bandarban", ban: "বান্দরবান" })
-              }
-            />
-            {!lang ? (
-              <span className="-mt-[2px]">Bandarban</span>
-            ) : (
-              <span className="-mt-[2px]">বান্দরবান</span>
-            )}
-          </label>
-        </li>
+       
       </ul>
     </div>
   );

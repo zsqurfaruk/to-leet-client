@@ -44,8 +44,8 @@ export const option: readonly options[] = [
     name: "eng",
   },
   {
-    value: "বদরগঞ্জ",
-    label: "Bodorganj",
+    value: "জাহাজ কোম্পানি মোড়",
+    label: "Jahaj Company More",
     name: "eng",
   },
   {

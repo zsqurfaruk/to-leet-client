@@ -1,40 +1,43 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from "react";
 import Post from "./Post";
-import { APIContext } from "@/Context/ApiContext/ApiContext";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
 
-const RelatedPosts = ({ type, areaName, cityName, id }: any) => {
-  // const { lang }: any = useContext(FilterContext);
+const RelatedPosts = ({ type, areaName, cityName, id , division, district}: any) => {
   const lang = useSelector((state:any) => state.language.language);
-  const { reload }: any = useContext(APIContext);
   const [getValue, setGetValue] = useState([]);
   const filterValue = {
     filterModalValue: type,
     homePopularAreaName: areaName,
     cityName: cityName,
+    districtsName:district,
+    divisionNameEng:division
   };
-  useEffect(() => {
-    // setLoading(true)
-    fetch(`https://zsqur.quickvara.com/api/v1/product/filter?limit=${2}`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        // authorization: `bearer ${Cookies.get("token")}`,
-      },
-      body: JSON.stringify(filterValue),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        const result = data?.posts?.filter((post: any) => {
-          return post._id !== id;
-        });
-        if (JSON.stringify(result) !== JSON.stringify(getValue)) {
-          setGetValue(result);
-        }
+const limit = 5; // Set the desired data limit
+
+useEffect(() => {
+  // setLoading(true)
+   
+    fetch(`https://zsqur.quickvara.com/api/v1/product/filter?limit=${limit}`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      // authorization: `bearer ${Cookies.get("token")}`,
+    },
+    body: JSON.stringify(filterValue),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      const result = data?.posts?.filter((post: any) => {
+        return post._id !== id;
       });
-  }, [filterValue, reload]);
+      if (JSON.stringify(result) !== JSON.stringify(getValue)) {
+        setGetValue(result);
+      }
+    });
+  
+}, [filterValue]);
+
 
   return (
     <div

@@ -6,25 +6,34 @@ export interface options {
 
 export const option: readonly options[] = [
   {
+    value: "৬০ ফিট রোড",
+    label: "60 Feet Road",
+    name: "eng",
+  },
+  {
+    value: "আফতাব নগর",
+    label: "Aftab nagar",
+    name: "eng",
+  },
+
+  {
+    value: "বাড্ডা",
+    label: "Badda",
+    name: "eng",
+  },
+  {
+    value: "বারিধারা",
+    label: "Baridhara",
+    name: "eng",
+  },
+  {
+    value: "বাসাবো",
+    label: "Basabo",
+    name: "eng",
+  },
+  {
     value: "বসুন্ধরা",
     label: "Basundhara",
-    name: "eng",
-  },
-  {
-    value: "মালিবাগ",
-    label: "Malibag",
-    name: "eng",
-  },
-
-  {
-    value: "মতিঝিল",
-    label: "Motijheel",
-    name: "eng",
-  },
-
-  {
-    value: "মগবাজার",
-    label: "Mogbazar",
     name: "eng",
   },
   {
@@ -53,37 +62,6 @@ export const option: readonly options[] = [
     name: "eng",
   },
   {
-    value: "পূর্বাচল",
-    label: "Purbachal",
-    name: "eng",
-  },
-  {
-    value: "পল্টন",
-    label: "Paltan",
-    name: "eng",
-  },
-  {
-    value: "নবাবগঞ্জ",
-    label: "Nawabganj",
-    name: "eng",
-  },
-
-  {
-    value: "দোহার",
-    label: "Dohar",
-    name: "eng",
-  },
-  {
-    value: "টঙ্গী",
-    label: "Tongi",
-    name: "eng",
-  },
-  {
-    value: "ডেমরা",
-    label: "Demra",
-    name: "eng",
-  },
-  {
     value: "চকবাজার",
     label: "Chaukbazar",
     name: "eng",
@@ -94,29 +72,43 @@ export const option: readonly options[] = [
     name: "eng",
   },
   {
-    value: "গুলশান",
-    label: "Gulshan",
+    value: "দোহার",
+    label: "Dohar",
     name: "eng",
   },
   {
-    value: "খিলক্ষেত",
-    label: "Khilkhet",
-    name: "eng",
-  },
-
-  {
-    value: "তেজগাঁও",
-    label: "Tejgaon",
-    name: "eng",
-  },
-  {
-    value: "মোহাম্মদপুর",
-    label: "Mohammadpur",
+    value: "ডেমরা",
+    label: "Demra",
     name: "eng",
   },
   {
     value: "ধানমন্ডি",
     label: "Dhanmondi",
+    name: "eng",
+  },
+  {
+    value: "এলিফ্যান্ট রোড",
+    label: "Elephant Road",
+    name: "eng",
+  },
+  {
+    value: "ইসিবি চত্বর",
+    label: "ECB Chattar",
+    name: "eng",
+  },
+  {
+    value: "গুলশান",
+    label: "Gulshan",
+    name: "eng",
+  },
+  {
+    value: "হাজারীবাগ",
+    label: "Hazaribagh",
+    name: "eng",
+  },
+  {
+    value: "খিলক্ষেত",
+    label: "Khilkhet",
     name: "eng",
   },
   {
@@ -146,46 +138,49 @@ export const option: readonly options[] = [
     name: "eng",
   },
   {
-    value: "ওয়ারী",
-    label: "Wari",
+    value: "লালবাগ",
+    label: "Lalbag",
+    name: "eng",
+  },
+  {
+    value: "মালিবাগ",
+    label: "Malibag",
     name: "eng",
   },
 
   {
-    value: "এলিফ্যান্ট রোড",
-    label: "Elephant Road",
+    value: "মতিঝিল",
+    label: "Motijheel",
+    name: "eng",
+  },
+
+  {
+    value: "মগবাজার",
+    label: "Mogbazar",
     name: "eng",
   },
   {
-    value: "ইসিবি চত্বর",
-    label: "ECB Chattar",
+    value: "মোহাম্মদপুর",
+    label: "Mohammadpur",
     name: "eng",
   },
   {
-    value: "আফতাব নগর",
-    label: "Aftab nagar",
+    value: "নবাবগঞ্জ",
+    label: "Nawabganj",
+    name: "eng",
+  },
+
+  {
+    value: "পূর্বাচল",
+    label: "Purbachal",
     name: "eng",
   },
   {
-    value: "৬০ ফিট রোড",
-    label: "60 Feet Road",
+    value: "পল্টন",
+    label: "Paltan",
     name: "eng",
   },
-  {
-    value: "বাড্ডা",
-    label: "Badda",
-    name: "eng",
-  },
-  {
-    value: "বারিধারা",
-    label: "Baridhara",
-    name: "eng",
-  },
-  {
-    value: "বাসাবো",
-    label: "Basabo",
-    name: "eng",
-  },
+
   {
     value: "রমনা",
     label: "Ramna",
@@ -194,11 +189,6 @@ export const option: readonly options[] = [
   {
     value: "রামপুরা",
     label: "Rampura",
-    name: "eng",
-  },
-  {
-    value: "লালবাগ",
-    label: "Lalbag",
     name: "eng",
   },
   {
@@ -222,8 +212,20 @@ export const option: readonly options[] = [
     name: "eng",
   },
   {
-    value: "হাজারীবাগ",
-    label: "Hazaribagh",
+    value: "টঙ্গী",
+    label: "Tongi",
+    name: "eng",
+  },
+
+  {
+    value: "তেজগাঁও",
+    label: "Tejgaon",
+    name: "eng",
+  },
+
+  {
+    value: "ওয়ারী",
+    label: "Wari",
     name: "eng",
   },
 ];

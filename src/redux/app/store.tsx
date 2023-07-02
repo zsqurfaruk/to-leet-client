@@ -5,9 +5,8 @@ import languageSlice  from '../features/Language/LanguageSlice'
  
 const middlewares: Array<any>  = [];
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'production') {
   const logger = createLogger({
-    // Specify your desired options here
     collapsed: true,
   });
 
@@ -31,7 +30,5 @@ export const store = configureStore({
   devTools: false,
 })
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch

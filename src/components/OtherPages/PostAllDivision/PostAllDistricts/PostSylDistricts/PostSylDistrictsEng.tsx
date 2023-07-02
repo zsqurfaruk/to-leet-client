@@ -14,39 +14,7 @@ const PostSylDistrictsEng = () => {
   return (
     <div>
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
-        <li>
-          <label className="flex gap-2">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-              onClick={() =>
-                setPostDistrictsName({ eng: "Sylhet", ban: "সিলেট" })
-              }
-            />
-            {!lang ? (
-              <span className="-mt-[2px]">Sylhet</span>
-            ) : (
-              <span className="-mt-[2px]">সিলেট</span>
-            )}
-          </label>
-        </li>
-        <li>
-          <label className="flex gap-2">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
-              onClick={() =>
-                setPostDistrictsName({ eng: "Moulvibazar", ban: "মৌলভীবাজার" })
-              }
-            />
-            {!lang ? (
-              <span className="-mt-[2px]">Moulvibazar</span>
-            ) : (
-              <span className="-mt-[2px]">মৌলভীবাজার</span>
-            )}
-          </label>
-        </li>
-        <li>
+      <li>
           <label className="flex gap-2">
             <input
               type="checkbox"
@@ -68,6 +36,23 @@ const PostSylDistrictsEng = () => {
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
               onClick={() =>
+                setPostDistrictsName({ eng: "Moulvibazar", ban: "মৌলভীবাজার" })
+              }
+            />
+            {!lang ? (
+              <span className="-mt-[2px]">Moulvibazar</span>
+            ) : (
+              <span className="-mt-[2px]">মৌলভীবাজার</span>
+            )}
+          </label>
+        </li>
+        
+        <li>
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+              onClick={() =>
                 setPostDistrictsName({ eng: "Sunamganj", ban: "সুনামগঞ্জ" })
               }
             />
@@ -75,6 +60,22 @@ const PostSylDistrictsEng = () => {
               <span className="-mt-[2px]">Sunamganj</span>
             ) : (
               <span className="-mt-[2px]">সুনামগঞ্জ</span>
+            )}
+          </label>
+        </li>
+        <li>
+          <label className="flex gap-2">
+            <input
+              type="checkbox"
+              className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
+              onClick={() =>
+                setPostDistrictsName({ eng: "Sylhet", ban: "সিলেট" })
+              }
+            />
+            {!lang ? (
+              <span className="-mt-[2px]">Sylhet</span>
+            ) : (
+              <span className="-mt-[2px]">সিলেট</span>
             )}
           </label>
         </li>

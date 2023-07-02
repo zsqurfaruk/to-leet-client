@@ -27,8 +27,7 @@ const FilterPosts = () => {
       setLoading(false)});
     
   }, [filterValue]);
-  // const title = `QuickVara in ${titleArea && titleArea || titleDistrict && titleDistrict}, ${titleCity || titleDivision}`;
-  // document.title = title;
+  
   let title = "";
 
   if (titleArea && titleCity && !titleDistrict && !titleDivision) {
@@ -86,7 +85,7 @@ const FilterPosts = () => {
   </Head>
     
      {
-      loading ? <h2 className="text-center w-full py-40">Loading...</h2> : <section className="lg:w-10/12 mx-auto bg-white lg:my-10 pb-10 px-10 rounded ">
+      loading ? <h2 className="text-center w-full py-40">Loading...</h2> : <section className="lg:w-10/12 mx-auto bg-white lg:my-10 pb-10 px-[32px] rounded ">
       <div className="flex justify-around py-5 text-warning ">
         {!lang ? (
           <div>
@@ -125,7 +124,7 @@ const FilterPosts = () => {
         {filterPost?.length === 0 && (
           <div>
             <Lottie
-              className="h-52 w-52 ml-10"
+              className="h-52 w-52 ml-7"
               animationData={lotti}
               loop={true}
             ></Lottie>

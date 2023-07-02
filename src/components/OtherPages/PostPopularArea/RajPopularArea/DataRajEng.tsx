@@ -70,16 +70,21 @@ export interface options {
       name: "eng",
     },
     {
-      value: "মেহেরচন্ডি",
-      label: "Meherchandi",
+      value: "কাটাখালী",
+      label: "Katakhali",
       name: "eng",
     },
+    
     {
       value: "মতিহার",
       label: "Motihar",
       name: "eng",
     },
-     
+    {
+      value: "পদ্মা আবাসিক এলাকা",
+      label: "Padma Residental Area",
+      name: "eng",
+    },
     {
       value: "রাজপাড়া",
       label: "Rajpara",
