@@ -5,7 +5,7 @@ import languageSlice  from '../features/Language/LanguageSlice'
  
 const middlewares: Array<any>  = [];
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'development') {
   const logger = createLogger({
     collapsed: true,
   });
@@ -29,6 +29,5 @@ export const store = configureStore({
   
   devTools: false,
 })
-
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
