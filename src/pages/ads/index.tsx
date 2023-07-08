@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/app/store";
 import { getAllPosts } from "@/redux/features/AllPosts/AllPostsSlice";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
+import Spinner from "@/components/Spinner/Spinner";
 
 function AllAds() {
   // const { counterPosts, loading }: any = useContext(APIContext);
@@ -21,17 +22,34 @@ function AllAds() {
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
-  const { allPosts }:any = useSelector((state: RootState) => state.allPosts);
+  const { allPosts }: any = useSelector((state: RootState) => state.allPosts);
 
- useEffect(() => {
-  dispatch(getAllPosts());
-}, [dispatch]);
+  useEffect(() => {
+    dispatch(getAllPosts());
+  }, [dispatch]);
 
-useEffect(() => {
-  sessionStorage.setItem("page", currentPage.toString());
-}, [currentPage]);
+  useEffect(() => {
+    sessionStorage.setItem("page", currentPage.toString());
+  }, [currentPage]);
+  // ...
+
+  useEffect(() => {
+    const storedPage = Number(sessionStorage.getItem("page")) || 1;
+    setCurrentPage(storedPage);
+    setMaxPageNumberLimit(
+      Math.ceil(storedPage / pageNumberLimit) * pageNumberLimit
+    );
+    setMinPageNumberLimit(
+      Math.ceil(storedPage / pageNumberLimit - 1) * pageNumberLimit
+    );
+  }, [pageNumberLimit]);
+
+  // ...
+
   const handleClick = (e: any) => {
-    setCurrentPage(Number(e.target.id));
+    const pageNumber = Number(e.target.id);
+    setCurrentPage(pageNumber);
+    sessionStorage.setItem("page", pageNumber.toString());
   };
   const pages: number[] = [];
   for (let i = 1; i <= Math.ceil(allPosts.length / limit); i++) {
@@ -76,15 +94,21 @@ useEffect(() => {
   };
 
   const handlePrevious = () => {
-    setCurrentPage(currentPage - 1);
-    if ((currentPage - 1) % pageNumberLimit === 0) {
+    const newPage = currentPage - 1;
+    setCurrentPage(newPage);
+    sessionStorage.setItem("page", newPage.toString());
+
+    if (newPage % pageNumberLimit === 0) {
       setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
       setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
     }
   };
   const handleNext = () => {
-    setCurrentPage(currentPage + 1);
-    if (currentPage + 1 > maxPageNumberLimit) {
+    const newPage = currentPage + 1;
+    setCurrentPage(newPage);
+    sessionStorage.setItem("page", newPage.toString());
+
+    if (newPage > maxPageNumberLimit) {
       setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
       setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
     }
@@ -92,13 +116,28 @@ useEffect(() => {
 
   let pageIncrementBtn = null;
   if (pages.length > maxPageNumberLimit) {
-    pageIncrementBtn = <li>&hellip;</li>;
-  }
-  let pageDecrementBtn = null;
-  if (pages.length > 5) {
-    pageDecrementBtn = <li>&hellip;</li>;
+    pageIncrementBtn = (
+      <li
+        onClick={() => handleClick({ target: { id: maxPageNumberLimit + 1 } })}
+        className="cursor-pointer text-warning pl-1"
+      >
+        &hellip;
+      </li>
+    );
   }
 
+  let pageDecrementBtn = null;
+  if (currentPage > pageNumberLimit) {
+    pageDecrementBtn = (
+      <li
+        onClick={() => handleClick({ target: { id: minPageNumberLimit } })}
+        className="cursor-pointer text-warning pr-1"
+      >
+        &hellip;
+      </li>
+    );
+  }
+  
   return (
     <>
       <Head>
@@ -124,7 +163,10 @@ useEffect(() => {
         <meta property="og:site_name" content="quickvara.com" />
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="title" content="QuickVara- See all ads for rent in Bangladesh" />
+        <meta
+          name="title"
+          content="QuickVara- See all ads for rent in Bangladesh"
+        />
         <meta name="keywords" />
         <meta
           name="description"
@@ -145,40 +187,42 @@ useEffect(() => {
         <meta property="og:site_name" content="quickvara.com" />
       </Head>
       <section className="lg:my-5 lg:w-10/12 mx-auto bg-white px-[32px] rounded">
-      {renderData(currentItems)}
-        <ul
+        {renderData(currentItems)}
+       {
+        !allPosts ? <Spinner></Spinner>: <ul
+        className={
+          minPageNumberLimit < 5
+            ? "flex justify-center gap-3 md:gap-4 pb-5"
+            : "flex justify-center gap-[7px] md:gap-3 pb-5"
+        }
+      >
+        <button
+          onClick={handlePrevious}
+          disabled={currentPage === pages[0] ? true : false}
           className={
-            minPageNumberLimit < 5
-              ? "flex justify-center gap-3 md:gap-4 pb-5"
-              : "flex justify-center gap-[7px] md:gap-3 pb-5"
+            currentPage === pages[0] ? "text-gray-400" : "text-warning"
           }
         >
-          <button
-            onClick={handlePrevious}
-            disabled={currentPage === pages[0] ? true : false}
-            className={
-              currentPage === pages[0] ? "text-gray-400" : "text-warning"
-            }
-          >
-            Previous
-          </button>
-          <span className={minPageNumberLimit < 5 ? "hidden" : "inline"}>
-            {pageDecrementBtn}
-          </span>
-          {renderPagesNumber}
-          {pageIncrementBtn}
-          <button
-            onClick={handleNext}
-            disabled={currentPage === pages[pages.length - 1] ? true : false}
-            className={
-              currentPage === pages[pages.length - 1]
-                ? "text-gray-400"
-                : "text-warning pl-1"
-            }
-          >
-            Next
-          </button>
-        </ul>
+          Previous
+        </button>
+        <span className={minPageNumberLimit < 5 ? "hidden" : "inline"}>
+          {pageDecrementBtn}
+        </span>
+        {renderPagesNumber}
+        {pageIncrementBtn}
+        <button
+          onClick={handleNext}
+          disabled={currentPage === pages[pages.length - 1] ? true : false}
+          className={
+            currentPage === pages[pages.length - 1]
+              ? "text-gray-400"
+              : "text-warning pl-1"
+          }
+        >
+          Next
+        </button>
+      </ul>
+       }
       </section>
     </>
   );

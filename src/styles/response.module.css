@@ -5,17 +5,37 @@
     font-weight: 700;
   }
   .gapStyle {
-    gap: 0px;
+    gap: 5px;
   }
 }
-@media screen and (min-width: 300px) and (max-width: 375px) {
+@media screen and (min-width: 300px) and (max-width: 325px) {
   .navNameStyle {
     font-size: 1.4rem;
     line-height: 2.6rem;
     font-weight: 700;
   }
   .gapStyle {
-    gap: 5px;
+    gap: 15px;
+  }
+}
+@media screen and (min-width: 325px) and (max-width: 350px) {
+  .navNameStyle {
+    font-size: 1.4rem;
+    line-height: 2.6rem;
+    font-weight: 700;
+  }
+  .gapStyle {
+    gap: 35px;
+  }
+}
+@media screen and (min-width: 350px) and (max-width: 375px) {
+  .navNameStyle {
+    font-size: 1.4rem;
+    line-height: 2.6rem;
+    font-weight: 700;
+  }
+  .gapStyle {
+    gap: 40px;
   }
 }
 @media screen and (min-width: 375px) and (max-width: 720px) {
@@ -25,6 +45,6 @@
     font-weight: 700;
   }
   .gapStyle {
-    gap: 14px;
+    gap: 70px;
   }
 }

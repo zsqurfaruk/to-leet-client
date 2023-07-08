@@ -4,12 +4,12 @@ import ClipLoader from "react-spinners/ClipLoader";
 const override: CSSProperties = {
   display: "block",
   margin: "0 auto",
-  borderColor: "#00ffc8",
+  borderColor: "#1490a3d6",
 };
 
 function Spinner() {
   let [loading, setLoading] = useState(true);
-  let [color, setColor] = useState("#00ffc8");
+  let [color, setColor] = useState("#1490a3d6");
 
   return (
     <div className="sweet-loading">

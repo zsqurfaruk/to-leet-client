@@ -114,7 +114,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
         <meta property="og:site_name" content="quickvara.com" />
       </Head>
       <section className="w-full lg:w-10/12 mx-auto lg:my-10">
-        <Card className="lg:flex-row w-full p-10">
+        <Card className="lg:flex-row w-full p-7">
           <CardHeader
             shadow={false}
             floated={false}

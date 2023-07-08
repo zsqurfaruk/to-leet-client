@@ -6,11 +6,9 @@ import Lottie from "lottie-react";
 import lotti from "../image/lf20_jkbuwuhk.json";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import Head from "next/head";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
 
 const ShowAllPost = ({ products, loading }: any) => {
-  // const { lang }: any = useContext(FilterContext);
   const lang = useSelector((state:any) => state.language.language);
   const { setTypeCount, destinationType }: any = useContext(StateContext);
   setTypeCount(products);
@@ -47,8 +45,23 @@ const ShowAllPost = ({ products, loading }: any) => {
   useEffect(() => {
     sessionStorage.setItem("page", currentPage.toString());
   }, [currentPage]);
+  useEffect(() => {
+    const storedPage = Number(sessionStorage.getItem("page")) || 1;
+    setCurrentPage(storedPage);
+    setMaxPageNumberLimit(
+      Math.ceil(storedPage / pageNumberLimit) * pageNumberLimit
+    );
+    setMinPageNumberLimit(
+      Math.ceil(storedPage / pageNumberLimit - 1) * pageNumberLimit
+    );
+  }, [pageNumberLimit]);
+
+  // ...
+
   const handleClick = (e: any) => {
-    setCurrentPage(Number(e.target.id));
+    const pageNumber = Number(e.target.id);
+    setCurrentPage(pageNumber);
+    sessionStorage.setItem("page", pageNumber.toString());
   };
   const pages: number[] = [];
   for (let i = 1; i <= Math.ceil(deleteAndFilterPost.length / limit); i++) {
@@ -98,15 +111,21 @@ const ShowAllPost = ({ products, loading }: any) => {
   };
 
   const handlePrevious = () => {
-    setCurrentPage(currentPage - 1);
-    if ((currentPage - 1) % pageNumberLimit === 0) {
+    const newPage = currentPage - 1;
+    setCurrentPage(newPage);
+    sessionStorage.setItem("page", newPage.toString());
+
+    if (newPage % pageNumberLimit === 0) {
       setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
       setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
     }
   };
   const handleNext = () => {
-    setCurrentPage(currentPage + 1);
-    if (currentPage + 1 > maxPageNumberLimit) {
+    const newPage = currentPage + 1;
+    setCurrentPage(newPage);
+    sessionStorage.setItem("page", newPage.toString());
+
+    if (newPage > maxPageNumberLimit) {
       setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
       setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
     }
@@ -114,11 +133,26 @@ const ShowAllPost = ({ products, loading }: any) => {
 
   let pageIncrementBtn = null;
   if (pages.length > maxPageNumberLimit) {
-    pageIncrementBtn = <li>&hellip;</li>;
+    pageIncrementBtn = (
+      <li
+        onClick={() => handleClick({ target: { id: maxPageNumberLimit + 1 } })}
+        className="cursor-pointer text-warning pl-1"
+      >
+        &hellip;
+      </li>
+    );
   }
+
   let pageDecrementBtn = null;
-  if (pages.length > 5) {
-    pageDecrementBtn = <li>&hellip;</li>;
+  if (currentPage > pageNumberLimit) {
+    pageDecrementBtn = (
+      <li
+        onClick={() => handleClick({ target: { id: minPageNumberLimit } })}
+        className="cursor-pointer text-warning pr-1"
+      >
+        &hellip;
+      </li>
+    );
   }
 
   let title = "";

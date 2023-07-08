@@ -88,7 +88,7 @@ const PopularAreaOfBarishal = () => {
   return (
     <section>
       <div>
-        <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
+        <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-7 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
         <li>
             <label onClick={()=>setTitleArea("Amtala")} className="flex gap-2">
               <input

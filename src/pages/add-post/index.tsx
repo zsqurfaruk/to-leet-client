@@ -88,9 +88,13 @@ const AddPost = () => {
     <section>
       <PostAreaModalEng></PostAreaModalEng>
       <div className="lg:w-10/12 md:w-10/12 md:mx-auto bg-white p-5 lg:p-14 lg:my-16 rounded">
-        <div className="lg:w-10/12 mx-auto">
+       {
+        !postDivisionNameEng?.eng &&  <div className="lg:w-10/12 mx-auto">
         {postCityNameEng?.eng && (
          <div>
+          {
+            !lang ? <h1 className="text-center mb-5  text-xl lg:text-2xl border-b-2 border-warning lg:w-5/12 mx-auto"> You have selected <span className="lowercase text-warning">{postCityNameEng?.eng}</span> city.</h1>: <h1 className="text-center mb-5  lg:text-xl border-b-2 border-warning lg:w-5/12 mx-auto"> আপনি <span className="lowercase text-warning">{postCityNameEng?.ban}</span> শহর নির্বাচন করেছেন।</h1>
+          }
            <h1
             onClick={handlePrevious}
             className="text-warning text-sm mb-5 cursor-pointer hover:underline"
@@ -146,73 +150,79 @@ const AddPost = () => {
           )}
         </div>
         </div>
-        <div className="mt-20 lg:w-10/12 mx-auto" >
-        {postDivisionNameEng?.eng && (
-         <div>
-           <h1
-            onClick={handlePrevious}
-            className="text-warning text-sm mb-5 cursor-pointer hover:underline"
-          >
-            {!lang ? "Change division?" : "বিভাগ পরিবর্তন?"}
-          </h1>
-          <h1  className="text-2xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
+       }
+        {
+          !postCityNameEng?.eng && <div className={postDivisionNameEng?.eng ? "mt-2 lg:w-10/12 mx-auto" : "mt-20 lg:w-10/12 mx-auto"} >
+          {postDivisionNameEng?.eng && (
+           <div>
             {
-              !lang ? <span>Districts of {postDivisionNameEng.eng}:</span>: <span className="text-xl">{postDivisionNameEng?.ban} এর জেলাসমুহঃ</span>
-            }
-          </h1>
-         </div>
-        )}
-          <div
-            className={postDivisionNameEng?.eng && "hidden"}
-          >
-            {!lang ? (
-              <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
-                Select your Division.
-              </h1>
-            ) : (
-              <h1 className="text-xl mb-5 border-l-4 border-b-4 border-warning text-gray-700 pl-2">
-                বিভাগ নির্বাচন করুন।
-              </h1>
-            )}
-          </div>
-          <div className="lg:m-4">
-            <div 
-            // className={lang && postDivisionNameBan && "hidden"}
+            !lang ? <h1 className="text-center mb-5 lg:mb-10 text-xl lg:text-2xl border-b-2 border-warning lg:w-6/12 mx-auto"> You have selected <span className="lowercase text-warning">{postDivisionNameEng?.eng}</span> division.</h1>: <h1 className="text-center mb-5 lg:mb-10 lg:text-xl border-b-2 border-warning lg:w-6/12 mx-auto"> আপনি <span className="lowercase text-warning">{postDivisionNameEng?.ban}</span> বিভাগ নির্বাচন করেছেন।</h1>
+          }
+             <h1
+              onClick={handlePrevious}
+              className="text-warning text-sm mb-5 cursor-pointer hover:underline"
             >
-              {!postDivisionNameEng?.eng && (
-                <PostAllDivisionEng></PostAllDivisionEng>
+              {!lang ? "Change division?" : "বিভাগ পরিবর্তন?"}
+            </h1>
+            <h1  className="text-2xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
+              {
+                !lang ? <span>Districts of {postDivisionNameEng.eng}:</span>: <span className="text-xl">{postDivisionNameEng?.ban} এর জেলাসমুহঃ</span>
+              }
+            </h1>
+           </div>
+          )}
+            <div
+              className={postDivisionNameEng?.eng && "hidden"}
+            >
+              {!lang ? (
+                <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
+                  Select your Division.
+                </h1>
+              ) : (
+                <h1 className="text-xl mb-5 border-l-4 border-b-4 border-warning text-gray-700 pl-2">
+                  বিভাগ নির্বাচন করুন।
+                </h1>
               )}
             </div>
-            <div className="lg:-ml-4">
-            {postDivisionNameEng?.eng === "Dhaka" && (
-             <PostDhaDistrictsEng></PostDhaDistrictsEng>
-          )}
-          {postDivisionNameEng?.eng === "Rajshahi" && (
-             <PostRajDistrictsEng></PostRajDistrictsEng>
-          )}
-          {postDivisionNameEng?.eng === "Sylhet" && (
-             <PostSylDistrictsEng></PostSylDistrictsEng>
-          )}
-          {postDivisionNameEng?.eng === "Chittagong" && (
-             <PostChittDistrictsEng></PostChittDistrictsEng>
-          )}
-          {postDivisionNameEng?.eng === "Barisal" && (
-            <PostBariDistrictsEng></PostBariDistrictsEng>
-          )}
-          {postDivisionNameEng?.eng === "Khulna" && (
-             <PostKhulnaDistrictsEng></PostKhulnaDistrictsEng>
-          )}
-          {postDivisionNameEng?.eng === "Rangpur" && (
-             <PostRangDistrictsEng></PostRangDistrictsEng>
-          )}
-          {postDivisionNameEng?.eng === "Mymensingh" && (
-             <PostMymDistrictsEng></PostMymDistrictsEng>
-          )}
+            <div className="lg:m-4">
+              <div 
+              // className={lang && postDivisionNameBan && "hidden"}
+              >
+                {!postDivisionNameEng?.eng && (
+                  <PostAllDivisionEng></PostAllDivisionEng>
+                )}
+              </div>
+              <div className="lg:-ml-4">
+              {postDivisionNameEng?.eng === "Dhaka" && (
+               <PostDhaDistrictsEng></PostDhaDistrictsEng>
+            )}
+            {postDivisionNameEng?.eng === "Rajshahi" && (
+               <PostRajDistrictsEng></PostRajDistrictsEng>
+            )}
+            {postDivisionNameEng?.eng === "Sylhet" && (
+               <PostSylDistrictsEng></PostSylDistrictsEng>
+            )}
+            {postDivisionNameEng?.eng === "Chittagong" && (
+               <PostChittDistrictsEng></PostChittDistrictsEng>
+            )}
+            {postDivisionNameEng?.eng === "Barisal" && (
+              <PostBariDistrictsEng></PostBariDistrictsEng>
+            )}
+            {postDivisionNameEng?.eng === "Khulna" && (
+               <PostKhulnaDistrictsEng></PostKhulnaDistrictsEng>
+            )}
+            {postDivisionNameEng?.eng === "Rangpur" && (
+               <PostRangDistrictsEng></PostRangDistrictsEng>
+            )}
+            {postDivisionNameEng?.eng === "Mymensingh" && (
+               <PostMymDistrictsEng></PostMymDistrictsEng>
+            )}
+              </div>
+              
             </div>
-            
+           
           </div>
-         
-        </div>
+        }
       </div>
     </section></>
   );

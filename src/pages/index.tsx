@@ -54,7 +54,6 @@ function Home() {
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
         <meta property="og:image" content="https://i.ibb.co/gv3DdvJ/Simple-Box-Solution-Game-Store-Logo-2.jpg" />
-        <link rel="sitemap" type="application/xml" title="Sitemap" href="https://quickvara.com/sitemap.xml"/>
       </Head>
       <main className="bg-white">
         <Banner></Banner>

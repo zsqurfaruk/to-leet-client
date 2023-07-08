@@ -225,7 +225,7 @@ export default function NavBar() {
     <>
       <Navbar className="sticky top-0 z-10 bg-warning bg-opacity-100 h-max min-w-full rounded-none py-2 px-1 md:px-0 lg:px-8 lg:py-4 border-none text-primary shadow-sm">
         <div className="flex items-center justify-between text-blue-gray-900 px-2 w-11/12 md:w-10/12 lg:w-11/12 lg:px-8 mx-auto">
-          <div className={`gap-10 flex md:gap-12`}>
+          <div className={`${styles.gapStyle} flex md:gap-12`}>
             <Link onClick={handleHome} href={"/"}>
               <Image
                 className="h-9  w-32 rounded"

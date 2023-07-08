@@ -208,7 +208,7 @@ const ChittPopularAreaEng = () => {
               {getPostPopularAreaName?.eng === "Select others" && (
                 <li>
                   <Select
-                    placeholder="Search"
+                    placeholder="Select your area"
                     isSearchable
                     options={option}
                     onChange={setGetPostPopularAreaName}
@@ -223,7 +223,7 @@ const ChittPopularAreaEng = () => {
               {getPostPopularAreaName?.eng === "Select others" && (
                 <li>
                   <Select
-                    placeholder="অনুসন্ধান"
+                    placeholder="এলাকা নির্বাচন করুন"
                     isSearchable
                     options={options}
                     onChange={setGetPostPopularAreaName}

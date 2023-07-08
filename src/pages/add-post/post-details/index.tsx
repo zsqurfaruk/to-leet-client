@@ -246,11 +246,7 @@ const PostDetails = () => {
     const result = await res.json();
     setError(result?.error);
     setPostOpenModal(false);
-    setGetUniversityModalValue({});
-    setGetPostPopularAreaName({});
-    setPostCityNameEng({});
-    setPostDistrictsName({});
-    setPostDivisionNameEng({});
+    
     if (result?.message === "success") {
       if(lang){
         toast.success("আপনার বিজ্ঞাপনের জন্য আপনাকে ধন্যবাদ.")
@@ -260,6 +256,16 @@ const PostDetails = () => {
       setReload(!reload);
       router.push(`/${modalValue.eng}`);
       setPostLoading(false);
+      setGetUniversityModalValue({});
+      setGetPostPopularAreaName({});
+      setPostCityNameEng({});
+      setPostDistrictsName({});
+      setPostDivisionNameEng({});
+      setBedNumbers({})
+      setBedRooms({})
+      setBathRooms({})
+      setWifi({})
+      setTotalBed({})
     }
   };
 
@@ -821,7 +827,7 @@ const PostDetails = () => {
                 <input
                   {...register("negotiable")}
                   type="checkbox"
-                  className="text-gray-700 h-4 w-4"
+                  className="checkbox checkbox-warning rounded-none h-4 w-4"
                 />
                 {!lang ? (
                   <h1 className="-mt-1">Negotiable</h1>
@@ -1282,12 +1288,12 @@ const PostDetails = () => {
                   {checkAuthentication && (
                     <>
                       {!lang ? (
-                        <small className="text-blue-400 pt-1">
+                        <small className="text-warning pt-1">
                           You can't change your email. To change please contact
                           the admin.
                         </small>
                       ) : (
-                        <small className="text-blue-400 pt-1">
+                        <small className="text-warning pt-1">
                           আপনি ইমেইল পরিবর্তন করতে পারবেন না। পরিবর্তন করতে
                           এডমিনের সাথে যোগাযোগ করুন।
                         </small>
@@ -1556,7 +1562,7 @@ const PostDetails = () => {
               }
             >
               {postLoading ? (
-                <> {!lang ? "Posting" : "পোস্ট হচ্ছে..."}</>
+                <> {!lang ? "Posting..." : "পোস্ট হচ্ছে..."}</>
               ) : (
                 <> {!lang ? " Post Now" : "পোস্ট করুন"}</>
               )}
