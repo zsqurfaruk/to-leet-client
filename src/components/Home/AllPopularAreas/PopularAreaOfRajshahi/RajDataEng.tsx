@@ -63,12 +63,17 @@ export interface options {
       label: "Kadirgonj",
       name: "eng",
     },
-  
+    {
+      value: "কাটাখালী",
+      label: "Katakhali",
+      name: "eng",
+    },
     {
       value: "কাজীহাটা",
       label: "Kazihata",
       name: "eng",
     },
+    
     {
       value: "পদ্মা আবাসিক এলাকা",
       label: "Padma Residental Area",
