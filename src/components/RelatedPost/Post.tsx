@@ -1,8 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import React,{useContext} from "react";
-import Cookies from "js-cookie";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import React from "react";
 import { useSelector } from "react-redux";
 
 function Post({ post }: any) {

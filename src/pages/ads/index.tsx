@@ -1,7 +1,6 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import AllPost from "@/components/Home/AllPost/AllPost";
 import Head from "next/head";
-import { APIContext } from "@/Context/ApiContext/ApiContext";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/app/store";
 import { getAllPosts } from "@/redux/features/AllPosts/AllPostsSlice";
@@ -9,10 +8,7 @@ import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import Spinner from "@/components/Spinner/Spinner";
 
 function AllAds() {
-  // const { counterPosts, loading }: any = useContext(APIContext);
-  // const [allDataLoading, setAllDataLoading] = useState(true);
-  // const [counterPosts, setcounterPosts] = useState([]);
-  // const [pageCount, setPageCount] = useState(1);
+  const lang = useSelector((state:any) => state.language.language);
   const [limit, setLimit] = useState(20);
   // const currentPage = useRef<number>(1);
   const [currentPage, setCurrentPage] = useState(
@@ -57,6 +53,18 @@ function AllAds() {
   }
 
   const renderPagesNumber = pages?.map((number: any) => {
+    const banglaNumber = number
+    .toString()
+    .replace(/0/g, "০")
+    .replace(/1/g, "১")
+    .replace(/2/g, "২")
+    .replace(/3/g, "৩")
+    .replace(/4/g, "৪")
+    .replace(/5/g, "৫")
+    .replace(/6/g, "৬")
+    .replace(/7/g, "৭")
+    .replace(/8/g, "৮")
+    .replace(/9/g, "৯");
     if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
       return (
         <li
@@ -69,7 +77,9 @@ function AllAds() {
               : "cursor-pointer text-warning"
           }
         >
-          {number}
+         {
+          !lang ?  <>{number}</> :  <>{banglaNumber}</>
+         }
         </li>
       );
     } else {
@@ -203,7 +213,9 @@ function AllAds() {
             currentPage === pages[0] ? "text-gray-400" : "text-warning"
           }
         >
-          Previous
+         {
+          !lang ? "Previous" : "পূর্ববর্তী"
+         }
         </button>
         <span className={minPageNumberLimit < 5 ? "hidden" : "inline"}>
           {pageDecrementBtn}
@@ -219,7 +231,9 @@ function AllAds() {
               : "text-warning pl-1"
           }
         >
-          Next
+         {
+          !lang ? "Next" : "পরবর্তী"
+         }
         </button>
       </ul>
        }
