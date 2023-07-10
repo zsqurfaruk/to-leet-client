@@ -4,7 +4,6 @@ import Select from "react-select";
 import { options } from "./BariDataBan";
 import { option } from "./BariDataEng";
 import Cookies from "js-cookie";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
 const selectStyles = {
   control: (styles:any, { isFocused }:any) => ({
@@ -23,7 +22,6 @@ const PopularAreaOfBarishal = () => {
     setFilterValue,
     setTitleArea
   }: any = useContext(StateContext);
-  // const {lang}:any = useContext(FilterContext)
   const handleFilter = (v: any) => {
     if (v?.name) {
       if (v?.name === "eng") {
@@ -54,21 +52,7 @@ const PopularAreaOfBarishal = () => {
     }
   };
 
-  // if (homePopularAreaName?.name === "eng") {
-  //   const newName = {
-  //     eng: homePopularAreaName?.label,
-  //     ban: homePopularAreaName?.value,
-  //   };
-  //   setHomePopularAreaName(newName);
-  //   setFilterModal(true);
-  // } else if (homePopularAreaName?.name === "ban") {
-  //   const newName = {
-  //     eng: homePopularAreaName?.value,
-  //     ban: homePopularAreaName?.label,
-  //   };
-  //   setHomePopularAreaName(newName);
-  //   setFilterModal(true);
-  // }
+   
 
   if (
     homePopularAreaName?.eng === "Sadar Road" ||
@@ -80,9 +64,6 @@ const PopularAreaOfBarishal = () => {
     homePopularAreaName?.eng === "Amtala"
   ) {
     setFilterModal(true);
-  }
-  else{
-    setFilterModal(false);
   }
   const lang = useSelector((state:any) => state.language.language);
   return (
@@ -240,7 +221,6 @@ const PopularAreaOfBarishal = () => {
                     ban: "অন্যান্য এলাকা",
                   })
                 }
-                name="Select-others"
               />
               {!lang ? (
                 <span className="-mt-[2px]"> Select others</span>
