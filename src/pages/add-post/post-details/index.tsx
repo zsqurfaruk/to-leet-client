@@ -110,6 +110,7 @@ const PostDetails = () => {
     totalBed,
     setTotalBed,
   }: any = useContext(PostStateContext);
+  // const {lang}:any = useContext(FilterContext)
   const lang = useSelector((state:any) => state.language.language);
   const { reload, setReload }: any = useContext(APIContext);
 
@@ -361,6 +362,35 @@ const PostDetails = () => {
   const handleMinus = () => {
     setMinusNumber(!minusNumber);
   };
+
+
+
+  const [inputValue, setInputValue] = useState("");
+  const [inputValueTitle, setInputValueTitle] = useState("");
+  const [inputValueDes, setInputValueDes] = useState("");
+
+  const handleChange = (event:any) => {
+    setInputValue(event.target.value);
+  };
+  const handleChangeTitle = (event:any) => {
+    setInputValueTitle(event.target.value); 
+  };
+  const handleChangeDes = (event:any) => {
+    setInputValueDes(event.target.value);
+  };
+
+  const handlePaste = (event:any) => {
+    const pastedData = event.clipboardData.getData("text/plain");
+    setInputValue(pastedData);
+  };
+  const handlePasteTitle = (event:any) => {
+    const pastedData = event.clipboardData.getData("text/plain");
+    setInputValueTitle(pastedData);
+  };
+  const handlePasteDes = (event:any) => {
+    const pastedData = event.clipboardData.getData("text/plain");
+    setInputValueDes(pastedData);
+  };
   return (
     <>
       <Head>
@@ -406,7 +436,7 @@ const PostDetails = () => {
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
       </Head>
-      <div className={style.notCopy}>
+      <div>
         <div className="bg-white p-5 lg:w-10/12 mx-auto">
           <AdditionalInfoPostPage></AdditionalInfoPostPage>
           {!modalValue.eng && (
@@ -716,6 +746,9 @@ const PostDetails = () => {
                 </label>
                 <input
                   {...register("address", { required: true })}
+                  value={inputValue}
+                  onChange={handleChange}
+                  onPaste={handlePaste}
                   type="text"
                   placeholder={
                     !lang
@@ -742,6 +775,9 @@ const PostDetails = () => {
                 </label>
                 <input
                   {...register("title", { required: true })}
+                  value={inputValueTitle}
+                  onChange={handleChangeTitle}
+                  onPaste={handlePasteTitle}
                   type="text"
                   placeholder={!lang ? "Short Title" : "টাইটেল লিখুন"}
                   className="border border-warning p-2 focus:border-warning focus:outline-none focus:ring-1 focus:ring-warning rounded  w-full"
@@ -764,6 +800,9 @@ const PostDetails = () => {
                 </label>
                 <textarea
                   {...register("description")}
+                  value={inputValueDes}
+                  onChange={handleChangeDes}
+                  onPaste={handlePasteDes}
                   className="border border-warning p-2 focus:border-warning focus:outline-none focus:ring-1 focus:ring-warning rounded  w-full h-32"
                   placeholder={!lang ? "More Details" : "বিস্তারিত লিখুন"}
                 ></textarea>
@@ -1229,11 +1268,11 @@ const PostDetails = () => {
                   <>
                     {" "}
                     {!lang ? (
-                      <span className="text-sm pt-4 text-red-400">
+                      <span className="text-sm pt-4 text-red-300">
                         You must upload at least one image.
                       </span>
                     ) : (
-                      <span className="text-xs pt-4 text-red-400">
+                      <span className="text-xs pt-4 text-red-300">
                         আপনাকে অন্তত একটি ছবি আপলোড করতে হবে।
                       </span>
                     )}
