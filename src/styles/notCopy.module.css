@@ -1,6 +1,6 @@
 .notCopy {
-  user-select: text;
-  -moz-user-select: text;
-  -webkit-user-select: text;
-  -ms-user-select: text;
+  user-select: initial;
+  -moz-user-select: initial;
+  -webkit-user-select: initial;
+  -ms-user-select: initial;
 }

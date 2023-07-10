@@ -11,7 +11,11 @@ function Home() {
   return (
     <>
       <Head>
-      <title> The Ultimate Rental Solution</title>
+        <title>
+          {" "}
+          QuickVara - The Ultimate Rental Solution | Basa Vara | ToLet | Rent in
+          Bangladesh
+        </title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keywords" />
         <meta
@@ -31,10 +35,16 @@ function Home() {
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
-        <meta property="og:image" content="https://i.ibb.co/gv3DdvJ/Simple-Box-Solution-Game-Store-Logo-2.jpg" />
+        <meta
+          property="og:image"
+          content="https://i.ibb.co/gv3DdvJ/Simple-Box-Solution-Game-Store-Logo-2.jpg"
+        />
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="title" content="QuickVara - The Ultimate Rental Solution | Basa Vara | ToLet | Rent in Bangladesh" />
+        <meta
+          name="title"
+          content="QuickVara - The Ultimate Rental Solution | Basa Vara | ToLet | Rent in Bangladesh"
+        />
         <meta name="keywords" />
         <meta
           name="description"
@@ -53,7 +63,10 @@ function Home() {
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
-        <meta property="og:image" content="https://i.ibb.co/gv3DdvJ/Simple-Box-Solution-Game-Store-Logo-2.jpg" />
+        <meta
+          property="og:image"
+          content="https://i.ibb.co/gv3DdvJ/Simple-Box-Solution-Game-Store-Logo-2.jpg"
+        />
       </Head>
       <main className="bg-white">
         <Banner></Banner>

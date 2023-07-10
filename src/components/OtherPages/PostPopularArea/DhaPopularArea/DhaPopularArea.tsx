@@ -41,7 +41,7 @@ const DhaPopularArea = () => {
     getPostPopularAreaName?.eng === "Savar" ||
     getPostPopularAreaName?.eng === "Mohakhali" ||
     getPostPopularAreaName?.eng === "Farmgate" ||
-    getPostPopularAreaName?.eng === "Alankar"
+    getPostPopularAreaName?.eng === "Dhamrai"
   ) {
     setPostOpenModal(true);
   }
