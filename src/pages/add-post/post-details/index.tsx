@@ -29,7 +29,6 @@ import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import parsePhoneNumberFromString from "libphonenumber-js";
 import { AiOutlineMinus } from "react-icons/ai";
-import style from "../../../styles/notCopy.module.css"
 import { useSelector } from "react-redux";
 const selectStyles = {
   control: (styles:any, { isFocused }:any) => ({
@@ -361,35 +360,6 @@ const PostDetails = () => {
   };
   const handleMinus = () => {
     setMinusNumber(!minusNumber);
-  };
-
-
-
-  const [inputValue, setInputValue] = useState("");
-  const [inputValueTitle, setInputValueTitle] = useState("");
-  const [inputValueDes, setInputValueDes] = useState("");
-
-  const handleChange = (event:any) => {
-    setInputValue(event.target.value);
-  };
-  const handleChangeTitle = (event:any) => {
-    setInputValueTitle(event.target.value); 
-  };
-  const handleChangeDes = (event:any) => {
-    setInputValueDes(event.target.value);
-  };
-
-  const handlePaste = (event:any) => {
-    const pastedData = event.clipboardData.getData("text/plain");
-    setInputValue(pastedData);
-  };
-  const handlePasteTitle = (event:any) => {
-    const pastedData = event.clipboardData.getData("text/plain");
-    setInputValueTitle(pastedData);
-  };
-  const handlePasteDes = (event:any) => {
-    const pastedData = event.clipboardData.getData("text/plain");
-    setInputValueDes(pastedData);
   };
   return (
     <>
@@ -746,9 +716,6 @@ const PostDetails = () => {
                 </label>
                 <input
                   {...register("address", { required: true })}
-                  value={inputValue}
-                  onChange={handleChange}
-                  onPaste={handlePaste}
                   type="text"
                   placeholder={
                     !lang
@@ -775,9 +742,6 @@ const PostDetails = () => {
                 </label>
                 <input
                   {...register("title", { required: true })}
-                  value={inputValueTitle}
-                  onChange={handleChangeTitle}
-                  onPaste={handlePasteTitle}
                   type="text"
                   placeholder={!lang ? "Short Title" : "টাইটেল লিখুন"}
                   className="border border-warning p-2 focus:border-warning focus:outline-none focus:ring-1 focus:ring-warning rounded  w-full"
@@ -800,9 +764,6 @@ const PostDetails = () => {
                 </label>
                 <textarea
                   {...register("description")}
-                  value={inputValueDes}
-                  onChange={handleChangeDes}
-                  onPaste={handlePasteDes}
                   className="border border-warning p-2 focus:border-warning focus:outline-none focus:ring-1 focus:ring-warning rounded  w-full h-32"
                   placeholder={!lang ? "More Details" : "বিস্তারিত লিখুন"}
                 ></textarea>
