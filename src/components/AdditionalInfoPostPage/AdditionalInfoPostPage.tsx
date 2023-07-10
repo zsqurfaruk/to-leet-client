@@ -2,8 +2,6 @@ import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import { MdOutlineLocationOn } from "react-icons/md";
-import Cookies from "js-cookie";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
 
 const AdditionalInfoPostPage = () => {
@@ -17,6 +15,13 @@ const AdditionalInfoPostPage = () => {
     postDistrictsName,
     postDivisionNameEng,
     setPostDivisionNameEng,
+    setGetUniversityModalValue,
+    setPostDistrictsName,
+    setBedNumbers,
+    setBedRooms,
+    setBathRooms,
+    setWifi,
+    setTotalBed
   }: any = useContext(PostStateContext);
   // const {lang}:any = useContext(FilterContext)
   const router = useRouter();
@@ -25,6 +30,13 @@ const AdditionalInfoPostPage = () => {
     setPostCityNameEng({});
     setPostDivisionNameEng({});
     setPostOpenModal(false);
+    setGetUniversityModalValue({});
+    setPostDistrictsName({});
+    setBedNumbers({})
+    setBedRooms({})
+    setBathRooms({})
+    setWifi({})
+    setTotalBed({})
     router.push("/add-post");
   };
   const lang = useSelector((state:any) => state.language.language);

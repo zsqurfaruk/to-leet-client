@@ -34,7 +34,7 @@ function PostCounter() {
           return prevCount + 1;
         }
       });
-    }, 100);
+    }, 70);
 
     return () => {
       clearInterval(interval);
@@ -52,7 +52,7 @@ function PostCounter() {
           return prevCount + 1;
         }
       });
-    }, 100);
+    }, 70);
 
     return () => {
       clearInterval(interval);
@@ -100,7 +100,7 @@ function PostCounter() {
               {startCounting && (
                 <CountUp
                   end={count}
-                  duration={5}
+                  duration={3}
                   formattingFn={() => banglaNumber}
                 />
               )}{" "}

@@ -119,7 +119,7 @@ const AddPost = () => {
             </h1>
           )}
         </div>
-        <div>
+        <div className={postCityNameEng?.eng ? "pb-6 lg:pb-0" : ""}>
           <div>
             {!postCityNameEng?.eng && <PostAllCityEng></PostAllCityEng>}
           </div>

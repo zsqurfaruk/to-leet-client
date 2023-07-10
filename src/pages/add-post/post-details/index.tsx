@@ -12,7 +12,7 @@ import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import PostModal from "@/components/OtherPages/PostModal/PostModal";
 import { BsImage } from "react-icons/bs";
 import { RxCrossCircled } from "react-icons/rx";
-import { Button, Input } from "@material-tailwind/react";
+import { Button } from "@material-tailwind/react";
 import Spinner from "@/components/Spinner/Spinner";
 import Head from "next/head";
 import Select from "react-select";
@@ -29,8 +29,7 @@ import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import parsePhoneNumberFromString from "libphonenumber-js";
 import { AiOutlineMinus } from "react-icons/ai";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
-import style from "../../../styles/banner.module.css"
+import style from "../../../styles/notCopy.module.css"
 import { useSelector } from "react-redux";
 const selectStyles = {
   control: (styles:any, { isFocused }:any) => ({
@@ -111,7 +110,6 @@ const PostDetails = () => {
     totalBed,
     setTotalBed,
   }: any = useContext(PostStateContext);
-  // const {lang}:any = useContext(FilterContext)
   const lang = useSelector((state:any) => state.language.language);
   const { reload, setReload }: any = useContext(APIContext);
 
@@ -321,21 +319,6 @@ const PostDetails = () => {
     setImageUrl5("");
   };
 
-  // const checkNumber = (e: any) => {
-  //   if (e && isNaN(e)) {
-  //     setNumberError(
-  //       "English is the recommended language for writing valid mobile number."
-  //     );
-  //     setNumberErrorBan("সঠিক মোবাইল নাম্বার ইংরেজিতে লিখুন।");
-  //   } else if (e && !isNaN(e)) {
-  //     setValidNumber(e);
-  //     setNumberError("");
-  //     setNumberErrorBan("");
-  //   } else if (!e) {
-  //     setNumberError("");
-  //     setNumberErrorBan("");
-  //   }
-  // };
   const checkAmountValidity = (e: any) => {
     if (e && isNaN(e)) {
       setAmountError("Please write the amount in English.");
@@ -360,7 +343,6 @@ const PostDetails = () => {
   let checkAuthentication;
   if (authentication) {
     if (!isNaN(parseInt(authentication))) {
-      // setNumber(inputValue)
       getNumber = authentication;
     } else if (authentication.includes("@") && authentication.includes(".")) {
       checkAuthentication = authentication;
@@ -424,7 +406,7 @@ const PostDetails = () => {
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
       </Head>
-      <div>
+      <div className={style.notCopy}>
         <div className="bg-white p-5 lg:w-10/12 mx-auto">
           <AdditionalInfoPostPage></AdditionalInfoPostPage>
           {!modalValue.eng && (
@@ -1247,11 +1229,11 @@ const PostDetails = () => {
                   <>
                     {" "}
                     {!lang ? (
-                      <span className="text-sm pt-4 text-red-300">
+                      <span className="text-sm pt-4 text-red-400">
                         You must upload at least one image.
                       </span>
                     ) : (
-                      <span className="text-xs pt-4 text-red-300">
+                      <span className="text-xs pt-4 text-red-400">
                         আপনাকে অন্তত একটি ছবি আপলোড করতে হবে।
                       </span>
                     )}

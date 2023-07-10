@@ -16,7 +16,7 @@ const AllCityEng = () => {
   const lang = useSelector((state:any) => state.language.language);
   return (
     <div>
-      <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-3 text-gray-700 text-sm md:text-base">
+      <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-5 md:gap-x-0 gap-y-3 text-gray-700 text-sm md:text-base">
         <li>
           <label onClick={()=>setTitleCity("Dhaka")} className="flex gap-2">
             <input
