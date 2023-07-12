@@ -21,8 +21,6 @@ import PostKhulnaDistrictsEng from "@/components/OtherPages/PostAllDivision/Post
 import PostRangDistrictsEng from "@/components/OtherPages/PostAllDivision/PostAllDistricts/PostRangDistricts/PostRangDistrictsEng";
 import PostMymDistrictsEng from "@/components/OtherPages/PostAllDivision/PostAllDistricts/PostMymDistricts/PostMymDistrictsEng";
 import Head from "next/head";
-import Cookies from 'js-cookie';
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
 
 const AddPost = () => {
@@ -33,8 +31,7 @@ const AddPost = () => {
     setPostDivisionNameEng,
     postDivisionNameEng,
   }: any = useContext(PostStateContext);
-  // const {lang}:any = useContext(FilterContext)
- 
+  
   const handlePrevious = () => {
     setPostCityNameEng({});
     setPostDivisionNameEng({})
@@ -87,7 +84,8 @@ const AddPost = () => {
       </Head>
     <section>
       <PostAreaModalEng></PostAreaModalEng>
-      <div className="lg:w-10/12 md:w-10/12 md:mx-auto bg-white p-5 lg:p-14 lg:my-16 rounded">
+      <div className="md:w-10/12 md:mx-auto bg-white p-5 
+      py-10 lg:py-0 lg:p-14 lg:my-16 rounded">
        {
         !postDivisionNameEng?.eng &&  <div className="lg:w-10/12 mx-auto">
         {postCityNameEng?.eng && (
@@ -119,7 +117,7 @@ const AddPost = () => {
             </h1>
           )}
         </div>
-        <div className={postCityNameEng?.eng ? "pb-6 lg:pb-0" : ""}>
+        <div>
           <div>
             {!postCityNameEng?.eng && <PostAllCityEng></PostAllCityEng>}
           </div>
@@ -152,7 +150,7 @@ const AddPost = () => {
         </div>
        }
         {
-          !postCityNameEng?.eng && <div className={postDivisionNameEng?.eng ? "mt-2 lg:w-10/12 mx-auto" : "mt-20 lg:w-10/12 mx-auto"} >
+          !postCityNameEng?.eng && <div className={postDivisionNameEng?.eng ? "mt-2 lg:w-10/12 mx-auto" : "mt-10 lg:mt-20 lg:w-10/12 mx-auto"} >
           {postDivisionNameEng?.eng && (
            <div>
             {

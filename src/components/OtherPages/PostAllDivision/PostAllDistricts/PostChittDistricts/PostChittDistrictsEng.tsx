@@ -1,13 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import React, { useContext } from "react";
-import Cookies from 'js-cookie';
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
 
 const PostChittDistrictsEng = () => {
   const { postDistrictsName, setPostDistrictsName,setPostOpenModal }: any = useContext(PostStateContext);
-  // const {lang}:any = useContext(FilterContext)
   if (postDistrictsName?.eng) {
     setPostOpenModal(true);
   }

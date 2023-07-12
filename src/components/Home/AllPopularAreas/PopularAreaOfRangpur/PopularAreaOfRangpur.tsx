@@ -4,7 +4,6 @@ import { options } from "./RangDataBan";
 import { option } from "./RangDataEng";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import Cookies from "js-cookie";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
 const selectStyles = {
   control: (styles:any, { isFocused }:any) => ({
@@ -16,7 +15,7 @@ const selectStyles = {
 
 const PopularAreaOfRangpur = () => {
   const { setHomePopularAreaName,setFilterValue,filterValue,  homePopularAreaName, setFilterModal,setTitleArea }: any =useContext(StateContext); 
-  // const {lang}:any = useContext(FilterContext)
+   
   const handleFilter=(v:any)=>{
      
     if(v?.name){

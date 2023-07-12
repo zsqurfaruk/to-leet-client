@@ -23,7 +23,6 @@ const AdditionalInfoPostPage = () => {
     setWifi,
     setTotalBed
   }: any = useContext(PostStateContext);
-  // const {lang}:any = useContext(FilterContext)
   const router = useRouter();
   const handlePrevious = () => {
     setGetPostPopularAreaName({});

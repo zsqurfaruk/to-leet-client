@@ -17,7 +17,6 @@ import { useSelector } from "react-redux";
 
 const ProductDetails = ({ product, loading, errorMessage }: any) => {
   const { img1, img2, img3, img4, img5 } = product;
-  // const { lang }: any = useContext(FilterContext);
   const lang = useSelector((state: any) => state.language.language);
   const images = [
     { id: 0, value: img1 },

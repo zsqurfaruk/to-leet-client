@@ -1,4 +1,3 @@
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import { Button, Card, Typography } from "@material-tailwind/react";
 import Cookies from 'js-cookie';
@@ -20,8 +19,7 @@ const FilterDestinationType = () => {
     setFilterValue,
     filterValue,
   }: any = useContext(StateContext)
-  // const {lang}:any = useContext(FilterContext)
-  const router = useRouter();
+   const router = useRouter();
   const handleFilter = (v: any) => {
     setFilterModalValue(v);
     setFilterValue({ ...filterValue, filterModalValue: v });

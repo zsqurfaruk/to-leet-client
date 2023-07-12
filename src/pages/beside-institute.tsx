@@ -4,14 +4,12 @@ import React, { useContext } from "react";
 import Lottie from "lottie-react";
 import lotti from "../image/lf20_jkbuwuhk.json";
 import Head from "next/head";
-import Cookies from "js-cookie";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
+import Loader from "@/components/Loading/Loader";
 
 const University = () => {
   const { filterPost, uniLoading }: any = useContext(APIContext);
-  // const {lang}:any = useContext(FilterContext)
-  const lang = useSelector((state:any) => state.language.language);
+   const lang = useSelector((state:any) => state.language.language);
   return (
     <>
       <Head>
@@ -59,7 +57,8 @@ const University = () => {
       </Head>
       <section className=" lg:w-10/12 mx-auto bg-white px-[32px] rounded lg:my-10">
         {uniLoading ? (
-          <h1 className="text-center w-full mt-10 py-20 text-xl">Loading...</h1>
+          // <h1 className="text-center w-full mt-10 py-20 text-xl">Loading...</h1>
+          <Loader></Loader>
         ) : (
           <>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 py-10">

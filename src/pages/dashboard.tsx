@@ -8,6 +8,7 @@ import Head from "next/head";
 import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
+import Loader from "@/components/Loading/Loader";
 
 const Dashboard = () => {
   const {reload}:any = useContext(APIContext)
@@ -100,7 +101,8 @@ const Dashboard = () => {
           <hr className="mt-5 bg-accent h-[2px] rounded" />
         </div>
         {loading ? (
-          <h1 className="text-center w-full mt-10">Loading...</h1>
+          <h1 className="text-center w-full mt-10"><Loader></Loader></h1>
+          // <Loader></Loader>
         ) : (
           <>
             {" "}

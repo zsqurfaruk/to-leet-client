@@ -6,6 +6,7 @@ import { RootState } from "@/redux/app/store";
 import { getAllPosts } from "@/redux/features/AllPosts/AllPostsSlice";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import Spinner from "@/components/Spinner/Spinner";
+import Loader from "@/components/Loading/Loader";
 
 function AllAds() {
   const lang = useSelector((state:any) => state.language.language);
@@ -18,7 +19,7 @@ function AllAds() {
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
-  const { allPosts }: any = useSelector((state: RootState) => state.allPosts);
+  const { allPosts, isLoading }: any = useSelector((state: RootState) => state.allPosts);
 
   useEffect(() => {
     dispatch(getAllPosts());
@@ -196,48 +197,49 @@ function AllAds() {
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
       </Head>
-      <section className="lg:my-5 lg:w-10/12 mx-auto bg-white px-[32px] rounded">
-        {renderData(currentItems)}
-       {
-        !allPosts ? <Spinner></Spinner>: <ul
+     {
+      isLoading ? <Loader></Loader> :  <section className="lg:my-5 lg:w-10/12 mx-auto bg-white px-[32px] rounded">
+      {renderData(currentItems)}
+       <ul
+      className={
+        minPageNumberLimit < 5
+          ? "flex justify-center gap-3 md:gap-4 pb-5"
+          : "flex justify-center gap-[7px] md:gap-3 pb-5"
+      }
+    >
+      <button
+        onClick={handlePrevious}
+        disabled={currentPage === pages[0] ? true : false}
         className={
-          minPageNumberLimit < 5
-            ? "flex justify-center gap-3 md:gap-4 pb-5"
-            : "flex justify-center gap-[7px] md:gap-3 pb-5"
+          currentPage === pages[0] ? "text-gray-400" : "text-warning"
         }
       >
-        <button
-          onClick={handlePrevious}
-          disabled={currentPage === pages[0] ? true : false}
-          className={
-            currentPage === pages[0] ? "text-gray-400" : "text-warning"
-          }
-        >
-         {
-          !lang ? "Previous" : "পূর্ববর্তী"
-         }
-        </button>
-        <span className={minPageNumberLimit < 5 ? "hidden" : "inline"}>
-          {pageDecrementBtn}
-        </span>
-        {renderPagesNumber}
-        {pageIncrementBtn}
-        <button
-          onClick={handleNext}
-          disabled={currentPage === pages[pages.length - 1] ? true : false}
-          className={
-            currentPage === pages[pages.length - 1]
-              ? "text-gray-400"
-              : "text-warning pl-1"
-          }
-        >
-         {
-          !lang ? "Next" : "পরবর্তী"
-         }
-        </button>
-      </ul>
+       {
+        !lang ? "Previous" : "পূর্ববর্তী"
        }
-      </section>
+      </button>
+      <span className={minPageNumberLimit < 5 ? "hidden" : "inline"}>
+        {pageDecrementBtn}
+      </span>
+      {renderPagesNumber}
+      {pageIncrementBtn}
+      <button
+        onClick={handleNext}
+        disabled={currentPage === pages[pages.length - 1] ? true : false}
+        className={
+          currentPage === pages[pages.length - 1]
+            ? "text-gray-400"
+            : "text-warning pl-1"
+        }
+      >
+       {
+        !lang ? "Next" : "পরবর্তী"
+       }
+      </button>
+    </ul>
+    
+    </section>
+     }
     </>
   );
 }

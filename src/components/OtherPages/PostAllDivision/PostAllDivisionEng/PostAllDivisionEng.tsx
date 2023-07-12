@@ -1,14 +1,11 @@
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import React, { useContext } from "react";
-import Cookies from 'js-cookie';
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
 
 const PostAllDivisionEng = () => {
   const { setPostDivisionNameEng }: any =
     useContext(PostStateContext);
-    // const {lang}:any = useContext(FilterContext)
-    const lang = useSelector((state:any) => state.language.language);
+     const lang = useSelector((state:any) => state.language.language);
   return (
     <div className="lg:-ml-4">
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-gray-700 text-sm md:text-base">

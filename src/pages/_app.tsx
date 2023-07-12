@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "@/components/Shared/Footer/Footer";
 import NavBar from "@/components/Shared/NavBar/NavBar";
 import ApiContext from "@/Context/ApiContext/ApiContext";
-import FilterInfo from "@/Context/FilterContext/FilterContext";
 import PostInfo from "@/Context/PostStateContext/PostStateContext";
 import StateInfo from "@/Context/StateContext/StateContext";
 import DisableRightClick from "@/DisableRightClick/DisableRightClick";
@@ -10,10 +9,11 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Toaster } from "react-hot-toast";
 import { store } from "@/redux/app/store";
-import { Provider } from 'react-redux'
-
+import { Provider } from "react-redux";
+import Loading from "@/components/Loading/Loading";
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://www.googletagmanager.com/gtag/js?id=G-VZQZNKVB27";
@@ -35,23 +35,31 @@ export default function App({ Component, pageProps }: AppProps) {
       document.body.removeChild(inlineScript);
     };
   }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false); // Set loading to false after a certain period of time
+    }, 1200);
 
+    return () => clearTimeout(timer); // Cleanup function to clear the timeout
+  }, []);
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
   return (
     <DisableRightClick>
-    <Provider store={store}>
-    <FilterInfo>
-      <PostInfo>
+      <Provider store={store}>
         <StateInfo>
-          <ApiContext>
-            <NavBar></NavBar>
-            <Component {...pageProps} />
-            <Toaster />
-            <Footer></Footer>
-          </ApiContext>
+          <PostInfo>
+            <ApiContext>
+              <NavBar></NavBar>
+              <Component {...pageProps} />
+              <Toaster />
+              <Footer></Footer>
+            </ApiContext>
+          </PostInfo>
         </StateInfo>
-      </PostInfo>
-    </FilterInfo>
-    </Provider>
-  </DisableRightClick>
+      </Provider>
+    </DisableRightClick>
   );
 }

@@ -14,8 +14,7 @@ import { colourOption } from "./DataBan";
 import Link from "next/link";
 import Cookies from 'js-cookie';
 import { APIContext } from "@/Context/ApiContext/ApiContext";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
-import { useSelector } from "react-redux";
+ import { useSelector } from "react-redux";
 
 export default function ModalEng() {
   const {
@@ -24,8 +23,7 @@ export default function ModalEng() {
     openModalValue,
     setOpenModalValue,
   }: any = useContext(StateContext);
-  // const {lang}:any = useContext(FilterContext)
-  const { handleFilterUniversity}: any = useContext(APIContext);
+   const { handleFilterUniversity}: any = useContext(APIContext);
   const handleCancel = () => {
     handleOpenModalEng();
     setOpenModalValue({});

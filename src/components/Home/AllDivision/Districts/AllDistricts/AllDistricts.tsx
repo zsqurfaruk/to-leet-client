@@ -9,14 +9,12 @@ import DistrictsOfRajshahi from "../DistrictsOfRajshahi/DistrictsOfRajshahi";
 import DistrictsOfRangpur from "../DistrictsOfRangpur/DistrictsOfRangpur";
 import DistrictsOfSylhet from "../DistrictsOfSylhet/DistrictsOfSylhet";
 import FilterModal from "@/components/Home/Banner/Modal/FilterModal";
-import Cookies from "js-cookie";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
 
 const AllDistricts = () => {
   const { divisionNameEng, setDivisionNameEng, setDistrictsName }: any =
     useContext(StateContext);
-  // const { lang }: any = useContext(FilterContext);
+ 
   const handlePrevious = () => {
     setDivisionNameEng({});
     setDistrictsName({});

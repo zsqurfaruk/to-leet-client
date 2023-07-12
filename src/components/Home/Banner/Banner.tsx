@@ -12,7 +12,6 @@ import Cookies from "js-cookie";
 import AllDistricts from "../AllDivision/Districts/AllDistricts/AllDistricts";
 import ModalEng from "./Modal/ModalEng";
 import PostAreaModalEng from "./Modal/PostAreaModalEng";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
 
 const Banner = () => {
@@ -28,13 +27,31 @@ const Banner = () => {
     handleOpenModalEng, 
   }: any = useContext(StateContext);
 
-  // const {lang}:any = useContext(FilterContext)
-  const [width, setWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  // const [width, setWidth] = useState(window.innerWidth);
+  // useEffect(() => {
+  //   const handleResize = () => setWidth(window.innerWidth);
+  //   window.addEventListener("resize", handleResize);
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
+  // const [width, setWidth] = useState(0);
+
+  // useEffect(() => {
+  //   const handleResize = () => setWidth(window.innerWidth);
+  //   if (typeof window !== 'undefined') {
+  //     // Check if running in a browser environment
+  //     setWidth(window.innerWidth);
+  //     window.addEventListener('resize', handleResize);
+  //   }
+
+  //   // Clean up the event listener on component unmount
+  //   return () => {
+  //     if (typeof window !== 'undefined') {
+  //       window.removeEventListener('resize', handleResize);
+  //     }
+  //   };
+  // }, []);
+
+
   const handleFilterTypeCity = () => {
     setCityName({});
     setFilterTypeCity(!filterTypeCity);

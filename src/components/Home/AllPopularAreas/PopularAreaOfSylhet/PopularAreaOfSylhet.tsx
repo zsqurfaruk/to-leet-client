@@ -4,7 +4,6 @@ import Select from "react-select";
 import { options } from "./SylDataBan";
 import { option } from "./SylDataEng";
 import Cookies from "js-cookie";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
 const selectStyles = {
   control: (styles:any, { isFocused }:any) => ({
@@ -16,8 +15,7 @@ const selectStyles = {
 
 const PopularAreaOfSylhet = () => {
   const { setHomePopularAreaName,setFilterValue,filterValue,  homePopularAreaName, setFilterModal,setTitleArea }: any =useContext(StateContext); 
-  // const {lang}:any = useContext(FilterContext)
-  const handleFilter=(v:any)=>{
+   const handleFilter=(v:any)=>{
      
     if(v?.name){
 

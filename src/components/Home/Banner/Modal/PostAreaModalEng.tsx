@@ -11,8 +11,7 @@ import React from "react";
 import Cookies from 'js-cookie';
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import PostDestinationType from "@/components/OtherPages/PostDestinationType/PostDestinationType";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
-import { useSelector } from "react-redux";
+ import { useSelector } from "react-redux";
 
 export default function PostAreaModalEng() {
   const {
@@ -22,8 +21,7 @@ export default function PostAreaModalEng() {
     setGetPostPopularAreaName,
     setPostDistrictsName
   }: any = useContext(PostStateContext);
-  // const {lang}:any = useContext(FilterContext)
-  const handleCancel = () => {
+   const handleCancel = () => {
     setPostOpenModal(false);
     setGetPostPopularAreaName({});
     setPostDistrictsName({})

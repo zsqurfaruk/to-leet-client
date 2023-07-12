@@ -4,7 +4,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 function Post({ post }: any) {
-  // const {lang}:any = useContext(FilterContext)
   const lang = useSelector((state:any) => state.language.language);
   const posts = {
     info: "d67nmjk*9867&n3$h!5ngo35%g^n8klo%gvb7&bj11fgfgr255rtrt",

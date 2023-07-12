@@ -1,11 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import React, { useContext } from "react";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
+import React from "react";
 import { useSelector } from "react-redux";
 
 const Products = ({ product }: any) => {
-  // const {lang}:any = useContext(FilterContext)
   const lang = useSelector((state:any) => state.language.language);
   const post =
     "4l5gJNnHjXPcI5jCtff8vWW8vR#4oaWbB0TKs204^%$ACcaBTpXPwH00LczlXf8vWWCtCfds";

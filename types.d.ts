@@ -17,3 +17,7 @@ type Products ={
     __v: number;
     updatedAt: string;
 }
+export interface Product {
+    // Your product type definition
+  }
+  

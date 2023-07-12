@@ -1,14 +1,11 @@
-import React,{useContext} from "react";
+import React from "react";
 import AllCityEng from "./AllCityEng";
-import Cookies from "js-cookie";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
 
 const AllCity = () => {
   // const handlePrevious = () => {
   //   setFilterTypeCity(false);
   // };
-  // const {lang}:any = useContext(FilterContext)
   const lang = useSelector((state:any) => state.language.language);
   return (
     <section className="min-w-full px-8 md:px-0">

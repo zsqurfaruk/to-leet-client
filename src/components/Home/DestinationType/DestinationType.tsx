@@ -2,14 +2,12 @@
 import React,{useContext} from "react";
 import DesEng from "./DesEng";
 import DesBan from "./DesBan";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
-import { StateContext } from "@/Context/StateContext/StateContext";
+ import { StateContext } from "@/Context/StateContext/StateContext";
 import { useSelector } from "react-redux";
  
 
 const DestinationType = () => {
-  // const {lang}:any = useContext(FilterContext)
-  const {filterTypeDivision, divisionNameEng}:any = useContext(StateContext)
+   const {filterTypeDivision, divisionNameEng}:any = useContext(StateContext)
   const lang = useSelector((state:any) => state.language.language);
   return (
     <section  className={

@@ -1,12 +1,8 @@
 import React, { useContext } from "react";
-import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
-import Cookies from 'js-cookie';
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
-import { useSelector } from "react-redux";
+import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";import { useSelector } from "react-redux";
 
 const PostAllCityEng = () => {
   const { setPostCityNameEng }: any = useContext(PostStateContext);
-  // const {lang}:any = useContext(FilterContext)
   const lang = useSelector((state:any) => state.language.language);
   return (
     <div>

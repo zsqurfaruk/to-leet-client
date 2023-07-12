@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 
 const DashboardPost = ({ post }: any) => {
   const [updateReload, setUpdateReload] = useState(false);
-  // const {lang}:any = useContext(FilterContext)
   const lang = useSelector((state:any) => state.language.language);
   const { reload, setReload }: any = useContext(APIContext);
   const cookieValue = Cookies.get("token");

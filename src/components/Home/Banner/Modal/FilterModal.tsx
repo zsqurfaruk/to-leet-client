@@ -8,8 +8,7 @@ import {
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React from "react";
 import FilterDestinationType from "@/components/OtherPages/PostDestinationType/FilterDestinationType";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
-import { useSelector } from "react-redux";
+ import { useSelector } from "react-redux";
 
 export default function FilterModal() {
   const {
@@ -19,8 +18,7 @@ export default function FilterModal() {
     setHomePopularAreaName,
     setDistrictsName
   }: any = useContext(StateContext);
-  // const {lang}:any = useContext(FilterContext)
-  const handleCancel = () => {
+   const handleCancel = () => {
     setFilterModal(false);
     setHomePopularAreaName({});
     setDistrictsName({})

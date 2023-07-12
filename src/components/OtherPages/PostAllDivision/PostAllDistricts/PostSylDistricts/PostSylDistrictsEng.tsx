@@ -1,13 +1,10 @@
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import React, { useContext } from "react";
-import Cookies from 'js-cookie';
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
 
 const PostSylDistrictsEng = () => {
   const { postDistrictsName, setPostDistrictsName,setPostOpenModal }: any = useContext(PostStateContext);
-  // const {lang}:any = useContext(FilterContext)
-  if (postDistrictsName?.eng) {
+   if (postDistrictsName?.eng) {
     setPostOpenModal(true);
   }
   const lang = useSelector((state:any) => state.language.language);

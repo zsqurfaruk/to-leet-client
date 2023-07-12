@@ -84,7 +84,7 @@ const StateInfo = ({ children }: any) => {
     titleDistrict, setTitleDistrict,
     titleDivision, setTitleDivision
   };
-  return <StateContext.Provider value={info}>{children}</StateContext.Provider>;
+  return <StateContext.Provider value={info}>{!loading && children}</StateContext.Provider>;
 };
 
 export default StateInfo;

@@ -1,16 +1,13 @@
 import { APIContext } from "@/Context/ApiContext/ApiContext";
 import React, { useContext, useState, useEffect } from "react";
 import CountUp from "react-countup";
-import Cookies from "js-cookie";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/app/store";
 import { getAllPosts } from "@/redux/features/AllPosts/AllPostsSlice";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 
 function PostCounter() {
-  // const {lang}:any = useContext(FilterContext)
-  const lang = useSelector((state:any) => state.language.language);
+   const lang = useSelector((state:any) => state.language.language);
   const {userCounter }: any = useContext(APIContext);
   const [startCounting, setStartCounting] = useState(false);
   const [count, setCount] = useState(0);
@@ -34,7 +31,7 @@ function PostCounter() {
           return prevCount + 1;
         }
       });
-    }, 70);
+    }, 40);
 
     return () => {
       clearInterval(interval);
@@ -52,7 +49,7 @@ function PostCounter() {
           return prevCount + 1;
         }
       });
-    }, 70);
+    }, 60);
 
     return () => {
       clearInterval(interval);
@@ -92,7 +89,7 @@ function PostCounter() {
         <div className="text-primary border-2 border-accent shadow-md shadow-accent text-xl md:text-3xl md:font-semibold  p-10 rounded">
           {!lang ? (
             <span>
-              Total Ads: <CountUp end={allPosts?.length} duration={5} />
+              Total Ads: <CountUp end={allPosts?.length} duration={3} />
             </span>
           ) : (
             <span className="text-lg md:text-2xl">
@@ -111,7 +108,7 @@ function PostCounter() {
         <div className="text-primary text-xl md:text-3xl md:font-semibold  border-2 border-accent shadow-md shadow-accent p-8 md:p-10 rounded">
           {!lang ? (
             <span>
-              Total Users: <CountUp end={userCounter?.length} duration={5} />
+              Total Users: <CountUp end={userCounter?.length} duration={3} />
             </span>
           ) : (
             <span className="text-lg md:text-2xl">
@@ -119,7 +116,7 @@ function PostCounter() {
               {startCounting && (
                 <CountUp
                   end={userCount}
-                  duration={5}
+                  duration={3}
                   formattingFn={() => banglaNumberUser}
                 />
               )}{" "}

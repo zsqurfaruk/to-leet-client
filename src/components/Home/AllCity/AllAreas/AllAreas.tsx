@@ -8,14 +8,11 @@ import PopularAreaOfMym from "../../AllPopularAreas/PopularAreaOfMymensingh/Popu
 import PopularAreaOfRajshahi from "../../AllPopularAreas/PopularAreaOfRajshahi/PopularAreaOfRajshahi";
 import PopularAreaOfRangpur from "../../AllPopularAreas/PopularAreaOfRangpur/PopularAreaOfRangpur";
 import FilterModal from "../../Banner/Modal/FilterModal";
-import Cookies from "js-cookie";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import PopularAreaOfSylhet from "../../AllPopularAreas/PopularAreaOfSylhet/PopularAreaOfSylhet";
 import { useSelector } from "react-redux";
 
 const AllAreas = () => {
   const { cityName, setCityName, setHomePopularAreaName }: any = useContext(StateContext);
-  // const {lang}:any = useContext(FilterContext)
   const handlePrevious = () => {
     setCityName({});
     setHomePopularAreaName({})

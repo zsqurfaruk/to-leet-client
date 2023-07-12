@@ -2,7 +2,6 @@
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 import Cookies from "js-cookie";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
 
 const DistrictsOfChittagong = () => {
@@ -14,7 +13,7 @@ const DistrictsOfChittagong = () => {
     setFilterModal,
     setTitleDistrict
   }: any = useContext(StateContext);
-  // const {lang}:any = useContext(FilterContext)
+ 
   const handleFilter = (v: any) => {
     setDistrictsName(v);
     setFilterValue({ ...filterValue, districtsName: v });

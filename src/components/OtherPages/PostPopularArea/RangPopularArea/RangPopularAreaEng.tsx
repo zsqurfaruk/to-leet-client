@@ -3,8 +3,6 @@ import React, { useContext } from "react";
 import Select from "react-select";
 import { options } from "./DataRangBan";
 import { option } from "./DataRangEng";
-import Cookies from 'js-cookie';
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
 const selectStyles = {
   control: (styles:any, { isFocused }:any) => ({
@@ -16,8 +14,7 @@ const selectStyles = {
 
 const RangPopularAreaEng = () => {
   const { getPostPopularAreaName,setGetPostPopularAreaName,setPostOpenModal }: any = useContext(PostStateContext);
-  // const {lang}:any = useContext(FilterContext)
-  if (getPostPopularAreaName?.name === "eng") {
+   if (getPostPopularAreaName?.name === "eng") {
     const newName = {
       eng: getPostPopularAreaName?.label,
       ban: getPostPopularAreaName?.value,

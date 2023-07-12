@@ -109,8 +109,7 @@ const PostDetails = () => {
     totalBed,
     setTotalBed,
   }: any = useContext(PostStateContext);
-  // const {lang}:any = useContext(FilterContext)
-  const lang = useSelector((state:any) => state.language.language);
+   const lang = useSelector((state:any) => state.language.language);
   const { reload, setReload }: any = useContext(APIContext);
 
   const router = useRouter();

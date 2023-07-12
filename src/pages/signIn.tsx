@@ -13,7 +13,6 @@ import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import parsePhoneNumberFromString from "libphonenumber-js";
 import { StateContext } from "@/Context/StateContext/StateContext";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
  
  
@@ -33,7 +32,6 @@ const SignIn = () => {
   const [isValid, setIsValid] = useState(true);
   const [isValidNum, setIsValidNum] = useState(true);
   const { isOpen }: any = useContext(StateContext);
-  // const {lang}:any = useContext(FilterContext)
  
   const router = useRouter();
   const {

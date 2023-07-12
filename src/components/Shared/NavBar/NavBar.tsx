@@ -12,7 +12,6 @@ import { useRouter } from "next/router";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import Cookies from "js-cookie";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import styles from "../../../styles/response.module.css"
 import { useDispatch, useSelector } from "react-redux";
 import { toggleLanguage } from "@/redux/features/Language/LanguageSlice";
@@ -49,11 +48,8 @@ export default function NavBar() {
     setPostDistrictsName,
     setGetUniversityModalValue,
   }: any = useContext(PostStateContext);
-  const {setLang}:any = useContext(FilterContext)
   const [authenticated, setAuthenticated] = useState(false);
   const { push, pathname } = useRouter();
-  
-
   const cookieValue = Cookies.get('token');
   const token = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
   useEffect(() => {
@@ -94,18 +90,22 @@ export default function NavBar() {
   const dispatch = useDispatch();
   const handleLanguageChange = () => {
     const newLanguage = !lang;
-    dispatch(toggleLanguage(newLanguage)); // Dispatch the toggleLanguage action
+    dispatch(toggleLanguage(newLanguage));
     localStorage.setItem('lan', JSON.stringify(newLanguage));
+    setLang(newLanguage);
   };
   
-  const lang = useSelector((state:any) => state.language.language);
+  // const lang = useSelector((state:any) => state.language.language); 
 
-  useEffect(() => {
-    const storedLanguage = localStorage.getItem('lan');
-    if (storedLanguage) {
-      dispatch(toggleLanguage(JSON.parse(storedLanguage))); // Dispatch the toggleLanguage action with the stored language value
-    }
-  }, [dispatch]);
+ const storedLanguage = localStorage.getItem('lan');
+ const initialLanguage = storedLanguage ? JSON.parse(storedLanguage) : false;
+
+const [lang, setLang] = useState(initialLanguage);
+useEffect(() => {
+  if (storedLanguage) {
+    dispatch(toggleLanguage(initialLanguage));
+  }
+}, [dispatch, initialLanguage, storedLanguage]);
   
  
   const handleHome = () => {
@@ -155,15 +155,15 @@ export default function NavBar() {
               onClick={() => setOpenNav(false)}
             >
               {!lang ? (
-                <Button className="w-[148px] lg:w-[212px] -ml-[34px] lg:ml-36 text-primary -my-2 py-2 lg:text-[15px] bg-transparent border border-accent  font-normal lg:font-semibold rounded">
+                <Button className="w-[148px] lg:w-[212px] -ml-1/12 lg:ml-36 text-primary -my-2 py-[6px] lg:py-2 lg:text-[15px] bg-transparent border border-accent  font-normal lg:font-semibold rounded">
                   Post your ads
                 </Button>
               ) : (
                 <>
-                  <Button className="w-[162px] lg:w-[212px] -ml-6 lg:ml-36 text-primary -my-2 py-2 lg:text-[15px] bg-transparent border border-accent font-normal lg:font-semibold rounded hidden lg:flex">
+                  <Button className="w-[162px] lg:w-[212px] -ml-1/12 lg:ml-36 text-primary -my-2 py-2 lg:text-[15px] bg-transparent border border-accent font-normal lg:font-semibold rounded hidden lg:flex">
                     আপনার বিজ্ঞাপন দিন
                   </Button>
-                  <Button className="w-[164px] lg:w-[212px] -ml-[22px] lg:ml-36 text-primary -my-2 py-2  lg:text-[13px] bg-transparent border border-accent font-normal lg:font-semibold rounded flex lg:hidden">
+                  <Button className="w-[163.2px] lg:w-[212px] -ml-1/12 lg:ml-36 text-primary -my-2 py-[7.5px]  lg:text-[13px] bg-transparent border border-accent font-normal lg:font-semibold rounded flex lg:hidden">
                   আপনার বিজ্ঞাপন দিন
                   </Button>
                 </>
@@ -199,21 +199,21 @@ export default function NavBar() {
             onClick={() => setOpenNav(false)}
           >
             <Link href="/dashboard">
-              <span
+              <div
                 onClick={() => setOpenNav(false)}
-                className="text-primary mt-1"
+                className="text-primary mt-1 lg:mt-0"
               >
                 {!lang ? (
-                  <span className="border border-accent px-12 -ml-9 lg:px-2 lg:ml-0 pt-[5px] pb-[6px] rounded">
+                  <span className="border border-accent px-12 -ml-1/12 lg:px-2 lg:ml-0 pt-[5px] pb-[6px] lg:py-[6.5px] rounded lg:text-base">
                     {" "}
                     Account
                   </span>
                 ) : (
-                  <span className="border border-accent px-[50px] -ml-[22px] lg:px-2 lg:ml-0 pt-[5px] pb-[6px] rounded">
+                  <span className="border border-accent px-[49.7px] -ml-1/12 lg:px-2 lg:ml-0 pt-[6px] pb-[6px] lg:py-[7px] rounded">
                     অ্যাকাউন্ট
                   </span>
                 )}
-              </span>
+              </div>
             </Link>
           </Typography>
         )}
@@ -228,7 +228,7 @@ export default function NavBar() {
           <div className={`${styles.gapStyle} flex md:gap-12`}>
             <Link onClick={handleHome} href={"/"}>
               <Image
-                className="h-9  w-32 rounded"
+                className="h-9 w-28 md:w-32 rounded"
                 src={logo}
                 alt={""}
               ></Image>
@@ -265,7 +265,7 @@ export default function NavBar() {
               ) : (
                 <Link
                   href="/ads"
-                  className="text-primary  rounded cursor-pointer border border-success px-1 pb-[4px] pt-[6px] text-xs"
+                  className="text-primary  rounded cursor-pointer border border-success px-[6px] pb-[4px] pt-[6px] text-xs"
                 >
                   সকল বিজ্ঞাপন
                 </Link>
@@ -276,14 +276,14 @@ export default function NavBar() {
             {!lang ? (
               <span
                 onClick={handleLanguageChange}
-                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded cursor-pointer"
+                className="font-semibold border border-success pt-[3.5px] pb-[2.5px] text-primary px-2 rounded cursor-pointer"
               >
                 বাংলা
               </span>
             ) : (
               <span
               onClick={handleLanguageChange}
-                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-2 rounded cursor-pointer"
+                className="font-semibold border border-success pt-[3.5px] pb-[3px] text-primary px-2 rounded cursor-pointer"
               >
                 English
               </span>
@@ -356,14 +356,14 @@ export default function NavBar() {
                 {" "}
                 {!lang ? (
                   <Button
-                    className="text-gray-700 w-[149px] -ml-9 py-2 -my-2 bg-accent rounded"
+                    className="text-gray-700 w-[149px] -ml-1/12 py-2 -mt-[6px] bg-accent rounded md:mb-5 md:-mt-[5px]"
                     onClick={() => setOpenNav(false)}
                   >
                     LogOut
                   </Button>
                 ) : (
                   <Button
-                    className="text-gray-700 w-[162px] -ml-[23px] py-2 -my-2 bg-accent rounded"
+                    className="text-gray-700 w-[162px] -ml-1/12 py-2 -mt-[10px] bg-accent rounded md:mb-5 md:-mt-[8px]"
                     onClick={() => setOpenNav(false)}
                   >
                     লগআউট
@@ -375,14 +375,14 @@ export default function NavBar() {
                 {!lang ? (
                   <Button
                     size="sm"
-                    className="w-[150px] -ml-9 mb-3 text-gray-700 -my-2 bg-accent rounded"
+                    className="w-[150px] -ml-1/12 text-gray-700 -mt-3 bg-accent rounded"
                   >
                     <span onClick={() => setOpenNav(false)}>SignIn</span>
                   </Button>
                 ) : (
                   <Button
                     size="sm"
-                    className="w-[163px] -ml-6 rounded mb-3 text-gray-700 -my-2 bg-accent"
+                    className="w-[163px] -ml-1/12 rounded pt-[10px] pb-[6px] text-gray-700 -mt-4 bg-accent"
                   >
                     <span
                       className="text-[15px]"
@@ -399,14 +399,14 @@ export default function NavBar() {
             {!lang ? (
               <span
                 onClick={handleLanguageChange}
-                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary rounded cursor-pointer shadow-lg shadow-accent px-[53px] -ml-9"
+                className="font-semibold border border-success pt-[3.5px] pb-[2.5px] text-primary rounded cursor-pointer shadow-lg shadow-accent px-[53px] -ml-1/12"
               >
                 বাংলা
               </span>
             ) : (
               <span
                 onClick={handleLanguageChange}
-                className="font-semibold border border-success pt-[2px] pb-[1px] text-primary px-[51px] -ml-6 rounded cursor-pointer shadow-lg shadow-accent"
+                className="font-semibold border border-success pt-[4px] pb-[3px] text-primary px-[51px] -ml-1/12 rounded cursor-pointer shadow-lg shadow-accent"
               >
                 English
               </span>

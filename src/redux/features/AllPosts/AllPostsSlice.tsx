@@ -9,7 +9,7 @@ export interface AllPostsState {
 
 const initialState: AllPostsState = {
   allPosts: [],
-  isLoading: false,
+  isLoading: true,
   isError:false,
   error:""
 }
@@ -26,11 +26,11 @@ export const allPostsSlice = createSlice({
   extraReducers: (builder) => {
      builder.addCase(getAllPosts.fulfilled, (state, action)=>{
       state.allPosts= action.payload;
-      // state.isLoading = false
+      state.isLoading = false
      })
      .addCase(getAllPosts.rejected, (state, action)=>{
       state.allPosts =[]
-      // state.isLoading = false
+      state.isLoading = false
       state.isError= true
       state.error = action.error.message;
      })

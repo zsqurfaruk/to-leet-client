@@ -11,8 +11,6 @@ import Select from "react-select";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import { colourOptions } from "../../Home/Banner/Modal/DataEng";
 import { colourOption } from "../../Home/Banner/Modal/DataBan";
-import Cookies from "js-cookie";
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
 import { useSelector } from "react-redux";
 
 export default function PostModal() {
@@ -24,8 +22,7 @@ export default function PostModal() {
     setPostUniversityModalValue,
     setGetUniversityModalValue,
   }: any = useContext(PostStateContext);
-  // const { lang }: any = useContext(FilterContext);
-  const handleCancel = () => {
+   const handleCancel = () => {
     setPostUniversityModal(false);
     setPostUniversityModalValue({});
   }

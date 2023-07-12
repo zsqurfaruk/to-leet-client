@@ -3,8 +3,7 @@ import { Button, Card, Typography } from "@material-tailwind/react";
 import Link from "next/link";
 import React, { useContext } from "react";
 import Cookies from 'js-cookie';
-import { FilterContext } from "@/Context/FilterContext/FilterContext";
-import { useSelector } from "react-redux";
+ import { useSelector } from "react-redux";
 
 const PostDestinationType = () => {
   const {
@@ -17,8 +16,7 @@ const PostDestinationType = () => {
     postDivisionNameEng,
     setPostDistrictsName
   }: any = useContext(PostStateContext)
-  // const {lang}:any = useContext(FilterContext)
-  const handleCancel = () => {
+   const handleCancel = () => {
     setPostOpenModal(false);
     setGetPostPopularAreaName({});
     setPostDistrictsName({})

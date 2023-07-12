@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/next-script-for-ga */
-/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Head from "next/head";
 import DestinationType from "@/components/Home/DestinationType/DestinationType";
