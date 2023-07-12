@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import Products from "@/components/Products/Products";
 import { GetServerSideProps } from "next";
 import React, { useState, useContext, useEffect } from "react";
@@ -307,12 +306,9 @@ export const getServerSideProps: GetServerSideProps = async ({
       };
     }
 
-    // Set the loading status to false once the data is fetched
-
     return {
       props: {
-        products: data,
-
+        products:data || [],
         errorMessage: null, // Pass the loading status as a prop
       },
     };
@@ -322,7 +318,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     return {
       props: {
         products: null,
-
         errorMessage: errorMessage, // Pass the loading status as a prop
       },
     };

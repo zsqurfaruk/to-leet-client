@@ -5,6 +5,7 @@ import Lottie from "lottie-react";
 import lotti from "../../image/lf20_jkbuwuhk.json";
 import Head from "next/head";
 import { useSelector } from "react-redux";
+import Loader from "@/components/Loading/Loader";
 
 const FilterPosts = () => {
   const { filterValue, cityName, divisionNameEng, districtsName,titleArea, titleCity, titleDistrict, titleDivision}: any = useContext(StateContext);
@@ -83,7 +84,7 @@ const FilterPosts = () => {
   </Head>
     
      {
-      loading ? <h2 className="text-center w-full py-40">Loading...</h2> : <section className="lg:w-10/12 mx-auto bg-white lg:my-10 pb-10 px-[32px] rounded ">
+      loading ? <h2 className="text-center w-full"> <Loader></Loader></h2> : <section className="lg:w-10/12 mx-auto bg-white lg:my-10 pb-10 px-[32px] rounded ">
       <div className="flex justify-around py-5 text-warning ">
         {!lang ? (
           <div>
