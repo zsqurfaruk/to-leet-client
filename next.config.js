@@ -1,7 +1,8 @@
 const nextConfig = {
   reactStrictMode: true,
   webpack: (config, { webpack }) => {
-    config.plugins.push(new webpack.LoaderOptionsPlugin({ options: { worker: { worker: false } } }));
+    config.optimization.minimize = false;
+    config.optimization.minimizer = [];
     return config;
   },
 };
