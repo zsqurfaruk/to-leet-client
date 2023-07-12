@@ -228,7 +228,7 @@ useEffect(() => {
           <div className={`${styles.gapStyle} flex md:gap-12`}>
             <Link onClick={handleHome} href={"/"}>
               <Image
-                className="h-9 w-28 md:w-32 rounded"
+                className="h-8 mt-1 md:mt-0 md:h-9 w-28 md:w-32 rounded"
                 src={logo}
                 alt={""}
               ></Image>
