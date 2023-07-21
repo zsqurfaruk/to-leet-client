@@ -5,13 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/app/store";
 import { getAllPosts } from "@/redux/features/AllPosts/AllPostsSlice";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import Spinner from "@/components/Spinner/Spinner";
 import Loader from "@/components/Loading/Loader";
 
 function AllAds() {
   const lang = useSelector((state:any) => state.language.language);
   const [limit, setLimit] = useState(20);
-  // const currentPage = useRef<number>(1);
   const [currentPage, setCurrentPage] = useState(
     Number(sessionStorage.getItem("page")) || 1
   );
@@ -95,7 +93,7 @@ function AllAds() {
   const renderData = (allPosts: any) => {
     return (
       <>
-        <div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 py-10">
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-5 pt-5 pb-10 px-6 lg:px-0 bg-white lg:bg-transparent">
           {allPosts?.map((post: any) => (
             <AllPost key={post._id} post={post}></AllPost>
           ))}
@@ -198,7 +196,7 @@ function AllAds() {
         <meta property="og:site_name" content="quickvara.com" />
       </Head>
      {
-      isLoading ? <Loader></Loader> :  <section className="lg:my-5 lg:w-10/12 mx-auto bg-white px-[32px] rounded">
+      isLoading ? <Loader></Loader> :  <section className="lg:w-10/12 mx-auto rounded bg-white lg:bg-transparent">
       {renderData(currentItems)}
        <ul
       className={

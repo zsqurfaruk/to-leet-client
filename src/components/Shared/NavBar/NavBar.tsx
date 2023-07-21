@@ -17,20 +17,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleLanguage } from "@/redux/features/Language/LanguageSlice";
 import Image from "next/image";
 import logo from "../../../image/Simple_Box_Solution_Game_Store_Logo__1_-removebg-preview.png"
+import { setCityName } from "@/redux/features/FilterCity/FilterCitySlice";
+import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
+import { setFilterModalValue } from "@/redux/features/FilterModalSlice/FilterModalSlice";
+import { setDivisionNameEng } from "@/redux/features/DivisionFilter/DivisionFilterSlice";
+import { setDistrictsName } from "@/redux/features/DistrictsFilter/DistrictsSlice";
 
 
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
   const {
-    setCityName,
-    setDivisionNameEng,
-    setDistrictsName,
-    setHomePopularAreaName,
     setFilterTypeCity,
     setFilterTypeDivision,
     setOpenModalValue,
-    setFilterValue,
-    setFilterModalValue,
+    // setFilterValue,
     setFilterModal,
     handleOpenModalEng,
     setOpenModalEng,
@@ -106,19 +106,37 @@ useEffect(() => {
     dispatch(toggleLanguage(initialLanguage));
   }
 }, [dispatch, initialLanguage, storedLanguage]);
-  
- 
+
+
   const handleHome = () => {
-    setCityName({});
-    setDivisionNameEng({}),
-      setDistrictsName({}),
-      setHomePopularAreaName({}),
+    dispatch(setCityName({
+      eng: "",
+      ban: ""
+    }));
+    dispatch(setHomePopularAreaName({
+      eng: "",
+      ban: ""
+    }));
+    dispatch(setFilterModalValue({
+      eng: "",
+      ban: ""
+    }));
+    dispatch(setDivisionNameEng({
+      eng: "",
+      ban: ""
+    }));
+    dispatch(setDistrictsName({
+      eng: "",
+      ban: ""
+    }));
+    // setHomePopularAreaName({}),
+    // setDistrictsName({}),
       setOpenModalValue({});
     handleOpenModalEng();
     setOpenModalEng(false);
-    setFilterModalValue({});
+    // setFilterModalValue({});
     setFilterModal(false);
-    setFilterValue({});
+    // setFilterValue({});
     setFilterTypeCity(false);
     setFilterTypeDivision(false);
     setPostCityNameEng({}),
@@ -127,18 +145,19 @@ useEffect(() => {
       setPostOpenModal(false);
     setPostDistrictsName({});
     setGetUniversityModalValue({});
-    Cookies.remove("city");
-    Cookies.remove("area");
-    Cookies.remove("district");
-    Cookies.remove("division");
-    Cookies.remove("filterMV");
+    // Cookies.remove("city");
+    // Cookies.remove("area");
+    // Cookies.remove("district");
+    // Cookies.remove("division");
+    // Cookies.remove("filterMV");
     Cookies.remove("openMV");
-    setTitleArea("")
-    setTitleCity("")
-    setTitleDistrict("")
-    setTitleDivision("")
-    setDestinationType("")
+    // setTitleArea("")
+    // setTitleCity("")
+    // setTitleDistrict("")
+    // setTitleDivision("")
+    // setDestinationType("")
     sessionStorage.removeItem("page")
+    sessionStorage.removeItem("paged")
   };
 
   const email = Cookies.get("authentication");

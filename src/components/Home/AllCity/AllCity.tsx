@@ -17,7 +17,7 @@ const AllCity = () => {
        
       </h1> */}
       {!lang ? (
-        <h1 className="text-2xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
+        <h1 className="text-3xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700">
           Select your city.
         </h1>
       ) : (

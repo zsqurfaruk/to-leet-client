@@ -30,6 +30,7 @@ import PhoneInput from "react-phone-input-2";
 import parsePhoneNumberFromString from "libphonenumber-js";
 import { AiOutlineMinus } from "react-icons/ai";
 import { useSelector } from "react-redux";
+import style from "../../../styles/postProducts.module.css"
 const selectStyles = {
   control: (styles:any, { isFocused }:any) => ({
     ...styles,
@@ -245,11 +246,6 @@ const PostDetails = () => {
     setPostOpenModal(false);
     
     if (result?.message === "success") {
-      if(lang){
-        toast.success("আপনার বিজ্ঞাপনের জন্য আপনাকে ধন্যবাদ.")
-      }else{
-        toast.success("Thank you for your ads.");
-      }
       setReload(!reload);
       router.push(`/${modalValue.eng}`);
       setPostLoading(false);
@@ -263,6 +259,11 @@ const PostDetails = () => {
       setBathRooms({})
       setWifi({})
       setTotalBed({})
+      if(lang){
+        toast.success("আপনার বিজ্ঞাপনটি সম্পন্ন হয়েছে।")
+      }else{
+        toast.success("Your ads have been completed.");
+      }
     }
   };
 
@@ -360,6 +361,11 @@ const PostDetails = () => {
   const handleMinus = () => {
     setMinusNumber(!minusNumber);
   };
+
+
+  const handleUniversityChange=()=>{
+    setGetUniversityModalValue({})
+  }
   return (
     <>
       <Head>
@@ -418,20 +424,28 @@ const PostDetails = () => {
             </div>
           )}
           {getUniversityModalValue?.eng && (
-            <div>
+            <div className="flex justify-center gap-3">
+              <div>
               {!lang ? (
                 <h2 className="text-center text-lg mt-2">
                   {" "}
                   You have selected{" "}
                   <span className="lowercase">
-                    {getUniversityModalValue?.eng}
+                    {getUniversityModalValue?.eng}.
                   </span>
                 </h2>
               ) : (
                 <h2 className="text-center mt-2">
-                  আপনি নির্বাচন করেছেন {getUniversityModalValue?.ban}
+                  আপনি নির্বাচন করেছেন {getUniversityModalValue?.ban}।
                 </h2>
               )}
+              </div>
+               <div className="mt-2 text-warning cursor-pointer text-lg">
+                {
+                  !lang ?  <h5 onClick={handleUniversityChange}>Change?</h5> :
+                 <h5 onClick={handleUniversityChange}>পরিবর্তন?</h5>
+                }
+              </div>
             </div>
           )}
           <div>
@@ -439,7 +453,7 @@ const PostDetails = () => {
               {!lang ? (
                 <div>
                   {modalValue?.eng && (
-                    <div className="flex justify-center gap-2 md:text-xl lg:-ml-10">
+                    <div className={getUniversityModalValue?.eng ? "hidden" : "flex justify-center gap-2 md:text-lg lg:-ml-10"}>
                       <h1 className="cursor-pointer">
                         Is the{" "}
                         <span className="text-warning">{modalValue?.eng}</span>{" "}
@@ -464,7 +478,7 @@ const PostDetails = () => {
               ) : (
                 <div>
                   {modalValue.ban && (
-                    <div className="flex justify-center gap-2 text-sm md:text-base lg:-ml-32">
+                    <div className={getUniversityModalValue?.eng ? "hidden" : "flex justify-center gap-2 text-sm md:text-base lg:-ml-32"}>
                       <h1>
                         <span className="text-warning">{modalValue?.ban}</span>{" "}
                         কি বিশ্ববিদ্যালয় বা মেডিকেল কলেজের পাশে?
@@ -678,7 +692,7 @@ const PostDetails = () => {
                 {!lang ? (
                   <div className="form-control lg:w-6/12 mx-auto">
                     <label className="label">
-                      <span className="label-text">Wifi Facilities</span>
+                      <span className="label-text">Wifi Facilities (Optional)</span>
                     </label>
                     <Select
                       placeholder="Wifi Facilities"
@@ -692,7 +706,7 @@ const PostDetails = () => {
                 ) : (
                   <div className="form-control lg:w-6/12 mx-auto  ">
                     <label className="label">
-                      <span className="label-text">ওয়াইফাই সুবিধাঃ</span>
+                      <span className="label-text">ওয়াইফাই সুবিধা (ঐচ্ছিক)</span>
                     </label>
                     <Select
                       placeholder="ওয়াইফাই সুবিধাঃ"
@@ -877,12 +891,12 @@ const PostDetails = () => {
                             <label htmlFor="file1">
                               {!lang ? (
                                 <div className="rounded border border-warning p-2 cursor-pointer">
-                                  <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+                                  <BsImage className={`h-6 w-6 ml-7 md:ml-12 ${style.handleImage}`} />
                                   <small>Upload Photo</small>
                                 </div>
                               ) : (
                                 <div className="rounded border border-warning p-2 cursor-pointer">
-                                  <BsImage className="h-6 w-6 ml-7 md:ml-12 lg:ml-7" />
+                                  <BsImage className={`h-6 w-6 ml-7 md:ml-12 ${style.handleImage}`} />
                                   <small> ছবি যুক্ত করুন</small>
                                 </div>
                               )}
@@ -944,8 +958,8 @@ const PostDetails = () => {
                                   <BsImage
                                     className={
                                       imageUrl1
-                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
-                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                        ? `h-6 w-6 ml-7 md:ml-12 ${style.handleImage}`
+                                        : `h-6 w-6 ml-7 md:ml-12 ${style.handleImage} text-gray-400`
                                     }
                                   />
                                   <small>Upload Photo</small>
@@ -961,8 +975,8 @@ const PostDetails = () => {
                                   <BsImage
                                     className={
                                       imageUrl1
-                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
-                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                        ? `h-6 w-6 ml-7 md:ml-12 ${style.handleImage}`
+                                        : `h-6 w-6 ml-7 md:ml-12 ${style.handleImage}  text-gray-400`
                                     }
                                   />
                                   <small> ছবি যুক্ত করুন</small>
@@ -1028,8 +1042,8 @@ const PostDetails = () => {
                                   <BsImage
                                     className={
                                       imageUrl1 && imageUrl2
-                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
-                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                        ? `h-6 w-6 ml-7 md:ml-12 ${style.handleImage}`
+                                        : `h-6 w-6 ml-7 md:ml-12 ${style.handleImage} text-gray-400`
                                     }
                                   />
                                   <small>Upload Photo</small>
@@ -1045,8 +1059,8 @@ const PostDetails = () => {
                                   <BsImage
                                     className={
                                       imageUrl1 && imageUrl2
-                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
-                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                        ? `h-6 w-6 ml-7 md:ml-12 ${style.handleImage}`
+                                        : `h-6 w-6 ml-7 md:ml-12 ${style.handleImage} text-gray-400`
                                     }
                                   />
                                   <small> ছবি যুক্ত করুন</small>
@@ -1110,8 +1124,8 @@ const PostDetails = () => {
                                   <BsImage
                                     className={
                                       imageUrl3
-                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
-                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                        ? `h-6 w-6 ml-7 md:ml-12 ${style.handleImage}`
+                                        : `h-6 w-6 ml-7 md:ml-12 ${style.handleImage} text-gray-400`
                                     }
                                   />
                                   <small>Upload Photo</small>
@@ -1127,8 +1141,8 @@ const PostDetails = () => {
                                   <BsImage
                                     className={
                                       imageUrl3
-                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
-                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                        ? `h-6 w-6 ml-7 md:ml-12  ${style.handleImage}`
+                                        : `h-6 w-6 ml-7 md:ml-12 ${style.handleImage} text-gray-400`
                                     }
                                   />
                                   <small> ছবি যুক্ত করুন</small>
@@ -1193,8 +1207,8 @@ const PostDetails = () => {
                                   <BsImage
                                     className={
                                       imageUrl4
-                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
-                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                        ? `h-6 w-6 ml-7 md:ml-12 ${style.handleImage}`
+                                        : `h-6 w-6 ml-7 md:ml-12 ${style.handleImage} text-gray-400`
                                     }
                                   />
                                   <small>Upload Photo</small>
@@ -1210,8 +1224,8 @@ const PostDetails = () => {
                                   <BsImage
                                     className={
                                       imageUrl4
-                                        ? "h-6 w-6 ml-7 md:ml-12 lg:ml-7"
-                                        : "h-6 w-6 ml-7 md:ml-12 lg:ml-7 text-gray-400"
+                                        ? `h-6 w-6 ml-7 md:ml-12 ${style.handleImage}`
+                                        : `h-6 w-6 ml-7 md:ml-12 ${style.handleImage} text-gray-400`
                                     }
                                   />
                                   <small> ছবি যুক্ত করুন</small>

@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/app/store";
 import { getAllPosts } from "@/redux/features/AllPosts/AllPostsSlice";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
+import Image from "next/image";
+import userPic from "../../../image/team.png"
+import adsPic from "../../../image/counter-icon-1 (1).svg"
 
 function PostCounter() {
    const lang = useSelector((state:any) => state.language.language);
@@ -86,33 +89,76 @@ function PostCounter() {
     <div className="bg-warning">
       <hr className="w-10/12 mx-auto" />
       <div className="flex justify-evenly gap-2 w-10/12 mx-auto pb-20 pt-10 mt-10">
-        <div className="text-primary border-2 border-accent shadow-md shadow-accent text-xl md:text-3xl md:font-semibold  p-10 rounded">
+        <div className="text-primary border-2 border-accent shadow-md shadow-accent p-8 md:p-11 rounded">
           {!lang ? (
-            <span>
-              Total Ads: <CountUp end={allPosts?.length} duration={3} />
-            </span>
+            <>
+            <Image
+            className={
+               "h-16 w-16 border rounded-lg border-warning ml-3 mr-1"
+                
+            }
+            src={adsPic}
+            alt={"Male"}
+          ></Image>
+            <h1 className="text-4xl font-semibold mt-2 ml-3">
+              <CountUp end={allPosts?.length} duration={3} />
+            </h1>
+            <h2 className="ml-3">Total Ads</h2>
+            </>
           ) : (
-            <span className="text-lg md:text-2xl">
-              মোট বিজ্ঞাপনঃ{" "}
+
+            <>
+            <Image
+            className={
+               "h-16 w-16 border rounded-lg border-warning ml-3"
+                
+            }
+            src={adsPic}
+            alt={"Male"}
+          ></Image>
+            <h1 className="text-4xl font-semibold ml-2 mt-2">
+              
               {startCounting && (
                 <CountUp
                   end={count}
                   duration={3}
                   formattingFn={() => banglaNumber}
                 />
-              )}{" "}
-              টি
-            </span>
+              )} 
+              
+            </h1>
+            <h2 className="text-xs md:text-sm mt-1 ml-1">মোট বিজ্ঞাপন</h2>
+            </>
           )}
         </div>
-        <div className="text-primary text-xl md:text-3xl md:font-semibold  border-2 border-accent shadow-md shadow-accent p-8 md:p-10 rounded">
+        <div className="text-primary  border-2 border-accent shadow-md shadow-accent p-8 md:p-10 rounded">
           {!lang ? (
-            <span>
-              Total Users: <CountUp end={userCounter?.length} duration={3} />
-            </span>
+           <>
+            <Image
+            className={
+               "h-16 w-16 border rounded-lg border-warning  ml-3"
+                
+            }
+            src={userPic}
+            alt={"Male"}
+          ></Image>
+            <h1 className="text-4xl  font-semibold mt-2 ml-3">
+               <CountUp end={userCounter?.length} duration={3} />
+            </h1>
+            <h2 className="ml-3">Total User</h2>
+            </>
           ) : (
-            <span className="text-lg md:text-2xl">
-              মোট ব্যবহারকারীঃ{" "}
+            <>
+            <Image
+            className={
+               "h-16 w-16 border rounded-lg border-warning  ml-3"
+                
+            }
+            src={userPic}
+            alt={"Male"}
+          ></Image>
+            <h1 className="text-4xl font-semibold ml-3 mt-2">
+              
               {startCounting && (
                 <CountUp
                   end={userCount}
@@ -120,7 +166,9 @@ function PostCounter() {
                   formattingFn={() => banglaNumberUser}
                 />
               )}{" "}
-            </span>
+            </h1>
+            <h2 className="text-xs md:text-sm mt-1">মোট ব্যবহারকারী</h2>
+            </>
           )}
         </div>
       </div>

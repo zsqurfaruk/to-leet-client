@@ -4,7 +4,8 @@ import Select from "react-select";
 import { options } from "./ChitDataBan";
 import { option } from "./ChitDataEng";
 import Cookies from "js-cookie";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
 const selectStyles = {
   control: (styles: any, { isFocused }: any) => ({
     ...styles,
@@ -15,13 +16,43 @@ const selectStyles = {
 
 const PopularAreaOfChit = () => {
   const {
-    setHomePopularAreaName,
-    setFilterValue,
-    filterValue,
-    homePopularAreaName,
+    
     setFilterModal,
     setTitleArea,
   }: any = useContext(StateContext);
+  // const handleFilter = (v: any) => {
+  //   if (v?.name) {
+  //     if (v?.name === "eng") {
+  //       const newName = {
+  //         eng: v?.label,
+  //         ban: v?.value,
+  //       };
+  //       setHomePopularAreaName(newName);
+  //       setTitleArea(newName?.eng);
+  //       setFilterValue({ ...filterValue, homePopularAreaName: newName });
+  //       Cookies.set("area", JSON.stringify(newName), { expires: 1 });
+  //       setFilterModal(true);
+  //     } else if (v?.name === "ban") {
+  //       const newName = {
+  //         eng: v?.value,
+  //         ban: v?.label,
+  //       };
+  //       setHomePopularAreaName(newName);
+  //       setTitleArea(newName?.eng);
+  //       setFilterValue({ ...filterValue, homePopularAreaName: newName });
+  //       Cookies.set("area", JSON.stringify(newName), { expires: 1 });
+  //       setFilterModal(true);
+  //     }
+  //   } else {
+  //     setHomePopularAreaName(v);
+  //     setFilterValue({ ...filterValue, homePopularAreaName: v });
+  //     Cookies.set("area", JSON.stringify(v), { expires: 1 });
+  //   }
+  // };
+
+  const dispatch = useDispatch();
+  const homePopularAreaName = useSelector((state:any) => state.homePopularArea.homePopularAreaName);
+ 
   const handleFilter = (v: any) => {
     if (v?.name) {
       if (v?.name === "eng") {
@@ -29,26 +60,19 @@ const PopularAreaOfChit = () => {
           eng: v?.label,
           ban: v?.value,
         };
-        setHomePopularAreaName(newName);
-        setTitleArea(newName?.eng);
-        setFilterValue({ ...filterValue, homePopularAreaName: newName });
-        Cookies.set("area", JSON.stringify(newName), { expires: 1 });
+        dispatch(setHomePopularAreaName(newName));
         setFilterModal(true);
       } else if (v?.name === "ban") {
         const newName = {
           eng: v?.value,
           ban: v?.label,
         };
-        setHomePopularAreaName(newName);
-        setTitleArea(newName?.eng);
-        setFilterValue({ ...filterValue, homePopularAreaName: newName });
-        Cookies.set("area", JSON.stringify(newName), { expires: 1 });
+        dispatch(setHomePopularAreaName(newName));
         setFilterModal(true);
       }
     } else {
-      setHomePopularAreaName(v);
-      setFilterValue({ ...filterValue, homePopularAreaName: v });
-      Cookies.set("area", JSON.stringify(v), { expires: 1 });
+      dispatch(setHomePopularAreaName(v));
+       
     }
   };
   // if (homePopularAreaName?.name === "eng") {

@@ -35,7 +35,7 @@ function Home() {
         <meta property="og:site_name" content="quickvara.com" />
         <meta
           property="og:image"
-          content="https://i.ibb.co/gv3DdvJ/Simple-Box-Solution-Game-Store-Logo-2.jpg"
+          content="https://i.ibb.co/D8b85Dc/Simple-Box-Solution-Game-Store-Logo-3.jpg"
         />
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" />
@@ -63,7 +63,7 @@ function Home() {
         <meta property="og:site_name" content="quickvara.com" />
         <meta
           property="og:image"
-          content="https://i.ibb.co/gv3DdvJ/Simple-Box-Solution-Game-Store-Logo-2.jpg"
+          content="https://i.ibb.co/D8b85Dc/Simple-Box-Solution-Game-Store-Logo-3.jpg"
         />
       </Head>
       <main className="bg-white">

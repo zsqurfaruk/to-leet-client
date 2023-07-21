@@ -1,40 +1,66 @@
 import { StateContext } from "@/Context/StateContext/StateContext";
+import { RootState } from "@/redux/app/store";
+import { setDistrictsName } from "@/redux/features/DistrictsFilter/DistrictsSlice";
+import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
+import { setFilterModalValue } from "@/redux/features/FilterModalSlice/FilterModalSlice";
 import { Button, Card, Typography } from "@material-tailwind/react";
 import Cookies from 'js-cookie';
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const FilterDestinationType = () => {
   const {
     setFilterModal,
-    setDistrictsName,
-    setHomePopularAreaName,
-    setFilterModalValue,
-    districtsName,
-    divisionNameEng,
-    cityName,
-    homePopularAreaName,
-    filterModalValue,
-    setFilterValue,
-    filterValue,
   }: any = useContext(StateContext)
    const router = useRouter();
-  const handleFilter = (v: any) => {
-    setFilterModalValue(v);
-    setFilterValue({ ...filterValue, filterModalValue: v });
-    Cookies.set("filterMV", JSON.stringify(v),{ expires: 1 })
-    router.push(
-      `/ads/${
-        (homePopularAreaName?.eng || districtsName?.eng)?.toLowerCase()
-      }/${(cityName?.eng || divisionNameEng?.eng)?.toLowerCase()}`
-    );
-  };
+   const cityName = useSelector((state: any) => state.cityName.cityName)
+   const homePopularAreaName = useSelector((state:any) => state.homePopularArea.homePopularAreaName);
+   const divisionNameEng = useSelector((state: RootState) => state.divisionNameEng.divisionNameEng);
+   const districtsName = useSelector(
+     (state: RootState) => state.districtsName.districtsName
+   );
+   
+  // const handleFilter = (v: any) => {
+  //   setFilterModalValue(v);
+  //   setFilterValue({ ...filterValue, filterModalValue: v });
+  //   Cookies.set("filterMV", JSON.stringify(v),{ expires: 1 })
+  //   router.push(
+  //     `/ads/${
+  //       (homePopularAreaName?.eng || districtsName?.eng)?.toLowerCase()
+  //     }/${(cityName?.eng || divisionNameEng?.eng)?.toLowerCase()}`
+  //   );
+  // };
+  const dispatch = useDispatch();
+ 
+ 
+const filterModalValue = useSelector((state: RootState) => state.filterModalValue.filterModalValue);
+ 
 
+  const handleFilter = (v:any) => {
+    dispatch(setFilterModalValue(v));
+    const filterType = filterModalValue?.eng ? filterModalValue?.eng : v?.eng;
+    // dispatch(setFilterValue({... filterValue ,filterModalValue: v }));
+    // Cookies.set("filterMV", JSON.stringify(v), { expires: 1 });
+    const adParams = `${(homePopularAreaName?.eng || districtsName?.eng)}/${cityName?.eng || divisionNameEng?.eng}/${filterType}`;
+    router.push(`/ads/${adParams}`);
+  };
+ 
+  // const filterValue = useSelector((state: RootState) => state.filterModalValue.filterModalValue);
+ 
+ 
+  
   const handleCancel = () => {
     setFilterModal(false);
-    setHomePopularAreaName({});
-    setDistrictsName({});
+    dispatch(setHomePopularAreaName({
+      eng: "",
+      ban: ""
+    }));
+    dispatch(setDistrictsName({
+      eng: "",
+      ban: ""
+    }));
+   
   };
 
   const lang = useSelector((state:any) => state.language.language); 
@@ -71,7 +97,7 @@ const FilterDestinationType = () => {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 lg:gap-5 md:gap-2 gap-1 mt-3 md:mt-8">
         <Card
-          className="border border-warning cursor-pointer"
+          className="border border-warning cursor-pointer rounded"
           onClick={() =>
             handleFilter({
               eng: "Bachelor-(Male)",
@@ -80,14 +106,14 @@ const FilterDestinationType = () => {
           }
         >
           {!lang ? (
-            <Typography className="text-center">Bachelor (Male)</Typography>
+            <Typography className="text-center ">Bachelor (Male)</Typography>
           ) : (
             <Typography className="text-center">ব্যাচেলর (ছেলে)</Typography>
           )}
         </Card>
 
         <Card
-          className="border border-warning cursor-pointer"
+          className="border border-warning cursor-pointer rounded"
           onClick={() =>
             handleFilter({
               eng: "Bachelor-(Female)",
@@ -102,7 +128,7 @@ const FilterDestinationType = () => {
           )}
         </Card>
         <Card
-          className="border border-warning cursor-pointer"
+          className="border border-warning cursor-pointer rounded"
           onClick={() =>
             handleFilter({ eng: "Mess-(Male)", ban: "মেস-(ছেলে)" })
           }
@@ -115,7 +141,7 @@ const FilterDestinationType = () => {
         </Card>
 
         <Card
-          className="border border-warning cursor-pointer"
+          className="border border-warning cursor-pointer rounded"
           onClick={() =>
             handleFilter({ eng: "Mess-(Female)", ban: "মেস-(মেয়ে)" })
           }
@@ -127,7 +153,7 @@ const FilterDestinationType = () => {
           )}
         </Card>
         <Card
-          className="border border-warning cursor-pointer"
+          className="border border-warning cursor-pointer rounded"
           onClick={() =>
             handleFilter({ eng: "Sublet-(Male)", ban: "সাবলেট-(ছেলে)" })
           }
@@ -140,7 +166,7 @@ const FilterDestinationType = () => {
         </Card>
 
         <Card
-          className="border border-warning cursor-pointer"
+          className="border border-warning cursor-pointer rounded"
           onClick={() =>
             handleFilter({
               eng: "Sublet-(Female)",
@@ -156,7 +182,7 @@ const FilterDestinationType = () => {
         </Card>
 
         <Card
-          className="border border-warning cursor-pointer"
+          className="border border-warning cursor-pointer rounded"
           onClick={() => handleFilter({ eng: "Family", ban: "পরিবার" })}
         >
           {!lang ? (
@@ -169,7 +195,7 @@ const FilterDestinationType = () => {
        
 
         <Card
-          className="border border-warning cursor-pointer"
+          className="border border-warning cursor-pointer rounded"
           onClick={() => handleFilter({ eng: "Hostel", ban: "আবাসিক-হোস্টেল" })}
         >
           {!lang ? (
@@ -180,7 +206,7 @@ const FilterDestinationType = () => {
         </Card>
 
         <Card
-          className="border border-warning cursor-pointer"
+          className="border border-warning cursor-pointer rounded"
           onClick={() => handleFilter({ eng: "Office", ban: "অফিস" })}
         >
           {!lang ? (
@@ -191,7 +217,7 @@ const FilterDestinationType = () => {
         </Card>
 
         <Card
-          className="border border-warning cursor-pointer"
+          className="border border-warning cursor-pointer rounded"
           onClick={() => handleFilter({ eng: "Shop", ban: "দোকান" })}
         >
           {!lang ? (
@@ -202,7 +228,7 @@ const FilterDestinationType = () => {
         </Card>
 
         <Card
-          className="border border-warning cursor-pointer"
+          className="border border-warning cursor-pointer rounded"
           onClick={() => handleFilter({ eng: "Vehicles", ban: "যানবাহন" })}
         >
           {!lang ? (
@@ -213,7 +239,7 @@ const FilterDestinationType = () => {
         </Card>
 
         <Card
-          className="border border-warning cursor-pointer"
+          className="border border-warning cursor-pointer rounded"
           onClick={() => handleFilter({ eng: "Garage", ban: "গ্যারেজ" })}
         >
           {!lang ? (

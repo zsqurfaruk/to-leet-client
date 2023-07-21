@@ -40,17 +40,17 @@ const ShowAllPost = ({ products }: ShowAllPostProps) => {
 
   const [limit, setLimit] = useState(20);
   const [currentPage, setCurrentPage] = useState(
-    Number(sessionStorage.getItem("page")) || 1
+    Number(sessionStorage.getItem("paged")) || 1
   );
   const [pageNumberLimit, setPageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
 
   useEffect(() => {
-    sessionStorage.setItem("page", currentPage.toString());
+    sessionStorage.setItem("paged", currentPage.toString());
   }, [currentPage]);
   useEffect(() => {
-    const storedPage = Number(sessionStorage.getItem("page")) || 1;
+    const storedPage = Number(sessionStorage.getItem("paged")) || 1;
     setCurrentPage(storedPage);
     setMaxPageNumberLimit(
       Math.ceil(storedPage / pageNumberLimit) * pageNumberLimit
@@ -63,7 +63,7 @@ const ShowAllPost = ({ products }: ShowAllPostProps) => {
   const handleClick = (e: any) => {
     const pageNumber = Number(e.target.id);
     setCurrentPage(pageNumber);
-    sessionStorage.setItem("page", pageNumber.toString());
+    sessionStorage.setItem("paged", pageNumber.toString());
   };
   const pages: number[] = [];
   for (let i = 1; i <= Math.ceil(products?.length / limit); i++) {
@@ -110,7 +110,7 @@ const ShowAllPost = ({ products }: ShowAllPostProps) => {
   const renderData = (products: any) => {
     return (
       <>
-        <div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 py-10">
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-5 pb-10">
           {products?.length > 0 &&
             products?.map((product: any) => (
               <Products
@@ -127,7 +127,7 @@ const ShowAllPost = ({ products }: ShowAllPostProps) => {
   const handlePrevious = () => {
     const newPage = currentPage - 1;
     setCurrentPage(newPage);
-    sessionStorage.setItem("page", newPage.toString());
+    sessionStorage.setItem("paged", newPage.toString());
 
     if (newPage % pageNumberLimit === 0) {
       setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
@@ -137,7 +137,7 @@ const ShowAllPost = ({ products }: ShowAllPostProps) => {
   const handleNext = () => {
     const newPage = currentPage + 1;
     setCurrentPage(newPage);
-    sessionStorage.setItem("page", newPage.toString());
+    sessionStorage.setItem("paged", newPage.toString());
 
     if (newPage > maxPageNumberLimit) {
       setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
@@ -229,7 +229,7 @@ const ShowAllPost = ({ products }: ShowAllPostProps) => {
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
       </Head>
-      <section className="lg:my-5 lg:w-10/12 mx-auto bg-white px-[32px] rounded">
+      <section className="lg:my-5 lg:w-10/12 mx-auto bg-white lg:bg-transparent px-6 lg:px-0 rounded">
         {renderData(currentItems)}
         {products?.length > 20 && (
           <ul

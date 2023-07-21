@@ -17,9 +17,18 @@ function Loading() {
             repeat={2}
           />
         </Typography>
-        <Typography className="mr-4 cursor-pointer text-warning text-xl font-semibold">
-          The Ultimate Rental Solution
-        </Typography>
+        {/* <Typography className="mr-4 cursor-pointer text-warning text-xl font-semibold">
+        <TypeAnimation
+            sequence={[
+              // Same substring at the start will only be typed out once, initially
+              "The Ultimate Rental Solution",
+              10, // wait 1s before replacing "Mice" with "Hamsters"
+              "The Ultimate Rental Solution",
+              10,
+            ]}
+            repeat={2}
+          />
+        </Typography> */}
       </div>
     </div>
   );

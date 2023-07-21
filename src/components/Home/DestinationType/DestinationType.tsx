@@ -4,10 +4,12 @@ import DesEng from "./DesEng";
 import DesBan from "./DesBan";
  import { StateContext } from "@/Context/StateContext/StateContext";
 import { useSelector } from "react-redux";
+import { RootState } from "@/redux/app/store";
  
 
 const DestinationType = () => {
-   const {filterTypeDivision, divisionNameEng}:any = useContext(StateContext)
+   const {filterTypeDivision }:any = useContext(StateContext)
+   const divisionNameEng = useSelector((state: RootState) => state.divisionNameEng.divisionNameEng);
   const lang = useSelector((state:any) => state.language.language);
   return (
     <section  className={

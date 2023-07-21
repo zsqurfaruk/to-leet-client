@@ -106,7 +106,7 @@ const Dashboard = () => {
         ) : (
           <>
             {" "}
-            <div className="px-[14px] grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="px-[14px] grid grid-cols-1 md:grid-cols-2 gap-5">
               {personalPost?.map((post: any) => (
                 <DashboardPost key={post._id} post={post}></DashboardPost>
               ))}

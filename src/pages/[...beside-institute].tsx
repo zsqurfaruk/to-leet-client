@@ -1,15 +1,35 @@
-import { APIContext } from "@/Context/ApiContext/ApiContext";
 import ShowUniversityPost from "@/components/Home/AllPost/ShowUniversityPost";
-import React, { useContext } from "react";
+import React, { useEffect,useState } from "react";
 import Lottie from "lottie-react";
 import lotti from "../image/lf20_jkbuwuhk.json";
 import Head from "next/head";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "@/components/Loading/Loader";
+import { AppDispatch, RootState } from "@/redux/app/store";
+import { useRouter } from "next/router";
+import { setOpenModalValue } from "@/redux/features/UniversitySlice/UniversitySlice";
+import { fetchAndFilterUniversityData } from "@/redux/features/UniversityFilter/UniversityFilerSlice";
 
 const University = () => {
-  const { filterPost, uniLoading }: any = useContext(APIContext);
    const lang = useSelector((state:any) => state.language.language);
+   const { filterPost, isLoading } = useSelector((state: RootState) => state.university);
+   const dispatch: AppDispatch = useDispatch();
+
+   const router = useRouter();
+  const params = router.asPath;
+  const refreshParams = params.split("/");
+ 
+ 
+  useEffect(() => {
+    const openModalValue = { eng: decodeURIComponent(refreshParams[2])};
+    dispatch(setOpenModalValue(openModalValue))
+    dispatch(fetchAndFilterUniversityData())
+      . then(( ) => {
+        // Handle the filtered data if needed
+        // setFinalValue(filteredData) 
+      })
+      .catch(( ) => {});
+  }, []);
   return (
     <>
       <Head>
@@ -55,13 +75,12 @@ const University = () => {
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
       </Head>
-      <section className=" lg:w-10/12 mx-auto bg-white px-[32px] rounded lg:my-10">
-        {uniLoading ? (
-          // <h1 className="text-center w-full mt-10 py-20 text-xl">Loading...</h1>
+      <section className=" lg:w-10/12 mx-auto bg-white lg:bg-transparent px-6 lg:px-0 rounded">
+        {isLoading ? (
           <Loader></Loader>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 py-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 pt-5 pb-10">
               {filterPost?.map((university: any) => (
                 <ShowUniversityPost
                   key={university._id}
@@ -71,12 +90,12 @@ const University = () => {
             </div>
             <div
               className={
-                filterPost.length === 0
+                filterPost?.length === 0  
                   ? "flex justify-center h-96 items-center"
                   : "flex justify-center"
               }
             >
-              {filterPost?.length === 0 && (
+              {filterPost?.length === 0  && (
                 <div className="lg:-mt-16">
                   <Lottie
                     className="h-52 w-52 ml-10"

@@ -12,7 +12,11 @@ import Cookies from "js-cookie";
 import AllDistricts from "../AllDivision/Districts/AllDistricts/AllDistricts";
 import ModalEng from "./Modal/ModalEng";
 import PostAreaModalEng from "./Modal/PostAreaModalEng";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setCityName } from "@/redux/features/FilterCity/FilterCitySlice";
+import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
+import { RootState } from "@/redux/app/store";
+import { setDivisionNameEng } from "@/redux/features/DivisionFilter/DivisionFilterSlice";
 
 const Banner = () => {
   const {
@@ -20,54 +24,61 @@ const Banner = () => {
     setFilterTypeCity,
     filterTypeDivision,
     setFilterTypeDivision,
-    cityName,
-    setCityName,
-    divisionNameEng,
-    setDivisionNameEng,
     handleOpenModalEng, 
   }: any = useContext(StateContext);
 
-  // const [width, setWidth] = useState(window.innerWidth);
-  // useEffect(() => {
-  //   const handleResize = () => setWidth(window.innerWidth);
-  //   window.addEventListener("resize", handleResize);
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, []);
+  const [width, setWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   // const [width, setWidth] = useState(0);
 
-  // useEffect(() => {
-  //   const handleResize = () => setWidth(window.innerWidth);
-  //   if (typeof window !== 'undefined') {
-  //     // Check if running in a browser environment
-  //     setWidth(window.innerWidth);
-  //     window.addEventListener('resize', handleResize);
-  //   }
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    if (typeof window !== 'undefined') {
+      // Check if running in a browser environment
+      setWidth(window.innerWidth);
+      window.addEventListener('resize', handleResize);
+    }
 
-  //   // Clean up the event listener on component unmount
-  //   return () => {
-  //     if (typeof window !== 'undefined') {
-  //       window.removeEventListener('resize', handleResize);
-  //     }
-  //   };
-  // }, []);
+    // Clean up the event listener on component unmount
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize);
+      }
+    };
+  }, []);
 
-
+  const dispatch = useDispatch();
   const handleFilterTypeCity = () => {
-    setCityName({});
+    dispatch(setCityName({
+      eng: "",
+      ban: ""
+    }));
+    dispatch(setHomePopularAreaName({
+      eng: "",
+      ban: ""
+    }));
     setFilterTypeCity(!filterTypeCity);
   };
   const handleFilterTypeDivision = () => {
-    setDivisionNameEng({});
+    dispatch(setDivisionNameEng({
+      eng: "",
+      ban: ""
+    }));
     setFilterTypeDivision(!filterTypeDivision);
   };
-  // const lan = Cookies.get("lan");
+  const divisionNameEng = useSelector((state: RootState) => state.divisionNameEng.divisionNameEng);
+  const cityName = useSelector((state: any) => state.cityName.cityName)
   const lang = useSelector((state:any) => state.language.language);
   return (
     <section className="pt-6">
       {!lang ? (
-        <div className="text-gray-700 md:flex justify-center gap-2 text-lg md:text-xl mx-8 md:mx-0">
+        <div className="text-gray-700 md:flex justify-center gap-2 text-[14.1px] md:text-lg mx-8 md:mx-0">
           <h1  >
-            Are you searching near your university?
+            Are you searching near your educational institution?
           </h1>
           <h1
             className="text-center gap-2 border-2 text-sm md:text-base border-warning shadow shadow-warning rounded px-2 mt-2 md:mt-0 cursor-pointer"
@@ -77,8 +88,8 @@ const Banner = () => {
           </h1>
         </div>
       ) : (
-        <div className="text-gray-700 md:flex md:justify-center gap-2 text-sm md:text-base mx-8 md:mx-0 ">
-          <h1>আপনি কি বিশ্ববিদ্যালয়ের কাছাকাছি বাসস্থান খুঁজছেন?</h1>
+        <div className="text-gray-700 md:flex md:justify-center gap-2 text-[11.8px] md:text-base mx-8 md:mx-0 ">
+          <h1>আপনি কি আপনার শিক্ষা প্রতিষ্ঠানের কাছাকাছি বাসস্থান খুঁজছেন?</h1>
           <h1
             className=" border-2  border-warning shadow shadow-warning  rounded px-3 cursor-pointer text-center mt-2 md:mt-0"
             onClick={handleOpenModalEng}
@@ -94,14 +105,14 @@ const Banner = () => {
           <div className="lg:h-screen flex items-center mt-8 lg:-mt-16">
             <div>
               <div className="-mt-5 lg:-mt-32 mb-5 lg:mb-0">
-                {cityName?.eng && <AllAreas></AllAreas>}
+                {filterTypeCity && cityName?.eng && <AllAreas></AllAreas>}
                 {/* {!cityName && cityNameBan && <AllAreas></AllAreas>} */}
                 {filterTypeCity && !cityName?.eng && <AllCity></AllCity>}
               </div>
               {!lang && !filterTypeCity && !cityName?.eng && (
                 <BannerEng></BannerEng>
               )}
-              {lang && !filterTypeCity && <BannerBan></BannerBan>}
+              {lang && !filterTypeCity && !cityName?.eng &&  <BannerBan></BannerBan>}
 
               <div className="hidden lg:block">
                 <div>
@@ -155,7 +166,7 @@ const Banner = () => {
             <AllDivision></AllDivision>
           )}
 
-          <div className="lg:hidden block">
+          <div className="lg:hidden block px-[5.5px]">
             <div>
               {!lang ? (
                 <h1 className={filterTypeCity || filterTypeDivision ? "mt-5 lg:mt-10 text-xl text-gray-700 ml-[30px] md:ml-20" : "mt-1 lg:mt-10 text-xl text-gray-700 ml-[27px] md:ml-0"}>

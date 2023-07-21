@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import {
   Button,
   Dialog,
@@ -12,37 +12,79 @@ import Select from "react-select";
 import { colourOptions } from "./DataEng";
 import { colourOption } from "./DataBan";
 import Link from "next/link";
-import Cookies from 'js-cookie';
+import { useRouter } from "next/router";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
- import { useSelector } from "react-redux";
+ import { useDispatch, useSelector } from "react-redux";
+import { setOpenModalValue } from "@/redux/features/UniversitySlice/UniversitySlice";
+ 
+import { AppDispatch, RootState } from "@/redux/app/store";
+import { fetchAndFilterUniversityData } from "@/redux/features/UniversityFilter/UniversityFilerSlice";
 
 export default function ModalEng() {
   const {
     handleOpenModalEng,
     openModalEng,
-    openModalValue,
-    setOpenModalValue,
+    // openModalValue,
+    // setOpenModalValue,
   }: any = useContext(StateContext);
-   const { handleFilterUniversity}: any = useContext(APIContext);
+  //  const { handleFilterUniversity}: any = useContext(APIContext);
+   const [localEng, setLocalEng] = useState<string | null>(null);
   const handleCancel = () => {
     handleOpenModalEng();
-    setOpenModalValue({});
+    // setOpenModalValue({});
   };
-  if (openModalValue?.name === "eng") {
-    const newName = {
-      eng: openModalValue?.label,
-      ban: openModalValue?.value,
-    };
-    setOpenModalValue(newName);
-    Cookies.set("openMV",newName?.eng)
-  } else if (openModalValue?.name === "ban") {
-    const newName = {
-      eng: openModalValue?.value,
-      ban: openModalValue?.label,
-    };
-    setOpenModalValue(newName);
-    Cookies.set("openMV",newName?.eng)
-  }
+
+  
+  // if (openModalValue?.name === "eng") {
+  //   const newName = {
+  //     eng: openModalValue?.label,
+  //     ban: openModalValue?.value,
+  //   };
+  //   setOpenModalValue(newName);
+  //   Cookies.set("openMV",newName?.eng)
+  // } else if (openModalValue?.name === "ban") {
+  //   const newName = {
+  //     eng: openModalValue?.value,
+  //     ban: openModalValue?.label,
+  //   };
+  //   setOpenModalValue(newName);
+  //   Cookies.set("openMV",newName?.eng)
+  // }
+  const openModalValue = useSelector((state:any) => state.openModalValue );
+  const dispatch = useDispatch<AppDispatch>()
+  // ... Rest of your component code
+// console.log(openModalValue)
+  const handleSelectChange = (newValue:any) => {
+    const newName =
+      newValue.name === 'eng'
+        ? { eng: newValue.label, ban: newValue.value }
+        : { eng: newValue.value, ban: newValue.label };
+    dispatch(setOpenModalValue(newName));
+    setLocalEng(newName?.eng );
+    // Cookies.set('openMV', newName.eng);
+  };
+
+  // useEffect(() => {
+  //   // Update the local state when the persisted state changes
+  //   if (openModalValue?.eng !== localEng) {
+  //     setLocalEng(openModalValue?.eng || null);
+  //   }
+  // }, [openModalValue?.eng, localEng]);
+ 
+  // useEffect(() => {
+  //   dispatch(fetchUniversityData());
+  //   openModalValueRef.current = openModalValue?.eng?.eng;
+  // }, [dispatch, openModalValue?.eng?.eng]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // const filterPost = useSelector((state: RootState) => state.universityFilter.filterPost);
+
+  // const openModalValue = useSelector((state: RootState) => state.openModalValue);
+  // const router = useRouter();
+  // const params = router.asPath;
+  // const refreshParams = params.split("/");
+  const handleFilterUniversity = () => {
+    dispatch(fetchAndFilterUniversityData());
+  };
 
   const lang = useSelector((state:any) => state.language.language);
   return (
@@ -73,7 +115,7 @@ export default function ModalEng() {
               placeholder="Search according to your needs:"
               isSearchable
               options={colourOptions}
-              onChange={setOpenModalValue}
+              onChange={handleSelectChange}
               className="text-sm bg-primary w-12/12 md:w-12/12 lg:w-full mx-auto text-gray-700 font-medium"
             />
           </DialogBody>
@@ -87,7 +129,7 @@ export default function ModalEng() {
               placeholder="অনুসন্ধান করতে ক্লিক করুন এবং আপনার প্রয়োজন অনুযায়ী নির্বাচন করুন"
               isSearchable
               options={colourOption}
-              onChange={setOpenModalValue}
+              onChange={handleSelectChange}
               className="text-sm bg-primary w-12/12 md:w-12/12 lg:w-full mx-auto text-gray-700 font-medium"
             />
           </DialogBody>
@@ -100,12 +142,16 @@ export default function ModalEng() {
             {!lang ? " Cancel" : "বাতিল"}
           </Button>
           <Link
-            href={{
-              pathname: "/beside-institute",
-              query: {
-                type: encodeURIComponent(JSON.stringify(openModalValue.eng)),
-              },
-            }}
+             href={
+              localEng
+                ? {
+                    pathname: `/beside-institute/${localEng}`,
+                    // query: {
+                    //   type: encodeURIComponent(JSON.stringify(openModalValue.eng)),
+                    // },
+                  }
+                : ''
+            }
             passHref
           >
             <button
@@ -126,12 +172,16 @@ export default function ModalEng() {
             <span>Cancel</span>
           </Button>
           <Link
-            href={{
-              pathname: "/beside-institute",
-              query: {
-                type: encodeURIComponent(JSON.stringify(openModalValue.eng)),
-              },
-            }}
+             href={
+              localEng
+                ? {
+                    pathname: `/beside-institute/${localEng}`,
+                    // query: {
+                    //   type: encodeURIComponent(JSON.stringify(openModalValue.eng)),
+                    // },
+                  }
+                : ''
+            }
             passHref
           >
             <Button

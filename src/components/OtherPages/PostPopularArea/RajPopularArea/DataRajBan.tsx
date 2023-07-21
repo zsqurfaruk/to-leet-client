@@ -6,6 +6,41 @@ export interface options {
   
   export const options: readonly options[] = [
     {
+      label: "কাদিরগঞ্জ",
+      value: "Kadirgonj",
+      name:  "ban"
+    },
+    {
+      label: "কাটাখালী",
+      value: "Katakhali",
+      name:  "ban"
+    },
+    {
+      label: "কাজীহাটা",
+      value: "Kazihata",
+      name:  "ban"
+    },
+    {
+      label: "কোর্ট স্টেশন",
+      value: "Court Station",
+      name:  "ban"
+    },
+    {
+      label: "গোদাগাড়ি",
+      value: "Godagari",
+      name:  "ban"
+    },
+    {
+      label: "ছোট বনগ্রাম",
+      value: "Chhota Banagram",
+      name:  "ban"
+    },
+    {
+      label: "পদ্মা আবাসিক এলাকা",
+      value: "Padma Residental Area",
+      name:  "ban"
+    },
+    {
       label: "বাগমারা",
       value: "Bagmara",
       name:  "ban"
@@ -28,58 +63,6 @@ export interface options {
       name:  "ban"
     },
     
-    {
-      label: "কোর্ট স্টেশন",
-      value: "Court Station",
-      name:  "ban"
-    },
-    {
-      label: "ছোট বনগ্রাম",
-      value: "Chhota Banagram",
-      name:  "ban"
-    },
-    {
-      label: "গোদাগাড়ি",
-      value: "Godagari",
-      name:  "ban"
-    },
-    {
-      label: "হরিপুর",
-      value: "Haripur",
-      name:  "ban"
-    },
-    {
-      label: "হেতেমখাঁ",
-      value: "Hatemkha",
-      name:  "ban"
-    },
-    {
-      label: "হোসনিগঞ্জ",
-      value: "Hossainiganj",
-      name:  "ban"
-    },
-    {
-      label: "কাদিরগঞ্জ",
-      value: "Kadirgonj",
-      name:  "ban"
-    },
-  
-    {
-      label: "কাজীহাটা",
-      value: "Kazihata",
-      name:  "ban"
-    },
-    {
-      label: "কাটাখালী",
-      value: "Katakhali",
-      name:  "ban"
-    },
-
-    {
-      label: "পদ্মা আবাসিক এলাকা",
-      value: "Padma Residental Area",
-      name:  "ban"
-    },
     {
       label: "মতিহার",
       value: "Motihar",
@@ -106,7 +89,22 @@ export interface options {
       value: "Shiroil",
       name:  "ban"
     },
-  
+    {
+      label: "হরিপুর",
+      value: "Haripur",
+      name:  "ban"
+    },
+    {
+      label: "হেতেমখাঁ",
+      value: "Hatemkha",
+      name:  "ban"
+    },
+    {
+      label: "হোসনিগঞ্জ",
+      value: "Hossainiganj",
+      name:  "ban"
+    },
+    
     {
       label: "ভদ্রা",
       value: "Vodra",

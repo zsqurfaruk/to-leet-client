@@ -1,4 +1,3 @@
-import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 import PopularAreaOfBarishal from "../../AllPopularAreas/PopularAreaOfBarisal/PopularAreaOfBarisal";
 import PopularAreaOfChit from "../../AllPopularAreas/PopularAreaOfChittagong/PopularAreaOfChittagong";
@@ -9,24 +8,38 @@ import PopularAreaOfRajshahi from "../../AllPopularAreas/PopularAreaOfRajshahi/P
 import PopularAreaOfRangpur from "../../AllPopularAreas/PopularAreaOfRangpur/PopularAreaOfRangpur";
 import FilterModal from "../../Banner/Modal/FilterModal";
 import PopularAreaOfSylhet from "../../AllPopularAreas/PopularAreaOfSylhet/PopularAreaOfSylhet";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setCityName } from "@/redux/features/FilterCity/FilterCitySlice";
+import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
 
 const AllAreas = () => {
-  const { cityName, setCityName, setHomePopularAreaName }: any = useContext(StateContext);
+ 
+  const dispatch = useDispatch();
+ 
   const handlePrevious = () => {
-    setCityName({});
-    setHomePopularAreaName({})
+    dispatch(setCityName({
+      eng: "",
+      ban: ""
+    }));
+    dispatch(setHomePopularAreaName({
+      eng: "",
+      ban: ""
+    }));
+     
   };
+  const cityName = useSelector((state: any) => state.cityName.cityName);
+
   const lang = useSelector((state:any) => state.language.language);
   return (
-    <section className="min-w-full px-8 md:px-0">
+    <section className="w-full px-8 md:px-0">
+      <div>
       <h1
         onClick={handlePrevious}
         className="text-warning text-sm mb-5 cursor-pointer hover:underline"
       >
         {!lang ? "Change city?" : "শহর পরিবর্তন?"}
       </h1>
-      <h1 className="text-xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700 min-w-12/12 md:w-full">
+      <h1 className="w-12/12 md:w-full text-2xl mb-5 border-l-4 border-b-4 border-warning pl-2 text-gray-700 ">
         {!lang ? (
           <span>Popular areas of {cityName?.eng}:</span>
         ) : (
@@ -54,6 +67,7 @@ const AllAreas = () => {
         <PopularAreaOfSylhet></PopularAreaOfSylhet>
       )}
       {cityName?.eng === "Mymensingh" && <PopularAreaOfMym></PopularAreaOfMym>}
+      </div>
     </section>
   );
 };

@@ -8,20 +8,29 @@ import {
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React from "react";
 import FilterDestinationType from "@/components/OtherPages/PostDestinationType/FilterDestinationType";
- import { useSelector } from "react-redux";
+ import { useDispatch, useSelector } from "react-redux";
+import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
+import { setDistrictsName } from "@/redux/features/DistrictsFilter/DistrictsSlice";
 
 export default function FilterModal() {
   const {
     filterModal,
     setFilterModal,
     handleFilterModal,
-    setHomePopularAreaName,
-    setDistrictsName
   }: any = useContext(StateContext);
+
+  const dispatch = useDispatch();
    const handleCancel = () => {
     setFilterModal(false);
-    setHomePopularAreaName({});
-    setDistrictsName({})
+    dispatch(setHomePopularAreaName({
+      eng: "",
+      ban: ""
+    }));
+    dispatch(setDistrictsName({
+      eng: "",
+      ban: ""
+    }));
+     
   };
   const lang = useSelector((state:any) => state.language.language);
   return (

@@ -9,16 +9,27 @@ import DistrictsOfRajshahi from "../DistrictsOfRajshahi/DistrictsOfRajshahi";
 import DistrictsOfRangpur from "../DistrictsOfRangpur/DistrictsOfRangpur";
 import DistrictsOfSylhet from "../DistrictsOfSylhet/DistrictsOfSylhet";
 import FilterModal from "@/components/Home/Banner/Modal/FilterModal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/app/store";
+import { setDivisionNameEng } from "@/redux/features/DivisionFilter/DivisionFilterSlice";
+import { setDistrictsName } from "@/redux/features/DistrictsFilter/DistrictsSlice";
 
 const AllDistricts = () => {
-  const { divisionNameEng, setDivisionNameEng, setDistrictsName }: any =
-    useContext(StateContext);
- 
+  // const { setDistrictsName }: any =
+  //   useContext(StateContext);
+  const dispatch = useDispatch();
   const handlePrevious = () => {
-    setDivisionNameEng({});
-    setDistrictsName({});
+    dispatch(setDivisionNameEng({
+      eng: "",
+      ban: ""
+    }));
+    dispatch(setDistrictsName({
+      eng: "",
+      ban: ""
+    }));
+     
   };
+  const divisionNameEng = useSelector((state: RootState) => state.divisionNameEng.divisionNameEng);
   const lang = useSelector((state:any) => state.language.language);
   return (
     <section className="w-full lg:mt-72 lg:ml-4 px-8 md:px-0 md:mx-0">

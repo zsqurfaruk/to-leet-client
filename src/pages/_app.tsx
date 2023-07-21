@@ -8,9 +8,11 @@ import DisableRightClick from "@/DisableRightClick/DisableRightClick";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Toaster } from "react-hot-toast";
-import { store } from "@/redux/app/store";
+import { persistor, store } from "@/redux/app/store";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import Loading from "@/components/Loading/Loading";
+ 
 
 export default function App({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(true);
@@ -47,8 +49,9 @@ export default function App({ Component, pageProps }: AppProps) {
     return <Loading></Loading>;
   }
   return (
-    <DisableRightClick>
-      <Provider store={store}>
+    // <DisableRightClick>
+    <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
         <StateInfo>
           <PostInfo>
             <ApiContext>
@@ -59,7 +62,9 @@ export default function App({ Component, pageProps }: AppProps) {
             </ApiContext>
           </PostInfo>
         </StateInfo>
+        </PersistGate>
       </Provider>
-    </DisableRightClick>
+      
+    // </DisableRightClick>
   );
 }

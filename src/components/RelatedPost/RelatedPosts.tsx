@@ -16,7 +16,7 @@ const RelatedPosts = ({ type, areaName, cityName, id , division, district}: any)
 const limit = 5; // Set the desired data limit
 
 useEffect(() => {
-    fetch(`https://zsqur.quickvara.com/api/v1/product/filter?limit=${limit}`, {
+    fetch(`http://localhost:5000/api/v1/product/filter?limit=${limit}`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -41,7 +41,7 @@ useEffect(() => {
     <div
       className={
         getValue.length > 0
-          ? "lg:w-10/12 mx-auto bg-white mb-10 px-10 py-5 lg:-mt-10  shadow-xl rounded-xl"
+          ? "lg:w-10/12 mx-auto bg-white mb-10 px-7 py-5 lg:-mt-10  shadow-none rounded-xl"
           : ""
       }
     >

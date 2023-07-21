@@ -1,17 +1,32 @@
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 import Cookies from "js-cookie";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/app/store";
+import { setDivisionNameEng } from "@/redux/features/DivisionFilter/DivisionFilterSlice";
 
 const AllDivisionName = () => {
-  const { setDivisionNameEng, setFilterValue, filterValue, setTitleDivision }: any =
+  const { setTitleDivision }: any =
     useContext(StateContext);
-  const handleFilter = (v: any) => {
-    setDivisionNameEng(v);
-    setFilterValue({ ...filterValue, divisionNameEng: v });
-    Cookies.set("division", JSON.stringify(v),{ expires: 1 })
-  };
+  // const handleFilter = (v: any) => {
+  //   setDivisionNameEng(v);
+  //   setFilterValue({ ...filterValue, divisionNameEng: v });
+  //   Cookies.set("division", JSON.stringify(v),{ expires: 1 })
+  // };
+       
+  const dispatch = useDispatch();
+  const divisionNameEng = useSelector(
+    (state: any) => state.divisionNameEng.divisionNameEng
+  );
 
+  // ...
+
+  const handleFilter = (division: { eng: string; ban: string }) => {
+    dispatch(setDivisionNameEng(division));
+    // Rest of your code
+  };
+  console.log(divisionNameEng)
+  // console.log(divisionNameEng)
   const lang = useSelector((state:any) => state.language.language);
   return (
     <div className="lg:-ml-4">

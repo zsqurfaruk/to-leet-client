@@ -1,6 +1,7 @@
 import Loading from "@/components/Loading/Loading";
 import Cookies from "js-cookie";
 import React, { createContext, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 export const StateContext = createContext({});
 
@@ -8,7 +9,7 @@ const StateInfo = ({ children }: any) => {
   const [tokenValidation, setTokenValidation] = useState("");
   const [filterTypeCity, setFilterTypeCity] = useState(false);
   const [filterTypeDivision, setFilterTypeDivision] = useState(false);
-  const [cityName, setCityName] = useState({});
+  // const [cityName, setCityName] = useState({});
   const [homePopularAreaName, setHomePopularAreaName] = useState({});
   const [divisionNameEng, setDivisionNameEng] = useState({});
   const [districtsName, setDistrictsName] = useState({});
@@ -25,19 +26,16 @@ const StateInfo = ({ children }: any) => {
   const [titleDistrict, setTitleDistrict] = useState("")
   const [titleDivision, setTitleDivision] = useState("")
 
-  const city = Cookies.get("city")
-  const area = Cookies.get("area")
-  const district = Cookies.get("district")
-  const division = Cookies.get("division")
-  const filter = Cookies.get("filterMV")
-  const [filterValue, setFilterValue] = useState({
-    cityName: city,
-    homePopularAreaName: area,
-    filterModalValue: filter,
-    divisionNameEng: division,
-    districtsName: district,
+  // const cityName = useSelector((state: any) => state.cityName.cityName)
+  // const [filterValue, setFilterValue] = useState({
+  //   cityName: city,
+  //   homePopularAreaName: area,
+  //   filterModalValue: filter,
+  //   divisionNameEng: division,
+  //   districtsName: district,
      
-  });
+  // });
+  
   const handleOpenModalEng = () => setOpenModalEng(!openModalEng);
   const handleFilterModal = () => setFilterModal(!filterModal);
 // console.log(filterValue)
@@ -52,8 +50,6 @@ const StateInfo = ({ children }: any) => {
     setFilterTypeCity,
     filterTypeDivision,
     setFilterTypeDivision,
-    setCityName,
-    cityName,
     setPrevious,
     previous,
     homePopularAreaName,
@@ -76,8 +72,6 @@ const StateInfo = ({ children }: any) => {
     setFilterModal,
     filterModalValue,
     setFilterModalValue,
-    filterValue,
-    setFilterValue,
     destinationType, setDestinationType,
     titleCity, setTitleCity,
     titleArea, setTitleArea,

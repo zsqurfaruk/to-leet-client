@@ -84,14 +84,14 @@ const AddPost = () => {
       </Head>
     <section>
       <PostAreaModalEng></PostAreaModalEng>
-      <div className="md:w-10/12 md:mx-auto bg-white p-5 
-      py-10 lg:py-0 lg:p-14 lg:my-16 rounded">
+      <div className="md:w-10/12 md:mx-auto bg-white
+      py-10 px-7 lg:p-14 lg:my-16 rounded">
        {
         !postDivisionNameEng?.eng &&  <div className="lg:w-10/12 mx-auto">
         {postCityNameEng?.eng && (
          <div>
           {
-            !lang ? <h1 className="text-center mb-5  text-xl lg:text-2xl border-b-2 border-warning lg:w-5/12 mx-auto"> You have selected <span className="lowercase text-warning">{postCityNameEng?.eng}</span> city.</h1>: <h1 className="text-center mb-5  lg:text-xl border-b-2 border-warning lg:w-5/12 mx-auto"> আপনি <span className="lowercase text-warning">{postCityNameEng?.ban}</span> শহর নির্বাচন করেছেন।</h1>
+            !lang ? <h1 className="text-center mb-5  text-xl lg:text-2xl border-b-2 border-warning lg:w-6/12 mx-auto"> You have selected <span className="lowercase text-warning">{postCityNameEng?.eng}</span> city.</h1>: <h1 className="text-center mb-5  lg:text-xl border-b-2 border-warning lg:w-6/12 mx-auto"> আপনি <span className="lowercase text-warning">{postCityNameEng?.ban}</span> শহর নির্বাচন করেছেন।</h1>
           }
            <h1
             onClick={handlePrevious}
@@ -154,7 +154,7 @@ const AddPost = () => {
           {postDivisionNameEng?.eng && (
            <div>
             {
-            !lang ? <h1 className="text-center mb-5 lg:mb-10 text-xl lg:text-2xl border-b-2 border-warning lg:w-6/12 mx-auto"> You have selected <span className="lowercase text-warning">{postDivisionNameEng?.eng}</span> division.</h1>: <h1 className="text-center mb-5 lg:mb-10 lg:text-xl border-b-2 border-warning lg:w-6/12 mx-auto"> আপনি <span className="lowercase text-warning">{postDivisionNameEng?.ban}</span> বিভাগ নির্বাচন করেছেন।</h1>
+            !lang ? <h1 className="text-center mb-5 lg:mb-10 text-xl lg:text-xl border-b-2 border-warning lg:w-6/12 mx-auto"> You have selected <span className="lowercase text-warning">{postDivisionNameEng?.eng}</span> division.</h1>: <h1 className="text-center mb-5 lg:mb-10 lg:text-lg border-b-2 border-warning lg:w-6/12 mx-auto"> আপনি <span className="lowercase text-warning">{postDivisionNameEng?.ban}</span> বিভাগ নির্বাচন করেছেন।</h1>
           }
              <h1
               onClick={handlePrevious}

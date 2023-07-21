@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-title-in-document-head */
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
@@ -11,7 +10,7 @@ export default function Document() {
         />
         <meta
           property="og:image"
-          content="https://i.ibb.co/gv3DdvJ/Simple-Box-Solution-Game-Store-Logo-2.jpg"
+          content="https://i.ibb.co/D8b85Dc/Simple-Box-Solution-Game-Store-Logo-3.jpg"
         />
       </Head>
       <body>

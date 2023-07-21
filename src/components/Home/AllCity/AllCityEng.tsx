@@ -1,16 +1,24 @@
 import React, { useContext } from "react";
 import { StateContext } from "@/Context/StateContext/StateContext";
-import Cookies from "js-cookie";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { setCityName } from "@/redux/features/FilterCity/FilterCitySlice";
+import { RootState } from "@/redux/app/store";
+ 
+ 
 const AllCityEng = () => {
-  const { setCityName, filterValue, setFilterValue, setTitleCity }: any =
-    useContext(StateContext);
-  const handleFilter = (v: any) => {
-    setCityName(v);
-    setFilterValue({ ...filterValue, cityName: v });
-    Cookies.set("city", JSON.stringify(v),{ expires: 1 })
-  };
+  const {setTitleCity }: any = useContext(StateContext);
+
+
+    const dispatch = useDispatch();
+    const handleFilter = (city: { eng: string; ban: string }) => {
+      dispatch(setCityName(city));
+      // Cookies.set("city", JSON.stringify(city)); 
+    };
+  
+    // Access the cityName from the Redux state using useSelector
+    const cityName = useSelector((state: RootState) => state.cityName.cityName);
+
+   
   const lang = useSelector((state:any) => state.language.language);
   return (
     <div>

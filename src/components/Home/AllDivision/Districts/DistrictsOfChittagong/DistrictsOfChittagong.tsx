@@ -2,22 +2,29 @@
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
 import Cookies from "js-cookie";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/app/store";
+import { setDistrictsName } from "@/redux/features/DistrictsFilter/DistrictsSlice";
 
 const DistrictsOfChittagong = () => {
   const {
-    setDistrictsName,
-    districtsName,
-    setFilterValue,
-    filterValue,
     setFilterModal,
     setTitleDistrict
   }: any = useContext(StateContext);
  
+  // const handleFilter = (v: any) => {
+  //   setDistrictsName(v);
+  //   setFilterValue({ ...filterValue, districtsName: v });
+  //   Cookies.set("district", JSON.stringify(v),{ expires: 1 })
+  // };
+
+  const dispatch = useDispatch();
+  const districtsName = useSelector(
+    (state: RootState) => state.districtsName.districtsName
+  );
+
   const handleFilter = (v: any) => {
-    setDistrictsName(v);
-    setFilterValue({ ...filterValue, districtsName: v });
-    Cookies.set("district", JSON.stringify(v),{ expires: 1 })
+    dispatch(setDistrictsName(v));
   };
   if (districtsName?.eng) {
     setFilterModal(true);

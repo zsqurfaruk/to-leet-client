@@ -5,10 +5,10 @@ import style from "../../../styles/banner.module.css";
 const BannerBan = () => {
   const { filterTypeDivision }: any = useContext(StateContext);
   return (
-    <div className="scale-90 px-3 md:scale-100 lg:scale-110 lg:ml-5 -mt-14">
+    <div className="scale-90 px-3 md:px-0 md:scale-100 lg:scale-110 lg:ml-5 -mt-14">
       <div
         className={
-          filterTypeDivision ? "text-gray-700 lg:leading-[27px]" : "mx-auto text-gray-700  lg:leading-[27px]"
+          filterTypeDivision ? "text-gray-700 lg:leading-[27px] md:block hidden" : "mx-auto text-gray-700  lg:leading-[27px] md:block hidden"
         }
       >
        
@@ -25,10 +25,29 @@ const BannerBan = () => {
          QuickVara
         </span> রয়েছে অপূর্ণিত। </span> */}
       </div>
+      <div
+        className={
+          filterTypeDivision ? "text-gray-700 lg:leading-[27px] block md:hidden px-1" : "mx-auto text-gray-700 lg:leading-[27px] block md:hidden px-1"
+        }
+      >
+       
+        <span
+          id={style.bannerTextColorChange}
+          className="text-[30px] md:text-[39px] font-semibold -ml-[.5px]"
+        >
+         কুইকভাড়া  </span>
+         একটি বিস্তৃত তালিকাসহ ঝামেলা-মুক্ত ভাড়া সমাধান খোঁজার সহজ এবং দ্রুততম উপায়। 
+        {/* <span> যেখানে আপনার বিশ্বাস নির্ভরযোগ্য, সেখানে  <span
+          id={style.bannerTextColorChange}
+          className="text-xl font-semibold"
+        >
+         QuickVara
+        </span> রয়েছে অপূর্ণিত। </span> */}
+      </div>
       <div className="relative">
         <div
           id={style.bannerTextColorChange}
-          className="mt-1 md:mt-3 text-sm text-justify leading-5 md:leading-6 lg:leading-[11px]"
+          className="mt-3 md:mt-3 text-sm text-justify leading-5 md:leading-6 lg:leading-[11px] px-1 md:px-0"
         >
           আজই আপনার অনুসন্ধান শুরু করুন এবং আপনার ভাড়ার সর্বোত্তম সমাধান খুঁজে
           পেতে

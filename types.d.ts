@@ -1,4 +1,4 @@
-type Products ={
+export type Products ={
     _id: string;
     bedrooms: number;
     bathrooms: number;
