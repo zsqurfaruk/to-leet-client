@@ -1,21 +1,14 @@
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React, { useContext } from "react";
-import Cookies from "js-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/app/store";
 import { setDistrictsName } from "@/redux/features/DistrictsFilter/DistrictsSlice";
 
 const DistrictsOfMym = () => {
   const {
-    
     setFilterModal,
-    setTitleDistrict
   }: any = useContext(StateContext);
-  // const handleFilter = (v: any) => {
-  //   setDistrictsName(v);
-  //   setFilterValue({ ...filterValue, districtsName: v });
-  //   Cookies.set("district", JSON.stringify(v),{ expires: 1 })
-  // };
+ 
   const dispatch = useDispatch();
   const districtsName = useSelector(
     (state: RootState) => state.districtsName.districtsName
@@ -33,7 +26,7 @@ const DistrictsOfMym = () => {
     <div>
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
       <li>
-          <label onClick={()=>setTitleDistrict("Jamalpur")} className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -47,7 +40,7 @@ const DistrictsOfMym = () => {
           </label>
         </li>
         <li>
-          <label onClick={()=>setTitleDistrict("Mymensingh")} className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -64,7 +57,7 @@ const DistrictsOfMym = () => {
         </li>
        
         <li>
-          <label onClick={()=>setTitleDistrict("Netrokona")} className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -80,7 +73,7 @@ const DistrictsOfMym = () => {
           </label>
         </li>
         <li>
-          <label onClick={()=>setTitleDistrict("Sherpur")} className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"

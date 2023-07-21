@@ -13,7 +13,7 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import Cookies from "js-cookie";
 import styles from "../../../styles/response.module.css"
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toggleLanguage } from "@/redux/features/Language/LanguageSlice";
 import Image from "next/image";
 import logo from "../../../image/Simple_Box_Solution_Game_Store_Logo__1_-removebg-preview.png"
@@ -22,6 +22,9 @@ import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSl
 import { setFilterModalValue } from "@/redux/features/FilterModalSlice/FilterModalSlice";
 import { setDivisionNameEng } from "@/redux/features/DivisionFilter/DivisionFilterSlice";
 import { setDistrictsName } from "@/redux/features/DistrictsFilter/DistrictsSlice";
+import { setOpenModalValue } from "@/redux/features/UniversitySlice/UniversitySlice";
+import { setSignInOpen } from "@/redux/features/SignInModal/SignInModalSlice";
+import { setSignUpOpen } from "@/redux/features/SignUpModal/SignUpModal";
 
 
 export default function NavBar() {
@@ -29,16 +32,9 @@ export default function NavBar() {
   const {
     setFilterTypeCity,
     setFilterTypeDivision,
-    setOpenModalValue,
-    // setFilterValue,
     setFilterModal,
     handleOpenModalEng,
     setOpenModalEng,
-    setTitleArea,
-    setTitleCity,
-    setTitleDistrict,
-    setTitleDivision,
-    setDestinationType
   }: any = useContext(StateContext);
   const {
     setPostCityNameEng,
@@ -95,8 +91,6 @@ export default function NavBar() {
     setLang(newLanguage);
   };
   
-  // const lang = useSelector((state:any) => state.language.language); 
-
  const storedLanguage = localStorage.getItem('lan');
  const initialLanguage = storedLanguage ? JSON.parse(storedLanguage) : false;
 
@@ -106,7 +100,6 @@ useEffect(() => {
     dispatch(toggleLanguage(initialLanguage));
   }
 }, [dispatch, initialLanguage, storedLanguage]);
-
 
   const handleHome = () => {
     dispatch(setCityName({
@@ -129,14 +122,13 @@ useEffect(() => {
       eng: "",
       ban: ""
     }));
-    // setHomePopularAreaName({}),
-    // setDistrictsName({}),
-      setOpenModalValue({});
+    dispatch(setOpenModalValue({
+      eng: null,
+      ban: null
+    }));
     handleOpenModalEng();
     setOpenModalEng(false);
-    // setFilterModalValue({});
     setFilterModal(false);
-    // setFilterValue({});
     setFilterTypeCity(false);
     setFilterTypeDivision(false);
     setPostCityNameEng({}),
@@ -145,19 +137,15 @@ useEffect(() => {
       setPostOpenModal(false);
     setPostDistrictsName({});
     setGetUniversityModalValue({});
-    // Cookies.remove("city");
-    // Cookies.remove("area");
-    // Cookies.remove("district");
-    // Cookies.remove("division");
-    // Cookies.remove("filterMV");
     Cookies.remove("openMV");
-    // setTitleArea("")
-    // setTitleCity("")
-    // setTitleDistrict("")
-    // setTitleDivision("")
-    // setDestinationType("")
     sessionStorage.removeItem("page")
     sessionStorage.removeItem("paged")
+  };
+  const handleSignInOpen = () => {
+    dispatch(setSignInOpen(true));
+  };
+  const handleSignUpOpen = () => {
+    dispatch(setSignUpOpen(true));
   };
 
   const email = Cookies.get("authentication");
@@ -166,7 +154,6 @@ useEffect(() => {
       <li className="flex justify-center lg:ml-0 lg:block">
         <Link href="/add-post">
           <div className="navbar-end">
-            {/* <Link href="/SignUp">  */}
             <Typography
               variant="small"
               color="blue-gray"
@@ -205,7 +192,7 @@ useEffect(() => {
                 onClick={() => setOpenNav(false)}
                 className="text-primary hidden lg:flex"
               >
-                {!lang ? <span>SignIn</span> : <span>সাইন ইন</span>}
+                {!lang ? <span onClick={handleSignInOpen}>SignIn</span> : <span onClick={handleSignInOpen}>সাইন ইন</span>}
               </span>
             </Link>
           </Typography>
@@ -323,6 +310,7 @@ useEffect(() => {
                 <Button
                   size="sm"
                   className="hidden lg:inline-block text-gray-700 -my-2 bg-accent  rounded"
+                  onClick={handleSignUpOpen}
                 >
                   {!lang ? <span>SignUp</span> : <span>সাইন আপ</span>}
                 </Button>
@@ -395,6 +383,7 @@ useEffect(() => {
                   <Button
                     size="sm"
                     className="w-[150px] -ml-1/12 text-gray-700 -mt-3 bg-accent rounded"
+                    onClick={handleSignInOpen}
                   >
                     <span onClick={() => setOpenNav(false)}>SignIn</span>
                   </Button>
@@ -402,6 +391,7 @@ useEffect(() => {
                   <Button
                     size="sm"
                     className="w-[163px] -ml-1/12 rounded pt-[10px] pb-[6px] text-gray-700 -mt-4 bg-accent"
+                    onClick={handleSignInOpen}
                   >
                     <span
                       className="text-[15px]"

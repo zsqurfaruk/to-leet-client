@@ -12,7 +12,6 @@ import { persistor, store } from "@/redux/app/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import Loading from "@/components/Loading/Loading";
- 
 
 export default function App({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(true);
@@ -49,22 +48,21 @@ export default function App({ Component, pageProps }: AppProps) {
     return <Loading></Loading>;
   }
   return (
-    // <DisableRightClick>
-    <Provider store={store}>
+    <DisableRightClick>
+      <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-        <StateInfo>
-          <PostInfo>
-            <ApiContext>
-              <NavBar></NavBar>
-              <Component {...pageProps} />
-              <Toaster />
-              <Footer></Footer>
-            </ApiContext>
-          </PostInfo>
-        </StateInfo>
+          <StateInfo>
+            <PostInfo>
+              <ApiContext>
+                <NavBar></NavBar>
+                <Component {...pageProps} />
+                <Toaster />
+                <Footer></Footer>
+              </ApiContext>
+            </PostInfo>
+          </StateInfo>
         </PersistGate>
       </Provider>
-      
-    // </DisableRightClick>
+    </DisableRightClick>
   );
 }

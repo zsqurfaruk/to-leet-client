@@ -65,7 +65,7 @@ const FilterPosts = () => {
   );
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/product/filter", {
+    fetch("https://zsqur.quickvara.com/api/v1/product/filter", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -74,7 +74,6 @@ const FilterPosts = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data?.posts?.length > 0) {
           setFilterPost(data.posts);
           setHasData(true);
@@ -109,15 +108,15 @@ const FilterPosts = () => {
         <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="QuickVara, to-let, tolet, Basa Vara, Vara, Rent, To Let, To-Let, toleet, leet, house rent, flat rent in dhaka, flat rent, flat rent dhaka, apartment rent, real estate, bikroy"
+          content="QuickVara, tolet, tolet, Basa Vara, Vara, Rent, To-Let, To-Let, house rent, flat rent in dhaka, flat rent, flat rent dhaka, apartment rent, real estate, bikroy"
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://quickvara.com/" />
         <meta
           property="og:title"
           content={`QuickVara in ${
-            homePopularAreaName?.eng || districtsName?.eng
-          }, ${cityName?.eng || divisionNameEng?.eng}`}
+            decodeURIComponent(homePopularAreaName?.eng) || decodeURIComponent(districtsName?.eng)
+          }, ${decodeURIComponent(cityName?.eng) || decodeURIComponent(divisionNameEng?.eng)}`}
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
@@ -126,8 +125,8 @@ const FilterPosts = () => {
         <meta
           name="title"
           content={`QuickVara in ${
-            homePopularAreaName?.eng || districtsName?.eng
-          }, ${cityName?.eng || divisionNameEng?.eng}`}
+            decodeURIComponent(homePopularAreaName?.eng) || decodeURIComponent(districtsName?.eng)
+          }, ${decodeURIComponent(cityName?.eng) || decodeURIComponent(divisionNameEng?.eng)}`}
         />
         <meta name="keywords" />
         <meta
@@ -137,15 +136,15 @@ const FilterPosts = () => {
         <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="QuickVara, to-let, tolet, Basa Vara, Vara, Rent, To Let, To-Let, toleet, leet, house rent, flat rent in dhaka, flat rent, flat rent dhaka, apartment rent, real estate, bikroy"
+          content="QuickVara, tolet, tolet, Basa Vara, Vara, Rent, To-Let, To-Let, house rent, flat rent in dhaka, flat rent, flat rent dhaka, apartment rent, real estate, bikroy"
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://quickvara.com/" />
         <meta
           property="og:title"
           content={`QuickVara in ${
-            homePopularAreaName?.eng || districtsName?.eng
-          }, ${cityName?.eng || divisionNameEng?.eng}`}
+            decodeURIComponent(homePopularAreaName?.eng) || decodeURIComponent(districtsName?.eng)
+          }, ${decodeURIComponent(cityName?.eng) || decodeURIComponent(divisionNameEng?.eng)}`}
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />

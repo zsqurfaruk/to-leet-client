@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import PopularAreaOfBarishal from "../../AllPopularAreas/PopularAreaOfBarisal/PopularAreaOfBarisal";
 import PopularAreaOfChit from "../../AllPopularAreas/PopularAreaOfChittagong/PopularAreaOfChittagong";
 import PopularAreaOfDhaka from "../../AllPopularAreas/PopularAreaOfDhaka/PopularAreaOfDhaka";
@@ -13,9 +13,7 @@ import { setCityName } from "@/redux/features/FilterCity/FilterCitySlice";
 import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
 
 const AllAreas = () => {
- 
   const dispatch = useDispatch();
- 
   const handlePrevious = () => {
     dispatch(setCityName({
       eng: "",

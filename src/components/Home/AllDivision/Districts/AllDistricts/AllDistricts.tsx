@@ -1,5 +1,4 @@
-import { StateContext } from "@/Context/StateContext/StateContext";
-import React, { useContext } from "react";
+import React from "react";
 import DistrictsOfBarisal from "../DistrictsOfBarisal/DistrictsOfBarisal";
 import DistrictsOfChittagong from "../DistrictsOfChittagong/DistrictsOfChittagong";
 import DistrictsOfDhaka from "../DistrictsOfDhaka/DistrictsOfDhaka";
@@ -15,8 +14,6 @@ import { setDivisionNameEng } from "@/redux/features/DivisionFilter/DivisionFilt
 import { setDistrictsName } from "@/redux/features/DistrictsFilter/DistrictsSlice";
 
 const AllDistricts = () => {
-  // const { setDistrictsName }: any =
-  //   useContext(StateContext);
   const dispatch = useDispatch();
   const handlePrevious = () => {
     dispatch(setDivisionNameEng({

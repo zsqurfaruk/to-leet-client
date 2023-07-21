@@ -1,38 +1,20 @@
-import { StateContext } from "@/Context/StateContext/StateContext";
-import React, { useContext } from "react";
-import Cookies from "js-cookie";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/redux/app/store";
 import { setDivisionNameEng } from "@/redux/features/DivisionFilter/DivisionFilterSlice";
 
 const AllDivisionName = () => {
-  const { setTitleDivision }: any =
-    useContext(StateContext);
-  // const handleFilter = (v: any) => {
-  //   setDivisionNameEng(v);
-  //   setFilterValue({ ...filterValue, divisionNameEng: v });
-  //   Cookies.set("division", JSON.stringify(v),{ expires: 1 })
-  // };
-       
   const dispatch = useDispatch();
-  const divisionNameEng = useSelector(
-    (state: any) => state.divisionNameEng.divisionNameEng
-  );
-
-  // ...
 
   const handleFilter = (division: { eng: string; ban: string }) => {
     dispatch(setDivisionNameEng(division));
-    // Rest of your code
   };
-  console.log(divisionNameEng)
-  // console.log(divisionNameEng)
+ 
   const lang = useSelector((state:any) => state.language.language);
   return (
     <div className="lg:-ml-4">
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-3 text-gray-700 text-sm md:text-base">
         <li>
-          <label onClick={()=>setTitleDivision("Dhaka")} className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -46,7 +28,7 @@ const AllDivisionName = () => {
           </label>
         </li>
         <li>
-          <label onClick={()=>setTitleDivision("Chittagong")} className="flex gap-2 lg:gap-0 lg:text-sm">
+          <label className="flex gap-2 lg:gap-0 lg:text-sm">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -62,7 +44,7 @@ const AllDivisionName = () => {
           </label>
         </li>
         <li>
-          <label onClick={()=>setTitleDivision("Rajshahi")} className="flex gap-2">
+          <label  className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -76,7 +58,7 @@ const AllDivisionName = () => {
           </label>
         </li>
         <li>
-          <label onClick={()=>setTitleDivision("Barisal")} className="flex gap-2">
+          <label  className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -90,7 +72,7 @@ const AllDivisionName = () => {
           </label>
         </li>
         <li>
-          <label onClick={()=>setTitleDivision("Khulna")} className="flex gap-2">
+          <label  className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -104,7 +86,7 @@ const AllDivisionName = () => {
           </label>
         </li>
         <li>
-          <label onClick={()=>setTitleDivision("Rangpur")} className="flex gap-2">
+          <label  className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -118,7 +100,7 @@ const AllDivisionName = () => {
           </label>
         </li>
          <li>
-          <label onClick={()=>setTitleDivision("Sylhet")} className="flex gap-2">
+          <label  className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -132,7 +114,7 @@ const AllDivisionName = () => {
           </label>
         </li>
         <li>
-          <label onClick={()=>setTitleDivision("Mymensingh")} className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"

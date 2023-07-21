@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Post from "./Post";
 import { useSelector } from "react-redux";
 
@@ -16,7 +16,7 @@ const RelatedPosts = ({ type, areaName, cityName, id , division, district}: any)
 const limit = 5; // Set the desired data limit
 
 useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/product/filter?limit=${limit}`, {
+    fetch(`https://zsqur.quickvara.com/api/v1/product/filter?limit=${limit}`, {
     method: "POST",
     headers: {
       "content-type": "application/json",

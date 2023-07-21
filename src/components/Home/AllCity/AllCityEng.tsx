@@ -6,9 +6,7 @@ import { RootState } from "@/redux/app/store";
  
  
 const AllCityEng = () => {
-  const {setTitleCity }: any = useContext(StateContext);
-
-
+ 
     const dispatch = useDispatch();
     const handleFilter = (city: { eng: string; ban: string }) => {
       dispatch(setCityName(city));
@@ -24,7 +22,7 @@ const AllCityEng = () => {
     <div>
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-5 md:gap-x-0 gap-y-3 text-gray-700 text-sm md:text-base">
         <li>
-          <label onClick={()=>setTitleCity("Dhaka")} className="flex gap-2">
+          <label  className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -38,7 +36,7 @@ const AllCityEng = () => {
           </label>
         </li>
         <li>
-          <label onClick={()=>setTitleCity("Chittagong")} className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -54,7 +52,7 @@ const AllCityEng = () => {
           </label>
         </li>
         <li>
-          <label onClick={()=>setTitleCity("Rajshahi")} className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -69,7 +67,7 @@ const AllCityEng = () => {
         </li>
       
         <li>
-          <label onClick={()=>setTitleCity("Barisal")} className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -83,7 +81,7 @@ const AllCityEng = () => {
           </label>
         </li>
         <li>
-          <label onClick={()=>setTitleCity("Khulna")} className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -97,7 +95,7 @@ const AllCityEng = () => {
           </label>
         </li>
         <li>
-          <label onClick={()=>setTitleCity("Rangpur")} className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -111,7 +109,7 @@ const AllCityEng = () => {
           </label>
         </li>
         <li>
-          <label onClick={()=>setTitleCity("Sylhet")} className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -127,7 +125,7 @@ const AllCityEng = () => {
           </label>
         </li>
         <li>
-          <label onClick={()=>setTitleCity("Mymensingh")} className="flex gap-2">
+          <label className="flex gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"

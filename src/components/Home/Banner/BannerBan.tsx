@@ -14,9 +14,9 @@ const BannerBan = () => {
        
         <span
           id={style.bannerTextColorChange}
-          className="text-[30px] md:text-[39px] font-semibold"
+          className="text-[30px] md:text-[31px] font-semibold"
         >
-         QuickVara </span>
+         কুইকভাড়া </span>
         এর বিস্তৃত তালিকার সাথে সহজে এবং দ্রুত <br className="hidden lg:flex"/> ঝামেলা-মুক্ত ভাড়া সমাধান খুঁজে নিন। 
         {/* <span> যেখানে আপনার বিশ্বাস নির্ভরযোগ্য, সেখানে  <span
           id={style.bannerTextColorChange}

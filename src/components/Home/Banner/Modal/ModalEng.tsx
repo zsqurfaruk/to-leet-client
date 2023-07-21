@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import {
   Button,
   Dialog,
@@ -12,48 +12,36 @@ import Select from "react-select";
 import { colourOptions } from "./DataEng";
 import { colourOption } from "./DataBan";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { APIContext } from "@/Context/ApiContext/ApiContext";
- import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setOpenModalValue } from "@/redux/features/UniversitySlice/UniversitySlice";
- 
-import { AppDispatch, RootState } from "@/redux/app/store";
+import { AppDispatch} from "@/redux/app/store";
 import { fetchAndFilterUniversityData } from "@/redux/features/UniversityFilter/UniversityFilerSlice";
+const selectStyles = {
+  control: (styles:any, { isFocused }:any) => ({
+    ...styles,
+    borderColor: isFocused ? '#1598ac' : '#1598ac',
+    boxShadow: isFocused ? '0 0 0 1px #1598ac' : 'none',
+  }),
+};
 
 export default function ModalEng() {
   const {
     handleOpenModalEng,
     openModalEng,
-    // openModalValue,
-    // setOpenModalValue,
   }: any = useContext(StateContext);
-  //  const { handleFilterUniversity}: any = useContext(APIContext);
    const [localEng, setLocalEng] = useState<string | null>(null);
   const handleCancel = () => {
     handleOpenModalEng();
-    // setOpenModalValue({});
+    dispatch(setOpenModalValue({
+      eng: "",
+      ban: ""
+    }))
+    setLocalEng("")
   };
-
-  
-  // if (openModalValue?.name === "eng") {
-  //   const newName = {
-  //     eng: openModalValue?.label,
-  //     ban: openModalValue?.value,
-  //   };
-  //   setOpenModalValue(newName);
-  //   Cookies.set("openMV",newName?.eng)
-  // } else if (openModalValue?.name === "ban") {
-  //   const newName = {
-  //     eng: openModalValue?.value,
-  //     ban: openModalValue?.label,
-  //   };
-  //   setOpenModalValue(newName);
-  //   Cookies.set("openMV",newName?.eng)
-  // }
+ 
   const openModalValue = useSelector((state:any) => state.openModalValue );
   const dispatch = useDispatch<AppDispatch>()
-  // ... Rest of your component code
-// console.log(openModalValue)
+  
   const handleSelectChange = (newValue:any) => {
     const newName =
       newValue.name === 'eng'
@@ -61,27 +49,7 @@ export default function ModalEng() {
         : { eng: newValue.value, ban: newValue.label };
     dispatch(setOpenModalValue(newName));
     setLocalEng(newName?.eng );
-    // Cookies.set('openMV', newName.eng);
   };
-
-  // useEffect(() => {
-  //   // Update the local state when the persisted state changes
-  //   if (openModalValue?.eng !== localEng) {
-  //     setLocalEng(openModalValue?.eng || null);
-  //   }
-  // }, [openModalValue?.eng, localEng]);
- 
-  // useEffect(() => {
-  //   dispatch(fetchUniversityData());
-  //   openModalValueRef.current = openModalValue?.eng?.eng;
-  // }, [dispatch, openModalValue?.eng?.eng]);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  // const filterPost = useSelector((state: RootState) => state.universityFilter.filterPost);
-
-  // const openModalValue = useSelector((state: RootState) => state.openModalValue);
-  // const router = useRouter();
-  // const params = router.asPath;
-  // const refreshParams = params.split("/");
   const handleFilterUniversity = () => {
     dispatch(fetchAndFilterUniversityData());
   };
@@ -94,7 +62,6 @@ export default function ModalEng() {
         open={openModalEng}
         handler={handleOpenModalEng}
         className="bg-transparent lg:bg-neutral lg:px-10"
-        // id={style.modalChange}
         animate={{
           mount: { scale: 1, y: -80 },
           unmount: { scale: 1, y: -100 },
@@ -106,7 +73,7 @@ export default function ModalEng() {
           </DialogHeader>
         ) : (
           <DialogHeader className="text-xl hidden lg:flex mt-5">
-            আপনার প্রয়োজন অনুযায়ী বিশ্ববিদ্যালয় এবং মেডিকেল কলেজ নির্বাচন করুন:
+            আপনার প্রয়োজন অনুযায়ী বিশ্ববিদ্যালয় বা মেডিকেল কলেজ নির্বাচন করুন:
           </DialogHeader>
         )}
         {!lang ? (
@@ -117,20 +84,22 @@ export default function ModalEng() {
               options={colourOptions}
               onChange={handleSelectChange}
               className="text-sm bg-primary w-12/12 md:w-12/12 lg:w-full mx-auto text-gray-700 font-medium"
+              styles={selectStyles}
             />
           </DialogBody>
         ) : (
           <DialogBody className="-mt-10 md:-mt-44 lg:mt-0  text-xs">
             <h2 className="text-primary text-lg md:text-xl mb-5 w-12/12 md:w-12/12 lg:w-full flex lg:hidden">
-              আপনার প্রয়োজন অনুযায়ী বিশ্ববিদ্যালয় এবং মেডিকেল কলেজ নির্বাচন
+              আপনার প্রয়োজন অনুযায়ী বিশ্ববিদ্যালয় বা মেডিকেল কলেজ নির্বাচন
               করুন:{" "}
             </h2>
             <Select
-              placeholder="অনুসন্ধান করতে ক্লিক করুন এবং আপনার প্রয়োজন অনুযায়ী নির্বাচন করুন"
+              placeholder="অনুসন্ধান করতে প্রয়োজন অনুযায়ী নির্বাচন করুন"
               isSearchable
               options={colourOption}
               onChange={handleSelectChange}
               className="text-sm bg-primary w-12/12 md:w-12/12 lg:w-full mx-auto text-gray-700 font-medium"
+              styles={selectStyles}
             />
           </DialogBody>
         )}
@@ -157,6 +126,7 @@ export default function ModalEng() {
             <button
               className="text-primary bg-gradient-to-r from-accent to-warning px-3 py-2 rounded font-semibold"
               onClick={handleFilterUniversity}
+              disabled={!openModalValue?.eng?.eng ? true : false}
             >
               {!lang ? " Confirm" : "নিশ্চিত করুন"}
             </button>
@@ -169,7 +139,7 @@ export default function ModalEng() {
             onClick={handleCancel}
             className="mr-1  hidden lg:flex"
           >
-            <span>Cancel</span>
+            <span> {!lang ? " Cancel" : "বাতিল"}</span>
           </Button>
           <Link
              href={
@@ -191,9 +161,9 @@ export default function ModalEng() {
                   : "bg-gray-600  hidden lg:flex"
               }
               onClick={handleFilterUniversity}
-              disabled={!openModalValue?.eng ? true : false}
+              disabled={!openModalValue?.eng?.eng ? true : false}
             >
-              <span>Confirm</span>
+              <span> {!lang ? " Confirm" : "নিশ্চিত করুন"}</span>
             </Button>
           </Link>
         </DialogFooter>

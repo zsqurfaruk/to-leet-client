@@ -1,16 +1,13 @@
-// universityFilterSlice.ts
 import { RootState } from "@/redux/app/store";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { useRouter } from "next/router";
 
-// Define the initial state
 interface UniversityFilterState {
   isLoading: boolean;
-  filterPost: any[]; // Replace 'any' with the actual type of objects in the array if possible
+  filterPost: any[];
 }
 
 const initialState: UniversityFilterState = {
-  isLoading: true,
+  isLoading: false,
   filterPost: [],
 };
 
@@ -24,17 +21,9 @@ export const fetchAndFilterUniversityData = createAsyncThunk<
   }
 >("university/fetchData", async (_, { getState }) => {
   const state: any = getState() as RootState;
-  // const router = useRouter();
-  // const params = router.asPath;
-  // const refreshParams = params.split("/");
-  //  const openModalValue = (decodeURIComponent(refreshParams[2]))
-  const openModalValue = state.openModalValue; // Assuming the state key for openModalValue is "openModalValue"
-  //  console.log(openModalValue)
-  // const dispatch = useDispatch<AppDispatch>()
-  // useEffect(() => {
-  //     dispatch(fetchAndFilterUniversityData()); // Dispatch the async thunk with openModalValue as the argument
-  //   }, [dispatch, openModalValue]);
-  const response = await fetch("http://localhost:5000/api/v1/product");
+
+  const openModalValue = state.openModalValue;
+  const response = await fetch("https://zsqur.quickvara.com/api/v1/product");
   const data = await response.json();
 
   if (openModalValue?.eng) {
@@ -47,7 +36,6 @@ export const fetchAndFilterUniversityData = createAsyncThunk<
   }
 });
 
-// Create the slice
 export const universityFilterSlice = createSlice({
   name: "university",
   initialState,
@@ -58,13 +46,16 @@ export const universityFilterSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // Handle the pending and fulfilled actions of fetchAndFilterUniversityData
     builder
+      .addCase(fetchAndFilterUniversityData.pending, (state) => {
+        state.filterPost = []
+        state.isLoading = true;
+      })
       .addCase(fetchAndFilterUniversityData.fulfilled, (state, action) => {
         state.filterPost = action.payload;
         state.isLoading = false;
       })
-      .addCase(fetchAndFilterUniversityData.rejected, (state, action) => {
+      .addCase(fetchAndFilterUniversityData.rejected, (state) => {
         state.isLoading = false;
         // Handle error, if needed
       });

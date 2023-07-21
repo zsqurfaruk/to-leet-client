@@ -10,7 +10,6 @@ function Home() {
     <>
       <Head>
         <title>
-          {" "}
           QuickVara - The Ultimate Rental Solution | Basa Vara | ToLet | Rent in
           Bangladesh
         </title>
@@ -23,7 +22,7 @@ function Home() {
         <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="QuickVara, To Let, To-Let, toleet, Basa Vara, Vara, Rent, rent, leet, house rent , havenly , haven , flat rent in dhaka , flat rent , flat rent dhaka , apartment rent, real estate, bikroy"
+          content="QuickVara, ToLet, To-Let, to Basa Vara, Vara, Rent, rent, house rent , flat rent in dhaka , flat rent , flat rent dhaka , apartment rent, real estate, bikroy"
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://quickvara.com/" />
@@ -51,7 +50,7 @@ function Home() {
         <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="QuickVara, To Let, To-Let, toleet, Basa Vara, Vara, Rent, rent, leet, house rent , havenly , haven , flat rent in dhaka , flat rent , flat rent dhaka , apartment rent, real estate, bikroy"
+          content="QuickVara, ToLet, To-Let, to Basa Vara, Vara, Rent, rent, house rent , flat rent in dhaka , flat rent , flat rent dhaka , apartment rent, real estate, bikroy"
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://quickvara.com/" />

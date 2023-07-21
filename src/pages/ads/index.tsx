@@ -160,7 +160,7 @@ function AllAds() {
         <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="QuickVara, To Let, To-Let, to let, toleet, Basa Vara, Vara, Rent, rent,  house rent, flat rent in dhaka, flat rent, flat rent dhaka, apartment rent, to-let, tolet, real estate, bikroy"
+          content="QuickVara, ToLet, To-Let, to let, Basa Vara, Vara, Rent, rent,  house rent, flat rent in dhaka, flat rent, flat rent dhaka, apartment rent, to-let, tolet, real estate, bikroy"
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://quickvara.com/" />
@@ -184,7 +184,7 @@ function AllAds() {
         <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="QuickVara, To Let, To-Let, to let, toleet, Basa Vara, Vara, Rent, rent,  house rent, flat rent in dhaka, flat rent, flat rent dhaka, apartment rent, to-let, tolet, real estate, bikroy"
+          content="QuickVara, ToLet, To-Let, to let, Basa Vara, Vara, Rent, rent,  house rent, flat rent in dhaka, flat rent, flat rent dhaka, apartment rent, to-let, tolet, real estate, bikroy"
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://quickvara.com/" />

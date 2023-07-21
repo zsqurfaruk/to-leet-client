@@ -59,19 +59,19 @@ const Dashboard = () => {
         <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="QuickVara, To Let, To-Let, to let, to-let, quickvara, toleet, Basa Vara, Vara, Rent, rent, leet, house rent | havenly | haven | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent | to-let | tolet | real estate "
+          content="QuickVara, To Let, To-Let, to let, to-let, quickvara, to Basa Vara, Vara, Rent, rent,  house rent |   | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent | to-let | tolet | real estate "
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://quickvara.com/" />
         <meta
           property="og:title"
-          content="QuickVara - Dashboard | toleet | havenly | haven | Tolet | Basa Vara | toleet | rent"
+          content="QuickVara - Dashboard | Tolet | Basa Vara | rent"
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="title" content="QuickVara - Dashboard | toleet | havenly | haven |Tolet | Basa Vara | toleet | rent" />
+        <meta name="title" content="QuickVara - Dashboard | Tolet | Basa Vara | rent" />
         <meta name="keywords" />
         <meta
           name="description"
@@ -80,13 +80,13 @@ const Dashboard = () => {
         <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="QuickVara, To-Let, To Let, tolet, ToLet, to let, to-let, quickvara, toleet, Basa Vara, Vara, Rent, rent, leet, house rent| havenly | haven | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent |  to-let  | real estate , bikroy,"
+          content="QuickVara, To-Let, ToLet, tolet, ToLet, to let, to-let, quickvara, Basa Vara, Vara, Rent, rent,  house rent| | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent |  to-let  | real estate , bikroy,"
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://quickvara.com/" />
         <meta
           property="og:title"
-          content="QuickVara - Dashboard | toleet | havenly | haven | Tolet | Basa Vara | toleet | rent"
+          content="QuickVara - Dashboard | Tolet | Basa Vara | rent"
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />

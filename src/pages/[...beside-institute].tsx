@@ -1,5 +1,5 @@
 import ShowUniversityPost from "@/components/Home/AllPost/ShowUniversityPost";
-import React, { useEffect,useState } from "react";
+import React, { useEffect } from "react";
 import Lottie from "lottie-react";
 import lotti from "../image/lf20_jkbuwuhk.json";
 import Head from "next/head";
@@ -11,29 +11,28 @@ import { setOpenModalValue } from "@/redux/features/UniversitySlice/UniversitySl
 import { fetchAndFilterUniversityData } from "@/redux/features/UniversityFilter/UniversityFilerSlice";
 
 const University = () => {
-   const lang = useSelector((state:any) => state.language.language);
-   const { filterPost, isLoading } = useSelector((state: RootState) => state.university);
-   const dispatch: AppDispatch = useDispatch();
-
-   const router = useRouter();
+  const lang = useSelector((state: any) => state.language.language);
+  const { filterPost, isLoading } = useSelector(
+    (state: RootState) => state.university
+  );
+  const dispatch: AppDispatch = useDispatch();
+  const router = useRouter();
   const params = router.asPath;
   const refreshParams = params.split("/");
- 
- 
+
   useEffect(() => {
-    const openModalValue = { eng: decodeURIComponent(refreshParams[2])};
-    dispatch(setOpenModalValue(openModalValue))
+    const openModalValue = { eng: decodeURIComponent(refreshParams[2]) };
+    dispatch(setOpenModalValue(openModalValue));
     dispatch(fetchAndFilterUniversityData())
-      . then(( ) => {
-        // Handle the filtered data if needed
-        // setFinalValue(filteredData) 
-      })
-      .catch(( ) => {});
+      .then(() => {})
+      .catch(() => {});
   }, []);
   return (
     <>
       <Head>
-        <title>QuickVara - Filter by institute</title>
+        <title>
+          QuickVara - Filter by {decodeURIComponent(refreshParams[2])}
+        </title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keywords" />
         <meta
@@ -43,19 +42,22 @@ const University = () => {
         <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="QuickVara, To Let, To-Let, to let, to-let, quickvara, toleet, Basa Vara, Vara, Rent, rent, leet, house rent | havenly | haven | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent | to-let | tolet | real estate "
+          content="QuickVara, To Let, To-Let, to let, to-let, quickvara, to Basa Vara, Vara, Rent, rent,  house rent | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent | to-let | tolet | real estate "
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://quickvara.com/" />
         <meta
           property="og:title"
-          content={`QuickVara - Filter by institute | toleet | havenly | haven | Tolet | Basa Vara | toleet | rent`}
+          content={`QuickVara - Filter by institute | Tolet | Basa Vara | rent`}
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="title" content="QuickVara - Filter by institute | toleet | havenly | haven |Tolet | Basa Vara | toleet | rent" />
+        <meta
+          name="title"
+          content="QuickVara - Filter by institute |Tolet | Basa Vara | rent"
+        />
         <meta name="keywords" />
         <meta
           name="description"
@@ -64,13 +66,13 @@ const University = () => {
         <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="QuickVara, To-Let, To Let, tolet, ToLet, to let, to-let, quickvara, toleet, Basa Vara, Vara, Rent, rent, leet, house rent| havenly | haven | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent |  to-let  | real estate , bikroy,"
+          content="QuickVara, To-Let, To Let, tolet, ToLet, to let, to-let, quickvara, to Basa Vara, Vara, Rent, rent,  house rent  | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent |  to-let  | real estate , bikroy,"
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://quickvara.com/" />
         <meta
           property="og:title"
-          content="QuickVara - Filter by institute | toleet | havenly | haven | Tolet | Basa Vara | toleet | rent"
+          content="QuickVara - Filter by institute | Tolet | Basa Vara | rent"
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
@@ -81,33 +83,41 @@ const University = () => {
         ) : (
           <>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 pt-5 pb-10">
-              {filterPost?.map((university: any) => (
-                <ShowUniversityPost
-                  key={university._id}
-                  university={university}
-                ></ShowUniversityPost>
-              ))}
+              {filterPost.length > 0 &&
+                filterPost?.map((university: any) => (
+                  <ShowUniversityPost
+                    key={university._id}
+                    university={university}
+                  ></ShowUniversityPost>
+                ))}
             </div>
             <div
               className={
-                filterPost?.length === 0  
+                filterPost?.length === 0 && !isLoading
                   ? "flex justify-center h-96 items-center"
                   : "flex justify-center"
               }
             >
-              {filterPost?.length === 0  && (
-                <div className="lg:-mt-16">
-                  <Lottie
-                    className="h-52 w-52 ml-10"
-                    animationData={lotti}
-                    loop={true}
-                  ></Lottie>
+              {filterPost?.length === 0 && !isLoading && (
+                <div className ="-mt-20">
                   {!lang ? (
+                     <><Lottie
+                     className="h-52 w-52 ml-3"
+                     animationData={lotti}
+                     loop={true}
+                   ></Lottie>
                     <h1 className="text-4xl text-center mb-10">
                       No data found.
                     </h1>
+                    </>
                   ) : (
-                    <h1 className="text-2xl -ml-5">এখনো কোন পোস্ট করা হয়নি।</h1>
+                    <>
+                    <Lottie
+                    className="h-52 w-52 ml-9"
+                    animationData={lotti}
+                    loop={true}
+                  ></Lottie>
+                    <h1 className="text-2xl -ml-5">এখনো কোন পোস্ট করা হয়নি।</h1></>
                   )}
                 </div>
               )}

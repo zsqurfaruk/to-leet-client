@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import Select from "react-select";
 import { options } from "./ChitDataBan";
 import { option } from "./ChitDataEng";
-import Cookies from "js-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
 const selectStyles = {
@@ -15,44 +14,13 @@ const selectStyles = {
 };
 
 const PopularAreaOfChit = () => {
-  const {
-    
-    setFilterModal,
-    setTitleArea,
-  }: any = useContext(StateContext);
-  // const handleFilter = (v: any) => {
-  //   if (v?.name) {
-  //     if (v?.name === "eng") {
-  //       const newName = {
-  //         eng: v?.label,
-  //         ban: v?.value,
-  //       };
-  //       setHomePopularAreaName(newName);
-  //       setTitleArea(newName?.eng);
-  //       setFilterValue({ ...filterValue, homePopularAreaName: newName });
-  //       Cookies.set("area", JSON.stringify(newName), { expires: 1 });
-  //       setFilterModal(true);
-  //     } else if (v?.name === "ban") {
-  //       const newName = {
-  //         eng: v?.value,
-  //         ban: v?.label,
-  //       };
-  //       setHomePopularAreaName(newName);
-  //       setTitleArea(newName?.eng);
-  //       setFilterValue({ ...filterValue, homePopularAreaName: newName });
-  //       Cookies.set("area", JSON.stringify(newName), { expires: 1 });
-  //       setFilterModal(true);
-  //     }
-  //   } else {
-  //     setHomePopularAreaName(v);
-  //     setFilterValue({ ...filterValue, homePopularAreaName: v });
-  //     Cookies.set("area", JSON.stringify(v), { expires: 1 });
-  //   }
-  // };
+  const { setFilterModal }: any = useContext(StateContext);
 
   const dispatch = useDispatch();
-  const homePopularAreaName = useSelector((state:any) => state.homePopularArea.homePopularAreaName);
- 
+  const homePopularAreaName = useSelector(
+    (state: any) => state.homePopularArea.homePopularAreaName
+  );
+
   const handleFilter = (v: any) => {
     if (v?.name) {
       if (v?.name === "eng") {
@@ -72,7 +40,6 @@ const PopularAreaOfChit = () => {
       }
     } else {
       dispatch(setHomePopularAreaName(v));
-       
     }
   };
   // if (homePopularAreaName?.name === "eng") {
@@ -108,10 +75,7 @@ const PopularAreaOfChit = () => {
       <div>
         <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-7 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
           <li>
-            <label
-              onClick={() => setTitleArea("Agrabad")}
-              className="flex gap-2"
-            >
+            <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -127,10 +91,7 @@ const PopularAreaOfChit = () => {
             </label>{" "}
           </li>
           <li>
-            <label
-              onClick={() => setTitleArea("Alankar")}
-              className="flex gap-2"
-            >
+            <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -144,10 +105,7 @@ const PopularAreaOfChit = () => {
             </label>
           </li>
           <li>
-            <label
-              onClick={() => setTitleArea("Chawkbazar")}
-              className="flex gap-2"
-            >
+            <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -166,10 +124,7 @@ const PopularAreaOfChit = () => {
             </label>
           </li>
           <li>
-            <label
-              onClick={() => setTitleArea("Kotwali")}
-              className="flex gap-2"
-            >
+            <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -183,10 +138,7 @@ const PopularAreaOfChit = () => {
             </label>
           </li>
           <li>
-            <label
-              onClick={() => setTitleArea("Halishahar")}
-              className="flex gap-2"
-            >
+            <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -205,10 +157,7 @@ const PopularAreaOfChit = () => {
             </label>
           </li>
           <li>
-            <label
-              onClick={() => setTitleArea("Nasirabad")}
-              className="flex gap-2"
-            >
+            <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -227,10 +176,7 @@ const PopularAreaOfChit = () => {
             </label>
           </li>
           <li>
-            <label
-              onClick={() => setTitleArea("Oxygen")}
-              className="flex gap-2"
-            >
+            <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"

@@ -10,33 +10,32 @@ import { Product } from "../../types";
 import Loader from "@/components/Loading/Loader";
 
 interface ShowAllPostProps {
-  products: Product[];
+products: Product[];
 }
-const ShowAllPost = ({ products }: ShowAllPostProps) => {
-  const [loading, setLoading] = useState(true);
+const ShowAllPost = ({ products}: ShowAllPostProps, {loading}:any) => {
   const lang = useSelector((state: any) => state.language.language);
   const { setTypeCount, destinationType }: any = useContext(StateContext);
   setTypeCount(products);
-  // const [deleteAndFilterPost, setDeleteAndFilterPost] = useState(products);
-  // const handleDelete = async (id: any) => {
-  //   const proceed = window.confirm("Are you sure?");
-  //   if (proceed) {
-  //     const res = await fetch(
-  //       `https://zsqur.quickvara.com/api/v1/product/${id}`,
-  //       {
-  //         method: "DELETE",
-  //       }
-  //     );
-  //     const data = await res.json();
-  //     if (data.message === "success") {
-  //       setDeleteAndFilterPost(
-  //         deleteAndFilterPost?.filter(
-  //           (deletedPost: any) => deletedPost._id !== id
-  //         )
-  //       );
-  //     }
-  //   }
-  // };
+  const [deleteAndFilterPost, setDeleteAndFilterPost] = useState(products);
+  const handleDelete = async (id: any) => {
+    const proceed = window.confirm("Are you sure?");
+    if (proceed) {
+      const res = await fetch(
+        `https://zsqur.quickvara.com/api/v1/product/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      const data = await res.json();
+      if (data.message === "success") {
+        setDeleteAndFilterPost(
+          deleteAndFilterPost?.filter(
+            (deletedPost: any) => deletedPost._id !== id
+          )
+        );
+      }
+    }
+  };
 
   const [limit, setLimit] = useState(20);
   const [currentPage, setCurrentPage] = useState(
@@ -168,9 +167,6 @@ const ShowAllPost = ({ products }: ShowAllPostProps) => {
       </li>
     );
   }
-  useEffect(() => {
-    setLoading(false); // Set loading to false after component mounts
-  }, []);
 
   if (loading) {
     return <Loader></Loader>;
@@ -179,7 +175,6 @@ const ShowAllPost = ({ products }: ShowAllPostProps) => {
   if (destinationType) {
     title = `QuickVara - ${destinationType}`;
   }
-
   document.title = title;
   return (
     <>
@@ -194,13 +189,13 @@ const ShowAllPost = ({ products }: ShowAllPostProps) => {
         <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="QuickVara, To Let, To-Let, to let, to-let, toleet, Basa Vara, Vara, Rent, rent, leet, house rent | havenly | haven | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent | to-let | tolet | real estate "
+          content="QuickVara, ToLet, To-Let, to let, to-let, Basa Vara, Vara, Rent, rent,  house rent | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent | to-let | tolet | real estate "
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://quickvara.com/" />
         <meta
           property="og:title"
-          content={`QuickVara - Filter by Rent Type | Tolet | Basa Vara | toleet | rent | havenly`}
+          content={`QuickVara - Filter by Rent Type | Tolet | Basa Vara | toleet | rent `}
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
@@ -208,7 +203,7 @@ const ShowAllPost = ({ products }: ShowAllPostProps) => {
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="title"
-          content="QuickVara - Filter by Rent Type | Tolet | Basa Vara | toleet | rent | havenly"
+          content="QuickVara - Filter by Rent Type | Tolet | Basa Vara | toleet | rent "
         />
         <meta name="keywords" />
         <meta
@@ -218,13 +213,13 @@ const ShowAllPost = ({ products }: ShowAllPostProps) => {
         <meta name="author" content="QuickVara.com" />
         <meta
           name="keyword"
-          content="QuickVara, To-Let, To Let, tolet, ToLet, to let, to-let, toleet, Basa Vara, Vara, Rent, rent, leet, house rent| havenly | haven | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent |  to-let  | real estate , bikroy,"
+          content="QuickVara, To-Let, To Let, tolet, ToLet, to let, to-let, to Basa Vara, Vara, Rent, rent,  house rent|   | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent |  to-let  | real estate , bikroy,"
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://quickvara.com/" />
         <meta
           property="og:title"
-          content="QuickVara - Filter by Rent Type | Tolet | Basa Vara | toleet | rent | havenly"
+          content="QuickVara - Filter by Rent Type | Tolet | Basa Vara | toleet | rent | "
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
@@ -269,16 +264,25 @@ const ShowAllPost = ({ products }: ShowAllPostProps) => {
         {products?.length === 0 && (
           <div className="flex justify-center pb-5">
             <div>
-              <Lottie
-                className="h-52 w-52 ml-6"
-                animationData={lotti}
-                loop={true}
-              ></Lottie>
-              {!lang ? (
-                <h1 className="text-4xl text-center mb-10">No data found.</h1>
-              ) : (
-                <h1 className="text-xl -ml-3">এখনো কোন পোস্ট করা হয়নি।</h1>
-              )}
+            {!lang ? (
+                     <><Lottie
+                     className="h-52 w-52 ml-3"
+                     animationData={lotti}
+                     loop={true}
+                   ></Lottie>
+                    <h1 className="text-4xl text-center mb-10">
+                      No data found.
+                    </h1>
+                    </>
+                  ) : (
+                    <>
+                    <Lottie
+                    className="h-52 w-52 ml-9"
+                    animationData={lotti}
+                    loop={true}
+                  ></Lottie>
+                    <h1 className="text-2xl -ml-5">এখনো কোন পোস্ট করা হয়নি।</h1></>
+                  )}
             </div>
           </div>
         )}
@@ -290,6 +294,7 @@ const ShowAllPost = ({ products }: ShowAllPostProps) => {
 export const getServerSideProps: GetServerSideProps = async ({
   params,
 }: any) => {
+  let loading = true;
   let errorMessage = "";
   try {
     const res = await fetch(
@@ -305,11 +310,12 @@ export const getServerSideProps: GetServerSideProps = async ({
         },
       };
     }
-
+    loading = false;
     return {
       props: {
         products:data || [],
-        errorMessage: null, // Pass the loading status as a prop
+        errorMessage: null,
+        loading: loading,  
       },
     };
   } catch (error) {
@@ -318,7 +324,8 @@ export const getServerSideProps: GetServerSideProps = async ({
     return {
       props: {
         products: null,
-        errorMessage: errorMessage, // Pass the loading status as a prop
+        errorMessage: errorMessage, 
+        loading: loading, 
       },
     };
   }

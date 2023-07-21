@@ -3,55 +3,23 @@ import React, { useContext } from "react";
 import Select from "react-select";
 import { options } from "./SylDataBan";
 import { option } from "./SylDataEng";
-import Cookies from "js-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
 const selectStyles = {
-  control: (styles:any, { isFocused }:any) => ({
+  control: (styles: any, { isFocused }: any) => ({
     ...styles,
-    borderColor: isFocused ? '#1598ac' : '#1598ac',
-    boxShadow: isFocused ? '0 0 0 .5px #1598ac' : 'none',
+    borderColor: isFocused ? "#1598ac" : "#1598ac",
+    boxShadow: isFocused ? "0 0 0 .5px #1598ac" : "none",
   }),
 };
 
 const PopularAreaOfSylhet = () => {
-  const {setFilterModal,setTitleArea }: any =useContext(StateContext); 
-  //  const handleFilter=(v:any)=>{
-     
-  //   if(v?.name){
-
-  //     if (v?.name === "eng") {
-  //       const newName = {
-  //         eng: v?.label,
-  //         ban: v?.value,
-  //       };
-  //       setHomePopularAreaName(newName);
-  //       setTitleArea(newName?.eng)
-  //       setFilterValue({...filterValue, homePopularAreaName:newName})
-  //       Cookies.set("area", JSON.stringify(newName),{ expires: 1 })
-  //       setFilterModal(true);
-  //     } else if (v?.name === "ban") {
-  //       const newName = {
-  //         eng: v?.value,
-  //         ban: v?.label,
-  //       };
-  //       setHomePopularAreaName(newName);
-  //       setTitleArea(newName?.eng)
-  //       setFilterValue({...filterValue, homePopularAreaName:newName})
-  //       Cookies.set("area", JSON.stringify(newName),{ expires: 1 })
-  //       setFilterModal(true);
-  //     }
-  //   }
-  //   else{
-  //     setHomePopularAreaName(v)
-  //     setFilterValue({...filterValue, homePopularAreaName:v})
-  //     Cookies.set("area", JSON.stringify(v),{ expires: 1 })
-  //   }
-   
-  // }
+  const { setFilterModal }: any = useContext(StateContext);
   const dispatch = useDispatch();
-  const homePopularAreaName = useSelector((state:any) => state.homePopularArea.homePopularAreaName);
- 
+  const homePopularAreaName = useSelector(
+    (state: any) => state.homePopularArea.homePopularAreaName
+  );
+
   const handleFilter = (v: any) => {
     if (v?.name) {
       if (v?.name === "eng") {
@@ -71,24 +39,8 @@ const PopularAreaOfSylhet = () => {
       }
     } else {
       dispatch(setHomePopularAreaName(v));
-       
     }
   };
-  // if (homePopularAreaName?.name === "eng") {
-  //   const newName = {
-  //     eng: homePopularAreaName?.label,
-  //     ban: homePopularAreaName?.value,
-  //   };
-  //   setHomePopularAreaName(newName);
-  //   setFilterModal(true);
-  // } else if (homePopularAreaName?.name === "ban") {
-  //   const newName = {
-  //     eng: homePopularAreaName?.value,
-  //     ban: homePopularAreaName?.label,
-  //   };
-  //   setHomePopularAreaName(newName);
-  //   setFilterModal(true);
-  // }
 
   if (
     homePopularAreaName?.eng === "Zinda Bazar" ||
@@ -101,13 +53,13 @@ const PopularAreaOfSylhet = () => {
   ) {
     setFilterModal(true);
   }
-  const lang = useSelector((state:any) => state.language.language);
+  const lang = useSelector((state: any) => state.language.language);
   return (
     <section>
       <div>
         <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-7 gap-y-2 md:gap-3 text-gray-700 text-sm lg:text-base">
-        <li>
-            <label onClick={()=>setTitleArea("Amber Khana")} className="flex gap-2">
+          <li>
+            <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -126,7 +78,7 @@ const PopularAreaOfSylhet = () => {
             </label>
           </li>
           <li>
-            <label onClick={()=>setTitleArea("Bandar Bazar")} className="flex gap-2">
+            <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -145,7 +97,7 @@ const PopularAreaOfSylhet = () => {
             </label>
           </li>
           <li>
-            <label onClick={()=>setTitleArea("Bimanbondor")} className="flex gap-2">
+            <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -163,9 +115,9 @@ const PopularAreaOfSylhet = () => {
               )}
             </label>
           </li>
-         
+
           <li>
-            <label onClick={()=>setTitleArea("Osmani Nagar")} className="flex gap-2">
+            <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -183,9 +135,9 @@ const PopularAreaOfSylhet = () => {
               )}
             </label>
           </li>
-        
+
           <li>
-            <label onClick={()=>setTitleArea("South Surma")} className="flex gap-2">
+            <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -204,7 +156,7 @@ const PopularAreaOfSylhet = () => {
             </label>
           </li>
           <li>
-            <label onClick={()=>setTitleArea("Uposhohor")} className="flex gap-2">
+            <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -223,7 +175,7 @@ const PopularAreaOfSylhet = () => {
             </label>
           </li>
           <li>
-            <label onClick={()=>setTitleArea("Zinda Bazar")} className="flex gap-2">
+            <label className="flex gap-2">
               <input
                 type="checkbox"
                 className="checkbox checkbox-accent border-warning h-[18px] w-[19px]"
@@ -241,12 +193,10 @@ const PopularAreaOfSylhet = () => {
               )}
             </label>
           </li>
-        
+
           <li
             className={
-              homePopularAreaName?.eng === "Select others"
-                ? "hidden"
-                : "flex"
+              homePopularAreaName?.eng === "Select others" ? "hidden" : "flex"
             }
           >
             <label className="flex gap-2">
@@ -279,7 +229,7 @@ const PopularAreaOfSylhet = () => {
                     options={option}
                     onChange={handleFilter}
                     className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
-                    styles={selectStyles} 
+                    styles={selectStyles}
                   />
                 </li>
               )}
@@ -294,7 +244,7 @@ const PopularAreaOfSylhet = () => {
                     options={options}
                     onChange={handleFilter}
                     className="bg-primary border-none text-sm h-4 text-gray-700 font-medium"
-                    styles={selectStyles} 
+                    styles={selectStyles}
                   />
                 </li>
               )}

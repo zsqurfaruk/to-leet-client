@@ -13,6 +13,8 @@ import openModalSlice, {  setOpenModalValue }  from "../features/UniversitySlice
 import { encryptTransform } from 'redux-persist-transform-encrypt';
 import migrations from "./migrates";
 import universityFilterSlice, { fetchAndFilterUniversityData, setUniversity }  from "../features/UniversityFilter/UniversityFilerSlice";
+import signInModalSlice  from "../features/SignInModal/SignInModalSlice";
+import  signUpModalSlice  from "../features/SignUpModal/SignUpModal";
   
 
 const middlewares: Array<any> = [];
@@ -34,7 +36,9 @@ const rootReducer = combineReducers({
   divisionNameEng: filterDivisionSlice,
   districtsName : filterDistrictsSlice,
   openModalValue: openModalSlice,
-  university: universityFilterSlice
+  university: universityFilterSlice,
+  signInModal: signInModalSlice,
+  signUpModal: signUpModalSlice
 });
 
 const encryptionKey = '362a94e7a161bc4ddaf2b58bf7026ce48fa4312e2d5df6195485ee2ab0efd4202408a0368515f9cb6c1802556320dfbe4aa3a3494c5fa441e74811686551293e7fab68249f611efc5cc545f9256e5996915c85717d7ff3df5336249fca44edf7a1015cc4c0ff2e5755f800e88d9571cad74e479a15bf263fa679f9994b19b9e5a33264835e93dad0f5bbaf1b';
@@ -63,22 +67,11 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(middlewares),
-    // devTools: false,
+    devTools: false,
 });
 
 export const persistor = persistStore(store);
 const persistedState = persistor.getState();
-
-// Extract the relevant data from the persisted state
-// const { cityName, homePopularAreaName, filterModalValue, divisionNameEng, districtsName,openModalValue }:any = persistedState;
-
-// // Dispatch the action to update the Redux store
-// store.dispatch(setCityName(cityName));
-// store.dispatch(setHomePopularAreaName(homePopularAreaName));
-// store.dispatch(setFilterModalValue(filterModalValue));
-// store.dispatch(setDivisionNameEng(divisionNameEng));
-// store.dispatch(setDistrictsName(districtsName));
-// store.dispatch(setOpenModalValue(openModalValue));
 
 if (persistedState && Object.keys(persistedState).length > 0) {
   const { cityName, homePopularAreaName, filterModalValue, divisionNameEng, districtsName, openModalValue,university }: any = persistedState;
