@@ -1,26 +1,20 @@
 /* eslint-disable react/no-unescaped-entities */
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Card, Typography, Input } from "@material-tailwind/react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import lottiImage from "../image/lf20_s50p1rff.json";
-import Lottie from "lottie-react";
 import Head from "next/head";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import parsePhoneNumberFromString from "libphonenumber-js";
-import { StateContext } from "@/Context/StateContext/StateContext";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  Button,
   Dialog,
-  DialogHeader,
   DialogBody,
-  DialogFooter,
 } from "@material-tailwind/react";
 import Banner from "@/components/Home/Banner/Banner";
 import { MdCancel } from "react-icons/md";
@@ -43,7 +37,6 @@ const SignIn = () => {
   const [countryNumber, setCountryNumber] = useState();
   const [isValid, setIsValid] = useState(true);
   const [isValidNum, setIsValidNum] = useState(true);
-  // const {  handleOpenSignUp }: any = useContext(StateContext);
   const router = useRouter();
   const signInOpen = useSelector((state: RootState) => state.signInModal.signInOpen);
   const dispatch = useDispatch();
@@ -146,23 +139,23 @@ const SignIn = () => {
   return (
     <>
       <Head>
-        <title>QuickVara - Sign in</title>
+        <title>QuickVara - Sign In</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keywords" />
         <meta
           name="description"
-          content="Find your rental solution with quickvara's extensive listings for rent. QuickVara is the most secure and easy online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience."
+          content="Let's connect to find your rental solution with quickvara's extensive listings for rent."
         />
         <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="QuickVara, ToLet, To-Let, to let, to-let, quickvara, to Basa Vara, Vara, Rent, rent,  house rent  | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent | to-let | tolet | real estate "
+          content="QuickVara, ToLet, To-Let, quickvara, Basa Vara, Vara, Rent, rent, house rent | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent | real estate"
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://quickvara.com/" />
         <meta
           property="og:title"
-          content="QuickVara - Sign in | Tolet | Basa Vara | rent"
+          content="QuickVara - Sign In | Tolet | Basa Vara | rent"
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
@@ -170,23 +163,23 @@ const SignIn = () => {
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="title"
-          content="QuickVara - Sign in |Tolet | Basa Vara | rent"
+          content="QuickVara - Sign In | Tolet | Basa Vara | rent"
         />
         <meta name="keywords" />
         <meta
           name="description"
-          content="Find your rental solution with quickvara's extensive listings for rent. QuickVara is the most secure and easy online home, mess, hostel, office, garage, and shop rental service company which aims to simplify your rental experience."
+          content="Let's connect to find your rental solution with quickvara's extensive listings for rent."
         />
         <meta name="author" content="quickvara.com" />
         <meta
           name="keyword"
-          content="QuickVara, To-Let, To Let, tolet, ToLet, to let, to-let, quickvara, to Basa Vara, Vara, Rent, rent,  house rent | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent |  to-let  | real estate , bikroy,"
+          content="QuickVara, ToLet, To-Let, quickvara, Basa Vara, Vara, Rent, rent, house rent | flat rent in dhaka | flat rent | flat rent dhaka | apartment rent | real estate , bikroy,"
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://quickvara.com/" />
         <meta
           property="og:title"
-          content="QuickVara - Sign in | Tolet | Basa Vara | rent"
+          content="QuickVara - Sign In | Tolet | Basa Vara | rent"
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
