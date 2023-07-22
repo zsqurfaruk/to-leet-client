@@ -83,7 +83,7 @@ const University = () => {
         ) : (
           <>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 pt-5 pb-10">
-              {filterPost.length > 0 &&
+              {filterPost?.length > 0 &&
                 filterPost?.map((university: any) => (
                   <ShowUniversityPost
                     key={university._id}

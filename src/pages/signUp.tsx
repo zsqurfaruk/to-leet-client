@@ -213,7 +213,7 @@ function SignUp() {
                   )}
                 </div>
                 <Link href={"/"} passHref>
-                  <button onClick={handleSignUpClose} className="mr-1 mt-5">
+                  <button onClick={handleSignUpClose} className="mr-1 mt-4">
                     <MdCancel className="text-warning h-6 w-6"></MdCancel>
                   </button>
                 </Link>
@@ -385,7 +385,7 @@ function SignUp() {
                         />
                         <Typography
                           variant="small"
-                          className="flex items-center font-normal text-gray-700"
+                          className="flex items-center text-xs md:text-sm font-normal text-gray-700"
                         >
                           আমি শর্তাবলী পড়েছি এবং সম্মতি দিচ্ছি।
                         </Typography>
@@ -449,7 +449,7 @@ function SignUp() {
                   ) : (
                     <Typography
                       onClick={handleSignInOpen}
-                      className="mt-4 text-center font-normal text-gray-700"
+                      className="mt-4 text-sm text-center font-normal text-gray-700"
                     >
                       আপনার কি অ্যাকাউন্ট আছে?{" "}
                       <Link
@@ -570,7 +570,7 @@ function SignUp() {
                         />
                         <Typography
                           variant="small"
-                          className="flex items-center font-normal text-gray-700"
+                          className="flex items-center text-xs md:text-sm font-normal text-gray-700"
                         >
                           আমি শর্তাবলী পড়েছি এবং সম্মতি দিচ্ছি।
                         </Typography>
@@ -634,7 +634,7 @@ function SignUp() {
                   ) : (
                     <Typography
                       onClick={handleSignInOpen}
-                      className="mt-4 text-center font-normal text-gray-700"
+                      className="mt-4 text-sm text-center font-normal text-gray-700"
                     >
                       আপনার কি অ্যাকাউন্ট আছে?{" "}
                       <Link
@@ -650,7 +650,9 @@ function SignUp() {
             </Card>
           </DialogBody>
         </Dialog>
-        <Banner></Banner>
+        <div className="pb-10">
+       <Banner></Banner>
+       </div>
       </section>
     </>
   );

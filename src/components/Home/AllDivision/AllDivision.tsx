@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const AllDivision = () => {
   const lang = useSelector((state: any) => state.language.language);
   return (
-    <div className="w-full flex items-center px-8 md:px-0 mt-5 lg:mt-16 lg:ml-8 md:mx-0">
+    <div className="w-full flex items-center pl-9 md:pl-0 mt-5 lg:mt-16 lg:ml-8 md:mx-0">
       <div>
         {!lang ? (
           <h1

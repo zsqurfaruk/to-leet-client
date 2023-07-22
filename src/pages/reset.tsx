@@ -101,7 +101,7 @@ const Reset = () => {
       <Head>
         <title>QuickVara - Reset Password</title>
       </Head>
-      <div className="md:w-10/12 lg:w-4/12 mx-auto my-10 shadow-2xl p-10 rounded">
+      <div className="md:w-10/12 lg:w-4/12 mx-auto my-10 p-10 rounded shadow-none">
         <div>
           {!getNm && getEm && (
             <>

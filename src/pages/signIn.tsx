@@ -203,7 +203,7 @@ const SignIn = () => {
                 <Link href={"/"} passHref>
                   <button
                     onClick={handleSignInClose}
-                    className="mr-1 flex justify-end mt-5"
+                    className="mr-1 flex justify-end mt-4"
                   >
                     <MdCancel className="text-warning h-6 w-6"></MdCancel>
                   </button>
@@ -434,7 +434,7 @@ const SignIn = () => {
                   ) : (
                     <Typography
                       color="gray"
-                      className="mt-4 text-center font-normal"
+                      className="mt-4 text-sm text-center font-normal"
                       onClick={handleSignUpOpen}
                     >
                       আপনার কি অ্যাকাউন্ট আছে?{" "}
@@ -538,7 +538,7 @@ const SignIn = () => {
                   ) : (
                     <Typography
                       color="gray"
-                      className="mt-4 text-center font-normal"
+                      className="mt-4 text-sm text-center font-normal"
                       onClick={handleSignUpOpen}
                     >
                       আপনার কি অ্যাকাউন্ট আছে?{" "}
@@ -552,7 +552,9 @@ const SignIn = () => {
             </Card>
           </DialogBody>
         </Dialog>
-        <Banner></Banner>
+       <div className="pb-10">
+       <Banner></Banner>
+       </div>
       </section>
     </>
   );

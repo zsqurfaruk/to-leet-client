@@ -2,6 +2,8 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import { useRouter } from "next/router";
 import { useEffect, useContext } from "react";
 import Cookies from "js-cookie";
+import { useDispatch } from "react-redux";
+import { setSignInOpen } from "@/redux/features/SignInModal/SignInModalSlice";
 
 function PrivateRoute(Component: any) {
   return function AuthenticatedComponent(props: any) {
@@ -10,6 +12,7 @@ function PrivateRoute(Component: any) {
     const router = useRouter();
     const cookieValue = Cookies.get('token');
     const token = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
+    const dispatch = useDispatch();
     useEffect(() => {
       if (!token || tokenValidation === "Invalid token") {
         Cookies.remove("token");
@@ -18,6 +21,7 @@ function PrivateRoute(Component: any) {
         Cookies.remove("lastName");
         const { asPath } = router;
         router.push(`/signIn?next=${asPath}`);
+        dispatch(setSignInOpen(true));
       } else {
         fetch("https://zsqur.quickvara.com/api/v1/users/me", {
           method: "POST",

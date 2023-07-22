@@ -109,7 +109,7 @@ const ShowAllPost = ({ products}: ShowAllPostProps, {loading}:any) => {
   const renderData = (products: any) => {
     return (
       <>
-        <div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-5 pb-10">
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-5 pb-10 pt-5 lg:pt-0">
           {products?.length > 0 &&
             products?.map((product: any) => (
               <Products

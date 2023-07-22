@@ -8,7 +8,7 @@ const AllCity = () => {
   // };
   const lang = useSelector((state:any) => state.language.language);
   return (
-    <section className="min-w-full px-8 md:px-0">
+    <section className="min-w-full pl-9 md:pl-0">
       {/* <h1
         onClick={handlePrevious}
         className="text-warning text-sm mb-5 cursor-pointer hover:underline"

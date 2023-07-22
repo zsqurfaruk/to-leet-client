@@ -44,18 +44,18 @@ const ShowUniversityPost = ({ university }: any) => {
             alt="Room"
             className={
               isHovered
-                ? "h-[11.5rem] w-full relative scale-125 ease-in-out duration-700"
-                : "h-[11.5rem] w-full ease-in-out duration-700"
+                ? "h-[12rem] w-full relative scale-125 ease-in-out duration-700"
+                : "h-[12rem] w-full ease-in-out duration-700"
             }
             draggable="false"
           />
         </figure>
         <div className="card-body min-h-44">
           <div className="-mt-2 text-warning">
-            {university?.title?.length > 35 ? (
+            {university?.title?.length > 32 ? (
               <h2 className="text-[13px] font-semibold">
                 {" "}
-                {university?.title.slice(0, 35)}...
+                {university?.title.slice(0, 32)}...
               </h2>
             ) : (
               <h2 className="text-[13px] font-semibold">

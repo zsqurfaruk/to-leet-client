@@ -29,7 +29,7 @@ const AllAreas = () => {
 
   const lang = useSelector((state:any) => state.language.language);
   return (
-    <section className="w-full px-8 md:px-0">
+    <section className="w-full pl-9 md:pl-0">
       <div>
       <h1
         onClick={handlePrevious}
