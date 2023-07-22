@@ -145,7 +145,7 @@ const ShowAllPost = ({ products}: ShowAllPostProps, {loading}:any) => {
   };
 
   let pageIncrementBtn = null;
-  if (pages.length > maxPageNumberLimit) {
+  if (pages?.length > maxPageNumberLimit) {
     pageIncrementBtn = (
       <li
         onClick={() => handleClick({ target: { id: maxPageNumberLimit + 1 } })}
@@ -250,9 +250,9 @@ const ShowAllPost = ({ products}: ShowAllPostProps, {loading}:any) => {
             {pageIncrementBtn}
             <button
               onClick={handleNext}
-              disabled={currentPage === pages[pages.length - 1] ? true : false}
+              disabled={currentPage === pages[pages?.length - 1] ? true : false}
               className={
-                currentPage === pages[pages.length - 1]
+                currentPage === pages[pages?.length - 1]
                   ? "text-gray-400"
                   : "text-warning pl-1"
               }

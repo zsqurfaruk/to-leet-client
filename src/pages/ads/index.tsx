@@ -47,7 +47,7 @@ function AllAds() {
     sessionStorage.setItem("page", pageNumber.toString());
   };
   const pages: number[] = [];
-  for (let i = 1; i <= Math.ceil(allPosts.length / limit); i++) {
+  for (let i = 1; i <= Math.ceil(allPosts?.length / limit); i++) {
     pages.push(i);
   }
 
@@ -124,7 +124,7 @@ function AllAds() {
   };
 
   let pageIncrementBtn = null;
-  if (pages.length > maxPageNumberLimit) {
+  if (pages?.length > maxPageNumberLimit) {
     pageIncrementBtn = (
       <li
         onClick={() => handleClick({ target: { id: maxPageNumberLimit + 1 } })}
@@ -223,9 +223,9 @@ function AllAds() {
       {pageIncrementBtn}
       <button
         onClick={handleNext}
-        disabled={currentPage === pages[pages.length - 1] ? true : false}
+        disabled={currentPage === pages[pages?.length - 1] ? true : false}
         className={
-          currentPage === pages[pages.length - 1]
+          currentPage === pages[pages?.length - 1]
             ? "text-gray-400"
             : "text-warning pl-1"
         }

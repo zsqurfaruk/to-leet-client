@@ -196,7 +196,7 @@ const PostDetails = () => {
     const isValidNumber = phoneNumber
       ? phoneNumber.isValid() && phoneNumber.country === "BD"
       : false;
-    const isFixedLength = value.length === 13;
+    const isFixedLength = value?.length === 13;
     const startsWithFixedNumber =
       /^88017|^88016|^88015|^88014|^88013|^88018|^88019/.test(value);
     setIsValid(isValidNumber && isFixedLength);

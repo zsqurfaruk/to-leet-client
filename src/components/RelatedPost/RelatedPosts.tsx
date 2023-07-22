@@ -40,12 +40,12 @@ useEffect(() => {
   return (
     <div
       className={
-        getValue.length > 0
+        getValue?.length > 0
           ? "lg:w-10/12 mx-auto bg-white mb-10 px-7 py-5 lg:-mt-10  shadow-none rounded-xl"
           : ""
       }
     >
-      {getValue.length > 0 && (
+      {getValue?.length > 0 && (
         <div className="border-b-2 border-warning mb-2 pb-1 text-warning font-semibold">
           {!lang ? (
             <h1 className="text-lg">Similar Ads:</h1>

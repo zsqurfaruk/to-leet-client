@@ -126,7 +126,7 @@ const SignIn = () => {
     const isValidNumber = phoneNumber
       ? phoneNumber.isValid() && phoneNumber.country === "BD"
       : false;
-    const isFixedLength = value.length === 13;
+    const isFixedLength = value?.length === 13;
     const startsWithFixedNumber =
       /^88017|^88016|^88015|^88014|^88013|^88018|^88019/.test(value);
     setIsValid(isValidNumber && isFixedLength);
@@ -328,7 +328,7 @@ const SignIn = () => {
                           inputProps={{
                             name: "phone",
                             required: true,
-                            autoFocus: true,
+                            autoFocus: false,
                           }}
                           isValid={(value: any, country: any) => {
                             if (value.match(/1234/)) {
