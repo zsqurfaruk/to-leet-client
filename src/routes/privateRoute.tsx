@@ -33,7 +33,7 @@ function PrivateRoute(Component: any) {
           .then((res) => res.json())
           .then((data) => setTokenValidation(data?.error));
       }
-    }, [router, setTokenValidation, token, tokenValidation]);
+    }, [dispatch, router, setTokenValidation, token, tokenValidation]);
     return token ? <Component {...props} token={token} /> : null;
   };
 }

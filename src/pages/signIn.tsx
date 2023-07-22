@@ -16,11 +16,11 @@ import {
   Dialog,
   DialogBody,
 } from "@material-tailwind/react";
-import Banner from "@/components/Home/Banner/Banner";
 import { MdCancel } from "react-icons/md";
 import { RootState } from "@/redux/app/store";
 import { setSignInOpen } from "@/redux/features/SignInModal/SignInModalSlice";
 import { setSignUpOpen } from "@/redux/features/SignUpModal/SignUpModal";
+import Home from ".";
 
 type FormValues = {
   email: string | number;
@@ -553,7 +553,7 @@ const SignIn = () => {
           </DialogBody>
         </Dialog>
        <div className="pb-10">
-       <Banner></Banner>
+       <Home></Home>
        </div>
       </section>
     </>
