@@ -14,7 +14,7 @@ const BannerBan = () => {
        
         <span
           id={style.bannerTextColorChange}
-          className="md:text-[30px] font-semibold"
+          className="md:text-[27px] font-semibold"
         >
          কুইকভাড়া </span>
         এর বিস্তৃত তালিকাসহ নির্ভরযোগ্য এবং বিশ্বস্ততার সাথে  <br className="hidden lg:flex" /> সহজে এবং দ্রুত ঝামেলা-মুক্ত   ভাড়া সমাধান খুঁজে নিন। 

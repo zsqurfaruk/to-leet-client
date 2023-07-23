@@ -8,7 +8,6 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import BannerBan from "./BannerBan";
 import BannerEng from "./BannerEng";
 import AllAreas from "../AllCity/AllAreas/AllAreas";
-import Cookies from "js-cookie";
 import AllDistricts from "../AllDivision/Districts/AllDistricts/AllDistricts";
 import ModalEng from "./Modal/ModalEng";
 import PostAreaModalEng from "./Modal/PostAreaModalEng";
@@ -208,7 +207,7 @@ const Banner = () => {
           <div className="lg:mt-36 xl:mt-20">
           {!filterTypeDivision && (
             <Lottie
-              className="lg:scale-125 xl:scale-110 hidden lg:flex "
+              className="lg:scale-125 xl:scale-110 hidden lg:flex"
               animationData={lottiImage}
               loop={true}
               draggable= "false"

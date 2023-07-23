@@ -187,7 +187,7 @@ const SignIn = () => {
       <section className="flex">
         <Dialog open={signInOpen} handler={handleSignInOpen} className="bg-transparent">
           <DialogBody>
-            <Card className="w-full lg:w-11/12 mx-auto px-7 lg:px-5 border-4 border-neutral bg-neutral shadow-none md:shadow-2xl">
+            <Card className="w-full lg:w-11/12 mx-auto px-2 lg:px-5 border-4 border-neutral bg-neutral shadow-none md:shadow-2xl">
               <div className="flex justify-between">
                 <div>
                   {!lang ? (

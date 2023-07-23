@@ -5,4 +5,27 @@
 #bannerTextColorChange {
   color: #1490a3d6;
 }
-
+#textHandle {
+  display: none;
+ 
+}
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+  #textHandle {
+    display: none;
+  }
+}
+@media screen and (min-width: 1367px) {
+  #textHandle {
+    display: inline;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+  #textHandle2 {
+    display: inline;
+  }
+}
+@media screen and (min-width: 1367px) {
+  #textHandle2 {
+    display: none;
+  }
+}
