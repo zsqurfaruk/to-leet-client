@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import FilterAllPosts from "@/components/Home/AllPost/FilterAllPosts";
 import React, { useState, useEffect } from "react";
 import Lottie from "lottie-react";
@@ -41,14 +42,12 @@ const FilterPosts = () => {
     setQueryData(qd);
   }, []);
 
- 
-
   const [filterPost, setFilterPost] = useState([]);
   const [loading, setLoading] = useState(true);
   const [hasData, setHasData] = useState(true);
 
   const cityName = useSelector((state: RootState) => state.cityName.cityName);
- 
+
   const filterModalValue = useSelector(
     (state: RootState) => state.filterModalValue.filterModalValue
   );
@@ -58,7 +57,7 @@ const FilterPosts = () => {
   );
   const divisionNameEng = useSelector(
     (state: RootState) => state.divisionNameEng.divisionNameEng
-    );
+  );
 
   const districtsName = useSelector(
     (state: RootState) => state.districtsName.districtsName
@@ -88,9 +87,13 @@ const FilterPosts = () => {
   let title = "";
 
   if (homePopularAreaName && cityName) {
-    title = `QuickVara in ${decodeURIComponent(homePopularAreaName?.eng)}, ${decodeURIComponent(cityName?.eng)}`;
+    title = `QuickVara in ${decodeURIComponent(
+      homePopularAreaName?.eng
+    )}, ${decodeURIComponent(cityName?.eng)}`;
   } else if (districtsName && divisionNameEng) {
-    title = `QuickVara in ${decodeURIComponent(districtsName?.eng)}, ${decodeURIComponent(divisionNameEng?.eng)}`;
+    title = `QuickVara in ${decodeURIComponent(
+      districtsName?.eng
+    )}, ${decodeURIComponent(divisionNameEng?.eng)}`;
   }
 
   document.title = title;
@@ -115,8 +118,12 @@ const FilterPosts = () => {
         <meta
           property="og:title"
           content={`QuickVara in ${
-            decodeURIComponent(homePopularAreaName?.eng) || decodeURIComponent(districtsName?.eng)
-          }, ${decodeURIComponent(cityName?.eng) || decodeURIComponent(divisionNameEng?.eng)}`}
+            decodeURIComponent(homePopularAreaName?.eng) ||
+            decodeURIComponent(districtsName?.eng)
+          }, ${
+            decodeURIComponent(cityName?.eng) ||
+            decodeURIComponent(divisionNameEng?.eng)
+          }`}
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
@@ -125,8 +132,12 @@ const FilterPosts = () => {
         <meta
           name="title"
           content={`QuickVara in ${
-            decodeURIComponent(homePopularAreaName?.eng) || decodeURIComponent(districtsName?.eng)
-          }, ${decodeURIComponent(cityName?.eng) || decodeURIComponent(divisionNameEng?.eng)}`}
+            decodeURIComponent(homePopularAreaName?.eng) ||
+            decodeURIComponent(districtsName?.eng)
+          }, ${
+            decodeURIComponent(cityName?.eng) ||
+            decodeURIComponent(divisionNameEng?.eng)
+          }`}
         />
         <meta name="keywords" />
         <meta
@@ -143,8 +154,12 @@ const FilterPosts = () => {
         <meta
           property="og:title"
           content={`QuickVara in ${
-            decodeURIComponent(homePopularAreaName?.eng) || decodeURIComponent(districtsName?.eng)
-          }, ${decodeURIComponent(cityName?.eng) || decodeURIComponent(divisionNameEng?.eng)}`}
+            decodeURIComponent(homePopularAreaName?.eng) ||
+            decodeURIComponent(districtsName?.eng)
+          }, ${
+            decodeURIComponent(cityName?.eng) ||
+            decodeURIComponent(divisionNameEng?.eng)
+          }`}
         />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />

@@ -4,66 +4,56 @@ import { setDistrictsName } from "@/redux/features/DistrictsFilter/DistrictsSlic
 import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
 import { setFilterModalValue } from "@/redux/features/FilterModalSlice/FilterModalSlice";
 import { Button, Card, Typography } from "@material-tailwind/react";
-import Cookies from 'js-cookie';
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const FilterDestinationType = () => {
-  const {
-    setFilterModal,
-  }: any = useContext(StateContext)
-   const router = useRouter();
-   const cityName = useSelector((state: any) => state.cityName.cityName)
-   const homePopularAreaName = useSelector((state:any) => state.homePopularArea.homePopularAreaName);
-   const divisionNameEng = useSelector((state: RootState) => state.divisionNameEng.divisionNameEng);
-   const districtsName = useSelector(
-     (state: RootState) => state.districtsName.districtsName
-   );
-   
-  // const handleFilter = (v: any) => {
-  //   setFilterModalValue(v);
-  //   setFilterValue({ ...filterValue, filterModalValue: v });
-  //   Cookies.set("filterMV", JSON.stringify(v),{ expires: 1 })
-  //   router.push(
-  //     `/ads/${
-  //       (homePopularAreaName?.eng || districtsName?.eng)?.toLowerCase()
-  //     }/${(cityName?.eng || divisionNameEng?.eng)?.toLowerCase()}`
-  //   );
-  // };
-  const dispatch = useDispatch();
- 
- 
-const filterModalValue = useSelector((state: RootState) => state.filterModalValue.filterModalValue);
- 
+  const { setFilterModal }: any = useContext(StateContext);
+  const router = useRouter();
+  const cityName = useSelector((state: any) => state.cityName.cityName);
+  const homePopularAreaName = useSelector(
+    (state: any) => state.homePopularArea.homePopularAreaName
+  );
+  const divisionNameEng = useSelector(
+    (state: RootState) => state.divisionNameEng.divisionNameEng
+  );
+  const districtsName = useSelector(
+    (state: RootState) => state.districtsName.districtsName
+  );
 
-  const handleFilter = (v:any) => {
+  const dispatch = useDispatch();
+
+  const filterModalValue = useSelector(
+    (state: RootState) => state.filterModalValue.filterModalValue
+  );
+
+  const handleFilter = (v: any) => {
     dispatch(setFilterModalValue(v));
     const filterType = filterModalValue?.eng ? filterModalValue?.eng : v?.eng;
-    // dispatch(setFilterValue({... filterValue ,filterModalValue: v }));
-    // Cookies.set("filterMV", JSON.stringify(v), { expires: 1 });
-    const adParams = `${(homePopularAreaName?.eng || districtsName?.eng)}/${cityName?.eng || divisionNameEng?.eng}/${filterType}`;
+    const adParams = `${homePopularAreaName?.eng || districtsName?.eng}/${
+      cityName?.eng || divisionNameEng?.eng
+    }/${filterType}`;
     router.push(`/ads/${adParams}`);
   };
- 
-  // const filterValue = useSelector((state: RootState) => state.filterModalValue.filterModalValue);
- 
- 
-  
+
   const handleCancel = () => {
     setFilterModal(false);
-    dispatch(setHomePopularAreaName({
-      eng: "",
-      ban: ""
-    }));
-    dispatch(setDistrictsName({
-      eng: "",
-      ban: ""
-    }));
-   
+    dispatch(
+      setHomePopularAreaName({
+        eng: "",
+        ban: "",
+      })
+    );
+    dispatch(
+      setDistrictsName({
+        eng: "",
+        ban: "",
+      })
+    );
   };
 
-  const lang = useSelector((state:any) => state.language.language); 
+  const lang = useSelector((state: any) => state.language.language);
   return (
     <div className="bg-neutral text-gray-700 w-12/12 md:w-12/12 lg:w-full rounded-md mt-40 lg:mt-0 p-5 ">
       <div>
@@ -191,8 +181,6 @@ const filterModalValue = useSelector((state: RootState) => state.filterModalValu
             <Typography className="text-center">পরিবার</Typography>
           )}
         </Card>
-
-       
 
         <Card
           className="border border-warning cursor-pointer rounded"
