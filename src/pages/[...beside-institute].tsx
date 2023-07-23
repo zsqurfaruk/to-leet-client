@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import ShowUniversityPost from "@/components/Home/AllPost/ShowUniversityPost";
 import React, { useEffect } from "react";
 import Lottie from "lottie-react";

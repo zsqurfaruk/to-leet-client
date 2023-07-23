@@ -1,4 +1,5 @@
-/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react-hooks/exhaustive-deps */
+ 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Card, Typography, Input } from "@material-tailwind/react";
@@ -144,6 +145,7 @@ function SignUp() {
   const getEm = Cookies.get("em");
 
   const lang = useSelector((state: any) => state.language.language);
+  // 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
   return (
     <>
       <Head>
@@ -199,7 +201,7 @@ function SignUp() {
           className="bg-transparent"
         >
           <DialogBody>
-            <Card className="w-full lg:w-11/12 mx-auto border-4 px-2 lg:px-5 border-neutral bg-neutral shadow-none md:shadow-2xl">
+            <Card className="w-full lg:w-11/12 mx-auto border-4 px-1 lg:px-5 border-neutral bg-neutral shadow-none">
               <div className="flex justify-between">
                 <div>
                   {!lang ? (
