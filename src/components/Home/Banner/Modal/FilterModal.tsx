@@ -1,11 +1,11 @@
 import { useContext } from "react";
+import { Button, Dialog, DialogBody, DialogFooter } from "@material-tailwind/react";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React from "react";
 import FilterDestinationType from "@/components/OtherPages/PostDestinationType/FilterDestinationType";
  import { useDispatch, useSelector } from "react-redux";
 import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
 import { setDistrictsName } from "@/redux/features/DistrictsFilter/DistrictsSlice";
-import { Button, Dialog, DialogBody, DialogFooter } from "@material-tailwind/react";
 
 export default function FilterModal() {
   const {
