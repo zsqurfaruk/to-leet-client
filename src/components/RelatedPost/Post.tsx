@@ -35,6 +35,7 @@ function Post({ post }: any) {
       pathname: `/details/${post._id}`,
       query: { post: encodeURIComponent(JSON.stringify(posts)) },
     }}
+    onClick={()=>setChangedDetailsPic(false)}
     onMouseEnter={() => setIsHovered(true)}
     onMouseLeave={() => setIsHovered(false)}
     passHref
