@@ -49,12 +49,12 @@ function AllPost({ post }: any) {
         <div className="card-body min-h-44">
           <div className="-mt-2 text-warning">
             {post?.title?.length > 32 ? (
-              <h2 className="text-[13px] font-semibold">
+              <h2 className="font-semibold">
                 {" "}
                 {post?.title.slice(0, 32)}...
               </h2>
             ) : (
-              <h2 className="text-[13px] font-semibold"> {post?.title}</h2>
+              <h2 className="font-semibold"> {post?.title}</h2>
             )}
           </div>
           <div className="-mt-1 absolute top-[145px] right-2">
@@ -157,8 +157,7 @@ function AllPost({ post }: any) {
                         className={ post?.bedrooms?.eng ? "hidden" :
                             "text-warning mt-[2px] w-4 mr-[2px]"}
                       /> Total Bed:
-                    </span>{" "}
-                    {post?.totalBed?.eng}{" "}
+                    </span> <span className="pl-1">{post?.totalBed?.eng} </span>
                   </h2>
                 ) : (
                   <h2 className="flex">
@@ -170,11 +169,9 @@ function AllPost({ post }: any) {
                       }
                     >
                         <MdOutlineBedroomChild
-                        className={ post?.bedrooms?.eng ? "hidden" :
+                        className={post?.bedrooms?.eng ? "hidden" :
                             "text-warning mt-[2px] w-4 mr-[2px]"}
-                      /> মোট বেড:
-                    </span>{" "}
-                    <span className={post?.totalBed?.eng === "Single room" ? "text-[13px]" : "text-sm"}>{post?.totalBed?.ban}</span>
+                      /> মোট বেড:</span> <span className={post?.totalBed?.eng === "Single room" ? "text-[13px] pl-1" : "text-sm pl-1"}>  {post?.totalBed?.ban} </span>
                   </h2>
                 )}
               </div>
@@ -215,7 +212,7 @@ function AllPost({ post }: any) {
                   <h2>Bathroom: {post?.bathrooms?.eng}</h2>
                 ) : (
                   <h2>
-                    <span className="text-[13px]">বাথরুম</span>: {post?.bathrooms?.ban}
+                    <span className="text-[13.5px]">বাথরুম</span>: {post?.bathrooms?.ban}
                   </h2>
                 )}
               </div>
@@ -243,7 +240,7 @@ function AllPost({ post }: any) {
                   ) : (
                     "Rent:"
                   )} 
-                  {post?.amount} Taka 
+                  <span className="pl-1">{post?.amount} Taka </span>
                 </h2>
               ) : (
                 <h2>
@@ -262,9 +259,8 @@ function AllPost({ post }: any) {
                       <span className="text-[13px]">সিটঃ</span>
                     </>
                   ) : (
-                    <span className="text-[13px]">ভাড়াঃ</span>
-                  )} 
-                  {banglaNumber} <span className="text-[13px]">টাকা </span>
+                    <span className="text-[13px]">ভাড়াঃ </span>
+                  )} {banglaNumber} <span className="text-[13px]">টাকা </span>
                 </h2>
               )}
             </div>

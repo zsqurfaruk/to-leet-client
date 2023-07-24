@@ -28,7 +28,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
   const { changedDetailsPic, setChangedDetailsPic }: any =
     useContext(StateContext);
   const [slideImage, setSlideImage] = useState(images[0]);
-
+  const [isHovered, setIsHovered] = useState(false);
   const handleImageChange = (index: any) => {
     const slider = images[index];
     setSlideImage(slider);
@@ -84,7 +84,13 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
                   <img
                     src={img1}
                     alt=""
-                    className="h-96 w-full rounded"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    className={
+                      isHovered
+                        ? "h-96 w-full rounded scale-110 ease-in-out  duration-700"
+                        : "h-96 w-full rounded ease-in-out duration-700"
+                    }
                     draggable="false"
                   />
                 </PhotoProvider>
@@ -94,7 +100,13 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
                     <img
                       src={slideImage?.value}
                       alt=""
-                      className="h-96 w-full rounded"
+                      onMouseEnter={() => setIsHovered(true)}
+                      onMouseLeave={() => setIsHovered(false)}
+                      className={
+                        isHovered
+                          ? " h-96 w-full rounded  scale-110  ease-in-out duration-700"
+                          : "h-96 w-full rounded  ease-in-out  duration-700"
+                      }
                       draggable="false"
                     />
                   </PhotoView>
@@ -227,10 +239,8 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
                         }
                       >
                         মোট বেড:
-                      </span> 
-                      <span className="text-sm">
-                        {product?.totalBed?.ban} 
                       </span>
+                      <span className="text-sm">{product?.totalBed?.ban}</span>
                     </h2>
                   )}
                 </div>
@@ -253,12 +263,12 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
             <div className="divider mt-[6px] mb-[6px]"></div>
             <div>
               <h1 className="flex">
-                <MdOutlineLocationOn className="text-warning h-6 w-6"></MdOutlineLocationOn> 
+                <MdOutlineLocationOn className="text-warning h-6 w-6"></MdOutlineLocationOn>
                 {!lang ? (
                   <span className=" file:">Location information</span>
                 ) : (
                   <span>অবস্থানগত তথ্য</span>
-                )} 
+                )}
               </h1>
               <div className="divider mt-[6px] mb-[6px]"></div>
             </div>
@@ -355,14 +365,14 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
                               : "inline"
                           }
                         >
-                          Per 
+                          Per
                         </span>
                         Seat:
                       </>
                     ) : (
                       "Rent:"
                     )}
-                    {product?.amount} Taka 
+                    {product?.amount} Taka
                   </h2>
                 ) : (
                   <h2>
@@ -377,7 +387,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
                           }
                         >
                           প্রতি
-                        </span> 
+                        </span>
                         <span className="text-sm">সিটঃ</span>
                       </>
                     ) : (
@@ -497,7 +507,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
       props: {
         product: data,
         loading: loading,
-        errorMessage: null, 
+        errorMessage: null,
       },
     };
   } catch (error) {

@@ -74,12 +74,12 @@ const DashboardPost = ({ post }: any) => {
       <div className="card-body min-h-44">
         <div className="-mt-2 text-warning">
           {post?.title?.length > 32 ? (
-            <h2 className="text-[13px] font-semibold">
+            <h2 className="font-semibold">
               {" "}
               {post?.title.slice(0, 32)}...
             </h2>
           ) : (
-            <h2 className="text-[13px] font-semibold"> {post?.title}</h2>
+            <h2 className="font-semibold"> {post?.title}</h2>
           )}
         </div>
         <div className="-mt-1 absolute top-[145px] right-2">
@@ -185,7 +185,7 @@ const DashboardPost = ({ post }: any) => {
                     />{" "}
                     Total Bed:
                   </span>{" "}
-                  {post?.totalBed?.eng}{" "}
+                  {post?.totalBed?.eng} 
                 </h2>
               ) : (
                 <h2 className="flex">
@@ -212,7 +212,7 @@ const DashboardPost = ({ post }: any) => {
                         : "text-sm"
                     }
                   >
-                    {post?.totalBed?.ban}
+                    <span className="pl-1">{post?.totalBed?.ban}</span>
                   </span>
                 </h2>
               )}
@@ -254,7 +254,7 @@ const DashboardPost = ({ post }: any) => {
                 <h2>Bathroom: {post?.bathrooms?.eng}</h2>
               ) : (
                 <h2>
-                  <span className="text-[13px]">বাথরুম</span>:{" "}
+                  <span className="text-[13.5px]">বাথরুম</span>:{" "}
                   {post?.bathrooms?.ban}
                 </h2>
               )}
@@ -283,7 +283,7 @@ const DashboardPost = ({ post }: any) => {
                 ) : (
                   "Rent:"
                 )}
-                {post?.amount} Taka
+                <span className="pl-1">{post?.amount} Taka</span>
               </h2>
             ) : (
               <h2>
@@ -302,9 +302,8 @@ const DashboardPost = ({ post }: any) => {
                     <span className="text-[13px]">সিটঃ</span>
                   </>
                 ) : (
-                  <span className="text-[13px]">ভাড়াঃ</span>
-                )}
-                {banglaNumber} <span className="text-[13px]">টাকা </span>
+                  <span className="text-[13px]">ভাড়াঃ </span>
+                )} {banglaNumber} <span className="text-[13px]"> টাকা </span>
               </h2>
             )}
           </div>

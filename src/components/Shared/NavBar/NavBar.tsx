@@ -168,7 +168,7 @@ useEffect(() => {
                   <Button className="w-[162px] lg:w-[212px] -ml-1/12 lg:ml-36 text-primary -my-2 py-2 lg:text-[15px] bg-transparent border border-accent font-normal lg:font-semibold rounded hidden lg:flex">
                     আপনার বিজ্ঞাপন দিন
                   </Button>
-                  <Button className="w-[163.2px] lg:w-[212px] -ml-1/12 lg:ml-36 text-primary -my-2 py-[7.5px]  lg:text-[13px] bg-transparent border border-accent font-normal lg:font-semibold rounded flex lg:hidden">
+                  <Button className="w-[163px] lg:w-[212px] -ml-1/12 lg:ml-36 text-primary -my-2 py-[7.5px]  lg:text-[13px] bg-transparent border border-accent font-normal lg:font-semibold rounded flex lg:hidden">
                   আপনার বিজ্ঞাপন দিন
                   </Button>
                 </>
