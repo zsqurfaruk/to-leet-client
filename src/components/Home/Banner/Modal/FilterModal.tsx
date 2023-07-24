@@ -1,6 +1,10 @@
 import { useContext } from "react";
-//@ts-ignore
-import { Button, Dialog, DialogBody, DialogFooter } from "@material-tailwind/react";
+import {
+  Button,
+  Dialog,
+  DialogBody,
+  DialogFooter,
+} from "@material-tailwind/react";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import React from "react";
 import FilterDestinationType from "@/components/OtherPages/PostDestinationType/FilterDestinationType";
