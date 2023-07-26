@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unescaped-entities */
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -13,15 +13,17 @@ import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import parsePhoneNumberFromString from "libphonenumber-js";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Dialog,
-  DialogBody,
-} from "@material-tailwind/react";
+import { Dialog, DialogBody } from "@material-tailwind/react";
 import { MdCancel } from "react-icons/md";
 import { RootState } from "@/redux/app/store";
 import { setSignInOpen } from "@/redux/features/SignInModal/SignInModalSlice";
 import { setSignUpOpen } from "@/redux/features/SignUpModal/SignUpModal";
 import Home from ".";
+import { setOpenModalValue } from "@/redux/features/UniversitySlice/UniversitySlice";
+import { StateContext } from "@/Context/StateContext/StateContext";
+import { setCityName } from "@/redux/features/FilterCity/FilterCitySlice";
+import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
+import { setDistrictsName } from "@/redux/features/DistrictsFilter/DistrictsSlice";
 
 type FormValues = {
   email: string | number;
@@ -29,6 +31,7 @@ type FormValues = {
   confirmPassword: string | number;
 };
 const SignIn = () => {
+  const { setFilterTypeCity, setOpenModalEng, handleOpenModalEng }: any = useContext(StateContext);
   const [signInError, setSignInError] = useState("");
   const [signInErrorBan, setSignInErrorBan] = useState("");
   const [passHidden, setPassHidden] = useState(true);
@@ -39,28 +42,57 @@ const SignIn = () => {
   const [isValid, setIsValid] = useState(true);
   const [isValidNum, setIsValidNum] = useState(true);
   const router = useRouter();
-  const signInOpen = useSelector((state: RootState) => state.signInModal.signInOpen);
+  const signInOpen = useSelector(
+    (state: RootState) => state.signInModal.signInOpen
+  );
   const dispatch = useDispatch();
 
   const handleSignInOpen = () => {
     dispatch(setSignInOpen(true));
+    setOpenModalEng(false);
+    dispatch(
+      setOpenModalValue({
+        eng: null,
+        ban: null,
+      })
+    );
   };
   const handleSignUpOpen = () => {
     dispatch(setSignUpOpen(true));
     dispatch(setSignInOpen(false));
   };
 
-  const handleSignInClose=()=>{
-    dispatch(setSignInOpen(false))
-  }
+  const handleSignInClose = () => {
+    dispatch(setSignInOpen(false));
+    dispatch(
+      setCityName({
+        eng: "",
+        ban: "",
+      })
+    );
+    setFilterTypeCity(false);
+  };
   useEffect(() => {
-  if(signInOpen){
-    handleSignInOpen()
-  }  
-  else{
-    router.push("/")
-  }   
-
+    if (signInOpen) {
+      handleSignInOpen();
+      if(dispatch(setSignInOpen(true))){
+        dispatch(setHomePopularAreaName({
+          eng: "",
+          ban: ""
+        }));
+        dispatch(setDistrictsName({
+          eng: "",
+          ban: ""
+        }));
+        dispatch(setOpenModalValue({
+          eng: "",
+          ban: ""
+        }))
+        setOpenModalEng(false);
+      }
+    } else {
+      router.push("/");
+    }
   }, []);
   const {
     register,
@@ -186,7 +218,11 @@ const SignIn = () => {
         <meta property="og:site_name" content="quickvara.com" />
       </Head>
       <section className="flex">
-        <Dialog open={signInOpen} handler={handleSignInOpen} className="bg-transparent">
+        <Dialog
+          open={signInOpen}
+          handler={handleSignInOpen}
+          className="bg-transparent"
+        >
           <DialogBody>
             <Card className="w-full lg:w-11/12 mx-auto px-2 lg:px-5 border-4 border-neutral bg-neutral shadow-none md:shadow-2xl">
               <div className="flex justify-between">
@@ -428,7 +464,10 @@ const SignIn = () => {
                       onClick={handleSignUpOpen}
                     >
                       Don't have an account?{" "}
-                      <Link href="/signUp" className="font-medium text-warning hover:underline">
+                      <Link
+                        href="/signUp"
+                        className="font-medium text-warning hover:underline"
+                      >
                         Sign Up
                       </Link>
                     </Typography>
@@ -439,7 +478,10 @@ const SignIn = () => {
                       onClick={handleSignUpOpen}
                     >
                       আপনার কি অ্যাকাউন্ট আছে?{" "}
-                      <Link href="/signUp" className="font-medium text-warning hover:underline">
+                      <Link
+                        href="/signUp"
+                        className="font-medium text-warning hover:underline"
+                      >
                         সাইন আপ
                       </Link>
                     </Typography>
@@ -533,7 +575,12 @@ const SignIn = () => {
                       onClick={handleSignUpOpen}
                     >
                       Don't have an account?
-                      <Link href="/signUp" className="font-medium text-warning hover:underline"> Sign Up
+                      <Link
+                        href="/signUp"
+                        className="font-medium text-warning hover:underline"
+                      >
+                        {" "}
+                        Sign Up
                       </Link>
                     </Typography>
                   ) : (
@@ -543,7 +590,10 @@ const SignIn = () => {
                       onClick={handleSignUpOpen}
                     >
                       আপনার কি অ্যাকাউন্ট আছে?{" "}
-                      <Link href="/signUp" className="font-medium text-warning hover:underline">
+                      <Link
+                        href="/signUp"
+                        className="font-medium text-warning hover:underline"
+                      >
                         সাইন আপ
                       </Link>
                     </Typography>
@@ -553,9 +603,9 @@ const SignIn = () => {
             </Card>
           </DialogBody>
         </Dialog>
-       <div className="pb-10">
-       <Home></Home>
-       </div>
+        <div className="pb-10">
+          <Home></Home>
+        </div>
       </section>
     </>
   );

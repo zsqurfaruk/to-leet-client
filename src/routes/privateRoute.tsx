@@ -7,7 +7,7 @@ import { setSignInOpen } from "@/redux/features/SignInModal/SignInModalSlice";
 
 function PrivateRoute(Component: any) {
   return function AuthenticatedComponent(props: any) {
-    const { tokenValidation, setTokenValidation }: any =
+    const { tokenValidation, setTokenValidation,setFilterModal,handleOpenModalEng }: any =
       useContext(StateContext);
     const router = useRouter();
     const cookieValue = Cookies.get('token');
@@ -21,6 +21,7 @@ function PrivateRoute(Component: any) {
         Cookies.remove("lastName");
         const { asPath } = router;
         router.push(`/signIn?next=${asPath}`);
+        setFilterModal(false);
         dispatch(setSignInOpen(true));
       } else {
         fetch("https://zsqur.quickvara.com/api/v1/users/me", {
@@ -33,7 +34,7 @@ function PrivateRoute(Component: any) {
           .then((res) => res.json())
           .then((data) => setTokenValidation(data?.error));
       }
-    }, [dispatch, router, setTokenValidation, token, tokenValidation]);
+    }, [dispatch, handleOpenModalEng, router, setFilterModal, setTokenValidation, token, tokenValidation]);
     return token ? <Component {...props} token={token} /> : null;
   };
 }

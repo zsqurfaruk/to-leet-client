@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
- 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { Card, Typography, Input } from "@material-tailwind/react";
 import { useForm } from "react-hook-form";
@@ -14,15 +13,15 @@ import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import parsePhoneNumberFromString from "libphonenumber-js";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Dialog,
-  DialogBody,
-} from "@material-tailwind/react";
+import { Dialog, DialogBody } from "@material-tailwind/react";
 import { MdCancel } from "react-icons/md";
 import { RootState } from "@/redux/app/store";
 import { setSignUpOpen } from "@/redux/features/SignUpModal/SignUpModal";
 import { setSignInOpen } from "@/redux/features/SignInModal/SignInModalSlice";
 import Home from ".";
+import { setOpenModalValue } from "@/redux/features/UniversitySlice/UniversitySlice";
+import { StateContext } from "@/Context/StateContext/StateContext";
+import { setCityName } from "@/redux/features/FilterCity/FilterCitySlice";
 
 type FormValues = {
   firstName: string;
@@ -40,6 +39,7 @@ function SignUp() {
     formState: { errors },
   } = useForm<FormValues>();
   const router = useRouter();
+  const { setOpenModalEng, setFilterTypeCity }: any = useContext(StateContext);
   const [agree, setAgree] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -53,17 +53,30 @@ function SignUp() {
     (state: RootState) => state.signUpModal.signUpOpen
   );
   const dispatch = useDispatch();
-
   const handleSignUpOpen = () => {
     dispatch(setSignUpOpen(true));
   };
   const handleSignInOpen = () => {
     dispatch(setSignInOpen(true));
     dispatch(setSignUpOpen(false));
+    setOpenModalEng(false);
+    dispatch(
+      setOpenModalValue({
+        eng: "",
+        ban: "",
+      })
+    );
   };
 
   const handleSignUpClose = () => {
     dispatch(setSignUpOpen(false));
+    dispatch(
+      setCityName({
+        eng: "",
+        ban: "",
+      })
+    );
+    setFilterTypeCity(false);
   };
 
   useEffect(() => {
@@ -653,8 +666,8 @@ function SignUp() {
           </DialogBody>
         </Dialog>
         <div className="pb-10">
-       <Home></Home>
-       </div>
+          <Home></Home>
+        </div>
       </section>
     </>
   );

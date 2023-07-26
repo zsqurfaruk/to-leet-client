@@ -125,7 +125,7 @@ useEffect(() => {
       eng: null,
       ban: null
     }));
-    handleOpenModalEng();
+    handleOpenModalEng(false);
     setOpenModalEng(false);
     setFilterModal(false);
     setFilterTypeCity(false);

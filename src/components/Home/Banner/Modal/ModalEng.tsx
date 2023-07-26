@@ -31,7 +31,7 @@ export default function ModalEng() {
   }: any = useContext(StateContext);
    const [localEng, setLocalEng] = useState<string | null>(null);
   const handleCancel = () => {
-    handleOpenModalEng();
+    handleOpenModalEng(false);
     dispatch(setOpenModalValue({
       eng: "",
       ban: ""
@@ -57,7 +57,6 @@ export default function ModalEng() {
   const lang = useSelector((state:any) => state.language.language);
   return (
     <div>
-    
       <Dialog
         open={openModalEng}
         handler={handleOpenModalEng}

@@ -12,7 +12,7 @@ import { persistor, store } from "@/redux/app/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import Loading from "@/components/Loading/Loading";
-
+import { ThemeProvider } from "@material-tailwind/react";
 export default function App({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -49,20 +49,22 @@ export default function App({ Component, pageProps }: AppProps) {
   }
   return (
     <DisableRightClick>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <StateInfo>
-            <PostInfo>
-              <ApiContext>
-                <NavBar></NavBar>
-                <Component {...pageProps} />
-                <Toaster />
-                <Footer></Footer>
-              </ApiContext>
-            </PostInfo>
-          </StateInfo>
-        </PersistGate>
-      </Provider>
+      <ThemeProvider>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <StateInfo>
+              <PostInfo>
+                <ApiContext>
+                  <NavBar></NavBar>
+                  <Component {...pageProps} />
+                  <Toaster />
+                  <Footer></Footer>
+                </ApiContext>
+              </PostInfo>
+            </StateInfo>
+          </PersistGate>
+        </Provider>
+      </ThemeProvider>
     </DisableRightClick>
   );
 }
