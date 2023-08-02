@@ -4,10 +4,10 @@
 
 :root {
   background-color: #f1feff;
-  /* user-select: none;
+  user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
-  -ms-user-select: none; */
+  -ms-user-select: none;
 }
 
 #modalStyle {
