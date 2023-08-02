@@ -1,3 +1,4 @@
+import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export interface AllPostsState {
@@ -18,7 +19,9 @@ export const getAllPosts = createAsyncThunk(
   "allPosts/getAllPosts",
   async () => {
     const res = await fetch("https://zsqur.quickvara.com/api/v1/product");
-    const data = res.json();
+    const encryptedData = await res.text(); 
+    const decryptedData = decryptFunction(encryptedData); // Decrypt the data
+    const data = JSON.parse(decryptedData); // Parse the decrypted data as JSON
     return data;
   }
 );

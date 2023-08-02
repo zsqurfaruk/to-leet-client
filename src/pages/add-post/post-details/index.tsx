@@ -31,6 +31,7 @@ import parsePhoneNumberFromString from "libphonenumber-js";
 import { AiOutlineMinus } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import style from "../../../styles/postProducts.module.css"
+import { decryptTransform } from "@/Encrypt/EncryptionTransform";
 const selectStyles = {
   control: (styles:any, { isFocused }:any) => ({
     ...styles,
@@ -202,8 +203,8 @@ const PostDetails = () => {
     setIsValid(isValidNumber && isFixedLength);
     setIsValidNum(startsWithFixedNumber);
   };
-  const cookieValue = Cookies.get('token');
-  const tkn = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
+  const tkn = decryptTransform(Cookies.get("qv-tn"));
+  // const tkn = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
   const handlePost: SubmitHandler<FormValues> = async (data) => {
     const values = {
       bedrooms: bedRooms,
@@ -334,9 +335,9 @@ const PostDetails = () => {
   };
 
   
-  const authentication = Cookies.get("authentication");
-  const firstName = Cookies.get("firstName");
-  const lastName = Cookies.get("lastName");
+  const authentication = decryptTransform(Cookies.get("qv-acn"));
+  const firstName = decryptTransform(Cookies.get("qv-fn"));
+  const lastName = decryptTransform(Cookies.get("qv-ln"));
   const name = firstName + " " + lastName;
 
   let getNumber;

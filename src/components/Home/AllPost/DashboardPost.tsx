@@ -8,16 +8,15 @@ import { useSelector } from "react-redux";
 import { MdOutlineLocationOn, MdOutlineBedroomChild } from "react-icons/md";
 import { FaBath } from "react-icons/fa";
 import { TbCurrencyTaka } from "react-icons/tb";
+import { decryptTransform } from "@/Encrypt/EncryptionTransform";
 
 const DashboardPost = ({ post }: any) => {
   const [isHovered, setIsHovered] = useState(false);
   const [updateReload, setUpdateReload] = useState(false);
   const lang = useSelector((state: any) => state.language.language);
   const { reload, setReload }: any = useContext(APIContext);
-  const cookieValue = Cookies.get("token");
-  const token = cookieValue
-    ? JSON.parse(decodeURIComponent(cookieValue))
-    : null;
+  const token = decryptTransform(Cookies.get("qv-tn"));
+  
   const handleUpdate = async () => {
     const res = await fetch(
       `https://zsqur.quickvara.com/api/v1/product/update/available/${post._id}`,
@@ -109,6 +108,7 @@ const DashboardPost = ({ post }: any) => {
             </>
           )}
         </div>
+
         <div className="flex justify-between -mt-1">
           {!lang ? (
             <h2 className="font-semibold"> {post?.type?.eng} </h2>
@@ -118,7 +118,7 @@ const DashboardPost = ({ post }: any) => {
           {!lang ? (
             <h2 className="font-semibold">{formattedDate}</h2>
           ) : (
-            <h2 className="font-semibold text-[13px]">
+            <h2 className="font-semibold text-sm md:text-[13px]">
               {post?.updatedAt
                 ? formattedDate
                     .replace(/0/g, "০")
@@ -135,7 +135,7 @@ const DashboardPost = ({ post }: any) => {
             </h2>
           )}
         </div>
-
+        <div className="divider -my-1 -mt-2"></div>
         <div className="flex justify-between -mt-1">
           {post?.bedrooms?.eng && (
             <div className="flex gap-1">
@@ -144,7 +144,7 @@ const DashboardPost = ({ post }: any) => {
                 <h2>Bedroom: {post?.bedrooms?.eng}</h2>
               ) : (
                 <h2>
-                  <span className="text-[13px]">বেডরুম</span>:{" "}
+                  <span className="text-sm md:text-[13px]">বেডরুম</span>:{" "}
                   {post?.bedrooms?.ban}
                 </h2>
               )}
@@ -165,7 +165,7 @@ const DashboardPost = ({ post }: any) => {
               <MdOutlineBedroomChild
                 className={
                   post?.totalBed?.eng === "Single room"
-                    ? "inline text-warning mt-[2px] w-4  mr-1"
+                    ? "inline text-warning mt-[2px] w-4"
                     : "hidden"
                 }
               />
@@ -193,7 +193,7 @@ const DashboardPost = ({ post }: any) => {
                     className={
                       post?.totalBed?.eng === "Single room"
                         ? "hidden"
-                        : "flex text-[13px]"
+                        : "flex text-sm md:text-[13px]"
                     }
                   >
                     <MdOutlineBedroomChild
@@ -208,7 +208,7 @@ const DashboardPost = ({ post }: any) => {
                   <span
                     className={
                       post?.totalBed?.eng === "Single room"
-                        ? "text-[13px]"
+                        ? "text-sm md:text-[13px]"
                         : "text-sm"
                     }
                   >
@@ -232,7 +232,7 @@ const DashboardPost = ({ post }: any) => {
                 <h2>Empty Bed: {post?.bedNumber?.eng} </h2>
               ) : (
                 <h2>
-                  <span className="text-[13px]">ফাঁকা বেড</span>:{" "}
+                  <span className="text-sm md:text-[13px]">ফাঁকা বেড</span>:{" "}
                   {post?.bedNumber?.ban}{" "}
                 </h2>
               )}
@@ -254,7 +254,7 @@ const DashboardPost = ({ post }: any) => {
                 <h2>Bathroom: {post?.bathrooms?.eng}</h2>
               ) : (
                 <h2>
-                  <span className="text-[13.5px]">বাথরুম</span>:{" "}
+                  <span className="text-sm md:text-[13.8px]">বাথরুম</span>:{" "}
                   {post?.bathrooms?.ban}
                 </h2>
               )}
@@ -294,16 +294,16 @@ const DashboardPost = ({ post }: any) => {
                       className={
                         post?.totalBed?.eng === "Single room"
                           ? "hidden"
-                          : "inline text-[13px]"
+                          : "inline text-sm md:text-[13px]"
                       }
                     >
                       প্রতি
                     </span>
-                    <span className="text-[13px]">সিটঃ</span>
+                    <span className="text-sm md:text-[13px]">সিটঃ</span>
                   </>
                 ) : (
-                  <span className="text-[13px]">ভাড়াঃ </span>
-                )} {banglaNumber} <span className="text-[13px]"> টাকা </span>
+                  <span className="text-sm md:text-[13px]">ভাড়াঃ </span>
+                )} {banglaNumber} <span className="text-sm md:text-[13px]"> টাকা </span>
               </h2>
             )}
           </div>
@@ -312,9 +312,9 @@ const DashboardPost = ({ post }: any) => {
             {!lang ? (
               <h2> {post?.negotiable && <span>Negotiable</span>}</h2>
             ) : (
-              <h2 className="text-[13px]">
+              <h2 className="text-sm md:text-[13px]">
                 {post?.negotiable && (
-                  <span className="text-[12.8px]">আলোচনা সাপেক্ষে</span>
+                  <span className="text-[13.8px] md:text-[12.8px]">আলোচনা সাপেক্ষে</span>
                 )}
               </h2>
             )}
@@ -332,7 +332,7 @@ const DashboardPost = ({ post }: any) => {
             ) : (
               <button
                 onClick={handleUpdate}
-                className="mb-3 text-[13px] text-start"
+                className="mb-3 text-sm md:text-[13px] text-start"
               >
                 ভাড়া হলে এখানে{" "}
                 <span className="text-warning underline font-semibold">
@@ -354,7 +354,7 @@ const DashboardPost = ({ post }: any) => {
                     <span></span> {post?.districts?.eng}{" "}
                   </h2>
                 ) : (
-                  <h2 className="text-[13px]">
+                  <h2 className="text-sm md:text-[13px]">
                     <span></span> {post?.districts?.ban}{" "}
                   </h2>
                 )}
@@ -363,7 +363,7 @@ const DashboardPost = ({ post }: any) => {
                     <span>, </span> {post?.division?.eng}{" "}
                   </h2>
                 ) : (
-                  <h2 className="text-[13px]">
+                  <h2 className="text-sm md:text-[13px]">
                     <span>, </span> {post?.division?.ban}{" "}
                   </h2>
                 )}
@@ -381,7 +381,7 @@ const DashboardPost = ({ post }: any) => {
                     )}
                   </h2>
                 ) : (
-                  <h2 className="text-[13px]">
+                  <h2 className="text-sm md:text-[13px]">
                     {post?.areaName?.ban.length > 18 ? (
                       <span> {post?.areaName?.ban.slice(0, 18)}</span>
                     ) : (
@@ -394,7 +394,7 @@ const DashboardPost = ({ post }: any) => {
                     <span>, </span> {post?.cityName?.eng}
                   </h2>
                 ) : (
-                  <h2 className="text-[13px]">
+                  <h2 className="text-sm md:text-[13px]">
                     <span>, </span> {post?.cityName?.ban}
                   </h2>
                 )}

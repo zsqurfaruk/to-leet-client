@@ -9,27 +9,30 @@ import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
 import Loader from "@/components/Loading/Loader";
+import { decryptTransform } from "@/Encrypt/EncryptionTransform";
+import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
 
 const Dashboard = () => {
   const {reload}:any = useContext(APIContext)
-  const firstName = Cookies.get("firstName");
-  const lastName = Cookies.get("lastName");
-  const email = Cookies.get("authentication");
+  const firstName = decryptTransform(Cookies.get("qv-fn"));
+  const lastName = decryptTransform(Cookies.get("qv-ln"));
+  const email = decryptTransform(Cookies.get("qv-acn"));
   const [personalPost, setPersonalPost] = useState([]);
   const [loading, setLoading] = useState(true);
   
-  const cookieValue = Cookies.get('token');
-  const token = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
+  const token = decryptTransform(Cookies.get("qv-tn"));
+  // const token = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
   useEffect(() => {
-    // setLoading(true);
     fetch(`https://zsqur.quickvara.com/api/v1/product/user/email/${email}`, {
       headers: {
         authorization: `bearer ${token}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => res.text())
       .then((data) => {
-        setPersonalPost(data);
+        const decryptedData = decryptFunction(data);
+        const parsedData = JSON.parse(decryptedData);
+        setPersonalPost(parsedData);
         setLoading(false);
       });
   }, [email, token, reload]);

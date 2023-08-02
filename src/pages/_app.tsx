@@ -48,7 +48,7 @@ export default function App({ Component, pageProps }: AppProps) {
     return <Loading></Loading>;
   }
   return (
-    <DisableRightClick>
+    // <DisableRightClick>
       <ThemeProvider>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
@@ -65,6 +65,6 @@ export default function App({ Component, pageProps }: AppProps) {
           </PersistGate>
         </Provider>
       </ThemeProvider>
-    </DisableRightClick>
+    /* </DisableRightClick> */
   );
 }

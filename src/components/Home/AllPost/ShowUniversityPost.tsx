@@ -93,7 +93,7 @@ const ShowUniversityPost = ({ university }: any) => {
           {!lang ? (
             <h2 className="font-semibold">{formattedDate}</h2>
           ) : (
-            <h2 className="font-semibold text-[13px]">
+            <h2 className="font-semibold text-sm md:text-[13px]">
               {university?.updatedAt
                 ? formattedDate
                     .replace(/0/g, "০")
@@ -110,7 +110,7 @@ const ShowUniversityPost = ({ university }: any) => {
             </h2>
           )}
         </div>
-
+        <div className="divider -my-1 -mt-2"></div>
         <div className="flex justify-between -mt-1">
           {university?.bedrooms?.eng && (
             <div className="flex gap-1">
@@ -119,7 +119,7 @@ const ShowUniversityPost = ({ university }: any) => {
                 <h2>Bedroom: {university?.bedrooms?.eng}</h2>
               ) : (
                 <h2>
-                  <span className="text-[13px]">বেডরুম</span>:{" "}
+                  <span className="text-sm md:text-[13px]">বেডরুম</span>:{" "}
                   {university?.bedrooms?.ban}
                 </h2>
               )}
@@ -140,7 +140,7 @@ const ShowUniversityPost = ({ university }: any) => {
               <MdOutlineBedroomChild
                 className={
                   university?.totalBed?.eng === "Single room"
-                    ? "inline text-warning mt-[2px] w-4  mr-1"
+                    ? "inline text-warning mt-[2px] w-4"
                     : "hidden"
                 }
               />
@@ -165,13 +165,13 @@ const ShowUniversityPost = ({ university }: any) => {
                     className={
                       university?.totalBed?.eng === "Single room"
                         ? "hidden"
-                        : "flex text-[13px]"
+                        : "flex text-sm md:text-[13px]"
                     }
                   >
                       <MdOutlineBedroomChild
                       className={university?.bedrooms?.eng ? "hidden" :
                           "text-warning mt-[2px] w-4 mr-[2px]"}
-                    /> মোট বেড:</span> <span className={university?.totalBed?.eng === "Single room" ? "text-[13px] pl-1" : "text-sm pl-1"}>  {university?.totalBed?.ban} </span>
+                    /> মোট বেড:</span> <span className={university?.totalBed?.eng === "Single room" ? "text-sm md:text-[13px] pl-1" : "text-sm pl-1"}>  {university?.totalBed?.ban} </span>
                 </h2>
               )}
             </div>
@@ -190,7 +190,7 @@ const ShowUniversityPost = ({ university }: any) => {
                 <h2>Empty Bed: {university?.bedNumber?.eng} </h2>
               ) : (
                 <h2>
-                  <span className="text-[13px]">ফাঁকা বেড</span>:{" "}
+                  <span className="text-sm md:text-[13px]">ফাঁকা বেড</span>:{" "}
                   {university?.bedNumber?.ban}{" "}
                 </h2>
               )}
@@ -212,7 +212,7 @@ const ShowUniversityPost = ({ university }: any) => {
                 <h2>Bathroom: {university?.bathrooms?.eng}</h2>
               ) : (
                 <h2>
-                  <span className="text-[13.5px]">বাথরুম</span>: {university?.bathrooms?.ban}
+                  <span className="text-sm md:text-[13.8px]">বাথরুম</span>: {university?.bathrooms?.ban}
                 </h2>
               )}
             </div>
@@ -251,16 +251,16 @@ const ShowUniversityPost = ({ university }: any) => {
                       className={
                         university?.totalBed?.eng === "Single room"
                           ? "hidden"
-                          : "inline text-[13px]"
+                          : "inline text-sm md:text-[13px]"
                       }
                     >
                       প্রতি
                     </span> 
-                    <span className="text-[13px]">সিটঃ</span>
+                    <span className="text-sm md:text-[13px]">সিটঃ</span>
                   </>
                 ) : (
-                  <span className="text-[13px]">ভাড়াঃ </span>
-                )} {banglaNumber} <span className="text-[13px]">টাকা </span>
+                  <span className="text-sm md:text-[13px]">ভাড়াঃ </span>
+                )} {banglaNumber} <span className="text-sm md:text-[13px]">টাকা </span>
               </h2>
             )}
           </div>
@@ -269,9 +269,9 @@ const ShowUniversityPost = ({ university }: any) => {
             {!lang ? (
               <h2> {university?.negotiable && <span>Negotiable</span>}</h2>
             ) : (
-              <h2 className="text-[13px]">
+              <h2 className="text-sm md:text-[13px]">
                 {university?.negotiable && (
-                  <span className="text-[12.8px]">আলোচনা সাপেক্ষে</span>
+                  <span className="text-[13.8px] md:text-[12.8px]">আলোচনা সাপেক্ষে</span>
                 )}
               </h2>
             )}
@@ -288,7 +288,7 @@ const ShowUniversityPost = ({ university }: any) => {
                     <span></span> {university?.districts?.eng}{" "}
                   </h2>
                 ) : (
-                  <h2 className="text-[13px]">
+                  <h2 className="text-sm md:text-[13px]">
                     <span></span> {university?.districts?.ban}{" "}
                   </h2>
                 )}
@@ -297,7 +297,7 @@ const ShowUniversityPost = ({ university }: any) => {
                     <span>, </span> {university?.division?.eng}{" "}
                   </h2>
                 ) : (
-                  <h2 className="text-[13px]">
+                  <h2 className="text-sm md:text-[13px]">
                     <span>, </span> {university?.division?.ban}{" "}
                   </h2>
                 )}
@@ -315,7 +315,7 @@ const ShowUniversityPost = ({ university }: any) => {
                     )}
                   </h2>
                 ) : (
-                  <h2 className="text-[13px]">
+                  <h2 className="text-sm md:text-[13px]">
                     {university?.areaName?.ban.length > 18 ? (
                       <span> {university?.areaName?.ban.slice(0, 18)}</span>
                     ) : (
@@ -328,7 +328,7 @@ const ShowUniversityPost = ({ university }: any) => {
                     <span>, </span> {university?.cityName?.eng}
                   </h2>
                 ) : (
-                  <h2 className="text-[13px]">
+                  <h2 className="text-sm md:text-[13px]">
                     <span>, </span> {university?.cityName?.ban}
                   </h2>
                 )}

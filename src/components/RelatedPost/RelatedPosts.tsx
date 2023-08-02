@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Post from "./Post";
 import { useSelector } from "react-redux";
+import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
 
 const RelatedPosts = ({ type, areaName, cityName, id , division, district}: any) => {
   const lang = useSelector((state:any) => state.language.language);
@@ -26,22 +27,26 @@ useEffect(() => {
   })
     .then((res) => res.json())
     .then((data) => {
-      const result = data?.posts?.filter((post: any) => {
-        return post._id !== id;
+      const decryptedData = decryptFunction(data?.posts);
+      const parsedData = JSON.parse(decryptedData);
+      
+      const result = parsedData?.filter((post: any) => {
+      return post._id !== id;
       });
-      if (JSON.stringify(result) !== JSON.stringify(getValue)) {
+   
+      if (result !== getValue) {
         setGetValue(result);
       }
     });
   
-}, [filterValue]);
+}, [ ]);
 
 
   return (
     <div
       className={
         getValue?.length > 0
-          ? "lg:w-10/12 mx-auto bg-white mb-10 px-7 py-5 lg:-mt-10  shadow-none rounded-xl"
+          ? "lg:w-10/12 mx-auto bg-white mb-10 px-6 py-5 lg:-mt-10  shadow-none rounded-xl"
           : ""
       }
     >

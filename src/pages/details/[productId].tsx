@@ -14,6 +14,8 @@ import { FaBath } from "react-icons/fa";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { BiBed } from "react-icons/bi";
 import { StateContext } from "@/Context/StateContext/StateContext";
+import { decryptTransform } from "@/Encrypt/EncryptionTransform";
+import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
 
 const ProductDetails = ({ product, loading, errorMessage }: any) => {
   const { img1, img2, img3, img4, img5 } = product;
@@ -43,7 +45,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
       toast.success("Copied");
     }
   };
-  const banglaNumber = product.amount
+  const banglaNumber = product?.amount
     .toString()
     .replace(/0/g, "০")
     .replace(/1/g, "১")
@@ -72,7 +74,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
         <title>QuickVara - {product?.type?.eng} Details </title>
       </Head>
       <section className="w-full lg:w-10/12 mx-auto">
-        <Card className="lg:flex-row w-full p-7 shadow-none">
+        <Card className="lg:flex-row w-full p-6 shadow-none">
           <CardHeader
             shadow={false}
             floated={false}
@@ -81,6 +83,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
             <div>
               {!changedDetailsPic ? (
                 <PhotoProvider>
+                   <PhotoView src={img1}>
                   <img
                     src={img1}
                     alt=""
@@ -93,6 +96,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
                     }
                     draggable="false"
                   />
+                  </PhotoView>
                 </PhotoProvider>
               ) : (
                 <PhotoProvider>
@@ -134,7 +138,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
             {!lang ? (
               <h1 className="mb-1">Basic Information</h1>
             ) : (
-              <h1 className="mb-1">মৌলিক তথ্য</h1>
+              <h1 className="mb-1"> মৌলিক তথ্য </h1>
             )}
             <div className="divider mt-[6px] mb-[6px]"></div>
 
@@ -154,7 +158,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
                 <h2 className="font-semibold"> {product?.type?.ban} </h2>
               )}
               {!lang ? (
-                <h2 className="font-semibold">{formattedDate}</h2>
+                <h2 className="font-semibold"> {formattedDate} </h2>
               ) : (
                 <h2 className="font-semibold ">
                   {product?.updatedAt
@@ -179,10 +183,10 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
                 <div className="flex gap-1">
                   <MdOutlineBedroomChild className="text-warning mt-[3.4px] w-4 -ml-[2px]"></MdOutlineBedroomChild>
                   {!lang ? (
-                    <h2>Bedroom: {product?.bedrooms?.eng}</h2>
+                    <h2>Bedroom: {product?.bedrooms?.eng} </h2>
                   ) : (
                     <h2>
-                      <span className="text-sm">বেডরুম</span>:{" "}
+                      <span className="text-sm"> বেডরুমঃ</span>{" "}
                       {product?.bedrooms?.ban}
                     </h2>
                   )}
@@ -196,7 +200,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
                     <h2>Bathroom: {product?.bathrooms?.eng}</h2>
                   ) : (
                     <h2>
-                      <span className="text-sm">বাথরুম</span>:{" "}
+                      <span className="text-sm">বাথরুমঃ </span>{" "}
                       {product?.bathrooms?.ban}
                     </h2>
                   )}
@@ -265,9 +269,9 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
               <h1 className="flex">
                 <MdOutlineLocationOn className="text-warning h-6 w-6"></MdOutlineLocationOn>
                 {!lang ? (
-                  <span className=" file:">Location information</span>
+                  <span> Location information </span>
                 ) : (
-                  <span>অবস্থানগত তথ্য</span>
+                  <span> অবস্থানগত তথ্য </span>
                 )}
               </h1>
               <div className="divider mt-[6px] mb-[6px]"></div>
@@ -344,7 +348,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
                 </h2>
               ) : (
                 <h2 className="text-sm">
-                  বিস্তারিত ঠিকানাঃ <br className=" " />
+                  বিস্তারিত ঠিকানাঃ <br />
                   <span className="text-sm">{product?.address}</span>
                 </h2>
               )}
@@ -365,14 +369,12 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
                               : "inline"
                           }
                         >
-                          Per
-                        </span>
+                          Per </span>
                         Seat:
                       </>
                     ) : (
-                      "Rent:"
-                    )}
-                    {product?.amount} Taka
+                      "Rent: "
+                    )} {product?.amount} Taka
                   </h2>
                 ) : (
                   <h2>
@@ -388,12 +390,11 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
                         >
                           প্রতি
                         </span>
-                        <span className="text-sm">সিটঃ</span>
+                        <span className="text-sm"> সিটঃ </span>
                       </>
                     ) : (
-                      <span className="text-sm">ভাড়াঃ</span>
-                    )}{" "}
-                    {banglaNumber} <span className="text-sm">টাকা </span>
+                      <span className="text-sm">ভাড়াঃ </span>
+                    )} {banglaNumber} <span className="text-sm">টাকা </span>
                   </h2>
                 )}
               </div>
@@ -420,7 +421,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
                     মোবাইল নাম্বারঃ +
                     <span>
                       {product?.phone &&
-                        product.phone
+                        product?.phone
                           .toString()
                           .replace(/0/g, "০")
                           .replace(/1/g, "১")
@@ -452,7 +453,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
           </Typography>
           <div className="divider mt-[6px] mb-[6px]"></div>
           {!lang ? (
-            <h1 className="  ">Details Information:</h1>
+            <h1>Details Information:</h1>
           ) : (
             <h1>বিস্তারিত তথ্যঃ</h1>
           )}
@@ -474,12 +475,8 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
   );
 };
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
-  const cookieValue = context?.req?.cookies?.token;
-  const token = cookieValue
-    ? JSON.parse(decodeURIComponent(cookieValue))
-    : null;
+  const token = decryptTransform(context?.req?.cookies?.['qv-tn']);
   const { params } = context;
-
   let loading = true;
   let errorMessage = "";
 
@@ -492,7 +489,9 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
         },
       }
     );
-    const data = await res.json();
+    const encryptedData = await res.text(); // Ensure to use 'text()' to get the response as plain text
+    const decryptedData = decryptFunction(encryptedData); // Decrypt the data
+    const data = JSON.parse(decryptedData); 
 
     if (!data) {
       return {

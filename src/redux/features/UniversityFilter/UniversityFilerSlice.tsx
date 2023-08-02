@@ -1,3 +1,4 @@
+import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
 import { RootState } from "@/redux/app/store";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
@@ -23,8 +24,11 @@ export const fetchAndFilterUniversityData = createAsyncThunk<
   const state: any = getState() as RootState;
 
   const openModalValue = state.openModalValue;
-  const response = await fetch("https://zsqur.quickvara.com/api/v1/product");
-  const data = await response.json();
+  const res = await fetch("https://zsqur.quickvara.com/api/v1/product");
+  const encryptedData = await res.text(); 
+    const decryptedData = decryptFunction(encryptedData); // Decrypt the data
+    const data = JSON.parse(decryptedData);
+  // const data = await response.json();
 
   if (openModalValue?.eng) {
     const result = data.filter(

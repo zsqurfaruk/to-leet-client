@@ -114,7 +114,6 @@ function SignUp() {
       router.push(`/signIn`);
       toast.success("Sign Up Successful.");
     }
-    // setSignUpUserInfo(result);
   };
 
   const [passHidden, setPassHidden] = useState(true);

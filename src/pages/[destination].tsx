@@ -8,6 +8,7 @@ import Head from "next/head";
 import { useSelector } from "react-redux";
 import { Product } from "../../types";
 import Loader from "@/components/Loading/Loader";
+import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
 
 interface ShowAllPostProps {
 products: Product[];
@@ -300,8 +301,10 @@ export const getServerSideProps: GetServerSideProps = async ({
     const res = await fetch(
       `https://zsqur.quickvara.com/api/v1/product/rentType/${params.destination}`
     );
-    const data = await res.json();
-
+     
+     const encryptedData = await res.text(); // Ensure to use 'text()' to get the response as plain text
+    const decryptedData = decryptFunction(encryptedData); // Decrypt the data
+    const data = JSON.parse(decryptedData); 
     if (!data) {
       return {
         redirect: {

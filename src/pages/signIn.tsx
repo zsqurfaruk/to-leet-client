@@ -24,6 +24,7 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import { setCityName } from "@/redux/features/FilterCity/FilterCitySlice";
 import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
 import { setDistrictsName } from "@/redux/features/DistrictsFilter/DistrictsSlice";
+import { decryptTransform, encryptTransform } from "@/Encrypt/EncryptionTransform";
 
 type FormValues = {
   email: string | number;
@@ -100,8 +101,8 @@ const SignIn = () => {
     formState: { errors },
   } = useForm<FormValues>();
 
-  const cookieValue = Cookies.get("token");
-  const tkn = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
+  const tkn = decryptTransform(Cookies.get("qv-tn"));
+  // const tkn = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
   const handleSignIn = async (data: any) => {
     const info = {
       email: countryNumber || data?.email,
@@ -122,12 +123,12 @@ const SignIn = () => {
     setSignInErrorBan(result?.error?.ban);
     const token = result?.data?.token;
     if (token) {
-      Cookies.set("token", encodeURIComponent(JSON.stringify(token)), {
+      Cookies.set("qv-tn", encryptTransform(token), {
         expires: 5,
       });
-      Cookies.set("authentication", result?.data?.user?.email, { expires: 5 });
-      Cookies.set("firstName", result?.data?.user.firstName, { expires: 5 });
-      Cookies.set("lastName", result?.data?.user.lastName, { expires: 5 });
+      Cookies.set("qv-acn", encryptTransform(result?.data?.user?.email), { expires: 5 });
+      Cookies.set("qv-fn", encryptTransform(result?.data?.user.firstName), { expires: 5 });
+      Cookies.set("qv-ln", encryptTransform(result?.data?.user.lastName), { expires: 5 });
       setLoading(false);
       const { query }: any = router;
       const nextPage = query.next || "/";

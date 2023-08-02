@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import ShowUniversityPost from "@/components/Home/AllPost/ShowUniversityPost";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Lottie from "lottie-react";
 import lotti from "../image/lf20_jkbuwuhk.json";
 import Head from "next/head";
@@ -13,6 +13,13 @@ import { fetchAndFilterUniversityData } from "@/redux/features/UniversityFilter/
 
 const University = () => {
   const lang = useSelector((state: any) => state.language.language);
+  const [limit, setLimit] = useState(20);
+  const [currentPage, setCurrentPage] = useState(
+    Number(sessionStorage.getItem("page")) || 1
+  );
+  const [pageNumberLimit, setPageNumberLimit] = useState(5);
+  const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
+  const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
   const { filterPost, isLoading } = useSelector(
     (state: RootState) => state.university
   );
@@ -28,6 +35,129 @@ const University = () => {
       .then(() => {})
       .catch(() => {});
   }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem("pageU", currentPage.toString());
+  }, [currentPage]);
+  // ...
+
+  useEffect(() => {
+    const storedPage = Number(sessionStorage.getItem("pageU")) || 1;
+    setCurrentPage(storedPage);
+    setMaxPageNumberLimit(
+      Math.ceil(storedPage / pageNumberLimit) * pageNumberLimit
+    );
+    setMinPageNumberLimit(
+      Math.ceil(storedPage / pageNumberLimit - 1) * pageNumberLimit
+    );
+  }, [pageNumberLimit]);
+
+  const handleClick = (e: any) => {
+    const pageNumber = Number(e.target.id);
+    setCurrentPage(pageNumber);
+    sessionStorage.setItem("pageU", pageNumber.toString());
+  };
+  const pages: number[] = [];
+  for (let i = 1; i <= Math.ceil(filterPost?.length / limit); i++) {
+    pages.push(i);
+  }
+
+  const renderPagesNumber = pages?.map((number: any) => {
+    const banglaNumber = number
+      .toString()
+      .replace(/0/g, "০")
+      .replace(/1/g, "১")
+      .replace(/2/g, "২")
+      .replace(/3/g, "৩")
+      .replace(/4/g, "৪")
+      .replace(/5/g, "৫")
+      .replace(/6/g, "৬")
+      .replace(/7/g, "৭")
+      .replace(/8/g, "৮")
+      .replace(/9/g, "৯");
+    if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
+      return (
+        <li
+          key={number}
+          id={number}
+          onClick={handleClick}
+          className={
+            currentPage === number
+              ? "bg-warning text-primary px-2 rounded cursor-pointer"
+              : "cursor-pointer text-warning"
+          }
+        >
+          {!lang ? <>{number}</> : <>{banglaNumber}</>}
+        </li>
+      );
+    } else {
+      return null;
+    }
+  });
+
+  const lastIndex = currentPage * limit;
+  const startIndex = lastIndex - limit;
+  const currentItems = filterPost.slice(startIndex, lastIndex);
+
+  const renderData = (filterPost: any) => {
+    return (
+      <>
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 pt-5 pb-10">
+          {filterPost?.length > 0 &&
+            filterPost?.map((university: any) => (
+              <ShowUniversityPost
+                key={university._id}
+                university={university}
+              ></ShowUniversityPost>
+            ))}
+        </div>
+      </>
+    );
+  };
+  const handlePrevious = () => {
+    const newPage = currentPage - 1;
+    setCurrentPage(newPage);
+    sessionStorage.setItem("page", newPage.toString());
+
+    if (newPage % pageNumberLimit === 0) {
+      setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
+      setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+    }
+  };
+  const handleNext = () => {
+    const newPage = currentPage + 1;
+    setCurrentPage(newPage);
+    sessionStorage.setItem("page", newPage.toString());
+
+    if (newPage > maxPageNumberLimit) {
+      setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
+      setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
+    }
+  };
+
+  let pageIncrementBtn = null;
+  if (pages?.length > maxPageNumberLimit) {
+    pageIncrementBtn = (
+      <li
+        onClick={() => handleClick({ target: { id: maxPageNumberLimit + 1 } })}
+        className="cursor-pointer text-warning pl-1"
+      >
+        &hellip;
+      </li>
+    );
+  }
+
+  let pageDecrementBtn = null;
+  if (currentPage > pageNumberLimit) {
+    pageDecrementBtn = (
+      <li
+        onClick={() => handleClick({ target: { id: minPageNumberLimit } })}
+        className="cursor-pointer text-warning pr-1"
+      >
+        &hellip;
+      </li>
+    );
+  }
   return (
     <>
       <Head>
@@ -83,15 +213,46 @@ const University = () => {
           <Loader></Loader>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 pt-5 pb-10">
-              {filterPost?.length > 0 &&
-                filterPost?.map((university: any) => (
-                  <ShowUniversityPost
-                    key={university._id}
-                    university={university}
-                  ></ShowUniversityPost>
-                ))}
+            {renderData(currentItems)}
+           {
+            filterPost?.length > 20 &&  <div>
+            <ul
+              className={
+                minPageNumberLimit < 5
+                  ? "flex justify-center gap-3 md:gap-4 pb-5"
+                  : "flex justify-center gap-[7px] md:gap-3 pb-5"
+              }
+            >
+              <button
+                onClick={handlePrevious}
+                disabled={currentPage === pages[0] ? true : false}
+                className={
+                  currentPage === pages[0] ? "text-gray-400" : "text-warning"
+                }
+              >
+                {!lang ? "Previous" : "পূর্ববর্তী"}
+              </button>
+              <span className={minPageNumberLimit < 5 ? "hidden" : "inline"}>
+                {pageDecrementBtn}
+              </span>
+              {renderPagesNumber}
+              {pageIncrementBtn}
+              <button
+                onClick={handleNext}
+                disabled={
+                  currentPage === pages[pages?.length - 1] ? true : false
+                }
+                className={
+                  currentPage === pages[pages?.length - 1]
+                    ? "text-gray-400"
+                    : "text-warning pl-1"
+                }
+              >
+                {!lang ? "Next" : "পরবর্তী"}
+              </button>
+            </ul>
             </div>
+           }
             <div
               className={
                 filterPost?.length === 0 && !isLoading
@@ -100,25 +261,29 @@ const University = () => {
               }
             >
               {filterPost?.length === 0 && !isLoading && (
-                <div className ="-mt-20">
+                <div className="-mt-20">
                   {!lang ? (
-                     <><Lottie
-                     className="h-52 w-52 ml-3"
-                     animationData={lotti}
-                     loop={true}
-                   ></Lottie>
-                    <h1 className="text-4xl text-center mb-10">
-                      No data found.
-                    </h1>
+                    <>
+                      <Lottie
+                        className="h-52 w-52 ml-3"
+                        animationData={lotti}
+                        loop={true}
+                      ></Lottie>
+                      <h1 className="text-4xl text-center mb-10">
+                        No data found.
+                      </h1>
                     </>
                   ) : (
                     <>
-                    <Lottie
-                    className="h-52 w-52 ml-9"
-                    animationData={lotti}
-                    loop={true}
-                  ></Lottie>
-                    <h1 className="text-2xl -ml-5">এখনো কোন পোস্ট করা হয়নি।</h1></>
+                      <Lottie
+                        className="h-52 w-52 ml-9"
+                        animationData={lotti}
+                        loop={true}
+                      ></Lottie>
+                      <h1 className="text-2xl -ml-5">
+                        এখনো কোন পোস্ট করা হয়নি।
+                      </h1>
+                    </>
                   )}
                 </div>
               )}

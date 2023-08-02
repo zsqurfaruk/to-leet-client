@@ -92,7 +92,7 @@ return (
         {!lang ? (
           <h2 className="font-semibold">{formattedDate}</h2>
         ) : (
-          <h2 className="font-semibold text-[13px]">
+          <h2 className="font-semibold text-sm md:text-[13px]">
             {post?.updatedAt
               ? formattedDate
                   .replace(/0/g, "০")
@@ -109,7 +109,7 @@ return (
           </h2>
         )}
       </div>
-
+      <div className="divider -my-1 -mt-2"></div>
       <div className="flex justify-between -mt-1">
         {post?.bedrooms?.eng && (
           <div className="flex gap-1">
@@ -118,7 +118,7 @@ return (
               <h2>Bedroom: {post?.bedrooms?.eng}</h2>
             ) : (
               <h2>
-                <span className="text-[13px]">বেডরুম</span>:{" "}
+                <span className="text-sm md:text-[13px]">বেডরুম</span>:{" "}
                 {post?.bedrooms?.ban}
               </h2>
             )}
@@ -139,7 +139,7 @@ return (
             <MdOutlineBedroomChild
               className={
                 post?.totalBed?.eng === "Single room"
-                  ? "inline text-warning mt-[2px] w-4  mr-1"
+                  ? "inline text-warning mt-[2px] w-4"
                   : "hidden"
               }
             />
@@ -164,13 +164,13 @@ return (
                   className={
                     post?.totalBed?.eng === "Single room"
                       ? "hidden"
-                      : "flex text-[13px]"
+                      : "flex text-sm md:text-[13px]"
                   }
                 >
                     <MdOutlineBedroomChild
                     className={post?.bedrooms?.eng ? "hidden" :
                         "text-warning mt-[2px] w-4 mr-[2px]"}
-                  /> মোট বেড:</span> <span className={post?.totalBed?.eng === "Single room" ? "text-[13px] pl-1" : "text-sm pl-1"}>  {post?.totalBed?.ban} </span>
+                  /> মোট বেড: </span> <span className={post?.totalBed?.eng === "Single room" ? "text-sm md:text-[13px] pl-1" : "text-sm pl-1"}>  {post?.totalBed?.ban} </span>
               </h2>
             )}
           </div>
@@ -189,7 +189,7 @@ return (
               <h2>Empty Bed: {post?.bedNumber?.eng} </h2>
             ) : (
               <h2>
-                <span className="text-[13px]">ফাঁকা বেড</span>:{" "}
+                <span className="text-sm md:text-[13px]"> ফাঁকা বেড </span>:{" "}
                 {post?.bedNumber?.ban}{" "}
               </h2>
             )}
@@ -211,7 +211,7 @@ return (
               <h2>Bathroom: {post?.bathrooms?.eng}</h2>
             ) : (
               <h2>
-                <span className="text-[13.5px]">বাথরুম</span>: {post?.bathrooms?.ban}
+                <span className="text-sm md:text-[13.8px]">বাথরুমঃ</span> {post?.bathrooms?.ban}
               </h2>
             )}
           </div>
@@ -232,8 +232,7 @@ return (
                         : "inline"
                     }
                   >
-                    Per 
-                  </span>
+                    Per </span>
                   Seat:
                 </>
               ) : (
@@ -250,16 +249,16 @@ return (
                     className={
                       post?.totalBed?.eng === "Single room"
                         ? "hidden"
-                        : "inline text-[13px]"
+                        : "inline text-sm md:text-[13px]"
                     }
                   >
                     প্রতি
                   </span> 
-                  <span className="text-[13px]">সিটঃ</span>
+                  <span className="text-sm md:text-[13px]"> সিটঃ </span>
                 </>
               ) : (
-                <span className="text-[13px]">ভাড়াঃ </span>
-              )} {banglaNumber} <span className="text-[13px]">টাকা </span>
+                <span className="text-sm md:text-[13px]"> ভাড়াঃ </span>
+              )} {banglaNumber} <span className="text-sm md:text-[13px]"> টাকা </span>
             </h2>
           )}
         </div>
@@ -268,9 +267,9 @@ return (
           {!lang ? (
             <h2> {post?.negotiable && <span>Negotiable</span>}</h2>
           ) : (
-            <h2 className="text-[13px]">
+            <h2 className="text-sm md:text-[13px]">
               {post?.negotiable && (
-                <span className="text-[12.8px]">আলোচনা সাপেক্ষে</span>
+                <span className="text-[13.8px] md:text-[12.8px]">আলোচনা সাপেক্ষে</span>
               )}
             </h2>
           )}
@@ -287,7 +286,7 @@ return (
                   <span></span> {post?.districts?.eng}{" "}
                 </h2>
               ) : (
-                <h2 className="text-[13px]">
+                <h2 className="text-sm md:text-[13px]">
                   <span></span> {post?.districts?.ban}{" "}
                 </h2>
               )}
@@ -296,7 +295,7 @@ return (
                   <span>, </span> {post?.division?.eng}{" "}
                 </h2>
               ) : (
-                <h2 className="text-[13px]">
+                <h2 className="text-sm md:text-[13px]">
                   <span>, </span> {post?.division?.ban}{" "}
                 </h2>
               )}
@@ -314,7 +313,7 @@ return (
                   )}
                 </h2>
               ) : (
-                <h2 className="text-[13px]">
+                <h2 className="text-sm md:text-[13px]">
                   {post?.areaName?.ban.length > 18 ? (
                     <span> {post?.areaName?.ban.slice(0, 18)}</span>
                   ) : (
@@ -327,7 +326,7 @@ return (
                   <span>, </span> {post?.cityName?.eng}
                 </h2>
               ) : (
-                <h2 className="text-[13px]">
+                <h2 className="text-sm md:text-[13px]">
                   <span>, </span> {post?.cityName?.ban}
                 </h2>
               )}

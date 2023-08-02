@@ -1,3 +1,4 @@
+import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
 import React, { createContext, useEffect, useState} from "react";
 export const APIContext = createContext({});
 
@@ -10,8 +11,11 @@ const ApiContext = ({ children }: any) => {
 
   useEffect(() => {
     fetch("https://zsqur.quickvara.com/api/v1/users/signup")
-      .then((res) => res.json())
-      .then((data) => setUserCounter(data));
+      .then((res) => res.text())
+      .then((data) =>{
+        const decryptedUser = decryptFunction(data);
+        const parsedUser = JSON.parse(decryptedUser);
+        setUserCounter(parsedUser)});
   }, []);
 
   const [counter, setCounter] = useState([]);

@@ -24,6 +24,8 @@ import { setDistrictsName } from "@/redux/features/DistrictsFilter/DistrictsSlic
 import { setOpenModalValue } from "@/redux/features/UniversitySlice/UniversitySlice";
 import { setSignInOpen } from "@/redux/features/SignInModal/SignInModalSlice";
 import { setSignUpOpen } from "@/redux/features/SignUpModal/SignUpModal";
+import { decryptTransform } from "@/Encrypt/EncryptionTransform";
+ 
 
 
 export default function NavBar() {
@@ -45,8 +47,8 @@ export default function NavBar() {
   }: any = useContext(PostStateContext);
   const [authenticated, setAuthenticated] = useState(false);
   const { push, pathname } = useRouter();
-  const cookieValue = Cookies.get('token');
-  const token = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
+  const token = decryptTransform(Cookies.get("qv-tn"));
+  // const token = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
   useEffect(() => {
     if (token) {
       setAuthenticated(true);
@@ -64,10 +66,10 @@ export default function NavBar() {
 
   const logOut = () => {
     setAuthenticated(false);
-    Cookies.remove("token");
-    Cookies.remove("firstName");
-    Cookies.remove("lastName");
-    Cookies.remove("authentication");
+    Cookies.remove("qv-tn");
+    Cookies.remove("qv-fn");
+    Cookies.remove("qv-ln");
+    Cookies.remove("qv-acn");
     Cookies.remove("city");
     Cookies.remove("area");
     Cookies.remove("district");
@@ -75,7 +77,7 @@ export default function NavBar() {
     Cookies.remove("filterMV");
     Cookies.remove("openMV");
     Cookies.remove("next-auth.session-token");
-    return push("/signIn");
+    return push("/");
   };
 
   const handleLogOut = () => {
@@ -139,6 +141,9 @@ useEffect(() => {
     Cookies.remove("openMV");
     sessionStorage.removeItem("page")
     sessionStorage.removeItem("paged")
+    sessionStorage.removeItem("pageU")
+    sessionStorage.removeItem("pageF")
+    sessionStorage.removeItem("persist")
   };
   const handleSignInOpen = () => {
     dispatch(setSignInOpen(true));
@@ -147,7 +152,7 @@ useEffect(() => {
     dispatch(setSignUpOpen(true));
   };
 
-  const email = Cookies.get("authentication");
+  const email = decryptTransform(Cookies.get("qv-acn"));
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <li className="flex justify-center lg:ml-0 lg:block">
