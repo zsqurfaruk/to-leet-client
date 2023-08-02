@@ -38,10 +38,10 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
   useEffect(() => {
     const timer = setTimeout(() => {
-      setLoading(false); // Set loading to false after a certain period of time
+      setLoading(false); 
     }, 1200);
 
-    return () => clearTimeout(timer); // Cleanup function to clear the timeout
+    return () => clearTimeout(timer);  
   }, []);
 
   if (loading) {
