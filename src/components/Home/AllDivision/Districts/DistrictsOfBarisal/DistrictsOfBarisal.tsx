@@ -9,7 +9,7 @@ const DistrictsOfBarisal = () => {
  
   const dispatch = useDispatch();
   const districtsName = useSelector(
-    (state: RootState) => state.districtsName.districtsName
+    (state: RootState) => state['qv-dsn'].districtsName
   );
 
   const handleFilter = (v: any) => {

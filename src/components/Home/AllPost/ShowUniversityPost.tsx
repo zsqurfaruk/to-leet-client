@@ -2,8 +2,9 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { MdOutlineLocationOn, MdOutlineBedroomChild } from "react-icons/md";
+import { MdOutlineLocationOn} from "react-icons/md";
 import { FaBath } from "react-icons/fa";
+import { BiBed } from "react-icons/bi";
 import { TbCurrencyTaka } from "react-icons/tb";
 
 const ShowUniversityPost = ({ university }: any) => {
@@ -114,7 +115,7 @@ const ShowUniversityPost = ({ university }: any) => {
         <div className="flex justify-between -mt-1">
           {university?.bedrooms?.eng && (
             <div className="flex gap-1">
-              <MdOutlineBedroomChild className="text-warning mt-[2px] w-4 -ml-[2px]" />
+              <BiBed className="text-warning mt-[2px] w-4 -ml-[2px]" />
               {!lang ? (
                 <h2>Bedroom: {university?.bedrooms?.eng}</h2>
               ) : (
@@ -137,7 +138,7 @@ const ShowUniversityPost = ({ university }: any) => {
                   : "hidden"
               }
             >
-              <MdOutlineBedroomChild
+              <BiBed
                 className={
                   university?.totalBed?.eng === "Single room"
                     ? "inline text-warning mt-[2px] w-4"
@@ -153,7 +154,7 @@ const ShowUniversityPost = ({ university }: any) => {
                         : "flex"
                     }
                   >
-                    <MdOutlineBedroomChild
+                    <BiBed
                       className={ university?.bedrooms?.eng ? "hidden" :
                           "text-warning mt-[2px] w-4 mr-[2px]"}
                     /> Total Bed:
@@ -168,7 +169,7 @@ const ShowUniversityPost = ({ university }: any) => {
                         : "flex text-sm md:text-[13px]"
                     }
                   >
-                      <MdOutlineBedroomChild
+                      <BiBed
                       className={university?.bedrooms?.eng ? "hidden" :
                           "text-warning mt-[2px] w-4 mr-[2px]"}
                     /> মোট বেড:</span> <span className={university?.totalBed?.eng === "Single room" ? "text-sm md:text-[13px] pl-1" : "text-sm pl-1"}>  {university?.totalBed?.ban} </span>
@@ -179,7 +180,7 @@ const ShowUniversityPost = ({ university }: any) => {
 
           {university?.bedNumber && (
             <div className="flex">
-              <MdOutlineBedroomChild
+              <BiBed
                 className={
                   university?.bedrooms?.eng
                     ? "hidden"

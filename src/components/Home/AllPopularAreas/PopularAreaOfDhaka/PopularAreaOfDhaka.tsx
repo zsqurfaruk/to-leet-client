@@ -17,7 +17,7 @@ const PopularAreaOfDhaka = () => {
 
   const dispatch = useDispatch();
   const homePopularAreaName = useSelector(
-    (state: any) => state.homePopularArea.homePopularAreaName
+    (state: any) => state['qv-hpa'].homePopularAreaName
   );
 
   const handleFilter = (v: any) => {

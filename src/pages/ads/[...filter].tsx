@@ -55,21 +55,21 @@ const FilterPosts = () => {
   const [loading, setLoading] = useState(true);
   const [hasData, setHasData] = useState(true);
 
-  const cityName = useSelector((state: RootState) => state.cityName.cityName);
+  const cityName = useSelector((state: any) => state['qv-cn'].cityName)
 
-  const filterModalValue = useSelector(
-    (state: RootState) => state.filterModalValue.filterModalValue
-  );
+  // const filterModalValue = useSelector(
+  //   (state: RootState) => state.filterModalValue.filterModalValue
+  // );
 
   const homePopularAreaName = useSelector(
-    (state: RootState) => state.homePopularArea.homePopularAreaName
+    (state: RootState) => state['qv-hpa'].homePopularAreaName
   );
   const divisionNameEng = useSelector(
-    (state: RootState) => state.divisionNameEng.divisionNameEng
+    (state: RootState) => state['qv-dn'].divisionNameEng
   );
 
   const districtsName = useSelector(
-    (state: RootState) => state.districtsName.districtsName
+    (state: RootState) => state['qv-dsn'].districtsName
   );
 
   useEffect(() => {
@@ -156,7 +156,7 @@ const FilterPosts = () => {
 
   const lastIndex = currentPage * limit;
   const startIndex = lastIndex - limit;
-  const currentItems = filterPost.slice(startIndex, lastIndex);
+  const currentItems = filterPost?.slice(startIndex, lastIndex);
 
   const renderData = (filterPost: any) => {
     return (

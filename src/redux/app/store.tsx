@@ -12,7 +12,7 @@ import  filterDistrictsSlice, { setDistrictsName }  from "../features/DistrictsF
 import openModalSlice, {  setOpenModalValue }  from "../features/UniversitySlice/UniversitySlice";
 import { encryptTransform } from 'redux-persist-transform-encrypt';
 import migrations from "./migrates";
-import universityFilterSlice, { fetchAndFilterUniversityData, setUniversity }  from "../features/UniversityFilter/UniversityFilerSlice";
+import universityFilterSlice, { setUniversity }  from "../features/UniversityFilter/UniversityFilerSlice";
 import signInModalSlice  from "../features/SignInModal/SignInModalSlice";
 import  signUpModalSlice  from "../features/SignUpModal/SignUpModal";
   
@@ -30,13 +30,13 @@ if (process.env.NODE_ENV === "development") {
 const rootReducer = combineReducers({
   allPosts: allPostsSlice,
   language: languageSlice,
-  cityName: filterSlice,
-  homePopularArea: filterAreaSlice,
-  filterModalValue: filterModalSlice,
-  divisionNameEng: filterDivisionSlice,
-  districtsName : filterDistrictsSlice,
-  openModalValue: openModalSlice,
-  university: universityFilterSlice,
+  ['qv-cn']: filterSlice,
+  ['qv-hpa']: filterAreaSlice,
+  ['qv-fmv']: filterModalSlice,
+  ['qv-dn']: filterDivisionSlice,
+  ['qv-dsn'] : filterDistrictsSlice,
+  ['qv-omv']: openModalSlice,
+  ['qv-uv']: universityFilterSlice,
   signInModal: signInModalSlice,
   signUpModal: signUpModalSlice
 });
@@ -56,7 +56,7 @@ const persistConfig = {
   key: 'root',
   storage: storageSession,
   transforms: [encryptionTransform], 
-  whitelist: ['cityName', 'homePopularArea', 'filterModalValue', 'divisionName', 'districtsName', 'openModalValue','university'],
+  whitelist: ['qv-cn', 'qv-hpa', 'qv-fmv', 'qv-dn', 'qv-dsn', 'qv-omv','qv-uv'],
   version: 2, // Update this to the latest version
   migrate: createMigrate(migrations, { debug: false }),
 };

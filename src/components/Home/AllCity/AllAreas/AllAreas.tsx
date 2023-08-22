@@ -11,6 +11,7 @@ import PopularAreaOfSylhet from "../../AllPopularAreas/PopularAreaOfSylhet/Popul
 import { useDispatch, useSelector } from "react-redux";
 import { setCityName } from "@/redux/features/FilterCity/FilterCitySlice";
 import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
+import { RootState } from "@/redux/app/store";
 
 const AllAreas = () => {
   const dispatch = useDispatch();
@@ -25,8 +26,9 @@ const AllAreas = () => {
     }));
      
   };
-  const cityName = useSelector((state: any) => state.cityName.cityName);
-
+  // const cityName = useSelector((state: any) => state.cityName.cityName);
+  const cityName = useSelector((state: RootState) => state['qv-cn'].cityName);
+  console.log(cityName)
   const lang = useSelector((state:any) => state.language.language);
   return (
     <section className="w-full pl-9 md:pl-0">

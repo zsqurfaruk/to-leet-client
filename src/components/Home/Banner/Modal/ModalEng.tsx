@@ -39,7 +39,7 @@ export default function ModalEng() {
     setLocalEng("")
   };
  
-  const openModalValue = useSelector((state:any) => state.openModalValue );
+  const openModalValue = useSelector((state:any) => state['qv-omv'] );
   const dispatch = useDispatch<AppDispatch>()
   
   const handleSelectChange = (newValue:any) => {

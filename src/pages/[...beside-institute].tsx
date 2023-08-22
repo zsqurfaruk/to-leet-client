@@ -11,6 +11,10 @@ import { useRouter } from "next/router";
 import { setOpenModalValue } from "@/redux/features/UniversitySlice/UniversitySlice";
 import { fetchAndFilterUniversityData } from "@/redux/features/UniversityFilter/UniversityFilerSlice";
 
+const options = [
+  'All', 'Bachelor (Male)', 'Bachelor (Female)', 'Mess (Male)',
+  'Mess (Female)', 'Sublet (Male)', 'Sublet (Female)', 'Family', 'Hostel'
+];
 const University = () => {
   const lang = useSelector((state: any) => state.language.language);
   const [limit, setLimit] = useState(20);
@@ -21,7 +25,7 @@ const University = () => {
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
   const { filterPost, isLoading } = useSelector(
-    (state: RootState) => state.university
+    (state: RootState) => state['qv-uv']
   );
   const dispatch: AppDispatch = useDispatch();
   const router = useRouter();
@@ -97,7 +101,7 @@ const University = () => {
 
   const lastIndex = currentPage * limit;
   const startIndex = lastIndex - limit;
-  const currentItems = filterPost.slice(startIndex, lastIndex);
+  const currentItems = filterPost?.slice(startIndex, lastIndex);
 
   const renderData = (filterPost: any) => {
     return (
@@ -158,6 +162,22 @@ const University = () => {
       </li>
     );
   }
+
+  // gggggggggggggggggggggggggggggggggggggggggggggggggg
+  // 
+  const [startIndexx, setStartIndexx] = useState(0);
+
+  const handleNextClick = () => {
+    if (startIndexx < options.length - 1) {
+      setStartIndexx(prevIndex => prevIndex + 1);
+    }
+  };
+
+  const handlePrevClick = () => {
+    if (startIndex > 0) {
+      setStartIndexx(prevIndex => prevIndex - 1);
+    }
+  };
   return (
     <>
       <Head>
@@ -213,6 +233,31 @@ const University = () => {
           <Loader></Loader>
         ) : (
           <>
+            <div className="relative flex items-center justify-center md:flex-row">
+      <button
+        className="px-2 py-1 bg-blue-500 text-white rounded"
+        onClick={handlePrevClick}
+        disabled={startIndex === 0}
+      >
+        Prev
+      </button>
+      <div className="overflow-hidden w-full md:w-auto">
+        <ul className="flex space-x-4">
+          {options.slice(startIndex).map((option, index) => (
+            <li key={index} className={`cursor-pointer`}>
+              {option}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <button
+        className="px-2 py-1 bg-blue-500 text-white rounded"
+        onClick={handleNextClick}
+        disabled={startIndex >= options.length - 1}
+      >
+        Next
+      </button>
+    </div>
             {renderData(currentItems)}
            {
             filterPost?.length > 20 &&  <div>

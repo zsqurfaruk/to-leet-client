@@ -9,7 +9,7 @@ import Head from "next/head";
 import { toast } from "react-hot-toast";
 import RelatedPosts from "@/components/RelatedPost/RelatedPosts";
 import { useSelector } from "react-redux";
-import { MdOutlineLocationOn, MdOutlineBedroomChild } from "react-icons/md";
+import { MdOutlineLocationOn} from "react-icons/md";
 import { FaBath } from "react-icons/fa";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { BiBed } from "react-icons/bi";
@@ -181,7 +181,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
             <div className="flex justify-between mt-1">
               {product?.bedrooms?.eng && (
                 <div className="flex gap-1">
-                  <MdOutlineBedroomChild className="text-warning mt-[3.4px] w-4 -ml-[2px]"></MdOutlineBedroomChild>
+                  <BiBed className="text-warning mt-[3.4px] w-4 -ml-[2px]"></BiBed>
                   {!lang ? (
                     <h2>Bedroom: {product?.bedrooms?.eng} </h2>
                   ) : (
@@ -219,7 +219,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
                       : "hidden"
                   }
                 >
-                  <BiBed className="h-[16px] w-5 mt-1 mr-1  text-warning" />
+                  <BiBed className="h-[16px] w-5 mt-1 mr-[2px] -ml-[3.4px]  text-warning" />
                   {!lang ? (
                     <h2>
                       <span
@@ -252,7 +252,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
 
               {product?.bedNumber && (
                 <div className="flex">
-                  <BiBed className="h-[16px] w-5 mt-1 mr-1 text-warning" />
+                  <BiBed className="h-[16px] w-5 mt-1 mr-[2px] text-warning" />
                   {!lang ? (
                     <h2>Empty Bed: {product?.bedNumber?.eng} </h2>
                   ) : (
@@ -267,7 +267,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
             <div className="divider mt-[6px] mb-[6px]"></div>
             <div>
               <h1 className="flex">
-                <MdOutlineLocationOn className="text-warning h-6 w-6"></MdOutlineLocationOn>
+                <MdOutlineLocationOn className="text-warning h-6 w-6 -ml-1"></MdOutlineLocationOn>
                 {!lang ? (
                   <span> Location information </span>
                 ) : (

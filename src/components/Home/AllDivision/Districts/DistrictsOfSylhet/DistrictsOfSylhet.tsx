@@ -8,7 +8,7 @@ const DistrictsOfSylhet = () => {
   const { setFilterModal }: any = useContext(StateContext);
   const dispatch = useDispatch();
   const districtsName = useSelector(
-    (state: RootState) => state.districtsName.districtsName
+    (state: RootState) => state['qv-dsn'].districtsName
   );
 
   const handleFilter = (v: any) => {

@@ -23,11 +23,11 @@ export const fetchAndFilterUniversityData = createAsyncThunk<
 >("university/fetchData", async (_, { getState }) => {
   const state: any = getState() as RootState;
 
-  const openModalValue = state.openModalValue;
+  const openModalValue = state["qv-omv"];
   const res = await fetch("https://zsqur.quickvara.com/api/v1/product");
-  const encryptedData = await res.text(); 
-    const decryptedData = decryptFunction(encryptedData); // Decrypt the data
-    const data = JSON.parse(decryptedData);
+  const encryptedData = await res.text();
+  const decryptedData = decryptFunction(encryptedData); // Decrypt the data
+  const data = JSON.parse(decryptedData);
   // const data = await response.json();
 
   if (openModalValue?.eng) {
@@ -52,7 +52,7 @@ export const universityFilterSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchAndFilterUniversityData.pending, (state) => {
-        state.filterPost = []
+        state.filterPost = [];
         state.isLoading = true;
       })
       .addCase(fetchAndFilterUniversityData.fulfilled, (state, action) => {

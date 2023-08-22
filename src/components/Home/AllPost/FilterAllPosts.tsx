@@ -2,8 +2,9 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { MdOutlineLocationOn,MdOutlineBedroomChild } from "react-icons/md";
+import { MdOutlineLocationOn} from "react-icons/md";
 import { FaBath } from "react-icons/fa";
+import { BiBed } from "react-icons/bi";
 import { TbCurrencyTaka } from "react-icons/tb";
 
 function FilterAllPosts({ post }: any) {
@@ -113,7 +114,7 @@ return (
       <div className="flex justify-between -mt-1">
         {post?.bedrooms?.eng && (
           <div className="flex gap-1">
-            <MdOutlineBedroomChild className="text-warning mt-[2px] w-4 -ml-[2px]" />
+            <BiBed className="text-warning mt-[2px] w-4 -ml-[2px]" />
             {!lang ? (
               <h2>Bedroom: {post?.bedrooms?.eng}</h2>
             ) : (
@@ -136,7 +137,7 @@ return (
                 : "hidden"
             }
           >
-            <MdOutlineBedroomChild
+            <BiBed
               className={
                 post?.totalBed?.eng === "Single room"
                   ? "inline text-warning mt-[2px] w-4"
@@ -152,7 +153,7 @@ return (
                       : "flex"
                   }
                 >
-                  <MdOutlineBedroomChild
+                  <BiBed
                     className={ post?.bedrooms?.eng ? "hidden" :
                         "text-warning mt-[2px] w-4 mr-[2px]"}
                   /> Total Bed:
@@ -167,7 +168,7 @@ return (
                       : "flex text-sm md:text-[13px]"
                   }
                 >
-                    <MdOutlineBedroomChild
+                    <BiBed
                     className={post?.bedrooms?.eng ? "hidden" :
                         "text-warning mt-[2px] w-4 mr-[2px]"}
                   /> মোট বেড: </span> <span className={post?.totalBed?.eng === "Single room" ? "text-sm md:text-[13px] pl-1" : "text-sm pl-1"}>  {post?.totalBed?.ban} </span>
@@ -178,7 +179,7 @@ return (
 
         {post?.bedNumber && (
           <div className="flex">
-            <MdOutlineBedroomChild
+            <BiBed
               className={
                 post?.bedrooms?.eng
                   ? "hidden"

@@ -14,7 +14,7 @@ const AllCityEng = () => {
     };
   
     // Access the cityName from the Redux state using useSelector
-    const cityName = useSelector((state: RootState) => state.cityName.cityName);
+    // const cityName = useSelector((state: RootState) => state.cityName.cityName);
 
    
   const lang = useSelector((state:any) => state.language.language);

@@ -9,7 +9,7 @@ import { RootState } from "@/redux/app/store";
 
 const DestinationType = () => {
    const {filterTypeDivision }:any = useContext(StateContext)
-   const divisionNameEng = useSelector((state: RootState) => state.divisionNameEng.divisionNameEng);
+   const divisionNameEng = useSelector((state: RootState) => state['qv-dn'].divisionNameEng);
   const lang = useSelector((state:any) => state.language.language);
   return (
     <section  className={

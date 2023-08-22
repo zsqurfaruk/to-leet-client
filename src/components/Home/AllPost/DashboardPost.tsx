@@ -5,8 +5,9 @@ import toast from "react-hot-toast";
 import { APIContext } from "@/Context/ApiContext/ApiContext";
 import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
-import { MdOutlineLocationOn, MdOutlineBedroomChild } from "react-icons/md";
+import { MdOutlineLocationOn} from "react-icons/md";
 import { FaBath } from "react-icons/fa";
+import { BiBed } from "react-icons/bi";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { decryptTransform } from "@/Encrypt/EncryptionTransform";
 
@@ -139,7 +140,7 @@ const DashboardPost = ({ post }: any) => {
         <div className="flex justify-between -mt-1">
           {post?.bedrooms?.eng && (
             <div className="flex gap-1">
-              <MdOutlineBedroomChild className="text-warning mt-[2px] w-4 -ml-[2px]" />
+              <BiBed className="text-warning mt-[2px] w-4 -ml-[2px]" />
               {!lang ? (
                 <h2>Bedroom: {post?.bedrooms?.eng}</h2>
               ) : (
@@ -162,7 +163,7 @@ const DashboardPost = ({ post }: any) => {
                   : "hidden"
               }
             >
-              <MdOutlineBedroomChild
+              <BiBed
                 className={
                   post?.totalBed?.eng === "Single room"
                     ? "inline text-warning mt-[2px] w-4"
@@ -176,7 +177,7 @@ const DashboardPost = ({ post }: any) => {
                       post?.totalBed?.eng === "Single room" ? "hidden" : "flex"
                     }
                   >
-                    <MdOutlineBedroomChild
+                    <BiBed
                       className={
                         post?.bedrooms?.eng
                           ? "hidden"
@@ -196,7 +197,7 @@ const DashboardPost = ({ post }: any) => {
                         : "flex text-sm md:text-[13px]"
                     }
                   >
-                    <MdOutlineBedroomChild
+                    <BiBed
                       className={
                         post?.bedrooms?.eng
                           ? "hidden"
@@ -221,7 +222,7 @@ const DashboardPost = ({ post }: any) => {
 
           {post?.bedNumber && (
             <div className="flex">
-              <MdOutlineBedroomChild
+              <BiBed
                 className={
                   post?.bedrooms?.eng
                     ? "hidden"

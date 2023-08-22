@@ -9,7 +9,7 @@ import Loader from "@/components/Loading/Loader";
 
 function AllAds() {
   const lang = useSelector((state:any) => state.language.language);
-  const [limit, setLimit] = useState(20);
+  const [limit, setLimit] = useState(52);
   const [currentPage, setCurrentPage] = useState(
     Number(sessionStorage.getItem("page")) || 1
   );

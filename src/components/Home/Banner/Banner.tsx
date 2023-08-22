@@ -69,8 +69,9 @@ const Banner = () => {
     }));
     setFilterTypeDivision(!filterTypeDivision);
   };
-  const divisionNameEng = useSelector((state: RootState) => state.divisionNameEng.divisionNameEng);
-  const cityName = useSelector((state: any) => state.cityName.cityName)
+  const divisionNameEng = useSelector((state: RootState) => state['qv-dn'].divisionNameEng);
+  const cityName = useSelector((state: RootState) => state['qv-cn'].cityName);
+  // console.log(cityName)
   const lang = useSelector((state:any) => state.language.language);
   return (
     <section className="pt-6">

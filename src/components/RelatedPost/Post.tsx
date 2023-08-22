@@ -2,8 +2,9 @@
 import Link from "next/link";
 import React, { useContext, useState } from "react";
 import { useSelector } from "react-redux";
-import { MdOutlineLocationOn, MdOutlineBedroomChild } from "react-icons/md";
+import { MdOutlineLocationOn} from "react-icons/md";
 import { FaBath } from "react-icons/fa";
+import { BiBed } from "react-icons/bi";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { StateContext } from "@/Context/StateContext/StateContext";
 
@@ -117,7 +118,7 @@ function Post({ post }: any) {
         <div className="flex justify-between -mt-1">
           {post?.bedrooms?.eng && (
             <div className="flex gap-1">
-              <MdOutlineBedroomChild className="text-warning mt-[2px] w-4 -ml-[2px]" />
+              <BiBed className="text-warning mt-[2px] w-4 -ml-[2px]" />
               {!lang ? (
                 <h2>Bedroom: {post?.bedrooms?.eng}</h2>
               ) : (
@@ -140,7 +141,7 @@ function Post({ post }: any) {
                   : "hidden"
               }
             >
-              <MdOutlineBedroomChild
+              <BiBed
                 className={
                   post?.totalBed?.eng === "Single room"
                     ? "inline text-warning mt-[2px] w-4  mr-1"
@@ -156,7 +157,7 @@ function Post({ post }: any) {
                         : "flex"
                     }
                   >
-                    <MdOutlineBedroomChild
+                    <BiBed
                       className={ post?.bedrooms?.eng ? "hidden" :
                           "text-warning mt-[2px] w-4 mr-[2px]"}
                     /> Total Bed:
@@ -171,7 +172,7 @@ function Post({ post }: any) {
                         : "flex text-sm md:text-[13px]"
                     }
                   >
-                      <MdOutlineBedroomChild
+                      <BiBed
                       className={post?.bedrooms?.eng ? "hidden" :
                           "text-warning mt-[2px] w-4 mr-[2px]"}
                     /> মোট বেড:</span> <span className={post?.totalBed?.eng === "Single room" ? "text-sm md:text-[13px] pl-1" : "text-sm pl-1"}>  {post?.totalBed?.ban} </span>
@@ -182,7 +183,7 @@ function Post({ post }: any) {
 
           {post?.bedNumber && (
             <div className="flex">
-              <MdOutlineBedroomChild
+              <BiBed
                 className={
                   post?.bedrooms?.eng
                     ? "hidden"

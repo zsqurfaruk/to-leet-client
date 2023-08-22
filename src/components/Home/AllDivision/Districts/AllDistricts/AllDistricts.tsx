@@ -26,7 +26,7 @@ const AllDistricts = () => {
     }));
      
   };
-  const divisionNameEng = useSelector((state: RootState) => state.divisionNameEng.divisionNameEng);
+  const divisionNameEng = useSelector((state: RootState) => state['qv-dn'].divisionNameEng);
   const lang = useSelector((state:any) => state.language.language);
   return (
     <section className="w-full lg:mt-72 lg:ml-4 pl-9 md:pl-0 md:mx-0">

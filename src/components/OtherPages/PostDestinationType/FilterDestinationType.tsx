@@ -11,21 +11,22 @@ import { useDispatch, useSelector } from "react-redux";
 const FilterDestinationType = () => {
   const { setFilterModal }: any = useContext(StateContext);
   const router = useRouter();
-  const cityName = useSelector((state: any) => state.cityName.cityName);
+  // const cityName = useSelector((state: any) => state.cityName.cityName);
+  const cityName = useSelector((state: RootState) => state['qv-cn'].cityName);
   const homePopularAreaName = useSelector(
-    (state: any) => state.homePopularArea.homePopularAreaName
+    (state: any) => state['qv-hpa'].homePopularAreaName
   );
   const divisionNameEng = useSelector(
-    (state: RootState) => state.divisionNameEng.divisionNameEng
+    (state: RootState) => state['qv-dn'].divisionNameEng
   );
   const districtsName = useSelector(
-    (state: RootState) => state.districtsName.districtsName
+    (state: RootState) => state['qv-dsn'].districtsName
   );
 
   const dispatch = useDispatch();
 
   const filterModalValue = useSelector(
-    (state: RootState) => state.filterModalValue.filterModalValue
+    (state: RootState) => state['qv-fmv'].filterModalValue
   );
 
   const handleFilter = (v: any) => {
