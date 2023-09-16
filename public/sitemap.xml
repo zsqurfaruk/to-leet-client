@@ -2,3 +2,18 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <sitemap><loc>https://quickvara.com/sitemap-0.xml</loc></sitemap>
 </sitemapindex>
+
+<!-- <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://quickvara.com</loc>
+    <lastmod>2023-04-06T15:02:24.021Z</lastmod>
+  </url>
+  <url>
+    <loc>https://quickvara.com/ads</loc>
+    <lastmod>2023-04-06T15:02:24.021Z</lastmod>
+  </url>
+  <url>
+    <loc>https://quickvara.com/Bachelor-(Male)</loc>
+    <lastmod>2023-04-06T15:02:24.021Z</lastmod>
+  </url>
+</urlset> -->

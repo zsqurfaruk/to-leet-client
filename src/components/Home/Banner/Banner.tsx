@@ -16,6 +16,7 @@ import { setCityName } from "@/redux/features/FilterCity/FilterCitySlice";
 import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
 import { RootState } from "@/redux/app/store";
 import { setDivisionNameEng } from "@/redux/features/DivisionFilter/DivisionFilterSlice";
+import style from "../../../styles/button.module.css"
 
 const Banner = () => {
   const {
@@ -76,9 +77,9 @@ const Banner = () => {
   return (
     <section className="pt-6">
       {!lang ? (
-        <div className="text-gray-700 md:flex justify-center gap-2 text-[14.1px] md:text-lg mx-8 md:mx-0">
+        <div className="text-gray-700 md:flex justify-center gap-2 text-lg mx-8 md:mx-0">
           <h1  >
-            Are you searching near your educational institution?
+            <span className="hidden md:inline">Are you</span> searching near <span  className="hidden md:inline">your</span> educational institution?
           </h1>
           <h1
             className="text-center gap-2 border-2 text-sm md:text-base border-warning shadow shadow-warning rounded px-2 mt-2 md:mt-0 cursor-pointer"
@@ -88,8 +89,8 @@ const Banner = () => {
           </h1>
         </div>
       ) : (
-        <div className="text-gray-700 md:flex md:justify-center gap-2 text-[11.8px] md:text-base mx-8 md:mx-0 ">
-          <h1>আপনি কি আপনার শিক্ষা প্রতিষ্ঠানের কাছাকাছি বাসস্থান খুঁজছেন?</h1>
+        <div className="text-gray-700 md:flex md:justify-center gap-2 mx-8 md:mx-0 ">
+          <h1> <span className="hidden md:inline">আপনি কি আপনার</span> শিক্ষা প্রতিষ্ঠানের কাছাকাছি বাসস্থান খুঁজছেন?</h1>
           <h1
             className=" border-2  border-warning shadow shadow-warning  rounded px-3 cursor-pointer text-center mt-2 md:mt-0"
             onClick={handleOpenModalEng}
@@ -125,6 +126,15 @@ const Banner = () => {
                       অনুসন্ধান করুন :
                     </h1>
                   )}
+
+
+                  <button className={`${style.buttonStyle}`}>dhfdkhfdkjhfd</button>
+
+
+
+
+
+
                   <div className="flex justify-around mt-5 ">
                     <div className="pl-2 pr-4 shadow-lg bg-warning rounded py-2 text-primary">
                       <label className="flex gap-2">

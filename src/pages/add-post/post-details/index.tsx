@@ -3,7 +3,7 @@
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 import PrivateRoute from "@/routes/privateRoute";
@@ -32,6 +32,8 @@ import { AiOutlineMinus } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import style from "../../../styles/postProducts.module.css"
 import { decryptTransform } from "@/Encrypt/EncryptionTransform";
+import styles from "../../../styles/button.module.css"
+import swal from "sweetalert";
 const selectStyles = {
   control: (styles:any, { isFocused }:any) => ({
     ...styles,
@@ -367,6 +369,19 @@ const PostDetails = () => {
   const handleUniversityChange=()=>{
     setGetUniversityModalValue({})
   }
+
+ 
+  //  if(loading){
+  //   setTimeout(() => {
+  //   setLoading(false);
+  //   swal({
+  //     title: !lang ? "Time Out, try again" : "টাইম শেষ আবার চেষ্টা করুন।",
+  //     icon: "warning",
+  //     // dangerMode: true,
+  //   });
+  // }, 20000);
+  //  }
+ 
   return (
     <>
       <Head>
@@ -1493,7 +1508,7 @@ const PostDetails = () => {
                 ) : (
                   <h1 className="text-red-300 text-sm mb-5">
                     {" "}
-                    অনুগ্রহ করে সথিকভাবে সব গুলো ফিল্ড পূরণ পুরন করুন। অথবা{" "}
+                    অনুগ্রহ করে সঠিকভাবে সব গুলো ফিল্ড পূরণ করুন। অথবা{" "}
                     <Link className="underline text-warning" href={"/"}>
                       হোম
                     </Link>{" "}
@@ -1523,6 +1538,7 @@ const PostDetails = () => {
                 <> {!lang ? " Post Now" : "পোস্ট করুন"}</>
               )}
             </Button>
+            
           </div>
         </div>
       </div>

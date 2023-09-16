@@ -13,10 +13,14 @@ const StateInfo = ({ children }: any) => {
   const [typeCount, setTypeCount] = useState([]);
   const [destinationType, setDestinationType] = useState("")
   const [changedDetailsPic, setChangedDetailsPic] = useState(false)
+  const [universityTypeFilter, setUniversityTypeFilter] = useState(false)
+  const [storeUniFilterValue, setStoreUniFilterValue] = useState(false)
+  const [ feedbackModal, setFeedbackModal] = useState(false)
 
   const handleOpenModalEng = () => setOpenModalEng(!openModalEng);
   const handleFilterModal = () => setFilterModal(!filterModal);
- 
+  const handleUniversityTypeFilterModal = () => setUniversityTypeFilter(!universityTypeFilter);
+ const handleFeedbackModal =()=> setFeedbackModal(!feedbackModal)
   const [loading, setLoading] = useState(true);
   useEffect(()=>{
     setLoading(false);
@@ -42,6 +46,11 @@ const StateInfo = ({ children }: any) => {
     setFilterModalValue,
     destinationType, setDestinationType,
     changedDetailsPic, setChangedDetailsPic,
+    handleUniversityTypeFilterModal,
+    universityTypeFilter, setUniversityTypeFilter,
+    storeUniFilterValue, setStoreUniFilterValue,
+    feedbackModal, setFeedbackModal,
+    handleFeedbackModal
   };
   return <StateContext.Provider value={info}>{!loading && children}</StateContext.Provider>;
 };

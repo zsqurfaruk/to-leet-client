@@ -1,6 +1,7 @@
 # *
 User-agent: *
 Allow: /
+disallow: '/private/',
 
 # Host
 Host: https://quickvara.com

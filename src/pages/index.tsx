@@ -4,6 +4,10 @@ import DestinationType from "@/components/Home/DestinationType/DestinationType";
 import PostCounter from "@/components/Home/PostCounter/PostCounter";
 import Banner from "@/components/Home/Banner/Banner";
 import About from "@/components/About/About";
+import ContactUs from "@/components/Home/ContactUs/ContactUs";
+import FeedbackPost from "@/components/FeedbackPost/FeedbackPost";
+import FindUsCity from "@/components/Home/FinUsCity/FindUsCity";
+import image from "../image/Quick logo without Shadow.png"
 
 function Home() {
   return (
@@ -34,7 +38,7 @@ function Home() {
         <meta property="og:site_name" content="quickvara.com" />
         <meta
           property="og:image"
-          content="https://i.ibb.co/D8b85Dc/Simple-Box-Solution-Game-Store-Logo-3.jpg"
+          content="https://i.ibb.co/f8fRycR/Quick-logo-without-Shadow.png"
         />
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" />
@@ -62,13 +66,16 @@ function Home() {
         <meta property="og:site_name" content="quickvara.com" />
         <meta
           property="og:image"
-          content="https://i.ibb.co/D8b85Dc/Simple-Box-Solution-Game-Store-Logo-3.jpg"
+          content="https://i.ibb.co/f8fRycR/Quick-logo-without-Shadow.png"
         />
       </Head>
       <main className="bg-white">
         <Banner></Banner>
         <DestinationType></DestinationType>
+        <FindUsCity></FindUsCity>
         <PostCounter></PostCounter>
+        <FeedbackPost></FeedbackPost>
+        <ContactUs></ContactUs>
         <About></About>
       </main>
     </>

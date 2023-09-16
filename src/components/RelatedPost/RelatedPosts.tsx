@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Post from "./Post";
 import { useSelector } from "react-redux";
 import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
+import Slider from "react-slick";
 
 const RelatedPosts = ({ type, areaName, cityName, id , division, district}: any) => {
   const lang = useSelector((state:any) => state.language.language);
@@ -14,10 +15,10 @@ const RelatedPosts = ({ type, areaName, cityName, id , division, district}: any)
     districtsName:district,
     divisionNameEng:division
   };
-const limit = 5; // Set the desired data limit
+const limit = 10; // Set the desired data limit
 
 useEffect(() => {
-    fetch(`https://zsqur.quickvara.com/api/v1/product/filter?limit=${limit}`, {
+    fetch(`http://localhost:5000/api/v1/product/filter?limit=${limit}`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -41,7 +42,56 @@ useEffect(() => {
   
 }, [ ]);
 
-
+const settings = {
+  dots: true,
+  infinite: true,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  initialSlide: 0,
+  autoplay: true,
+  speed: 3000,
+  autoplaySpeed: 4000,
+  centerPadding: "50px",
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        centerPadding: "50px",
+        infinite: true,
+        autoplay: true,
+        speed: 3000,
+        autoplaySpeed: 4000,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        initialSlide: 2,
+        infinite: true,
+        autoplay: true,
+        speed: 3000,
+        autoplaySpeed: 4000,
+        centerPadding: "50px",
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        autoplay: true,
+        speed: 3000,
+        autoplaySpeed: 4000,
+        centerPadding: "50px",
+      },
+    },
+  ],
+};
   return (
     <div
       className={
@@ -60,10 +110,12 @@ useEffect(() => {
         </div>
       )}
 
-      <div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 py-10">
-        {getValue?.map((post: any) => (
+      <div className="gap-5 py-10 ">
+       <Slider {...settings}>
+       {getValue?.map((post: any) => (
           <Post key={post._id} post={post}></Post>
         ))}
+       </Slider>
       </div>
     </div>
   );

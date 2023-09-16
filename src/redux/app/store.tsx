@@ -37,6 +37,7 @@ const rootReducer = combineReducers({
   ['qv-dsn'] : filterDistrictsSlice,
   ['qv-omv']: openModalSlice,
   ['qv-uv']: universityFilterSlice,
+  // ['qv-utv']: UniversityTypeFilterSlice,
   signInModal: signInModalSlice,
   signUpModal: signUpModalSlice
 });
@@ -58,7 +59,7 @@ const persistConfig = {
   transforms: [encryptionTransform], 
   whitelist: ['qv-cn', 'qv-hpa', 'qv-fmv', 'qv-dn', 'qv-dsn', 'qv-omv','qv-uv'],
   version: 2, // Update this to the latest version
-  migrate: createMigrate(migrations, { debug: false }),
+  // migrate: createMigrate(migrations, { debug: false }),
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

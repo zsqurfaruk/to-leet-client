@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState, useContext } from "react";
 import Lottie from "lottie-react";
-import lotti from "../image/lf20_jkbuwuhk.json";
+import lotti from "../../image/lf20_jkbuwuhk.json";
 import DashboardPost from "@/components/Home/AllPost/DashboardPost";
 import PrivateRoute from "@/routes/privateRoute";
 import Head from "next/head";
@@ -12,30 +12,16 @@ import Loader from "@/components/Loading/Loader";
 import { decryptTransform } from "@/Encrypt/EncryptionTransform";
 import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
 
-const Dashboard = () => {
-  const {reload}:any = useContext(APIContext)
+const MyAds = () => {
+  const {personalPost, profileLoading, setProfileLoading}:any = useContext(APIContext)
   const firstName = decryptTransform(Cookies.get("qv-fn"));
   const lastName = decryptTransform(Cookies.get("qv-ln"));
   const email = decryptTransform(Cookies.get("qv-acn"));
-  const [personalPost, setPersonalPost] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   
-  const token = decryptTransform(Cookies.get("qv-tn"));
+
   // const token = cookieValue ? JSON.parse(decodeURIComponent(cookieValue)) : null;
-  useEffect(() => {
-    fetch(`https://zsqur.quickvara.com/api/v1/product/user/email/${email}`, {
-      headers: {
-        authorization: `bearer ${token}`,
-      },
-    })
-      .then((res) => res.text())
-      .then((data) => {
-        const decryptedData = decryptFunction(data);
-        const parsedData = JSON.parse(decryptedData);
-        setPersonalPost(parsedData);
-        setLoading(false);
-      });
-  }, [email, token, reload]);
+  
 
   let getNumber;
   let checkAuthentication;
@@ -94,40 +80,51 @@ const Dashboard = () => {
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="quickvara.com" />
       </Head>
-      <div className="lg:flex gap-10 w-full lg:w-10/12 mx-auto bg-white p-5 md:p-10  md:scale-100">
-        <div className="basis-1/5  pb-5 mb-5">
+      <div className=" w-full lg:w-10/12 mx-auto bg-white p-5 md:p-10  md:scale-100">
+        {/* <div className="basis-1/5  pb-5 mb-5">
           <h2>
             {firstName} {lastName}
           </h2>
           {getNumber && <h2>+{getNumber}</h2>}
           {checkAuthentication && <h2>{checkAuthentication}</h2>}
           <hr className="mt-5 bg-accent h-[2px] rounded" />
-        </div>
-        {loading ? (
+        </div> */}
+        {profileLoading ? (
           <h1 className="text-center w-full mt-10"><Loader></Loader></h1>
           // <Loader></Loader>
         ) : (
           <>
             {" "}
-            <div className="px-[14px] grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className=" grid grid-cols-1 md:grid-cols-2 gap-5">
               {personalPost?.map((post: any) => (
                 <DashboardPost key={post._id} post={post}></DashboardPost>
               ))}
             </div>
-            {personalPost?.length < 1 && (
+            {personalPost?.length === 0 && !profileLoading && (
               <div className="flex justify-center ml-7 lg:ml-24">
                 <div>
-                  <Lottie
-                    className="h-52 w-52 ml-10"
-                    animationData={lotti}
-                    loop={true}
-                  ></Lottie>
-                  {!lang ? (
-                    <h1 className="text-4xl text-center mb-10">
-                      No data found.
-                    </h1>
+                {!lang ? (
+                    <>
+                      <Lottie
+                        className="h-52 w-52 ml-3"
+                        animationData={lotti}
+                        loop={true}
+                      ></Lottie>
+                      <h1 className="text-4xl text-center mb-10">
+                        No data found.
+                      </h1>
+                    </>
                   ) : (
-                    <h1 className="text-2xl -ml-5">এখনো কোন পোস্ট করা হয়নি।</h1>
+                    <>
+                      <Lottie
+                        className="h-52 w-52 ml-9"
+                        animationData={lotti}
+                        loop={true}
+                      ></Lottie>
+                      <h1 className="text-2xl -ml-5">
+                        এখনো কোন পোস্ট করা হয়নি।
+                      </h1>
+                    </>
                   )}
                 </div>
               </div>
@@ -138,4 +135,4 @@ const Dashboard = () => {
     </>
   );
 };
-export default PrivateRoute(Dashboard);
+export default PrivateRoute(MyAds);

@@ -10,27 +10,39 @@ import { AppDispatch, RootState } from "@/redux/app/store";
 import { useRouter } from "next/router";
 import { setOpenModalValue } from "@/redux/features/UniversitySlice/UniversitySlice";
 import { fetchAndFilterUniversityData } from "@/redux/features/UniversityFilter/UniversityFilerSlice";
-
-const options = [
-  'All', 'Bachelor (Male)', 'Bachelor (Female)', 'Mess (Male)',
-  'Mess (Female)', 'Sublet (Male)', 'Sublet (Female)', 'Family', 'Hostel'
-];
+import UniversityFilterType from "@/components/Home/AllPost/UniversityFilterType";
+ 
 const University = () => {
   const lang = useSelector((state: any) => state.language.language);
-  const [limit, setLimit] = useState(20);
+  const [limit, setLimit] = useState(40);
   const [currentPage, setCurrentPage] = useState(
     Number(sessionStorage.getItem("page")) || 1
   );
+  
   const [pageNumberLimit, setPageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
   const { filterPost, isLoading } = useSelector(
     (state: RootState) => state['qv-uv']
   );
-  const dispatch: AppDispatch = useDispatch();
+
+
+  // const universityTypeFilter = useSelector((state: RootState) => state['qv-utv'].value);
+
   const router = useRouter();
   const params = router.asPath;
   const refreshParams = params.split("/");
+  const universityTypeFilter =(refreshParams[3]);
+ console.log(universityTypeFilter)
+  let universityType: any[]= []
+  if(universityTypeFilter){
+    universityType = filterPost?.filter((post:any)=> universityTypeFilter === post?.type?.eng)
+  }
+
+  const dispatch: AppDispatch = useDispatch();
+  // const router = useRouter();
+  // const params = router.asPath;
+  // const refreshParams = params.split("/");
 
   useEffect(() => {
     const openModalValue = { eng: decodeURIComponent(refreshParams[2]) };
@@ -41,12 +53,22 @@ const University = () => {
   }, []);
 
   useEffect(() => {
+   if(!universityTypeFilter){
     sessionStorage.setItem("pageU", currentPage.toString());
+   }
+   else{
+    sessionStorage.setItem("pageFT", currentPage.toString());
+   }
   }, [currentPage]);
   // ...
 
   useEffect(() => {
-    const storedPage = Number(sessionStorage.getItem("pageU")) || 1;
+    let storedPage;
+    if(!universityTypeFilter){
+        storedPage = Number(sessionStorage.getItem("pageU")) || 1;
+    }else{
+       storedPage = Number(sessionStorage.getItem("pageFT")) || 1;
+    }
     setCurrentPage(storedPage);
     setMaxPageNumberLimit(
       Math.ceil(storedPage / pageNumberLimit) * pageNumberLimit
@@ -59,11 +81,21 @@ const University = () => {
   const handleClick = (e: any) => {
     const pageNumber = Number(e.target.id);
     setCurrentPage(pageNumber);
+   if(!universityTypeFilter){
     sessionStorage.setItem("pageU", pageNumber.toString());
+   }else{
+    sessionStorage.setItem("pageFT", pageNumber.toString());
+   }
   };
   const pages: number[] = [];
-  for (let i = 1; i <= Math.ceil(filterPost?.length / limit); i++) {
-    pages.push(i);
+  if(!universityTypeFilter){
+    for (let i = 1; i <= Math.ceil(filterPost?.length / limit); i++) {
+      pages.push(i);
+    }
+  }else{
+    for (let i = 1; i <= Math.ceil(universityType?.length / limit); i++) {
+      pages.push(i);
+    }
   }
 
   const renderPagesNumber = pages?.map((number: any) => {
@@ -101,23 +133,49 @@ const University = () => {
 
   const lastIndex = currentPage * limit;
   const startIndex = lastIndex - limit;
-  const currentItems = filterPost?.slice(startIndex, lastIndex);
-
-  const renderData = (filterPost: any) => {
-    return (
-      <>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 pt-5 pb-10">
-          {filterPost?.length > 0 &&
-            filterPost?.map((university: any) => (
-              <ShowUniversityPost
+  let currentItems;
+  if(!universityTypeFilter){
+  currentItems = filterPost?.slice(startIndex, lastIndex);
+  }else{
+  currentItems = universityType?.slice(startIndex, lastIndex);
+  }
+ let renderData;
+  if(!universityTypeFilter){
+   renderData = (filterPost: any ) => {
+      return (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 pt-5 pb-10">
+            {filterPost?.length > 0 && !universityTypeFilter &&
+              filterPost?.map((university: any) => (
+                <ShowUniversityPost
+                  key={university._id}
+                  university={university}
+                ></ShowUniversityPost>
+              ))}
+               
+          </div>
+        </>
+      );
+    };
+  }else{
+    renderData = (universityType: any ) => {
+      return (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 pt-5 pb-10">
+             
+              {
+                filterPost?.length > 0 && universityTypeFilter !== "Total" && universityTypeFilter && universityType?.map((university:any)=> <ShowUniversityPost 
                 key={university._id}
-                university={university}
-              ></ShowUniversityPost>
-            ))}
-        </div>
-      </>
-    );
-  };
+                university={university}>
+                </ShowUniversityPost> )
+              }
+          </div>
+        </>
+      );
+    };
+  }
+
+
   const handlePrevious = () => {
     const newPage = currentPage - 1;
     setCurrentPage(newPage);
@@ -162,22 +220,7 @@ const University = () => {
       </li>
     );
   }
-
-  // gggggggggggggggggggggggggggggggggggggggggggggggggg
-  // 
-  const [startIndexx, setStartIndexx] = useState(0);
-
-  const handleNextClick = () => {
-    if (startIndexx < options.length - 1) {
-      setStartIndexx(prevIndex => prevIndex + 1);
-    }
-  };
-
-  const handlePrevClick = () => {
-    if (startIndex > 0) {
-      setStartIndexx(prevIndex => prevIndex - 1);
-    }
-  };
+ 
   return (
     <>
       <Head>
@@ -233,34 +276,15 @@ const University = () => {
           <Loader></Loader>
         ) : (
           <>
-            <div className="relative flex items-center justify-center md:flex-row">
-      <button
-        className="px-2 py-1 bg-blue-500 text-white rounded"
-        onClick={handlePrevClick}
-        disabled={startIndex === 0}
-      >
-        Prev
-      </button>
-      <div className="overflow-hidden w-full md:w-auto">
-        <ul className="flex space-x-4">
-          {options.slice(startIndex).map((option, index) => (
-            <li key={index} className={`cursor-pointer`}>
-              {option}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <button
-        className="px-2 py-1 bg-blue-500 text-white rounded"
-        onClick={handleNextClick}
-        disabled={startIndex >= options.length - 1}
-      >
-        Next
-      </button>
-    </div>
+          {
+            filterPost?.length > 0 && 
+            <><UniversityFilterType></UniversityFilterType>
+            <div className="divider mb-0 mt-3"></div></>
+          }
             {renderData(currentItems)}
+           <>
            {
-            filterPost?.length > 20 &&  <div>
+            filterPost?.length > 40 && !universityTypeFilter &&  <div>
             <ul
               className={
                 minPageNumberLimit < 5
@@ -298,6 +322,48 @@ const University = () => {
             </ul>
             </div>
            }
+           </>
+           <>
+           {
+            universityType?.length > 40 && universityTypeFilter &&  <div>
+            <ul
+              className={
+                minPageNumberLimit < 5
+                  ? "flex justify-center gap-3 md:gap-4 pb-5"
+                  : "flex justify-center gap-[7px] md:gap-3 pb-5"
+              }
+            >
+              <button
+                onClick={handlePrevious}
+                disabled={currentPage === pages[0] ? true : false}
+                className={
+                  currentPage === pages[0] ? "text-gray-400" : "text-warning"
+                }
+              >
+                {!lang ? "Previous" : "পূর্ববর্তী"}
+              </button>
+              <span className={minPageNumberLimit < 5 ? "hidden" : "inline"}>
+                {pageDecrementBtn}
+              </span>
+              {renderPagesNumber}
+              {pageIncrementBtn}
+              <button
+                onClick={handleNext}
+                disabled={
+                  currentPage === pages[pages?.length - 1] ? true : false
+                }
+                className={
+                  currentPage === pages[pages?.length - 1]
+                    ? "text-gray-400"
+                    : "text-warning pl-1"
+                }
+              >
+                {!lang ? "Next" : "পরবর্তী"}
+              </button>
+            </ul>
+            </div>
+           }
+           </>
             <div
               className={
                 filterPost?.length === 0 && !isLoading
@@ -333,6 +399,43 @@ const University = () => {
                 </div>
               )}
             </div>
+            <>
+            <div
+              className={
+                universityType?.length === 0 && universityTypeFilter && !isLoading
+                  ? "flex justify-center h-96 items-center"
+                  : "flex justify-center"
+              }
+            >
+              {universityType?.length === 0 && universityTypeFilter && !isLoading && (
+                <div className="-mt-20">
+                  {!lang ? (
+                    <>
+                      <Lottie
+                        className="h-52 w-52 ml-3"
+                        animationData={lotti}
+                        loop={true}
+                      ></Lottie>
+                      <h1 className="text-4xl text-center mb-10">
+                        No data found.
+                      </h1>
+                    </>
+                  ) : (
+                    <>
+                      <Lottie
+                        className="h-52 w-52 ml-9"
+                        animationData={lotti}
+                        loop={true}
+                      ></Lottie>
+                      <h1 className="text-2xl -ml-5">
+                        এখনো কোন পোস্ট করা হয়নি।
+                      </h1>
+                    </>
+                  )}
+                </div>
+              )}
+            </div>
+            </>
           </>
         )}
       </section>

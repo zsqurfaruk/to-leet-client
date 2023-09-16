@@ -111,7 +111,7 @@ function SignUp() {
     if (result.message === "Internal server error") {
       return setError("emailError");
     } else {
-      router.push(`/signIn`);
+      router.push("/signIn");
       toast.success("Sign Up Successful.");
     }
   };

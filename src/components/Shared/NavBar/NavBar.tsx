@@ -15,7 +15,7 @@ import styles from "../../../styles/response.module.css"
 import { useDispatch } from "react-redux";
 import { toggleLanguage } from "@/redux/features/Language/LanguageSlice";
 import Image from "next/image";
-import logo from "../../../image/Simple_Box_Solution_Game_Store_Logo__1_-removebg-preview.png"
+import logo from "../../../image/378045946_845317993875769_1225716974521079040_n__1_-removebg-preview.png"
 import { setCityName } from "@/redux/features/FilterCity/FilterCitySlice";
 import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
 import { setFilterModalValue } from "@/redux/features/FilterModalSlice/FilterModalSlice";
@@ -26,8 +26,7 @@ import { setSignInOpen } from "@/redux/features/SignInModal/SignInModalSlice";
 import { setSignUpOpen } from "@/redux/features/SignUpModal/SignUpModal";
 import { decryptTransform } from "@/Encrypt/EncryptionTransform";
  
-
-
+ 
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
   const {
@@ -77,6 +76,14 @@ export default function NavBar() {
     Cookies.remove("filterMV");
     Cookies.remove("openMV");
     Cookies.remove("next-auth.session-token");
+    sessionStorage.removeItem("page")
+    sessionStorage.removeItem("paged")
+    sessionStorage.removeItem("pageU")
+    sessionStorage.removeItem("pageF")
+    sessionStorage.removeItem("pageFT")
+    sessionStorage.removeItem("persist")
+    sessionStorage.removeItem("qv-ap")
+    sessionStorage.removeItem("qv-utf")
     return push("/");
   };
 
@@ -127,6 +134,7 @@ useEffect(() => {
       eng: null,
       ban: null
     }));
+    // dispatch(universityTypeValue(""))
     handleOpenModalEng(false);
     setOpenModalEng(false);
     setFilterModal(false);
@@ -143,7 +151,10 @@ useEffect(() => {
     sessionStorage.removeItem("paged")
     sessionStorage.removeItem("pageU")
     sessionStorage.removeItem("pageF")
+    sessionStorage.removeItem("pageFT")
     sessionStorage.removeItem("persist")
+    sessionStorage.removeItem("qv-ap")
+    sessionStorage.removeItem("qv-utf")
   };
   const handleSignInOpen = () => {
     dispatch(setSignInOpen(true));
@@ -208,7 +219,7 @@ useEffect(() => {
             ripple={"false"}
             onClick={() => setOpenNav(false)}
           >
-            <Link href="/dashboard" passHref>
+            <Link href="/dashboard/profile" passHref>
               <div
                 onClick={() => setOpenNav(false)}
                 className="text-primary mt-1 lg:mt-0"
@@ -235,10 +246,10 @@ useEffect(() => {
     <>
       <Navbar className="sticky top-0 z-10 bg-warning bg-opacity-100 h-max min-w-full rounded-none py-2 px-1 md:px-0 lg:px-8 lg:py-4 border-none text-primary shadow-sm">
         <div className="flex items-center justify-between text-blue-gray-900 px-4 md:px-5  lg:w-11/12 lg:px-8 mx-auto">
-          <div className={`${styles.gapStyle} flex md:gap-12`}>
+          <div className={`${styles.gapStyle} flex md:gap-32`}>
             <Link onClick={handleHome} href={"/"} passHref>
               <Image
-                className="h-8 mt-1 md:mt-0 md:h-9 w-28 md:w-32 rounded"
+                className="h-10 pb-1 md:pb-0 mt-1 md:mt-0 md:h-10 ml-5 md:ml-5 w-full md:w-full   scale-125"
                 src={logo}
                 alt={""}
               ></Image>

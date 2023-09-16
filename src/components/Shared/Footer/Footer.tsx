@@ -1,8 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import logo from "../../../image/logo-f.png";
-import { FaFacebookF } from "react-icons/fa";
-import Image from "next/image";
+import { FaFacebookF, FaInstagramSquare, FaLinkedinIn } from "react-icons/fa";
  
 
 const Footer = () => {
@@ -26,47 +24,53 @@ const Footer = () => {
               {/* <Image className="h-7 w-12 mt-2" src={logo} alt=""></Image> */}
               <h1 className="ml-2 text-4xl font-bold tracking-wide">
                 <span className="-ml-2 lg:ml-0 cursor-pointer text-warning text-4xl font-extrabold ">
-                QuickVara
+                  QuickVara
                 </span>
               </h1>
             </a>
-           <h1 className="text-xl lg:ml-2 text-warning">The Ultimate Rental Solution</h1>
+            <h1 className="text-xl lg:ml-2 text-warning">
+              The Ultimate Rental Solution
+            </h1>
             <div className="mt-4 lg:max-w-sm">
-              <div className=" text-warning">
-                
-              </div>
+              <div className=" text-warning"></div>
             </div>
           </div>
           <div className="">
-            
             <div>
-              <ul className="mt-2 space-y-2 text-warning">
+              <h1 className="font-semibold ">Contact with us.</h1>
+              <>
+                <span className="font-semibold ">Email:</span>
+                <span> quickvara002@gmail.com</span>
+              </>
+              <ul className="mt-2 space-y-2 text-warning flex gap-5">
                 {/* <li>
                   <span className="font-bold ">Phone:</span>{" "}
                  
                   <span> +8801816478478</span>
                 </li> */}
-                <li className="font-semibold ">Contact with us.</li>
-                <li>
-                  <span className="font-semibold ">Email:</span>
-                  <span> quickvara001@gmail.com</span>
-                </li>
+
                 <li>
                   <a
                     href="https://www.facebook.com/QuickVara-107503685729345"
-                    className="flex gap-1"
-                  > Facebook
-                    <FaFacebookF className="mt-1"></FaFacebookF>
-                  </a>
-                  {/* <a
-                    href="https://www.linkedin.com/in/omarfaruk-238764240/"
-                    className="mr-2"
+                    className="  "
                   >
-                    <FaLinkedinIn></FaLinkedinIn>
-                  </a> */}
-                  {/* <Link href={"#"}>
-                    <FaTwitter></FaTwitter>
-                  </Link> */}
+                    <FaFacebookF className="mt-2 h-9 w-10"></FaFacebookF>
+                  </a>
+                </li>
+                <li>
+                  {" "}
+                  <a
+                    href="https://www.linkedin.com/company/96933262/admin/feed/posts/"
+                    className=" "
+                  >
+                    <FaLinkedinIn className="h-10 w-10"></FaLinkedinIn>
+                  </a>
+                </li>
+                <li>
+                  {" "}
+                  <a href={"https://www.instagram.com/quickvara/?hl=en"}>
+                    <FaInstagramSquare className="h-10 w-10"></FaInstagramSquare>
+                  </a>
                 </li>
               </ul>
             </div>

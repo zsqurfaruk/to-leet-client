@@ -10,6 +10,7 @@ import { FaBath } from "react-icons/fa";
 import { BiBed } from "react-icons/bi";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { decryptTransform } from "@/Encrypt/EncryptionTransform";
+import swal from "sweetalert";
 
 const DashboardPost = ({ post }: any) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -35,6 +36,42 @@ const DashboardPost = ({ post }: any) => {
       toast.success("আপডেট দেওয়ার জন্য ধন্যবাদ।");
     }
   };
+
+  const handleDelete = async (id: any) => {
+    const willDelete = await swal({
+      title: !lang ? "Are you sure?" : "আপনি কি নিশ্চিত?",
+      text: !lang
+        ? "Are you sure that you want to delete your feedback?"
+        : "আপনি কি নিশ্চিত যে আপনি আপনার মতামতটি মুছে ফেলতে চান?",
+      icon: "warning",
+      dangerMode: true,
+    });
+
+    if (willDelete) {
+      try {
+        const res = await fetch(`http://localhost:5000/api/v1/product/${id}`, {
+          method: "DELETE",
+        });
+        const data = await res.json();
+        if (data.message === "success") {
+          setReload(!reload);
+          swal({
+            text: !lang
+              ? "Deleted! Your feedback has been deleted!"
+              : "আপনার মতামতটি মুছে ফেলা হয়েছে।",
+            icon: "success",
+          });
+        }
+      } catch (error) {
+        swal(
+          "Error",
+          "An error occurred while deleting your account.",
+          "error"
+        );
+      }
+    }
+  };
+
 
   const posts = {
     info: "g7j%u*9867&n3$h!5ngo35%g^n8klo%gvb7&bj11fgfgr255rtrt",
@@ -321,6 +358,7 @@ const DashboardPost = ({ post }: any) => {
             )}
           </div>
         </div>
+        <div className="flex justify-between">
         {!post?.available && (
           <>
             {!lang ? (
@@ -344,6 +382,11 @@ const DashboardPost = ({ post }: any) => {
             )}
           </>
         )}
+
+       {
+        !lang ?  <button onClick={()=>handleDelete(post?._id)} className=" px-2 rounded text-primary bg-red-300">Delete</button> :  <button onClick={()=>handleDelete(post?._id)}  className=" px-2 rounded text-primary bg-red-300">মুছে ফেলুন</button>
+       }
+        </div>
         <div className="divider -mt-1"></div>
         <div className="flex justify-between -mt-5">
           <div>

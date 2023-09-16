@@ -72,6 +72,63 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
     <>
       <Head>
         <title>QuickVara - {product?.type?.eng} Details </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="keywords" />
+        <meta
+          name="description"
+          content={product?.description}
+        />
+        <meta name="author" content="quickvara.com" />
+        <meta
+          name="keyword"
+          content="QuickVara, Basa Vara, ToLet, To-Let, Vara, Rent, rent, house rent , flat rent in dhaka , flat rent , flat rent dhaka , apartment rent, real estate, bikroy"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://quickvara.com/" />
+        <meta
+          property="og:title"
+          content={product?.title}
+        />
+        <meta property="og:description" content="" />
+        <meta property="og:site_name" content="quickvara.com" />
+        <meta
+          property="og:image"
+          content={product?.img1}
+        />
+        <meta charSet="utf-8" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="title"
+          content={product?.title}
+        />
+        <meta name="keywords" />
+        <meta
+          name="description"
+          content={product?.description}
+        />
+        <meta name="author" content="quickvara.com" />
+        <meta
+          name="keyword"
+          content="QuickVara, Basa Vara, ToLet, To-Let, Vara, Rent, rent, house rent , flat rent in dhaka , flat rent , flat rent dhaka , apartment rent, real estate, bikroy"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://quickvara.com/" />
+        <meta
+          property="og:title"
+          content={product?.title}
+        />
+        <meta property="og:description" content="" />
+        <meta property="og:site_name" content="quickvara.com" />
+        <meta
+          property="og:image"
+          content={product?.img1}
+        />
+        <meta charSet="utf-8" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="title"
+          content={product?.title}
+        />
       </Head>
       <section className="w-full lg:w-10/12 mx-auto">
         <Card className="lg:flex-row w-full p-6 shadow-none">
