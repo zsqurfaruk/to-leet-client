@@ -59,7 +59,7 @@ const Setting = () => {
         });
         const data = await res.json();
 
-        if (data.message === "success") {
+        if (data?.message === "success") {
           handleLogOut()
         }
         swal(

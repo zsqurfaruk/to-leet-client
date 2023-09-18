@@ -35,12 +35,35 @@
 /* Media query for mobile devices */
 @media (max-width: 480px) {
   .slick-slide {
-    margin: 5px 0 5px 0px;
-    padding: 5px 10px; /* Adjust the value to set the desired gap width */
+    margin: 10px 0 16px 0px;
+    padding: 15px 15px; /* Adjust the value to set the desired gap width */
   }
 }
 
 
-
-
+/* Remove all styles from the video element */
  
+
+
+ /* Hide all default video controls */
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+/* Hide play button */
+video::-webkit-media-controls-play-button {
+  display: none !important;
+}
+
+/* Hide fullscreen button */
+video::-webkit-media-controls-fullscreen-button {
+  display: none !important;
+}
+
+/* Hide other buttons (volume, mute, etc.) if needed */
+/* video::-webkit-media-controls-volume-slider {
+  display: none !important;
+}
+video::-webkit-media-controls-mute-button {
+  display: none !important;
+} */

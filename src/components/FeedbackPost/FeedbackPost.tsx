@@ -14,20 +14,35 @@ import Cookies from "js-cookie";
 import swal from "sweetalert";
 import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
 import Slider from "react-slick";
+import axios from "axios";
+import {
+  QueryClient,
+  dehydrate,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
+import { getPosts } from "../API/Api";
+import { GetServerSideProps } from "next";
+
+interface Post {
+  id: number;
+  title: string;
+  // Add other properties as needed
+}
 
 const FeedbackPost = () => {
-  const { userCounter,feedbacks, setFeedback }: any = useContext(APIContext);
+  const { data, error, isLoading, refetch } = useQuery(["posts"], getPosts, {
+    enabled: true, // Ensure this is set to true when you want the query to run
+  });
+  const { userCounter, feedbacks, setFeedback }: any = useContext(APIContext);
   const [userRole, setUserRole] = useState("");
-  
-  useEffect(() => {
-    fetch("http://localhost:5000/api/v1/feedback")
-      .then((res) => res.json())
-      .then((data) => {
-        const decryptedData = decryptFunction(data?.getFeedbacks);
-        const parsedData = JSON.parse(decryptedData);
-        setFeedback(parsedData);
-      });
-  }, [setFeedback]);
+  const encryptedData = data?.feedbacks;
+  // const decryptedData = decryptFunction(encryptedData);
+  // if(decryptedData){
+  // const parsedData = JSON.parse(decryptedData);
+  // }
+  setFeedback(encryptedData);
+
   const lang = useSelector((state: any) => state.language.language);
   const email = decryptTransform(Cookies.get("qv-acn"));
   useEffect(() => {
@@ -37,7 +52,7 @@ const FeedbackPost = () => {
       }
     });
   }, [email, userCounter]);
-
+  const queryClient = useQueryClient();
   const handleDelete = async (id: any) => {
     const willDelete = await swal({
       title: !lang ? "Are you sure?" : "আপনি কি নিশ্চিত?",
@@ -54,7 +69,8 @@ const FeedbackPost = () => {
           method: "DELETE",
         });
         const data = await res.json();
-        if (data.message === "success") {
+        if (data?.message === "success") {
+          queryClient.invalidateQueries(data);
           swal({
             text: !lang
               ? "Deleted! Your feedback has been deleted!"
@@ -105,6 +121,7 @@ const FeedbackPost = () => {
           speed: 3000,
           autoplaySpeed: 4000,
           centerPadding: "50px",
+          dots: false,
         },
       },
       {
@@ -117,10 +134,65 @@ const FeedbackPost = () => {
           speed: 3000,
           autoplaySpeed: 4000,
           centerPadding: "50px",
+          dots: false,
         },
       },
     ],
   };
+  const setting = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    autoplay: true,
+    speed: 3000,
+    autoplaySpeed: 4000,
+    centerPadding: "50px",
+    rtl: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          centerPadding: "50px",
+          infinite: true,
+          autoplay: true,
+          speed: 3000,
+          autoplaySpeed: 4000,
+        },
+      },
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2,
+          infinite: true,
+          autoplay: true,
+          speed: 3000,
+          autoplaySpeed: 4000,
+          centerPadding: "50px",
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          autoplay: true,
+          speed: 3000,
+          autoplaySpeed: 4000,
+          centerPadding: "50px",
+          dots: false,
+        },
+      },
+    ],
+  };
+
   return (
     <section className=" ">
       <div className="lg:w-10/12 mx-auto pt-14">
@@ -149,58 +221,133 @@ const FeedbackPost = () => {
           )}
         </div>
         <Slider {...settings}>
-          {feedbacks?.map((feedback: any) => (
-            <Card
-              key={feedback._id}
-              shadow={false}
-              className="shadow-md hover:ease-in-out hover:duration-700 px-4 bg-gray-100 bg-opacity-75 hover:bg-primary"
-            >
-              <CardHeader
-                color="transparent"
-                floated={false}
-                shadow={false}
-                className="mx-0 flex items-center gap-4 pt-0 pb-2"
-              >
-                <div className="flex w-full flex-col gap-0.5">
-                  <div className="flex items-center justify-between">
-                    <Typography variant="h5" color="blue-gray">
-                      {feedback.name}
-                    </Typography>
-                    <div className="flex items-center gap-0">
-                      <Ratings feedback={feedback}></Ratings>
-                    </div>
-                  </div>
-                  <Typography color="blue-gray"> {feedback.address}</Typography>
-                </div>
-              </CardHeader>
-              
-              <CardBody className="mb-6 p-0">
-                {feedback.description.length > 140 ? (
-                  <Typography>
-                    &quot;{feedback.description.slice(0, 140)}... &quot;
-                  </Typography>
-                ) : (
-                  <Typography>
-                    &quot;{feedback.description.slice(0, 200)}&quot;
-                  </Typography>
-                )}
-              </CardBody>
-              {email && userRole && (
-                <button
-                  onClick={() => handleDelete(feedback._id)}
-                  className="btn btn-warning btn-sm mb-2 -mt-3"
+          {feedbacks?.map(
+            (feedback: any, index: number) =>
+              // Check if the index is even
+              index % 2 === 0 && (
+                <Card
+                  key={feedback._id}
+                  shadow={false}
+                  className="shadow-md hover:ease-in-out hover:duration-700 px-4 bg-gray-100 bg-opacity-75 hover:bg-primary"
                 >
-                  {!lang ? "Delete" : "মুছে ফেলুন"}
-                </button>
-              )}
-            </Card>
-          ))}
+                  <CardHeader
+                    color="transparent"
+                    floated={false}
+                    shadow={false}
+                    className="mx-0 flex items-center gap-4 pt-0 pb-2"
+                  >
+                    <div className="flex w-full flex-col gap-0.5">
+                      <div className="flex items-center justify-between">
+                        <Typography variant="h5" color="blue-gray">
+                          {feedback.name}
+                        </Typography>
+                        <div className="flex items-center gap-0">
+                          <Ratings feedback={feedback}></Ratings>
+                        </div>
+                      </div>
+                      <Typography color="blue-gray">
+                        {" "}
+                        {feedback.address}
+                      </Typography>
+                    </div>
+                  </CardHeader>
+
+                  <CardBody className="mb-6 p-0">
+                    {feedback.description.length > 140 ? (
+                      <Typography>
+                        &quot;{feedback.description.slice(0, 140)}... &quot;
+                      </Typography>
+                    ) : (
+                      <Typography>
+                        &quot;{feedback.description.slice(0, 200)}&quot;
+                      </Typography>
+                    )}
+                  </CardBody>
+                  {email && userRole && (
+                    <button
+                      onClick={() => handleDelete(feedback._id)}
+                      className="btn btn-warning btn-sm mb-2 -mt-3"
+                    >
+                      {!lang ? "Delete" : "মুছে ফেলুন"}
+                    </button>
+                  )}
+                </Card>
+              )
+          )}
         </Slider>
+        <div className="md:mt-10">
+          <Slider {...setting}>
+            {feedbacks?.map(
+              (feedback: any, index: number) =>
+                // Check if the index is even
+                index % 2 !== 0 && (
+                  <Card
+                    key={feedback._id}
+                    shadow={false}
+                    className="shadow-md hover:ease-in-out hover:duration-700 px-4 bg-gray-100 bg-opacity-75 hover:bg-primary"
+                  >
+                    <CardHeader
+                      color="transparent"
+                      floated={false}
+                      shadow={false}
+                      className="mx-0 flex items-center gap-4 pt-0 pb-2"
+                    >
+                      <div className="flex w-full flex-col gap-0.5">
+                        <div className="flex items-center justify-between">
+                          <Typography variant="h5" color="blue-gray">
+                            {feedback.name}
+                          </Typography>
+                          <div className="flex items-center gap-0">
+                            <Ratings feedback={feedback}></Ratings>
+                          </div>
+                        </div>
+                        <Typography color="blue-gray">
+                          {" "}
+                          {feedback.address}
+                        </Typography>
+                      </div>
+                    </CardHeader>
+
+                    <CardBody className="mb-6 p-0">
+                      {feedback.description.length > 140 ? (
+                        <Typography>
+                          &quot;{feedback.description.slice(0, 140)}... &quot;
+                        </Typography>
+                      ) : (
+                        <Typography>
+                          &quot;{feedback.description.slice(0, 200)}&quot;
+                        </Typography>
+                      )}
+                    </CardBody>
+                    {email && userRole && (
+                      <button
+                        onClick={() => handleDelete(feedback._id)}
+                        className="btn btn-warning btn-sm mb-2 -mt-3"
+                      >
+                        {!lang ? "Delete" : "মুছে ফেলুন"}
+                      </button>
+                    )}
+                  </Card>
+                )
+            )}
+          </Slider>
+        </div>
       </div>
     </section>
   );
 };
 
+export const getServerSideProps: GetServerSideProps = async () => {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery(["posts"], getPosts);
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+};
 export default FeedbackPost;
 
 // Fetch data and pass it as a prop

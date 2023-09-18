@@ -1,8 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { APIContext } from "@/Context/ApiContext/ApiContext";
-import {
-  decryptTransform,
-} from "@/Encrypt/EncryptionTransform";
+import { decryptTransform } from "@/Encrypt/EncryptionTransform";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
@@ -15,39 +13,55 @@ import Spinner from "@/components/Spinner/Spinner";
 import { useSelector } from "react-redux";
 import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
 import { useRouter } from "next/router";
-
+import { QueryClient, dehydrate, useQuery } from "@tanstack/react-query";
+import {
+  fetchData,
+  fetchPersonalPosts,
+  useUserData,
+} from "@/components/API/Api";
+import Loader from "@/components/Loading/Loader";
+import { GetServerSideProps } from "next";
+interface PersonalPostsProps {
+  email: string;
+  token: string;
+  setPersonalPost: React.Dispatch<React.SetStateAction<any | null>>;
+  setProfileLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  reload: boolean;
+}
 
 const Dashboard = () => {
-  const lang = useSelector((state:any) => state.language.language);
+  const lang = useSelector((state: any) => state.language.language);
   const [profileImageLoading, setProfileImageLoading] = useState(false);
   const [profileImage, setProfileImage] = useState("");
   const [profileImageFromMongo, setProfileImageFromMongo] = useState(null);
-  const { personalPost,setPersonalPost,reload,setProfileLoading, userCounter, setProfileImageReload, profileImageReload }: any = useContext(APIContext);
+  // const [changeButton, setChangeButton]= useState(false)
+  const {
+    setPersonalPost,
+    reload,
+    setProfileLoading,
+
+    setProfileImageReload,
+  }: any = useContext(APIContext);
   const firstName = decryptTransform(Cookies.get("qv-fn"));
   const lastName = decryptTransform(Cookies.get("qv-ln"));
   const email = decryptTransform(Cookies.get("qv-acn"));
   const token = decryptTransform(Cookies.get("qv-tn"));
-
+  const { data: userCounter, refetch } = useUserData();
   const router = useRouter();
   const params = router.asPath;
   const refreshParams = params.split("/");
 
-
-  useEffect(() => {
-    fetch(`https://zsqur.quickvara.com/api/v1/product/user/email/${email}`, {
-      headers: {
-        authorization: `bearer ${token}`,
-      },
-    })
-      .then((res) => res.text())
-      .then((data) => {
-        const decryptedData = decryptFunction(data);
-        const parsedData = JSON.parse(decryptedData);
-        setPersonalPost(parsedData);
+  const { data: personalPost, isLoading: profileLoading } = useQuery(
+    ["personalPost", email, token, reload],
+    () => fetchPersonalPosts(email, token),
+    {
+      enabled: !!email && !!token,
+      onSuccess: (data) => {
+        setPersonalPost(data);
         setProfileLoading(false);
-      });
-  }, [email, token, setPersonalPost, setProfileLoading, reload]);
-
+      },
+    }
+  );
 
   let getNumber;
   let checkAuthentication;
@@ -58,8 +72,6 @@ const Dashboard = () => {
       checkAuthentication = email;
     }
   }
-
-  
 
   const handlePhoto = (event: any, setImg: any) => {
     const imageData = new FormData();
@@ -74,6 +86,9 @@ const Dashboard = () => {
         setProfileImageLoading(false);
       })
       .catch(function (error) {
+        if (error.AxiosError.timeOut) {
+          setProfileImageLoading(false);
+        }
         console.log(error);
       });
   };
@@ -94,41 +109,56 @@ const Dashboard = () => {
       }
     )
       .then((res) => res.json())
-      .then(() => {});
+      .then((data) => {
+        Cookies.set("qv-up", data?.updateUser?.acknowledged);
+        // setChangeButton(data?.updateUser?.acknowledged)
+        setProfileImage("")
+        refetch();
+      });
   };
- 
-
+  // console.log(changeButton)
   useEffect(() => {
-    
-    const matchedImage = userCounter.find(
-      (image: any) => email === image?.email
-    );
+    if (userCounter) {
+      const matchedImage = userCounter.find(
+        (image: any) => email === image?.email
+      );
 
-    if (matchedImage) {
-      setProfileImageFromMongo(matchedImage.profileImage);
-      setProfileImageReload(true)
+      if (matchedImage) {
+        setProfileImageFromMongo(matchedImage?.profileImage);
+        setProfileImageReload(true);
+      }
+
+      // Perform other conditional actions here based on your needs
     }
-  }, [userCounter, email, setProfileImageReload,profileImageReload ]);
+  }, [userCounter, email, setProfileImageFromMongo, setProfileImageReload]);
+  if (profileLoading) {
+    return <Loader></Loader>;
+  }
+
+  if (!personalPost) {
+    return (
+      <div className="py-20 text-center text-2xl font-semibold text-red-400">
+        Error fetching data.
+      </div>
+    );
+  }
+  const changeButton = Cookies.get("qv-up");
+ 
   return (
     <div>
       <div className="lg:flex gap-10 w-full lg:w-10/12 mx-auto my-5 md:my-10">
-        <div className="basis-1/5  pb-5 mb-5 bg-white px-5">
+        <div className="basis-1/5 pb-5 mb-5 bg-white px-5">
           <div>
-            {
-            
-
-              profileImageFromMongo && (
-                <img
-                  className="h-20 w-20 rounded-full mx-auto mt-3"
-                  src={profileImageFromMongo}
-                  alt=""
-                />
-              )
-            }
+            {profileImageFromMongo && (
+              <img
+                className="h-20 w-20 rounded-full mx-auto mt-3"
+                src={profileImageFromMongo}
+                alt=""
+              />
+            )}
 
             <div className="divider my-1 md:my-2"></div>
             <Link
-              
               href="/dashboard/profile"
               className={
                 refreshParams[2] === "profile"
@@ -136,15 +166,12 @@ const Dashboard = () => {
                   : "flex justify-between my-1 text-gray-900"
               }
             >
-            {
-              !lang ?  <span>Profile</span> :  <span>প্রোফাইল</span>
-            }
+              {!lang ? <span>Profile</span> : <span>প্রোফাইল</span>}
               <IoIosArrowForward className="h-5 w-5"></IoIosArrowForward>
             </Link>
             <div className="divider my-1 md:my-2"></div>
 
             <Link
-             
               href="/dashboard/my-ads"
               className={
                 refreshParams[2] === "my-ads"
@@ -152,13 +179,12 @@ const Dashboard = () => {
                   : "flex justify-between my-1 text-gray-900"
               }
             >
-             {!lang ?  <span>My Ads</span> :  <span> আমার বিজ্ঞাপন</span>}
+              {!lang ? <span>My Ads</span> : <span> আমার বিজ্ঞাপন</span>}
               <IoIosArrowForward className="h-5 w-5"></IoIosArrowForward>
             </Link>
 
             <div className="divider my-1 md:my-2"></div>
             <Link
-              
               href="/dashboard/setting"
               className={
                 refreshParams[2] === "setting"
@@ -166,9 +192,7 @@ const Dashboard = () => {
                   : "flex justify-between my-1 text-gray-900"
               }
             >
-               {
-                !lang ? <span>Settings</span> : <span>সেটিংস</span>
-               }
+              {!lang ? <span>Settings</span> : <span>সেটিংস</span>}
               <IoIosArrowForward className="h-5 w-5"></IoIosArrowForward>
             </Link>
             <div className="divider my-1 md:my-2"></div>
@@ -177,11 +201,10 @@ const Dashboard = () => {
           <h2>{/* {firstName} {lastName} */}</h2>
           {/* {getNumber && <h2>+{getNumber}</h2>}
           {checkAuthentication && <h2>{checkAuthentication}</h2>} */}
-         
         </div>
         <div className="basis-4/5  pb-5 mb-5 bg-white">
           <div className="md:pl-20">
-            {(refreshParams[2] === "profile" ) && (
+            {refreshParams[2] === "profile" && (
               <div className=" md:flex">
                 <div>
                   {profileImageLoading ? (
@@ -228,38 +251,83 @@ const Dashboard = () => {
                     />
                     {profileImage ? (
                       <>
-                       {
-                        !lang ? <button
-                        onClick={updateImage}
-                        className="btn btn-warning btn-sm md:ml-12 mt-2"
-                      >
-                        Save 
-                      </button> : <button
-                        onClick={updateImage}
-                        className="btn btn-warning btn-sm md:ml-7 mt-2"
-                      >
-                       সেভ করুন
-                      </button>
-                       }
+                        {!lang ? (
+                          <>
+                           {
+                            changeButton === "true" && !profileImage ?
+                            <label
+                              htmlFor="file"
+                              className="btn btn-warning btn-sm md:ml-6 mt-2"
+                            >
+                               
+                                <small>  Edit Photo  </small>
+                              
+                              {/* <ImFolderPlus className="h-6 w-7 p-1"/> */}
+                            </label>
+                              : <button
+                            onClick={updateImage}
+                            className="btn btn-warning btn-sm md:ml-12 mt-2"
+                          >
+                             Save 
+                          </button>
+                           }
+                          </>
+                        ) : (
+                          <>
+                            {changeButton === "true" ? (
+                              <label
+                              htmlFor="file"
+                              className="btn btn-warning btn-sm md:ml-4 mt-2"
+                            >
+                               
+                                <small> ছবি পরিবর্তন করুন </small>
+                              
+                              {/* <ImFolderPlus className="h-6 w-7 p-1"/> */}
+                            </label>
+                               
+                            ) : (
+                              <button
+                                onClick={updateImage}
+                                className="btn btn-warning btn-sm md:ml-7 mt-2"
+                              >
+                                <small>সেভ করুন</small>
+                              </button>
+                            )}
+                          </>
+                        )}
                       </>
                     ) : (
-                      <label
+                      <>
+                      {
+                        changeButton === "true" ? <label
+                        htmlFor="file"
+                        className="md:ml-4 btn btn-warning btn-sm mt-2"
+                      >
+                        {!lang ? (
+                          <small className="px-4"> Edit Photo</small>
+                        ) : (
+                          <small> ছবি পরিবর্তন করুন </small>
+                        )}
+                        {/* <ImFolderPlus className="h-6 w-7 p-1"/> */}
+                      </label> : <label
                         htmlFor="file"
                         className="md:ml-6 btn btn-warning btn-sm mt-2"
                       >
-                        {
-                          !lang ? <small> Upload Photo</small> :<small> ছবি যুক্ত করুন </small>
-                        }
+                        {!lang ? (
+                          <small> Upload Photo</small>
+                        ) : (
+                          <small> ছবি যুক্ত করুন </small>
+                        )}
                         {/* <ImFolderPlus className="h-6 w-7 p-1"/> */}
                       </label>
+                      }
+                      </>
                     )}
                   </div>
                 </div>
                 <div className="pl-10 pt-8">
                   <h2 className="">
-                    {
-                      !lang ? <span>Full Name </span> : <span> পূর্ণ নাম </span>
-                    }
+                    {!lang ? <span>Full Name </span> : <span> পূর্ণ নাম </span>}
                     <h2 className="text-2xl py-2">
                       {firstName} {lastName}
                     </h2>
@@ -267,12 +335,16 @@ const Dashboard = () => {
                   <div>
                     {getNumber && (
                       <>
-                        {
-                          !lang ? <span>Phone Number</span> : <span> ফোন নাম্বার </span>
-                        }
+                        {!lang ? (
+                          <span>Phone Number</span>
+                        ) : (
+                          <span> ফোন নাম্বার </span>
+                        )}
                         <span className="text-2xl">
                           {" "}
-                          {getNumber && <h2 className="text-2xl py-2">+{getNumber}</h2>}
+                          {getNumber && (
+                            <h2 className="text-2xl py-2">+{getNumber}</h2>
+                          )}
                         </span>
                       </>
                     )}
@@ -280,9 +352,7 @@ const Dashboard = () => {
                   <div>
                     {checkAuthentication && (
                       <>
-                       {
-                        !lang ? <span> Email </span> : <span> ইমেইল  </span>
-                       }
+                        {!lang ? <span> Email </span> : <span> ইমেইল </span>}
                         {checkAuthentication && (
                           <h2 className="text-2xl py-2">
                             {checkAuthentication}
@@ -292,9 +362,11 @@ const Dashboard = () => {
                     )}
                   </div>
                   <div>
-                    {
-                      !lang ? <h2>My Total Ads</h2> :<h2> আমার মোট বিজ্ঞাপন</h2>
-                    }
+                    {!lang ? (
+                      <h2>My Total Ads</h2>
+                    ) : (
+                      <h2> আমার মোট বিজ্ঞাপন</h2>
+                    )}
                     <h3 className="text-2xl py-2">{personalPost?.length}</h3>
                   </div>
                 </div>
@@ -308,5 +380,33 @@ const Dashboard = () => {
     </div>
   );
 };
+
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const queryClient = new QueryClient();
+
+//   try {
+//     const userCounter = await fetchData(); // Fetch user data using fetchData function
+
+//     // Prefetch user data using the custom hook
+//     await queryClient.prefetchQuery(['userData'], async () => ({
+//       data: userCounter,
+//     }));
+
+//     return {
+//       props: {
+//         dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
+//       },
+//     };
+//   } catch (error) {
+//     console.error('Error fetching user data:', error);
+
+//     return {
+//       redirect: {
+//         destination: '/error', // Redirect to an error page or handle the error as needed
+//         permanent: false,
+//       },
+//     };
+//   }
+// };
 
 export default Dashboard;

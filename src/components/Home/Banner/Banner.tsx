@@ -16,7 +16,7 @@ import { setCityName } from "@/redux/features/FilterCity/FilterCitySlice";
 import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
 import { RootState } from "@/redux/app/store";
 import { setDivisionNameEng } from "@/redux/features/DivisionFilter/DivisionFilterSlice";
-import style from "../../../styles/button.module.css"
+import style from "../../../styles/button.module.css";
 
 const Banner = () => {
   const {
@@ -24,7 +24,7 @@ const Banner = () => {
     setFilterTypeCity,
     filterTypeDivision,
     setFilterTypeDivision,
-    handleOpenModalEng, 
+    handleOpenModalEng,
   }: any = useContext(StateContext);
 
   const [width, setWidth] = useState(window.innerWidth);
@@ -37,49 +37,59 @@ const Banner = () => {
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       // Check if running in a browser environment
       setWidth(window.innerWidth);
-      window.addEventListener('resize', handleResize);
+      window.addEventListener("resize", handleResize);
     }
 
     // Clean up the event listener on component unmount
     return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('resize', handleResize);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", handleResize);
       }
     };
   }, []);
 
   const dispatch = useDispatch();
   const handleFilterTypeCity = () => {
-    dispatch(setCityName({
-      eng: "",
-      ban: ""
-    }));
-    dispatch(setHomePopularAreaName({
-      eng: "",
-      ban: ""
-    }));
+    dispatch(
+      setCityName({
+        eng: "",
+        ban: "",
+      })
+    );
+    dispatch(
+      setHomePopularAreaName({
+        eng: "",
+        ban: "",
+      })
+    );
     setFilterTypeCity(!filterTypeCity);
   };
   const handleFilterTypeDivision = () => {
-    dispatch(setDivisionNameEng({
-      eng: "",
-      ban: ""
-    }));
+    dispatch(
+      setDivisionNameEng({
+        eng: "",
+        ban: "",
+      })
+    );
     setFilterTypeDivision(!filterTypeDivision);
   };
-  const divisionNameEng = useSelector((state: RootState) => state['qv-dn'].divisionNameEng);
-  const cityName = useSelector((state: RootState) => state['qv-cn'].cityName);
+  const divisionNameEng = useSelector(
+    (state: RootState) => state["qv-dn"].divisionNameEng
+  );
+  const cityName = useSelector((state: RootState) => state["qv-cn"].cityName);
   // console.log(cityName)
-  const lang = useSelector((state:any) => state.language.language);
+  const lang = useSelector((state: any) => state.language.language);
   return (
-    <section className="pt-6">
+    <section className=" ">
       {!lang ? (
-        <div className="text-gray-700 md:flex justify-center gap-2 text-lg mx-8 md:mx-0">
-          <h1  >
-            <span className="hidden md:inline">Are you</span> searching near <span  className="hidden md:inline">your</span> educational institution?
+        <div className="bg-white md:shadow-lg pt-3 md:py-4 md:flex justify-center gap-2 text-lg mx-8 md:mx-0">
+          <h1 >
+            <span className="hidden md:inline">Are you</span> searching near{" "}
+            <span className="hidden md:inline">your</span> educational
+            institution?
           </h1>
           <h1
             className="text-center gap-2 border-2 text-sm md:text-base border-warning shadow shadow-warning rounded px-2 mt-2 md:mt-0 cursor-pointer"
@@ -89,8 +99,12 @@ const Banner = () => {
           </h1>
         </div>
       ) : (
-        <div className="text-gray-700 md:flex md:justify-center gap-2 mx-8 md:mx-0 ">
-          <h1> <span className="hidden md:inline">আপনি কি আপনার</span> শিক্ষা প্রতিষ্ঠানের কাছাকাছি বাসস্থান খুঁজছেন?</h1>
+        <div className="bg-white md:shadow-lg pt-3 md:py-4 md:flex md:justify-center gap-2 mx-8 md:mx-0 ">
+          <h1>
+            {" "}
+            <span className="hidden md:inline">আপনি কি আপনার</span> শিক্ষা
+            প্রতিষ্ঠানের কাছাকাছি বাসস্থান খুঁজছেন?
+          </h1>
           <h1
             className=" border-2  border-warning shadow shadow-warning  rounded px-3 cursor-pointer text-center mt-2 md:mt-0"
             onClick={handleOpenModalEng}
@@ -113,7 +127,9 @@ const Banner = () => {
               {!lang && !filterTypeCity && !cityName?.eng && (
                 <BannerEng></BannerEng>
               )}
-              {lang && !filterTypeCity && !cityName?.eng &&  <BannerBan></BannerBan>}
+              {lang && !filterTypeCity && !cityName?.eng && (
+                <BannerBan></BannerBan>
+              )}
 
               <div className="hidden lg:block">
                 <div>
@@ -126,14 +142,6 @@ const Banner = () => {
                       অনুসন্ধান করুন :
                     </h1>
                   )}
-
-
-                  <button className={`${style.buttonStyle}`}>dhfdkhfdkjhfd</button>
-
-
-
-
-
 
                   <div className="flex justify-around mt-5 ">
                     <div className="pl-2 pr-4 shadow-lg bg-warning rounded py-2 text-primary">
@@ -157,7 +165,9 @@ const Banner = () => {
                           className="checkbox checkbox-primary h-[18px] w-[19px] mt-[2px]"
                           onClick={handleFilterTypeDivision}
                         />
-                        <span className=" ">{!lang ? "Division" : "বিভাগ"}</span>
+                        <span className=" ">
+                          {!lang ? "Division" : "বিভাগ"}
+                        </span>
                       </label>
                     </div>
                   </div>
@@ -179,11 +189,23 @@ const Banner = () => {
           <div className="lg:hidden block px-[5.5px]">
             <div>
               {!lang ? (
-                <h1 className={filterTypeCity || filterTypeDivision ? "mt-5 lg:mt-10 text-xl text-gray-700 ml-[30px] md:ml-20" : "mt-1 lg:mt-10 text-xl text-gray-700 ml-[27px] md:ml-0"}>
+                <h1
+                  className={
+                    filterTypeCity || filterTypeDivision
+                      ? "mt-5 lg:mt-10 text-xl text-gray-700 ml-[30px] md:ml-20"
+                      : "mt-1 lg:mt-10 text-xl text-gray-700 ml-[27px] md:ml-0"
+                  }
+                >
                   Search by:
                 </h1>
               ) : (
-                <h1 className={filterTypeCity || filterTypeDivision ? "mt-5 lg:mt-10 text-lg text-gray-700 ml-[30px] md:ml-20" : "mt-2 lg:mt-10 text-lg text-gray-700 ml-[30px] md:ml-0"}>
+                <h1
+                  className={
+                    filterTypeCity || filterTypeDivision
+                      ? "mt-5 lg:mt-10 text-lg text-gray-700 ml-[30px] md:ml-20"
+                      : "mt-2 lg:mt-10 text-lg text-gray-700 ml-[30px] md:ml-0"
+                  }
+                >
                   অনুসন্ধান করুন :
                 </h1>
               )}
@@ -209,21 +231,35 @@ const Banner = () => {
                       className="checkbox checkbox-primary h-[18px] w-[19px] mt-[2px]"
                       onClick={handleFilterTypeDivision}
                     />
-                    <span >{!lang ? "Division" : "বিভাগ"}</span>
+                    <span>{!lang ? "Division" : "বিভাগ"}</span>
                   </label>
                 </div>
               </div>
             </div>
           </div>
           <div className="lg:mt-36 xl:mt-20">
-          {!filterTypeDivision && (
-            <Lottie
-              className="lg:scale-125 xl:scale-110 hidden lg:flex"
-              animationData={lottiImage}
-              loop={true}
-              draggable= "false"
-            ></Lottie>
-          )}
+            {!filterTypeDivision && (
+              <Lottie
+                className="lg:scale-125 xl:scale-110 hidden lg:flex"
+                animationData={lottiImage}
+                loop={true}
+                draggable="false"
+              ></Lottie>
+            )}
+            <a
+              aria-label="Scroll down"
+              className="flex items-center justify-center w-4 h-4 mx-auto text-white duration-300 transform border border-gray-400 rounded-full hover:text-teal-accent-400 hover:border-teal-accent-400 hover:shadow hover:scale-110 animate-ping"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="6"
+                height="6"
+                viewBox="0 0 12 12"
+                fill="currentColor"
+              >
+                <path d="M10.293,3.293,6,7.586,1.707,3.293A1,1,0,0,0,.293,4.707l5,5a1,1,0,0,0,1.414,0l5-5a1,1,0,1,0-1.414-1.414Z" />
+              </svg>
+            </a>
           </div>
         </div>
       </div>

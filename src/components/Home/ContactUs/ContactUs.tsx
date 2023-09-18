@@ -1,32 +1,39 @@
 import { Button } from "@material-tailwind/react";
 import React, { useContext, useState } from "react";
 import { useSelector } from "react-redux";
-import lottiImage from "../../../image/animation_lm4r72df (1).json";
+import lottiImage from "../../../image/video/rating-stars-8877903-7286244.mp4.lottie.json";
 import Lottie from "lottie-react";
 import { useForm } from "react-hook-form";
 import { StateContext } from "@/Context/StateContext/StateContext";
-import { setFilterModalValue } from '@/redux/features/FilterModalSlice/FilterModalSlice';
+import { setFilterModalValue } from "@/redux/features/FilterModalSlice/FilterModalSlice";
 import FeedbackModal from "../Banner/Modal/FeedbackModal/FeedbackModal";
+import image from "../../../image/Quick logo without Shadow.png";
+import Image from "next/image";
+// import showVideo from "../../../image/video/rating-stars-8877903-7286244.mp4"
 
 export const ContactUs = () => {
-  const {handleFeedbackModal, setFilterModalValue}:any = useContext(StateContext)
+  const { handleFeedbackModal, setFilterModalValue }: any =
+    useContext(StateContext);
   const lang = useSelector((state: any) => state.language.language);
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const [feedbackValue, setFeedbackvalue] = useState({})
-  const handleFeedback = (data:any) => {
-    const valueName={
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const [feedbackValue, setFeedbackValue] = useState({});
+  const handleFeedback = (data: any) => {
+    const valueName = {
       name: data.name,
-      address:data.address,
-      description:data.description
-    }
-    if(valueName){
-      setFeedbackvalue(valueName)
-      setFilterModalValue(true)
-      handleFeedbackModal()
+      address: data.address,
+      description: data.description,
+    };
+    if (valueName) {
+      setFeedbackValue(valueName);
+      setFilterModalValue(true);
+      handleFeedbackModal();
     }
   };
-
-
 
   return (
     <section>
@@ -46,15 +53,36 @@ export const ContactUs = () => {
             src={image}
             alt={"Male"}
           ></Image> */}
+          {/* <video controls autoplay width="640" height="360">
+        <source src="https://cdnl.iconscout.com/lottie/premium/thumb/rating-stars-8877903-7286244.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video> */}
+          {/* <video
+            controls={false}
+            muted  
+            autoPlay
+            loop
+            width="640"
+            height="360"
+            disablePictureInPicture
+            className="bg-transparent"
+          >
+            <source
+              src="https://cdnl.iconscout.com/lottie/premium/thumb/rating-stars-8877903-7286244.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video> */}
+
           <Lottie
-              className="h-96 w-11/12 mx-auto md:-ml-10 lg:ml-0 lg:scale-125 -mt-16 hidden md:flex"
+              className="h-96 w-11/12 mx-auto md:-ml-10 lg:ml-0 lg:scale-125 -mt-2 hidden md:flex"
               animationData={lottiImage}
               loop={true}
               draggable= "false"
             ></Lottie>
 
-          <div>
-          <div className="lg:w-10/12 mx-auto">
+          <form>
+            <div className="lg:w-10/12 mx-auto">
               <label className="label ">
                 {!lang ? (
                   <span className="label-text text-warning">Full Name</span>
@@ -83,7 +111,10 @@ export const ContactUs = () => {
                 {!lang ? (
                   <span className="label-text text-warning">Address</span>
                 ) : (
-                  <span className="label-text text-warning"> আপনার ঠিকানা </span>
+                  <span className="label-text text-warning">
+                    {" "}
+                    আপনার ঠিকানা{" "}
+                  </span>
                 )}
               </label>
               <input
@@ -105,9 +136,15 @@ export const ContactUs = () => {
             <div className="lg:w-10/12 mx-auto">
               <label className="label">
                 {!lang ? (
-                  <span className="label-text text-warning"> Your feedback</span>
+                  <span className="label-text text-warning">
+                    {" "}
+                    Your feedback
+                  </span>
                 ) : (
-                  <span className="label-text text-warning"> আপনার মন্তব্য </span>
+                  <span className="label-text text-warning">
+                    {" "}
+                    আপনার মন্তব্য{" "}
+                  </span>
                 )}
               </label>
               <textarea
@@ -134,20 +171,34 @@ export const ContactUs = () => {
             /> */}
             <div className="flex justify-end lg:w-10/12 mx-auto">
               {!lang ? (
-                <Button onClick={handleSubmit(handleFeedback)} className="
-              bg-warning my-3  w-full">Submit</Button>
+                <Button
+                  onClick={handleSubmit(handleFeedback)}
+                  className="
+              bg-warning my-3  w-full"
+                >
+                  Submit
+                </Button>
               ) : (
-                <Button  onClick={handleSubmit(handleFeedback)} className=" bg-warning my-3  w-full">সাবমিট করুন </Button>
+                <Button
+                  onClick={handleSubmit(handleFeedback)}
+                  className=" bg-warning my-3  w-full"
+                >
+                  সাবমিট করুন{" "}
+                </Button>
               )}
             </div>
-          </div>
-          </div>
+          </form>
+        </div>
       </div>
-      <FeedbackModal feedbackValue={feedbackValue}></FeedbackModal>
+      <FeedbackModal
+        feedbackValue={feedbackValue}
+        setFeedbackValue={setFeedbackValue}
+        reset={reset}
+      ></FeedbackModal>
     </section>
   );
 };
 
 export default ContactUs;
 
-  // bg-gradient-to-r from-accent via-primary to-accent text-warning
+// bg-gradient-to-r from-accent via-primary to-accent text-warning

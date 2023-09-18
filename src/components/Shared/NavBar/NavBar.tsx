@@ -15,7 +15,8 @@ import styles from "../../../styles/response.module.css"
 import { useDispatch } from "react-redux";
 import { toggleLanguage } from "@/redux/features/Language/LanguageSlice";
 import Image from "next/image";
-import logo from "../../../image/378045946_845317993875769_1225716974521079040_n__1_-removebg-preview.png"
+import logo from "../../../image/Quick_Vara_logo_2_full.png"
+import logoShort from "../../../image/Quick_Vara_logo_Q2_short.png"
 import { setCityName } from "@/redux/features/FilterCity/FilterCitySlice";
 import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
 import { setFilterModalValue } from "@/redux/features/FilterModalSlice/FilterModalSlice";
@@ -249,12 +250,17 @@ useEffect(() => {
           <div className={`${styles.gapStyle} flex md:gap-32`}>
             <Link onClick={handleHome} href={"/"} passHref>
               <Image
-                className="h-10 pb-1 md:pb-0 mt-1 md:mt-0 md:h-10 ml-5 md:ml-5 w-full md:w-full   scale-125"
+                className="h-10 pb-1 md:pb-0 mt-1 md:mt-0 md:h-10 ml-5 md:ml-5 w-full md:w-full scale-125 hidden lg:flex"
                 src={logo}
                 alt={""}
               ></Image>
+              <Image
+                className="h-10 pb-1 md:pb-0 mt-1 md:mt-0 md:h-10 ml-5 md:ml-5 w-full md:w-full   scale-125 lg:hidden"
+                src={logoShort}
+                alt={""}
+              ></Image>
             </Link>
-            <div className="mt-1 mb-1 hidden lg:flex ">
+            <div className="mt-1 mb-1 hidden lg:flex">
               {!lang ? (
                 <Link
                   href="/ads"

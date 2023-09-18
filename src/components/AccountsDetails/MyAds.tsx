@@ -13,7 +13,7 @@ import { decryptTransform } from "@/Encrypt/EncryptionTransform";
 import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
 
 const MyAds = () => {
-  const {personalPost, profileLoading, setProfileLoading}:any = useContext(APIContext)
+  const {personalPost, profileLoading }:any = useContext(APIContext)
   const firstName = decryptTransform(Cookies.get("qv-fn"));
   const lastName = decryptTransform(Cookies.get("qv-ln"));
   const email = decryptTransform(Cookies.get("qv-acn"));

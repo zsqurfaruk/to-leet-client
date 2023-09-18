@@ -13,17 +13,17 @@ const ApiContext = ({ children }: any) => {
   const [profileImageReload, setProfileImageReload] = useState(false)
   const [feedbacks, setFeedback] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api/v1/users/signup")
-      .then((res) => res.text())
-      .then((data) =>{
-        const decryptedUser = decryptFunction(data);
-        const parsedUser = JSON.parse(decryptedUser);
-        // console.log(parsedUser)
-        setUserCounter(parsedUser)
-        setProfileImageReload(true)
-      });
-  }, [profileImageReload,setProfileImageReload]);
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/api/v1/users/signup")
+  //     .then((res) => res.text())
+  //     .then((data) =>{
+  //       const decryptedUser = decryptFunction(data);
+  //       const parsedUser = JSON.parse(decryptedUser);
+  //       // console.log(parsedUser)
+  //       setUserCounter(parsedUser)
+  //       setProfileImageReload(true)
+  //     });
+  // }, [profileImageReload,setProfileImageReload]);
 
   const [counter, setCounter] = useState([]);
   useEffect(() => {

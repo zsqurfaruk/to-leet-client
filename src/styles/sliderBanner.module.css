@@ -1,0 +1,20 @@
+.slickSlider {
+    margin: -12px -7px; /* Adjust the value to set the desired gap width */
+  }
+  
+ 
+  
+  @media (max-width: 768px) {
+    .slickSlide {
+      margin: 0px 0 0px 0px;
+      padding: 0px; /* Adjust the value to set the desired gap width */
+    }
+  }
+  
+  /* Media query for mobile devices */
+  @media (max-width: 480px) {
+    .slickSlide {
+      margin: 0px 0 0px 0px;
+      padding: 0px 0px; /* Adjust the value to set the desired gap width */
+    }
+  }

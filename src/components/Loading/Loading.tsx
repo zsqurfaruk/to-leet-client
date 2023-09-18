@@ -1,35 +1,14 @@
-import { Typography } from "@material-tailwind/react";
-import { TypeAnimation } from "react-type-animation";
+import image from "../../image/Quick logo without background.png"
+import Image from "next/image";
 
 function Loading() {
   return (
     <div className="sweet-loading flex justify-center h-screen items-center bg-neutral">
-      <div>
-        <Typography className="mr-4 text-center text-4xl font-bold text-warning">
-          <TypeAnimation
-            sequence={[
-              // Same substring at the start will only be typed out once, initially
-              "QuickVara",
-              10, // wait 1s before replacing "Mice" with "Hamsters"
-              "QuickVara",
-              10,
-            ]}
-            repeat={2}
-          />
-        </Typography>
-        {/* <Typography className="mr-4 cursor-pointer text-warning text-xl font-semibold">
-        <TypeAnimation
-            sequence={[
-              // Same substring at the start will only be typed out once, initially
-              "The Ultimate Rental Solution",
-              10, // wait 1s before replacing "Mice" with "Hamsters"
-              "The Ultimate Rental Solution",
-              10,
-            ]}
-            repeat={2}
-          />
-        </Typography> */}
-      </div>
+      <Image 
+      src={image}
+      alt=""
+      className="h-40 w-40 flex items-center justify-center mx-auto text-white duration-700 animate-pulse"
+      ></Image>
     </div>
   );
 }

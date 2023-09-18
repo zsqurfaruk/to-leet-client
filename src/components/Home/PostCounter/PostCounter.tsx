@@ -11,10 +11,11 @@ import adsPic from "../../../image/counter-icon-1 (1).svg";
 import insPic from "../../../image/lecture.png";
 import feedback from "../../../image/feedback.png";
 import image from "../../../image/slide-2.jpg";
+import { useUserData } from "@/components/API/Api";
 
 function PostCounter() {
   const lang = useSelector((state: any) => state.language.language);
-  const { userCounter, feedbacks }: any = useContext(APIContext);
+  const { feedbacks }: any = useContext(APIContext);
   const [startCounting, setStartCounting] = useState(false);
   const [count, setCount] = useState(300);
   const [userCount, setUserCount] = useState(150);
@@ -25,6 +26,9 @@ function PostCounter() {
   const filterPost = allPosts?.filter((item: any) =>
     item.hasOwnProperty("university")
   );
+
+  const { data: userCounter, isLoading, error } = useUserData();
+
   useEffect(() => {
     dispatch(getAllPosts());
   }, [dispatch]);

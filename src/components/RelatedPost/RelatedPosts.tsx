@@ -4,10 +4,11 @@ import Post from "./Post";
 import { useSelector } from "react-redux";
 import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
 import Slider from "react-slick";
+import { useFilteredPosts } from "../API/Api";
 
 const RelatedPosts = ({ type, areaName, cityName, id , division, district}: any) => {
   const lang = useSelector((state:any) => state.language.language);
-  const [getValue, setGetValue] = useState([]);
+  // const [getValue, setGetValue] = useState([]);
   const filterValue = {
     filterModalValue: type,
     homePopularAreaName: areaName,
@@ -16,31 +17,31 @@ const RelatedPosts = ({ type, areaName, cityName, id , division, district}: any)
     divisionNameEng:division
   };
 const limit = 10; // Set the desired data limit
-
-useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/product/filter?limit=${limit}`, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      // authorization: `bearer ${Cookies.get("token")}`,
-    },
-    body: JSON.stringify(filterValue),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      const decryptedData = decryptFunction(data?.posts);
-      const parsedData = JSON.parse(decryptedData);
+const { data: getValue } = useFilteredPosts(limit, filterValue, id);
+// useEffect(() => {
+//     fetch(`http://localhost:5000/api/v1/product/filter?limit=${limit}`, {
+//     method: "POST",
+//     headers: {
+//       "content-type": "application/json",
+//       // authorization: `bearer ${Cookies.get("token")}`,
+//     },
+//     body: JSON.stringify(filterValue),
+//   })
+//     .then((res) => res.json())
+//     .then((data) => {
+//       const decryptedData = decryptFunction(data?.posts);
+//       const parsedData = JSON.parse(decryptedData);
       
-      const result = parsedData?.filter((post: any) => {
-      return post._id !== id;
-      });
+//       const result = parsedData?.filter((post: any) => {
+//       return post._id !== id;
+//       });
    
-      if (result !== getValue) {
-        setGetValue(result);
-      }
-    });
+//       if (result !== getValue) {
+//         setGetValue(result);
+//       }
+//     });
   
-}, [ ]);
+// }, [ ]);
 
 const settings = {
   dots: true,

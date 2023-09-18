@@ -15,7 +15,13 @@ import Loading from "@/components/Loading/Loading";
 import { ThemeProvider } from "@material-tailwind/react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import {
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 export default function App({ Component, pageProps }: AppProps) {
+  const [queryClient] = React.useState(() => new QueryClient())
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const script = document.createElement("script");
@@ -38,19 +44,21 @@ export default function App({ Component, pageProps }: AppProps) {
       document.body.removeChild(inlineScript);
     };
   }, []);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false); 
-    }, 1100);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setLoading(false); 
+  //   }, 5100);
 
-    return () => clearTimeout(timer);  
-  }, []);
+  //   return () => clearTimeout(timer);  
+  // }, []);
 
-  if (loading) {
-    return <Loading></Loading>;
-  }
+  // if (loading) {
+  //   return <Loading></Loading>;
+  // }
   return (
     // <DisableRightClick>
+    <QueryClientProvider client={queryClient}>
+    <Hydrate state={pageProps.dehydratedState}>
       <ThemeProvider>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
@@ -67,6 +75,8 @@ export default function App({ Component, pageProps }: AppProps) {
           </PersistGate>
         </Provider>
       </ThemeProvider>
+      </Hydrate>
+    </QueryClientProvider>
     // </DisableRightClick>
   );
 }

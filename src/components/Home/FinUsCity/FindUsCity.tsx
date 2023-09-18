@@ -1,6 +1,6 @@
 import React from "react";
 import dhaka from "../../../image/places/dhaka.avif";
-import rajshahi from "../../../image/places/rajshahi.jpg";
+import rajshahi from "../../../image/places/city-tile-Rajshahi.jpg";
 import chittagong from "../../../image/places/chittagong.jpg";
 import barisal from "../../../image/places/barisal.jpg";
 import sylhet from "../../../image/places/Sylhet.jpg";
@@ -79,18 +79,18 @@ const FindUsCity = () => {
         <div className="relative">
           <Image
             className={
-              "h-full w-full hover:scale-105 ease-in-out duration-700 rounded"
+              "h-full w-full hover:scale-105 ease-in-out duration-700 rounded-xl"
             }
             src={dhaka}
             alt={"dhaka"}
           ></Image>
-           <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700"></div>
+          <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700 rounded-xl"></div>
           {!lang ? (
-            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded">
               Dhaka
             </h1>
           ) : (
-            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded">
               ঢাকা
             </h1>
           )}
@@ -98,18 +98,18 @@ const FindUsCity = () => {
         <div className="relative">
           <Image
             className={
-              "h-full w-full hover:scale-105 ease-in-out duration-700 rounded"
+              "h-full w-full hover:scale-105 ease-in-out duration-700 rounded-xl"
             }
             src={rajshahi}
             alt={"rajshahi"}
           ></Image>
-           <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700"></div>
+          <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700 rounded-xl"></div>
           {!lang ? (
-            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded">
               Rajshahi
             </h1>
           ) : (
-            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded">
               রাজশাহী
             </h1>
           )}
@@ -117,18 +117,18 @@ const FindUsCity = () => {
         <div className="relative">
           <Image
             className={
-              "h-full w-full hover:scale-105 ease-in-out duration-700 rounded"
+              "h-full w-full hover:scale-105 ease-in-out duration-700 rounded-xl"
             }
             src={chittagong}
             alt={"chittagong"}
           ></Image>
-          <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700"></div>
+          <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700 rounded-xl"></div>
           {!lang ? (
-            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded">
               Chittagong
             </h1>
           ) : (
-            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded">
               চট্টগ্রাম
             </h1>
           )}
@@ -136,18 +136,18 @@ const FindUsCity = () => {
         <div className="relative">
           <Image
             className={
-              "h-full w-full hover:scale-105 ease-in-out duration-700 rounded"
+              "h-full w-full hover:scale-105 ease-in-out duration-700 rounded-xl"
             }
             src={barisal}
             alt={"barisal"}
           ></Image>
-          <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700"></div>
+          <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700 rounded-xl"></div>
           {!lang ? (
-            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded">
               Barisal
             </h1>
           ) : (
-            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded">
               বরিশাল
             </h1>
           )}
@@ -155,18 +155,18 @@ const FindUsCity = () => {
         <div className="relative">
           <Image
             className={
-              "h-full w-full hover:scale-105 ease-in-out duration-700 rounded"
+              "h-full w-full hover:scale-105 ease-in-out duration-700 rounded-xl"
             }
             src={sylhet}
             alt={"sylhet"}
           ></Image>
-          <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700"></div>
+          <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700 rounded-xl"></div>
           {!lang ? (
-            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded">
               Sylhet
             </h1>
           ) : (
-            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded">
               সিলেট
             </h1>
           )}
@@ -174,18 +174,18 @@ const FindUsCity = () => {
         <div className="relative">
           <Image
             className={
-              "h-full w-full hover:scale-105 ease-in-out duration-700 rounded"
+              "h-full w-full hover:scale-105 ease-in-out duration-700 rounded-xl"
             }
             src={khulna}
             alt={"khulna"}
           ></Image>
-          <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700"></div>
+          <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700 rounded-xl"></div>
           {!lang ? (
-            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded">
               Khulna
             </h1>
           ) : (
-            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded">
               খুলনা
             </h1>
           )}
@@ -193,18 +193,18 @@ const FindUsCity = () => {
         <div className="relative">
           <Image
             className={
-              "h-full w-full hover:scale-105 ease-in-out duration-700 rounded"
+              "h-full w-full hover:scale-105 ease-in-out duration-700 rounded-xl"
             }
             src={rangpur}
             alt={"rangpur"}
           ></Image>
-          <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700"></div>
+          <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700 rounded-xl"></div>
           {!lang ? (
-            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded">
               Rangpur
             </h1>
           ) : (
-            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded">
               রংপুর
             </h1>
           )}
@@ -212,18 +212,18 @@ const FindUsCity = () => {
         <div className="relative">
           <Image
             className={
-              "h-full w-full hover:scale-105 ease-in-out duration-700 rounded"
+              "h-full w-full hover:scale-105 ease-in-out duration-700 rounded-xl"
             }
             src={mymensingh}
             alt={"mymensingh"}
           ></Image>
-          <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700"></div>
+          <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700 rounded-xl"></div>
           {!lang ? (
-            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded">
               Mymensingh
             </h1>
           ) : (
-            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+            <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded">
               ময়মনসিংহ
             </h1>
           )}
@@ -235,18 +235,18 @@ const FindUsCity = () => {
           <div className="relative">
             <Image
               className={
-                "h-72 md:h-80 w-full hover:scale-105 ease-in-out duration-700 rounded"
+                "h-72 md:h-80 w-full hover:scale-105 ease-in-out duration-700 rounded-xl"
               }
               src={dhaka}
               alt={"dhaka"}
             ></Image>
-            <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700"></div>
+            <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700 rounded-xl"></div>
             {!lang ? (
-              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded-xl">
                 Dhaka
               </h1>
             ) : (
-              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded-xl">
                 ঢাকা
               </h1>
             )}
@@ -254,18 +254,18 @@ const FindUsCity = () => {
           <div className="relative">
             <Image
               className={
-                "h-72 md:h-80 w-full hover:scale-105 ease-in-out duration-700 rounded"
+                "h-72 md:h-80 w-full hover:scale-105 ease-in-out duration-700 rounded-xl"
               }
               src={rajshahi}
               alt={"rajshahi"}
             ></Image>
-            <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700"></div>
+            <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700 rounded-xl"></div>
             {!lang ? (
-              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded-xl">
                 Rajshahi
               </h1>
             ) : (
-              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded-xl">
                 রাজশাহী
               </h1>
             )}
@@ -273,18 +273,18 @@ const FindUsCity = () => {
           <div className="relative">
             <Image
               className={
-                "h-72 md:h-80 w-full hover:scale-105 ease-in-out duration-700 rounded"
+                "h-72 md:h-80 w-full hover:scale-105 ease-in-out duration-700 rounded-xl"
               }
               src={chittagong}
               alt={"chittagong"}
             ></Image>
-            <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700"></div>
+            <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700 rounded-xl"></div>
             {!lang ? (
-              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded-xl">
                 Chittagong
               </h1>
             ) : (
-              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded-xl">
                 চট্টগ্রাম
               </h1>
             )}
@@ -292,18 +292,18 @@ const FindUsCity = () => {
           <div className="relative">
             <Image
               className={
-                "h-72 md:h-80 w-full hover:scale-105 ease-in-out duration-700 rounded"
+                "h-72 md:h-80 w-full hover:scale-105 ease-in-out duration-700 rounded-xl"
               }
               src={barisal}
               alt={"barisal"}
             ></Image>
-            <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700"></div>
+            <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700 rounded-xl"></div>
             {!lang ? (
-              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded-xl">
                 Barisal
               </h1>
             ) : (
-              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded-xl">
                 বরিশাল
               </h1>
             )}
@@ -311,18 +311,18 @@ const FindUsCity = () => {
           <div className="relative">
             <Image
               className={
-                "h-72 md:h-80 w-full hover:scale-105 ease-in-out duration-700 rounded"
+                "h-72 md:h-80 w-full hover:scale-105 ease-in-out duration-700 rounded-xl"
               }
               src={sylhet}
               alt={"sylhet"}
             ></Image>
-            <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700"></div>
+            <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700 rounded-xl"></div>
             {!lang ? (
-              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded-xl">
                 Sylhet
               </h1>
             ) : (
-              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded-xl">
                 সিলেট
               </h1>
             )}
@@ -330,18 +330,18 @@ const FindUsCity = () => {
           <div className="relative">
             <Image
               className={
-                "h-72 md:h-80 w-full hover:scale-105 ease-in-out duration-700 rounded"
+                "h-72 md:h-80 w-full hover:scale-105 ease-in-out duration-700 rounded-xl"
               }
               src={khulna}
               alt={"khulna"}
             ></Image>
-            <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700"></div>
+            <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700 rounded-xl"></div>
             {!lang ? (
-              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded-xl">
                 Khulna
               </h1>
             ) : (
-              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded-xl">
                 খুলনা
               </h1>
             )}
@@ -349,18 +349,18 @@ const FindUsCity = () => {
           <div className="relative">
             <Image
               className={
-                "h-72 md:h-80 w-full hover:scale-105 ease-in-out duration-700 rounded"
+                "h-72 md:h-80 w-full hover:scale-105 ease-in-out duration-700 rounded-xl"
               }
               src={rangpur}
               alt={"rangpur"}
             ></Image>
-            <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700"></div>
+            <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700 rounded-xl"></div>
             {!lang ? (
-              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded-xl">
                 Rangpur
               </h1>
             ) : (
-              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded-xl">
                 রংপুর
               </h1>
             )}
@@ -368,18 +368,18 @@ const FindUsCity = () => {
           <div className="relative">
             <Image
               className={
-                "h-72 md:h-80 w-full hover:scale-105 ease-in-out duration-700 rounded"
+                "h-72 md:h-80 w-full hover:scale-105 ease-in-out duration-700 rounded-xl"
               }
               src={mymensingh}
               alt={"mymensingh"}
             ></Image>
-            <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700"></div>
+            <div className="absolute h-full w-full hover:bg-opacity-50 top-0 hover:bg-black ease-in-out duration-700 rounded-xl"></div>
             {!lang ? (
-              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded-xl">
                 Mymensingh
               </h1>
             ) : (
-              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-1 rounded">
+              <h1 className="absolute left-5 bottom-5 bg-white text-2xl font-semibold px-2 rounded-xl">
                 ময়মনসিংহ
               </h1>
             )}
