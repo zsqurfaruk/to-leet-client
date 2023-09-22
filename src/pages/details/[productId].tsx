@@ -16,10 +16,16 @@ import { BiBed } from "react-icons/bi";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import { decryptTransform } from "@/Encrypt/EncryptionTransform";
 import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
+import { AiFillWechat } from "react-icons/ai";
+import ChatModal from "@/components/Home/Banner/Modal/ChatModal/ChatModal";
+ 
 
 const ProductDetails = ({ product, loading, errorMessage }: any) => {
+
+   
   const { img1, img2, img3, img4, img5 } = product;
   const lang = useSelector((state: any) => state.language.language);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const images = [
     { id: 0, value: img1 },
     { id: 1, value: img2 },
@@ -68,6 +74,15 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
     return <div>{errorMessage}</div>;
   }
 
+ 
+
+  const openModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   return (
     <>
       <Head>
@@ -130,7 +145,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
           content={product?.title}
         />
       </Head>
-      <section className="w-full lg:w-10/12 mx-auto">
+      <section className="w-full lg:w-10/12 mx-auto relative">
         <Card className="lg:flex-row w-full p-6 shadow-none">
           <CardHeader
             shadow={false}
@@ -517,6 +532,14 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
           <div className="divider mt-[6px] mb-[6px]"></div>
           <h2 className="text-sm mt-1 mb-5 pb-5"> {product?.description}</h2>
         </div>
+        <div className="fixed z-50 lg:bottom-10 lg:right-[235px]">
+        {
+          isModalOpen && <ChatModal productId={product?._id} authorEmail={ product?.email} isOpen={isModalOpen} onClose={closeModal} ></ChatModal>
+        }
+        </div>
+        <button onClick={openModal} className="flex">
+        <AiFillWechat className="fixed lg:bottom-10 right-5 md:right-10 lg:right-40 z-50 h-16 w-16 lg:h-14 lg:w-14 text-white bg-warning rounded-full p-2"></AiFillWechat>
+      </button>
       </section>
       <br />
       <br />
@@ -528,6 +551,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
         division={product?.division}
         district={product?.districts}
       ></RelatedPosts>
+      
     </>
   );
 };
@@ -539,7 +563,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 
   try {
     const res = await fetch(
-      `https://zsqur.quickvara.com/api/v1/product/${params?.productId}`,
+      `http://localhost:5000/api/v1/product/${params?.productId}`,
       {
         headers: {
           authorization: `bearer ${token}`,

@@ -21,7 +21,7 @@ import {
   useQuery,
   useQueryClient,
 } from "@tanstack/react-query";
-import { getPosts } from "../API/Api";
+import { getPosts, useUserData } from "../API/Api";
 import { GetServerSideProps } from "next";
 
 interface Post {
@@ -34,7 +34,8 @@ const FeedbackPost = () => {
   const { data, error, isLoading, refetch } = useQuery(["posts"], getPosts, {
     enabled: true, // Ensure this is set to true when you want the query to run
   });
-  const { userCounter, feedbacks, setFeedback }: any = useContext(APIContext);
+  const { feedbacks, setFeedback }: any = useContext(APIContext);
+  const { data: userCounter } = useUserData();
   const [userRole, setUserRole] = useState("");
   const encryptedData = data?.feedbacks;
   // const decryptedData = decryptFunction(encryptedData);
@@ -46,7 +47,7 @@ const FeedbackPost = () => {
   const lang = useSelector((state: any) => state.language.language);
   const email = decryptTransform(Cookies.get("qv-acn"));
   useEffect(() => {
-    userCounter.forEach((userRole: any) => {
+    userCounter?.forEach((userRole: any) => {
       if (userRole?.role === "admin" && userRole?.email === email) {
         setUserRole(userRole?.role);
       }

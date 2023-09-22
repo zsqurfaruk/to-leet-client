@@ -1,6 +1,7 @@
 import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
+ 
 
 // api.ts (You can create an api folder for such functions)
 export async function fetchPersonalPosts(
@@ -74,3 +75,25 @@ export const fetchData = async () => {
 export const useUserData = () => {
   return useQuery(['userData'], fetchData);
 };
+
+// send message 
+// mutations.js
+
+
+export function useSendMessage() {
+  return useMutation(async (messagesData: any) => {
+    const response = await fetch("http://localhost:5000/api/v1/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(messagesData),
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    return response.json();
+  });
+}

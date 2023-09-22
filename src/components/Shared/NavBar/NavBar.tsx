@@ -11,12 +11,12 @@ import { useRouter } from "next/router";
 import { StateContext } from "@/Context/StateContext/StateContext";
 import { PostStateContext } from "@/Context/PostStateContext/PostStateContext";
 import Cookies from "js-cookie";
-import styles from "../../../styles/response.module.css"
+import styles from "../../../styles/response.module.css";
 import { useDispatch } from "react-redux";
 import { toggleLanguage } from "@/redux/features/Language/LanguageSlice";
 import Image from "next/image";
-import logo from "../../../image/Quick_Vara_logo_2_full.png"
-import logoShort from "../../../image/Quick_Vara_logo_Q2_short.png"
+import logo from "../../../image/Quick_Vara_logo_2_full.png";
+import logoShort from "../../../image/Quick_Vara_logo_Q2_short.png";
 import { setCityName } from "@/redux/features/FilterCity/FilterCitySlice";
 import { setHomePopularAreaName } from "@/redux/features/FilterArea/FilterAreaSlice";
 import { setFilterModalValue } from "@/redux/features/FilterModalSlice/FilterModalSlice";
@@ -26,8 +26,9 @@ import { setOpenModalValue } from "@/redux/features/UniversitySlice/UniversitySl
 import { setSignInOpen } from "@/redux/features/SignInModal/SignInModalSlice";
 import { setSignUpOpen } from "@/redux/features/SignUpModal/SignUpModal";
 import { decryptTransform } from "@/Encrypt/EncryptionTransform";
- 
- 
+import { FaUserAlt } from "react-icons/fa";
+import { AiFillWechat } from "react-icons/ai";
+
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
   const {
@@ -77,64 +78,76 @@ export default function NavBar() {
     Cookies.remove("filterMV");
     Cookies.remove("openMV");
     Cookies.remove("next-auth.session-token");
-    sessionStorage.removeItem("page")
-    sessionStorage.removeItem("paged")
-    sessionStorage.removeItem("pageU")
-    sessionStorage.removeItem("pageF")
-    sessionStorage.removeItem("pageFT")
-    sessionStorage.removeItem("persist")
-    sessionStorage.removeItem("qv-ap")
-    sessionStorage.removeItem("qv-utf")
+    sessionStorage.removeItem("page");
+    sessionStorage.removeItem("paged");
+    sessionStorage.removeItem("pageU");
+    sessionStorage.removeItem("pageF");
+    sessionStorage.removeItem("pageFT");
+    sessionStorage.removeItem("persist");
+    sessionStorage.removeItem("qv-ap");
+    sessionStorage.removeItem("qv-utf");
     return push("/");
   };
 
   const handleLogOut = () => {
     logOut();
   };
- 
+
   const dispatch = useDispatch();
   const handleLanguageChange = () => {
     const newLanguage = !lang;
     dispatch(toggleLanguage(newLanguage));
-    localStorage.setItem('lan', JSON.stringify(newLanguage));
+    localStorage.setItem("lan", JSON.stringify(newLanguage));
     setLang(newLanguage);
   };
-  
- const storedLanguage = localStorage.getItem('lan');
- const initialLanguage = storedLanguage ? JSON.parse(storedLanguage) : false;
 
-const [lang, setLang] = useState(initialLanguage);
-useEffect(() => {
-  if (storedLanguage) {
-    dispatch(toggleLanguage(initialLanguage));
-  }
-}, [dispatch, initialLanguage, storedLanguage]);
+  const storedLanguage = localStorage.getItem("lan");
+  const initialLanguage = storedLanguage ? JSON.parse(storedLanguage) : false;
+
+  const [lang, setLang] = useState(initialLanguage);
+  useEffect(() => {
+    if (storedLanguage) {
+      dispatch(toggleLanguage(initialLanguage));
+    }
+  }, [dispatch, initialLanguage, storedLanguage]);
 
   const handleHome = () => {
-    dispatch(setCityName({
-      eng: "",
-      ban: ""
-    }));
-    dispatch(setHomePopularAreaName({
-      eng: "",
-      ban: ""
-    }));
-    dispatch(setFilterModalValue({
-      eng: "",
-      ban: ""
-    }));
-    dispatch(setDivisionNameEng({
-      eng: "",
-      ban: ""
-    }));
-    dispatch(setDistrictsName({
-      eng: "",
-      ban: ""
-    }));
-    dispatch(setOpenModalValue({
-      eng: null,
-      ban: null
-    }));
+    dispatch(
+      setCityName({
+        eng: "",
+        ban: "",
+      })
+    );
+    dispatch(
+      setHomePopularAreaName({
+        eng: "",
+        ban: "",
+      })
+    );
+    dispatch(
+      setFilterModalValue({
+        eng: "",
+        ban: "",
+      })
+    );
+    dispatch(
+      setDivisionNameEng({
+        eng: "",
+        ban: "",
+      })
+    );
+    dispatch(
+      setDistrictsName({
+        eng: "",
+        ban: "",
+      })
+    );
+    dispatch(
+      setOpenModalValue({
+        eng: null,
+        ban: null,
+      })
+    );
     // dispatch(universityTypeValue(""))
     handleOpenModalEng(false);
     setOpenModalEng(false);
@@ -148,14 +161,14 @@ useEffect(() => {
     setPostDistrictsName({});
     setGetUniversityModalValue({});
     Cookies.remove("openMV");
-    sessionStorage.removeItem("page")
-    sessionStorage.removeItem("paged")
-    sessionStorage.removeItem("pageU")
-    sessionStorage.removeItem("pageF")
-    sessionStorage.removeItem("pageFT")
-    sessionStorage.removeItem("persist")
-    sessionStorage.removeItem("qv-ap")
-    sessionStorage.removeItem("qv-utf")
+    sessionStorage.removeItem("page");
+    sessionStorage.removeItem("paged");
+    sessionStorage.removeItem("pageU");
+    sessionStorage.removeItem("pageF");
+    sessionStorage.removeItem("pageFT");
+    sessionStorage.removeItem("persist");
+    sessionStorage.removeItem("qv-ap");
+    sessionStorage.removeItem("qv-utf");
   };
   const handleSignInOpen = () => {
     dispatch(setSignInOpen(true));
@@ -167,7 +180,14 @@ useEffect(() => {
   const email = decryptTransform(Cookies.get("qv-acn"));
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <li className="flex justify-center lg:ml-0 lg:block">
+      <li>
+        {authenticated && (
+          <Link href={"/contact-by-message"} className="hidden lg:inline-block text-gray-700  ">
+            <AiFillWechat className=" h-8 w-8 text-white" />
+          </Link>
+        )}
+      </li>
+      <li className="flex lg:hidden justify-center lg:ml-0">
         <Link href="/add-post" passHref>
           <div className="navbar-end">
             <Typography
@@ -186,7 +206,7 @@ useEffect(() => {
                     আপনার বিজ্ঞাপন দিন
                   </Button>
                   <Button className="w-[163px] lg:w-[212px] -ml-1/12 lg:ml-36 text-primary -my-2 py-[7.5px]  lg:text-[13px] bg-transparent border border-accent font-normal lg:font-semibold rounded flex lg:hidden">
-                  আপনার বিজ্ঞাপন দিন
+                    আপনার বিজ্ঞাপন দিন
                   </Button>
                 </>
               )}
@@ -208,7 +228,11 @@ useEffect(() => {
                 onClick={() => setOpenNav(false)}
                 className="text-primary hidden lg:flex"
               >
-                {!lang ? <span onClick={handleSignInOpen}>SignIn</span> : <span onClick={handleSignInOpen}>সাইন ইন</span>}
+                {!lang ? (
+                  <span onClick={handleSignInOpen}>SignIn</span>
+                ) : (
+                  <span onClick={handleSignInOpen}>সাইন ইন</span>
+                )}
               </span>
             </Link>
           </Typography>
@@ -226,10 +250,10 @@ useEffect(() => {
                 className="text-primary mt-1 lg:mt-0"
               >
                 {!lang ? (
-                  <span className="border border-accent px-12 -ml-1/12 lg:px-2 lg:ml-0 pt-[5px] pb-[6px] lg:py-[6.5px] rounded lg:text-base">
+                  <h2 className="  px-12 -ml-1/12 lg:px-2 lg:ml-0 pt-[5px] pb-[6px] lg:py-[6.5px] rounded lg:text-base flex gap-2">
                     {" "}
-                    Account
-                  </span>
+                    <FaUserAlt className="mt-1" /> <span>Account</span>
+                  </h2>
                 ) : (
                   <span className="border border-accent px-[49.7px] -ml-1/12 lg:px-2 lg:ml-0 pt-[6px] pb-[6px] lg:py-[7px] rounded">
                     অ্যাকাউন্ট
@@ -305,7 +329,7 @@ useEffect(() => {
               </span>
             ) : (
               <span
-              onClick={handleLanguageChange}
+                onClick={handleLanguageChange}
                 className="font-semibold border border-success pt-[3.5px] pb-[3px] text-primary px-2 rounded cursor-pointer"
               >
                 English
@@ -314,25 +338,33 @@ useEffect(() => {
           </div>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
-            {authenticated ? (
-              <Button
-                onClick={handleLogOut}
-                size="sm"
-                className="hidden lg:inline-block text-gray-700 -my-2 bg-accent rounded"
-              >
-                {!lang ? <span>LogOut</span> : <span>লগআউট</span>}
-              </Button>
-            ) : (
-              <Link href={"/signUp"} passHref>
-                <Button
-                  size="sm"
-                  className="hidden lg:inline-block text-gray-700 -my-2 bg-accent  rounded"
-                  onClick={handleSignUpOpen}
-                >
-                  {!lang ? <span>SignUp</span> : <span>সাইন আপ</span>}
-                </Button>
+            <>
+              <Link href="/add-post" passHref className="hidden lg:flex">
+                <div className="navbar-end">
+                  <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="p-1 font-normal"
+                    onClick={() => setOpenNav(false)}
+                  >
+                    {!lang ? (
+                      <Button className="lg:w-48  text-warning lg:text-[15px] bg-accent  lg:font-semibold rounded">
+                        Post your ads
+                      </Button>
+                    ) : (
+                      <>
+                        <Button className="w-[162px] lg:w-[212px] -ml-1/12  text-primary -my-2 py-2 lg:text-[15px] bg-transparent border border-accent font-normal lg:font-semibold rounded hidden lg:flex">
+                          আপনার বিজ্ঞাপন দিন
+                        </Button>
+                        <Button className="w-[163px] lg:w-[212px] -ml-1/12 lg:ml-36 text-primary -my-2 py-[7.5px]  lg:text-[13px] bg-transparent border border-accent font-normal lg:font-semibold rounded flex lg:hidden">
+                          আপনার বিজ্ঞাপন দিন
+                        </Button>
+                      </>
+                    )}
+                  </Typography>
+                </div>
               </Link>
-            )}
+            </>
             <IconButton
               variant="text"
               className="mt-3 font-semibold ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden  text-primary"
@@ -372,7 +404,7 @@ useEffect(() => {
             </IconButton>
           </div>
         </div>
-        <Collapse  open={openNav}>
+        <Collapse open={openNav}>
           <div className="mt-10"> {navList}</div>
           <div className="flex justify-center">
             {authenticated ? (

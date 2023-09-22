@@ -15,6 +15,10 @@ import migrations from "./migrates";
 import universityFilterSlice, { setUniversity }  from "../features/UniversityFilter/UniversityFilerSlice";
 import signInModalSlice  from "../features/SignInModal/SignInModalSlice";
 import  signUpModalSlice  from "../features/SignUpModal/SignUpModal";
+import { io } from 'socket.io-client';
+import  getMessagesSlice  from "../features/Messages/GetMessage/GetMessageSlice";
+
+const socket = io('http://localhost:5000');
   
 
 const middlewares: Array<any> = [];
@@ -39,7 +43,8 @@ const rootReducer = combineReducers({
   ['qv-uv']: universityFilterSlice,
   // ['qv-utv']: UniversityTypeFilterSlice,
   signInModal: signInModalSlice,
-  signUpModal: signUpModalSlice
+  signUpModal: signUpModalSlice,
+  messages: getMessagesSlice
 });
 
 const encryptionKey = '362a94e7a161bc4ddaf2b58bf7026ce48fa4312e2d5df6195485ee2ab0efd4202408a0368515f9cb6c1802556320dfbe4aa3a3494c5fa441e74811686551293e7fab68249f611efc5cc545f9256e5996915c85717d7ff3df5336249fca44edf7a1015cc4c0ff2e5755f800e88d9571cad74e479a15bf263fa679f9994b19b9e5a33264835e93dad0f5bbaf1b';
@@ -63,7 +68,12 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-
+export const emitAuthorEmail = (authorEmail: string) => {
+  return () => {
+    // Dispatch an action to emit "set-email" via WebSocket
+    socket.emit("set-email", authorEmail);
+  };
+};
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>

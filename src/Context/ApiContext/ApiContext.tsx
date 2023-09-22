@@ -4,7 +4,7 @@ export const APIContext = createContext({});
 
 const ApiContext = ({ children }: any) => {
   // const [counterPosts, setCounterPosts] = useState([]);
-  const [userCounter, setUserCounter] = useState([]);
+ 
   const [filterPost, setFilterPost] = useState([]);
   const [loading, setLoading] = useState(false);
   const [profileLoading, setProfileLoading] = useState(false);
@@ -33,7 +33,7 @@ const ApiContext = ({ children }: any) => {
   }, [reload]);
 
   const info = {
-    userCounter,
+    
     counter,
     filterPost,
     setFilterPost,
