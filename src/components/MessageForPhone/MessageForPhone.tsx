@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { FaArrowLeft } from "react-icons/fa";

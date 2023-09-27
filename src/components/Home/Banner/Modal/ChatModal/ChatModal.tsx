@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 // components/Modal.tsx
-import { StateContext } from "@/Context/StateContext/StateContext";
 import { decryptTransform } from "@/Encrypt/EncryptionTransform";
 import { useUserData } from "@/components/API/Api";
 import { AppDispatch, RootState } from "@/redux/app/store";
@@ -14,9 +14,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { io } from "socket.io-client";
 import { format } from "timeago.js";
-import { BiPhotoAlbum } from "react-icons/bi";
 import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
-
 
 const socket = io("https://zsqur.quickvara.com");
 
@@ -25,7 +23,7 @@ interface ModalProps {
   onClose: () => void;
   authorEmail: number | string;
   productId: string;
-  name:string
+  name: string;
 }
 
 const ChatModal: React.FC<ModalProps> = ({
@@ -33,7 +31,7 @@ const ChatModal: React.FC<ModalProps> = ({
   onClose,
   authorEmail,
   productId,
-  name
+  name,
 }) => {
   const [userName, setUserName] = useState("");
   const [chatActive, setChatActive] = useState(false);
@@ -73,7 +71,7 @@ const ChatModal: React.FC<ModalProps> = ({
     };
   }, [getReceiverEmail, setMessages]);
   const dispatch: AppDispatch = useDispatch();
- 
+
   const { isLoading } = useQuery(
     ["message", authorEmail, email],
     async () => {
@@ -110,7 +108,7 @@ const ChatModal: React.FC<ModalProps> = ({
       userName: fullName,
       senderEmail: email,
       receiverEmail: authorEmail,
-      photo:""
+      photo: "",
     };
 
     try {
@@ -125,7 +123,8 @@ const ChatModal: React.FC<ModalProps> = ({
         // Do something with receiverEmail
         setGetReceiverEmail(receiverEmail.toString());
         setNewMessage("");
-      } else {}
+      } else {
+      }
 
       // Reset the form if needed
       if (formRef.current) {
@@ -134,9 +133,6 @@ const ChatModal: React.FC<ModalProps> = ({
     } catch (error) {}
   };
 
-  
- 
- 
   return (
     <div className={`relative  ${isOpen ? "" : "hidden"}`}>
       {/* <div className="modal-bg absolute inset-0" onClick={onClose}></div> */}
@@ -173,28 +169,26 @@ const ChatModal: React.FC<ModalProps> = ({
                         isSender ? "rounded-r-md" : "" // Apply rounded-r-md class for sender's messages
                       }`}
                     >
-                       <div>
-                                <h3 className="font-fold text-lg px-2 bg-warning text-primary rounded-md">
-                                  {message?.userName
-                                    ?.charAt(0, 2)
-                                    .toUpperCase()}
-                                </h3>
-                              </div>
-                              <div className="px-2 rounded-md">
-                                <span className="text-sm">{message.user}</span>
-                                <h3 className="">{message.message}</h3>
-                                {message.photo && (
-                                  <PhotoProvider>
-                                    <PhotoView src={message.photo}>
-                                      <img
-                                        className="h-52 w-52 cursor-pointer"
-                                        src={message.photo}
-                                        alt=""
-                                      />
-                                    </PhotoView>
-                                  </PhotoProvider>
-                                )}
-                              </div>
+                      <div>
+                        <h3 className="font-fold text-lg px-2 bg-warning text-primary rounded-md">
+                          {message?.userName?.charAt(0, 2).toUpperCase()}
+                        </h3>
+                      </div>
+                      <div className="px-2 rounded-md">
+                        <span className="text-sm">{message.user}</span>
+                        <h3 className="">{message.message}</h3>
+                        {message.photo && (
+                          <PhotoProvider>
+                            <PhotoView src={message.photo}>
+                              <img
+                                className="h-52 w-52 cursor-pointer"
+                                src={message.photo}
+                                alt=""
+                              />
+                            </PhotoView>
+                          </PhotoProvider>
+                        )}
+                      </div>
                     </div>
                   </div>
                   <h3
@@ -234,9 +228,7 @@ const ChatModal: React.FC<ModalProps> = ({
         >
           Send
         </button>
-        
       </form>
-      
     </div>
   );
 };

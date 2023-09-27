@@ -1,5 +1,5 @@
 import React from "react";
-import dhaka from "../../../image/places/dhaka.avif";
+import dhaka from "../../../image/places/city-title-Dhaka.webp";
 import rajshahi from "../../../image/places/city-tile-Rajshahi.jpg";
 import chittagong from "../../../image/places/chittagong.jpg";
 import barisal from "../../../image/places/barisal.jpg";
