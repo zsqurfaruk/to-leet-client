@@ -28,6 +28,9 @@ import { setSignUpOpen } from "@/redux/features/SignUpModal/SignUpModal";
 import { decryptTransform } from "@/Encrypt/EncryptionTransform";
 import { FaUserAlt } from "react-icons/fa";
 import { AiFillWechat } from "react-icons/ai";
+import { SiGoogleads } from "react-icons/si";
+import { PiSignInBold } from "react-icons/pi";
+import { GrLanguage } from "react-icons/gr";
 
 export default function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -180,45 +183,40 @@ export default function NavBar() {
   const email = decryptTransform(Cookies.get("qv-acn"));
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <li>
-        {authenticated && (
-          <Link href={"/contact-by-message"} className="hidden lg:inline-block text-gray-700  ">
-            <AiFillWechat className=" h-8 w-8 text-white" />
-          </Link>
-        )}
+      <li className="flex justify-start px-10 border-b border-t py-2 lg:border-none">
+        <Link onClick={() => setOpenNav(false)} href={"/contact-by-message"} className="flex gap-2">
+          <AiFillWechat className="h-7 w-7 text-white" />{" "}
+          {!lang ? (
+            <span className="mt-[6px] text-primary">Chat</span>
+          ) : (
+            <span className="mt-[5px] text-primary text-[15px]">চ্যাট</span>
+          )}
+        </Link>
       </li>
-      <li className="flex lg:hidden justify-center lg:ml-0">
+
+      <li className="flex lg:hidden justify-start px-10 border-b pb-2 lg:border-none">
         <Link href="/add-post" passHref>
-          <div className="navbar-end">
-            <Typography
-              variant="small"
-              color="blue-gray"
-              className="p-1 font-normal"
-              onClick={() => setOpenNav(false)}
-            >
+          <div className=" ">
+            <Typography onClick={() => setOpenNav(false)}>
               {!lang ? (
-                <Button className="w-[148px] lg:w-[212px] -ml-1/12 lg:ml-36 text-primary -my-2 py-[6px] lg:py-2 lg:text-[15px] bg-transparent border border-accent  font-normal lg:font-semibold rounded">
-                  Post your ads
-                </Button>
+                <h2 className="flex gap-2">
+                  {" "}
+                  <SiGoogleads className="mt-1"></SiGoogleads>{" "}
+                  <span>Post your ads</span>
+                </h2>
               ) : (
-                <>
-                  <Button className="w-[162px] lg:w-[212px] -ml-1/12 lg:ml-36 text-primary -my-2 py-2 lg:text-[15px] bg-transparent border border-accent font-normal lg:font-semibold rounded hidden lg:flex">
-                    আপনার বিজ্ঞাপন দিন
-                  </Button>
-                  <Button className="w-[163px] lg:w-[212px] -ml-1/12 lg:ml-36 text-primary -my-2 py-[7.5px]  lg:text-[13px] bg-transparent border border-accent font-normal lg:font-semibold rounded flex lg:hidden">
-                    আপনার বিজ্ঞাপন দিন
-                  </Button>
-                </>
+                <h2 className="flex gap-2">
+                  <SiGoogleads className="mt-1"></SiGoogleads>{" "}
+                  <span>আপনার বিজ্ঞাপন দিন</span>
+                </h2>
               )}
             </Typography>
           </div>
         </Link>
       </li>
-      <li className="flex justify-center lg:block">
+      <li className="flex justify-start px-10 lg:px-0 lg:justify-center lg:block">
         {!authenticated && !email ? (
           <Typography
-            variant="small"
-            color="blue-gray"
             className="p-1 font-normal"
             ripple="false"
             onClick={() => setOpenNav(false)}
@@ -226,38 +224,40 @@ export default function NavBar() {
             <Link href="/signIn" passHref>
               <span
                 onClick={() => setOpenNav(false)}
-                className="text-primary hidden lg:flex"
+                className="text-primary  hidden lg:flex"
               >
                 {!lang ? (
-                  <span onClick={handleSignInOpen}>SignIn</span>
+                  <span onClick={handleSignInOpen} className="text-base">
+                    SignIn
+                  </span>
                 ) : (
-                  <span onClick={handleSignInOpen}>সাইন ইন</span>
+                  <span onClick={handleSignInOpen} className="text-[15px] mt-1">
+                    সাইন ইন
+                  </span>
                 )}
               </span>
             </Link>
           </Typography>
         ) : (
           <Typography
-            variant="small"
-            color="blue-gray"
-            className="p-1 font-normal"
+            className="lg:p-1 font-normal"
             ripple={"false"}
             onClick={() => setOpenNav(false)}
           >
             <Link href="/dashboard/profile" passHref>
               <div
                 onClick={() => setOpenNav(false)}
-                className="text-primary mt-1 lg:mt-0"
+                className="text-primary -mb-2 lg:mt-0"
               >
                 {!lang ? (
-                  <h2 className="  px-12 -ml-1/12 lg:px-2 lg:ml-0 pt-[5px] pb-[6px] lg:py-[6.5px] rounded lg:text-base flex gap-2">
+                  <h2 className="flex gap-2 text-[16.5px] lg:text-base">
                     {" "}
                     <FaUserAlt className="mt-1" /> <span>Account</span>
                   </h2>
                 ) : (
-                  <span className="border border-accent px-[49.7px] -ml-1/12 lg:px-2 lg:ml-0 pt-[6px] pb-[6px] lg:py-[7px] rounded">
-                    অ্যাকাউন্ট
-                  </span>
+                  <h2 className="flex gap-2">
+                    <FaUserAlt className="mt-1" /> <span> অ্যাকাউন্ট</span>
+                  </h2>
                 )}
               </div>
             </Link>
@@ -274,28 +274,28 @@ export default function NavBar() {
           <div className={`${styles.gapStyle} flex md:gap-32`}>
             <Link onClick={handleHome} href={"/"} passHref>
               <Image
-                className="h-10 pb-1 md:pb-0 mt-1 md:mt-0 md:h-10 ml-5 md:ml-5 w-full md:w-full scale-125 hidden lg:flex"
+                className="h-12 pb-1 md:pb-0  ml-5 md:ml-5 w-full md:w-full scale-110 hidden lg:flex"
                 src={logo}
                 alt={""}
               ></Image>
               <Image
-                className="h-10 pb-1 md:pb-0 mt-1 md:mt-0 md:h-10 ml-5 md:ml-5 w-full md:w-full   scale-125 lg:hidden"
+                className="h-11 w-[52px] ml-5 scale-110 md:ml-5 lg:hidden"
                 src={logoShort}
                 alt={""}
               ></Image>
             </Link>
-            <div className="mt-1 mb-1 hidden lg:flex">
+            <div className="mt-2 mb-1 hidden lg:flex">
               {!lang ? (
                 <Link
                   href="/ads"
-                  className="font-semibold border border-success text-primary  rounded cursor-pointer px-2 py-[3px]"
+                  className="font-semibold border border-success text-primary  rounded cursor-pointer px-2 mb-[3px] pt-[3px]"
                 >
                   All Ads
                 </Link>
               ) : (
                 <Link
                   href="/ads"
-                  className="font-semibold border border-success  text-primary  rounded cursor-pointer px-2 py-[3px]"
+                  className="font-semibold border border-success  text-primary  rounded cursor-pointer px-2 mb-[3px] pt-[4px]"
                 >
                   সকল বিজ্ঞাপন
                 </Link>
@@ -348,15 +348,12 @@ export default function NavBar() {
                     onClick={() => setOpenNav(false)}
                   >
                     {!lang ? (
-                      <Button className="lg:w-48  text-warning lg:text-[15px] bg-accent  lg:font-semibold rounded">
+                      <Button className="lg:w-48  text-warning lg:text-[14px] bg-accent  lg:font-semibold rounded">
                         Post your ads
                       </Button>
                     ) : (
                       <>
-                        <Button className="w-[162px] lg:w-[212px] -ml-1/12  text-primary -my-2 py-2 lg:text-[15px] bg-transparent border border-accent font-normal lg:font-semibold rounded hidden lg:flex">
-                          আপনার বিজ্ঞাপন দিন
-                        </Button>
-                        <Button className="w-[163px] lg:w-[212px] -ml-1/12 lg:ml-36 text-primary -my-2 py-[7.5px]  lg:text-[13px] bg-transparent border border-accent font-normal lg:font-semibold rounded flex lg:hidden">
+                        <Button className="lg:w-48  text-warning lg:text-[14px] bg-accent  lg:font-semibold rounded">
                           আপনার বিজ্ঞাপন দিন
                         </Button>
                       </>
@@ -406,8 +403,8 @@ export default function NavBar() {
         </div>
         <Collapse open={openNav}>
           <div className="mt-10"> {navList}</div>
-          <div className="flex justify-center">
-            {authenticated ? (
+          <div className="flex justify-start w-full">
+            {/* {authenticated ? (
               <div onClick={handleLogOut}>
                 {" "}
                 {!lang ? (
@@ -426,48 +423,50 @@ export default function NavBar() {
                   </Button>
                 )}
               </div>
-            ) : (
-              <Link href={"/signIn"}>
+            ) :  */}
+
+            {!authenticated && (
+              <Link
+                href={"/signIn"}
+                className="flex justify-start px-10 -mt-6 pb-2"
+              >
                 {!lang ? (
-                  <Button
-                    size="sm"
-                    className="w-[150px] -ml-1/12 text-gray-700 -mt-3 bg-accent rounded"
-                    onClick={handleSignInOpen}
-                  >
+                  <h2 className="flex gap-2" onClick={handleSignInOpen}>
+                    <PiSignInBold className="mt-1"></PiSignInBold>
                     <span onClick={() => setOpenNav(false)}>SignIn</span>
-                  </Button>
+                  </h2>
                 ) : (
-                  <Button
-                    size="sm"
-                    className="w-[163px] -ml-1/12 rounded pt-[10px] pb-[6px] text-gray-700 -mt-4 bg-accent"
-                    onClick={handleSignInOpen}
-                  >
+                  <h2 className="flex gap-2" onClick={handleSignInOpen}>
+                    <PiSignInBold className="mt-1"></PiSignInBold>
                     <span
                       className="text-[15px]"
                       onClick={() => setOpenNav(false)}
                     >
                       সাইন ইন
                     </span>
-                  </Button>
+                  </h2>
                 )}
               </Link>
             )}
+            {/* )} */}
           </div>
-          <div className="flex justify-center rounded-full md:hidden pt-5 mb-5">
+          <div className="flex justify-start   rounded-full md:hidden mb-5">
             {!lang ? (
-              <span
+              <h2
                 onClick={handleLanguageChange}
-                className="font-semibold border border-success pt-[3.5px] pb-[2.5px] text-primary rounded cursor-pointer shadow-lg shadow-accent px-[53px] -ml-1/12"
+                className="font-semibold border-t border-b py-2 w-full  cursor-pointer px-10 text-accent flex gap-2"
               >
-                বাংলা
-              </span>
+                <GrLanguage className="text-accent mt-1"></GrLanguage>{" "}
+                <span>বাংলা</span>
+              </h2>
             ) : (
-              <span
+              <h2
                 onClick={handleLanguageChange}
-                className="font-semibold border border-success pt-[4px] pb-[3px] text-primary px-[51px] -ml-1/12 rounded cursor-pointer shadow-lg shadow-accent"
+                className=" border-t border-b py-2 text-accent font-bold w-full  px-10 cursor-pointer flex gap-2"
               >
-                English
-              </span>
+                <GrLanguage className="text-accent mt-1"></GrLanguage>{" "}
+                <span>English</span>
+              </h2>
             )}
           </div>
         </Collapse>

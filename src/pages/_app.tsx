@@ -44,19 +44,19 @@ export default function App({ Component, pageProps }: AppProps) {
       document.body.removeChild(inlineScript);
     };
   }, []);
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setLoading(false); 
-  //   }, 5100);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false); 
+    }, 1000);
 
-  //   return () => clearTimeout(timer);  
-  // }, []);
+    return () => clearTimeout(timer);  
+  }, []);
 
-  // if (loading) {
-  //   return <Loading></Loading>;
-  // }
+  if (loading) {
+    return <Loading></Loading>;
+  }
   return (
-    // <DisableRightClick>
+    <DisableRightClick>
     <QueryClientProvider client={queryClient}>
     <Hydrate state={pageProps.dehydratedState}>
       <ThemeProvider>
@@ -77,6 +77,6 @@ export default function App({ Component, pageProps }: AppProps) {
       </ThemeProvider>
       </Hydrate>
     </QueryClientProvider>
-    // </DisableRightClick>
+    </DisableRightClick>
   );
 }

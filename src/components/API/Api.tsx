@@ -1,7 +1,6 @@
 import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
- 
 
 // api.ts (You can create an api folder for such functions)
 export async function fetchPersonalPosts(
@@ -9,7 +8,7 @@ export async function fetchPersonalPosts(
   token: string
 ): Promise<any> {
   const response = await fetch(
-    `http://localhost:5000/api/v1/product/user/email/${email}`,
+    `https://zsqur.quickvara.com/api/v1/product/user/email/${email}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -28,8 +27,10 @@ export async function fetchPersonalPosts(
 
 export const getPosts = async () => {
   try {
-    const response = await axios.get("http://localhost:5000/api/v1/feedback");
-    return response.data;
+    const response = await axios.get("https://zsqur.quickvara.com/api/v1/feedback");
+    const decryptedData = decryptFunction(response?.data?.feedbacks);
+    const parsedData = JSON.parse(decryptedData);
+    return parsedData;
   } catch (error) {
     throw new Error("Failed to fetch posts");
   }
@@ -39,7 +40,7 @@ export const getPosts = async () => {
 export function useFilteredPosts(limit: number, filterValue: any, id: string) {
   return useQuery(["filteredPosts"], async () => {
     const response = await fetch(
-      `http://localhost:5000/api/v1/product/filter?limit=${limit}`,
+      `https://zsqur.quickvara.com/api/v1/product/filter?limit=${limit}`,
       {
         method: "POST",
         headers: {
@@ -64,36 +65,16 @@ export function useFilteredPosts(limit: number, filterValue: any, id: string) {
 
 export const fetchData = async () => {
   try {
-    const response = await axios.get('http://localhost:5000/api/v1/users/signup');
+    const response = await axios.get(
+      "https://zsqur.quickvara.com/api/v1/users/signup"
+    );
     const decryptedUser = decryptFunction(response.data);
     return JSON.parse(decryptedUser);
   } catch (error) {
-    throw new Error('Error fetching user data');
+    throw new Error("Error fetching user data");
   }
 };
 
 export const useUserData = () => {
-  return useQuery(['userData'], fetchData);
+  return useQuery(["userData"], fetchData);
 };
-
-// send message 
-// mutations.js
-
-
-export function useSendMessage() {
-  return useMutation(async (messagesData: any) => {
-    const response = await fetch("http://localhost:5000/api/v1/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(messagesData),
-    });
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    return response.json();
-  });
-}

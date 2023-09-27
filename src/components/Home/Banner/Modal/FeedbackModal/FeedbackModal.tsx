@@ -43,7 +43,7 @@ export default function FeedbackModal({
     };
 
     try {
-      const res = await fetch("http://localhost:5000/api/v1/feedback", {
+      const res = await fetch("https://zsqur.quickvara.com/api/v1/feedback", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -64,15 +64,8 @@ export default function FeedbackModal({
         setFeedbackValue({});
         setRatingValue(0);
         reset();
-      } else {
-        // Handle the case where the POST request is not successful
-        // You may want to show an error message to the user
-        console.error("Failed to post feedback");
-      }
-    } catch (error) {
-      // Handle any other errors here
-      console.error("An error occurred while posting feedback", error);
-    }
+      } else {}
+    } catch (error) {}
   };
 
   return (

@@ -11,16 +11,14 @@ import Setting from "@/components/AccountsDetails/Setting";
 import axios from "axios";
 import Spinner from "@/components/Spinner/Spinner";
 import { useSelector } from "react-redux";
-import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
 import { useRouter } from "next/router";
-import { QueryClient, dehydrate, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import {
-  fetchData,
   fetchPersonalPosts,
   useUserData,
 } from "@/components/API/Api";
 import Loader from "@/components/Loading/Loader";
-import { GetServerSideProps } from "next";
+ 
 interface PersonalPostsProps {
   email: string;
   token: string;
@@ -34,7 +32,6 @@ const Dashboard = () => {
   const [profileImageLoading, setProfileImageLoading] = useState(false);
   const [profileImage, setProfileImage] = useState("");
   const [profileImageFromMongo, setProfileImageFromMongo] = useState(null);
-  // const [changeButton, setChangeButton]= useState(false)
   const {
     setPersonalPost,
     reload,
@@ -89,7 +86,6 @@ const Dashboard = () => {
         if (error.AxiosError.timeOut) {
           setProfileImageLoading(false);
         }
-        console.log(error);
       });
   };
 
@@ -98,7 +94,7 @@ const Dashboard = () => {
       profileImage,
     };
     fetch(
-      `http://localhost:5000/api/v1/users/update/${email}`,
+      `https://zsqur.quickvara.com/api/v1/users/update/${email}`,
 
       {
         method: "PUT",
@@ -111,12 +107,10 @@ const Dashboard = () => {
       .then((res) => res.json())
       .then((data) => {
         Cookies.set("qv-up", data?.updateUser?.acknowledged);
-        // setChangeButton(data?.updateUser?.acknowledged)
         setProfileImage("")
         refetch();
       });
   };
-  // console.log(changeButton)
   useEffect(() => {
     if (userCounter) {
       const matchedImage = userCounter.find(
@@ -198,9 +192,7 @@ const Dashboard = () => {
             <div className="divider my-1 md:my-2"></div>
             <h1 className=""></h1>
           </div>
-          <h2>{/* {firstName} {lastName} */}</h2>
-          {/* {getNumber && <h2>+{getNumber}</h2>}
-          {checkAuthentication && <h2>{checkAuthentication}</h2>} */}
+         
         </div>
         <div className="basis-4/5  pb-5 mb-5 bg-white">
           <div className="md:pl-20">
@@ -380,33 +372,5 @@ const Dashboard = () => {
     </div>
   );
 };
-
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   const queryClient = new QueryClient();
-
-//   try {
-//     const userCounter = await fetchData(); // Fetch user data using fetchData function
-
-//     // Prefetch user data using the custom hook
-//     await queryClient.prefetchQuery(['userData'], async () => ({
-//       data: userCounter,
-//     }));
-
-//     return {
-//       props: {
-//         dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
-//       },
-//     };
-//   } catch (error) {
-//     console.error('Error fetching user data:', error);
-
-//     return {
-//       redirect: {
-//         destination: '/error', // Redirect to an error page or handle the error as needed
-//         permanent: false,
-//       },
-//     };
-//   }
-// };
-
+ 
 export default Dashboard;

@@ -3,8 +3,6 @@ import React, { createContext, useEffect, useState} from "react";
 export const APIContext = createContext({});
 
 const ApiContext = ({ children }: any) => {
-  // const [counterPosts, setCounterPosts] = useState([]);
- 
   const [filterPost, setFilterPost] = useState([]);
   const [loading, setLoading] = useState(false);
   const [profileLoading, setProfileLoading] = useState(false);
@@ -13,21 +11,10 @@ const ApiContext = ({ children }: any) => {
   const [profileImageReload, setProfileImageReload] = useState(false)
   const [feedbacks, setFeedback] = useState([]);
 
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/api/v1/users/signup")
-  //     .then((res) => res.text())
-  //     .then((data) =>{
-  //       const decryptedUser = decryptFunction(data);
-  //       const parsedUser = JSON.parse(decryptedUser);
-  //       // console.log(parsedUser)
-  //       setUserCounter(parsedUser)
-  //       setProfileImageReload(true)
-  //     });
-  // }, [profileImageReload,setProfileImageReload]);
 
   const [counter, setCounter] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/product/category/type")
+    fetch("https://zsqur.quickvara.com/api/v1/product/category/type")
       .then((res) => res.json())
       .then((data) => setCounter(data?.countProduct));
   }, [reload]);

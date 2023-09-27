@@ -80,7 +80,6 @@ const Banner = () => {
     (state: RootState) => state["qv-dn"].divisionNameEng
   );
   const cityName = useSelector((state: RootState) => state["qv-cn"].cityName);
-  // console.log(cityName)
   const lang = useSelector((state: any) => state.language.language);
   return (
     <section className=" ">

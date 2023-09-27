@@ -4,10 +4,10 @@
 
 :root {
   background-color: #f1feff;
-  /* user-select: none;
+  user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
-  -ms-user-select: none; */
+  -ms-user-select: none;
 }
 
 #modalStyle {
@@ -39,31 +39,3 @@
     padding: 15px 15px; /* Adjust the value to set the desired gap width */
   }
 }
-
-
-/* Remove all styles from the video element */
- 
-
-
- /* Hide all default video controls */
-video::-webkit-media-controls {
-  display: none !important;
-}
-
-/* Hide play button */
-video::-webkit-media-controls-play-button {
-  display: none !important;
-}
-
-/* Hide fullscreen button */
-video::-webkit-media-controls-fullscreen-button {
-  display: none !important;
-}
-
-/* Hide other buttons (volume, mute, etc.) if needed */
-/* video::-webkit-media-controls-volume-slider {
-  display: none !important;
-}
-video::-webkit-media-controls-mute-button {
-  display: none !important;
-} */

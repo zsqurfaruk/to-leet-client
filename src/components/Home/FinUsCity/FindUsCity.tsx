@@ -64,13 +64,13 @@ const FindUsCity = () => {
     ],
   };
   return (
-    <div className="lg:w-10/12 mx-auto mt-10 mb-20">
+    <div className="lg:w-10/12 mx-auto mt-10 mb-20 ">
       {!lang ? (
-        <h1 className="text-center text-3xl md:text-4xl mb-5 font-semibold text-warning">
+        <h1 className="text-center text-2xl md:text-4xl mb-5 font-semibold text-warning px-5 lg:px-0">
           Find us in these cities, divisions, and many more!
         </h1>
       ) : (
-        <h1 className="text-center text-xl md:text-2xl font-semibold mb-5 text-warning">
+        <h1 className="text-center text-xl md:text-2xl font-semibold mb-5 text-warning px-5 lg:px-0">
           আমাদেরকে আপনার শহর এবং বিভাগে পাবেন!
         </h1>
       )}

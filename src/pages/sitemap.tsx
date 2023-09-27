@@ -14,5 +14,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: 'https://quickvara.com/Bachelor-(Male)',
       lastModified: new Date(),
     },
+    {
+      url: 'https://quickvara.com/Bachelor-(Female)',
+      lastModified: new Date(),
+    },
+    {
+      url: 'https://quickvara.com/Mess-(Male)',
+      lastModified: new Date(),
+    },
+    {
+      url: 'https://quickvara.com/Mess-(Female)',
+      lastModified: new Date(),
+    },
   ]
 }

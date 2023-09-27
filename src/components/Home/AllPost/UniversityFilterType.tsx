@@ -184,11 +184,12 @@ const UniversityFilterType = () => {
        {/* dekstop end */}
        
       </>
-      <div className="flex lg:hidden pt-4 pb-0  justify-center">
-       
-     {
-      !lang ? <h1 onClick={()=>handleFilterType("filter")} className="px-3 py-1 rounded text-center text-warning cursor-pointer border border-warning flex gap-x-2"><FaFilter className="mt-1"/> <span>Filter By Type</span></h1> :<h1 onClick={()=>handleFilterType("filter")} className="px-3 py-1 rounded text-center text-warning cursor-pointer border border-warning flex gap-x-2"><FaFilter className="mt-1"/>  <span>ফিল্টার করুন।</span> </h1>
+      <div className="flex lg:hidden pt-4 pb-0">
+       <div>
+       {
+      !lang ? <h1 onClick={()=>handleFilterType("filter")} className="flex gap-x-2 border-b-4 border-warning"><FaFilter className="mt-[4px] h-[13px] w-4 text-warning"/> <span className="text-sm">Filter By Type</span></h1> :<h1 onClick={()=>handleFilterType("filter")} className="flex gap-x-2 border-b-4 border-warning"><FaFilter className="mt-[4px] h-[14px] w-4 text-warning"/>  <span className="text-sm">ফিল্টার করুন</span> </h1>
      }
+       </div>
       <UniversityTyFilterModal></UniversityTyFilterModal>
       </div>
     </div>

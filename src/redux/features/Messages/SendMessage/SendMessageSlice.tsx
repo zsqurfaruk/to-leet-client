@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { io } from 'socket.io-client';
 
-const socket = io('http://localhost:5000');
+const socket = io('https://zsqur.quickvara.com');
 
 interface Message {
    
@@ -12,6 +12,7 @@ interface Message {
   userName: string;
   senderEmail: string | number;
   receiverEmail: string | number;
+  photo: string,
  
 }
 
@@ -27,6 +28,7 @@ interface MessageData {
   userName: string;
   senderEmail: string | number;
   receiverEmail: string | number;
+  photo: string
 }
 
 export const sendMessage = createAsyncThunk(
@@ -35,17 +37,13 @@ export const sendMessage = createAsyncThunk(
     try {
       // Emit the message to the server via socket.io
       socket.emit('send-message', messagesData);
-
       // Send the message to the API
-      const response = await axios.post('http://localhost:5000/api/v1/messages', messagesData);
- 
+      const response = await axios.post('https://zsqur.quickvara.com/api/v1/messages', messagesData);
       if (response.status === 200) {
         return messagesData.receiverEmail;
       }
-
       throw new Error('Network response was not ok');
     } catch (error) {
-      console.error('Error sending message:', error);
       throw error;
     }
   }

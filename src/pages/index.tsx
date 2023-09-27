@@ -7,7 +7,6 @@ import About from "@/components/About/About";
 import ContactUs from "@/components/Home/ContactUs/ContactUs";
 import FeedbackPost from "@/components/FeedbackPost/FeedbackPost";
 import FindUsCity from "@/components/Home/FinUsCity/FindUsCity";
-import image from "../image/Quick logo without Shadow.png"
 
 function Home() {
   return (

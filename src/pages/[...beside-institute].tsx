@@ -33,7 +33,6 @@ const University = () => {
   const params = router.asPath;
   const refreshParams = params.split("/");
   const universityTypeFilter =(refreshParams[3]);
- console.log(universityTypeFilter)
   let universityType: any[]= []
   if(universityTypeFilter){
     universityType = filterPost?.filter((post:any)=> universityTypeFilter === post?.type?.eng)
@@ -279,7 +278,7 @@ const University = () => {
           {
             filterPost?.length > 0 && 
             <><UniversityFilterType></UniversityFilterType>
-            <div className="divider mb-0 mt-3"></div></>
+            <div className="divider mb-0 mt-3 hidden lg:flex"></div></>
           }
             {renderData(currentItems)}
            <>

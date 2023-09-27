@@ -532,13 +532,13 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
           <div className="divider mt-[6px] mb-[6px]"></div>
           <h2 className="text-sm mt-1 mb-5 pb-5"> {product?.description}</h2>
         </div>
-        <div className="fixed z-50 lg:bottom-10 lg:right-[235px]">
+        <div className="fixed z-50 bottom-24 lg:bottom-10 right-auto left-5 lg:left-auto md:right-24 lg:right-[235px]">
         {
-          isModalOpen && <ChatModal productId={product?._id} authorEmail={ product?.email} isOpen={isModalOpen} onClose={closeModal} ></ChatModal>
+          isModalOpen && <ChatModal productId={product?._id}  name = {product?.name} authorEmail={ product?.email} isOpen={isModalOpen} onClose={closeModal} ></ChatModal>
         }
         </div>
         <button onClick={openModal} className="flex">
-        <AiFillWechat className="fixed lg:bottom-10 right-5 md:right-10 lg:right-40 z-50 h-16 w-16 lg:h-14 lg:w-14 text-white bg-warning rounded-full p-2"></AiFillWechat>
+        <AiFillWechat className="fixed bottom-6 lg:bottom-10 right-5 md:right-10 lg:right-40 z-50 h-16 w-16 lg:h-14 lg:w-14 text-white bg-warning rounded-full p-2"></AiFillWechat>
       </button>
       </section>
       <br />
@@ -550,6 +550,7 @@ const ProductDetails = ({ product, loading, errorMessage }: any) => {
         cityName={product.cityName}
         division={product?.division}
         district={product?.districts}
+       
       ></RelatedPosts>
       
     </>
@@ -563,7 +564,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 
   try {
     const res = await fetch(
-      `http://localhost:5000/api/v1/product/${params?.productId}`,
+      `https://zsqur.quickvara.com/api/v1/product/${params?.productId}`,
       {
         headers: {
           authorization: `bearer ${token}`,

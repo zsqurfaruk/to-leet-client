@@ -3,11 +3,8 @@ import { StateContext } from "@/Context/StateContext/StateContext";
 import { decryptTransform } from "@/Encrypt/EncryptionTransform";
 import { useUserData } from "@/components/API/Api";
 import { AppDispatch, RootState } from "@/redux/app/store";
-import {
-  fetchGetMessages,
-  selectLoading,
-  selectMessages,
-} from "@/redux/features/Messages/GetMessage/GetMessageSlice";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 import { sendMessage } from "@/redux/features/Messages/SendMessage/SendMessageSlice";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -17,14 +14,18 @@ import { AiOutlineClose } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { io } from "socket.io-client";
 import { format } from "timeago.js";
+import { BiPhotoAlbum } from "react-icons/bi";
+import { decryptFunction } from "@/Encrypt/DecryptFunction/DecryptFunction";
 
-const socket = io("http://localhost:5000");
+
+const socket = io("https://zsqur.quickvara.com");
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   authorEmail: number | string;
   productId: string;
+  name:string
 }
 
 const ChatModal: React.FC<ModalProps> = ({
@@ -32,6 +33,7 @@ const ChatModal: React.FC<ModalProps> = ({
   onClose,
   authorEmail,
   productId,
+  name
 }) => {
   const [userName, setUserName] = useState("");
   const [chatActive, setChatActive] = useState(false);
@@ -44,7 +46,6 @@ const ChatModal: React.FC<ModalProps> = ({
   const formRef = useRef<HTMLFormElement | null>(null);
   const [messages, setMessages] = useState<any[]>([]);
   const [getReceiverEmail, setGetReceiverEmail] = useState("");
-
   const [getConversationId, setGetConversationId] = useState("");
 
   const { data: userCounter } = useUserData();
@@ -72,27 +73,16 @@ const ChatModal: React.FC<ModalProps> = ({
     };
   }, [getReceiverEmail, setMessages]);
   const dispatch: AppDispatch = useDispatch();
-
-  // const message = useSelector(selectMessages);
-  // const loading = useSelector(selectLoading);
-
-  // useEffect(() => {
-  //   // Define your authorEmail and email values here or fetch them from your component's props or state
-
-  //   // Dispatch the fetchGetMessages action
-  //   dispatch(fetchGetMessages({ authorEmail, email }));
-  // }, [authorEmail, dispatch, email]);
-  // useEffect(() => {
-  //   setMessages(message);
-  //   socket.emit("set-email", authorEmail);
-  // }, [authorEmail, message]);
+ 
   const { isLoading } = useQuery(
     ["message", authorEmail, email],
     async () => {
       const response = await axios.get(
-        `http://localhost:5000/api/v1/messages?receiverEmail=${authorEmail}&senderEmail=${email}`
+        `https://zsqur.quickvara.com/api/v1/messages?receiverEmail=${authorEmail}&senderEmail=${email}`
       );
-      return response.data;
+      const decryptedData = decryptFunction(response.data); // Decrypt the data
+      const data = JSON.parse(decryptedData);
+      return data;
     },
     {
       onSuccess: (data) => {
@@ -101,8 +91,6 @@ const ChatModal: React.FC<ModalProps> = ({
       },
     }
   );
-
-   
 
   useEffect(() => {
     // Scroll to the bottom when new messages are displayed
@@ -114,7 +102,7 @@ const ChatModal: React.FC<ModalProps> = ({
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    if (!newMessage) return;
     const messagesData = {
       conversationId: getConversationId,
       productId: productId,
@@ -122,6 +110,7 @@ const ChatModal: React.FC<ModalProps> = ({
       userName: fullName,
       senderEmail: email,
       receiverEmail: authorEmail,
+      photo:""
     };
 
     try {
@@ -135,73 +124,26 @@ const ChatModal: React.FC<ModalProps> = ({
         const receiverEmail = resultAction.payload;
         // Do something with receiverEmail
         setGetReceiverEmail(receiverEmail.toString());
-      } else {
-        // Handle rejection
-        console.error("Error sending message:", resultAction.error);
-      }
+        setNewMessage("");
+      } else {}
 
       // Reset the form if needed
       if (formRef.current) {
         formRef.current.reset();
       }
-    } catch (error) {
-      console.error("Error sending message:", error);
-    }
+    } catch (error) {}
   };
 
-  // const handleSendMessage = async (e: any) => {
-  //   e.preventDefault();
-  //   const messagesData = {
-  //     conversationId: getConversationId,
-  //     productId: productId,
-  //     message: newMessage,
-  //     userName: fullName,
-  //     senderEmail: email,
-  //     receiverEmail: authorEmail,
-  //   };
-  //   socket.emit("send-message", messagesData);
-  //   try {
-  //     const res = await fetch("http://localhost:5000/api/v1/messages", {
-  //       method: "POST",
-  //       headers: {
-  //         "content-type": "application/json",
-  //         // authorization: `bearer ${Cookies.get('token')}`
-  //       },
-  //       body: JSON.stringify(messagesData),
-  //     });
-
-  //     if (!res.ok) {
-  //       throw new Error("Network response was not ok");
-  //     }
-
-  //     const result = await res.json();
-  //     setGetReceiverEmail(result?.receiverEmail);
-
-  //     // if (result.message) {
-  //     //   const messagesData = {
-  //     //     message: result.message,
-  //     //     userName: result.userName,
-  //     //     senderEmail: result.senderEmail,
-  //     //     receiverEmail: result.receiverEmail,
-  //     //   };
-  //     //   socket.emit("send-message", messagesData);
-  //     //   setNewMessage("");
-  //     // }
-  //     if (formRef.current) {
-  //       formRef.current.reset();
-  //     }
-  //   } catch (error) {
-  //     console.error("Error sending message:", error);
-  //   }
-  // };
-
+  
+ 
+ 
   return (
     <div className={`relative  ${isOpen ? "" : "hidden"}`}>
       {/* <div className="modal-bg absolute inset-0" onClick={onClose}></div> */}
-      <div className="   lg:w-[500px] lg:h-[550px] bg-primary px-6 pt-4 border-2 rounded shadow-md">
+      <div className="lg:w-[500px] lg:h-[550px] bg-primary px-6 pt-4 border-2 rounded shadow-md pb-14">
         {/* Modal Content Goes Here */}
         <div className="flex justify-between">
-          <h2 className="text-xl font-semibold"> {authorEmail}</h2>{" "}
+          <h2 className="text-xl font-semibold"> {name}</h2>{" "}
           <button className="   p-2   rounded" onClick={onClose}>
             <AiOutlineClose className="h-6 w-6"></AiOutlineClose>
           </button>
@@ -222,22 +164,37 @@ const ChatModal: React.FC<ModalProps> = ({
               return (
                 <div key={index} className="px-5">
                   <div
-                    className={`flex rounded-md shadow-md mt-2 w-fit ${
+                    className={`flex rounded-md  mt-2 w-fit ${
                       isSender ? "ml-auto" : "" // Apply ml-auto class for sender's messages
                     }`}
                   >
                     <div
-                      className={`bg-warning text-primary flex justify-center items-center rounded-l-md ${
+                      className={` flex rounded-l-md max-w-fit ${
                         isSender ? "rounded-r-md" : "" // Apply rounded-r-md class for sender's messages
                       }`}
                     >
-                      <h3 className="font-fold text-lg px-2">
-                        {message?.userName?.charAt(0, 2).toUpperCase()}
-                      </h3>
-                    </div>
-                    <div className="px-2 rounded-md">
-                      <span className="text-sm">{message.user}</span>
-                      <h3 className="">{message.message}</h3>
+                       <div>
+                                <h3 className="font-fold text-lg px-2 bg-warning text-primary rounded-md">
+                                  {message?.userName
+                                    ?.charAt(0, 2)
+                                    .toUpperCase()}
+                                </h3>
+                              </div>
+                              <div className="px-2 rounded-md">
+                                <span className="text-sm">{message.user}</span>
+                                <h3 className="">{message.message}</h3>
+                                {message.photo && (
+                                  <PhotoProvider>
+                                    <PhotoView src={message.photo}>
+                                      <img
+                                        className="h-52 w-52 cursor-pointer"
+                                        src={message.photo}
+                                        alt=""
+                                      />
+                                    </PhotoView>
+                                  </PhotoProvider>
+                                )}
+                              </div>
                     </div>
                   </div>
                   <h3
@@ -268,11 +225,18 @@ const ChatModal: React.FC<ModalProps> = ({
         />
         <button
           // onClick={handleSendMessage}
-          className="bg-warning  px-5 py-2 rounded-md text-primary"
+          disabled={newMessage ? false : true}
+          className={
+            newMessage
+              ? "bg-warning  px-5 py-2 rounded-md text-primary"
+              : "bg-gray-500  px-5 py-2 rounded-md text-primary"
+          }
         >
           Send
         </button>
+        
       </form>
+      
     </div>
   );
 };

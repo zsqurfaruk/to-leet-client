@@ -157,7 +157,8 @@ function SignUp() {
   const getEm = Cookies.get("em");
 
   const lang = useSelector((state: any) => state.language.language);
-  // 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
+  // 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
+  // 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
   return (
     <>
       <Head>

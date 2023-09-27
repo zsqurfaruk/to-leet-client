@@ -28,7 +28,6 @@ const AllAreas = () => {
   };
   // const cityName = useSelector((state: any) => state.cityName.cityName);
   const cityName = useSelector((state: RootState) => state['qv-cn'].cityName);
-  console.log(cityName)
   const lang = useSelector((state:any) => state.language.language);
   return (
     <section className="w-full pl-9 md:pl-0">

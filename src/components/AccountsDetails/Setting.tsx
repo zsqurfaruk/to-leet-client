@@ -54,7 +54,7 @@ const Setting = () => {
 
     if (willDelete) {
       try {
-        const res = await fetch(`http://localhost:5000/api/v1/users/${email}`, {
+        const res = await fetch(`https://zsqur.quickvara.com/api/v1/users/${email}`, {
           method: "DELETE",
         });
         const data = await res.json();

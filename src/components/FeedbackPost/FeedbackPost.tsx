@@ -34,14 +34,11 @@ const FeedbackPost = () => {
   const { data, error, isLoading, refetch } = useQuery(["posts"], getPosts, {
     enabled: true, // Ensure this is set to true when you want the query to run
   });
+
   const { feedbacks, setFeedback }: any = useContext(APIContext);
   const { data: userCounter } = useUserData();
   const [userRole, setUserRole] = useState("");
-  const encryptedData = data?.feedbacks;
-  // const decryptedData = decryptFunction(encryptedData);
-  // if(decryptedData){
-  // const parsedData = JSON.parse(decryptedData);
-  // }
+  const encryptedData = data;
   setFeedback(encryptedData);
 
   const lang = useSelector((state: any) => state.language.language);
@@ -66,7 +63,7 @@ const FeedbackPost = () => {
 
     if (willDelete) {
       try {
-        const res = await fetch(`http://localhost:5000/api/v1/feedback/${id}`, {
+        const res = await fetch(`https://zsqur.quickvara.com/api/v1/feedback/${id}`, {
           method: "DELETE",
         });
         const data = await res.json();
@@ -89,7 +86,7 @@ const FeedbackPost = () => {
     }
   };
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -141,7 +138,7 @@ const FeedbackPost = () => {
     ],
   };
   const setting = {
-    dots: true,
+    dots: false,
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -195,7 +192,7 @@ const FeedbackPost = () => {
   };
 
   return (
-    <section className=" ">
+    <section className="px-5 lg:px-0">
       <div className="lg:w-10/12 mx-auto pt-14">
         <div>
           {!lang ? (
@@ -208,13 +205,13 @@ const FeedbackPost = () => {
             </h1>
           )}
           {!lang ? (
-            <p className="text-center px-2 lg:px-0">
+            <p className="text-center">
               We love seeing our users' joy when using our services,
               <br className="hidden md:flex" /> and we love giving them a great
               experience{" "}
             </p>
           ) : (
-            <p className="text-center px-2 lg:px-0 text-sm mt-1">
+            <p className="text-center  text-sm mt-1">
               আমরা আমাদের পরিষেবাগুলি ব্যবহার করার সময় আমাদের ব্যবহারকারীদের
               আনন্দ <br className="hidden md:flex" /> দেখতে পছন্দ করি এবং আমরা
               তাদের একটি দুর্দান্ত অভিজ্ঞতা দিতে পছন্দ করি
@@ -229,7 +226,7 @@ const FeedbackPost = () => {
                 <Card
                   key={feedback._id}
                   shadow={false}
-                  className="shadow-md hover:ease-in-out hover:duration-700 px-4 bg-gray-100 bg-opacity-75 hover:bg-primary"
+                  className="shadow-md hover:ease-in-out hover:duration-700 px-1 lg:px-4 bg-gray-100 bg-opacity-75 hover:bg-primary"
                 >
                   <CardHeader
                     color="transparent"
@@ -285,7 +282,7 @@ const FeedbackPost = () => {
                   <Card
                     key={feedback._id}
                     shadow={false}
-                    className="shadow-md hover:ease-in-out hover:duration-700 px-4 bg-gray-100 bg-opacity-75 hover:bg-primary"
+                    className="shadow-md hover:ease-in-out hover:duration-700 px-1 lg:px-4 bg-gray-100 bg-opacity-75 hover:bg-primary"
                   >
                     <CardHeader
                       color="transparent"
@@ -310,13 +307,13 @@ const FeedbackPost = () => {
                     </CardHeader>
 
                     <CardBody className="mb-6 p-0">
-                      {feedback.description.length > 140 ? (
+                      {feedback?.description?.length > 140 ? (
                         <Typography>
-                          &quot;{feedback.description.slice(0, 140)}... &quot;
+                          &quot;{feedback?.description.slice(0, 140)}... &quot;
                         </Typography>
                       ) : (
                         <Typography>
-                          &quot;{feedback.description.slice(0, 200)}&quot;
+                          &quot;{feedback?.description.slice(0, 200)}&quot;
                         </Typography>
                       )}
                     </CardBody>
@@ -338,17 +335,7 @@ const FeedbackPost = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(["posts"], getPosts);
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-};
+ 
 export default FeedbackPost;
 
 // Fetch data and pass it as a prop

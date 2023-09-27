@@ -33,7 +33,6 @@ function PostCounter() {
     dispatch(getAllPosts());
   }, [dispatch]);
 
-  //  console.log(userCounter)
 
   useEffect(() => {
     setStartCounting(true);
