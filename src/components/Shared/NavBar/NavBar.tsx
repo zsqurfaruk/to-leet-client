@@ -184,11 +184,7 @@ export default function NavBar() {
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <li className="flex justify-start px-10 border-b border-t py-2 lg:border-none">
-        <Link
-          onClick={() => setOpenNav(false)}
-          href={"/contact-by-message"}
-          className="flex gap-2"
-        >
+        <Link onClick={() => setOpenNav(false)} href={"/contact-by-message"} className="flex gap-2">
           <AiFillWechat className="h-7 w-7 text-white" />{" "}
           {!lang ? (
             <span className="mt-[6px] text-primary">Chat</span>
@@ -222,6 +218,7 @@ export default function NavBar() {
         {!authenticated && !email ? (
           <Typography
             className="p-1 font-normal"
+            
             onClick={() => setOpenNav(false)}
           >
             <Link href="/signIn" passHref>
@@ -244,6 +241,7 @@ export default function NavBar() {
         ) : (
           <Typography
             className="lg:p-1 font-normal"
+            
             onClick={() => setOpenNav(false)}
           >
             <Link href="/dashboard/profile" passHref>
@@ -367,6 +365,7 @@ export default function NavBar() {
             <IconButton
               variant="text"
               className="mt-3 font-semibold ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden  text-primary"
+              
               onClick={() => setOpenNav(!openNav)}
             >
               {openNav ? (
